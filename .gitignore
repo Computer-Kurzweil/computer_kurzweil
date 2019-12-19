@@ -16,8 +16,14 @@ gradle-app.setting
 
 .idea
 *.iml
-/simulated-evolution/build/
-/mandelbrot/build/
-/diffusion-limited-aggregation/build/
+
 /cyclic-cellular-automaton/build/
+/diffusion-limited-aggregation/build/
+/koch-snowflake/build/
+/mandelbrot/build/
+/samegame/build/
+/sierpinski-triangle/build/
+/simulated-evolution/build/
+/tetris/build/
+/turmite/build/
 /wator/build
