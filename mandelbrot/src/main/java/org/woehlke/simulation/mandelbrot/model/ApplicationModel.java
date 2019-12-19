@@ -100,6 +100,7 @@ public class ApplicationModel {
     public synchronized void zoomOut() {
         switch (applicationStateMachine.getApplicationState()) {
             case MANDELBROT:
+                break;
             case JULIA_SET:
                 break;
             case MANDELBROT_ZOOM:

@@ -49,7 +49,7 @@ public class PanelButtons extends JPanel implements ActionListener {
         CompoundBorder borderPanelRadioButtons = getBorder(model.getConfig().getButtonsLabel());
         CompoundBorder borderPanelPushButtons = getBorder(model.getConfig().getButtonsZoomLabel());
         JLabel zoomLevelFieldLabel = new JLabel("Zoom Level");
-        zoomLevelField = new TextField("0");
+        zoomLevelField = new TextField("0",3);
         zoomLevelField.setText(model.getGaussianNumberPlane().getZoomLevel()+"");
         panelButtonsGroup.setLayout(layout);
         panelButtonsGroup.setBorder(borderPanelRadioButtons);

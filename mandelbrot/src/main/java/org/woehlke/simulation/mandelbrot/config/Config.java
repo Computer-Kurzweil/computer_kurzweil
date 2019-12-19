@@ -107,4 +107,21 @@ public class Config implements ConfigProperties {
     public String getButtonsZoomLabel() {
         return buttonsZoomLabel;
     }
+
+    @Override
+    public String toString() {
+        return "Config{" +
+            "title='" + title + '\'' +
+            ", subtitle='" + subtitle + '\'' +
+            ", copyright='" + copyright + '\'' +
+            ", width=" + width +
+            ", height=" + height +
+            ", buttonsLabel='" + buttonsLabel + '\'' +
+            ", buttonsSwitch='" + buttonsSwitch + '\'' +
+            ", buttonsZoom='" + buttonsZoom + '\'' +
+            ", buttonsZoomLabel='" + buttonsZoomLabel + '\'' +
+            ", buttonsZoomOut='" + buttonsZoomOut + '\'' +
+            ", logDebug=" + logDebug +
+            '}';
+    }
 }
