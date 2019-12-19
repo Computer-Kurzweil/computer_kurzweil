@@ -71,22 +71,22 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
         }
     }
 
-    public void zoomOutOfTheMandelbrotSet() {
+    public synchronized void zoomOutOfTheMandelbrotSet() {
         if(model.getConfig().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }
-        if(!this.isLowestZoomLevel()){
+        if(!this.isLowestZoomLevel()) {
             this.decreaseZoomLevel();
-            ComplexNumber zoomCenter = complexCenterForZoomedMandelbrot.pop();
-            this.setZoomCenter(zoomCenter);
-            if(model.getConfig().getLogDebug()) {
-                log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.getZoomLevel());
-            }
-            for(int y = 0; y < this.getWorldDimensions().getY(); y++){
-                for(int x = 0; x < this.getWorldDimensions().getX(); x++){
-                    LatticePoint p = new LatticePoint(x, y);
-                    this.isInZooomedMandelbrotSet(p);
-                }
+        }
+        ComplexNumber zoomCenter = complexCenterForZoomedMandelbrot.pop();
+        this.setZoomCenter(zoomCenter);
+        if(model.getConfig().getLogDebug()) {
+            log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.getZoomLevel());
+        }
+        for(int y = 0; y < this.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < this.getWorldDimensions().getX(); x++){
+                LatticePoint p = new LatticePoint(x, y);
+                this.isInZooomedMandelbrotSet(p);
             }
         }
     }

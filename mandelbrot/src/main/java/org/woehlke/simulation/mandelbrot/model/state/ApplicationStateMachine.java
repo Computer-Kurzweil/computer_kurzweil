@@ -50,7 +50,7 @@ public class ApplicationStateMachine {
     }
 
     public synchronized void setModeSwitch() {
-        ApplicationState nextApplicationState= ApplicationState.getDefault();
+        ApplicationState nextApplicationState  = null;
         switch (applicationState){
             case MANDELBROT:
             case MANDELBROT_ZOOM:
@@ -69,7 +69,7 @@ public class ApplicationStateMachine {
     }
 
     public synchronized void setModeZoom() {
-        ApplicationState nextApplicationState = ApplicationState.getDefault();
+        ApplicationState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
             case MANDELBROT_ZOOM:

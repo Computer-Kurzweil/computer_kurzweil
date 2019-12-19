@@ -2,8 +2,6 @@ package org.woehlke.simulation.mandelbrot.model.fractal;
 
 import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.logging.Logger;
 
 /**
@@ -104,10 +102,6 @@ public class GaussianNumberPlaneBase {
 
     public synchronized boolean isLowestZoomLevel(){
         return zoomLevel == 1;
-    }
-
-    public synchronized void setZoomLevel(int zoomLevel) {
-        this.zoomLevel = zoomLevel;
     }
 
     public synchronized void setLowestZoomLevel() {

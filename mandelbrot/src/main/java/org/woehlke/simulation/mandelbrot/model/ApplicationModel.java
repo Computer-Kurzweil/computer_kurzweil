@@ -2,7 +2,6 @@ package org.woehlke.simulation.mandelbrot.model;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlane;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBase;
 import org.woehlke.simulation.mandelbrot.model.fractal.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.state.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.MandelbrotTuringMachine;
@@ -74,13 +73,13 @@ public class ApplicationModel {
         return new LatticePoint(width, height);
     }
 
-    public void setModeSwitch() {
+    public synchronized void setModeSwitch() {
         this.gaussianNumberPlane.setModeSwitch();
         this.applicationStateMachine.setModeSwitch();
         this.frame.setModeSwitch();
     }
 
-    public void setModeZoom() {
+    public synchronized void setModeZoom() {
         this.gaussianNumberPlane.setModeZoom();
         this.applicationStateMachine.setModeZoom();
         this.frame.setModeZoom();
@@ -98,7 +97,7 @@ public class ApplicationModel {
         return config;
     }
 
-    public void zoomOut() {
+    public synchronized void zoomOut() {
         switch (applicationStateMachine.getApplicationState()) {
             case MANDELBROT:
             case JULIA_SET:

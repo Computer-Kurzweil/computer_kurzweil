@@ -82,7 +82,7 @@ public class PanelButtons extends JPanel implements ActionListener {
         );
     }
 
-    public void repaintZoomLevel(){
+    public synchronized void repaintZoomLevel(){
         if(this.zoomLevelField == null){
             zoomLevelField = new TextField("1");
         }
@@ -97,7 +97,7 @@ public class PanelButtons extends JPanel implements ActionListener {
     }
 
     @Override
-    public void repaint() {
+    public synchronized void repaint() {
         repaintZoomLevel();
         super.repaint();
     }
@@ -106,7 +106,7 @@ public class PanelButtons extends JPanel implements ActionListener {
      * TODO write doc.
      */
     @Override
-    public void actionPerformed(ActionEvent ae) {
+    public synchronized void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == this.radioButtonsSwitch) {
             this.model.setModeSwitch();
             this.panelZoomButtons.setEnabled(false);

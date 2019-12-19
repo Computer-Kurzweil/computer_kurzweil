@@ -28,7 +28,7 @@ public class MandelbrotTuringMachine {
         start();
     }
 
-    public void start() {
+    public synchronized void start() {
         this.turingPhaseStateMachine.start();
         this.gaussianNumberPlane.start();
         this.turingPositionsStateMachine.start();
@@ -75,5 +75,5 @@ public class MandelbrotTuringMachine {
         this.turingPhaseStateMachine.finishFillTheOutsideWithColors();
     }
 
-    public static Logger log = Logger.getLogger(MandelbrotTuringMachine.class.getName());
+    private static Logger log = Logger.getLogger(MandelbrotTuringMachine.class.getName());
 }
