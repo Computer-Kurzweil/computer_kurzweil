@@ -1,4 +1,4 @@
-package org.woehlke.simulation.dla.view.desktop;
+package org.woehlke.simulation.dla.view;
 
 import org.woehlke.simulation.dla.control.ControllerThread;
 import org.woehlke.simulation.dla.model.Particles;
@@ -32,7 +32,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         Accessible,
         WindowListener {
 
-    private JLabel subtitle = new JLabel(SUBTITLE);
+    private PanelSubtitle subtitle = new PanelSubtitle(SUBTITLE);
     private ControllerThread controllerThread;
     private WorldCanvas canvas;
     private Particles particles;

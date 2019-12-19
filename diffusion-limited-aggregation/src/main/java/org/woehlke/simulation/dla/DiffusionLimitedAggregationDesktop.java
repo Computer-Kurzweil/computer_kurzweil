@@ -1,6 +1,6 @@
 package org.woehlke.simulation.dla;
 
-import org.woehlke.simulation.dla.view.desktop.DiffusionLimitedAggregationFrame;
+import org.woehlke.simulation.dla.view.DiffusionLimitedAggregationFrame;
 
 /**
  * Diffusion Limited Aggregation.
