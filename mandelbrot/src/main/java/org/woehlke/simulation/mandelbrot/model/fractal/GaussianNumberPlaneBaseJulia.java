@@ -112,7 +112,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseMandelb
     }
 
     //TODO:
-    public void zoomOutOfTheJuliaSet() {
+    public synchronized void zoomOutOfTheJuliaSet() {
         if(model.getConfig().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }
