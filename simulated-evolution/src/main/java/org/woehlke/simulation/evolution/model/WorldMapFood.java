@@ -1,7 +1,7 @@
-package org.woehlke.simulation.wator.model;
+package org.woehlke.simulation.evolution.model;
 
-import org.woehlke.simulation.wator.config.WorldMapFoodConfigDefault;
-import org.woehlke.simulation.wator.control.ObjectRegistry;
+import org.woehlke.simulation.evolution.config.WorldMapFoodConfigDefault;
+import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 
 /**

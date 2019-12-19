@@ -1,4 +1,4 @@
-package org.woehlke.simulation.wator.model;
+package org.woehlke.simulation.evolution.model;
 
 import java.util.Random;
 
@@ -13,9 +13,9 @@ import java.util.Random;
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 19:06:43
- * @see org.woehlke.simulation.wator.model.CellCore
- * @see org.woehlke.simulation.wator.model.LifeCycle
- * @see org.woehlke.simulation.wator.model.LifeCycleStatus
+ * @see CellCore
+ * @see LifeCycle
+ * @see LifeCycleStatus
  * <p>
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/

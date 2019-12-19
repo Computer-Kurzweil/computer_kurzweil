@@ -1,12 +1,12 @@
-package org.woehlke.simulation.wator.control;
+package org.woehlke.simulation.evolution.control;
 
-import org.woehlke.simulation.wator.config.GuiConfig;
-import org.woehlke.simulation.wator.config.StatisticsConfig;
-import org.woehlke.simulation.wator.config.WorldConfig;
-import org.woehlke.simulation.wator.config.WorldMapFoodConfig;
-import org.woehlke.simulation.wator.model.LifeCycleCountContainer;
-import org.woehlke.simulation.wator.model.World;
-import org.woehlke.simulation.wator.model.WorldMapFood;
+import org.woehlke.simulation.evolution.config.GuiConfig;
+import org.woehlke.simulation.evolution.config.StatisticsConfig;
+import org.woehlke.simulation.evolution.config.WorldConfig;
+import org.woehlke.simulation.evolution.config.WorldMapFoodConfig;
+import org.woehlke.simulation.evolution.model.LifeCycleCountContainer;
+import org.woehlke.simulation.evolution.model.World;
+import org.woehlke.simulation.evolution.model.WorldMapFood;
 import org.woehlke.simulation.evolution.view.*;
 
 import java.util.Date;

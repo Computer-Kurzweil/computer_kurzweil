@@ -1,6 +1,6 @@
-package org.woehlke.simulation.wator.model;
+package org.woehlke.simulation.evolution.model;
 
-import org.woehlke.simulation.wator.config.LifeCycleConfigDefault;
+import org.woehlke.simulation.evolution.config.LifeCycleConfigDefault;
 
 /**
  * State of the Cell which monitors age and getting enough food.

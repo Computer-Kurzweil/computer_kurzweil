@@ -1,8 +1,8 @@
-package org.woehlke.simulation.wator.model;
+package org.woehlke.simulation.evolution.model;
 
 import java.awt.Color;
 
-import static org.woehlke.simulation.wator.config.GuiConfigColors.*;
+import static org.woehlke.simulation.evolution.config.GuiConfigColors.*;
 
 /**
  * The Status of the Cell's LifeCycle.

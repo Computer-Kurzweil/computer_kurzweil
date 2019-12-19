@@ -1,6 +1,6 @@
-package org.woehlke.simulation.wator.config;
+package org.woehlke.simulation.evolution.config;
 
-import org.woehlke.simulation.wator.model.Point;
+import org.woehlke.simulation.evolution.model.Point;
 
 import java.beans.Transient;
 

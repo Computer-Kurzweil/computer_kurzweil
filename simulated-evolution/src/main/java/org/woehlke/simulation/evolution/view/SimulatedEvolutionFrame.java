@@ -1,7 +1,7 @@
 package org.woehlke.simulation.evolution.view;
 
-import org.woehlke.simulation.wator.config.GuiConfigDefault;
-import org.woehlke.simulation.wator.control.ObjectRegistry;
+import org.woehlke.simulation.evolution.config.GuiConfigDefault;
+import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;

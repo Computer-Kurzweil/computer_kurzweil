@@ -1,14 +1,14 @@
 package org.woehlke.simulation.evolution.view;
 
-import org.woehlke.simulation.wator.control.ObjectRegistry;
-import org.woehlke.simulation.wator.model.LifeCycleCount;
+import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.woehlke.simulation.evolution.model.LifeCycleCount;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
 
-import static org.woehlke.simulation.wator.config.GuiConfigColors.*;
+import static org.woehlke.simulation.evolution.config.GuiConfigColors.*;
 
 /**
  * TODO write doc.

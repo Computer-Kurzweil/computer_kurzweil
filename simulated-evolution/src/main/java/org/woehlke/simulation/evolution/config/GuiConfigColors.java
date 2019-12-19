@@ -1,4 +1,4 @@
-package org.woehlke.simulation.wator.config;
+package org.woehlke.simulation.evolution.config;
 
 import java.awt.Color;
 

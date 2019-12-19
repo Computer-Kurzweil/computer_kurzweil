@@ -1,4 +1,4 @@
-package org.woehlke.simulation.wator.model;
+package org.woehlke.simulation.evolution.model;
 
 import java.util.List;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package org.woehlke.simulation.wator.model;
+package org.woehlke.simulation.evolution.model;
 
 /**
  * A Point is used to define the Position of Cell or as a Vector for defining Dimensions.

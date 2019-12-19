@@ -1,6 +1,6 @@
-package org.woehlke.simulation.wator.control;
+package org.woehlke.simulation.evolution.control;
 
-import org.woehlke.simulation.wator.config.GuiConfigDefault;
+import org.woehlke.simulation.evolution.config.GuiConfigDefault;
 
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
