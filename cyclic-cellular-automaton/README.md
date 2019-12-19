@@ -14,9 +14,9 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 ## Screenshots
 
 ### Early Screen
-![Early Screen](etc/img/screen1.png)
+![Early Screen](src/main/resources/img/screen1.png)
 ### Later Screen
-![Later Screen](etc/img/screen2.png)
+![Later Screen](src/main/resources/img/screen2.png)
 
 ## Git Repository
 * [https://github.com/thomaswoehlke/mandelbrot](https://github.com/thomaswoehlke/mandelbrot)

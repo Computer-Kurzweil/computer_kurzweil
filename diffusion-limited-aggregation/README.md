@@ -17,9 +17,9 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 
 ## Screenshots
 
-![The Dendrite](etc/img/screen1.png)
+![The Dendrite](src/main/resources/img/screen1.png)
 
-![The Dendrite after a while](etc/img/screen2.png)
+![The Dendrite after a while](src/main/resources/img/screen2.png)
 
 ## Run the Desktop Application
 ```

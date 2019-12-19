@@ -1,6 +1,6 @@
-package org.woehlke.simulation.turmite;
+package org.woehlke.simulation.tetris;
 
-public class KochSnowflakeApplication {
+public class TetrisApplication {
 
 
     /**
@@ -9,7 +9,7 @@ public class KochSnowflakeApplication {
      * @param args CLI Parameter.
      */
     public static void main(String[] args) {
-        KochSnowflakeApplication application = new KochSnowflakeApplication();
+        TetrisApplication application = new TetrisApplication();
         System.out.println(": Started the Desktop Application");
     }
 }
