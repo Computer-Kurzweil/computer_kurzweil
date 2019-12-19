@@ -16,3 +16,7 @@ gradle-app.setting
 
 /.idea
 *.iml
+/simulated-evolution/build/
+/mandelbrot/build/
+/diffusion-limited-aggregation/build/
+/cyclic-cellular-automaton/build/
