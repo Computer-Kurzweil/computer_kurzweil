@@ -14,7 +14,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 #
 
-/.idea
+.idea
 *.iml
 /simulated-evolution/build/
 /mandelbrot/build/
