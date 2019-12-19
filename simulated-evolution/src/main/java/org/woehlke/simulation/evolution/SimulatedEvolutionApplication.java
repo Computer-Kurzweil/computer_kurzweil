@@ -33,6 +33,7 @@ public class SimulatedEvolutionApplication {
     try {
       ctx.getController().start();
     } catch (IllegalThreadStateException e){
+        System.out.println(e.getLocalizedMessage());
     }
   }
 

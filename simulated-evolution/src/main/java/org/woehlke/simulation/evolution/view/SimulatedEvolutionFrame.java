@@ -48,6 +48,7 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
     int mystartY = Double.valueOf(startY).intValue();
     this.setBounds(mystartX, mystartY, mywidth, myheight);
     rootPane.setVisible(true);
+    this.setVisible(true);
     toFront();
   }
 
