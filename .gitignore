@@ -20,3 +20,4 @@ gradle-app.setting
 /mandelbrot/build/
 /diffusion-limited-aggregation/build/
 /cyclic-cellular-automaton/build/
+/wator/build
