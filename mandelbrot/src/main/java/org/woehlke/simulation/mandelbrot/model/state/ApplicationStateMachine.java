@@ -37,10 +37,8 @@ public class ApplicationStateMachine {
                 nextApplicationState = MANDELBROT;
                 break;
             case MANDELBROT_ZOOM:
-                nextApplicationState = MANDELBROT_ZOOM;
-                break;
             case JULIA_SET_ZOOM:
-                nextApplicationState = JULIA_SET_ZOOM;
+                nextApplicationState = applicationState;
                 break;
         }
         if(model.getConfig().getLogDebug()){

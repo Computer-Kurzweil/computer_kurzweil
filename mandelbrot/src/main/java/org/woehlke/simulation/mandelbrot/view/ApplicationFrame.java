@@ -82,10 +82,8 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         LatticePoint c = new LatticePoint(e.getX(), e.getY());
         boolean repaintCanvas = this.applicationModel.click(c);
         this.panelButtons.repaint();
+        this.getCanvas().repaint();
         showMe();
-        if(repaintCanvas){
-            this.getCanvas().repaint();
-        }
     }
 
     @Override

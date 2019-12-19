@@ -7,11 +7,10 @@
  */
 
 plugins {
-    id 'java'
-    id 'application'
+    id 'base'        // https://docs.gradle.org/current/userguide/base_plugin.html
+    id 'java'        // https://docs.gradle.org/current/userguide/java_plugin.html
+    id 'application' // https://docs.gradle.org/current/userguide/application_plugin.html
     id 'idea'        // https://docs.gradle.org/current/userguide/idea_plugin.html
-    id 'checkstyle'  // https://docs.gradle.org/current/userguide/checkstyle_plugin.html
-    id 'pmd'         // https://docs.gradle.org/current/userguide/pmd_plugin.html
 }
 
 repositories {
@@ -21,20 +20,11 @@ repositories {
 dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
     testImplementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.12'
 }
 
 application {
     mainClassName = 'org.woehlke.simulation.mandelbrot.MandelbrotSetApplication'
 }
 
-checkstyle {
-    ignoreFailures = true
-}
-
-pmd {
-    ignoreFailures = true
-    consoleOutput = true
-}
 
 

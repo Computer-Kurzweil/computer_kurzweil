@@ -109,7 +109,6 @@ public class ApplicationModel {
         switch (applicationStateMachine.getApplicationState()) {
             case MANDELBROT:
             case JULIA_SET:
-                repaint = false;
                 break;
             case MANDELBROT_ZOOM:
                 gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
