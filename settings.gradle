@@ -1,4 +1,5 @@
 rootProject.name = 'computer_kurzweil'
+
 include 'cyclic-cellular-automaton'
 include 'diffusion-limited-aggregation'
 include 'mandelbrot'
