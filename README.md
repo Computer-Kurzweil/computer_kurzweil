@@ -85,5 +85,5 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 **[More Info...](wator/README.md)**
 
 ## Documentation
-**[More Info...](wator/README.md)**
+**[More Info...](docs/README.md)**
 
