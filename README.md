@@ -1,25 +1,10 @@
 # Computer Kurzweil
 
-## Diffusion-limited aggregation (DLA) 
-
-**[Fractals and random walk due to Brownian motion cluster](diffusion-limited-aggregation/README.md)**
-
-![The Dendrite after a while](diffusion-limited-aggregation/etc/img/screen2.png)
-
-Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to Brownian motion cluster together to form aggregates of such particles.
-
-This theory, proposed by T.A. Witten Jr. (not to be confused with Edward Witten) and L.M. Sander in 1981,[1] is applicable to aggregation
-in any system where diffusion is the primary means of transport in the system. DLA can be observed in many systems such as electrodeposition,
-Hele-Shaw flow, mineral deposits, and dielectric breakdown.
-
-The clusters formed in DLA processes are referred to as Brownian trees. These clusters are an example of a fractal.
-
-
 ## Mandelbrot
 
 **[Computing the Edge of the Mandelbrot Set with a Turing Machine](mandelbrot/README.md)**
 
-![Computing the Area outside the Mandelbrot Set](mandelbrot/etc/img/screen03.png)
+![Computing the Area outside the Mandelbrot Set](mandelbrot/src/main/resources/img/screen03.png)
 
 ### The Mandelbrot Set
 
@@ -53,6 +38,22 @@ Reproduction is done by splitting the cell and randomly changing the DNA of the 
 If a cell doesn't eat enough, it will first stand still and after a while it dies.
 
 
+## Diffusion-limited aggregation (DLA) 
+
+**[Fractals and random walk due to Brownian motion cluster](diffusion-limited-aggregation/README.md)**
+
+![The Dendrite after a while](diffusion-limited-aggregation/etc/img/screen2.png)
+
+Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to Brownian motion cluster together to form aggregates of such particles.
+
+This theory, proposed by T.A. Witten Jr. (not to be confused with Edward Witten) and L.M. Sander in 1981,[1] is applicable to aggregation
+in any system where diffusion is the primary means of transport in the system. DLA can be observed in many systems such as electrodeposition,
+Hele-Shaw flow, mineral deposits, and dielectric breakdown.
+
+The clusters formed in DLA processes are referred to as Brownian trees. These clusters are an example of a fractal.
+
+
+
 ## Cyclic Cellular Automaton
 
 **[More Info...](cyclic-cellular-automaton/README.md)**
@@ -81,5 +82,8 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 **[More Info...](turmite/README.md)**
 
 ## Wa-Tor
+**[More Info...](wator/README.md)**
+
+## Documentation
 **[More Info...](wator/README.md)**
 
