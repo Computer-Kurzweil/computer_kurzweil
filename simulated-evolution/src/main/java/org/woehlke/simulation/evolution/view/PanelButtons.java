@@ -1,6 +1,6 @@
 package org.woehlke.simulation.evolution.view;
 
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.woehlke.simulation.wator.control.ObjectRegistry;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -11,9 +11,9 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.simulation.evolution.config.GuiConfigDefault.BUTTON_FOOD_DECREASE;
-import static org.woehlke.simulation.evolution.config.GuiConfigDefault.BUTTON_FOOD_INCREASE;
-import static org.woehlke.simulation.evolution.config.GuiConfigDefault.BUTTON_TOGGLE_GARDEN_OF_EDEN;
+import static org.woehlke.simulation.wator.config.GuiConfigDefault.BUTTON_FOOD_DECREASE;
+import static org.woehlke.simulation.wator.config.GuiConfigDefault.BUTTON_FOOD_INCREASE;
+import static org.woehlke.simulation.wator.config.GuiConfigDefault.BUTTON_TOGGLE_GARDEN_OF_EDEN;
 
 /**
  * TODO write doc.

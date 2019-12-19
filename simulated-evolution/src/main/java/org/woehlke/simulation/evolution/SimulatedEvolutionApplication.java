@@ -1,8 +1,8 @@
 package org.woehlke.simulation.evolution;
 
-import static org.woehlke.simulation.evolution.config.GuiConfigDefault.TITLE;
+import static org.woehlke.simulation.wator.config.GuiConfigDefault.TITLE;
 
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.woehlke.simulation.wator.control.ObjectRegistry;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 
 /**

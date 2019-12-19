@@ -1,9 +1,9 @@
 package org.woehlke.simulation.evolution.view;
 
-import org.woehlke.simulation.evolution.config.GuiConfigDefault;
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
-import org.woehlke.simulation.evolution.model.Cell;
-import org.woehlke.simulation.evolution.model.Point;
+import org.woehlke.simulation.wator.config.GuiConfigDefault;
+import org.woehlke.simulation.wator.control.ObjectRegistry;
+import org.woehlke.simulation.wator.model.Cell;
+import org.woehlke.simulation.wator.model.Point;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
@@ -11,8 +11,8 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.simulation.evolution.config.GuiConfigColors.COLOR_FOOD;
-import static org.woehlke.simulation.evolution.config.GuiConfigColors.COLOR_WATER;
+import static org.woehlke.simulation.wator.config.GuiConfigColors.COLOR_FOOD;
+import static org.woehlke.simulation.wator.config.GuiConfigColors.COLOR_WATER;
 
 
 /**
