@@ -118,8 +118,12 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseMandelb
         }
         if(!this.isLowestZoomLevel()) {
             this.decreaseZoomLevel();
-            ComplexNumber zoomCenter = complexCenterForZoomedJulia.pop();
-            this.setZoomCenter(zoomCenter);
+            try {
+                ComplexNumber zoomCenter = complexCenterForZoomedJulia.pop();
+                this.setZoomCenter(zoomCenter);
+            } catch (Exception e){
+
+            }
         }
         if(model.getConfig().getLogDebug()) {
             log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.getZoomLevel());

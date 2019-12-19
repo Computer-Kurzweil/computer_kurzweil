@@ -100,17 +100,17 @@ public class ApplicationModel {
     public synchronized void zoomOut() {
         switch (applicationStateMachine.getApplicationState()) {
             case MANDELBROT:
-                //gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
+                gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
                 break;
             case JULIA_SET:
-                //gaussianNumberPlane.zoomOutOfTheJuliaSet();
+                gaussianNumberPlane.zoomOutOfTheJuliaSet();
                 break;
             case MANDELBROT_ZOOM:
-                gaussianNumberPlane.zoomOutOfTheJuliaSet();
-                //gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
+                //gaussianNumberPlane.zoomOutOfTheJuliaSet();
+                gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
                 break;
             case JULIA_SET_ZOOM:
-                //gaussianNumberPlane.zoomOutOfTheJuliaSet();
+                gaussianNumberPlane.zoomOutOfTheJuliaSet();
                 break;
         }
     }
