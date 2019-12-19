@@ -82,10 +82,9 @@ public class PanelButtons extends JPanel implements ActionListener {
         );
     }
 
-    @Override
-    public void repaint() {
+    public void repaintZoomLevel(){
         if(this.zoomLevelField == null){
-            zoomLevelField = new TextField("Zoom Level");
+            zoomLevelField = new TextField("1");
         }
         String text;
         try {
@@ -94,6 +93,12 @@ public class PanelButtons extends JPanel implements ActionListener {
             text = "0";
         }
         this.zoomLevelField.setText(text);
+        this.zoomLevelField.repaint();
+    }
+
+    @Override
+    public void repaint() {
+        repaintZoomLevel();
         super.repaint();
     }
 
@@ -102,19 +107,17 @@ public class PanelButtons extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        boolean repaintCanvas = false;
         if (ae.getSource() == this.radioButtonsSwitch) {
-            repaintCanvas = this.model.setModeSwitch();
+            this.model.setModeSwitch();
             this.panelZoomButtons.setEnabled(false);
         } else if(ae.getSource() == this.radioButtonsZoom) {
-            repaintCanvas = this.model.setModeZoom();
+            this.model.setModeZoom();
             this.panelZoomButtons.setEnabled(true);
         } else if(ae.getSource() == this.zoomOutButton){
-            repaintCanvas = this.model.zoomOut();
+            this.model.zoomOut();
         }
-        if(repaintCanvas){
-            this.model.getFrame().getCanvas().repaint();
-        }
+        this.repaintZoomLevel();
+        this.model.getFrame().getCanvas().repaint();
         this.repaint();
     }
 }

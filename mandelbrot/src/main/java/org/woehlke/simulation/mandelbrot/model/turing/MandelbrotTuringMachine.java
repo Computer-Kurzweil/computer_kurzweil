@@ -2,7 +2,6 @@ package org.woehlke.simulation.mandelbrot.model.turing;
 
 import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlane;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBase;
 
 import java.util.logging.Logger;
 
@@ -35,25 +34,19 @@ public class MandelbrotTuringMachine {
         this.turingPositionsStateMachine.start();
     }
 
-    public synchronized boolean step() {
-        boolean repaint=true;
+    public synchronized void step() {
         switch(turingPhaseStateMachine.getTuringTuringPhase()){
             case SEARCH_THE_SET:
                 stepGoToSet();
-                repaint=false;
                 break;
             case WALK_AROUND_THE_SET:
                 stepWalkAround();
                 break;
             case FILL_THE_OUTSIDE_WITH_COLOR:
-                fillTheOutsideWithColors();
+                stepFillTheOutsideWithColors();
                 break;
             case FINISHED:
-            default:
-                repaint=false;
-                break;
         }
-        return repaint;
     }
 
     private void stepGoToSet(){
@@ -77,7 +70,7 @@ public class MandelbrotTuringMachine {
         }
     }
 
-    private void fillTheOutsideWithColors(){
+    private void stepFillTheOutsideWithColors(){
         this.gaussianNumberPlane.fillTheOutsideWithColors();
         this.turingPhaseStateMachine.finishFillTheOutsideWithColors();
     }

@@ -27,7 +27,7 @@ public class ApplicationStateMachine {
         this.model = model;
     }
 
-    public void click(){
+    public synchronized void click(){
         ApplicationState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
@@ -37,8 +37,10 @@ public class ApplicationStateMachine {
                 nextApplicationState = MANDELBROT;
                 break;
             case MANDELBROT_ZOOM:
+                nextApplicationState = MANDELBROT_ZOOM;
+                break;
             case JULIA_SET_ZOOM:
-                nextApplicationState = applicationState;
+                nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
         if(model.getConfig().getLogDebug()){
@@ -47,55 +49,49 @@ public class ApplicationStateMachine {
         this.setApplicationState(nextApplicationState);
     }
 
-    public boolean setModeSwitch() {
-        boolean repaint = true;
-        ApplicationState nextApplicationState = ApplicationState.getDefault();
+    public synchronized void setModeSwitch() {
+        ApplicationState nextApplicationState= ApplicationState.getDefault();
         switch (applicationState){
             case MANDELBROT:
-            case JULIA_SET:
-                nextApplicationState = this.applicationState;
-                break;
             case MANDELBROT_ZOOM:
                 nextApplicationState = MANDELBROT;
                 break;
+            case JULIA_SET:
             case JULIA_SET_ZOOM:
                 nextApplicationState = JULIA_SET;
                 break;
         }
         if(model.getConfig().getLogDebug()){
-            log.info("setModeSwitch: "+ applicationState + " -> "+ nextApplicationState);
+            String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
+            log.info(msg);
         }
         this.setApplicationState(nextApplicationState);
-        return repaint;
     }
 
-    public boolean setModeZoom() {
-        boolean repaint = true;
+    public synchronized void setModeZoom() {
         ApplicationState nextApplicationState = ApplicationState.getDefault();
         switch (applicationState){
             case MANDELBROT:
+            case MANDELBROT_ZOOM:
                 nextApplicationState = MANDELBROT_ZOOM;
                 break;
             case JULIA_SET:
-                nextApplicationState = JULIA_SET_ZOOM;
-                break;
-            case MANDELBROT_ZOOM:
             case JULIA_SET_ZOOM:
-                nextApplicationState = this.applicationState;
+                nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
         if(model.getConfig().getLogDebug()){
-            log.info("setModeZoom: "+ applicationState + " -> "+ nextApplicationState);
+            String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
+            log.info(msg);
         }
         this.setApplicationState(nextApplicationState);
-        return repaint;
     }
 
-    public ApplicationState getApplicationState() {
+    public synchronized ApplicationState getApplicationState() {
         return applicationState;
     }
 
-    public void setApplicationState(ApplicationState applicationState) {
+    public synchronized void setApplicationState(ApplicationState applicationState) {
         this.applicationState = applicationState;
     }
 

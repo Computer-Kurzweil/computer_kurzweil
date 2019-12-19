@@ -80,7 +80,8 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
     @Override
     public void mouseClicked(MouseEvent e) {
         LatticePoint c = new LatticePoint(e.getX(), e.getY());
-        boolean repaintCanvas = this.applicationModel.click(c);
+        this.applicationModel.click(c);
+        this.panelButtons.repaintZoomLevel();
         this.panelButtons.repaint();
         this.getCanvas().repaint();
         showMe();
@@ -133,10 +134,14 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
 
     public void setModeSwitch() {
         canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.panelButtons.repaintZoomLevel();
+        this.panelButtons.repaint();
     }
 
     public void setModeZoom() {
         canvas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        this.panelButtons.repaintZoomLevel();
+        this.panelButtons.repaint();
     }
 
     public ApplicationCanvas getCanvas() {

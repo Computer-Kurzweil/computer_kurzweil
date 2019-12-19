@@ -17,14 +17,9 @@ import java.util.logging.Logger;
  */
 public class GaussianNumberPlaneBase {
 
-    protected volatile int[][] lattice;
-
-    protected volatile ComplexNumber complexNumberForJuliaSetC;
-
-    protected final LatticePoint worldDimensions;
+    private volatile int[][] lattice;
 
     public final static int YET_UNCOMPUTED = -1;
-
     private final static double complexWorldDimensionRealX = 3.2d;
     private final static double complexWorldDimensionImgY = 2.34d;
     private final static double complexCenterForMandelbrotRealX = -2.2f;
@@ -32,18 +27,18 @@ public class GaussianNumberPlaneBase {
     private final static double complexCenterForJuliaRealX = -1.6d;
     private final static double complexCenterForJuliaImgY =  -1.17d;
 
+    private final LatticePoint worldDimensions;
+
+    private volatile int zoomLevel;
+
+    protected volatile ComplexNumber complexNumberForJuliaSetC;
     protected volatile ComplexNumber complexWorldDimensions;
     protected volatile ComplexNumber complexCenterForMandelbrot;
     protected volatile ComplexNumber complexCenterForJulia;
 
-    public volatile int zoomLevel;
-
-    protected volatile Deque<ComplexNumber> complexCenterForZoomedJulia = new ArrayDeque<>();
-
     protected volatile ComplexNumber zoomCenter;
 
     protected volatile ApplicationModel model;
-
 
     public static Logger log = Logger.getLogger(GaussianNumberPlaneBase.class.getName());
 
@@ -66,13 +61,13 @@ public class GaussianNumberPlaneBase {
         start();
     }
 
-    public void setModeZoom() {
-        this.setZoomLevel(1);
+    public synchronized void setModeZoom() {
+        this.setLowestZoomLevel();
         this.setZoomCenter(complexCenterForMandelbrot);
     }
 
     public synchronized void start(){
-        zoomLevel = 1;
+        setLowestZoomLevel();
         for(int y = 0;y < this.worldDimensions.getY(); y++){
             for(int x=0; x < worldDimensions.getX(); x++){
                 lattice[x][y] = YET_UNCOMPUTED;
@@ -80,12 +75,18 @@ public class GaussianNumberPlaneBase {
         }
     }
 
+    public synchronized boolean isCellStatusForYetUncomputed(int x,int y){
+        return ( lattice[x][y] == YET_UNCOMPUTED);
+    }
+
+
     public synchronized int getCellStatusFor(int x,int y){
         return (lattice[x][y])<0?0:lattice[x][y];
     }
 
-
-
+    public synchronized void setCellStatusFor(int x,int y, int state){
+        lattice[x][y]=state;
+    }
 
     public synchronized int getZoomLevel() {
         return zoomLevel;
@@ -109,6 +110,10 @@ public class GaussianNumberPlaneBase {
         this.zoomLevel = zoomLevel;
     }
 
+    public synchronized void setLowestZoomLevel() {
+        this.zoomLevel = 1;
+    }
+
     public synchronized ComplexNumber getZoomCenter() {
         return zoomCenter;
     }
@@ -117,4 +122,7 @@ public class GaussianNumberPlaneBase {
         this.zoomCenter = zoomCenter;
     }
 
+    public synchronized LatticePoint getWorldDimensions() {
+        return worldDimensions;
+    }
 }

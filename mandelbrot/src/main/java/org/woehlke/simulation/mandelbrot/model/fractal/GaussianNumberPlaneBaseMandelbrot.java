@@ -17,12 +17,12 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
         double realX = (
             complexCenterForMandelbrot.getReal()
                 + ( complexWorldDimensions.getReal() * turingPosition.getX() )
-                / worldDimensions.getX()
+                / this.getWorldDimensions().getX()
         );
         double imgY = (
             complexCenterForMandelbrot.getImg()
                 + ( complexWorldDimensions.getImg() * turingPosition.getY() )
-                / worldDimensions.getY()
+                / this.getWorldDimensions().getY()
         );
         return new ComplexNumber(realX,imgY);
     }
@@ -32,18 +32,18 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
             ( complexCenterForMandelbrot.getReal() / this.getZoomLevel() )
                 + getZoomCenter().getReal()
                 + ( complexWorldDimensions.getReal() * turingPosition.getX() )
-                / ( worldDimensions.getX() * this.getZoomLevel() )
+                / ( this.getWorldDimensions().getX() * this.getZoomLevel() )
         );
         double imgY = (
             ( complexCenterForMandelbrot.getImg() / this.getZoomLevel() )
                 + getZoomCenter().getImg()
                 + ( complexWorldDimensions.getImg() * turingPosition.getY() )
-                / ( worldDimensions.getY() * this.getZoomLevel() )
+                / ( this.getWorldDimensions().getY() * this.getZoomLevel() )
         );
         return new ComplexNumber(realX,imgY);
     }
 
-    public void zoomIntoTheMandelbrotSet(LatticePoint zoomLatticePoint) {
+    public synchronized void zoomIntoTheMandelbrotSet(LatticePoint zoomLatticePoint) {
         if(model.getConfig().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }
@@ -63,8 +63,8 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
                 + " zoomLevel:  "+ this.getZoomLevel();
             log.info(msg);
         }
-        for(int y = 0; y < worldDimensions.getY(); y++){
-            for(int x = 0; x < worldDimensions.getX(); x++){
+        for(int y = 0; y < this.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < this.getWorldDimensions().getX(); x++){
                 LatticePoint p = new LatticePoint(x, y);
                 this.isInZooomedMandelbrotSet(p);
             }
@@ -82,8 +82,8 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
             if(model.getConfig().getLogDebug()) {
                 log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.getZoomLevel());
             }
-            for(int y = 0; y < worldDimensions.getY(); y++){
-                for(int x = 0; x < worldDimensions.getX(); x++){
+            for(int y = 0; y < this.getWorldDimensions().getY(); y++){
+                for(int x = 0; x < this.getWorldDimensions().getX(); x++){
                     LatticePoint p = new LatticePoint(x, y);
                     this.isInZooomedMandelbrotSet(p);
                 }
@@ -93,20 +93,20 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
 
     public synchronized boolean isInZooomedMandelbrotSet(LatticePoint turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(turingPosition);
-        lattice[turingPosition.getX()][turingPosition.getY()] = position.computeMandelbrotSet();
+        super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(),position.computeMandelbrotSet());
         return position.isInMandelbrotSet();
     }
 
     public synchronized boolean isInMandelbrotSet(LatticePoint turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(turingPosition);
-        lattice[turingPosition.getX()][turingPosition.getY()] = position.computeMandelbrotSet();
+        super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(),position.computeMandelbrotSet());
         return position.isInMandelbrotSet();
     }
 
     public synchronized void fillTheOutsideWithColors(){
-        for(int y=0;y<worldDimensions.getY();y++){
-            for(int x=0;x<worldDimensions.getX();x++){
-                if(lattice[x][y] == YET_UNCOMPUTED){
+        for(int y=0;y < this.getWorldDimensions().getY();y++){
+            for(int x=0;x < this.getWorldDimensions().getX();x++){
+                if(super.isCellStatusForYetUncomputed(x,y)){
                     this.isInMandelbrotSet(new LatticePoint(x, y));
                 }
             }

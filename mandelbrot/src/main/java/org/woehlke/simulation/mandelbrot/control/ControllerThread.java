@@ -34,9 +34,8 @@ public class ControllerThread extends Thread implements Runnable {
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            if(this.applicationModel.step()){
-                frame.getCanvas().repaint();
-            }
+            this.applicationModel.step();
+            frame.getCanvas().repaint();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { }
         }

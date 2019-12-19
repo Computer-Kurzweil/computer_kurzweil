@@ -6,4 +6,8 @@ public class GaussianNumberPlane extends  GaussianNumberPlaneBaseJulia {
     public GaussianNumberPlane(ApplicationModel model) {
         super(model);
     }
+
+    public void setModeSwitch() {
+
+    }
 }

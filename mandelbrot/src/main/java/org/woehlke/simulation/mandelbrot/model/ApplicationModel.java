@@ -34,13 +34,11 @@ public class ApplicationModel {
         this.applicationStateMachine = new ApplicationStateMachine(this);
     }
 
-    public synchronized boolean click(LatticePoint c) {
+    public synchronized void click(LatticePoint c) {
         applicationStateMachine.click();
-        boolean repaint = true;
         switch (applicationStateMachine.getApplicationState()) {
             case MANDELBROT:
                 mandelbrotTuringMachine.start();
-                repaint = false;
                 break;
             case JULIA_SET:
                 gaussianNumberPlane.computeTheJuliaSetFor(c);
@@ -52,21 +50,18 @@ public class ApplicationModel {
                 gaussianNumberPlane.zoomIntoTheJuliaSetFor(c);
                 break;
         }
-        return repaint;
     }
 
-    public synchronized boolean step() {
-        boolean repaint = false;
+    public synchronized void step() {
         switch (applicationStateMachine.getApplicationState()) {
             case MANDELBROT:
-                repaint = mandelbrotTuringMachine.step();
+                mandelbrotTuringMachine.step();
                 break;
             case JULIA_SET:
             case MANDELBROT_ZOOM:
             case JULIA_SET_ZOOM:
                 break;
         }
-        return repaint;
     }
 
     public synchronized int getCellStatusFor(int x, int y) {
@@ -79,17 +74,16 @@ public class ApplicationModel {
         return new LatticePoint(width, height);
     }
 
-    public boolean setModeSwitch() {
-        boolean repaint = this.applicationStateMachine.setModeSwitch();
+    public void setModeSwitch() {
+        this.gaussianNumberPlane.setModeSwitch();
+        this.applicationStateMachine.setModeSwitch();
         this.frame.setModeSwitch();
-        return repaint;
     }
 
-    public boolean setModeZoom() {
+    public void setModeZoom() {
         this.gaussianNumberPlane.setModeZoom();
-        boolean repaint = this.applicationStateMachine.setModeZoom();
+        this.applicationStateMachine.setModeZoom();
         this.frame.setModeZoom();
-        return repaint;
     }
 
     public GaussianNumberPlane getGaussianNumberPlane() {
@@ -104,8 +98,7 @@ public class ApplicationModel {
         return config;
     }
 
-    public boolean zoomOut() {
-        boolean repaint = true;
+    public void zoomOut() {
         switch (applicationStateMachine.getApplicationState()) {
             case MANDELBROT:
             case JULIA_SET:
@@ -117,6 +110,5 @@ public class ApplicationModel {
                 gaussianNumberPlane.zoomOutOfTheJuliaSet();
                 break;
         }
-        return repaint;
     }
 }
