@@ -2,6 +2,7 @@ package org.woehlke.simulation.mandelbrot.model;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlane;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBase;
 import org.woehlke.simulation.mandelbrot.model.fractal.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.state.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.MandelbrotTuringMachine;

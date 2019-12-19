@@ -2,6 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.turing;
 
 import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlane;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBase;
 
 import java.util.logging.Logger;
 
