@@ -1,8 +1,7 @@
 package org.woehlke.simulation.dla.view;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
 import org.woehlke.simulation.dla.model.*;
-import org.woehlke.simulation.dla.model.Point;
+import org.woehlke.simulation.dla.model.LatticePoint;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,18 +17,15 @@ import java.awt.*;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-public class WorldCanvas extends JComponent implements DiffusionLimitedAggregation {
-
-    static final long serialVersionUID = mySerialVersionUID;
-
+public class WorldCanvas extends JComponent {
 
     private Particles particles;
-    private Point worldDimensions;
+    private LatticePoint worldDimensions;
 
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
 
-    public WorldCanvas(Point worldDimensions, Particles particles) {
+    public WorldCanvas(LatticePoint worldDimensions, Particles particles) {
         this.worldDimensions = worldDimensions;
         this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
@@ -43,7 +39,7 @@ public class WorldCanvas extends JComponent implements DiffusionLimitedAggregati
         g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
         g.setColor(PARTICLES);
-        for(Point pixel:particles.getParticles()){
+        for(LatticePoint pixel:particles.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0;y<worldDimensions.getY();y++){
@@ -66,7 +62,7 @@ public class WorldCanvas extends JComponent implements DiffusionLimitedAggregati
         paint(g);
     }
 
-    public Point getWorldDimensions() {
+    public LatticePoint getWorldDimensions() {
         return worldDimensions;
     }
 }

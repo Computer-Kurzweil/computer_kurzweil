@@ -1,7 +1,5 @@
 package org.woehlke.simulation.dla.model;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
-
 /**
  * Diffusion Limited Aggregation.
  *
@@ -12,16 +10,13 @@ import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
  * Date: 27.08.13
  * Time: 16:56
  */
-public class Dendrite implements DiffusionLimitedAggregation {
-
-    static final long serialVersionUID = mySerialVersionUID;
-
+public class Dendrite {
 
     private int worldMap[][];
-    private Point dimensions;
+    private LatticePoint dimensions;
     private int age=1;
 
-    public Dendrite(Point dimensions) {
+    public Dendrite(LatticePoint dimensions) {
         this.dimensions = dimensions;
         worldMap = new int[dimensions.getX()][dimensions.getY()];
         int x = dimensions.getX() / 2;
@@ -30,10 +25,10 @@ public class Dendrite implements DiffusionLimitedAggregation {
         age++;
     }
 
-    public boolean hasDendriteNeighbour(Point pixel){
+    public boolean hasDendriteNeighbour(LatticePoint pixel){
         if(worldMap[pixel.getX()][pixel.getY()]==0){
-            Point[] neighbours=pixel.getNeighbourhood(dimensions);
-            for(Point neighbour:neighbours){
+            LatticePoint[] neighbours=pixel.getNeighbourhood(dimensions);
+            for(LatticePoint neighbour:neighbours){
                if(worldMap[neighbour.getX()][neighbour.getY()]>0){
                    worldMap[pixel.getX()][pixel.getY()]=age;
                    age++;

@@ -1,8 +1,9 @@
 package org.woehlke.simulation.dla.control;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
 import org.woehlke.simulation.dla.model.Particles;
 import org.woehlke.simulation.dla.view.WorldCanvas;
+
+import static org.woehlke.simulation.dla.config.ConfigProperties.THREAD_SLEEP_TIME;
 
 /**
  * Diffusion Limited Aggregation.
@@ -15,10 +16,7 @@ import org.woehlke.simulation.dla.view.WorldCanvas;
  * Time: 00:36:20
  */
 public class ControllerThread extends Thread
-        implements Runnable, DiffusionLimitedAggregation {
-
-    static final long serialVersionUID = mySerialVersionUID;
-
+        implements Runnable {
 
     private Particles particles;
     private WorldCanvas canvas;

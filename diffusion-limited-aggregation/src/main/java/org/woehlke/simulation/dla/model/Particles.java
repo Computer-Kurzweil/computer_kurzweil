@@ -1,11 +1,11 @@
 package org.woehlke.simulation.dla.model;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import static org.woehlke.simulation.dla.config.ConfigProperties.NUMBER_OF_PARTICLES;
 
 /**
  * Diffusion Limited Aggregation.
@@ -17,37 +17,34 @@ import java.util.Random;
  * Date: 27.08.13
  * Time: 14:57
  */
-public class Particles implements DiffusionLimitedAggregation {
+public class Particles {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    private LatticePoint worldDimensions;
 
-
-    private Point worldDimensions;
-
-    private List<Point> particles = new ArrayList<Point>();
+    private List<LatticePoint> particles = new ArrayList<LatticePoint>();
 
     private Random random;
 
     private Dendrite dendrite;
 
-    public Particles(Point worldDimensions) {
+    public Particles(LatticePoint worldDimensions) {
         this.worldDimensions=worldDimensions;
         random = new Random(new Date().getTime());
         for(int i=0; i<NUMBER_OF_PARTICLES;i++){
             int x = random.nextInt(worldDimensions.getX());
             int y = random.nextInt(worldDimensions.getY());
-            particles.add(new Point(x>=0?x:-x,y>=0?y:-y));
+            particles.add(new LatticePoint(x>=0?x:-x,y>=0?y:-y));
         }
         this.dendrite = new Dendrite(worldDimensions);
     }
 
-    public List<Point> getParticles() {
+    public List<LatticePoint> getParticles() {
         return particles;
     }
 
     public void move() {
-        List<Point> newParticles = new ArrayList<Point>();
-        for(Point particle:particles){
+        List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
+        for(LatticePoint particle:particles){
             int x = particle.getX()+worldDimensions.getX();
             int y = particle.getY()+worldDimensions.getY();
             int direction = random.nextInt(4);
