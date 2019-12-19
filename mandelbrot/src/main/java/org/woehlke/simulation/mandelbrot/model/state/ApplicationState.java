@@ -13,5 +13,9 @@ public enum ApplicationState {
     MANDELBROT,
     JULIA_SET,
     MANDELBROT_ZOOM,
-    JULIA_SET_ZOOM
+    JULIA_SET_ZOOM;
+
+    public static ApplicationState getDefault(){
+        return MANDELBROT;
+    }
 }

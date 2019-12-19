@@ -1,11 +1,10 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
 import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
-import org.woehlke.simulation.mandelbrot.model.helper.Point;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-//import java.util.logging.Logger;
+import java.util.logging.Logger;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -22,7 +21,7 @@ public class GaussianNumberPlane {
 
     private volatile ComplexNumber complexNumberForJuliaSetC;
 
-    private final Point worldDimensions;
+    private final LatticePoint worldDimensions;
 
     public final static int YET_UNCOMPUTED = -1;
 
@@ -43,10 +42,13 @@ public class GaussianNumberPlane {
 
     private volatile ComplexNumber zoomCenter;
 
+    private volatile ApplicationModel model;
 
-    //public static Logger log = Logger.getLogger(GaussianNumberPlane.class.getName());
+
+    public static Logger log = Logger.getLogger(GaussianNumberPlane.class.getName());
 
     public GaussianNumberPlane(ApplicationModel model) {
+        this.model = model;
         this.worldDimensions = model.getWorldDimensions();
         this.lattice = new int[worldDimensions.getWidth()][worldDimensions.getHeight()];
         this.complexWorldDimensions = new ComplexNumber(
@@ -82,7 +84,7 @@ public class GaussianNumberPlane {
         return (lattice[x][y])<0?0:lattice[x][y];
     }
 
-    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForJulia(Point turingPosition) {
+    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForJulia(LatticePoint turingPosition) {
         double realX = complexCenterForJulia.getReal()
             + (complexWorldDimensions.getReal()*turingPosition.getX())/worldDimensions.getX();
         double imgY = complexCenterForJulia.getImg()
@@ -90,7 +92,7 @@ public class GaussianNumberPlane {
         return new ComplexNumber(realX,imgY);
     }
 
-    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(Point turingPosition) {
+    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(LatticePoint turingPosition) {
         double realX = (
             complexCenterForMandelbrot.getReal()
             + ( complexWorldDimensions.getReal() * turingPosition.getX() )
@@ -104,7 +106,7 @@ public class GaussianNumberPlane {
         return new ComplexNumber(realX,imgY);
     }
 
-    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForZoomedMandelbrot(Point turingPosition) {
+    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForZoomedMandelbrot(LatticePoint turingPosition) {
         double realX = (
             ( complexCenterForMandelbrot.getReal() / this.getZoomLevel() )
             + getZoomCenter().getReal()
@@ -120,13 +122,13 @@ public class GaussianNumberPlane {
         return new ComplexNumber(realX,imgY);
     }
 
-    public synchronized boolean isInZooomedMandelbrotSet(Point turingPosition) {
+    public synchronized boolean isInZooomedMandelbrotSet(LatticePoint turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(turingPosition);
         lattice[turingPosition.getX()][turingPosition.getY()] = position.computeMandelbrotSet();
         return position.isInMandelbrotSet();
     }
 
-    public synchronized boolean isInMandelbrotSet(Point turingPosition) {
+    public synchronized boolean isInMandelbrotSet(LatticePoint turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(turingPosition);
         lattice[turingPosition.getX()][turingPosition.getY()] = position.computeMandelbrotSet();
         return position.isInMandelbrotSet();
@@ -136,7 +138,7 @@ public class GaussianNumberPlane {
         for(int y=0;y<worldDimensions.getY();y++){
             for(int x=0;x<worldDimensions.getX();x++){
                 if(lattice[x][y] == YET_UNCOMPUTED){
-                    this.isInMandelbrotSet(new Point(x, y));
+                    this.isInMandelbrotSet(new LatticePoint(x, y));
                 }
             }
         }
@@ -145,56 +147,68 @@ public class GaussianNumberPlane {
     private synchronized void computeTheJuliaSetForC(ComplexNumber c) {
         for(int y = 0; y < worldDimensions.getY(); y++) {
             for (int x = 0; x < worldDimensions.getX(); x++) {
-                Point zPoint = new Point(x, y);
-                ComplexNumber z = this.getComplexNumberFromLatticeCoordsForJulia(zPoint);
+                LatticePoint zLatticePoint = new LatticePoint(x, y);
+                ComplexNumber z = this.getComplexNumberFromLatticeCoordsForJulia(zLatticePoint);
                 lattice[x][y] = z.computeJuliaSet(c);
             }
         }
     }
 
-    public synchronized void computeTheJuliaSetFor(Point pointFromMandelbrotSet) {
-        ComplexNumber c = getComplexNumberFromLatticeCoordsForMandelbrot(pointFromMandelbrotSet);
+    public synchronized void computeTheJuliaSetFor(LatticePoint latticePointFromMandelbrotSet) {
+        ComplexNumber c = getComplexNumberFromLatticeCoordsForMandelbrot(latticePointFromMandelbrotSet);
         this.complexNumberForJuliaSetC = c;
         computeTheJuliaSetForC(c);
     }
 
-    public void zoomIntoTheMandelbrotSet(Point zoomPoint) {
-        //log.info("zoomIntoTheMandelbrotSet: "+ zoomPoint +" - old:  "+this.getZoomCenter());
+    public void zoomIntoTheMandelbrotSet(LatticePoint zoomLatticePoint) {
+        if(model.getConfig().getLogDebug()){
+            log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
+        }
+        boolean LowestZoomLevel = isLowestZoomLevel();
         this.inceaseZoomLevel();
-        if(this.getZoomLevel() == 2){
+        if(LowestZoomLevel){
             ComplexNumber complexCenter = new ComplexNumber(this.complexCenterForMandelbrot);
             complexCenterForZoomedMandelbrot.push(complexCenter);
-            this.setZoomCenter(getComplexNumberFromLatticeCoordsForMandelbrot(zoomPoint));
+            this.setZoomCenter(getComplexNumberFromLatticeCoordsForMandelbrot(zoomLatticePoint));
         } else {
-            this.setZoomCenter(getComplexNumberFromLatticeCoordsForZoomedMandelbrot(zoomPoint));
+            this.setZoomCenter(getComplexNumberFromLatticeCoordsForZoomedMandelbrot(zoomLatticePoint));
         }
         complexCenterForZoomedMandelbrot.push(this.getZoomCenter());
-        //log.info("zoomPoint:     "+ zoomPoint);
-        //log.info("zoomCenterNew: " + this.getZoomCenter() + " - zoomLevel:  "+ this.getZoomLevel());
+        if(model.getConfig().getLogDebug()) {
+            String msg = "zoomPoint: "+ zoomLatticePoint
+                + " zoomCenterNew: " + this.getZoomCenter()
+                + " zoomLevel:  "+ this.getZoomLevel();
+            log.info(msg);
+        }
         for(int y = 0; y < worldDimensions.getY(); y++){
             for(int x = 0; x < worldDimensions.getX(); x++){
-                Point p = new Point(x, y);
+                LatticePoint p = new LatticePoint(x, y);
                 this.isInZooomedMandelbrotSet(p);
             }
         }
     }
 
     public void zoomOutOfTheMandelbrotSet() {
-        //log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
-        if(this.getZoomLevel()>1){
-            this.deceaseZoomLevel();
-            this.setZoomCenter(complexCenterForZoomedMandelbrot.pop());
+        if(model.getConfig().getLogDebug()) {
+            log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }
-        //log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.getZoomLevel());
-        for(int y = 0; y < worldDimensions.getY(); y++){
-            for(int x = 0; x < worldDimensions.getX(); x++){
-                Point p = new Point(x, y);
-                this.isInZooomedMandelbrotSet(p);
+        if(!this.isLowestZoomLevel()){
+            this.decreaseZoomLevel();
+            ComplexNumber zoomCenter = complexCenterForZoomedMandelbrot.pop();
+            this.setZoomCenter(zoomCenter);
+            if(model.getConfig().getLogDebug()) {
+                log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.getZoomLevel());
+            }
+            for(int y = 0; y < worldDimensions.getY(); y++){
+                for(int x = 0; x < worldDimensions.getX(); x++){
+                    LatticePoint p = new LatticePoint(x, y);
+                    this.isInZooomedMandelbrotSet(p);
+                }
             }
         }
     }
 
-    public void zoomIntoTheJuliaSetFor(Point zoomPoint) {
+    public void zoomIntoTheJuliaSetFor(LatticePoint zoomLatticePoint) {
         ComplexNumber c = this.complexNumberForJuliaSetC;
         computeTheJuliaSetForC(c);
     }
@@ -206,12 +220,18 @@ public class GaussianNumberPlane {
         return zoomLevel;
     }
 
-    public synchronized int inceaseZoomLevel() {
-        return zoomLevel *= 2;
+    public synchronized void inceaseZoomLevel() {
+        zoomLevel *= 2;
     }
 
-    public synchronized int deceaseZoomLevel() {
-        return zoomLevel /= 2;
+    public synchronized void decreaseZoomLevel() {
+        if(zoomLevel > 1){
+            zoomLevel /= 2;
+        }
+    }
+
+    public synchronized boolean isLowestZoomLevel(){
+        return zoomLevel == 1;
     }
 
     public synchronized void setZoomLevel(int zoomLevel) {

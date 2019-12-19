@@ -1,5 +1,7 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.woehlke.simulation.mandelbrot.config.Config;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,9 +16,10 @@ import java.awt.*;
  */
 public class PanelSubtitle extends JPanel {
 
-  public PanelSubtitle(String subtitle) {
+  public PanelSubtitle(Config config) {
       this.setLayout(new FlowLayout());
-      this.add(new JLabel(subtitle));
+      String label = config.getSubtitle() + " - " + config.getCopyright();
+      this.add(new JLabel(label));
   }
 
 }

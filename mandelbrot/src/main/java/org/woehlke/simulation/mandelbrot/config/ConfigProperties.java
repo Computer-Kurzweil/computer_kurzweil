@@ -19,10 +19,13 @@ public interface ConfigProperties {
     String WIDTH="640";
     String HEIGHT="468";
 
-    String BUTTONS_LABEL = "Choose Mode";
+    String BUTTONS_LABEL = "Choose Mouse Click  Mode";
     String BUTTONS_SWITCH = "Mandelbrot Set <-> Julia Set";
-    String BUTTONS_ZOOM = "Zoom";
+    String BUTTONS_ZOOM = "Zoom In";
     String BUTTONS_ZOOMOUT = "Zoom out";
+    String BUTTONS_ZOOM_LABEL = "Zoom";
+
+    String DEBUG_LOG = "false";
 
     String APP_PROPERTIES_FILENAME ="src" + separator
         +"main" + separator + "resources" + separator  + "application.properties";
@@ -38,5 +41,11 @@ public interface ConfigProperties {
     String KEY_BUTTONS_LABEL = KEY + "buttons.label";
     String KEY_BUTTONS_SWITCH = KEY + "buttons.switch";
     String KEY_BUTTONS_ZOOM = KEY + "buttons.zoom";
+
+    String KEY_BUTTONS_ZOOM_LABEL = KEY + "buttons.zoom.label";
     String KEY_BUTTONS_ZOOMOUT = KEY + "buttons.zoomout";
+
+    String KEY_DEBUG_LOG = KEY + ".log.debug";
+
+    int BORDER_PADDING = 5;
 }

@@ -3,8 +3,8 @@ package org.woehlke.simulation.mandelbrot.config;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -26,7 +26,13 @@ public class Config implements ConfigProperties {
     private String buttonsLabel;
     private String buttonsSwitch;
     private String buttonsZoom;
+
+    private String buttonsZoomLabel;
     private String buttonsZoomOut;
+
+    private Boolean logDebug;
+
+    public static Logger log = Logger.getLogger(Config.class.getName());
 
     public Config() {
         String appPropertiesFile = (APP_PROPERTIES_FILENAME);
@@ -34,11 +40,6 @@ public class Config implements ConfigProperties {
         try (
             InputStream input = new FileInputStream(appPropertiesFile)) {
             prop.load(input);
-            /*
-            for( Object key : prop.keySet()){
-                System.out.println(prop.get(key).toString());
-            }
-            */
             title = prop.getProperty(KEY_TITLE,TITLE);
             subtitle = prop.getProperty(KEY_SUBTITLE,SUBTITLE);
             copyright = prop.getProperty(KEY_COPYRIGHT,COPYRIGHT);
@@ -48,8 +49,16 @@ public class Config implements ConfigProperties {
             height = Integer.parseInt(heightString);
             buttonsLabel = prop.getProperty(KEY_BUTTONS_LABEL,BUTTONS_LABEL);
             buttonsSwitch = prop.getProperty(KEY_BUTTONS_SWITCH,BUTTONS_SWITCH);
+            buttonsZoomLabel = prop.getProperty(KEY_BUTTONS_ZOOM_LABEL,BUTTONS_ZOOM_LABEL);
             buttonsZoom = prop.getProperty(KEY_BUTTONS_ZOOM,BUTTONS_ZOOM);
             buttonsZoomOut = prop.getProperty(KEY_BUTTONS_ZOOMOUT,BUTTONS_ZOOMOUT);
+            String logDebugString = prop.getProperty(KEY_DEBUG_LOG,DEBUG_LOG);
+            logDebug = Boolean.parseBoolean(logDebugString);
+            if(logDebug){
+                for( Object key : prop.keySet()){
+                    log.info(prop.get(key).toString());
+                }
+            }
         } catch (IOException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
@@ -91,39 +100,11 @@ public class Config implements ConfigProperties {
         return buttonsZoomOut;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Config)) return false;
-        Config config = (Config) o;
-        return getWidth() == config.getWidth() &&
-            getHeight() == config.getHeight() &&
-            Objects.equals(getTitle(), config.getTitle()) &&
-            Objects.equals(getSubtitle(), config.getSubtitle()) &&
-            Objects.equals(getCopyright(), config.getCopyright()) &&
-            Objects.equals(getButtonsLabel(), config.getButtonsLabel()) &&
-            Objects.equals(getButtonsSwitch(), config.getButtonsSwitch()) &&
-            Objects.equals(getButtonsZoom(), config.getButtonsZoom()) &&
-            Objects.equals(getButtonsZoomOut(), config.getButtonsZoomOut());
+    public Boolean getLogDebug() {
+        return logDebug;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getTitle(), getSubtitle(), getCopyright(), getWidth(), getHeight(), getButtonsLabel(), getButtonsSwitch(), getButtonsZoom(), getButtonsZoomOut());
-    }
-
-    @Override
-    public String toString() {
-        return "Config{" +
-            "title='" + title + '\'' +
-            ", subtitle='" + subtitle + '\'' +
-            ", copyright='" + copyright + '\'' +
-            ", width=" + width +
-            ", height=" + height +
-            ", buttonsLabel='" + buttonsLabel + '\'' +
-            ", buttonsSwitch='" + buttonsSwitch + '\'' +
-            ", buttonsZoom='" + buttonsZoom + '\'' +
-            ", buttonsZoomOut='" + buttonsZoomOut + '\'' +
-            '}';
+    public String getButtonsZoomLabel() {
+        return buttonsZoomLabel;
     }
 }

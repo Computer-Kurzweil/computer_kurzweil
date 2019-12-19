@@ -3,7 +3,7 @@ package org.woehlke.simulation.mandelbrot.view;
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.ControllerThread;
 import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
-import org.woehlke.simulation.mandelbrot.model.helper.Point;
+import org.woehlke.simulation.mandelbrot.model.fractal.LatticePoint;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -31,6 +31,7 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
     private volatile ApplicationModel applicationModel;
     private volatile Rectangle rectangleBounds;
     private volatile Dimension dimensionSize;
+    private volatile PanelButtons panelButtons;
 
     public ApplicationFrame(Config config) {
         super(config.getTitle());
@@ -38,15 +39,11 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         this.canvas = new ApplicationCanvas(applicationModel);
         this.controllerThread = new ControllerThread(applicationModel, this);
-        PanelButtons panelButtons = new PanelButtons(this.applicationModel);
-        PanelSubtitle panelSubtitle = new PanelSubtitle(config.getSubtitle());
-        PanelCopyright panelCopyright = new PanelCopyright(config.getCopyright());
-        JSeparator separator = new JSeparator();
+        this.panelButtons = new PanelButtons(this.applicationModel);
+        PanelSubtitle panelSubtitle = new PanelSubtitle(config);
         rootPane.setLayout(layout);
         rootPane.add(panelSubtitle);
         rootPane.add(canvas);
-        rootPane.add(panelCopyright);
-        rootPane.add(separator);
         rootPane.add(panelButtons);
         addWindowListener(this);
         this.canvas.addMouseListener(   this);
@@ -82,9 +79,13 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Point c = new Point(e.getX(), e.getY());
-        this.applicationModel.click(c);
+        LatticePoint c = new LatticePoint(e.getX(), e.getY());
+        boolean repaintCanvas = this.applicationModel.click(c);
+        this.panelButtons.repaint();
         showMe();
+        if(repaintCanvas){
+            this.getCanvas().repaint();
+        }
     }
 
     @Override
@@ -133,11 +134,11 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
     }
 
     public void setModeSwitch() {
-        canvas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     public void setModeZoom() {
-        canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        canvas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
     }
 
     public ApplicationCanvas getCanvas() {
