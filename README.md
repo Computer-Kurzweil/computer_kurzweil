@@ -1,21 +1,8 @@
 # Computer Kurzweil
 
-## cyclic-cellular-automaton
+## Diffusion-limited aggregation (DLA) 
 
-**Cyclic cellular automaton**
-
-![Later Screen](cyclic-cellular-automaton/etc/img/screen2.png)
-
-The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
-
-In this system, each cell remains unchanged until some neighboring cell has a modular value exactly one unit larger than that of the cell itself, at which point it copies its neighbor's value.
-
-One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior.
-
-
-## diffusion-limited-aggregation
-
-**Fractals and random walk due to Brownian motion cluster**
+**[Fractals and random walk due to Brownian motion cluster](diffusion-limited-aggregation/README.md)**
 
 ![The Dendrite after a while](diffusion-limited-aggregation/etc/img/screen2.png)
 
@@ -30,7 +17,7 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 
 ## Mandelbrot
 
-**Computing the Edge of the Mandelbrot Set with a Turing Machine**
+**[Computing the Edge of the Mandelbrot Set with a Turing Machine](mandelbrot/README.md)**
 
 ![Computing the Area outside the Mandelbrot Set](mandelbrot/etc/img/screen03.png)
 
@@ -56,7 +43,7 @@ The most beautiful Julia Sets are drawn by clicking into the Border of the Mande
 
 ## Simulated Evolution
 
-**Artificial Life Simulation of Bacteria Motion depending on DNA**
+**[Artificial Life Simulation of Bacteria Motion depending on DNA](simulated-evolution/README.md)**
 
 ![Early Screen](simulated-evolution/etc/img/screen1.png)
 
@@ -64,4 +51,35 @@ Green food appears in a world with red moving cells. These cells eat the food if
 Movement of the cells depends on random and their DNA. A fit cell moves around and eats enough to reproduce.
 Reproduction is done by splitting the cell and randomly changing the DNA of the two new Cells.
 If a cell doesn't eat enough, it will first stand still and after a while it dies.
+
+
+## Cyclic Cellular Automaton
+
+**[More Info...](cyclic-cellular-automaton/README.md)**
+
+![Later Screen](cyclic-cellular-automaton/etc/img/screen2.png)
+
+The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
+
+In this system, each cell remains unchanged until some neighboring cell has a modular value exactly one unit larger than that of the cell itself, at which point it copies its neighbor's value.
+
+One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior.
+
+## Koch Snowflake
+**[More Info...](koch-snowflake/README.md)**
+
+## Same Game
+**[More Info...](samegame/README.md)**
+
+## Sierpinski Triangle
+**[More Info...](sierpinski-triangle/README.md)**
+
+## Tetris
+**[More Info...](tetris/README.md)**
+
+## Turmite
+**[More Info...](turmite/README.md)**
+
+## Wa-Tor
+**[More Info...](wator/README.md)**
 
