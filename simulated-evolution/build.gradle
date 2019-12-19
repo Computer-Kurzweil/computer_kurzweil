@@ -23,3 +23,13 @@ application {
   mainClassName = 'org.woehlke.simulation.evolution.SimulatedEvolutionApplication'
 }
 
+
+checkstyle {
+    ignoreFailures = true
+}
+
+pmd {
+    ignoreFailures = true
+    consoleOutput = true
+}
+
