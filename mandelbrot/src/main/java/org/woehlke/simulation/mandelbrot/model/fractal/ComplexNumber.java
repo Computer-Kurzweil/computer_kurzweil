@@ -16,7 +16,7 @@ public class ComplexNumber {
     private double real;
     private double img;
 
-    public final static int MAX_ITERATIONS = 64;
+    public final static int MAX_ITERATIONS = 32;
     private final static double DIVERGENCE_THRESHOLD = 4.0d;
 
     public double getReal() {

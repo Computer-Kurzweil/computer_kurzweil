@@ -77,9 +77,10 @@ public class GaussianNumberPlaneBase {
         return ( lattice[x][y] == YET_UNCOMPUTED);
     }
 
-
     public int getCellStatusFor(int x,int y){
-        return (lattice[x][y])<0?0:lattice[x][y];
+        x %= worldDimensions.getX();
+        y %= worldDimensions.getY();
+        return (lattice[x][y])<0?0:(((lattice[x][y])*8)%256);
     }
 
     public void setCellStatusFor(int x,int y, int state){

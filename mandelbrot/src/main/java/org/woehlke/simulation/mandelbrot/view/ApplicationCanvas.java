@@ -39,7 +39,7 @@ public class ApplicationCanvas extends JComponent {
         int blue = 0;
         for(int y = 0; y < model.getWorldDimensions().getY(); y++){
             for(int x = 0; x < model.getWorldDimensions().getX(); x++){
-                blue = (((model.getCellStatusFor(x,y))*4)%256);
+                blue = model.getCellStatusFor(x,y);
                 Color stateColor = new Color(red, green, blue);
                 g.setColor(stateColor);
                 g.drawLine(x,y,x,y);
