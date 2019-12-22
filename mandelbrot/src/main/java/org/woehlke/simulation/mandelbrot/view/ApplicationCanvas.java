@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,13 +18,13 @@ import java.awt.*;
  */
 public class ApplicationCanvas extends JComponent {
 
-    private volatile ApplicationModel app;
-    private volatile Dimension preferredSize;
+    private final OnjectRegistry model;
+    private final Dimension preferredSize;
 
-    public ApplicationCanvas(ApplicationModel app) {
-        this.app = app;
-        int width = this.app.getWorldDimensions().getWidth();
-        int height = this.app.getWorldDimensions().getHeight();
+    public ApplicationCanvas(OnjectRegistry model) {
+        this.model = model;
+        int width = this.model.getWorldDimensions().getWidth();
+        int height = this.model.getWorldDimensions().getHeight();
         this.preferredSize = new Dimension(width, height);
         this.setSize(this.preferredSize);
         this.setPreferredSize(preferredSize);
@@ -37,9 +37,9 @@ public class ApplicationCanvas extends JComponent {
         int red = 0;
         int green = 0;
         int blue = 0;
-        for(int y = 0; y < app.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < app.getWorldDimensions().getX(); x++){
-                blue = (((app.getCellStatusFor(x,y))*4)%256);
+        for(int y = 0; y < model.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < model.getWorldDimensions().getX(); x++){
+                blue = (((model.getCellStatusFor(x,y))*4)%256);
                 Color stateColor = new Color(red, green, blue);
                 g.setColor(stateColor);
                 g.drawLine(x,y,x,y);

@@ -1,15 +1,16 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
+
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseMandelbrot {
 
-    private volatile Deque<ComplexNumber> complexCenterForZoomedJulia = new ArrayDeque<>();
+    private Deque<ComplexNumber> complexCenterForZoomedJulia = new ArrayDeque<>();
 
-    public GaussianNumberPlaneBaseJulia(ApplicationModel model) {
+    public GaussianNumberPlaneBaseJulia(OnjectRegistry model) {
         super(model);
     }
 
@@ -51,26 +52,26 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseMandelb
         }
     }
 
-    public synchronized void computeTheJuliaSetFor(LatticePoint latticePoint) {
+    public void computeTheJuliaSetFor(LatticePoint latticePoint) {
         ComplexNumber c = getComplexNumberFromLatticeCoordsForJulia(latticePoint);
         this.complexNumberForJuliaSetC = c;
         computeTheJuliaSetForC(c);
     }
 
-    public synchronized void computeTheZoomedJuliaSetFor(LatticePoint latticePoint) {
+    public void computeTheZoomedJuliaSetFor(LatticePoint latticePoint) {
         ComplexNumber c = getComplexNumberFromLatticeCoordsForZoomedJulia(latticePoint);
         this.complexNumberForJuliaSetC = c;
         computeTheZoomedJuliaSetForC(c);
     }
 
-    public synchronized boolean isInZooomedJuliaSet(LatticePoint turingPosition) {
+    public boolean isInZooomedJuliaSet(LatticePoint turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForZoomedJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();
         super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(), z.computeJuliaSet(c));
         return z.isInJuliaSet();
     }
 
-    public synchronized boolean isInJuliaSet(LatticePoint turingPosition) {
+    public boolean isInJuliaSet(LatticePoint turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();
         super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(), z.computeJuliaSet(c));
@@ -79,7 +80,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseMandelb
 
 
     //TODO:
-    public synchronized void zoomIntoTheJuliaSetFor(LatticePoint zoomLatticePoint) {
+    public void zoomIntoTheJuliaSetFor(LatticePoint zoomLatticePoint) {
         if(model.getConfig().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }
@@ -112,7 +113,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseMandelb
     }
 
     //TODO:
-    public synchronized void zoomOutOfTheJuliaSet() {
+    public void zoomOutOfTheJuliaSet() {
         if(model.getConfig().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }

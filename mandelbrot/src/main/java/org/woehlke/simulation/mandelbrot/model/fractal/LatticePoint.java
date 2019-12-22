@@ -14,8 +14,8 @@ import java.util.Objects;
  */
 public class LatticePoint {
 
-    private volatile int x = 0;
-    private volatile int y = 0;
+    private int x = 0;
+    private int y = 0;
 
     public LatticePoint() {
     }

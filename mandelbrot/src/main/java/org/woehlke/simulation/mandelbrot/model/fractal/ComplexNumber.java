@@ -13,8 +13,8 @@ import java.util.Objects;
  */
 public class ComplexNumber {
 
-    private volatile double real;
-    private volatile double img;
+    private double real;
+    private double img;
 
     public final static int MAX_ITERATIONS = 64;
     private final static double DIVERGENCE_THRESHOLD = 4.0d;
@@ -65,11 +65,11 @@ public class ComplexNumber {
         return new ComplexNumber(newRealZ,newImgZ);
     }
 
-    private volatile int iterations;
-    private volatile boolean inMandelbrotSet;
-    private volatile boolean inJuliaSet;
+    private int iterations;
+    private boolean inMandelbrotSet;
+    private boolean inJuliaSet;
 
-    public synchronized int computeMandelbrotSet() {
+    public int computeMandelbrotSet() {
         int iterationsTmp = 0;
         ComplexNumber z = new ComplexNumber();
         do {
@@ -81,7 +81,7 @@ public class ComplexNumber {
         return this.iterations;
     }
 
-    public synchronized int computeJuliaSet(ComplexNumber c) {
+    public int computeJuliaSet(ComplexNumber c) {
         int iterationsTmp = 0;
         ComplexNumber z = new ComplexNumber(this);
         do {
@@ -93,15 +93,15 @@ public class ComplexNumber {
         return this.iterations;
     }
 
-    public synchronized boolean isInMandelbrotSet() {
+    public boolean isInMandelbrotSet() {
         return inMandelbrotSet;
     }
 
-    public synchronized boolean isInJuliaSet() {
+    public boolean isInJuliaSet() {
         return inJuliaSet;
     }
 
-    public synchronized boolean isNotDivergent(){
+    public boolean isNotDivergent(){
         return (( real*real + img*img ) < DIVERGENCE_THRESHOLD);
     }
 

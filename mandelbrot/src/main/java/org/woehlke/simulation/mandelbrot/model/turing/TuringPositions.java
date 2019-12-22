@@ -13,13 +13,13 @@ import org.woehlke.simulation.mandelbrot.model.helper.Point;
  */
 public class TuringPositions {
 
-    private volatile Point turingPosition;
-    private volatile Point worldDimensions;
-    private volatile Point firstSetPosition;
+    private Point turingPosition;
+    private Point worldDimensions;
+    private Point firstSetPosition;
 
-    private volatile TuringDirection turingDirection;
+    private TuringDirection turingDirection;
 
-    private volatile int steps;
+    private int steps;
 
     public TuringPositions(Point worldDimensions) {
         this.worldDimensions = worldDimensions;
@@ -32,16 +32,16 @@ public class TuringPositions {
         this.turingDirection = TuringDirection.LEFT;
     }
 
-    public synchronized void markFirstSetPosition(){
+    public void markFirstSetPosition(){
         this.firstSetPosition = turingPosition;
         this.steps = 0;
     }
 
-    public synchronized Point getTuringPosition() {
+    public Point getTuringPosition() {
         return turingPosition;
     }
 
-    public synchronized void goForward() {
+    public void goForward() {
         this.steps++;
         switch (this.turingDirection){
             case UP:
@@ -61,7 +61,7 @@ public class TuringPositions {
         }
     }
 
-    public synchronized void turnRight() {
+    public void turnRight() {
         TuringDirection newTuringDirection;
         switch (this.turingDirection){
             case UP: newTuringDirection = TuringDirection.RIGHT; break;
@@ -73,7 +73,7 @@ public class TuringPositions {
         this.turingDirection = newTuringDirection;
     }
 
-    public synchronized void turnLeft() {
+    public void turnLeft() {
         TuringDirection newTuringDirection;
         switch (this.turingDirection){
             case UP: newTuringDirection = TuringDirection.LEFT; break;
@@ -85,7 +85,7 @@ public class TuringPositions {
         this.turingDirection = newTuringDirection;
     }
 
-    public synchronized boolean isFinishedWalkAround() {
+    public boolean isFinishedWalkAround() {
         return (this.turingPosition.equals(this.firstSetPosition)) && (this.steps>100);
     }
 

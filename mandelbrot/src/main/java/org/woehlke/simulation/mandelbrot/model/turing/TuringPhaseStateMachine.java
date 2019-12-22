@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  */
 public class TuringPhaseStateMachine {
 
-    private volatile TuringPhase turingTuringPhase;
+    private TuringPhase turingTuringPhase;
 
     public TuringPhaseStateMachine() {
         start();

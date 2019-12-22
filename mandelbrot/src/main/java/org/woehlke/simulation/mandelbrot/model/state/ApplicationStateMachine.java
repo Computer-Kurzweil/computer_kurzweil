@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.state;
 
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 
 import java.util.logging.Logger;
 
@@ -18,16 +18,16 @@ import static org.woehlke.simulation.mandelbrot.model.state.ApplicationState.JUL
  */
 public class ApplicationStateMachine {
 
-    private volatile ApplicationState applicationState;
+    private ApplicationState applicationState;
 
-    private volatile ApplicationModel model;
+    private final OnjectRegistry ctx;
 
-    public ApplicationStateMachine(ApplicationModel model) {
+    public ApplicationStateMachine(OnjectRegistry ctx) {
         this.applicationState = ApplicationState.MANDELBROT;
-        this.model = model;
+        this.ctx = ctx;
     }
 
-    public synchronized void click(){
+    public void click(){
         ApplicationState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
@@ -43,13 +43,13 @@ public class ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
-        if(model.getConfig().getLogDebug()){
+        if(this.ctx.getConfig().getLogDebug()){
             log.info("click: "+ applicationState + " -> "+ nextApplicationState);
         }
         this.setApplicationState(nextApplicationState);
     }
 
-    public synchronized void setModeSwitch() {
+    public void setModeSwitch() {
         ApplicationState nextApplicationState  = null;
         switch (applicationState){
             case MANDELBROT:
@@ -61,14 +61,14 @@ public class ApplicationStateMachine {
                 nextApplicationState = JULIA_SET;
                 break;
         }
-        if(model.getConfig().getLogDebug()){
+        if(this.ctx.getConfig().getLogDebug()){
             String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
             log.info(msg);
         }
         this.setApplicationState(nextApplicationState);
     }
 
-    public synchronized void setModeZoom() {
+    public void setModeZoom() {
         ApplicationState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
@@ -80,18 +80,18 @@ public class ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
-        if(model.getConfig().getLogDebug()){
+        if(this.ctx.getConfig().getLogDebug()){
             String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
             log.info(msg);
         }
         this.setApplicationState(nextApplicationState);
     }
 
-    public synchronized ApplicationState getApplicationState() {
+    public ApplicationState getApplicationState() {
         return applicationState;
     }
 
-    public synchronized void setApplicationState(ApplicationState applicationState) {
+    public void setApplicationState(ApplicationState applicationState) {
         this.applicationState = applicationState;
     }
 

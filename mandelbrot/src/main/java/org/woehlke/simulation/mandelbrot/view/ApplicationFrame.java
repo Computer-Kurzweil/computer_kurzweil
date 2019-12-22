@@ -1,16 +1,12 @@
 package org.woehlke.simulation.mandelbrot.view;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
-import org.woehlke.simulation.mandelbrot.control.ControllerThread;
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
-import org.woehlke.simulation.mandelbrot.model.fractal.LatticePoint;
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.image.ImageObserver;
-import java.io.Serializable;
 
 /**
  * (C) 2006 - 2013 Thomas Woehlke.
@@ -21,102 +17,38 @@ import java.io.Serializable;
  */
 public class ApplicationFrame extends JFrame implements ImageObserver,
         MenuContainer,
-        Serializable,
-        Accessible,
-        WindowListener,
-        MouseListener {
+        Accessible {
 
-    private volatile ControllerThread controllerThread;
-    private volatile ApplicationCanvas canvas;
-    private volatile ApplicationModel applicationModel;
-    private volatile Rectangle rectangleBounds;
-    private volatile Dimension dimensionSize;
-    private volatile PanelButtons panelButtons;
+    private final OnjectRegistry ctx;
 
     public ApplicationFrame(Config config) {
         super(config.getTitle());
-        this.applicationModel = new ApplicationModel(config,this);
-        BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
-        this.canvas = new ApplicationCanvas(applicationModel);
-        this.controllerThread = new ControllerThread(applicationModel, this);
-        this.panelButtons = new PanelButtons(this.applicationModel);
-        PanelSubtitle panelSubtitle = new PanelSubtitle(config);
-        rootPane.setLayout(layout);
-        rootPane.add(panelSubtitle);
-        rootPane.add(canvas);
-        rootPane.add(panelButtons);
-        addWindowListener(this);
-        this.canvas.addMouseListener(   this);
+        this.ctx = new OnjectRegistry(config, this);
+        PanelButtons panelButtons = new PanelButtons( this.ctx );
+        this.ctx.setPanelButtons(panelButtons);
+        rootPane.setLayout(new BoxLayout(rootPane, BoxLayout.PAGE_AXIS));
+        rootPane.add(this.ctx.getPanelSubtitle());
+        rootPane.add(this.ctx.getCanvas());
+        rootPane.add(this.ctx.getPanelButtons());
         showMeInit();
-        setModeSwitch();
-        this.controllerThread.start();
+        this.ctx.startControllerThread();
     }
-
-    public void windowOpened(WindowEvent e) {
-        showMe();
-    }
-
-    public void windowClosing(WindowEvent e) {
-        this.controllerThread.exit();
-    }
-
-    public void windowClosed(WindowEvent e) {
-        this.controllerThread.exit();
-    }
-
-    public void windowIconified(WindowEvent e) {}
-
-    public void windowDeiconified(WindowEvent e) {
-        showMe();
-    }
-
-    public void windowActivated(WindowEvent e) {
-        showMe();
-    }
-
-    public void windowDeactivated(WindowEvent e) {}
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        LatticePoint c = new LatticePoint(e.getX(), e.getY());
-        this.applicationModel.click(c);
-        this.panelButtons.repaintZoomLevel();
-        this.panelButtons.repaint();
-        this.getCanvas().repaint();
-        showMe();
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {}
-
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-
-    @Override
-    public void mouseExited(MouseEvent e) {}
 
     public void showMeInit() {
         pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = this.rootPane.getWidth();
-        double height  = this.canvas.getHeight() + 180;
+        double height = this.ctx.getCanvas().getHeight() + 180;
         double startX = (screenSize.getWidth() - width) / 2d;
         double startY = (screenSize.getHeight() - height) / 2d;
         int myheight = Double.valueOf(height).intValue();
         int mywidth = Double.valueOf(width).intValue();
         int mystartX = Double.valueOf(startX).intValue();
         int mystartY = Double.valueOf(startY).intValue();
-        this.rectangleBounds = new Rectangle(mystartX, mystartY, mywidth, myheight);
-        this.dimensionSize = new Dimension(mywidth, myheight);
-        this.setBounds(this.rectangleBounds);
-        this.setSize(this.dimensionSize);
-        this.setPreferredSize(this.dimensionSize);
+        this.ctx.setRectangleBounds(new Rectangle(mystartX, mystartY, mywidth, myheight));
+        this.ctx.setDimensionSize(new Dimension(mywidth, myheight));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-        toFront();
+        showMe();
     }
 
     /**
@@ -124,26 +56,11 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
      */
     public void showMe() {
         this.pack();
-        this.setBounds(this.rectangleBounds);
-        this.setSize(this.dimensionSize);
-        this.setPreferredSize(this.dimensionSize);
+        this.setBounds(this.ctx.getRectangleBounds());
+        this.setSize(this.ctx.getDimensionSize());
+        this.setPreferredSize(this.ctx.getDimensionSize());
         this.setVisible(true);
         this.toFront();
     }
 
-    public void setModeSwitch() {
-        this.canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.panelButtons.repaintZoomLevel();
-        this.panelButtons.repaint();
-    }
-
-    public void setModeZoom() {
-        this.canvas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        this.panelButtons.repaintZoomLevel();
-        this.panelButtons.repaint();
-    }
-
-    public ApplicationCanvas getCanvas() {
-        return canvas;
-    }
 }

@@ -11,7 +11,7 @@ package org.woehlke.simulation.mandelbrot.model.turing;
  */
 public class TuringPhaseState {
 
-    private volatile TuringPhase turingTuringPhase;
+    private TuringPhase turingTuringPhase;
 
     public TuringPhaseState() {
         start();

@@ -1,19 +1,19 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
 
-    private volatile Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
+    private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
 
-    public GaussianNumberPlaneBaseMandelbrot(ApplicationModel model) {
+    public GaussianNumberPlaneBaseMandelbrot(OnjectRegistry model) {
         super(model);
     }
 
-    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(LatticePoint turingPosition) {
+    private ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(LatticePoint turingPosition) {
         double realX = (
             complexCenterForMandelbrot.getReal()
                 + ( complexWorldDimensions.getReal() * turingPosition.getX() )
@@ -27,7 +27,7 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
         return new ComplexNumber(realX,imgY);
     }
 
-    private synchronized ComplexNumber getComplexNumberFromLatticeCoordsForZoomedMandelbrot(LatticePoint turingPosition) {
+    private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedMandelbrot(LatticePoint turingPosition) {
         double realX = (
             ( complexCenterForMandelbrot.getReal() / this.getZoomLevel() )
                 + getZoomCenter().getReal()
@@ -43,7 +43,7 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
         return new ComplexNumber(realX,imgY);
     }
 
-    public synchronized void zoomIntoTheMandelbrotSet(LatticePoint zoomLatticePoint) {
+    public void zoomIntoTheMandelbrotSet(LatticePoint zoomLatticePoint) {
         if(model.getConfig().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }
@@ -71,7 +71,7 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
         }
     }
 
-    public synchronized void zoomOutOfTheMandelbrotSet() {
+    public void zoomOutOfTheMandelbrotSet() {
         if(model.getConfig().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }
@@ -91,19 +91,19 @@ public class GaussianNumberPlaneBaseMandelbrot extends GaussianNumberPlaneBase {
         }
     }
 
-    public synchronized boolean isInZooomedMandelbrotSet(LatticePoint turingPosition) {
+    public boolean isInZooomedMandelbrotSet(LatticePoint turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(turingPosition);
         super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(),position.computeMandelbrotSet());
         return position.isInMandelbrotSet();
     }
 
-    public synchronized boolean isInMandelbrotSet(LatticePoint turingPosition) {
+    public boolean isInMandelbrotSet(LatticePoint turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(turingPosition);
         super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(),position.computeMandelbrotSet());
         return position.isInMandelbrotSet();
     }
 
-    public synchronized void fillTheOutsideWithColors(){
+    public void fillTheOutsideWithColors(){
         for(int y=0;y < this.getWorldDimensions().getY();y++){
             for(int x=0;x < this.getWorldDimensions().getX();x++){
                 if(super.isCellStatusForYetUncomputed(x,y)){

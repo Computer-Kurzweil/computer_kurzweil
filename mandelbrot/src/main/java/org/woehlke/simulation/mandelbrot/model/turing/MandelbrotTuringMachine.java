@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlane;
 
 import java.util.logging.Logger;
@@ -17,24 +17,24 @@ import java.util.logging.Logger;
  */
 public class MandelbrotTuringMachine {
 
-    private volatile GaussianNumberPlane gaussianNumberPlane;
-    private volatile TuringPositionsStateMachine turingPositionsStateMachine;
-    private volatile TuringPhaseStateMachine turingPhaseStateMachine;
+    private GaussianNumberPlane gaussianNumberPlane;
+    private TuringPositionsStateMachine turingPositionsStateMachine;
+    private TuringPhaseStateMachine turingPhaseStateMachine;
 
-    public MandelbrotTuringMachine(ApplicationModel model) {
+    public MandelbrotTuringMachine(OnjectRegistry model) {
         this.gaussianNumberPlane = model.getGaussianNumberPlane();
         this.turingPhaseStateMachine = new TuringPhaseStateMachine();
         this.turingPositionsStateMachine = new TuringPositionsStateMachine(model.getWorldDimensions());
         start();
     }
 
-    public synchronized void start() {
+    public void start() {
         this.turingPhaseStateMachine.start();
         this.gaussianNumberPlane.start();
         this.turingPositionsStateMachine.start();
     }
 
-    public synchronized void step() {
+    public void step() {
         switch(turingPhaseStateMachine.getTuringTuringPhase()){
             case SEARCH_THE_SET:
                 stepGoToSet();

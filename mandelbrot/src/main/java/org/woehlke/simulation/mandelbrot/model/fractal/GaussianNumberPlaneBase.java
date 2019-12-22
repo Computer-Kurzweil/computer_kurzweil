@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 
 import java.util.logging.Logger;
 
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class GaussianNumberPlaneBase {
 
-    private volatile int[][] lattice;
+    private int[][] lattice;
 
     public final static int YET_UNCOMPUTED = -1;
     private final static double complexWorldDimensionRealX = 3.2d;
@@ -27,21 +27,21 @@ public class GaussianNumberPlaneBase {
 
     private final LatticePoint worldDimensions;
 
-    private volatile int zoomLevel;
+    private int zoomLevel;
 
-    protected volatile ComplexNumber complexNumberForJuliaSetC;
-    protected volatile ComplexNumber complexWorldDimensions;
-    protected volatile ComplexNumber complexCenterForMandelbrot;
-    protected volatile ComplexNumber complexCenterForJulia;
+    protected ComplexNumber complexNumberForJuliaSetC;
+    protected ComplexNumber complexWorldDimensions;
+    protected ComplexNumber complexCenterForMandelbrot;
+    protected ComplexNumber complexCenterForJulia;
 
-    protected volatile ComplexNumber zoomCenter;
+    protected ComplexNumber zoomCenter;
 
-    protected volatile ApplicationModel model;
+    protected OnjectRegistry model;
 
     public static Logger log = Logger.getLogger(GaussianNumberPlaneBase.class.getName());
 
-    public GaussianNumberPlaneBase(ApplicationModel model) {
-        this.model = model;
+    public GaussianNumberPlaneBase(OnjectRegistry controllerThread) {
+        this.model = controllerThread;
         this.worldDimensions = model.getWorldDimensions();
         this.lattice = new int[worldDimensions.getWidth()][worldDimensions.getHeight()];
         this.complexWorldDimensions = new ComplexNumber(
@@ -59,12 +59,12 @@ public class GaussianNumberPlaneBase {
         start();
     }
 
-    public synchronized void setModeZoom() {
+    public void setModeZoom() {
         this.setLowestZoomLevel();
         this.setZoomCenter(complexCenterForMandelbrot);
     }
 
-    public synchronized void start(){
+    public void start(){
         setLowestZoomLevel();
         for(int y = 0;y < this.worldDimensions.getY(); y++){
             for(int x=0; x < worldDimensions.getX(); x++){
@@ -73,50 +73,50 @@ public class GaussianNumberPlaneBase {
         }
     }
 
-    public synchronized boolean isCellStatusForYetUncomputed(int x,int y){
+    public boolean isCellStatusForYetUncomputed(int x,int y){
         return ( lattice[x][y] == YET_UNCOMPUTED);
     }
 
 
-    public synchronized int getCellStatusFor(int x,int y){
+    public int getCellStatusFor(int x,int y){
         return (lattice[x][y])<0?0:lattice[x][y];
     }
 
-    public synchronized void setCellStatusFor(int x,int y, int state){
+    public void setCellStatusFor(int x,int y, int state){
         lattice[x][y]=state;
     }
 
-    public synchronized int getZoomLevel() {
+    public int getZoomLevel() {
         return zoomLevel;
     }
 
-    public synchronized void inceaseZoomLevel() {
+    public void inceaseZoomLevel() {
         zoomLevel *= 2;
     }
 
-    public synchronized void decreaseZoomLevel() {
+    public void decreaseZoomLevel() {
         if(zoomLevel > 1){
             zoomLevel /= 2;
         }
     }
 
-    public synchronized boolean isLowestZoomLevel(){
+    public boolean isLowestZoomLevel(){
         return zoomLevel == 1;
     }
 
-    public synchronized void setLowestZoomLevel() {
+    public void setLowestZoomLevel() {
         this.zoomLevel = 1;
     }
 
-    public synchronized ComplexNumber getZoomCenter() {
+    public ComplexNumber getZoomCenter() {
         return zoomCenter;
     }
 
-    public synchronized void setZoomCenter(ComplexNumber zoomCenter) {
+    public void setZoomCenter(ComplexNumber zoomCenter) {
         this.zoomCenter = zoomCenter;
     }
 
-    public synchronized LatticePoint getWorldDimensions() {
+    public LatticePoint getWorldDimensions() {
         return worldDimensions;
     }
 }

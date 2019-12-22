@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
-import org.woehlke.simulation.mandelbrot.model.ApplicationModel;
+import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -22,35 +22,35 @@ import static org.woehlke.simulation.mandelbrot.view.RadioButtons.RADIO_BUTTONS_
  *
  * Created by tw on 16.12.2019.
  */
-public class PanelButtons extends JPanel implements ActionListener {
+public class PanelButtons extends JPanel {
 
-    private volatile JRadioButton radioButtonsSwitch;
-    private volatile JRadioButton radioButtonsZoom;
-    private volatile JButton zoomOutButton;
-    private volatile ButtonGroup radioButtonsGroup;
-    private volatile JPanel panelButtonsGroup;
-    private volatile JPanel panelZoomButtons;
-    private volatile TextField zoomLevelField;
+    private JRadioButton radioButtonsSwitch;
+    private JRadioButton radioButtonsZoom;
+    private JButton zoomOutButton;
+    private ButtonGroup radioButtonsGroup;
+    private JPanel panelButtonsGroup;
+    private JPanel panelZoomButtons;
+    private TextField zoomLevelField;
 
-    private volatile ApplicationModel model;
+    private OnjectRegistry ctx;
 
-    public PanelButtons(ApplicationModel model) {
-        this.model = model;
+    public PanelButtons(OnjectRegistry ctx) {
+        this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
-        this.radioButtonsSwitch = new JRadioButton(model.getConfig().getButtonsSwitch());
+        this.radioButtonsSwitch = new JRadioButton(ctx.getConfig().getButtonsSwitch());
         this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
-        this.radioButtonsZoom = new JRadioButton(model.getConfig().getButtonsZoom());
+        this.radioButtonsZoom = new JRadioButton(ctx.getConfig().getButtonsZoom());
         this.radioButtonsZoom.setMnemonic(RADIO_BUTTONS_ZOOM.ordinal());
         this.radioButtonsGroup = new ButtonGroup();
         this.radioButtonsGroup.add(radioButtonsSwitch);
         this.radioButtonsGroup.add(radioButtonsZoom);
-        this.zoomOutButton = new JButton(model.getConfig().getButtonsZoomOut());
+        this.zoomOutButton = new JButton(ctx.getConfig().getButtonsZoomOut());
         this.panelButtonsGroup = new JPanel();
-        CompoundBorder borderPanelRadioButtons = getBorder(model.getConfig().getButtonsLabel());
-        CompoundBorder borderPanelPushButtons = getBorder(model.getConfig().getButtonsZoomLabel());
+        CompoundBorder borderPanelRadioButtons = getBorder(ctx.getConfig().getButtonsLabel());
+        CompoundBorder borderPanelPushButtons = getBorder(ctx.getConfig().getButtonsZoomLabel());
         JLabel zoomLevelFieldLabel = new JLabel("Zoom Level");
         zoomLevelField = new TextField("0",3);
-        zoomLevelField.setText(model.getGaussianNumberPlane().getZoomLevel()+"");
+        zoomLevelField.setText(ctx.getGaussianNumberPlane().getZoomLevel()+"");
         panelButtonsGroup.setLayout(layout);
         panelButtonsGroup.setBorder(borderPanelRadioButtons);
         panelButtonsGroup.add(radioButtonsSwitch);
@@ -65,10 +65,10 @@ public class PanelButtons extends JPanel implements ActionListener {
         this.add(panelButtonsGroup);
         this.add(panelZoomButtons);
         this.radioButtonsSwitch.setSelected( true );
-        this.radioButtonsSwitch.addActionListener(this);
-        this.radioButtonsZoom.addActionListener(this);
-        this.zoomOutButton.addActionListener(this);
-        this.panelZoomButtons.setEnabled(false);
+        this.radioButtonsSwitch.addActionListener(this.ctx);
+        this.radioButtonsZoom.addActionListener(this.ctx);
+        this.zoomOutButton.addActionListener(this.ctx);
+        this.disableZoomButton();
     }
 
     private CompoundBorder getBorder(String label){
@@ -82,42 +82,39 @@ public class PanelButtons extends JPanel implements ActionListener {
         );
     }
 
-    public synchronized void repaintZoomLevel(){
+    @Override
+    public void repaint() {
         if(this.zoomLevelField == null){
             zoomLevelField = new TextField("1");
         }
         String text;
         try {
-            text = model.getGaussianNumberPlane().getZoomLevel() + "";
+            text = ctx.getGaussianNumberPlane().getZoomLevel() + "";
         } catch (NullPointerException e){
             text = "0";
         }
         this.zoomLevelField.setText(text);
         this.zoomLevelField.repaint();
-    }
-
-    @Override
-    public synchronized void repaint() {
-        repaintZoomLevel();
         super.repaint();
     }
 
-    /**
-     * TODO write doc.
-     */
-    @Override
-    public synchronized void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.radioButtonsSwitch) {
-            this.model.setModeSwitch();
-            this.panelZoomButtons.setEnabled(false);
-        } else if(ae.getSource() == this.radioButtonsZoom) {
-            this.model.setModeZoom();
-            this.panelZoomButtons.setEnabled(true);
-        } else if(ae.getSource() == this.zoomOutButton){
-            this.model.zoomOut();
-        }
-        this.repaintZoomLevel();
-        this.model.getFrame().getCanvas().repaint();
-        this.repaint();
+    public JRadioButton getRadioButtonsSwitch() {
+        return radioButtonsSwitch;
+    }
+
+    public JRadioButton getRadioButtonsZoom() {
+        return radioButtonsZoom;
+    }
+
+    public JButton getZoomOutButton() {
+        return zoomOutButton;
+    }
+
+    public void enableZoomButton() {
+        this.panelZoomButtons.setEnabled(false);
+    }
+
+    public void disableZoomButton() {
+        this.panelZoomButtons.setEnabled(true);
     }
 }
