@@ -10,7 +10,7 @@ import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 import org.woehlke.simulation.mandelbrot.view.ApplicationCanvas;
 import org.woehlke.simulation.mandelbrot.view.ApplicationFrame;
 import org.woehlke.simulation.mandelbrot.view.PanelButtons;
-import org.woehlke.simulation.mandelbrot.view.impl.PanelSubtitle;
+import org.woehlke.simulation.mandelbrot.view.PanelSubtitle;
 
 import java.awt.*;
 

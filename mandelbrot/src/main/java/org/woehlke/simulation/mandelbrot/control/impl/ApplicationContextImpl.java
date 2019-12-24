@@ -14,7 +14,7 @@ import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachi
 import org.woehlke.simulation.mandelbrot.view.ApplicationFrame;
 import org.woehlke.simulation.mandelbrot.view.ApplicationCanvas;
 import org.woehlke.simulation.mandelbrot.view.PanelButtons;
-import org.woehlke.simulation.mandelbrot.view.impl.PanelSubtitle;
+import org.woehlke.simulation.mandelbrot.view.PanelSubtitle;
 
 import java.awt.*;
 import java.awt.event.*;

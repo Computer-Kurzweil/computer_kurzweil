@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.view.impl;
+package org.woehlke.simulation.mandelbrot.view;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
 
