@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.control.impl;
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 
 import java.util.logging.Logger;
 
@@ -22,9 +22,9 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
 
     private ApplicationState applicationState;
 
-    private final ObjectRegistryAndEventDispatcher ctx;
+    private final ApplicationContext ctx;
 
-    public ApplicationStateMachineImpl(ObjectRegistryAndEventDispatcher ctx) {
+    public ApplicationStateMachineImpl(ApplicationContext ctx) {
         this.applicationState = ApplicationState.MANDELBROT;
         this.ctx = ctx;
     }

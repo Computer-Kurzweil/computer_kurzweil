@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -30,9 +30,9 @@ public class PanelButtons extends JPanel {
     private JPanel panelZoomButtons;
     private TextField zoomLevelField;
 
-    private ObjectRegistryAndEventDispatcher ctx;
+    private ApplicationContext ctx;
 
-    public PanelButtons(ObjectRegistryAndEventDispatcher ctx) {
+    public PanelButtons(ApplicationContext ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
         this.radioButtonsSwitch = new JRadioButton(ctx.getConfig().getButtonsSwitch());

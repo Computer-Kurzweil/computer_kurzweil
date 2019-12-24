@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.control.impl;
 
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -14,13 +14,13 @@ import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatche
  */
 public class ControllerThread extends Thread implements  Runnable {
 
-    private final ObjectRegistryAndEventDispatcher ctx;
+    private final ApplicationContext ctx;
 
     private final int THREAD_SLEEP_TIME = 1;
 
     private Boolean goOn;
 
-    public ControllerThread(ObjectRegistryAndEventDispatcher ctx) {
+    public ControllerThread(ApplicationContext ctx) {
         super("ControllerThread");
         this.ctx=ctx;
         goOn = Boolean.TRUE;

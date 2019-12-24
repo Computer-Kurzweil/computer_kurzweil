@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBase;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
@@ -27,11 +27,11 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
 
     protected ComplexNumber zoomCenter;
 
-    protected ObjectRegistryAndEventDispatcher ctx;
+    protected ApplicationContext ctx;
 
     public static Logger log = Logger.getLogger(GaussianNumberPlaneBaseImpl.class.getName());
 
-    public GaussianNumberPlaneBaseImpl(ObjectRegistryAndEventDispatcher ctx) {
+    public GaussianNumberPlaneBaseImpl(ApplicationContext ctx) {
         this.ctx = ctx;
         this.complexWorldDimensions = new ComplexNumber(
             complexWorldDimensionRealX,

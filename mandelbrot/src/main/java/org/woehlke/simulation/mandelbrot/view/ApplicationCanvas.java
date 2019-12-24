@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 
 
@@ -20,10 +20,10 @@ import java.awt.*;
  */
 public class ApplicationCanvas extends JComponent {
 
-    private final ObjectRegistryAndEventDispatcher model;
+    private final ApplicationContext model;
     private final Dimension preferredSize;
 
-    public ApplicationCanvas(ObjectRegistryAndEventDispatcher model) {
+    public ApplicationCanvas(ApplicationContext model) {
         this.model = model;
         int width = this.model.getWorldDimensions().getWidth();
         int height = this.model.getWorldDimensions().getHeight();

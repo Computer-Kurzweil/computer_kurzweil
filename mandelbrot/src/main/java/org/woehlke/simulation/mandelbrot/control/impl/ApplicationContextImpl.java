@@ -3,10 +3,9 @@ package org.woehlke.simulation.mandelbrot.control.impl;
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
-import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl;
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseMandelbrotImpl;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
@@ -19,25 +18,25 @@ import org.woehlke.simulation.mandelbrot.view.impl.PanelSubtitle;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEventDispatcher {
+public class ApplicationContextImpl implements ApplicationContext {
 
     private Rectangle rectangleBounds;
     private Dimension dimensionSize;
     private PanelButtons panelButtons;
 
-    private final org.woehlke.simulation.mandelbrot.control.impl.ControllerThread controllerThread;
+    private final ControllerThread controllerThread;
     private final ApplicationCanvas canvas;
 
     private final PanelSubtitle panelSubtitle;
     private final Config config;
     private final ApplicationFrame frame;
 
-    private GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
-    private GaussianNumberPlaneBaseMandelbrot gaussianNumberPlaneBaseMandelbrot;
+    private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
+    private final GaussianNumberPlaneBaseMandelbrot gaussianNumberPlaneBaseMandelbrot;
     private final MandelbrotTuringMachine mandelbrotTuringMachine;
     private final ApplicationStateMachine applicationStateMachine;
 
-    public ObjectRegistryAndEventDispatcherImpl(Config config, ApplicationFrame frame) {
+    public ApplicationContextImpl(Config config, ApplicationFrame frame) {
         this.config = config;
         this.frame = frame;
         this.canvas = new ApplicationCanvas(this);
@@ -231,10 +230,12 @@ public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEv
         this.panelButtons = panelButtons;
     }
 
-    public GaussianNumberPlaneBaseJuliaImpl getGaussianNumberPlaneBaseJulia() {
+    @Override
+    public GaussianNumberPlaneBaseJulia getGaussianNumberPlaneBaseJulia() {
         return gaussianNumberPlaneBaseJulia;
     }
 
+    @Override
     public GaussianNumberPlaneBaseMandelbrot getGaussianNumberPlaneBaseMandelbrot() {
         return gaussianNumberPlaneBaseMandelbrot;
     }

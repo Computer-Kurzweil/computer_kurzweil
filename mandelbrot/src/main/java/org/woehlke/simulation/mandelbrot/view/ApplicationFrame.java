@@ -1,8 +1,8 @@
 package org.woehlke.simulation.mandelbrot.view;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
-import org.woehlke.simulation.mandelbrot.control.impl.ObjectRegistryAndEventDispatcherImpl;
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.impl.ApplicationContextImpl;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -21,11 +21,11 @@ public class ApplicationFrame extends JFrame implements
         MenuContainer,
         Accessible {
 
-    private final ObjectRegistryAndEventDispatcher ctx;
+    private final ApplicationContext ctx;
 
     public ApplicationFrame(Config config) {
         super(config.getTitle());
-        this.ctx = new ObjectRegistryAndEventDispatcherImpl(config, this);
+        this.ctx = new ApplicationContextImpl(config, this);
         PanelButtons panelButtons = new PanelButtons( this.ctx );
         this.ctx.setPanelButtons(panelButtons);
         rootPane.setLayout(new BoxLayout(rootPane, BoxLayout.PAGE_AXIS));

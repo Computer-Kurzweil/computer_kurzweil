@@ -1,7 +1,7 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
 
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseImpl;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
@@ -22,7 +22,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseImpl im
     private final static double complexCenterForJuliaRealX = -1.6d;
     private final static double complexCenterForJuliaImgY =  -1.17d;
 
-    public GaussianNumberPlaneBaseJulia(ObjectRegistryAndEventDispatcher ctx) {
+    public GaussianNumberPlaneBaseJulia(ApplicationContext ctx) {
         super(ctx);
         this.complexCenterForJulia = new ComplexNumber(
             complexCenterForJuliaRealX,

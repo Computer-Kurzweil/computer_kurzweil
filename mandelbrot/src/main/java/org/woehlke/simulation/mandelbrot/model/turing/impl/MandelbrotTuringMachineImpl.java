@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
-import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
@@ -24,7 +24,7 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     private TuringPositionsStateMachine turingPositionsStateMachine;
     private TuringPhaseStateMachine turingPhaseStateMachine;
 
-    public MandelbrotTuringMachineImpl(ObjectRegistryAndEventDispatcher model) {
+    public MandelbrotTuringMachineImpl(ApplicationContext model) {
         this.gaussianNumberPlane = model.getGaussianNumberPlaneBaseMandelbrot();
         this.turingPhaseStateMachine = new TuringPhaseStateMachineImpl();
         this.turingPositionsStateMachine = new TuringPositionsStateMachineImpl(model.getWorldDimensions());
