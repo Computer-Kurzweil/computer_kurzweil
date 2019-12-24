@@ -11,5 +11,9 @@ package org.woehlke.simulation.mandelbrot.control.state;
  */
 public enum RadioButtons {
     RADIO_BUTTONS_SWITCH,
-    RADIO_BUTTONS_ZOOM
+    RADIO_BUTTONS_ZOOM;
+
+    public static RadioButtons start(){
+        return RADIO_BUTTONS_SWITCH;
+    }
 }

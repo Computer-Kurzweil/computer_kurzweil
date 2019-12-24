@@ -13,5 +13,9 @@ public enum TuringPhase {
     SEARCH_THE_SET,
     WALK_AROUND_THE_SET,
     FILL_THE_OUTSIDE_WITH_COLOR,
-    FINISHED
+    FINISHED;
+
+    public static TuringPhase start(){
+        return SEARCH_THE_SET;
+    }
 }

@@ -13,5 +13,9 @@ public enum TuringDirection {
     UP,
     RIGHT,
     DOWN,
-    LEFT
+    LEFT;
+
+    public static TuringDirection start(){
+        return LEFT;
+    }
 }

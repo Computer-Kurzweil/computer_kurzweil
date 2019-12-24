@@ -1,7 +1,7 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBase;
+import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
 

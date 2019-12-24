@@ -78,7 +78,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
         return new ComplexNumber(realX,imgY);
     }
 
-    public void zoomIntoTheMandelbrotSet(LatticePoint zoomLatticePoint) {
+    public void zoomInto(LatticePoint zoomLatticePoint) {
         if(ctx.getConfig().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }
@@ -106,7 +106,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
         }
     }
 
-    public void zoomOutOfTheMandelbrotSet() {
+    public void zoomOut() {
         if(ctx.getConfig().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }
@@ -132,7 +132,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
         return position.isInMandelbrotSet();
     }
 
-    public boolean isInMandelbrotSet(LatticePoint turingPosition) {
+    public boolean isInSet(LatticePoint turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(turingPosition);
         super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(),position.computeMandelbrotSet());
         return position.isInMandelbrotSet();
@@ -143,7 +143,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
             for(int x=0;x < ctx.getWorldDimensions().getX();x++){
                 CellStatus cellStatus  = super.getCellStatusFor(x,y);
                 if(cellStatus.isCellStatusForYetUncomputed()){
-                    this.isInMandelbrotSet(new LatticePoint(x, y));
+                    this.isInSet(new LatticePoint(x, y));
                 }
             }
         }

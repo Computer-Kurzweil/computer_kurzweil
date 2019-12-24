@@ -60,7 +60,7 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     }
 
     private void stepGoToSet(){
-        if(this.gaussianNumberPlaneBaseMandelbrot.isInMandelbrotSet(this.turingPositionsStateMachine.getTuringPosition())){
+        if(this.gaussianNumberPlaneBaseMandelbrot.isInSet(this.turingPositionsStateMachine.getTuringPosition())){
             this.turingPositionsStateMachine.markFirstSetPosition();
             this.turingPhaseStateMachine.finishSearchTheSet();
         } else {
@@ -69,7 +69,7 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     }
 
     private void stepWalkAround(){
-        if(gaussianNumberPlaneBaseMandelbrot.isInMandelbrotSet(this.turingPositionsStateMachine.getTuringPosition())){
+        if(gaussianNumberPlaneBaseMandelbrot.isInSet(this.turingPositionsStateMachine.getTuringPosition())){
             this.turingPositionsStateMachine.turnRight();
         } else {
             this.turingPositionsStateMachine.turnLeft();
