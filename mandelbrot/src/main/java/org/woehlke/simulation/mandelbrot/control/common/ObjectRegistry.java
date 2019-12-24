@@ -4,7 +4,8 @@ import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.control.impl.ControllerThread;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJuliaIF;
+import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
@@ -23,7 +24,7 @@ public interface ObjectRegistry {
 
     void setPanelButtons(PanelButtons panelButtons);
 
-    GaussianNumberPlaneBaseJulia getGaussianNumberPlaneBaseJulia();
+    GaussianNumberPlaneBaseJuliaIF getGaussianNumberPlaneBaseJulia();
 
     GaussianNumberPlaneBaseMandelbrot getGaussianNumberPlaneBaseMandelbrot();
 
