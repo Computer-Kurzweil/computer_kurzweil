@@ -33,7 +33,6 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
 
     public GaussianNumberPlaneBaseImpl(ObjectRegistryAndEventDispatcher ctx) {
         this.ctx = ctx;
-        this.lattice = new int[ctx.getWorldDimensions().getWidth()][ctx.getWorldDimensions().getHeight()];
         this.complexWorldDimensions = new ComplexNumber(
             complexWorldDimensionRealX,
             complexWorldDimensionImgY
@@ -42,6 +41,7 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
     }
 
     public void start(){
+        this.lattice = new int[ctx.getWorldDimensions().getWidth()][ctx.getWorldDimensions().getHeight()];
         for(int y = 0;y < ctx.getWorldDimensions().getY(); y++){
             for(int x=0; x < ctx.getWorldDimensions().getX(); x++){
                 lattice[x][y] = CellStatus.YET_UNCOMPUTED;
@@ -49,13 +49,9 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
         }
     }
 
-    public void setModeZoom() {
+    public abstract void setModeZoom();
 
-    }
-
-    public void setModeSwitch(){
-
-    }
+    public abstract void setModeSwitch();
 
     public CellStatus getCellStatusFor(int x,int y){
         x %= ctx.getWorldDimensions().getX();

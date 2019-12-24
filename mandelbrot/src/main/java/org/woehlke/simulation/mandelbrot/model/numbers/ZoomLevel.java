@@ -2,14 +2,12 @@ package org.woehlke.simulation.mandelbrot.model.numbers;
 
 public class ZoomLevel {
 
+    private final int LEVEL_NO_ZOOM = 1;
+
     private int zoomLevel;
 
-    public ZoomLevel(ZoomLevel zoomLevel) {
-        this.zoomLevel = zoomLevel.zoomLevel;
-    }
-
-    public ZoomLevel() {
-       setLowestZoomLevel();
+    public ZoomLevel(){
+        this.zoomLevel = LEVEL_NO_ZOOM;
     }
 
     public int getZoomLevel() {
@@ -21,26 +19,21 @@ public class ZoomLevel {
     }
 
     public void decreaseZoomLevel() {
-        if(zoomLevel > 1){
+        if(zoomLevel > LEVEL_NO_ZOOM){
             zoomLevel /= 2;
         }
     }
 
     public boolean isLowestZoomLevel(){
-        return zoomLevel == 1;
+        return zoomLevel == LEVEL_NO_ZOOM;
     }
 
     public void setLowestZoomLevel() {
-        this.zoomLevel = 1;
+        this.zoomLevel = LEVEL_NO_ZOOM;
     }
 
     public void start() {
-        setLowestZoomLevel();
+        this.zoomLevel = LEVEL_NO_ZOOM;
     }
 
-    public static ZoomLevel getDefaultZoomLevel(){
-        ZoomLevel zl = new ZoomLevel();
-        zl.start();
-        return zl;
-    }
 }

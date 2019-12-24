@@ -2,6 +2,8 @@ package org.woehlke.simulation.mandelbrot.model.numbers;
 
 import java.util.Objects;
 
+import static org.woehlke.simulation.mandelbrot.model.numbers.CellStatus.MAX_ITERATIONS;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -16,7 +18,6 @@ public class ComplexNumber {
     private double real;
     private double img;
 
-    public final static int MAX_ITERATIONS = 32;
     private final static double DIVERGENCE_THRESHOLD = 4.0d;
 
     public double getReal() {

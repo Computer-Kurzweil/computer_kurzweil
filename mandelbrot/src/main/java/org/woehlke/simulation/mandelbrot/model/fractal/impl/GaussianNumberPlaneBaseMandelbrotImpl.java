@@ -23,22 +23,20 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
 
     public GaussianNumberPlaneBaseMandelbrotImpl(ObjectRegistryAndEventDispatcher ctx) {
         super(ctx);
-        zoomLevel = new ZoomLevel();
         this.complexCenterForMandelbrot = new ComplexNumber(
             complexCenterForMandelbrotRealX,
             complexCenterForMandelbrotImgY
         );
+        zoomLevel = new ZoomLevel();
     }
 
     @Override
     public void start(){
         super.start();
-        this.zoomLevel.start();
     }
 
     @Override
     public void setModeZoom() {
-        super.setModeZoom();
         zoomLevel.setLowestZoomLevel();
         this.setZoomCenter(complexCenterForMandelbrot);
     }
@@ -47,7 +45,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
     //TODO: implement and Bugfix
     @Override
     public void setModeSwitch(){
-        super.setModeSwitch();
+
     }
 
     private ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(LatticePoint turingPosition) {

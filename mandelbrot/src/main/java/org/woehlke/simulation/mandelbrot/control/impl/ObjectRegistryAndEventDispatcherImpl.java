@@ -84,9 +84,8 @@ public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEv
             case JULIA_SET:
             case JULIA_SET_ZOOM:
                 return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
-            default:
-                return CellStatus.getNullObject();
         }
+        return null;
     }
 
     @Deprecated

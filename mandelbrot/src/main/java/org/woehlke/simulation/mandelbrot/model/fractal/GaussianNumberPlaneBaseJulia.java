@@ -28,7 +28,25 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseImpl {
             complexCenterForJuliaRealX,
             complexCenterForJuliaImgY
         );
-        zoomLevel = ZoomLevel.getDefaultZoomLevel();
+        zoomLevel = new ZoomLevel();
+    }
+
+    @Override
+    public void start(){
+        super.start();
+    }
+
+    @Override
+    public void setModeZoom() {
+        zoomLevel.setLowestZoomLevel();
+        this.setZoomCenter(complexCenterForJulia);
+    }
+
+
+    //TODO: implement and Bugfix
+    @Override
+    public void setModeSwitch(){
+
     }
 
     private ComplexNumber getComplexNumberFromLatticeCoordsForJulia(LatticePoint turingPosition) {
