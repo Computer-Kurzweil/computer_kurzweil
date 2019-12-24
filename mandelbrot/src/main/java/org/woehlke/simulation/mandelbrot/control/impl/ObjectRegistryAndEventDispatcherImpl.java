@@ -2,15 +2,14 @@ package org.woehlke.simulation.mandelbrot.control.impl;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
-import org.woehlke.simulation.mandelbrot.control.ControllerThread;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
+import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl;
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseMandelbrotImpl;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
-import org.woehlke.simulation.mandelbrot.model.numbers.ZoomLevel;
 import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachineImpl;
 import org.woehlke.simulation.mandelbrot.view.ApplicationFrame;
 import org.woehlke.simulation.mandelbrot.view.ApplicationCanvas;
@@ -26,7 +25,7 @@ public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEv
     private Dimension dimensionSize;
     private PanelButtons panelButtons;
 
-    private final ControllerThread controllerThread;
+    private final org.woehlke.simulation.mandelbrot.control.impl.ControllerThread controllerThread;
     private final ApplicationCanvas canvas;
 
     private final PanelSubtitle panelSubtitle;
@@ -42,10 +41,10 @@ public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEv
         this.config = config;
         this.frame = frame;
         this.canvas = new ApplicationCanvas(this);
-        this.controllerThread = new ControllerThreadImpl(this);
+        this.controllerThread = new ControllerThread(this);
         this.panelSubtitle = new PanelSubtitle(config);
-        gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this);
-        gaussianNumberPlaneBaseMandelbrot = new GaussianNumberPlaneBaseMandelbrotImpl(this);
+        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this);
+        this.gaussianNumberPlaneBaseMandelbrot = new GaussianNumberPlaneBaseMandelbrotImpl(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachineImpl(this);
         this.applicationStateMachine = new ApplicationStateMachineImpl(this);
         this.canvas.addMouseListener( this );
@@ -54,7 +53,6 @@ public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEv
 
     @Override public void start() {
         this.setModeSwitch();
-        this.getControllerThread().start();
     }
 
     @Override public void showMe(){
@@ -191,6 +189,10 @@ public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEv
         switch (applicationStateMachine.getState()) {
             case MANDELBROT:
                 this.getMandelbrotTuringMachine().start();
+                while( ! this.getMandelbrotTuringMachine().isFinished()){
+                    this.getMandelbrotTuringMachine().step();
+                    this.canvas.repaint();
+                }
                 break;
             case JULIA_SET:
                 this.gaussianNumberPlaneBaseJulia.computeTheJuliaSetFor(c);
@@ -229,7 +231,7 @@ public class ObjectRegistryAndEventDispatcherImpl implements ObjectRegistryAndEv
         this.panelButtons = panelButtons;
     }
 
-    public GaussianNumberPlaneBaseJulia getGaussianNumberPlaneBaseJulia() {
+    public GaussianNumberPlaneBaseJuliaImpl getGaussianNumberPlaneBaseJulia() {
         return gaussianNumberPlaneBaseJulia;
     }
 

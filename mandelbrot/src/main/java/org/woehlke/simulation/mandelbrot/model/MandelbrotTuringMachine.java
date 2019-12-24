@@ -1,7 +1,9 @@
 package org.woehlke.simulation.mandelbrot.model;
 
-import org.woehlke.simulation.mandelbrot.control.Startable;
-
-public interface MandelbrotTuringMachine extends Startable {
+public interface MandelbrotTuringMachine {
     void step();
+    void start();
+
+    boolean isFinished();
+
 }

@@ -38,6 +38,10 @@ public class TuringPhaseStateMachineImpl implements TuringPhaseStateMachine {
         turingTuringPhase = TuringPhase.FINISHED;
     }
 
+    public boolean isFinished() {
+        return turingTuringPhase == TuringPhase.FINISHED;
+    }
+
     public TuringPhase getTuringTuringPhase() {
         return turingTuringPhase;
     }

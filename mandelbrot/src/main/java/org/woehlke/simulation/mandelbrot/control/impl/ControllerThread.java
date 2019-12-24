@@ -1,6 +1,5 @@
 package org.woehlke.simulation.mandelbrot.control.impl;
 
-import org.woehlke.simulation.mandelbrot.control.ControllerThread;
 import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
 
 /**
@@ -13,7 +12,7 @@ import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatche
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class ControllerThreadImpl extends Thread implements ControllerThread {
+public class ControllerThread extends Thread implements  Runnable {
 
     private final ObjectRegistryAndEventDispatcher ctx;
 
@@ -21,10 +20,15 @@ public class ControllerThreadImpl extends Thread implements ControllerThread {
 
     private Boolean goOn;
 
-    public ControllerThreadImpl(ObjectRegistryAndEventDispatcher ctx) {
+    public ControllerThread(ObjectRegistryAndEventDispatcher ctx) {
+        super("ControllerThread");
         this.ctx=ctx;
         goOn = Boolean.TRUE;
 
+    }
+
+    public boolean isFinished(){
+        return this.getState() == State.TERMINATED;
     }
 
     public void run() {

@@ -10,7 +10,7 @@ import org.woehlke.simulation.mandelbrot.model.numbers.ZoomLevel;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseImpl {
+public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBaseImpl implements org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl {
 
     private Deque<ComplexNumber> complexCenterForZoomedJulia = new ArrayDeque<>();
 

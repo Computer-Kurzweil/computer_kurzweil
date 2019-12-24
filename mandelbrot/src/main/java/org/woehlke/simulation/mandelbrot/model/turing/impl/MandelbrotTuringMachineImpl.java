@@ -3,6 +3,8 @@ package org.woehlke.simulation.mandelbrot.model.turing.impl;
 import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
+import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
+import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
 
 import java.util.logging.Logger;
 
@@ -19,8 +21,8 @@ import java.util.logging.Logger;
 public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
 
     private GaussianNumberPlaneBaseMandelbrot gaussianNumberPlane;
-    private TuringPositionsStateMachineImpl turingPositionsStateMachine;
-    private TuringPhaseStateMachineImpl turingPhaseStateMachine;
+    private TuringPositionsStateMachine turingPositionsStateMachine;
+    private TuringPhaseStateMachine turingPhaseStateMachine;
 
     public MandelbrotTuringMachineImpl(ObjectRegistryAndEventDispatcher model) {
         this.gaussianNumberPlane = model.getGaussianNumberPlaneBaseMandelbrot();
@@ -29,12 +31,19 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
         start();
     }
 
+    @Override
     public void start() {
         this.turingPhaseStateMachine.start();
         this.gaussianNumberPlane.start();
         this.turingPositionsStateMachine.start();
     }
 
+    @Override
+    public boolean isFinished() {
+        return turingPhaseStateMachine.isFinished();
+    }
+
+    @Override
     public void step() {
         switch(turingPhaseStateMachine.getTuringTuringPhase()){
             case SEARCH_THE_SET:
