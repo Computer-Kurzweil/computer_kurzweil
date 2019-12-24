@@ -1,6 +1,8 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
 
+import java.awt.*;
+
 public class CellStatus {
 
     public final static int YET_UNCOMPUTED = -1;
@@ -14,9 +16,12 @@ public class CellStatus {
         this.latticeValue = latticeValue;
     }
 
-    public int intValue(){
-        int mylatticeValue = this.latticeValue;
-        return ((mylatticeValue * latticeValuefactor) % MAX_CELL_STATUS);
+    public Color canvasColor() {
+        int mylatticeValue = (this.latticeValue==YET_UNCOMPUTED)?0:this.latticeValue;
+        int blue =  ((mylatticeValue * latticeValuefactor) % MAX_CELL_STATUS);
+        int red = 0;
+        int green = 0;
+        return new Color(red, green, blue);
     }
 
     public boolean isCellStatusForYetUncomputed(){

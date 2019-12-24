@@ -1,7 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
-import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 
 
 import javax.swing.*;
@@ -36,20 +35,9 @@ public class ApplicationCanvas extends JComponent {
         this.setSize(this.preferredSize);
         this.setPreferredSize(preferredSize);
         super.paintComponent(g);
-        int red = 0;
-        int green = 0;
-        int blue = 0;
-        CellStatus cellStatus;
         for(int y = 0; y < model.getWorldDimensions().getY(); y++){
             for(int x = 0; x < model.getWorldDimensions().getX(); x++){
-                cellStatus = model.getCellStatusFor(x,y);
-                if(cellStatus.isCellStatusForYetUncomputed()){
-                    blue = 0;
-                } else {
-                    blue = cellStatus.intValue();
-                }
-                Color stateColor = new Color(red, green, blue);
-                g.setColor(stateColor);
+                g.setColor( model.getCellStatusFor(x,y).canvasColor());
                 g.drawLine(x,y,x,y);
             }
         }
