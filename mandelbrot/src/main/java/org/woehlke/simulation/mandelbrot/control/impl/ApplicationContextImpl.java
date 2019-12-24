@@ -25,7 +25,6 @@ public class ApplicationContextImpl implements ApplicationContext {
     private Dimension dimensionSize;
     private PanelButtons panelButtons;
 
-    private final ControllerThread controllerThread;
     private final ApplicationCanvas canvas;
 
     private final PanelSubtitle panelSubtitle;
@@ -41,7 +40,6 @@ public class ApplicationContextImpl implements ApplicationContext {
         this.config = config;
         this.frame = frame;
         this.canvas = new ApplicationCanvas(this);
-        this.controllerThread = new ControllerThread(this);
         this.panelSubtitle = new PanelSubtitle(config);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJuliaImpl(this);
         this.gaussianNumberPlaneBaseMandelbrot = new GaussianNumberPlaneBaseMandelbrotImpl(this);
@@ -53,25 +51,13 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Override public void start() {
         this.setModeSwitch();
+        computeTheMandelbrotSet();
     }
 
     @Override public void showMe(){
         this.getCanvas().repaint();
         this.getPanelButtons().repaint();
         this.getFrame().showMe();
-    }
-
-    @Override public void step() {
-        switch (applicationStateMachine.getState()) {
-            case MANDELBROT:
-                this.getMandelbrotTuringMachine().step();
-                this.getCanvas().repaint();
-                break;
-            case JULIA_SET:
-            case MANDELBROT_ZOOM:
-            case JULIA_SET_ZOOM:
-                break;
-        }
     }
 
     @Override public CellStatus getCellStatusFor(int x, int y) {
@@ -162,12 +148,14 @@ public class ApplicationContextImpl implements ApplicationContext {
         showMe();
     }
 
-    @Override public void windowClosing(WindowEvent e) {
-        this.getControllerThread().exit();
+    @Override
+    public void windowClosing(WindowEvent e) {
+
     }
 
-    @Override public void windowClosed(WindowEvent e) {
-        this.getControllerThread().exit();
+    @Override
+    public void windowClosed(WindowEvent e) {
+
     }
 
     @Override public void windowIconified(WindowEvent e) {}
@@ -184,27 +172,34 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        LatticePoint c = new LatticePoint(e.getX(), e.getY());
+        LatticePoint latticePoint = new LatticePoint(e.getX(), e.getY());
         applicationStateMachine.click();
         switch (applicationStateMachine.getState()) {
             case MANDELBROT:
-                this.getMandelbrotTuringMachine().start();
-                while( ! this.getMandelbrotTuringMachine().isFinished()){
-                    this.getMandelbrotTuringMachine().step();
-                    this.canvas.repaint();
-                }
+                this.computeTheMandelbrotSet();
                 break;
             case JULIA_SET:
-                this.gaussianNumberPlaneBaseJulia.computeTheJuliaSetFor(c);
+                this.gaussianNumberPlaneBaseJulia.computeTheJuliaSetFor(latticePoint);
                 break;
             case MANDELBROT_ZOOM:
-                this.gaussianNumberPlaneBaseMandelbrot.zoomIntoTheMandelbrotSet(c);
+                this.gaussianNumberPlaneBaseMandelbrot.zoomIntoTheMandelbrotSet(latticePoint);
                 break;
             case JULIA_SET_ZOOM:
-                this.gaussianNumberPlaneBaseJulia.zoomIntoTheJuliaSetFor(c);
+                this.gaussianNumberPlaneBaseJulia.zoomIntoTheJuliaSetFor(latticePoint);
                 break;
         }
         showMe();
+        e.consume();
+    }
+
+    private void computeTheMandelbrotSet() {
+        this.getMandelbrotTuringMachine().start();
+        showMe();
+        while( ! this.getMandelbrotTuringMachine().isFinished()){
+            System.out.print(".");
+            this.getMandelbrotTuringMachine().step();
+            this.getCanvas().repaint();
+        }
     }
 
     @Override
@@ -239,10 +234,6 @@ public class ApplicationContextImpl implements ApplicationContext {
     @Override
     public GaussianNumberPlaneBaseMandelbrot getGaussianNumberPlaneBaseMandelbrot() {
         return gaussianNumberPlaneBaseMandelbrot;
-    }
-
-    @Override public ControllerThread getControllerThread() {
-        return controllerThread;
     }
 
     @Override public ApplicationCanvas getCanvas() {

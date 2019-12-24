@@ -9,7 +9,6 @@ public interface EventDispatcher extends
 
     void start();
     void showMe();
-    void step();
     void setModeSwitch();
     void setModeZoom();
     void zoomOut();

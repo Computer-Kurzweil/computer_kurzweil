@@ -89,7 +89,6 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
         this.setApplicationState(nextApplicationState);
     }
 
-    @Deprecated
     public ApplicationState getState() {
         return applicationState;
     }

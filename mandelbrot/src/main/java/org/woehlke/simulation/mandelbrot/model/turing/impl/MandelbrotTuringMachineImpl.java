@@ -20,12 +20,12 @@ import java.util.logging.Logger;
  */
 public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
 
-    private GaussianNumberPlaneBaseMandelbrot gaussianNumberPlane;
+    private GaussianNumberPlaneBaseMandelbrot gaussianNumberPlaneBaseMandelbrot;
     private TuringPositionsStateMachine turingPositionsStateMachine;
     private TuringPhaseStateMachine turingPhaseStateMachine;
 
     public MandelbrotTuringMachineImpl(ApplicationContext model) {
-        this.gaussianNumberPlane = model.getGaussianNumberPlaneBaseMandelbrot();
+        this.gaussianNumberPlaneBaseMandelbrot = model.getGaussianNumberPlaneBaseMandelbrot();
         this.turingPhaseStateMachine = new TuringPhaseStateMachineImpl();
         this.turingPositionsStateMachine = new TuringPositionsStateMachineImpl(model.getWorldDimensions());
         start();
@@ -34,7 +34,7 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     @Override
     public void start() {
         this.turingPhaseStateMachine.start();
-        this.gaussianNumberPlane.start();
+        this.gaussianNumberPlaneBaseMandelbrot.start();
         this.turingPositionsStateMachine.start();
     }
 
@@ -60,7 +60,7 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     }
 
     private void stepGoToSet(){
-        if(this.gaussianNumberPlane.isInMandelbrotSet(this.turingPositionsStateMachine.getTuringPosition())){
+        if(this.gaussianNumberPlaneBaseMandelbrot.isInMandelbrotSet(this.turingPositionsStateMachine.getTuringPosition())){
             this.turingPositionsStateMachine.markFirstSetPosition();
             this.turingPhaseStateMachine.finishSearchTheSet();
         } else {
@@ -69,7 +69,7 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     }
 
     private void stepWalkAround(){
-        if(gaussianNumberPlane.isInMandelbrotSet(this.turingPositionsStateMachine.getTuringPosition())){
+        if(gaussianNumberPlaneBaseMandelbrot.isInMandelbrotSet(this.turingPositionsStateMachine.getTuringPosition())){
             this.turingPositionsStateMachine.turnRight();
         } else {
             this.turingPositionsStateMachine.turnLeft();
@@ -81,7 +81,7 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     }
 
     private void stepFillTheOutsideWithColors(){
-        this.gaussianNumberPlane.fillTheOutsideWithColors();
+        this.gaussianNumberPlaneBaseMandelbrot.fillTheOutsideWithColors();
         this.turingPhaseStateMachine.finishFillTheOutsideWithColors();
     }
 

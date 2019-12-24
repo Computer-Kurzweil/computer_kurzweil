@@ -4,7 +4,6 @@ import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
 
 public interface ApplicationStateMachine {
 
-    @Deprecated
     ApplicationState getState();
 
     void click();
