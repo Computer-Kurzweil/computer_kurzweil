@@ -6,6 +6,8 @@ import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
 
 import java.util.logging.Logger;
 
+import static org.woehlke.simulation.mandelbrot.model.numbers.CellStatus.MAX_ITERATIONS;
+
 /**
  * (C) 2006 - 2015 Thomas Woehlke.
  * https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html
@@ -23,7 +25,7 @@ public class ComplexNumberTest {
         int iterations = complexNumber1.computeMandelbrotSet();
         log.info("computeMandelbrotTest1 iterations : "+ iterations);
         Assert.assertTrue(complexNumber1.isInMandelbrotSet());
-        Assert.assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
+        Assert.assertNotEquals(MAX_ITERATIONS, iterations);
         Assert.assertTrue(0 == iterations);
         log.info("computeMandelbrotTest1 done");
     }
@@ -35,8 +37,8 @@ public class ComplexNumberTest {
         int iterations = complexNumber2.computeMandelbrotSet();
         log.info("computeMandelbrotTest2 iterations : "+ iterations);
         Assert.assertFalse(complexNumber2.isInMandelbrotSet());
-        Assert.assertNotEquals(iterations, ComplexNumber.MAX_ITERATIONS);
-        Assert.assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
+        Assert.assertNotEquals(iterations, MAX_ITERATIONS);
+        Assert.assertTrue(iterations < MAX_ITERATIONS);
         Assert.assertTrue(2 == iterations);
         log.info("computeMandelbrotTest2 done");
     }
@@ -50,8 +52,8 @@ public class ComplexNumberTest {
         log.info("computeJuliaTest1 iterations : "+ iterations);
         boolean isInJuliaSet = z.isInJuliaSet();
         Assert.assertTrue(isInJuliaSet);
-        Assert.assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
-        Assert.assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
+        Assert.assertNotEquals(MAX_ITERATIONS, iterations);
+        Assert.assertTrue(iterations < MAX_ITERATIONS);
         Assert.assertTrue(0 == iterations);
         log.info("computeJuliaTest1 done");
     }
@@ -65,8 +67,8 @@ public class ComplexNumberTest {
         log.info("computeJuliaTest2 iterations :"+ iterations);
         boolean isInJuliaSet = z.isInJuliaSet();
         Assert.assertFalse(isInJuliaSet);
-        Assert.assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
-        Assert.assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
+        Assert.assertNotEquals(MAX_ITERATIONS, iterations);
+        Assert.assertTrue(iterations < MAX_ITERATIONS);
         Assert.assertTrue(2 == iterations);
         log.info("computeJuliaTest2 done");
     }

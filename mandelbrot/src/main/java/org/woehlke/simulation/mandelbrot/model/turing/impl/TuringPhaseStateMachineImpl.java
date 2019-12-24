@@ -19,11 +19,11 @@ public class TuringPhaseStateMachineImpl implements TuringPhaseStateMachine {
     private TuringPhase turingTuringPhase;
 
     public TuringPhaseStateMachineImpl() {
-        start();
+        turingTuringPhase = TuringPhase.start();
     }
 
     public void start(){
-        this.turingTuringPhase = TuringPhase.SEARCH_THE_SET;
+        turingTuringPhase = TuringPhase.start();
     }
 
     public void finishSearchTheSet(){

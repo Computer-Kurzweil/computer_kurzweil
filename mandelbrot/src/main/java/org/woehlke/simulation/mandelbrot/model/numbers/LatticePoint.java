@@ -30,6 +30,14 @@ public class LatticePoint {
         this.y = y;
     }
 
+    public LatticePoint copy() {
+        return new LatticePoint(this);
+    }
+
+    public static LatticePoint start(LatticePoint worldDimensions){
+        return new LatticePoint((worldDimensions.getX()-2),(worldDimensions.getY()/2+11));
+    }
+
     public void moveUp() {
         y--;
     }

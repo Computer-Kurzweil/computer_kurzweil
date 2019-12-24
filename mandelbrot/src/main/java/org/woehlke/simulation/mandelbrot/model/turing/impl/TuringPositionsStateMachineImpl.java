@@ -32,12 +32,13 @@ public class TuringPositionsStateMachineImpl implements TuringPositionsStateMach
 
     public void start() {
         this.steps = 0;
-        this.turingPosition = new LatticePoint((worldDimensions.getX()-2),(worldDimensions.getY()/2+11));
-        this.turingDirection = TuringDirection.LEFT;
+        this.turingPosition = LatticePoint.start(worldDimensions);
+        this.firstSetPosition = null;
+        this.turingDirection = TuringDirection.start();
     }
 
     public void markFirstSetPosition(){
-        this.firstSetPosition = turingPosition;
+        this.firstSetPosition = this.turingPosition.copy();
         this.steps = 0;
     }
 

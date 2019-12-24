@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.turing;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.woehlke.simulation.mandelbrot.model.turing.impl.TuringPhaseState;
+import org.woehlke.simulation.mandelbrot.model.turing.impl.TuringPhaseStateMachineImpl;
 
 import java.util.logging.Logger;
 
@@ -10,14 +10,14 @@ import static org.woehlke.simulation.mandelbrot.model.turing.state.TuringPhase.*
 
 public class TuringTuringPhaseStateEnumTest {
 
-    private TuringPhaseState turingPhaseState = new TuringPhaseState();
+    private TuringPhaseStateMachine turingPhaseState = new TuringPhaseStateMachineImpl();
 
     public static Logger log = Logger.getLogger(TuringPositionsTest.class.getName());
 
     @Test
     public void startTest(){
         log.info("startTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new TuringPhaseStateMachineImpl();
         Assert.assertEquals(turingPhaseState.getTuringTuringPhase(),SEARCH_THE_SET);
         turingPhaseState.start();
         Assert.assertEquals(turingPhaseState.getTuringTuringPhase(),SEARCH_THE_SET);
@@ -27,9 +27,8 @@ public class TuringTuringPhaseStateEnumTest {
     @Test
     public void finishGoToSetTest(){
         log.info("finishGoToSetTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new TuringPhaseStateMachineImpl();
         turingPhaseState.start();
-        Assert.assertEquals(turingPhaseState.getTuringTuringPhase(),SEARCH_THE_SET);
         turingPhaseState.finishSearchTheSet();
         Assert.assertEquals(turingPhaseState.getTuringTuringPhase(),WALK_AROUND_THE_SET);
         log.info("finishGoToSetTest done");
@@ -38,10 +37,9 @@ public class TuringTuringPhaseStateEnumTest {
     @Test
     public void finishWalkAroundTest() {
         log.info("finishWalkAroundTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new TuringPhaseStateMachineImpl();
         turingPhaseState.start();
         turingPhaseState.finishSearchTheSet();
-        Assert.assertEquals(turingPhaseState.getTuringTuringPhase(),WALK_AROUND_THE_SET);
         turingPhaseState.finishWalkAround();
         Assert.assertEquals(turingPhaseState.getTuringTuringPhase(), FILL_THE_OUTSIDE_WITH_COLOR);
         log.info("finishWalkAroundTest done");
@@ -50,11 +48,10 @@ public class TuringTuringPhaseStateEnumTest {
     @Test
     public void finishFillTheOutsideWithColorsTest() {
         log.info("finishFillTheOutsideWithColorsTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new TuringPhaseStateMachineImpl();
         turingPhaseState.start();
         turingPhaseState.finishSearchTheSet();
         turingPhaseState.finishWalkAround();
-        Assert.assertEquals(turingPhaseState.getTuringTuringPhase(), FILL_THE_OUTSIDE_WITH_COLOR);
         turingPhaseState.finishFillTheOutsideWithColors();
         Assert.assertEquals(turingPhaseState.getTuringTuringPhase(), FINISHED);
         log.info("finishFillTheOutsideWithColorsTest done");
