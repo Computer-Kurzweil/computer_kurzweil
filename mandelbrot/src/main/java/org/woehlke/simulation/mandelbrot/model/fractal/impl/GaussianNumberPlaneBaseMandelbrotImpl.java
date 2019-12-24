@@ -151,4 +151,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
         }
     }
 
+    public String getZoomLevel() {
+        return this.zoomLevel.getZoomLevel() + "";
+    }
 }

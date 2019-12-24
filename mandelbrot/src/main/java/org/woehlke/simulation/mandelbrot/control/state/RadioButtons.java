@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.view;
+package org.woehlke.simulation.mandelbrot.control.state;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

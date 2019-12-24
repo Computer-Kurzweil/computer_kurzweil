@@ -2,10 +2,11 @@ package org.woehlke.simulation.mandelbrot.model.turing;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.woehlke.simulation.mandelbrot.model.turing.impl.TuringPhaseState;
 
 import java.util.logging.Logger;
 
-import static org.woehlke.simulation.mandelbrot.model.turing.TuringPhase.*;
+import static org.woehlke.simulation.mandelbrot.model.turing.state.TuringPhase.*;
 
 public class TuringTuringPhaseStateEnumTest {
 

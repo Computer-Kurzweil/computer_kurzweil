@@ -1,7 +1,8 @@
 package org.woehlke.simulation.mandelbrot.view;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
-import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
+import org.woehlke.simulation.mandelbrot.control.impl.ObjectRegistryAndEventDispatcherImpl;
+import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -15,15 +16,16 @@ import java.awt.image.ImageObserver;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
-public class ApplicationFrame extends JFrame implements ImageObserver,
+public class ApplicationFrame extends JFrame implements
+        ImageObserver,
         MenuContainer,
         Accessible {
 
-    private final OnjectRegistry ctx;
+    private final ObjectRegistryAndEventDispatcher ctx;
 
     public ApplicationFrame(Config config) {
         super(config.getTitle());
-        this.ctx = new OnjectRegistry(config, this);
+        this.ctx = new ObjectRegistryAndEventDispatcherImpl(config, this);
         PanelButtons panelButtons = new PanelButtons( this.ctx );
         this.ctx.setPanelButtons(panelButtons);
         rootPane.setLayout(new BoxLayout(rootPane, BoxLayout.PAGE_AXIS));
@@ -31,14 +33,14 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         rootPane.add(this.ctx.getCanvas());
         rootPane.add(this.ctx.getPanelButtons());
         showMeInit();
-        this.ctx.startControllerThread();
+        this.ctx.start();
     }
 
     public void showMeInit() {
         pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = this.rootPane.getWidth();
-        double height = this.ctx.getCanvas().getHeight() + 180;
+        double height = this.ctx.getCanvas().getCanvasHeight() + 180;
         double startX = (screenSize.getWidth() - width) / 2d;
         double startY = (screenSize.getHeight() - height) / 2d;
         int myheight = Double.valueOf(height).intValue();

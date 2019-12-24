@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.view;
+package org.woehlke.simulation.mandelbrot.view.impl;
 
 import javax.swing.*;
 import java.awt.*;

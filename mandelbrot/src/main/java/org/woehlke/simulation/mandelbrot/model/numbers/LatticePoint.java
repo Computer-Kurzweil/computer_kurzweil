@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.model.fractal;
+package org.woehlke.simulation.mandelbrot.model.numbers;
 
 import java.util.Objects;
 

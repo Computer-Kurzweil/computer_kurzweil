@@ -1,6 +1,10 @@
-package org.woehlke.simulation.mandelbrot.model.turing;
+package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
-import org.woehlke.simulation.mandelbrot.model.helper.Point;
+import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
+import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
+import org.woehlke.simulation.mandelbrot.model.turing.state.TuringDirection;
+
+import java.util.logging.Logger;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -11,24 +15,24 @@ import org.woehlke.simulation.mandelbrot.model.helper.Point;
  *
  * Created by tw on 16.12.2019.
  */
-public class TuringPositions {
+public class TuringPositionsStateMachineImpl implements TuringPositionsStateMachine {
 
-    private Point turingPosition;
-    private Point worldDimensions;
-    private Point firstSetPosition;
+    private LatticePoint turingPosition;
+    private LatticePoint worldDimensions;
+    private LatticePoint firstSetPosition;
 
     private TuringDirection turingDirection;
 
     private int steps;
 
-    public TuringPositions(Point worldDimensions) {
+    public TuringPositionsStateMachineImpl(LatticePoint worldDimensions) {
         this.worldDimensions = worldDimensions;
         start();
     }
 
     public void start() {
         this.steps = 0;
-        this.turingPosition = new Point((worldDimensions.getX()-2),(worldDimensions.getY()/2+11));
+        this.turingPosition = new LatticePoint((worldDimensions.getX()-2),(worldDimensions.getY()/2+11));
         this.turingDirection = TuringDirection.LEFT;
     }
 
@@ -37,7 +41,7 @@ public class TuringPositions {
         this.steps = 0;
     }
 
-    public Point getTuringPosition() {
+    public LatticePoint getTuringPosition() {
         return turingPosition;
     }
 
@@ -89,4 +93,5 @@ public class TuringPositions {
         return (this.turingPosition.equals(this.firstSetPosition)) && (this.steps>100);
     }
 
+    public static Logger log = Logger.getLogger(TuringPositionsStateMachineImpl.class.getName());
 }

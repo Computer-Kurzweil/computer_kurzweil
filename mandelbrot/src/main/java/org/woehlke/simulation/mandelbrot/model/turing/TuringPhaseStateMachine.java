@@ -1,43 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
-import java.util.logging.Logger;
+import org.woehlke.simulation.mandelbrot.control.Startable;
 
-/**
- * Mandelbrot Set drawn by a Turing Machine.
- *
- * (C) 2006 - 2015 Thomas Woehlke.
- * https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html
- * @author Thomas Woehlke
- *
- * Created by tw on 16.12.2019.
- */
-public class TuringPhaseStateMachine {
-
-    private TuringPhase turingTuringPhase;
-
-    public TuringPhaseStateMachine() {
-        start();
-    }
-
-    public void start(){
-        this.turingTuringPhase = TuringPhase.SEARCH_THE_SET;
-    }
-
-    public void finishSearchTheSet(){
-        turingTuringPhase = TuringPhase.WALK_AROUND_THE_SET;
-    }
-
-    public void finishWalkAround() {
-        turingTuringPhase = TuringPhase.FILL_THE_OUTSIDE_WITH_COLOR;
-    }
-
-    public void finishFillTheOutsideWithColors() {
-        turingTuringPhase = TuringPhase.FINISHED;
-    }
-
-    public TuringPhase getTuringTuringPhase() {
-        return turingTuringPhase;
-    }
-
-    public static Logger log = Logger.getLogger(TuringPhaseStateMachine.class.getName());
+public interface TuringPhaseStateMachine extends Startable {
 }

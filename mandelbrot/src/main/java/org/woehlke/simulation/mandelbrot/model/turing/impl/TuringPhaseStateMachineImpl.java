@@ -1,4 +1,9 @@
-package org.woehlke.simulation.mandelbrot.model.turing;
+package org.woehlke.simulation.mandelbrot.model.turing.impl;
+
+import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
+import org.woehlke.simulation.mandelbrot.model.turing.state.TuringPhase;
+
+import java.util.logging.Logger;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,11 +14,11 @@ package org.woehlke.simulation.mandelbrot.model.turing;
  *
  * Created by tw on 16.12.2019.
  */
-public class TuringPhaseState {
+public class TuringPhaseStateMachineImpl implements TuringPhaseStateMachine {
 
     private TuringPhase turingTuringPhase;
 
-    public TuringPhaseState() {
+    public TuringPhaseStateMachineImpl() {
         start();
     }
 
@@ -36,4 +41,6 @@ public class TuringPhaseState {
     public TuringPhase getTuringTuringPhase() {
         return turingTuringPhase;
     }
+
+    public static Logger log = Logger.getLogger(TuringPhaseStateMachineImpl.class.getName());
 }

@@ -23,7 +23,6 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
     private final static double complexWorldDimensionRealX = 3.2d;
     private final static double complexWorldDimensionImgY = 2.34d;
 
-    protected ComplexNumber complexNumberForJuliaSetC;
     protected ComplexNumber complexWorldDimensions;
 
     protected ComplexNumber zoomCenter;

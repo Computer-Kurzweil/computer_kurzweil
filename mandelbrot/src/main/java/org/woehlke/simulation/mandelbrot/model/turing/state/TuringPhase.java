@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.model.turing;
+package org.woehlke.simulation.mandelbrot.model.turing.state;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,9 +9,9 @@ package org.woehlke.simulation.mandelbrot.model.turing;
  *
  * Created by tw on 18.08.15.
  */
-public enum TuringDirection {
-    UP,
-    RIGHT,
-    DOWN,
-    LEFT
+public enum TuringPhase {
+    SEARCH_THE_SET,
+    WALK_AROUND_THE_SET,
+    FILL_THE_OUTSIDE_WITH_COLOR,
+    FINISHED
 }

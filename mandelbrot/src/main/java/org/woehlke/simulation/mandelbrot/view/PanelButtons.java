@@ -1,16 +1,14 @@
 package org.woehlke.simulation.mandelbrot.view;
 
-import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
+import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static org.woehlke.simulation.mandelbrot.config.ConfigProperties.BORDER_PADDING;
-import static org.woehlke.simulation.mandelbrot.view.RadioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.simulation.mandelbrot.view.RadioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.simulation.mandelbrot.control.state.RadioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.simulation.mandelbrot.control.state.RadioButtons.RADIO_BUTTONS_ZOOM;
 
 
 /**
@@ -32,9 +30,9 @@ public class PanelButtons extends JPanel {
     private JPanel panelZoomButtons;
     private TextField zoomLevelField;
 
-    private OnjectRegistry ctx;
+    private ObjectRegistryAndEventDispatcher ctx;
 
-    public PanelButtons(OnjectRegistry ctx) {
+    public PanelButtons(ObjectRegistryAndEventDispatcher ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
         this.radioButtonsSwitch = new JRadioButton(ctx.getConfig().getButtonsSwitch());
@@ -50,7 +48,7 @@ public class PanelButtons extends JPanel {
         CompoundBorder borderPanelPushButtons = getBorder(ctx.getConfig().getButtonsZoomLabel());
         JLabel zoomLevelFieldLabel = new JLabel("Zoom Level");
         zoomLevelField = new TextField("0",3);
-        zoomLevelField.setText(ctx.getGaussianNumberPlane().getZoomLevel()+"");
+        zoomLevelField.setText(ctx.getZoomLevel());
         panelButtonsGroup.setLayout(layout);
         panelButtonsGroup.setBorder(borderPanelRadioButtons);
         panelButtonsGroup.add(radioButtonsSwitch);
@@ -89,9 +87,9 @@ public class PanelButtons extends JPanel {
         }
         String text;
         try {
-            text = ctx.getGaussianNumberPlane().getZoomLevel() + "";
+            text = ctx.getZoomLevel();
         } catch (NullPointerException e){
-            text = "0";
+            text = "ERR";
         }
         this.zoomLevelField.setText(text);
         this.zoomLevelField.repaint();

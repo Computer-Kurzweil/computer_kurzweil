@@ -1,11 +1,13 @@
-package org.woehlke.simulation.mandelbrot.model.state;
+package org.woehlke.simulation.mandelbrot.control.impl;
 
-import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
+import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
+import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
 
 import java.util.logging.Logger;
 
-import static org.woehlke.simulation.mandelbrot.model.state.ApplicationState.*;
-import static org.woehlke.simulation.mandelbrot.model.state.ApplicationState.JULIA_SET_ZOOM;
+import static org.woehlke.simulation.mandelbrot.control.state.ApplicationState.*;
+import static org.woehlke.simulation.mandelbrot.control.state.ApplicationState.JULIA_SET_ZOOM;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -16,13 +18,13 @@ import static org.woehlke.simulation.mandelbrot.model.state.ApplicationState.JUL
  *
  * Created by tw on 16.12.2019.
  */
-public class ApplicationStateMachine {
+public class ApplicationStateMachineImpl implements ApplicationStateMachine {
 
     private ApplicationState applicationState;
 
-    private final OnjectRegistry ctx;
+    private final ObjectRegistryAndEventDispatcher ctx;
 
-    public ApplicationStateMachine(OnjectRegistry ctx) {
+    public ApplicationStateMachineImpl(ObjectRegistryAndEventDispatcher ctx) {
         this.applicationState = ApplicationState.MANDELBROT;
         this.ctx = ctx;
     }
@@ -87,7 +89,8 @@ public class ApplicationStateMachine {
         this.setApplicationState(nextApplicationState);
     }
 
-    public ApplicationState getApplicationState() {
+    @Deprecated
+    public ApplicationState getState() {
         return applicationState;
     }
 
@@ -95,5 +98,5 @@ public class ApplicationStateMachine {
         this.applicationState = applicationState;
     }
 
-    public static Logger log = Logger.getLogger(ApplicationStateMachine.class.getName());
+    public static Logger log = Logger.getLogger(ApplicationStateMachineImpl.class.getName());
 }

@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.model.helper;
+package org.woehlke.simulation.mandelbrot.model.numbers;
 
 import java.util.Objects;
 
@@ -12,6 +12,7 @@ import java.util.Objects;
  * Date: 04.02.2006
  * Time: 23:47:05
  */
+//TODO: Dublette to LatticePoint? IF yes: remove!
 public class Point {
 
     private int x = 0;

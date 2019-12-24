@@ -1,7 +1,8 @@
-package org.woehlke.simulation.mandelbrot.model.turing;
+package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
-import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlane;
+import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
 
 import java.util.logging.Logger;
 
@@ -15,16 +16,16 @@ import java.util.logging.Logger;
  * Date: 28.08.13
  * Time: 12:39
  */
-public class MandelbrotTuringMachine {
+public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
 
-    private GaussianNumberPlane gaussianNumberPlane;
-    private TuringPositionsStateMachine turingPositionsStateMachine;
-    private TuringPhaseStateMachine turingPhaseStateMachine;
+    private GaussianNumberPlaneBaseMandelbrot gaussianNumberPlane;
+    private TuringPositionsStateMachineImpl turingPositionsStateMachine;
+    private TuringPhaseStateMachineImpl turingPhaseStateMachine;
 
-    public MandelbrotTuringMachine(OnjectRegistry model) {
-        this.gaussianNumberPlane = model.getGaussianNumberPlane();
-        this.turingPhaseStateMachine = new TuringPhaseStateMachine();
-        this.turingPositionsStateMachine = new TuringPositionsStateMachine(model.getWorldDimensions());
+    public MandelbrotTuringMachineImpl(ObjectRegistryAndEventDispatcher model) {
+        this.gaussianNumberPlane = model.getGaussianNumberPlaneBaseMandelbrot();
+        this.turingPhaseStateMachine = new TuringPhaseStateMachineImpl();
+        this.turingPositionsStateMachine = new TuringPositionsStateMachineImpl(model.getWorldDimensions());
         start();
     }
 
@@ -75,5 +76,5 @@ public class MandelbrotTuringMachine {
         this.turingPhaseStateMachine.finishFillTheOutsideWithColors();
     }
 
-    private static Logger log = Logger.getLogger(MandelbrotTuringMachine.class.getName());
+    private static Logger log = Logger.getLogger(MandelbrotTuringMachineImpl.class.getName());
 }

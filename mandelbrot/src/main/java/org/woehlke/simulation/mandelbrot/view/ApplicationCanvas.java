@@ -1,6 +1,7 @@
 package org.woehlke.simulation.mandelbrot.view;
 
-import org.woehlke.simulation.mandelbrot.model.OnjectRegistry;
+import org.woehlke.simulation.mandelbrot.control.ObjectRegistryAndEventDispatcher;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,10 +19,10 @@ import java.awt.*;
  */
 public class ApplicationCanvas extends JComponent {
 
-    private final OnjectRegistry model;
+    private final ObjectRegistryAndEventDispatcher model;
     private final Dimension preferredSize;
 
-    public ApplicationCanvas(OnjectRegistry model) {
+    public ApplicationCanvas(ObjectRegistryAndEventDispatcher model) {
         this.model = model;
         int width = this.model.getWorldDimensions().getWidth();
         int height = this.model.getWorldDimensions().getHeight();
@@ -30,7 +31,7 @@ public class ApplicationCanvas extends JComponent {
         this.setPreferredSize(preferredSize);
     }
 
-    public void paint(Graphics g) {
+    @Override public void paint(Graphics g) {
         this.setSize(this.preferredSize);
         this.setPreferredSize(preferredSize);
         super.paintComponent(g);
@@ -39,7 +40,7 @@ public class ApplicationCanvas extends JComponent {
         int blue = 0;
         for(int y = 0; y < model.getWorldDimensions().getY(); y++){
             for(int x = 0; x < model.getWorldDimensions().getX(); x++){
-                blue = model.getCellStatusFor(x,y);
+                blue = model.getCellStatusFor(x,y).intValue();
                 Color stateColor = new Color(red, green, blue);
                 g.setColor(stateColor);
                 g.drawLine(x,y,x,y);
@@ -47,8 +48,9 @@ public class ApplicationCanvas extends JComponent {
         }
     }
 
-    public void update(Graphics g) {
+    @Override public void update(Graphics g) {
         paint(g);
     }
 
+    public double getCanvasHeight() { return preferredSize.getHeight(); }
 }

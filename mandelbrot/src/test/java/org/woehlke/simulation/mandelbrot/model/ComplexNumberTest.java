@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.model;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.woehlke.simulation.mandelbrot.model.fractal.ComplexNumber;
+import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
 
 import java.util.logging.Logger;
 
