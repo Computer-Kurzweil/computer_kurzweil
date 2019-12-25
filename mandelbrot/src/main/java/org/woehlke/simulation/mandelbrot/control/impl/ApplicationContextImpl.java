@@ -67,10 +67,10 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Override public CellStatus getCellStatusFor(int x, int y) {
         switch (applicationStateMachine.getState()) {
-            case MANDELBROT:
+            case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
                 return gaussianNumberPlaneBaseMandelbrot.getCellStatusFor(x, y);
-            case JULIA_SET:
+            case JULIA_SET_SWITCH:
             case JULIA_SET_ZOOM:
                 return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
         }
@@ -104,10 +104,10 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Override public void zoomOut() {
         switch (applicationStateMachine.getState()) {
-            case MANDELBROT:
+            case MANDELBROT_SWITCH:
                 //gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
                 break;
-            case JULIA_SET:
+            case JULIA_SET_SWITCH:
                 //gaussianNumberPlane.zoomOutOfTheJuliaSet();
                 break;
             case MANDELBROT_ZOOM:
@@ -123,10 +123,10 @@ public class ApplicationContextImpl implements ApplicationContext {
     @Override
     public String getZoomLevel() {
         switch (applicationStateMachine.getState()) {
-            case MANDELBROT:
+            case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
                 return gaussianNumberPlaneBaseMandelbrot.getZoomLevel();
-            case JULIA_SET:
+            case JULIA_SET_SWITCH:
             case JULIA_SET_ZOOM:
                 return gaussianNumberPlaneBaseJulia.getZoomLevel();
             default:
@@ -180,10 +180,10 @@ public class ApplicationContextImpl implements ApplicationContext {
         LatticePoint latticePoint = new LatticePoint(e.getX(), e.getY());
         applicationStateMachine.click();
         switch (applicationStateMachine.getState()) {
-            case MANDELBROT:
+            case MANDELBROT_SWITCH:
                 this.computeTheMandelbrotSet();
                 break;
-            case JULIA_SET:
+            case JULIA_SET_SWITCH:
                 this.gaussianNumberPlaneBaseJulia.computeTheSet(latticePoint);
                 break;
             case MANDELBROT_ZOOM:

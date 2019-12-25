@@ -3,6 +3,7 @@ package org.woehlke.simulation.mandelbrot.model;
 import org.junit.Assert;
 import org.junit.Test;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
+import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumberFractal;
 
 import java.util.logging.Logger;
 
@@ -22,9 +23,10 @@ public class ComplexNumberTest {
     public void computeMandelbrotTest1(){
         log.info("computeMandelbrotTest1 start");
         ComplexNumber complexNumber1 = new ComplexNumber();
-        int iterations = complexNumber1.computeMandelbrotSet();
+        ComplexNumberFractal fractal = ComplexNumberFractal.iterateMandelbrotSetFunction(complexNumber1);
+        int iterations = fractal.getIterations();
         log.info("computeMandelbrotTest1 iterations : "+ iterations);
-        Assert.assertTrue(complexNumber1.isInMandelbrotSet());
+        Assert.assertTrue(fractal.getInMandelbrotSet());
         Assert.assertNotEquals(MAX_ITERATIONS, iterations);
         Assert.assertTrue(0 == iterations);
         log.info("computeMandelbrotTest1 done");
@@ -34,9 +36,10 @@ public class ComplexNumberTest {
     public void computeMandelbrotTest2(){
         log.info("computeMandelbrotTest2 start");
         ComplexNumber complexNumber2 = new ComplexNumber(1.0d,1.2d);
-        int iterations = complexNumber2.computeMandelbrotSet();
+        ComplexNumberFractal fractal = ComplexNumberFractal.iterateMandelbrotSetFunction(complexNumber2);
+        int iterations = fractal.getIterations();
         log.info("computeMandelbrotTest2 iterations : "+ iterations);
-        Assert.assertFalse(complexNumber2.isInMandelbrotSet());
+        Assert.assertFalse(fractal.getInMandelbrotSet());
         Assert.assertNotEquals(iterations, MAX_ITERATIONS);
         Assert.assertTrue(iterations < MAX_ITERATIONS);
         Assert.assertTrue(2 == iterations);
@@ -48,9 +51,12 @@ public class ComplexNumberTest {
         log.info("computeJuliaTest1 start");
         ComplexNumber z = new ComplexNumber(0.1d,0.2d);
         ComplexNumber c = new ComplexNumber(0.2d,0.1d);
-        int iterations = z.computeJuliaSet(c);
+
+        ComplexNumberFractal fractal = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
+        int iterations = fractal.getIterations();
+        boolean isInJuliaSet = fractal.getInJuliaSet();
         log.info("computeJuliaTest1 iterations : "+ iterations);
-        boolean isInJuliaSet = z.isInJuliaSet();
+
         Assert.assertTrue(isInJuliaSet);
         Assert.assertNotEquals(MAX_ITERATIONS, iterations);
         Assert.assertTrue(iterations < MAX_ITERATIONS);
@@ -62,10 +68,12 @@ public class ComplexNumberTest {
     public void computeJuliaTest2(){
         log.info("computeJuliaTest2 start");
         ComplexNumber z = new ComplexNumber(0.1d,0.2d);
-        ComplexNumber c = new ComplexNumber(1.0d,1.1d);
-        int iterations = z.computeJuliaSet(c);
+        ComplexNumber c = new ComplexNumber(1.0d,1.1d);        ComplexNumberFractal fractal = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
+        int iterations = fractal.getIterations();
+        boolean isInJuliaSet = fractal.getInJuliaSet();
+
         log.info("computeJuliaTest2 iterations :"+ iterations);
-        boolean isInJuliaSet = z.isInJuliaSet();
+
         Assert.assertFalse(isInJuliaSet);
         Assert.assertNotEquals(MAX_ITERATIONS, iterations);
         Assert.assertTrue(iterations < MAX_ITERATIONS);

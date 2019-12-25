@@ -1,14 +1,15 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
-import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
-import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
-import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
-import org.woehlke.simulation.mandelbrot.model.numbers.ZoomLevel;
+import org.woehlke.simulation.mandelbrot.model.numbers.*;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+
+import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startCenterForMandelbrot;
+import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
 public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBaseImpl implements GaussianNumberPlaneBaseMandelbrot {
 
@@ -16,18 +17,12 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
 
     private final ZoomLevel zoomLevel;
 
-    protected ComplexNumber complexCenterForMandelbrot;
-
-    private final static double complexCenterForMandelbrotRealX = -2.2f;
-    private final static double complexCenterForMandelbrotImgY = -1.17f;
+    private final FractalSetType fractalSetType = FractalSetType.MANDELBROT_SET;
 
     public GaussianNumberPlaneBaseMandelbrotImpl(ApplicationContext ctx) {
         super(ctx);
-        this.complexCenterForMandelbrot = new ComplexNumber(
-            complexCenterForMandelbrotRealX,
-            complexCenterForMandelbrotImgY
-        );
         zoomLevel = new ZoomLevel();
+        this.setZoomCenter(startCenterForMandelbrot);
     }
 
     @Override
@@ -38,7 +33,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
     @Override
     public void setModeZoom() {
         zoomLevel.setLowestZoomLevel();
-        this.setZoomCenter(complexCenterForMandelbrot);
+        this.setZoomCenter(startCenterForMandelbrot);
     }
 
 
@@ -50,13 +45,13 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
 
     private ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(LatticePoint turingPosition) {
         double realX = (
-            complexCenterForMandelbrot.getReal()
-                + ( complexWorldDimensions.getReal() * turingPosition.getX() )
+            startCenterForMandelbrot.getReal()
+                + ( startWorldDimension.getReal() * turingPosition.getX() )
                 / this.ctx.getWorldDimensions().getX()
         );
         double imgY = (
-            complexCenterForMandelbrot.getImg()
-                + ( complexWorldDimensions.getImg() * turingPosition.getY() )
+            startCenterForMandelbrot.getImg()
+                + ( startWorldDimension.getImg() * turingPosition.getY() )
                 / this.ctx.getWorldDimensions().getY()
         );
         return new ComplexNumber(realX,imgY);
@@ -64,18 +59,33 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
 
     private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedMandelbrot(LatticePoint turingPosition) {
         double realX = (
-            ( complexCenterForMandelbrot.getReal() / this.zoomLevel.getZoomLevel() )
+            ( startCenterForMandelbrot.getReal() / this.zoomLevel.getZoomLevel() )
                 + getZoomCenter().getReal()
-                + ( complexWorldDimensions.getReal() * turingPosition.getX() )
+                + ( startWorldDimension.getReal() * turingPosition.getX() )
                 / ( this.ctx.getWorldDimensions().getX() * this.zoomLevel.getZoomLevel() )
         );
         double imgY = (
-            ( complexCenterForMandelbrot.getImg() / this.zoomLevel.getZoomLevel() )
+            ( startCenterForMandelbrot.getImg() / this.zoomLevel.getZoomLevel() )
                 + getZoomCenter().getImg()
-                + ( complexWorldDimensions.getImg() * turingPosition.getY() )
+                + ( startWorldDimension.getImg() * turingPosition.getY() )
                 / ( this.ctx.getWorldDimensions().getY() * this.zoomLevel.getZoomLevel() )
         );
         return new ComplexNumber(realX,imgY);
+    }
+
+    private void computeWZoomedWorld(){
+        for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
+                LatticePoint p = new LatticePoint(x, y);
+                ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(p);
+                ComplexNumberFractal f = ComplexNumberFractal.iterateMandelbrotSetFunction(position);
+                if(f.getInMandelbrotSet()){
+                    super.setCellStatusFor(p.getX(),p.getY(),f.getIterations());
+                } else {
+                    super.setCellStatusFor(p.getX(),p.getY(),0);
+                }
+            }
+        }
     }
 
     public void zoomInto(LatticePoint zoomLatticePoint) {
@@ -85,7 +95,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
         boolean LowestZoomLevel = this.zoomLevel.isLowestZoomLevel();
         this.zoomLevel.inceaseZoomLevel();
         if(LowestZoomLevel){
-            ComplexNumber complexCenter = new ComplexNumber(this.complexCenterForMandelbrot);
+            ComplexNumber complexCenter = new ComplexNumber(startCenterForMandelbrot);
             complexCenterForZoomedMandelbrot.push(complexCenter);
             this.setZoomCenter(getComplexNumberFromLatticeCoordsForMandelbrot(zoomLatticePoint));
         } else {
@@ -98,13 +108,9 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
                 + " zoomLevel:  "+ this.zoomLevel.getZoomLevel();
             log.info(msg);
         }
-        for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
-                LatticePoint p = new LatticePoint(x, y);
-                this.isInZooomedMandelbrotSet(p);
-            }
-        }
+        computeWZoomedWorld();
     }
+
 
     public void zoomOut() {
         if(ctx.getConfig().getLogDebug()) {
@@ -118,24 +124,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
         if(ctx.getConfig().getLogDebug()) {
             log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.zoomLevel.getZoomLevel());
         }
-        for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
-                LatticePoint p = new LatticePoint(x, y);
-                this.isInZooomedMandelbrotSet(p);
-            }
-        }
-    }
-
-    public boolean isInZooomedMandelbrotSet(LatticePoint turingPosition) {
-        ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(turingPosition);
-        super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(),position.computeMandelbrotSet());
-        return position.isInMandelbrotSet();
-    }
-
-    public boolean isInSet(LatticePoint turingPosition) {
-        ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(turingPosition);
-        super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(),position.computeMandelbrotSet());
-        return position.isInMandelbrotSet();
+        computeWZoomedWorld();
     }
 
     public void fillTheOutsideWithColors(){
@@ -143,10 +132,30 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
             for(int x=0;x < ctx.getWorldDimensions().getX();x++){
                 CellStatus cellStatus  = super.getCellStatusFor(x,y);
                 if(cellStatus.isCellStatusForYetUncomputed()){
-                    this.isInSet(new LatticePoint(x, y));
+                    LatticePoint p = new LatticePoint(x, y);
+                    ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(p);
+                    ComplexNumberFractal.iterateMandelbrotSetFunction(position);
+                    ComplexNumberFractal f = ComplexNumberFractal.iterateMandelbrotSetFunction(position);
+                    if(f.getInMandelbrotSet()){
+                        super.setCellStatusFor(p.getX(),p.getY(),f.getIterations());
+                    } else {
+                        super.setCellStatusFor(p.getX(),p.getY(),0);
+                    }
                 }
             }
         }
+    }
+
+    @Override
+    public boolean isInSet(LatticePoint p) {
+        ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(p);
+        ComplexNumberFractal f = ComplexNumberFractal.iterateMandelbrotSetFunction(position);
+        if(f.getInMandelbrotSet()){
+            super.setCellStatusFor(p.getX(),p.getY(),f.getIterations());
+        } else {
+            super.setCellStatusFor(p.getX(),p.getY(),0);
+        }
+        return f.getInMandelbrotSet();
     }
 
     public String getZoomLevel() {

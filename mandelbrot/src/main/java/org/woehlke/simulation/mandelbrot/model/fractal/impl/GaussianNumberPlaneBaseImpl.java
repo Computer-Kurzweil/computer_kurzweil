@@ -1,9 +1,11 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour;
 import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
+import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 
 import java.util.logging.Logger;
 
@@ -20,24 +22,17 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
 
     private int[][] lattice;
 
-    private final static double complexWorldDimensionRealX = 3.2d;
-    private final static double complexWorldDimensionImgY = 2.34d;
+    private ComplexNumber zoomCenter;
 
-    protected ComplexNumber complexWorldDimensions;
+    protected final ApplicationContext ctx;
 
-    protected ComplexNumber zoomCenter;
-
-    protected ApplicationContext ctx;
+    private ClickBehaviour clickBehaviour;
 
     public static Logger log = Logger.getLogger(GaussianNumberPlaneBaseImpl.class.getName());
 
     public GaussianNumberPlaneBaseImpl(ApplicationContext ctx) {
         this.ctx = ctx;
-        this.complexWorldDimensions = new ComplexNumber(
-            complexWorldDimensionRealX,
-            complexWorldDimensionImgY
-        );
-        start();
+        clickBehaviour = ClickBehaviour.start();
     }
 
     public void start(){
@@ -49,18 +44,35 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
         }
     }
 
-    public abstract void setModeZoom();
-
-    public abstract void setModeSwitch();
-
-    public CellStatus getCellStatusFor(int x,int y){
-        x %= ctx.getWorldDimensions().getX();
-        y %= ctx.getWorldDimensions().getY();
-        CellStatus cellStatus = new CellStatus(lattice[x][y]);
-        return cellStatus;
+    public boolean isModeZoom(){
+       return clickBehaviour == ClickBehaviour.ZOOM_IN;
     }
 
-    public void setCellStatusFor(int x,int y, int state){
+    public boolean isModeSwitch(){
+        return clickBehaviour == ClickBehaviour.SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET;
+    }
+
+    public void setModeZoom(){
+        clickBehaviour = ClickBehaviour.ZOOM_IN;
+    }
+
+    public void setModeSwitch(){
+        clickBehaviour = ClickBehaviour.SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET;
+    }
+
+    public CellStatus getCellStatusFor(final int x,final int y){
+        return new CellStatus(lattice[x][y]);
+    }
+
+    public CellStatus getCellStatusFor(final LatticePoint turingPosition){
+        return new CellStatus(lattice[turingPosition.getX()][turingPosition.getY()]);
+    }
+
+    public void setCellStatusFor(final LatticePoint turingPosition, final int state){
+        lattice[turingPosition.getX()][turingPosition.getY()]=state;
+    }
+
+    public void setCellStatusFor(final int x,final int y, final int state){
         lattice[x][y]=state;
     }
 
@@ -71,5 +83,8 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
     public void setZoomCenter(ComplexNumber zoomCenter) {
         this.zoomCenter = zoomCenter;
     }
+
+
+
 
 }

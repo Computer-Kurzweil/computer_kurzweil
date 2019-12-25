@@ -2,117 +2,137 @@ package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
-import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
-import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
-import org.woehlke.simulation.mandelbrot.model.numbers.ZoomLevel;
+import org.woehlke.simulation.mandelbrot.model.numbers.*;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImpl implements GaussianNumberPlaneBaseJulia {
+import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startCenterForJulia;
+import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
-    private Deque<ComplexNumber> complexCenterForZoomedJulia = new ArrayDeque<>();
+public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImpl
+    implements GaussianNumberPlaneBaseJulia {
+
+    private Deque<ComputingPlan> complexCenterForZoomedJulia = new ArrayDeque<>();
 
     private final ZoomLevel zoomLevel;
 
-    private final ComplexNumber complexCenterForJulia;
-    private ComplexNumber complexNumberForJuliaSetC;
+    private final FractalSetType fractalSetType = FractalSetType.JULIA_SET;
 
-    private final static double complexCenterForJuliaRealX = -1.6d;
-    private final static double complexCenterForJuliaImgY =  -1.17d;
+    private ComplexNumber complexNumberForJuliaSetC;
 
     public GaussianNumberPlaneBaseJuliaImpl(ApplicationContext ctx) {
         super(ctx);
-        this.complexCenterForJulia = new ComplexNumber(
-            complexCenterForJuliaRealX,
-            complexCenterForJuliaImgY
-        );
         zoomLevel = new ZoomLevel();
     }
 
     @Override
     public void start(){
         super.start();
+        zoomLevel.setLowestZoomLevel();
     }
 
     @Override
     public void setModeZoom() {
-        zoomLevel.setLowestZoomLevel();
-        this.setZoomCenter(complexCenterForJulia);
+        if(super.isModeSwitch()){
+            super.setModeZoom();
+            zoomLevel.setLowestZoomLevel();
+        }
     }
 
 
     //TODO: implement and Bugfix
     @Override
     public void setModeSwitch(){
-
+        if(super.isModeZoom()){
+            zoomLevel.setLowestZoomLevel();
+        }
+        super.setModeSwitch();
     }
 
     private ComplexNumber getComplexNumberFromLatticeCoordsForJulia(LatticePoint turingPosition) {
-        double realX = complexCenterForJulia.getReal()
-            + (complexWorldDimensions.getReal()*turingPosition.getX())/this.ctx.getWorldDimensions().getX();
-        double imgY = complexCenterForJulia.getImg()
-            + (complexWorldDimensions.getImg()*turingPosition.getY())/this.ctx.getWorldDimensions().getY();
+        double realX =startCenterForJulia.getReal()
+            + (startWorldDimension.getReal()*turingPosition.getX())/this.ctx.getWorldDimensions().getX();
+        double imgY = startCenterForJulia.getImg()
+            + (startWorldDimension.getImg()*turingPosition.getY())/this.ctx.getWorldDimensions().getY();
         return new ComplexNumber(realX,imgY);
     }
 
     //TODO:
     private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedJulia(LatticePoint turingPosition) {
-        double realX = ( complexCenterForJulia.getReal() / this.zoomLevel.getZoomLevel() )
-            + (complexWorldDimensions.getReal()*turingPosition.getX())/(this.ctx.getWorldDimensions().getX() * this.zoomLevel.getZoomLevel());
-        double imgY = ( complexCenterForJulia.getImg() / this.zoomLevel.getZoomLevel() )
-            + (complexWorldDimensions.getImg()*turingPosition.getY())/(this.ctx.getWorldDimensions().getY() * this.zoomLevel.getZoomLevel());
+        double realX = ( startCenterForJulia.getReal() / this.zoomLevel.getZoomLevel() )
+            + ( startWorldDimension.getReal()*turingPosition.getX())/(this.ctx.getWorldDimensions().getX() * this.zoomLevel.getZoomLevel());
+        double imgY = ( startCenterForJulia.getImg() / this.zoomLevel.getZoomLevel() )
+            + (startWorldDimension.getImg()*turingPosition.getY())/(this.ctx.getWorldDimensions().getY() * this.zoomLevel.getZoomLevel());
         return new ComplexNumber(realX,imgY);
     }
 
-
     private void computeTheJuliaSetForC(ComplexNumber c) {
+        this.complexNumberForJuliaSetC = c;
         for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++) {
             for (int x = 0; x < this.ctx.getWorldDimensions().getX(); x++) {
                 LatticePoint zLatticePoint = new LatticePoint(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForJulia(zLatticePoint);
-                super.setCellStatusFor(x,y,z.computeJuliaSet(c));
+                ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
+                super.setCellStatusFor(zLatticePoint,result.getIterations());
             }
         }
     }
 
     private void computeTheZoomedJuliaSetForC(ComplexNumber c) {
+        this.complexNumberForJuliaSetC = c;
         for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++) {
             for (int x = 0; x < this.ctx.getWorldDimensions().getX(); x++) {
                 LatticePoint zLatticePoint = new LatticePoint(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForZoomedJulia(zLatticePoint);
-                super.setCellStatusFor(x,y,z.computeJuliaSet(c));
+                ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
+                super.setCellStatusFor(x,y,result.getIterations());
             }
         }
     }
 
     public void computeTheSet(LatticePoint latticePoint) {
-        ComplexNumber c = getComplexNumberFromLatticeCoordsForJulia(latticePoint);
-        this.complexNumberForJuliaSetC = c;
-        computeTheJuliaSetForC(c);
-    }
-
-    public void computeTheZoomedSet(LatticePoint latticePoint) {
-        ComplexNumber c = getComplexNumberFromLatticeCoordsForZoomedJulia(latticePoint);
-        this.complexNumberForJuliaSetC = c;
-        computeTheZoomedJuliaSetForC(c);
+        if(super.isModeZoom()){
+            ComplexNumber c = getComplexNumberFromLatticeCoordsForZoomedJulia(latticePoint);
+            computeTheZoomedJuliaSetForC(c);
+            ComputingPlan x = new ComputingPlan();
+        } else {
+            ComplexNumber c = getComplexNumberFromLatticeCoordsForJulia(latticePoint);
+            computeTheJuliaSetForC(c);
+            ComputingPlan x = new ComputingPlan();
+        }
     }
 
     public boolean isInZooomed(LatticePoint turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForZoomedJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();
-        super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(), z.computeJuliaSet(c));
-        return z.isInJuliaSet();
+        ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
+        return result.getInJuliaSet();
     }
 
     public boolean isInSet(LatticePoint turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();
-        super.setCellStatusFor(turingPosition.getX(),turingPosition.getY(), z.computeJuliaSet(c));
-        return z.isInJuliaSet();
+        ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
+        return result.getInJuliaSet();
     }
 
+    private void computeWZoomedWorld(ComplexNumber c){
+        for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
+                LatticePoint p = new LatticePoint(x, y);
+                ComplexNumber z = this.getComplexNumberFromLatticeCoordsForZoomedJulia(p);
+                ComplexNumberFractal f = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
+                if(f.getInJuliaSet()){
+                    super.setCellStatusFor(p.getX(),p.getY(),f.getIterations());
+                } else {
+                    super.setCellStatusFor(p.getX(),p.getY(),0);
+                }
+            }
+        }
+    }
 
     //TODO:
     public void zoomInto(LatticePoint zoomLatticePoint) {
@@ -122,13 +142,13 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         boolean LowestZoomLevel = zoomLevel.isLowestZoomLevel();
         this.zoomLevel.inceaseZoomLevel();
         if(LowestZoomLevel){
-            ComplexNumber complexCenter = new ComplexNumber(this.complexCenterForJulia);
-            complexCenterForZoomedJulia.push(complexCenter);
+            ComplexNumber complexCenter = new ComplexNumber(startCenterForJulia);
+            //complexCenterForZoomedJulia.push(complexCenter);
             this.setZoomCenter(getComplexNumberFromLatticeCoordsForJulia(zoomLatticePoint));
         } else {
             this.setZoomCenter(getComplexNumberFromLatticeCoordsForZoomedJulia(zoomLatticePoint));
         }
-        complexCenterForZoomedJulia.push(this.getZoomCenter());
+        // complexCenterForZoomedJulia.push(this.getZoomCenter());
         if(ctx.getConfig().getLogDebug()) {
             String msg = "zoomPoint: "+ zoomLatticePoint
                 + " zoomCenterNew: " + this.getZoomCenter()
@@ -137,14 +157,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         }
         //    ComplexNumber c = this.getComplexNumberFromLatticeCoordsForZoomedJulia(zoomLatticePoint);
         ComplexNumber c = this.complexNumberForJuliaSetC;
-        for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < this.ctx.getWorldDimensions().getX(); x++){
-                LatticePoint zLatticePoint = new LatticePoint(x, y);
-                ComplexNumber z = this.getComplexNumberFromLatticeCoordsForZoomedJulia(zLatticePoint);
-                super.setCellStatusFor(x,y,z.computeJuliaSet(c));
-            }
-        }
-
+        computeWZoomedWorld(c);
     }
 
     //TODO:
@@ -155,8 +168,8 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         if(!this.zoomLevel.isLowestZoomLevel()) {
             this.zoomLevel.decreaseZoomLevel();
             try {
-                ComplexNumber zoomCenter = complexCenterForZoomedJulia.pop();
-                this.setZoomCenter(zoomCenter);
+                //ComplexNumber zoomCenter = complexCenterForZoomedJulia.pop();
+                //this.setZoomCenter(zoomCenter);
             } catch (Exception e){
 
             }
@@ -164,12 +177,8 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         if(ctx.getConfig().getLogDebug()) {
             log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.zoomLevel.getZoomLevel());
         }
-        for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < this.ctx.getWorldDimensions().getX(); x++){
-                LatticePoint p = new LatticePoint(x, y);
-                this.isInZooomed(p);
-            }
-        }
+        ComplexNumber c = this.complexNumberForJuliaSetC;
+        computeWZoomedWorld(c);
     }
 
     public String getZoomLevel() {

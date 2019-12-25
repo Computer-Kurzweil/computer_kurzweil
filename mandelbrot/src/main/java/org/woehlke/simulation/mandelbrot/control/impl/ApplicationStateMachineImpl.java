@@ -25,18 +25,18 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
     private final ApplicationContext ctx;
 
     public ApplicationStateMachineImpl(ApplicationContext ctx) {
-        this.applicationState = ApplicationState.MANDELBROT;
+        this.applicationState = ApplicationState.MANDELBROT_SWITCH;
         this.ctx = ctx;
     }
 
     public void click(){
         ApplicationState nextApplicationState = null;
         switch (applicationState){
-            case MANDELBROT:
-                nextApplicationState = JULIA_SET;
+            case MANDELBROT_SWITCH:
+                nextApplicationState = JULIA_SET_SWITCH;
                 break;
-            case JULIA_SET:
-                nextApplicationState = MANDELBROT;
+            case JULIA_SET_SWITCH:
+                nextApplicationState = MANDELBROT_SWITCH;
                 break;
             case MANDELBROT_ZOOM:
                 nextApplicationState = MANDELBROT_ZOOM;
@@ -54,13 +54,13 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
     public void setModeSwitch() {
         ApplicationState nextApplicationState  = null;
         switch (applicationState){
-            case MANDELBROT:
+            case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
-                nextApplicationState = MANDELBROT;
+                nextApplicationState = MANDELBROT_SWITCH;
                 break;
-            case JULIA_SET:
+            case JULIA_SET_SWITCH:
             case JULIA_SET_ZOOM:
-                nextApplicationState = JULIA_SET;
+                nextApplicationState = JULIA_SET_SWITCH;
                 break;
         }
         if(this.ctx.getConfig().getLogDebug()){
@@ -73,11 +73,11 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
     public void setModeZoom() {
         ApplicationState nextApplicationState = null;
         switch (applicationState){
-            case MANDELBROT:
+            case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
                 nextApplicationState = MANDELBROT_ZOOM;
                 break;
-            case JULIA_SET:
+            case JULIA_SET_SWITCH:
             case JULIA_SET_ZOOM:
                 nextApplicationState = JULIA_SET_ZOOM;
                 break;
