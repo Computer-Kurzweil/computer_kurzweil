@@ -4,7 +4,7 @@ import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 import org.woehlke.simulation.mandelbrot.view.ApplicationCanvas;
@@ -27,7 +27,7 @@ public interface ObjectRegistry {
     ApplicationCanvas getCanvas();
     PanelButtons getPanelButtons();
     GaussianNumberPlaneBaseJulia getGaussianNumberPlaneBaseJulia();
-    GaussianNumberPlaneBaseMandelbrot getGaussianNumberPlaneBaseMandelbrot();
+    GaussianNumberPlaneMandelbrot getGaussianNumberPlaneMandelbrot();
     MandelbrotTuringMachine getMandelbrotTuringMachine();
     ApplicationStateMachine getApplicationStateMachine();
 

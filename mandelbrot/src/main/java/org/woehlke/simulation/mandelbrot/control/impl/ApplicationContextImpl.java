@@ -8,8 +8,8 @@ import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
-import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseMandelbrotImpl;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
+import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneMandelbrotImpl;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachineImpl;
@@ -36,7 +36,7 @@ public class ApplicationContextImpl implements ApplicationContext {
     private final ApplicationCanvas canvas;
 
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
-    private final GaussianNumberPlaneBaseMandelbrot gaussianNumberPlaneBaseMandelbrot;
+    private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
 
     private final MandelbrotTuringMachine mandelbrotTuringMachine;
     private final ApplicationStateMachine applicationStateMachine;
@@ -47,7 +47,7 @@ public class ApplicationContextImpl implements ApplicationContext {
         this.canvas = new ApplicationCanvas(this);
         this.panelSubtitle = new PanelSubtitle(config);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJuliaImpl(this);
-        this.gaussianNumberPlaneBaseMandelbrot = new GaussianNumberPlaneBaseMandelbrotImpl(this);
+        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrotImpl(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachineImpl(this);
         this.applicationStateMachine = new ApplicationStateMachineImpl(this);
         this.canvas.addMouseListener( this );
@@ -56,7 +56,7 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Override public void start() {
         this.gaussianNumberPlaneBaseJulia.start();
-        this.gaussianNumberPlaneBaseMandelbrot.start();
+        this.gaussianNumberPlaneMandelbrot.start();
         this.mandelbrotTuringMachine.start();
         this.applicationStateMachine.start();
         this.setModeSwitch();
@@ -73,7 +73,7 @@ public class ApplicationContextImpl implements ApplicationContext {
         switch (applicationStateMachine.getState()) {
             case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
-                return gaussianNumberPlaneBaseMandelbrot.getCellStatusFor(x, y);
+                return gaussianNumberPlaneMandelbrot.getCellStatusFor(x, y);
             case JULIA_SET_SWITCH:
             case JULIA_SET_ZOOM:
                 return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
@@ -90,7 +90,7 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Override public void setModeSwitch() {
         this.gaussianNumberPlaneBaseJulia.setModeSwitch();
-        this.gaussianNumberPlaneBaseMandelbrot.setModeSwitch();
+        this.gaussianNumberPlaneMandelbrot.setModeSwitch();
         this.getApplicationStateMachine().setModeSwitch();
         this.getCanvas().setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.getPanelButtons().enableZoomButton();
@@ -99,7 +99,7 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Override public void setModeZoom() {
         this.gaussianNumberPlaneBaseJulia.setModeZoom();
-        this.gaussianNumberPlaneBaseMandelbrot.setModeZoom();
+        this.gaussianNumberPlaneMandelbrot.setModeZoom();
         this.getApplicationStateMachine().setModeZoom();
         this.getCanvas().setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         this.getPanelButtons().disableZoomButton();
@@ -116,7 +116,7 @@ public class ApplicationContextImpl implements ApplicationContext {
                 break;
             case MANDELBROT_ZOOM:
                 //gaussianNumberPlane.zoomOutOfTheJuliaSet();
-                gaussianNumberPlaneBaseMandelbrot.zoomOut();
+                gaussianNumberPlaneMandelbrot.zoomOut();
                 break;
             case JULIA_SET_ZOOM:
                 gaussianNumberPlaneBaseJulia.zoomOut();
@@ -129,7 +129,7 @@ public class ApplicationContextImpl implements ApplicationContext {
         switch (applicationStateMachine.getState()) {
             case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
-                return gaussianNumberPlaneBaseMandelbrot.getZoomLevel();
+                return gaussianNumberPlaneMandelbrot.getZoomLevel();
             case JULIA_SET_SWITCH:
             case JULIA_SET_ZOOM:
                 return gaussianNumberPlaneBaseJulia.getZoomLevel();
@@ -191,7 +191,7 @@ public class ApplicationContextImpl implements ApplicationContext {
                 this.gaussianNumberPlaneBaseJulia.computeTheSet(latticePoint);
                 break;
             case MANDELBROT_ZOOM:
-                this.gaussianNumberPlaneBaseMandelbrot.zoomInto(latticePoint);
+                this.gaussianNumberPlaneMandelbrot.zoomInto(latticePoint);
                 break;
             case JULIA_SET_ZOOM:
                 this.gaussianNumberPlaneBaseJulia.zoomInto(latticePoint);
@@ -236,8 +236,8 @@ public class ApplicationContextImpl implements ApplicationContext {
     }
 
     @Override
-    public GaussianNumberPlaneBaseMandelbrot getGaussianNumberPlaneBaseMandelbrot() {
-        return gaussianNumberPlaneBaseMandelbrot;
+    public GaussianNumberPlaneMandelbrot getGaussianNumberPlaneMandelbrot() {
+        return gaussianNumberPlaneMandelbrot;
     }
 
     @Override public ApplicationCanvas getCanvas() {

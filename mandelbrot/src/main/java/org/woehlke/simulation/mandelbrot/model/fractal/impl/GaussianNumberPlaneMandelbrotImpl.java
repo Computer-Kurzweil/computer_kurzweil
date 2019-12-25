@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
-import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseMandelbrot;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.simulation.mandelbrot.model.numbers.*;
 
 import java.util.ArrayDeque;
@@ -11,7 +11,8 @@ import java.util.Deque;
 import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startCenterForMandelbrot;
 import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
-public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBaseImpl implements GaussianNumberPlaneBaseMandelbrot {
+public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseImpl
+    implements GaussianNumberPlaneMandelbrot {
 
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
 
@@ -19,7 +20,7 @@ public class GaussianNumberPlaneBaseMandelbrotImpl extends GaussianNumberPlaneBa
 
     private final FractalSetType fractalSetType = FractalSetType.MANDELBROT_SET;
 
-    public GaussianNumberPlaneBaseMandelbrotImpl(ApplicationContext ctx) {
+    public GaussianNumberPlaneMandelbrotImpl(ApplicationContext ctx) {
         super(ctx);
         zoomLevel = new ZoomLevel();
         this.setZoomCenter(startCenterForMandelbrot);

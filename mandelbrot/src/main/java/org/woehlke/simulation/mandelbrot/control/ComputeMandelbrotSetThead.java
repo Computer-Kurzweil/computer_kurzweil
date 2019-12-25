@@ -16,11 +16,11 @@ public class ComputeMandelbrotSetThead extends Thread implements Runnable {
         ctx.showMe();
         log.info(" < ");
         while( ! ctx.getMandelbrotTuringMachine().isFinished()){
-            log.info(".");
+            //log.info(".");
             ctx.getMandelbrotTuringMachine().step();
-            log.info("|");
+            //log.info("|");
             try {
-                Thread.sleep(10);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
