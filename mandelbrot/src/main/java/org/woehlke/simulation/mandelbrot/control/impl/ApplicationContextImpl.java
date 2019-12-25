@@ -1,7 +1,9 @@
 package org.woehlke.simulation.mandelbrot.control.impl;
 
 import org.woehlke.simulation.mandelbrot.config.Config;
-import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThead;
+import org.woehlke.simulation.mandelbrot.control.state.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.control.state.impl.ApplicationStateMachineImpl;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
@@ -55,6 +57,8 @@ public class ApplicationContextImpl implements ApplicationContext {
     @Override public void start() {
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneBaseMandelbrot.start();
+        this.mandelbrotTuringMachine.start();
+        this.applicationStateMachine.start();
         this.setModeSwitch();
         this.computeTheMandelbrotSet();
     }
@@ -198,13 +202,8 @@ public class ApplicationContextImpl implements ApplicationContext {
     }
 
     private void computeTheMandelbrotSet() {
-        this.getMandelbrotTuringMachine().start();
-        showMe();
-        while( ! this.getMandelbrotTuringMachine().isFinished()){
-            System.out.print(".");
-            this.getMandelbrotTuringMachine().step();
-            this.getCanvas().repaint();
-        }
+        ComputeMandelbrotSetThead t = new ComputeMandelbrotSetThead(this);
+        t.start();
     }
 
     @Override

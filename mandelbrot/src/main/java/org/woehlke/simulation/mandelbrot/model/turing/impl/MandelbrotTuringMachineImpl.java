@@ -56,11 +56,14 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
                 stepFillTheOutsideWithColors();
                 break;
             case FINISHED:
+                break;
         }
     }
 
     private void stepGoToSet(){
-        if(this.gaussianNumberPlaneBaseMandelbrot.isInSet(this.turingPositionsStateMachine.getTuringPosition())){
+        if(this.gaussianNumberPlaneBaseMandelbrot.isInSet(
+            this.turingPositionsStateMachine.getTuringPosition())
+        ){
             this.turingPositionsStateMachine.markFirstSetPosition();
             this.turingPhaseStateMachine.finishSearchTheSet();
         } else {

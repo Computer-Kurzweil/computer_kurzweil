@@ -1,13 +1,12 @@
-package org.woehlke.simulation.mandelbrot.control.impl;
+package org.woehlke.simulation.mandelbrot.control.state.impl;
 
-import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.control.state.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 
 import java.util.logging.Logger;
 
 import static org.woehlke.simulation.mandelbrot.control.state.ApplicationState.*;
-import static org.woehlke.simulation.mandelbrot.control.state.ApplicationState.JULIA_SET_ZOOM;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -25,8 +24,13 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
     private final ApplicationContext ctx;
 
     public ApplicationStateMachineImpl(ApplicationContext ctx) {
-        this.applicationState = ApplicationState.MANDELBROT_SWITCH;
+        this.applicationState = MANDELBROT_SWITCH;
         this.ctx = ctx;
+    }
+
+    @Override
+    public void start() {
+        this.applicationState = ApplicationState.start();
     }
 
     public void click(){

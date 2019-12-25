@@ -1,8 +1,9 @@
-package org.woehlke.simulation.mandelbrot.control;
+package org.woehlke.simulation.mandelbrot.control.state;
 
-import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
 
 public interface ApplicationStateMachine {
+
+    void start();
 
     ApplicationState getState();
 
