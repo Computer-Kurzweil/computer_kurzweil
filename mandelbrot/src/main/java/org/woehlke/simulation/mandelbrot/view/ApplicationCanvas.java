@@ -19,13 +19,13 @@ import java.awt.*;
  */
 public class ApplicationCanvas extends JComponent {
 
-    private final ApplicationContext model;
+    private final ApplicationContext ctx;
     private final Dimension preferredSize;
 
-    public ApplicationCanvas(ApplicationContext model) {
-        this.model = model;
-        int width = this.model.getWorldDimensions().getWidth();
-        int height = this.model.getWorldDimensions().getHeight();
+    public ApplicationCanvas(ApplicationContext ctx) {
+        this.ctx = ctx;
+        int width = this.ctx.getWorldDimensions().getWidth();
+        int height = this.ctx.getWorldDimensions().getHeight();
         this.preferredSize = new Dimension(width, height);
         this.setSize(this.preferredSize);
         this.setPreferredSize(preferredSize);
@@ -35,9 +35,9 @@ public class ApplicationCanvas extends JComponent {
         this.setSize(this.preferredSize);
         this.setPreferredSize(preferredSize);
         super.paintComponent(g);
-        for(int y = 0; y < model.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < model.getWorldDimensions().getX(); x++){
-                g.setColor( model.getCellStatusFor(x,y).canvasColor());
+        for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
+                g.setColor( ctx.getCellStatusFor(x,y).canvasColor());
                 g.drawLine(x,y,x,y);
             }
         }

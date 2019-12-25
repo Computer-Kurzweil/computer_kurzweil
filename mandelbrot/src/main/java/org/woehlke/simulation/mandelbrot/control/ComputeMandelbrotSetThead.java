@@ -18,13 +18,13 @@ public class ComputeMandelbrotSetThead extends Thread implements Runnable {
         while( ! ctx.getMandelbrotTuringMachine().isFinished()){
             //log.info(".");
             ctx.getMandelbrotTuringMachine().step();
+            ctx.getCanvas().repaint();
             //log.info("|");
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
-            ctx.getCanvas().repaint();
         }
         log.info(" > ");
         ctx.showMe();

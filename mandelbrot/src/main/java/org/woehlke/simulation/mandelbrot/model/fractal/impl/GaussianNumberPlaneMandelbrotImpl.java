@@ -17,11 +17,9 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
 
     private final ZoomLevel zoomLevel;
-
-    private final FractalSetType fractalSetType = FractalSetType.MANDELBROT_SET;
-
+    
     public GaussianNumberPlaneMandelbrotImpl(ApplicationContext ctx) {
-        super(ctx);
+        super(ctx,FractalSetType.MANDELBROT_SET);
         zoomLevel = new ZoomLevel();
         this.setZoomCenter(startCenterForMandelbrot);
     }

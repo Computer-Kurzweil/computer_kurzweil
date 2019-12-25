@@ -1,7 +1,9 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour;
+import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
@@ -27,11 +29,13 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
     protected final ApplicationContext ctx;
 
     private ClickBehaviour clickBehaviour;
+    private final FractalSetType fractalSetType;
 
     public static Logger log = Logger.getLogger(GaussianNumberPlaneBaseImpl.class.getName());
 
-    public GaussianNumberPlaneBaseImpl(ApplicationContext ctx) {
+    public GaussianNumberPlaneBaseImpl(ApplicationContext ctx, FractalSetType fractalSetType) {
         this.ctx = ctx;
+        this.fractalSetType = fractalSetType;
         clickBehaviour = ClickBehaviour.start();
     }
 
@@ -60,20 +64,40 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
         clickBehaviour = ClickBehaviour.SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET;
     }
 
-    public CellStatus getCellStatusFor(final int x,final int y){
+    public CellStatus getCellStatusFor(int x, int y){
+        x %= ctx.getWorldDimensions().getX();
+        y %= ctx.getWorldDimensions().getY();
         return new CellStatus(lattice[x][y]);
     }
 
     public CellStatus getCellStatusFor(final LatticePoint turingPosition){
-        return new CellStatus(lattice[turingPosition.getX()][turingPosition.getY()]);
+        int x = turingPosition.getX() % ctx.getWorldDimensions().getX();
+        int y = turingPosition.getY() % ctx.getWorldDimensions().getY();
+        return new CellStatus(lattice[x][y]);
     }
 
     public void setCellStatusFor(final LatticePoint turingPosition, final int state){
-        lattice[turingPosition.getX()][turingPosition.getY()]=state;
+        int x = turingPosition.getX() % ctx.getWorldDimensions().getX();
+        int y = turingPosition.getY() % ctx.getWorldDimensions().getY();
+        lattice[x][y]=state;
     }
 
-    public void setCellStatusFor(final int x,final int y, final int state){
+    public void setCellStatusFor(int x, int y, final int state){
+        x %= ctx.getWorldDimensions().getX();
+        y %= ctx.getWorldDimensions().getY();
         lattice[x][y]=state;
+    }
+
+    public ApplicationState resolve(){
+        return ApplicationState.resolve(fractalSetType,clickBehaviour);
+    }
+
+    public ClickBehaviour getClickBehaviour() {
+        return clickBehaviour;
+    }
+
+    public FractalSetType getFractalSetType() {
+        return fractalSetType;
     }
 
     public ComplexNumber getZoomCenter() {

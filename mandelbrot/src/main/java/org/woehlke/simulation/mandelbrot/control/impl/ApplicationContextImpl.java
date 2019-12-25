@@ -70,15 +70,13 @@ public class ApplicationContextImpl implements ApplicationContext {
     }
 
     @Override public CellStatus getCellStatusFor(int x, int y) {
-        switch (applicationStateMachine.getState()) {
-            case MANDELBROT_SWITCH:
-            case MANDELBROT_ZOOM:
-                return gaussianNumberPlaneMandelbrot.getCellStatusFor(x, y);
-            case JULIA_SET_SWITCH:
-            case JULIA_SET_ZOOM:
+        switch (applicationStateMachine.getState().getFractalSetType()) {
+            case JULIA_SET:
                 return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
+            case MANDELBROT_SET:
+            default:
+                return gaussianNumberPlaneMandelbrot.getCellStatusFor(x, y);
         }
-        return null;
     }
 
     @Deprecated
@@ -107,31 +105,23 @@ public class ApplicationContextImpl implements ApplicationContext {
     }
 
     @Override public void zoomOut() {
-        switch (applicationStateMachine.getState()) {
-            case MANDELBROT_SWITCH:
-                //gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
-                break;
-            case JULIA_SET_SWITCH:
-                //gaussianNumberPlane.zoomOutOfTheJuliaSet();
-                break;
-            case MANDELBROT_ZOOM:
-                //gaussianNumberPlane.zoomOutOfTheJuliaSet();
-                gaussianNumberPlaneMandelbrot.zoomOut();
-                break;
-            case JULIA_SET_ZOOM:
+        switch (applicationStateMachine.getState().getFractalSetType()) {
+            case JULIA_SET:
                 gaussianNumberPlaneBaseJulia.zoomOut();
+                break;
+            case MANDELBROT_SET:
+            default:
+                gaussianNumberPlaneMandelbrot.zoomOut();
                 break;
         }
     }
 
     @Override
     public String getZoomLevel() {
-        switch (applicationStateMachine.getState()) {
-            case MANDELBROT_SWITCH:
-            case MANDELBROT_ZOOM:
+        switch (applicationStateMachine.getState().getFractalSetType()) {
+            case MANDELBROT_SET:
                 return gaussianNumberPlaneMandelbrot.getZoomLevel();
-            case JULIA_SET_SWITCH:
-            case JULIA_SET_ZOOM:
+            case JULIA_SET:
                 return gaussianNumberPlaneBaseJulia.getZoomLevel();
             default:
                 return "ERR";

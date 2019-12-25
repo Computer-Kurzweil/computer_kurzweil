@@ -19,12 +19,10 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
 
     private final ZoomLevel zoomLevel;
 
-    private final FractalSetType fractalSetType = FractalSetType.JULIA_SET;
-
     private ComplexNumber complexNumberForJuliaSetC;
 
     public GaussianNumberPlaneBaseJuliaImpl(ApplicationContext ctx) {
-        super(ctx);
+        super(ctx,FractalSetType.JULIA_SET);
         zoomLevel = new ZoomLevel();
     }
 
