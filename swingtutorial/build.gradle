@@ -18,6 +18,6 @@ dependencies {
 }
 
 application {
-  mainClassName = 'org.woehlke.simulation.tetris.TetrisApplication'
+  mainClassName = 'org.woehlke.swingtutorial.TutorialApplication'
 }
 

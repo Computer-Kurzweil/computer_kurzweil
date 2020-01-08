@@ -1,4 +1,6 @@
-
+/*
+ * User Manual:  https://docs.gradle.org/current/userguide/userguide.html
+ */
 plugins {
     id 'base'        // https://docs.gradle.org/current/userguide/base_plugin.html
     id 'java'        // https://docs.gradle.org/current/userguide/java_plugin.html
@@ -16,5 +18,7 @@ dependencies {
 }
 
 application {
-    mainClassName = 'org.woehlke.simulation.cyclic.cellular.automaton.CyclicCellularAutomatonApplication'
+  mainClassName = 'org.woehlke.simulation.evolution.SimulatedEvolutionApplication'
 }
+
+
