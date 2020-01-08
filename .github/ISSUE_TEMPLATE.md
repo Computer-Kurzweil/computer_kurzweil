@@ -1,5 +1,5 @@
 <!--
-Thanks for raising a simulated-evolution issue. What sort of issue are you raising?
+Thanks for raising a computer_kurzweil issue. What sort of issue are you raising?
 
 Question
 
