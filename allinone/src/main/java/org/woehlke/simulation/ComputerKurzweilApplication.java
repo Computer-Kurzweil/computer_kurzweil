@@ -36,10 +36,7 @@ public class ComputerKurzweilApplication {
         System.out.println(e.getLocalizedMessage());
     }
   }
-
-
-
-
+  
   /**
    * Starting the Desktop Application.
    *
