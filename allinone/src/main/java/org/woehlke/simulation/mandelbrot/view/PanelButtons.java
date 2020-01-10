@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 
 import javax.swing.*;
@@ -20,6 +21,7 @@ import static org.woehlke.simulation.mandelbrot.control.state.RadioButtons.RADIO
  *
  * Created by tw on 16.12.2019.
  */
+@Component
 public class PanelButtons extends JPanel {
 
     private JRadioButton radioButtonsSwitch;

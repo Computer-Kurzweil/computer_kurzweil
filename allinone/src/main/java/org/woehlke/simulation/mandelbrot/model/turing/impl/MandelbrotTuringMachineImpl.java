@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
+import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
  * Date: 28.08.13
  * Time: 12:39
  */
+@Service
 public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
 
     private GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;

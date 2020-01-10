@@ -1,10 +1,11 @@
 package org.woehlke.simulation.mandelbrot.control.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThead;
-import org.woehlke.simulation.mandelbrot.control.state.ApplicationStateMachine;
-import org.woehlke.simulation.mandelbrot.control.state.impl.ApplicationStateMachineImpl;
+import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
@@ -23,26 +24,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 
+@Component
 public class ApplicationContextImpl implements ApplicationContext {
 
-    private final Config config;
 
     private Rectangle rectangleBounds;
     private Dimension dimensionSize;
-
-
     private PanelButtons panelButtons;
+
     private final PanelSubtitle panelSubtitle;
-
-    private final ApplicationFrame frame;
     private final ApplicationCanvas canvas;
-
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-
     private final MandelbrotTuringMachine mandelbrotTuringMachine;
     private final ApplicationStateMachine applicationStateMachine;
+    private final ApplicationFrame frame;
+    private final Config config;
 
+    @Autowired
     public ApplicationContextImpl(Config config, ApplicationFrame frame) {
         this.config = config;
         this.frame = frame;

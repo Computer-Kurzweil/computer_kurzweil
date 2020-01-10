@@ -1,5 +1,13 @@
 package org.woehlke.simulation.mandelbrot.config;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,113 +23,112 @@ import java.util.logging.Logger;
  *
  * Created by tw on 16.12.2019.
  */
+@Configuration
+@ConfigurationProperties("org.woehlke.simulation.mandelbrot.config")
+@Valid
+@Validated
 public class Config implements ConfigProperties {
 
-    private String title;
-    private String subtitle;
-    private String copyright;
-    private int width;
-    private int height;
+    @NotBlank private String title;
+    @NotBlank private String subtitle;
+    @NotBlank private String copyright;
+    @NotNull private Integer width;
+    @NotNull private Integer height;
 
-    private String buttonsLabel;
-    private String buttonsSwitch;
-    private String buttonsZoom;
+    @NotBlank private String buttonsLabel;
+    @NotBlank private String buttonsSwitch;
+    @NotBlank private String buttonsZoom;
 
-    private String buttonsZoomLabel;
-    private String buttonsZoomOut;
+    @NotBlank private String buttonsZoomLabel;
+    @NotBlank private String buttonsZoomOut;
 
-    private Boolean logDebug;
-
-    public static Logger log = Logger.getLogger(Config.class.getName());
-
-    public Config() {
-        String appPropertiesFile = (APP_PROPERTIES_FILENAME);
-        Properties prop = new Properties();
-        try (
-            InputStream input = new FileInputStream(appPropertiesFile)) {
-            prop.load(input);
-            title = prop.getProperty(KEY_TITLE,TITLE);
-            subtitle = prop.getProperty(KEY_SUBTITLE,SUBTITLE);
-            copyright = prop.getProperty(KEY_COPYRIGHT,COPYRIGHT);
-            String widthString = prop.getProperty(KEY_WIDTH,WIDTH);
-            String heightString = prop.getProperty(KEY_HEIGHT,HEIGHT);
-            width = Integer.parseInt(widthString);
-            height = Integer.parseInt(heightString);
-            buttonsLabel = prop.getProperty(KEY_BUTTONS_LABEL,BUTTONS_LABEL);
-            buttonsSwitch = prop.getProperty(KEY_BUTTONS_SWITCH,BUTTONS_SWITCH);
-            buttonsZoomLabel = prop.getProperty(KEY_BUTTONS_ZOOM_LABEL,BUTTONS_ZOOM_LABEL);
-            buttonsZoom = prop.getProperty(KEY_BUTTONS_ZOOM,BUTTONS_ZOOM);
-            buttonsZoomOut = prop.getProperty(KEY_BUTTONS_ZOOMOUT,BUTTONS_ZOOMOUT);
-            String logDebugString = prop.getProperty(KEY_DEBUG_LOG,DEBUG_LOG);
-            logDebug = Boolean.parseBoolean(logDebugString);
-            if(logDebug){
-                for( Object key : prop.keySet()){
-                    log.info(prop.get(key).toString());
-                }
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getLocalizedMessage());
-        }
-    }
+    @NotNull private Boolean logDebug;
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getSubtitle() {
         return subtitle;
     }
 
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
     public String getCopyright() {
         return copyright;
     }
 
-    public int getWidth() {
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
+    }
+
+    public Integer getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    public Integer getHeight() {
         return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
     public String getButtonsLabel() {
         return buttonsLabel;
     }
 
+    public void setButtonsLabel(String buttonsLabel) {
+        this.buttonsLabel = buttonsLabel;
+    }
+
     public String getButtonsSwitch() {
         return buttonsSwitch;
+    }
+
+    public void setButtonsSwitch(String buttonsSwitch) {
+        this.buttonsSwitch = buttonsSwitch;
     }
 
     public String getButtonsZoom() {
         return buttonsZoom;
     }
 
-    public String getButtonsZoomOut() {
-        return buttonsZoomOut;
-    }
-
-    public Boolean getLogDebug() {
-        return logDebug;
+    public void setButtonsZoom(String buttonsZoom) {
+        this.buttonsZoom = buttonsZoom;
     }
 
     public String getButtonsZoomLabel() {
         return buttonsZoomLabel;
     }
 
-    @Override
-    public String toString() {
-        return "Config{" +
-            "title='" + title + '\'' +
-            ", subtitle='" + subtitle + '\'' +
-            ", copyright='" + copyright + '\'' +
-            ", width=" + width +
-            ", height=" + height +
-            ", buttonsLabel='" + buttonsLabel + '\'' +
-            ", buttonsSwitch='" + buttonsSwitch + '\'' +
-            ", buttonsZoom='" + buttonsZoom + '\'' +
-            ", buttonsZoomLabel='" + buttonsZoomLabel + '\'' +
-            ", buttonsZoomOut='" + buttonsZoomOut + '\'' +
-            ", logDebug=" + logDebug +
-            '}';
+    public void setButtonsZoomLabel(String buttonsZoomLabel) {
+        this.buttonsZoomLabel = buttonsZoomLabel;
+    }
+
+    public String getButtonsZoomOut() {
+        return buttonsZoomOut;
+    }
+
+    public void setButtonsZoomOut(String buttonsZoomOut) {
+        this.buttonsZoomOut = buttonsZoomOut;
+    }
+
+    public Boolean getLogDebug() {
+        return logDebug;
+    }
+
+    public void setLogDebug(Boolean logDebug) {
+        this.logDebug = logDebug;
     }
 }

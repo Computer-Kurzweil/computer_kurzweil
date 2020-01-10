@@ -1,6 +1,8 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
-public class WorldDimensionsComplex {
+import java.io.Serializable;
+
+public class WorldDimensionsComplex implements Serializable {
 
     private ComplexNumber northWest;
     private ComplexNumber southEast;
@@ -10,5 +12,17 @@ public class WorldDimensionsComplex {
         this.northWest = northWest;
         this.southEast = southEast;
         this.center = center;
+    }
+
+    public ComplexNumber getNorthWest() {
+        return northWest;
+    }
+
+    public ComplexNumber getSouthEast() {
+        return southEast;
+    }
+
+    public ComplexNumber getCenter() {
+        return center;
     }
 }

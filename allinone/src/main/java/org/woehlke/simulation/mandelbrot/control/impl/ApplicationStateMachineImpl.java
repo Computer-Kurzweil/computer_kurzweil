@@ -1,8 +1,9 @@
-package org.woehlke.simulation.mandelbrot.control.state.impl;
+package org.woehlke.simulation.mandelbrot.control.impl;
 
+import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
-import org.woehlke.simulation.mandelbrot.control.state.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
 
 import java.util.logging.Logger;
 
@@ -17,6 +18,7 @@ import static org.woehlke.simulation.mandelbrot.control.state.ApplicationState.*
  *
  * Created by tw on 16.12.2019.
  */
+@Service
 public class ApplicationStateMachineImpl implements ApplicationStateMachine {
 
     private ApplicationState applicationState;

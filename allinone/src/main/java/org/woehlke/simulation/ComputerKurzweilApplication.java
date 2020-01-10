@@ -2,8 +2,19 @@ package org.woehlke.simulation;
 
 import static org.woehlke.simulation.evolution.config.GuiConfigDefault.TITLE;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.integration.config.EnableIntegration;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
+import org.woehlke.simulation.mandelbrot.config.Config;
+
+import java.awt.*;
 
 /**
  * Class with main Method for Starting the Desktop Application.
@@ -24,27 +35,54 @@ import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
  * <p>
  * &copy; 2006 - 2008 Thomas Woehlke.
  */
+@SpringBootApplication
+@Configuration
+@EnableIntegration
+@Import({
+    Config.class
+})
 public class ComputerKurzweilApplication {
 
-  private ComputerKurzweilApplication() {
-    ObjectRegistry ctx = new ObjectRegistry();
-    SimulatedEvolutionFrame frame = new SimulatedEvolutionFrame(ctx);
-    ctx.setFrame(frame);
-    try {
-      ctx.getController().start();
-    } catch (IllegalThreadStateException e){
-        System.out.println(e.getLocalizedMessage());
+    private final ObjectRegistry ctx;
+
+    private final SimulatedEvolutionFrame simulatedEvolutionFrame;
+
+
+        @Autowired
+      private ComputerKurzweilApplication(ObjectRegistry ctx, SimulatedEvolutionFrame simulatedEvolutionFrame) {
+        this.ctx = ctx;
+        this.simulatedEvolutionFrame = simulatedEvolutionFrame;
+        this.ctx.setFrame(this.simulatedEvolutionFrame);
+        try {
+            this.ctx.getController().start();
+        } catch (IllegalThreadStateException e){
+            System.out.println(e.getLocalizedMessage());
+        }
+      }
+
+    public void start(){
+        this.simulatedEvolutionFrame.showMe();
     }
-  }
-  
-  /**
-   * Starting the Desktop Application.
-   *
-   * @param args CLI Parameter.
-   */
-  public static void main(String[] args) {
-    ComputerKurzweilApplication application = new ComputerKurzweilApplication();
-    System.out.println(TITLE + ": Started the Desktop Application");
-  }
+
+    public void exit() {
+        this.simulatedEvolutionFrame.dispose();
+    }
+
+    /**
+     * Starting the Desktop Application.
+     *
+     * @param args CLI Parameter.
+     */
+    public static void main(String[] args) {
+        System.out.println(TITLE + ": Started the Desktop Application");
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(ComputerKurzweilApplication.class)
+            .web(WebApplicationType.NONE)
+            .headless(false)
+            .run(args);
+        EventQueue.invokeLater(() -> {
+            ComputerKurzweilApplication ex = ctx.getBean(ComputerKurzweilApplication.class);
+            ex.start();
+        });
+    }
 
 }

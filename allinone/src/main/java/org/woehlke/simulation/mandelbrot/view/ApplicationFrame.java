@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.impl.ApplicationContextImpl;
@@ -16,6 +17,7 @@ import java.awt.image.ImageObserver;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Component
 public class ApplicationFrame extends JFrame implements
         ImageObserver,
         MenuContainer,

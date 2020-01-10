@@ -9,24 +9,9 @@ import java.beans.Transient;
  */
 public class WorldConfig implements WorldConfigDefault {
 
-  /**
-   * TODO write doc.
-   */
   private final int width;
-
-  /**
-   * TODO write doc.
-   */
   private final int height;
-
-  /**
-   * TODO write doc.
-   */
   private final int scale;
-
-  /**
-   * Start with 20 Cells.
-   */
   private final int initialPopulation;
 
   public WorldConfig() {

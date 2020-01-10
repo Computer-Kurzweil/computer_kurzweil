@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.mandelbrot.config.Config;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ import java.awt.*;
  *
  * Created by tw on 16.12.2019.
  */
+@Component
 public class PanelSubtitle extends JPanel {
 
   public PanelSubtitle(Config config) {

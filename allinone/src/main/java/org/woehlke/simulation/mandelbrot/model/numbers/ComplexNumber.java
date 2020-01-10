@@ -1,5 +1,7 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -9,7 +11,7 @@ package org.woehlke.simulation.mandelbrot.model.numbers;
  *
  * Created by tw on 18.08.15.
  */
-public class ComplexNumber {
+public class ComplexNumber implements Serializable {
 
     private final double real;
     private final double img;

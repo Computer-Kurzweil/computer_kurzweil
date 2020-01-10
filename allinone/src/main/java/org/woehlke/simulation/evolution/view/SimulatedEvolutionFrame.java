@@ -1,5 +1,7 @@
 package org.woehlke.simulation.evolution.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.GuiConfigDefault;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
@@ -28,6 +30,7 @@ import java.awt.image.ImageObserver;
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
+@Component
 public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
   MenuContainer,
   GuiConfigDefault {
@@ -54,6 +57,7 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
 
   private final ObjectRegistry ctx;
 
+  @Autowired
   public SimulatedEvolutionFrame(ObjectRegistry ctx) {
     super(ctx.getGuiConfig().getTitle());
     this.ctx=ctx;

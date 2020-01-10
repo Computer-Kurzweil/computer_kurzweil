@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ import java.awt.*;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
+@Component
 public class ApplicationCanvas extends JComponent {
 
     private final ApplicationContext ctx;

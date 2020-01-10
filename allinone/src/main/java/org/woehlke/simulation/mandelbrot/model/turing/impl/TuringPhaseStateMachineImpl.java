@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
+import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.state.TuringPhase;
 
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
  *
  * Created by tw on 16.12.2019.
  */
+@Service
 public class TuringPhaseStateMachineImpl implements TuringPhaseStateMachine {
 
     private TuringPhase turingTuringPhase;

@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
+import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
@@ -11,13 +12,14 @@ import java.util.Deque;
 import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startCenterForMandelbrot;
 import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
+@Service
 public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseImpl
     implements GaussianNumberPlaneMandelbrot {
 
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
 
     private final ZoomLevel zoomLevel;
-    
+
     public GaussianNumberPlaneMandelbrotImpl(ApplicationContext ctx) {
         super(ctx,FractalSetType.MANDELBROT_SET);
         zoomLevel = new ZoomLevel();

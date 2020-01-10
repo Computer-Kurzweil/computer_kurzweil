@@ -2,8 +2,9 @@ package org.woehlke.simulation.mandelbrot.model.numbers;
 
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class CellStatus {
+public class CellStatus implements Serializable {
 
     public final static int YET_UNCOMPUTED = -1;
     public final static int MAX_ITERATIONS = 32;

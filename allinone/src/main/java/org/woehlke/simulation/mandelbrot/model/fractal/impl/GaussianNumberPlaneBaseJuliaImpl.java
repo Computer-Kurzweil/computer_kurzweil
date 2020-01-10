@@ -1,6 +1,7 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 
+import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
@@ -12,6 +13,7 @@ import java.util.Deque;
 import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startCenterForJulia;
 import static org.woehlke.simulation.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
+@Service
 public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImpl
     implements GaussianNumberPlaneBaseJulia {
 

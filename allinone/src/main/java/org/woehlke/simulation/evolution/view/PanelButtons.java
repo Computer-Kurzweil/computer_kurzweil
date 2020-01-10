@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.view;
 
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 import javax.swing.JButton;
@@ -18,6 +19,7 @@ import static org.woehlke.simulation.evolution.config.GuiConfigDefault.BUTTON_TO
 /**
  * TODO write doc.
  */
+@Component
 public class PanelButtons extends JPanel implements ActionListener {
 
   private final JButton buttonFoodPerDayIncrease;

@@ -1,39 +1,14 @@
 package org.woehlke.simulation.evolution.config;
 
-/**
- * TODO write doc.
- */
+
 public class GuiConfig implements GuiConfigDefault {
 
-  /**
-   * TODO write doc.
-   */
   private final String title;
-
-  /**
-   * TODO write doc.
-   */
   private final String subtitle;
-
-  /**
-   * TODO write doc.
-   */
   private final String footer;
-
-  /**
-   * TODO write doc.
-   */
-  private final int scale;
-
-  /**
-   * TODO write doc.
-   */
-  private final int width;
-
-  /**
-   * TODO write doc.
-   */
-  private final int height;
+  private final Integer scale;
+  private final Integer width;
+  private final Integer height;
 
   public GuiConfig() {
     this.title = TITLE;

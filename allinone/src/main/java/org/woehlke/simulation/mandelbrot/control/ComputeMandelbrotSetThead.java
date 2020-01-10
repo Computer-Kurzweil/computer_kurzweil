@@ -1,11 +1,16 @@
 package org.woehlke.simulation.mandelbrot.control;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.logging.Logger;
 
+@Component
 public class ComputeMandelbrotSetThead extends Thread implements Runnable {
 
     private final ApplicationContext ctx;
 
+    @Autowired
     public ComputeMandelbrotSetThead(ApplicationContext ctx) {
         super("ComputeMandelbrotSetThread");
         this.ctx = ctx;
@@ -14,19 +19,20 @@ public class ComputeMandelbrotSetThead extends Thread implements Runnable {
     public void run() {
         ctx.getMandelbrotTuringMachine().start();
         ctx.showMe();
-        log.info(" < ");
+        log.info(" ( ");
         while( ! ctx.getMandelbrotTuringMachine().isFinished()){
-            //log.info(".");
+            log.info(".");
             ctx.getMandelbrotTuringMachine().step();
+            log.info("[");
             ctx.getCanvas().repaint();
-            //log.info("|");
+            log.info("]");
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
         }
-        log.info(" > ");
+        log.info(" ) ");
         ctx.showMe();
     }
 

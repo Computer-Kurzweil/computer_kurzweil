@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.control;
 
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.GuiConfig;
 import org.woehlke.simulation.evolution.config.StatisticsConfig;
 import org.woehlke.simulation.evolution.config.WorldConfig;
@@ -12,29 +13,29 @@ import org.woehlke.simulation.evolution.view.*;
 import java.util.Date;
 import java.util.Random;
 
+@Component
 public class ObjectRegistry {
 
-  private World world;
-  private WorldCanvas canvas;
-  private SimulatedEvolutionFrame frame;
-  private ControllerThreadDesktop controller;
-  private LifeCycleCountContainer statistics;
-  private WorldMapFood worldMapFood;
-
+  private final World world;
+  private final WorldCanvas canvas;
+  private final ControllerThreadDesktop controller;
+  private final LifeCycleCountContainer statistics;
+  private final WorldMapFood worldMapFood;
   private final PanelSubtitle panelSubtitle;
   private final PanelCopyright panelCopyright;
   private final PanelButtons panelButtons;
   private final PanelLifeCycleStatus panelLifeCycleStatus;
-
   private final GuiConfig guiConfig;
   private final StatisticsConfig statisticsConfig;
   private final WorldConfig worldConfig;
   private final WorldMapFoodConfig worldMapFoodConfig;
 
+  private SimulatedEvolutionFrame frame;
+
   /**
    * Random Generator used for placing food, coming from another Object.
    */
-  private Random random;
+  private final Random random;
 
   public ObjectRegistry() {
     long seed = new Date().getTime();
