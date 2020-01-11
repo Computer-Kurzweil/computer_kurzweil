@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Random;
 
 @Component
-public class ObjectRegistry {
+public class SimulatedEvolutionContext {
 
   /**
    * Random Generator used for placing food.
@@ -20,7 +20,7 @@ public class ObjectRegistry {
   private boolean gardenOfEdenEnabled;
 
   @Autowired
-  public ObjectRegistry(SimulatedEvolutionProperties simulatedEvolutionProperties) {
+  public SimulatedEvolutionContext(SimulatedEvolutionProperties simulatedEvolutionProperties) {
       this.foodPerDay = simulatedEvolutionProperties.getFoodPerDay();
       this.gardenOfEdenEnabled = simulatedEvolutionProperties.getGardenOfEdenEnabled();
       long seed = new Date().getTime();

@@ -2,8 +2,8 @@ package org.woehlke.simulation.evolution.control;
 
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.model.World;
-import org.woehlke.simulation.evolution.model.WorldMapFood;
+import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
+import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldMapFood;
 import org.woehlke.simulation.evolution.view.*;
 
 import java.awt.Frame;
@@ -26,7 +26,7 @@ import java.awt.event.WindowStateListener;
  * Time: 00:36:20
  */
 @Component
-public class ControllerThreadDesktop extends Thread implements Runnable,
+public class SimulatedEvolutionController extends Thread implements Runnable,
   WindowListener,
   WindowFocusListener,
   WindowStateListener {
@@ -34,23 +34,14 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
     private SimulatedEvolutionFrame frame;
 
     private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-    private final ObjectRegistry objectRegistry;
+    private final SimulatedEvolutionContext simulatedEvolutionContext;
 
-    private final World world;
-    private final WorldCanvas canvas;
-    private final WorldMapFood worldMapFood;
-    private final PanelLifeCycleStatus panelLifeCycleStatus;
-    /*
-    private final ControllerThreadDesktop controller;
-    private final LifeCycleCountContainer statistics;
+    private final SimulatedEvolutionWorld simulatedEvolutionWorld;
+    private final SimulatedEvolutionWorldCanvas canvas;
+    private final SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood;
+    private final SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics;
 
-    private final PanelSubtitle panelSubtitle;
-    private final PanelCopyright panelCopyright;
-    private final PanelButtons panelButtons;
-
-*/
-
-        /**
+    /**
    * Time to Wait in ms.
    */
   protected final int TIME_TO_WAIT = 100;
@@ -61,13 +52,13 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
   private Boolean mySemaphore;
 
 
-  public ControllerThreadDesktop(SimulatedEvolutionProperties simulatedEvolutionProperties, ObjectRegistry objectRegistry, World world, WorldCanvas canvas, WorldMapFood worldMapFood, PanelLifeCycleStatus panelLifeCycleStatus) {
+  public SimulatedEvolutionController(SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionContext simulatedEvolutionContext, SimulatedEvolutionWorld simulatedEvolutionWorld, SimulatedEvolutionWorldCanvas canvas, SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood, SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics) {
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      this.objectRegistry = objectRegistry;
-      this.world = world;
+      this.simulatedEvolutionContext = simulatedEvolutionContext;
+      this.simulatedEvolutionWorld = simulatedEvolutionWorld;
       this.canvas = canvas;
-      this.worldMapFood = worldMapFood;
-      this.panelLifeCycleStatus = panelLifeCycleStatus;
+      this.simulatedEvolutionWorldMapFood = simulatedEvolutionWorldMapFood;
+      this.simulatedEvolutionPanelStatistics = simulatedEvolutionPanelStatistics;
       this.mySemaphore = Boolean.TRUE;
   }
 
@@ -78,7 +69,7 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();
       }
-        world.letLivePopulation();
+        simulatedEvolutionWorld.letLivePopulation();
         canvas.repaint();
       try {
         sleep(TIME_TO_WAIT);
@@ -148,7 +139,7 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
   }
 
   public void updateLifeCycleCount() {
-      panelLifeCycleStatus.updateLifeCycleCount();
+      simulatedEvolutionPanelStatistics.updateTextFields();
   }
 
   public void exit() {
@@ -158,16 +149,16 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
   }
 
   public void increaseFoodPerDay() {
-      objectRegistry.increaseFoodPerDay();
+      simulatedEvolutionContext.increaseFoodPerDay();
   }
 
   public void decreaseFoodPerDay() {
-      objectRegistry.decreaseFoodPerDay();
+      simulatedEvolutionContext.decreaseFoodPerDay();
   }
 
   public void toggleGardenOfEden() {
-    objectRegistry.toggleGardenOfEden();
-    worldMapFood.toggleGardenOfEden();
+    simulatedEvolutionContext.toggleGardenOfEden();
+    simulatedEvolutionWorldMapFood.toggleGardenOfEden();
   }
 
   public void showStatistic() {

@@ -1,9 +1,11 @@
-package org.woehlke.simulation.evolution.model;
+package org.woehlke.simulation.evolution.model.statistics;
+
+import org.woehlke.simulation.evolution.model.cell.LifeCycleStatus;
 
 /**
  * TODO write doc.
  */
-public class LifeCycleCount {
+public class SimulatedEvolutionWorldStatistics {
 
   /**
    * TODO write doc.

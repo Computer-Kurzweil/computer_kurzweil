@@ -3,7 +3,7 @@ package org.woehlke.simulation.evolution.view;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -31,8 +31,7 @@ import java.awt.image.ImageObserver;
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
 @Component
-public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
-  MenuContainer {
+public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, MenuContainer {
 
   /**
    * TODO write doc.
@@ -54,36 +53,36 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
     toFront();
   }
 
-    private final ObjectRegistry ctx;
+    private final SimulatedEvolutionContext ctx;
     private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-    private final PanelSubtitle panelSubtitle;
-    private final WorldCanvas worldCanvas;
-    private final PanelCopyright panelCopyright;
-    private final PanelLifeCycleStatus panelLifeCycleStatus;
-    private final PanelButtons panelButtons;
+    private final SimulatedEvolutionPanelSubtitle simulatedEvolutionPanelSubtitle;
+    private final SimulatedEvolutionWorldCanvas simulatedEvolutionWorldCanvas;
+    private final SimulatedEvolutionPanelCopyright simulatedEvolutionPanelCopyright;
+    private final SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics;
+    private final SimulatedEvolutionPanelButtons simulatedEvolutionPanelButtons;
 
 
     @Autowired
-  public SimulatedEvolutionFrame(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, PanelSubtitle panelSubtitle, WorldCanvas worldCanvas, PanelCopyright panelCopyright, PanelLifeCycleStatus panelLifeCycleStatus, PanelButtons panelButtons) {
+  public SimulatedEvolutionFrame(SimulatedEvolutionContext ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionPanelSubtitle simulatedEvolutionPanelSubtitle, SimulatedEvolutionWorldCanvas simulatedEvolutionWorldCanvas, SimulatedEvolutionPanelCopyright simulatedEvolutionPanelCopyright, SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics, SimulatedEvolutionPanelButtons simulatedEvolutionPanelButtons) {
     super(simulatedEvolutionProperties.getTitle());
     this.ctx=ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      this.panelSubtitle = panelSubtitle;
-      this.worldCanvas = worldCanvas;
-      this.panelCopyright = panelCopyright;
-      this.panelLifeCycleStatus = panelLifeCycleStatus;
-      this.panelButtons = panelButtons;
+      this.simulatedEvolutionPanelSubtitle = simulatedEvolutionPanelSubtitle;
+      this.simulatedEvolutionWorldCanvas = simulatedEvolutionWorldCanvas;
+      this.simulatedEvolutionPanelCopyright = simulatedEvolutionPanelCopyright;
+      this.simulatedEvolutionPanelStatistics = simulatedEvolutionPanelStatistics;
+      this.simulatedEvolutionPanelButtons = simulatedEvolutionPanelButtons;
       JSeparator separator1 = new JSeparator();
     JSeparator separator2 = new JSeparator();
     BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
     rootPane.setLayout(layout);
-    rootPane.add(  panelSubtitle);
-    rootPane.add(worldCanvas);
-    rootPane.add(  panelCopyright);
+    rootPane.add(simulatedEvolutionPanelSubtitle);
+    rootPane.add(simulatedEvolutionWorldCanvas);
+    rootPane.add(simulatedEvolutionPanelCopyright);
     rootPane.add(separator1);
-    rootPane.add(panelLifeCycleStatus);
+    rootPane.add(simulatedEvolutionPanelStatistics);
     rootPane.add(separator2);
-    rootPane.add(this.panelButtons);
+    rootPane.add(this.simulatedEvolutionPanelButtons);
     pack();
     showMe();
   }

@@ -12,12 +12,12 @@ import java.awt.FlowLayout;
  * TODO write doc.
  */
 @Component
-public class PanelSubtitle extends JPanel {
+public class SimulatedEvolutionPanelSubtitle extends JPanel {
 
   private final JLabel subtitleLabel;
 
   @Autowired
-  public PanelSubtitle(SimulatedEvolutionProperties simulatedEvolutionProperties) {
+  public SimulatedEvolutionPanelSubtitle(SimulatedEvolutionProperties simulatedEvolutionProperties) {
     this.subtitleLabel = new JLabel(simulatedEvolutionProperties.getSubtitle());
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);

@@ -12,13 +12,13 @@ import java.awt.FlowLayout;
  */
 
 @Component
-public class PanelCopyright extends JPanel {
+public class SimulatedEvolutionPanelCopyright extends JPanel {
 
   private final FlowLayout layout = new FlowLayout();
 
   private final JLabel copyrightLabel;
 
-  public PanelCopyright(SimulatedEvolutionProperties simulatedEvolutionProperties) {
+  public SimulatedEvolutionPanelCopyright(SimulatedEvolutionProperties simulatedEvolutionProperties) {
     this.copyrightLabel = new JLabel(simulatedEvolutionProperties.getFooter());
     this.setLayout(this.layout);
     this.layout.setAlignment(FlowLayout.CENTER);

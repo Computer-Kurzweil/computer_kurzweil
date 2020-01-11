@@ -1,9 +1,11 @@
-package org.woehlke.simulation.evolution.model;
+package org.woehlke.simulation.evolution.model.world;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.Point;
+import org.woehlke.simulation.evolution.model.cell.LifeCycle;
 
 
 /**
@@ -20,7 +22,7 @@ import org.woehlke.simulation.evolution.control.ObjectRegistry;
  * Time: 12:37
  */
 @Component
-public class WorldMapFood {
+public class SimulatedEvolutionWorldMapFood {
 
   /**
    * Grid of World where every Place can have food.
@@ -28,12 +30,12 @@ public class WorldMapFood {
   private int[][] worldMapFood;
 
   private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-  private final ObjectRegistry objectRegistry;
+  private final SimulatedEvolutionContext simulatedEvolutionContext;
 
   @Autowired
-  public WorldMapFood(SimulatedEvolutionProperties simulatedEvolutionProperties, ObjectRegistry objectRegistry) {
+  public SimulatedEvolutionWorldMapFood(SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionContext simulatedEvolutionContext) {
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      this.objectRegistry = objectRegistry;
+      this.simulatedEvolutionContext = simulatedEvolutionContext;
       int x = simulatedEvolutionProperties.getWorldDimensions().getX();
       int y = simulatedEvolutionProperties.getWorldDimensions().getY();
       worldMapFood = new int[x][y];
@@ -46,8 +48,8 @@ public class WorldMapFood {
     int food = 0;
     while (food < simulatedEvolutionProperties.getFoodPerDay()) {
       food++;
-      int posX = objectRegistry.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getX());
-      int posY = objectRegistry.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getY());
+      int posX = simulatedEvolutionContext.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getX());
+      int posY = simulatedEvolutionContext.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getY());
       posX *= Integer.signum(posX);
       posY *= Integer.signum(posY);
       worldMapFood[posX][posY]++;
@@ -60,8 +62,8 @@ public class WorldMapFood {
       int startY = ( simulatedEvolutionProperties.getWorldDimensions().getY() / gardenOfEdenParts ) * gardenOfEdenPartsPadding;
       while (food < simulatedEvolutionProperties.getGardenOfEdenFoodPerDay()) {
         food++;
-        int posX = objectRegistry.getRandom().nextInt(startX);
-        int posY = objectRegistry.getRandom().nextInt(startY);
+        int posX = simulatedEvolutionContext.getRandom().nextInt(startX);
+        int posY = simulatedEvolutionContext.getRandom().nextInt(startY);
         posX *= Integer.signum(posX);
         posY *= Integer.signum(posY);
         worldMapFood[posX + startX][posY + startY]++;

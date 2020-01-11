@@ -1,7 +1,8 @@
-package org.woehlke.simulation.evolution.model;
+package org.woehlke.simulation.evolution.model.cell;
+
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
 
 import java.util.List;
-import java.util.Random;
 import java.util.ArrayList;
 
 /**
@@ -28,22 +29,20 @@ public class CellCore {
   private final static int MAX_VALUE = 16;
   private final static int MAX_INITIAL_VALUE = 8;
 
-  /**
-   * Random Generator is set from outside by Constructor.
-   */
-  private Random random;
+  private final SimulatedEvolutionContext ctx;
 
-  public CellCore(Random random) {
+  public CellCore(final SimulatedEvolutionContext ctx) {
+      this.ctx=ctx;
     dna = new ArrayList<>();
-    this.random = random;
+
     for (int i = 0; i < Orientation.values().length; i++) {
-      int gen = random.nextInt() % MAX_INITIAL_VALUE;
+      int gen = ctx.getRandom().nextInt() % MAX_INITIAL_VALUE;
       dna.add(gen);
     }
   }
 
-  private CellCore(Random random, List<Integer> rna) {
-    this.random = random;
+  private CellCore(final SimulatedEvolutionContext ctx, List<Integer> rna) {
+    this.ctx=ctx;
     dna = new ArrayList<>();
     dna.addAll(rna);
   }
@@ -60,8 +59,8 @@ public class CellCore {
     for (Integer dnaBase : dna) {
       rna.add(dnaBase);
     }
-    CellCore child = new CellCore(random, rna);
-    int baseIndex = random.nextInt() % Orientation.values().length;
+    CellCore child = new CellCore(ctx, rna);
+    int baseIndex = ctx.getRandom().nextInt() % Orientation.values().length;
     if (baseIndex < MIN_VALUE) {
       baseIndex *= -1;
     }
@@ -124,7 +123,7 @@ public class CellCore {
       rna[i] = sum;
     }
     if (sumDna != 0) {
-      double val = Double.valueOf(random.nextInt(MAX_VALUE) ^ 2);
+      double val = Double.valueOf(ctx.getRandom().nextInt(MAX_VALUE) ^ 2);
       if (val < MIN_VALUE) {
         val *= -1;
       }

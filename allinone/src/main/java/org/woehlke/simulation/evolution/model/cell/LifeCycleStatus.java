@@ -1,8 +1,6 @@
-package org.woehlke.simulation.evolution.model;
+package org.woehlke.simulation.evolution.model.cell;
 
 import java.awt.Color;
-
-import static org.woehlke.simulation.evolution.config.GuiConfigColors.*;
 
 /**
  * The Status of the Cell's LifeCycle.
@@ -21,12 +19,12 @@ import static org.woehlke.simulation.evolution.config.GuiConfigColors.*;
  */
 public enum LifeCycleStatus {
 
-  YOUNG(COLOR_YOUNG),
-  YOUNG_AND_FAT(COLOR_YOUNG_AND_FAT),
-  FULL_AGE(COLOR_FULL_AGE),
-  HUNGRY(COLOR_HUNGRY),
-  OLD(COLOR_OLD),
-  DEAD(COLOR_DEAD);
+  YOUNG(java.awt.Color.BLUE),
+  YOUNG_AND_FAT(java.awt.Color.YELLOW),
+  FULL_AGE(java.awt.Color.RED),
+  HUNGRY(java.awt.Color.LIGHT_GRAY),
+  OLD(java.awt.Color.DARK_GRAY),
+  DEAD(java.awt.Color.BLACK);
 
   private Color color;
 

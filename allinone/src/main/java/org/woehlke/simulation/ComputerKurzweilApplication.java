@@ -8,8 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.integration.config.EnableIntegration;
-import org.woehlke.simulation.evolution.control.ControllerThreadDesktop;
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.mandelbrot.config.Config;
 
@@ -44,16 +43,16 @@ public class ComputerKurzweilApplication {
 
     private final SimulatedEvolutionFrame simulatedEvolutionFrame;
 
-    private final ControllerThreadDesktop controllerThreadDesktop;
+    private final SimulatedEvolutionController simulatedEvolutionController;
 
 
-        @Autowired
-      private ComputerKurzweilApplication(SimulatedEvolutionFrame simulatedEvolutionFrame, ControllerThreadDesktop controllerThreadDesktop) {
+    @Autowired
+      public ComputerKurzweilApplication(SimulatedEvolutionFrame simulatedEvolutionFrame, SimulatedEvolutionController simulatedEvolutionController) {
         this.simulatedEvolutionFrame = simulatedEvolutionFrame;
-            this.controllerThreadDesktop = controllerThreadDesktop;
-            this.controllerThreadDesktop.setFrame(this.simulatedEvolutionFrame);
+            this.simulatedEvolutionController = simulatedEvolutionController;
+            this.simulatedEvolutionController.setFrame(this.simulatedEvolutionFrame);
         try {
-            this.controllerThreadDesktop.start();
+            this.simulatedEvolutionController.start();
         } catch (IllegalThreadStateException e){
             System.out.println(e.getLocalizedMessage());
         }

@@ -2,10 +2,10 @@ package org.woehlke.simulation.evolution.view;
 
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
-import org.woehlke.simulation.evolution.model.Cell;
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.cell.Cell;
 import org.woehlke.simulation.evolution.model.Point;
-import org.woehlke.simulation.evolution.model.World;
+import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
@@ -13,8 +13,8 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.simulation.evolution.view.GuiConfigColors.COLOR_FOOD;
-import static org.woehlke.simulation.evolution.view.GuiConfigColors.COLOR_WATER;
+import static org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**
@@ -31,21 +31,21 @@ import static org.woehlke.simulation.evolution.view.GuiConfigColors.COLOR_WATER;
  * Time: 00:51:51
  */
 @Component
-public class WorldCanvas extends JComponent implements Serializable {
+public class SimulatedEvolutionWorldCanvas extends JComponent implements Serializable {
 
   private static final long serialVersionUID = -27002509360079509L;
 
   /**
    * Reference to the Data Model.
    */
-  private final ObjectRegistry ctx;
+  private final SimulatedEvolutionContext ctx;
     private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-    private final World world;
+    private final SimulatedEvolutionWorld simulatedEvolutionWorld;
 
-  public WorldCanvas(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, World world) {
+  public SimulatedEvolutionWorldCanvas(SimulatedEvolutionContext ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionWorld simulatedEvolutionWorld) {
     this.ctx = ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      this.world = world;
+      this.simulatedEvolutionWorld = simulatedEvolutionWorld;
       this.setBackground(COLOR_WATER.getColor());
     Dimension preferredSize = new Dimension(
         this.simulatedEvolutionProperties.getWorldDimensions().getWidth(),
@@ -68,12 +68,12 @@ public class WorldCanvas extends JComponent implements Serializable {
     graphics.setColor(COLOR_FOOD.getColor());
     for (int posY = 0; posY < height; posY++) {
       for (int posX = 0; posX < width; posX++) {
-        if (world.hasFood(posX, posY)) {
+        if (simulatedEvolutionWorld.hasFood(posX, posY)) {
           graphics.drawLine(posX, posY, posX, posY);
         }
       }
     }
-    List<Cell> population = world.getAllCells();
+    List<Cell> population = simulatedEvolutionWorld.getAllCells();
     for (Cell cell : population) {
       Point[] square = cell.getPosition().getNeighbourhood(this.simulatedEvolutionProperties.getWorldDimensions());
       graphics.setColor(cell.getLifeCycleStatus().getColor());

@@ -1,6 +1,6 @@
-package org.woehlke.simulation.evolution.model;
+package org.woehlke.simulation.evolution.model.cell;
 
-import org.woehlke.simulation.evolution.config.LifeCycleConfigDefault;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 
 /**
  * State of the Cell which monitors age and getting enough food.
@@ -18,7 +18,7 @@ import org.woehlke.simulation.evolution.config.LifeCycleConfigDefault;
  * Date: 04.02.2006
  * Time: 23:12:31
  */
-public class LifeCycle implements LifeCycleConfigDefault {
+public class LifeCycle {
 
   /**
    * Status of the LifeCycle is fat, age and hunger.
@@ -35,17 +35,21 @@ public class LifeCycle implements LifeCycleConfigDefault {
    */
   private int hunger;
 
-  public LifeCycle() {
-    hunger = 0;
+  private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+
+  public LifeCycle(SimulatedEvolutionProperties simulatedEvolutionProperties) {
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      hunger = 0;
     age = 0;
-    fat = FAT_AT_BIRTH;
+    fat = simulatedEvolutionProperties.getFatAtBirth();
   }
 
-  public LifeCycle(int fatAtBirth) {
-    hunger = 0;
-    age = 0;
-    fat = fatAtBirth;
-  }
+    public LifeCycle(int fat, SimulatedEvolutionProperties simulatedEvolutionProperties) {
+        this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+        hunger = 0;
+        age = 0;
+        this.fat = fat;
+    }
 
   /**
    * moving consumes food energy.
@@ -75,24 +79,24 @@ public class LifeCycle implements LifeCycleConfigDefault {
    * @return has enough age and fat for having sex.
    */
   public boolean isPregnant() {
-    return (age >= FULL_AGE) && (fat >= FAT_MINIMUM_FOR_SEX);
+    return (age >= simulatedEvolutionProperties.getFullAge()) && (fat >= simulatedEvolutionProperties.getFatMinimumForSex());
   }
 
   /**
    * @return died by hunger. found and eaten too few food and so too few fat.
    */
   public boolean isDead() {
-    return (hunger >= MAX_HUNGER) || (age >= MAX_AGE);
+    return (hunger >= simulatedEvolutionProperties.getMaxHunger()) || (age >= simulatedEvolutionProperties.getMaxAge());
   }
 
   /**
    * @param food eat the found food and add the energy to the cells fat.
    */
   public void eat(int food) {
-    if (fat + food * FAT_PER_FOOD <= MAX_FAT) {
-      fat += food * FAT_PER_FOOD;
+    if (fat + food * simulatedEvolutionProperties.getFoodPerDay() <= simulatedEvolutionProperties.getMaxFat()) {
+      fat += food * simulatedEvolutionProperties.getFatPerFood();
     } else {
-      fat = MAX_FAT;
+      fat = simulatedEvolutionProperties.getMaxFat();
     }
   }
 
@@ -104,17 +108,17 @@ public class LifeCycle implements LifeCycleConfigDefault {
     if (fat == 0 && hunger >= 0) {
       return LifeCycleStatus.HUNGRY;
     }
-    if (age < FULL_AGE) {
-      if (fat < FAT_MINIMUM_FOR_SEX) {
+    if (age < simulatedEvolutionProperties.getFullAge()) {
+      if (fat < simulatedEvolutionProperties.getFatMinimumForSex()) {
         return LifeCycleStatus.YOUNG;
       } else {
         return LifeCycleStatus.YOUNG_AND_FAT;
       }
     } else {
-      if (age < OLD_AGE) {
+      if (age < simulatedEvolutionProperties.getOldAge()) {
         return LifeCycleStatus.FULL_AGE;
       } else {
-        if (age < MAX_AGE) {
+        if (age < simulatedEvolutionProperties.getMaxAge()) {
           return LifeCycleStatus.OLD;
         } else {
           return LifeCycleStatus.DEAD;
@@ -122,4 +126,5 @@ public class LifeCycle implements LifeCycleConfigDefault {
       }
     }
   }
+
 }

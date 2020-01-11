@@ -1,4 +1,6 @@
-package org.woehlke.simulation.evolution.model;
+package org.woehlke.simulation.evolution.model.cell;
+
+import org.woehlke.simulation.evolution.model.Point;
 
 /**
  * Orientation defines the new position after next move.

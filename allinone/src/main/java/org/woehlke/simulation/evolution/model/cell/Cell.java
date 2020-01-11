@@ -1,4 +1,8 @@
-package org.woehlke.simulation.evolution.model;
+package org.woehlke.simulation.evolution.model.cell;
+
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.*;
 
 import java.util.Random;
 
@@ -54,21 +58,25 @@ public class Cell {
    */
   private Random random;
 
-  public Cell(Point worldDimensions, Point position, Random random) {
-    this.worldDimensions = new Point(worldDimensions);
+    private SimulatedEvolutionProperties simulatedEvolutionProperties;
+
+  public Cell(Point position, SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionContext ctx) {
+      this.simulatedEvolutionProperties=simulatedEvolutionProperties;
+      this.lifeCycle = new LifeCycle(simulatedEvolutionProperties);
+    this.worldDimensions = new Point(simulatedEvolutionProperties.getWorldDimensions());
     this.position = new Point(position);
-    this.random = random;
-    this.cellCore = new CellCore(random);
+    this.cellCore = new CellCore(ctx);
     this.worldDimensions.absoluteValue();
     this.position.setX(random.nextInt() % worldDimensions.getX());
     this.position.setY(random.nextInt() % worldDimensions.getY());
     this.position.absoluteValue();
     this.orientation = getRandomOrientation();
-    this.lifeCycle = new LifeCycle();
+
   }
 
-  private Cell(int fat, CellCore rna, Point position, Point worldDimensions, Random random) {
-    lifeCycle = new LifeCycle(fat);
+  private Cell(int fat, CellCore rna, Point position, Point worldDimensions, Random random, SimulatedEvolutionProperties simulatedEvolutionProperties) {
+      this.simulatedEvolutionProperties=simulatedEvolutionProperties;
+      this.lifeCycle = new LifeCycle(fat, simulatedEvolutionProperties);
     this.worldDimensions = new Point(worldDimensions);
     this.position = new Point(position);
     this.random = random;
@@ -115,7 +123,7 @@ public class Cell {
   public Cell performReproductionByCellDivision() {
     CellCore rna = cellCore.performMitosis();
     lifeCycle.haveSex();
-    Cell child = new Cell(lifeCycle.getFat(), rna, position, worldDimensions, random);
+    Cell child = new Cell(lifeCycle.getFat(), rna, position, worldDimensions, random, this.simulatedEvolutionProperties);
     return child;
   }
 
