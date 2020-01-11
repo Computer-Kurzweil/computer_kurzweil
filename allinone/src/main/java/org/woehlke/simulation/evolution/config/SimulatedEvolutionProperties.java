@@ -21,7 +21,6 @@ public class SimulatedEvolutionProperties {
     @NotBlank private String title;
     @NotBlank private String subtitle;
     @NotBlank private String footer;
-    @NotNull private Integer scale;
     @NotNull private Integer width;
     @NotNull private Integer height;
     @NotNull private Integer initialPopulation;
@@ -69,8 +68,8 @@ public class SimulatedEvolutionProperties {
     @Transient
     public Point getWorldDimensions() {
         return new Point(
-            this.getWidth() * this.getScale(),
-            this.getHeight() * this.getScale()
+            this.getWidth(),
+            this.getHeight()
         );
     }
 
@@ -96,14 +95,6 @@ public class SimulatedEvolutionProperties {
 
     public void setFooter(String footer) {
         this.footer = footer;
-    }
-
-    public Integer getScale() {
-        return scale;
-    }
-
-    public void setScale(Integer scale) {
-        this.scale = scale;
     }
 
     public Integer getWidth() {
