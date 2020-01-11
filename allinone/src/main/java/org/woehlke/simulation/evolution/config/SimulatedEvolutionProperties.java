@@ -48,6 +48,7 @@ public class SimulatedEvolutionProperties {
     @NotBlank private String buttonFoodPerDayDecrease;
     @NotBlank private String buttonToggleGardenOfEden;
 
+    @NotBlank private String panelPopulationStatistics;
     @NotBlank private String panelFood;
     @NotBlank private String panelGardenOfEden;
 
@@ -371,5 +372,13 @@ public class SimulatedEvolutionProperties {
 
     public void setPanelGardenOfEden(String panelGardenOfEden) {
         this.panelGardenOfEden = panelGardenOfEden;
+    }
+
+    public String getPanelPopulationStatistics() {
+        return panelPopulationStatistics;
+    }
+
+    public void setPanelPopulationStatistics(String panelPopulationStatistics) {
+        this.panelPopulationStatistics = panelPopulationStatistics;
     }
 }

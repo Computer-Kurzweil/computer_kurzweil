@@ -49,27 +49,27 @@ public class SimulatedEvolutionPanelStatistics extends JPanel {
     setColors();
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
-    this.add(youngCellsLabel);
-    this.add(youngCellsStatistics);
-    this.add(youngAndFatCellsLabel);
-    this.add(youngAndFatCellsStatistics);
-    this.add(fullAgeCellsLabel);
-    this.add(fullAgeCellsStatistics);
-    this.add(hungryCellsLabel);
-    this.add(hungryCellsStatistics);
-    this.add(oldCellsLabel);
-    this.add(oldCellsStatistics);
-    this.add(populationLabel);
-    this.add(populationStatistics);
+    this.setBorder(getBorder(this.simulatedEvolutionProperties.getPanelPopulationStatistics()));
+      this.add(youngCellsLabel);
+      this.add(youngCellsStatistics);
+      this.add(youngAndFatCellsLabel);
+      this.add(youngAndFatCellsStatistics);
+      this.add(fullAgeCellsLabel);
+      this.add(fullAgeCellsStatistics);
+      this.add(hungryCellsLabel);
+      this.add(hungryCellsStatistics);
+      this.add(oldCellsLabel);
+      this.add(oldCellsStatistics);
+      this.add(populationLabel);
+      this.add(populationStatistics);
   }
 
-    private int BORDER_PADDING = 5;
 
     private CompoundBorder getBorder(String label){
-        int top = BORDER_PADDING;
-        int left = BORDER_PADDING;
-        int bottom = BORDER_PADDING;
-        int right = BORDER_PADDING;
+        int top = this.simulatedEvolutionProperties.getBorderPadding();
+        int left = this.simulatedEvolutionProperties.getBorderPadding();
+        int bottom = this.simulatedEvolutionProperties.getBorderPadding();
+        int right = this.simulatedEvolutionProperties.getBorderPadding();
         return BorderFactory.createCompoundBorder(
             BorderFactory.createTitledBorder(label),
             BorderFactory.createEmptyBorder(top,left,bottom,right)

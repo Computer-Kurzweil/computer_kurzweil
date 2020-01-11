@@ -98,7 +98,7 @@ public class ComputerKurzweilApplication {
      * @param args CLI Parameter.
      */
     public static void main(String[] args) {
-        System.out.println("Started the Desktop Application");
+        log.info("Started the Desktop Application");
         ConfigurableApplicationContext springCtx = new SpringApplicationBuilder(ComputerKurzweilApplication.class)
             .web(WebApplicationType.NONE)
             .headless(false)
