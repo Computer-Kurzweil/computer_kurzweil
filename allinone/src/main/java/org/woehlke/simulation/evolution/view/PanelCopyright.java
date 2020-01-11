@@ -1,6 +1,7 @@
 package org.woehlke.simulation.evolution.view;
 
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.springframework.stereotype.Component;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,14 +10,16 @@ import java.awt.FlowLayout;
 /**
  * TODO write doc.
  */
+
+@Component
 public class PanelCopyright extends JPanel {
 
   private final FlowLayout layout = new FlowLayout();
 
   private final JLabel copyrightLabel;
 
-  public PanelCopyright(ObjectRegistry ctx) {
-    this.copyrightLabel = new JLabel(ctx.getGuiConfig().getFooter());
+  public PanelCopyright(SimulatedEvolutionProperties simulatedEvolutionProperties) {
+    this.copyrightLabel = new JLabel(simulatedEvolutionProperties.getFooter());
     this.setLayout(this.layout);
     this.layout.setAlignment(FlowLayout.CENTER);
     this.add(this.copyrightLabel);

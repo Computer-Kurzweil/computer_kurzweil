@@ -35,7 +35,6 @@ public class SimulatedEvolutionProperties {
      * A Garden of Eden is an Area where much more Food grows within the same time.
      * As a Result of Evolution you will find sucessful Bacteria Cells with a different DNA and Motion as outside the Garden of Eden.
      */
-
     @NotNull private Boolean gardenOfEdenEnabled;
     @NotNull private Integer gardenOfEdenFoodPerDay;
     @NotBlank private String gardenOfEdenEnabledString;
@@ -56,6 +55,13 @@ public class SimulatedEvolutionProperties {
     @NotNull private Integer maxAge;
     @NotNull private Integer time2wait;
     @NotNull private Integer exitStatus;
+
+    @NotBlank private String youngCellsLabel;
+    @NotBlank private String youngAndFatCellsLabel;
+    @NotBlank private String fullAgeCellsLabel;
+    @NotBlank private String hungryCellsLabel;
+    @NotBlank private String oldCellsLabel;
+    @NotBlank private String populationLabel;
 
     @Transient
     public Point getWorldDimensions() {
@@ -287,5 +293,53 @@ public class SimulatedEvolutionProperties {
 
     public void setGardenOfEdenPartsPadding(Integer gardenOfEdenPartsPadding) {
         this.gardenOfEdenPartsPadding = gardenOfEdenPartsPadding;
+    }
+
+    public String getYoungCellsLabel() {
+        return youngCellsLabel;
+    }
+
+    public void setYoungCellsLabel(String youngCellsLabel) {
+        this.youngCellsLabel = youngCellsLabel;
+    }
+
+    public String getYoungAndFatCellsLabel() {
+        return youngAndFatCellsLabel;
+    }
+
+    public void setYoungAndFatCellsLabel(String youngAndFatCellsLabel) {
+        this.youngAndFatCellsLabel = youngAndFatCellsLabel;
+    }
+
+    public String getFullAgeCellsLabel() {
+        return fullAgeCellsLabel;
+    }
+
+    public void setFullAgeCellsLabel(String fullAgeCellsLabel) {
+        this.fullAgeCellsLabel = fullAgeCellsLabel;
+    }
+
+    public String getHungryCellsLabel() {
+        return hungryCellsLabel;
+    }
+
+    public void setHungryCellsLabel(String hungryCellsLabel) {
+        this.hungryCellsLabel = hungryCellsLabel;
+    }
+
+    public String getOldCellsLabel() {
+        return oldCellsLabel;
+    }
+
+    public void setOldCellsLabel(String oldCellsLabel) {
+        this.oldCellsLabel = oldCellsLabel;
+    }
+
+    public String getPopulationLabel() {
+        return populationLabel;
+    }
+
+    public void setPopulationLabel(String populationLabel) {
+        this.populationLabel = populationLabel;
     }
 }

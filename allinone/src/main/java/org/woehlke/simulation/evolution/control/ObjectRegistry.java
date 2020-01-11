@@ -19,11 +19,8 @@ public class ObjectRegistry {
 
   private boolean gardenOfEdenEnabled;
 
-  private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-
   @Autowired
   public ObjectRegistry(SimulatedEvolutionProperties simulatedEvolutionProperties) {
-      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
       this.foodPerDay = simulatedEvolutionProperties.getFoodPerDay();
       this.gardenOfEdenEnabled = simulatedEvolutionProperties.getGardenOfEdenEnabled();
       long seed = new Date().getTime();
@@ -33,6 +30,14 @@ public class ObjectRegistry {
   public Random getRandom() {
     return random;
   }
+
+    public int getFoodPerDay() {
+        return foodPerDay;
+    }
+
+    public boolean isGardenOfEdenEnabled() {
+        return gardenOfEdenEnabled;
+    }
 
     public void increaseFoodPerDay() {
         this.foodPerDay++;

@@ -1,7 +1,10 @@
 package org.woehlke.simulation.evolution.view;
 
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.model.LifeCycleCount;
+import org.woehlke.simulation.evolution.model.LifeCycleCountContainer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +16,8 @@ import static org.woehlke.simulation.evolution.config.GuiConfigColors.*;
 /**
  * TODO write doc.
  */
+
+@Component
 public class PanelLifeCycleStatus extends JPanel {
 
   private JTextField youngCells;
@@ -22,31 +27,34 @@ public class PanelLifeCycleStatus extends JPanel {
   private JTextField oldCells;
   private JTextField population;
 
-  private ObjectRegistry ctx;
+  private final LifeCycleCountContainer lifeCycleCountContainer;
+  private final SimulatedEvolutionProperties simulatedEvolutionProperties;
 
-  public PanelLifeCycleStatus(ObjectRegistry ctx) {
-    this.ctx=ctx;
-    LifeCycleCount lifeCycleCount = ctx.getStatistics().getLifeCycleCount();
+  @Autowired
+  public PanelLifeCycleStatus(LifeCycleCountContainer lifeCycleCountContainer, SimulatedEvolutionProperties simulatedEvolutionProperties) {
+      this.lifeCycleCountContainer = lifeCycleCountContainer;
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      LifeCycleCount lifeCycleCount = lifeCycleCountContainer.getLifeCycleCount();
     int cols = 3;
-    JLabel youngCellsLabel = new JLabel("young");
+    JLabel youngCellsLabel = new JLabel(simulatedEvolutionProperties.getYoungCellsLabel());
     youngCells = new JTextField(""+lifeCycleCount.getDeadCells(),cols);
-    JLabel youngAndFatCellsLabel = new JLabel("young and Fat");
+    JLabel youngAndFatCellsLabel = new JLabel(simulatedEvolutionProperties.getYoungAndFatCellsLabel());
     youngAndFatCells = new JTextField(""+lifeCycleCount.getYoungAndFatCells(),cols);
-    JLabel fullAgeCellsLabel = new JLabel("full Age");
+    JLabel fullAgeCellsLabel = new JLabel(simulatedEvolutionProperties.getFullAgeCellsLabel());
     fullAgeCells = new JTextField(""+lifeCycleCount.getFullAgeCells(),cols);
-    JLabel hungryCellsLabel = new JLabel("hungry");
+    JLabel hungryCellsLabel = new JLabel(simulatedEvolutionProperties.getHungryCellsLabel());
     hungryCells = new JTextField(""+lifeCycleCount.getHungryCells(),cols);
-    JLabel oldCellsLabel = new JLabel("old");
+    JLabel oldCellsLabel = new JLabel(simulatedEvolutionProperties.getOldCellsLabel());
     oldCells = new JTextField(""+lifeCycleCount.getOldCells(),cols);
-    JLabel populationLabel = new JLabel("population");
+    JLabel populationLabel = new JLabel(simulatedEvolutionProperties.getPopulationLabel());
     population = new JTextField(""+lifeCycleCount.getPopulation(),cols);
-    youngCells.setForeground(Color.WHITE);
+    youngCells.setForeground(COLOR_YOUNG_FOREGROUND);
     youngCells.setBackground(COLOR_YOUNG);
     youngAndFatCells.setBackground(COLOR_YOUNG_AND_FAT);
     fullAgeCells.setBackground(COLOR_FULL_AGE);
     hungryCells.setBackground(COLOR_HUNGRY);
     oldCells.setBackground(COLOR_OLD);
-    oldCells.setForeground(Color.WHITE);
+    oldCells.setForeground(COLOR_OLD_FOREGROUND);
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
     this.add(youngCellsLabel);
@@ -67,7 +75,7 @@ public class PanelLifeCycleStatus extends JPanel {
    * TODO write doc.
    */
   public void updateLifeCycleCount() {
-    LifeCycleCount lifeCycleCount = ctx.getStatistics().getLifeCycleCount();
+    LifeCycleCount lifeCycleCount = lifeCycleCountContainer.getLifeCycleCount();
     youngCells.setText(""+lifeCycleCount.getYoungCells());
     youngAndFatCells.setText(""+lifeCycleCount.getYoungAndFatCells());
     fullAgeCells.setText(""+lifeCycleCount.getFullAgeCells());

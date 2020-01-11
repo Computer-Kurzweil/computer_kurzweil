@@ -34,18 +34,20 @@ public class World {
    */
   private List<Cell> cells;
 
-  private final ObjectRegistry ctx;
+    private final ObjectRegistry ctx;
     private final SimulatedEvolutionProperties simulatedEvolutionProperties;
     private final WorldMapFood worldMapFood;
+    private final LifeCycleCountContainer lifeCycleCountContainer;
 
   /**
    * TODO write doc.
    */
   @Autowired
-  public World(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, WorldMapFood worldMapFood) {
+  public World(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, WorldMapFood worldMapFood, LifeCycleCountContainer lifeCycleCountContainer) {
     this.ctx = ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
       this.worldMapFood = worldMapFood;
+      this.lifeCycleCountContainer = lifeCycleCountContainer;
       cells = new ArrayList<>();
     createPopulation();
   }
@@ -68,7 +70,7 @@ public class World {
       lifeCycleCount.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
     System.out.println(lifeCycleCount);
-    ctx.getStatistics().add(lifeCycleCount);
+      lifeCycleCountContainer.add(lifeCycleCount);
   }
 
   /**
@@ -102,7 +104,7 @@ public class World {
     for (Cell cell : cells) {
       lifeCycleCount.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
-    ctx.getStatistics().add(lifeCycleCount);
+      lifeCycleCountContainer.add(lifeCycleCount);
   }
 
   public List<Cell> getAllCells() {

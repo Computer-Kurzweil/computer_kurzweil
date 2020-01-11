@@ -1,5 +1,9 @@
 package org.woehlke.simulation.evolution.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.evolution.control.ControllerThreadDesktop;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -7,29 +11,30 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * TODO write doc.
  */
+@Component
 public class LifeCycleCountContainer {
 
   /**
    * TODO write doc.
    */
-  private volatile ConcurrentLinkedQueue<LifeCycleCount> count;
+  private ConcurrentLinkedQueue<LifeCycleCount> count;
 
-  /**
-   * TODO write doc.
-   */
-  private volatile LifeCycleCount lifeCycleCount;
-
-
-  /**
-   * TODO write doc.
-   */
   private volatile long worldIteration;
 
-  private ObjectRegistry ctx;
+  private LifeCycleCount lifeCycleCount;
 
-  public LifeCycleCountContainer(ObjectRegistry ctx) {
-    this.ctx = ctx;
-    count = new ConcurrentLinkedQueue<>();
+  private final ControllerThreadDesktop controllerThreadDesktop;
+
+  private final ObjectRegistry ctx;
+
+  private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+
+  @Autowired
+  public LifeCycleCountContainer(ControllerThreadDesktop controllerThreadDesktop, ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties) {
+      this.controllerThreadDesktop = controllerThreadDesktop;
+      this.ctx = ctx;
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      count = new ConcurrentLinkedQueue<>();
     worldIteration = 0L;
   }
 
@@ -39,12 +44,12 @@ public class LifeCycleCountContainer {
   public synchronized void add(LifeCycleCount lifeCycleCount) {
     this.lifeCycleCount = lifeCycleCount;
     count.add(lifeCycleCount);
-    if (count.size() > ctx.getStatisticsConfig().getQueueMaxLength()) {
+    if (count.size() > simulatedEvolutionProperties.getQueueMaxLength()) {
       count.poll();
     }
     worldIteration++;
-    if(ctx.getController()!=null){
-      ctx.getController().updateLifeCycleCount();
+    if(controllerThreadDesktop!=null){
+        controllerThreadDesktop.updateLifeCycleCount();
     }
     //System.out.println(worldIteration + " : " + lifeCycleCount);
   }
@@ -56,4 +61,7 @@ public class LifeCycleCountContainer {
     return lifeCycleCount;
   }
 
+    public long getWorldIteration() {
+        return worldIteration;
+    }
 }

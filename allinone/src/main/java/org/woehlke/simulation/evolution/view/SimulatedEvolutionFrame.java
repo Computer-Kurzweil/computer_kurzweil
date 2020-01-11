@@ -37,6 +37,11 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
 
     private final ObjectRegistry ctx;
     private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+    private final PanelSubtitle panelSubtitle;
+    private final WorldCanvas worldCanvas;
+    private final PanelCopyright panelCopyright;
+    private final PanelLifeCycleStatus panelLifeCycleStatus;
+    private final PanelButtons panelButtons;
 
   /**
    * TODO write doc.
@@ -61,19 +66,23 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
   private final ObjectRegistry ctx;
 
   @Autowired
-  public SimulatedEvolutionFrame(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties) {
+  public SimulatedEvolutionFrame(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, PanelSubtitle panelSubtitle, WorldCanvas worldCanvas, PanelCopyright panelCopyright, PanelLifeCycleStatus panelLifeCycleStatus) {
     super(simulatedEvolutionProperties.getTitle());
     this.ctx=ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      this.panelSubtitle = panelSubtitle;
+      this.worldCanvas = worldCanvas;
+      this.panelCopyright = panelCopyright;
+      this.panelLifeCycleStatus = panelLifeCycleStatus;
       JSeparator separator1 = new JSeparator();
     JSeparator separator2 = new JSeparator();
     BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
     rootPane.setLayout(layout);
-    rootPane.add(   this.simulatedEvolutionProperties .getPanelSubtitle());
-    rootPane.add(   this.simulatedEvolutionProperties .getCanvas());
-    rootPane.add(   this.simulatedEvolutionProperties .getPanelCopyright());
+    rootPane.add(  panelSubtitle);
+    rootPane.add(worldCanvas);
+    rootPane.add(  panelCopyright);
     rootPane.add(separator1);
-    rootPane.add(   this.simulatedEvolutionProperties .getPanelLifeCycleStatus());
+    rootPane.add(panelLifeCycleStatus);
     rootPane.add(separator2);
     rootPane.add(   this.simulatedEvolutionProperties.getPanelButtons());
     pack();
