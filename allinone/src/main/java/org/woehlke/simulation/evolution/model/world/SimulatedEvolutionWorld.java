@@ -12,6 +12,7 @@ import org.woehlke.simulation.evolution.model.cell.Cell;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * The World contains Water, Cells and Food.
@@ -78,7 +79,7 @@ public class SimulatedEvolutionWorld {
     for (Cell cell : cells) {
       simulatedEvolutionWorldStatistics.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
-    System.out.println(simulatedEvolutionWorldStatistics);
+    log.info(simulatedEvolutionWorldStatistics.toString());
     statisticsContainer.add(simulatedEvolutionWorldStatistics);
   }
 
@@ -128,4 +129,6 @@ public class SimulatedEvolutionWorld {
         ctx.toggleGardenOfEden();
         worldMapFood.toggleGardenOfEden();
     }
+
+    private static Logger log = Logger.getLogger(SimulatedEvolutionWorld.class.getName());
 }

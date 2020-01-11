@@ -19,6 +19,7 @@ import org.woehlke.simulation.evolution.view.SimulatedEvolutionPanelStatistics;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionWorldCanvas;
 
 import java.awt.*;
+import java.util.logging.Logger;
 
 /**
  * Class with main Method for Starting the Desktop Application.
@@ -82,7 +83,7 @@ public class ComputerKurzweilApplication {
             this.controller.start();
             this.frame.showMe();
         } catch (IllegalThreadStateException e){
-            System.out.println(e.getLocalizedMessage());
+            log.info(e.getLocalizedMessage());
         }
 
     }
@@ -108,4 +109,5 @@ public class ComputerKurzweilApplication {
         });
     }
 
+    private static Logger log = Logger.getLogger(ComputerKurzweilApplication.class.getName());
 }
