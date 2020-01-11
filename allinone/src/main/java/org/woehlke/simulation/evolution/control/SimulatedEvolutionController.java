@@ -31,15 +31,14 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
   WindowFocusListener,
   WindowStateListener {
 
-    private SimulatedEvolutionFrame frame;
-
-    private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-    private final SimulatedEvolutionContext simulatedEvolutionContext;
-
-    private final SimulatedEvolutionWorld simulatedEvolutionWorld;
+    private final SimulatedEvolutionProperties properties;
+    private final SimulatedEvolutionContext context;
+    private final SimulatedEvolutionWorldMapFood worldMapFood;
+    private final SimulatedEvolutionPanelStatistics statisticsPanel;
     private final SimulatedEvolutionWorldCanvas canvas;
-    private final SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood;
-    private final SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics;
+
+    private SimulatedEvolutionWorld world;
+    private SimulatedEvolutionFrame frame;
 
     /**
    * Time to Wait in ms.
@@ -51,14 +50,18 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
    */
   private Boolean mySemaphore;
 
-
-  public SimulatedEvolutionController(SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionContext simulatedEvolutionContext, SimulatedEvolutionWorld simulatedEvolutionWorld, SimulatedEvolutionWorldCanvas canvas, SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood, SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics) {
-      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      this.simulatedEvolutionContext = simulatedEvolutionContext;
-      this.simulatedEvolutionWorld = simulatedEvolutionWorld;
+  public SimulatedEvolutionController(
+      SimulatedEvolutionProperties simulatedEvolutionProperties,
+      SimulatedEvolutionContext simulatedEvolutionContext,
+      SimulatedEvolutionWorldCanvas canvas,
+      SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood,
+      SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics
+  ) {
+      this.properties = simulatedEvolutionProperties;
+      this.context = simulatedEvolutionContext;
       this.canvas = canvas;
-      this.simulatedEvolutionWorldMapFood = simulatedEvolutionWorldMapFood;
-      this.simulatedEvolutionPanelStatistics = simulatedEvolutionPanelStatistics;
+      this.worldMapFood = simulatedEvolutionWorldMapFood;
+      this.statisticsPanel = simulatedEvolutionPanelStatistics;
       this.mySemaphore = Boolean.TRUE;
   }
 
@@ -69,7 +72,7 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();
       }
-        simulatedEvolutionWorld.letLivePopulation();
+        world.letLivePopulation();
         canvas.repaint();
       try {
         sleep(TIME_TO_WAIT);
@@ -98,12 +101,12 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
 
   public void windowClosing(WindowEvent e) {
     this.exit();
-    System.exit(simulatedEvolutionProperties.getExitStatus());
+    System.exit(properties.getExitStatus());
   }
 
   public void windowClosed(WindowEvent e) {
     this.exit();
-    System.exit(simulatedEvolutionProperties.getExitStatus());
+    System.exit(properties.getExitStatus());
   }
 
   public void windowIconified(WindowEvent e) {
@@ -139,7 +142,7 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
   }
 
   public void updateLifeCycleCount() {
-      simulatedEvolutionPanelStatistics.updateTextFields();
+      statisticsPanel.updateTextFields();
   }
 
   public void exit() {
@@ -149,16 +152,16 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
   }
 
   public void increaseFoodPerDay() {
-      simulatedEvolutionContext.increaseFoodPerDay();
+      context.increaseFoodPerDay();
   }
 
   public void decreaseFoodPerDay() {
-      simulatedEvolutionContext.decreaseFoodPerDay();
+      context.decreaseFoodPerDay();
   }
 
   public void toggleGardenOfEden() {
-    simulatedEvolutionContext.toggleGardenOfEden();
-    simulatedEvolutionWorldMapFood.toggleGardenOfEden();
+    context.toggleGardenOfEden();
+    worldMapFood.toggleGardenOfEden();
   }
 
   public void showStatistic() {
@@ -167,5 +170,13 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
 
     public void setFrame(SimulatedEvolutionFrame frame) {
         this.frame = frame;
+    }
+
+    public SimulatedEvolutionWorld getWorld() {
+        return world;
+    }
+
+    public void setWorld(SimulatedEvolutionWorld world) {
+        this.world = world;
     }
 }

@@ -8,9 +8,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.integration.config.EnableIntegration;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
+import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.simulation.mandelbrot.config.Config;
 
 import java.awt.*;
 
@@ -37,20 +38,28 @@ import java.awt.*;
 @Configuration
 @EnableIntegration
 @Import({
-    Config.class
+    SimulatedEvolutionProperties.class
 })
 public class ComputerKurzweilApplication {
 
     private final SimulatedEvolutionFrame simulatedEvolutionFrame;
 
+    private final SimulatedEvolutionWorld simulatedEvolutionWorld;
+
     private final SimulatedEvolutionController simulatedEvolutionController;
 
 
     @Autowired
-      public ComputerKurzweilApplication(SimulatedEvolutionFrame simulatedEvolutionFrame, SimulatedEvolutionController simulatedEvolutionController) {
+      public ComputerKurzweilApplication(
+        SimulatedEvolutionFrame simulatedEvolutionFrame,
+        SimulatedEvolutionWorld simulatedEvolutionWorld,
+        SimulatedEvolutionController simulatedEvolutionController
+    ) {
         this.simulatedEvolutionFrame = simulatedEvolutionFrame;
-            this.simulatedEvolutionController = simulatedEvolutionController;
-            this.simulatedEvolutionController.setFrame(this.simulatedEvolutionFrame);
+        this.simulatedEvolutionWorld = simulatedEvolutionWorld;
+        this.simulatedEvolutionController = simulatedEvolutionController;
+        this.simulatedEvolutionController.setFrame(this.simulatedEvolutionFrame);
+        this.simulatedEvolutionController.setWorld(this.simulatedEvolutionWorld);
         try {
             this.simulatedEvolutionController.start();
         } catch (IllegalThreadStateException e){
