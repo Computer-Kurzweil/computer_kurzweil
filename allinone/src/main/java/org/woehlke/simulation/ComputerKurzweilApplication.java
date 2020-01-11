@@ -7,16 +7,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.integration.config.EnableIntegration;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
-import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
-import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldMapFood;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionPanelButtons;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionPanelStatistics;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionWorldCanvas;
 
 import java.awt.*;
 import java.util.logging.Logger;
@@ -42,7 +38,6 @@ import java.util.logging.Logger;
  */
 @SpringBootApplication
 @Configuration
-@EnableIntegration
 @Import({
     SimulatedEvolutionProperties.class
 })

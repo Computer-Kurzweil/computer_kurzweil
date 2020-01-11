@@ -44,7 +44,6 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         }
     }
 
-
     //TODO: implement and Bugfix
     @Override
     public void setModeSwitch(){
