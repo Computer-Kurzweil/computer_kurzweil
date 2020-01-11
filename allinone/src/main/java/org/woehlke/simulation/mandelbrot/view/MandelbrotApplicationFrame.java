@@ -16,7 +16,7 @@ import java.awt.image.ImageObserver;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
-@Component
+//@Component
 public class MandelbrotApplicationFrame extends JFrame implements
         ImageObserver,
         MenuContainer,
@@ -24,7 +24,7 @@ public class MandelbrotApplicationFrame extends JFrame implements
 
     private final MandelbrotApplicationContext ctx;
 
-    @Autowired
+   // @Autowired
     public MandelbrotApplicationFrame(MandelbrotApplicationContext ctx) {
         super(ctx.getProperties().getTitle());
         this.ctx=ctx;

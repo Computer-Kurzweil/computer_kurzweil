@@ -38,17 +38,17 @@ public class PanelButtons extends JPanel {
     public PanelButtons(MandelbrotApplicationContext ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
-        this.radioButtonsSwitch = new JRadioButton(ctx.getMandelbrotProperties().getButtonsSwitch());
+        this.radioButtonsSwitch = new JRadioButton(ctx.getProperties().getButtonsSwitch());
         this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
-        this.radioButtonsZoom = new JRadioButton(ctx.getMandelbrotProperties().getButtonsZoom());
+        this.radioButtonsZoom = new JRadioButton(ctx.getProperties().getButtonsZoom());
         this.radioButtonsZoom.setMnemonic(RADIO_BUTTONS_ZOOM.ordinal());
         this.radioButtonsGroup = new ButtonGroup();
         this.radioButtonsGroup.add(radioButtonsSwitch);
         this.radioButtonsGroup.add(radioButtonsZoom);
-        this.zoomOutButton = new JButton(ctx.getMandelbrotProperties().getButtonsZoomOut());
+        this.zoomOutButton = new JButton(ctx.getProperties().getButtonsZoomOut());
         this.panelButtonsGroup = new JPanel();
-        CompoundBorder borderPanelRadioButtons = getBorder(ctx.getMandelbrotProperties().getButtonsLabel());
-        CompoundBorder borderPanelPushButtons = getBorder(ctx.getMandelbrotProperties().getButtonsZoomLabel());
+        CompoundBorder borderPanelRadioButtons = getBorder(ctx.getProperties().getButtonsLabel());
+        CompoundBorder borderPanelPushButtons = getBorder(ctx.getProperties().getButtonsZoomLabel());
         JLabel zoomLevelFieldLabel = new JLabel("Zoom Level");
         zoomLevelField = new TextField("0",3);
         zoomLevelField.setText(ctx.getZoomLevel());
