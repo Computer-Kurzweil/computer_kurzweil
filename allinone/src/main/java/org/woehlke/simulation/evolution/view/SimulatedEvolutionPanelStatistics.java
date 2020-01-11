@@ -95,13 +95,16 @@ public class SimulatedEvolutionPanelStatistics extends JPanel {
     }
 
   private void setColors(){
-      youngCellsStatistics.setBackground(YOUNG.getColor());
-      youngAndFatCellsStatistics.setBackground(YOUNG_AND_FAT.getColor());
-      fullAgeCellsStatistics.setBackground(FULL_AGE.getColor());
-      hungryCellsStatistics.setBackground(HUNGRY.getColor());
-      oldCellsStatistics.setBackground(OLD.getColor());
-      youngCellsStatistics.setForeground(COLOR_YOUNG_FOREGROUND.getColor());
-      oldCellsStatistics.setForeground(COLOR_OLD_FOREGROUND.getColor());
+      youngCellsStatistics.setBackground(YOUNG.getColorBackground());
+      youngCellsStatistics.setForeground(YOUNG.getColorForeground());
+      youngAndFatCellsStatistics.setBackground(YOUNG_AND_FAT.getColorBackground());
+      youngAndFatCellsStatistics.setForeground(YOUNG_AND_FAT.getColorForeground());
+      fullAgeCellsStatistics.setBackground(FULL_AGE.getColorBackground());
+      fullAgeCellsStatistics.setForeground(FULL_AGE.getColorForeground());
+      hungryCellsStatistics.setBackground(HUNGRY.getColorBackground());
+      hungryCellsStatistics.setForeground(HUNGRY.getColorForeground());
+      oldCellsStatistics.setBackground(OLD.getColorBackground());
+      oldCellsStatistics.setForeground(OLD.getColorForeground());
   }
 
 }

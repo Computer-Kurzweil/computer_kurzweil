@@ -40,7 +40,7 @@ public enum LifeCycleStatus {
     return color;
   }
 
-    public Color getColorFont() {
+    public Color getColorForeground() {
         return colorFont;
     }
 

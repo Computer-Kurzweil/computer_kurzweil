@@ -151,6 +151,7 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
     synchronized (mySemaphore) {
       mySemaphore = Boolean.FALSE;
     }
+    System.exit(0);
   }
 
   public void toggleGardenOfEden() {
