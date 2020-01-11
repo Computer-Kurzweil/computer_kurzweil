@@ -1,13 +1,14 @@
 package org.woehlke.simulation.evolution.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 
 import java.util.Date;
 import java.util.Random;
 
-@Component
+
+@Service
 public class SimulatedEvolutionContext {
 
   /**

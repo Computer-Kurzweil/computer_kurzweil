@@ -80,10 +80,11 @@ public class ComputerKurzweilApplication {
     public void start(){
         try {
             this.controller.start();
+            this.frame.showMe();
         } catch (IllegalThreadStateException e){
             System.out.println(e.getLocalizedMessage());
         }
-        this.frame.showMe();
+
     }
 
     public void exit() {
@@ -97,13 +98,13 @@ public class ComputerKurzweilApplication {
      */
     public static void main(String[] args) {
         System.out.println("Started the Desktop Application");
-        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(ComputerKurzweilApplication.class)
+        ConfigurableApplicationContext springCtx = new SpringApplicationBuilder(ComputerKurzweilApplication.class)
             .web(WebApplicationType.NONE)
             .headless(false)
             .run(args);
         EventQueue.invokeLater(() -> {
-            ComputerKurzweilApplication ex = ctx.getBean(ComputerKurzweilApplication.class);
-            ex.start();
+            ComputerKurzweilApplication application = springCtx.getBean(ComputerKurzweilApplication.class);
+            application.start();
         });
     }
 

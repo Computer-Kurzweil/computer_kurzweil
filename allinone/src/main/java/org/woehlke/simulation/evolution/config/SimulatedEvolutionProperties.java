@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.config;
 
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.beans.Transient;
 
+@SpringBootConfiguration
 @Configuration
 @ConfigurationProperties("org.woehlke.simulation.evolution.config")
 @Valid

@@ -33,20 +33,13 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
     private final SimulatedEvolutionContext context;
 
     private SimulatedEvolutionWorld world;
-    //private SimulatedEvolutionWorldCanvas canvas;
     private SimulatedEvolutionFrame frame;
     private SimulatedEvolutionPanelStatistics panelStatistics;
     private SimulatedEvolutionPanelButtons panelButtons;
 
 
-    /**
-   * Time to Wait in ms.
-   */
   protected final int TIME_TO_WAIT = 100;
 
-  /**
-   * Control for Threading.
-   */
   private Boolean mySemaphore;
 
   public SimulatedEvolutionController(
@@ -58,10 +51,6 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
       this.mySemaphore = Boolean.TRUE;
   }
 
-
-    /**
-     * TODO write doc.
-     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() ==  panelButtons.getButtonFoodPerDayIncrease()) {
@@ -79,7 +68,7 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
 
   public void run() {
     show();
-    boolean doMyJob = true;
+    boolean doMyJob;
     do {
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();

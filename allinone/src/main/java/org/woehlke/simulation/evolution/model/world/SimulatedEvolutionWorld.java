@@ -87,7 +87,6 @@ public class SimulatedEvolutionWorld {
    * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
    */
   public void letLivePopulation() {
-    SimulatedEvolutionWorldStatistics oneStatisticsTimestamp = new SimulatedEvolutionWorldStatistics();
     worldMapFood.letFoodGrow();
     Point pos;
     List<Cell> children = new ArrayList<>();
@@ -110,6 +109,7 @@ public class SimulatedEvolutionWorld {
       cells.remove(dead);
     }
     cells.addAll(children);
+    SimulatedEvolutionWorldStatistics oneStatisticsTimestamp = new SimulatedEvolutionWorldStatistics();
     for (Cell cell : cells) {
         oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
