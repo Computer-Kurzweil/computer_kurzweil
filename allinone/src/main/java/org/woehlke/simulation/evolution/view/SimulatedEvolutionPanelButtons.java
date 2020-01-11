@@ -16,7 +16,6 @@ import java.awt.FlowLayout;
 @Component
 public class SimulatedEvolutionPanelButtons extends JPanel  {
 
-
   private final SimulatedEvolutionProperties simulatedEvolutionProperties;
   private final SimulatedEvolutionContext ctx;
 
@@ -27,12 +26,12 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
     private final JTextField foodPerDayField;
     private final JLabel foodPerDayLabel;
 
-    @Autowired
+  @Autowired
   public SimulatedEvolutionPanelButtons(
       SimulatedEvolutionProperties simulatedEvolutionProperties,
       SimulatedEvolutionContext ctx
-    ) {
-    this.ctx=ctx;
+  ) {
+      this.ctx=ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
       foodPerDayLabel = new JLabel(this.simulatedEvolutionProperties.getFoodPerDayLabel());
         foodPerDayField = new JTextField(
@@ -43,7 +42,7 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
         this.gardenOfEdenEnabled = new JCheckBox(this.simulatedEvolutionProperties.getGardenOfEdenEnabledString(), selected);
         this.buttonFoodPerDayIncrease = new JButton(simulatedEvolutionProperties.getButtonFoodPerDayIncrease());
         this.buttonFoodPerDayDecrease = new JButton(simulatedEvolutionProperties.getButtonFoodPerDayDecrease());
-        this.buttonToggleGardenOfEden = new JButton(simulatedEvolutionProperties.getGardenOfEdenEnabledString());
+        this.buttonToggleGardenOfEden = new JButton(simulatedEvolutionProperties.getButtonToggleGardenOfEden());
         FlowLayout flowLayout1 = new FlowLayout();
         this.setLayout(flowLayout1);
         this.add(getFoodPanel());

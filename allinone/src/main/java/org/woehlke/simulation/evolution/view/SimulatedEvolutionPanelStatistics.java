@@ -49,19 +49,22 @@ public class SimulatedEvolutionPanelStatistics extends JPanel {
     setColors();
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
-    this.setBorder(getBorder(this.simulatedEvolutionProperties.getPanelPopulationStatistics()));
-      this.add(youngCellsLabel);
-      this.add(youngCellsStatistics);
-      this.add(youngAndFatCellsLabel);
-      this.add(youngAndFatCellsStatistics);
-      this.add(fullAgeCellsLabel);
-      this.add(fullAgeCellsStatistics);
-      this.add(hungryCellsLabel);
-      this.add(hungryCellsStatistics);
-      this.add(oldCellsLabel);
-      this.add(oldCellsStatistics);
-      this.add(populationLabel);
-      this.add(populationStatistics);
+    FlowLayout layoutSubPanel = new FlowLayout();
+    JPanel subPanel = new JPanel(layoutSubPanel);
+    subPanel.setBorder(getBorder(this.simulatedEvolutionProperties.getPanelPopulationStatistics()));
+      subPanel.add(youngCellsLabel);
+      subPanel.add(youngCellsStatistics);
+      subPanel.add(youngAndFatCellsLabel);
+      subPanel.add(youngAndFatCellsStatistics);
+      subPanel.add(fullAgeCellsLabel);
+      subPanel.add(fullAgeCellsStatistics);
+      subPanel.add(hungryCellsLabel);
+      subPanel.add(hungryCellsStatistics);
+      subPanel.add(oldCellsLabel);
+      subPanel.add(oldCellsStatistics);
+      subPanel.add(populationLabel);
+      subPanel.add(populationStatistics);
+      this.add(subPanel);
   }
 
 

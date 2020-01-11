@@ -52,9 +52,9 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, Me
     rootPane.add(panelSubtitle);
     rootPane.add(canvas);
     rootPane.add(panelCopyright);
-    rootPane.add(separator1);
+    //rootPane.add(separator1);
     rootPane.add(panelStatistics);
-    rootPane.add(separator2);
+    //rootPane.add(separator2);
     rootPane.add(panelButtons);
     showMe();
   }
