@@ -44,34 +44,41 @@ public class SimulatedEvolutionWorldMapFood {
       worldMapFood = new int[x][y];
   }
 
+    private void letFoodGrowGardenOfEden() {
+        if (simulatedEvolutionProperties.getGardenOfEdenEnabled()) {
+            int food = 0;
+            int gardenOfEdenParts = 3;
+            int startX = ( simulatedEvolutionProperties.getWorldDimensions().getX() / gardenOfEdenParts );
+            int startY = ( simulatedEvolutionProperties.getWorldDimensions().getY() / gardenOfEdenParts );
+            while (food < simulatedEvolutionProperties.getGardenOfEdenFoodPerDay()) {
+                food++;
+                int posX = simulatedEvolutionContext.getRandom().nextInt(startX);
+                int posY = simulatedEvolutionContext.getRandom().nextInt(startY);
+                posX *= Integer.signum(posX);
+                posY *= Integer.signum(posY);
+                worldMapFood[posX + startX][posY + startY]++;
+            }
+        }
+    }
+
+    private void letFoodGrowWorld() {
+        int food = 0;
+        while (food < simulatedEvolutionProperties.getFoodPerDay()) {
+            food++;
+            int posX = simulatedEvolutionContext.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getX());
+            int posY = simulatedEvolutionContext.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getY());
+            posX *= Integer.signum(posX);
+            posY *= Integer.signum(posY);
+            worldMapFood[posX][posY]++;
+        }
+    }
+
   /**
    * Delivers new food to random positions.
    */
   public void letFoodGrow() {
-    int food = 0;
-    while (food < simulatedEvolutionProperties.getFoodPerDay()) {
-      food++;
-      int posX = simulatedEvolutionContext.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getX());
-      int posY = simulatedEvolutionContext.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getY());
-      posX *= Integer.signum(posX);
-      posY *= Integer.signum(posY);
-      worldMapFood[posX][posY]++;
-    }
-    if (simulatedEvolutionProperties.getGardenOfEdenEnabled()) {
-      food = 0;
-      int gardenOfEdenParts = 5;
-      int gardenOfEdenPartsPadding = 2;
-      int startX = ( simulatedEvolutionProperties.getWorldDimensions().getX() / gardenOfEdenParts ) * gardenOfEdenPartsPadding;
-      int startY = ( simulatedEvolutionProperties.getWorldDimensions().getY() / gardenOfEdenParts ) * gardenOfEdenPartsPadding;
-      while (food < simulatedEvolutionProperties.getGardenOfEdenFoodPerDay()) {
-        food++;
-        int posX = simulatedEvolutionContext.getRandom().nextInt(startX);
-        int posY = simulatedEvolutionContext.getRandom().nextInt(startY);
-        posX *= Integer.signum(posX);
-        posY *= Integer.signum(posY);
-        worldMapFood[posX + startX][posY + startY]++;
-      }
-    }
+      letFoodGrowWorld();
+      letFoodGrowGardenOfEden();
   }
 
   /**

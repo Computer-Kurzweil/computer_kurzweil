@@ -75,8 +75,8 @@ public class Cell {
       SimulatedEvolutionProperties properties,
       SimulatedEvolutionContext ctx
   ) {
-      this.properties=properties;
-      this.lifeCycle = new LifeCycle(fat, properties);
+    this.properties=properties;
+    this.lifeCycle = new LifeCycle(fat, properties);
     this.position = new Point(position);
     this.ctx = ctx;
     this.cellCore = rna;

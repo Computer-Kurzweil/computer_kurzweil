@@ -32,9 +32,8 @@ public class CellCore {
   private final SimulatedEvolutionContext ctx;
 
   public CellCore(final SimulatedEvolutionContext ctx) {
-      this.ctx=ctx;
+    this.ctx=ctx;
     dna = new ArrayList<>();
-
     for (int i = 0; i < Orientation.values().length; i++) {
       int gen = ctx.getRandom().nextInt() % MAX_INITIAL_VALUE;
       dna.add(gen);

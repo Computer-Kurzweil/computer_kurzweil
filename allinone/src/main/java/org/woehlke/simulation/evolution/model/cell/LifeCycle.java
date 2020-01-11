@@ -38,8 +38,8 @@ public class LifeCycle {
   private final SimulatedEvolutionProperties simulatedEvolutionProperties;
 
   public LifeCycle(SimulatedEvolutionProperties simulatedEvolutionProperties) {
-      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      hunger = 0;
+    this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+    hunger = 0;
     age = 0;
     fat = simulatedEvolutionProperties.getFatAtBirth();
   }

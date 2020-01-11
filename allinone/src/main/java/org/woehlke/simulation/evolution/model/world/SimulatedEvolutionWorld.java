@@ -58,14 +58,13 @@ public class SimulatedEvolutionWorld {
       this.worldMapFood = simulatedEvolutionWorldMapFood;
       this.statisticsContainer = simulatedEvolutionWorldStatisticsContainer;
       cells = new ArrayList<>();
-    createPopulation();
+      createPopulation();
   }
 
   /**
    * Create the initial Population of Bacteria Cells and give them their position in the World.
    */
   private void createPopulation() {
-    SimulatedEvolutionWorldStatistics simulatedEvolutionWorldStatistics = new SimulatedEvolutionWorldStatistics();
     for (int i = 0; i < properties.getInitialPopulation(); i++) {
       int worldMapFoodX = ctx.getRandom().nextInt(properties.getWidth());
       int worldMapFoodY = ctx.getRandom().nextInt(properties.getHeight());
@@ -75,11 +74,12 @@ public class SimulatedEvolutionWorld {
       Cell cell = new Cell(position,properties, ctx);
       cells.add(cell);
     }
+    SimulatedEvolutionWorldStatistics simulatedEvolutionWorldStatistics = new SimulatedEvolutionWorldStatistics();
     for (Cell cell : cells) {
       simulatedEvolutionWorldStatistics.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
     System.out.println(simulatedEvolutionWorldStatistics);
-      statisticsContainer.add(simulatedEvolutionWorldStatistics);
+    statisticsContainer.add(simulatedEvolutionWorldStatistics);
   }
 
   /**
