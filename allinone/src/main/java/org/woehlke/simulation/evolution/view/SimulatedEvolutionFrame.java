@@ -3,6 +3,7 @@ package org.woehlke.simulation.evolution.view;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.GuiConfigDefault;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 import javax.swing.BoxLayout;
@@ -32,8 +33,10 @@ import java.awt.image.ImageObserver;
  */
 @Component
 public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
-  MenuContainer,
-  GuiConfigDefault {
+  MenuContainer {
+
+    private final ObjectRegistry ctx;
+    private final SimulatedEvolutionProperties simulatedEvolutionProperties;
 
   /**
    * TODO write doc.
@@ -58,20 +61,21 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver,
   private final ObjectRegistry ctx;
 
   @Autowired
-  public SimulatedEvolutionFrame(ObjectRegistry ctx) {
-    super(ctx.getGuiConfig().getTitle());
+  public SimulatedEvolutionFrame(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties) {
+    super(simulatedEvolutionProperties.getTitle());
     this.ctx=ctx;
-    JSeparator separator1 = new JSeparator();
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      JSeparator separator1 = new JSeparator();
     JSeparator separator2 = new JSeparator();
     BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
     rootPane.setLayout(layout);
-    rootPane.add(ctx.getPanelSubtitle());
-    rootPane.add(ctx.getCanvas());
-    rootPane.add(ctx.getPanelCopyright());
+    rootPane.add(   this.simulatedEvolutionProperties .getPanelSubtitle());
+    rootPane.add(   this.simulatedEvolutionProperties .getCanvas());
+    rootPane.add(   this.simulatedEvolutionProperties .getPanelCopyright());
     rootPane.add(separator1);
-    rootPane.add(ctx.getPanelLifeCycleStatus());
+    rootPane.add(   this.simulatedEvolutionProperties .getPanelLifeCycleStatus());
     rootPane.add(separator2);
-    rootPane.add(ctx.getPanelButtons());
+    rootPane.add(   this.simulatedEvolutionProperties.getPanelButtons());
     pack();
     showMe();
   }

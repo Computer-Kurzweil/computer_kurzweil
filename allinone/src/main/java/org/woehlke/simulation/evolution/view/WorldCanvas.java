@@ -1,9 +1,11 @@
 package org.woehlke.simulation.evolution.view;
 
-import org.woehlke.simulation.evolution.config.GuiConfigDefault;
+import org.springframework.stereotype.Component;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 import org.woehlke.simulation.evolution.model.Cell;
 import org.woehlke.simulation.evolution.model.Point;
+import org.woehlke.simulation.evolution.model.World;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
@@ -28,7 +30,8 @@ import static org.woehlke.simulation.evolution.config.GuiConfigColors.COLOR_WATE
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-public class WorldCanvas extends JComponent implements GuiConfigDefault, Serializable {
+@Component
+public class WorldCanvas extends JComponent implements Serializable {
 
   private static final long serialVersionUID = -27002509360079509L;
 
@@ -36,13 +39,17 @@ public class WorldCanvas extends JComponent implements GuiConfigDefault, Seriali
    * Reference to the Data Model.
    */
   private final ObjectRegistry ctx;
+    private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+    private final World world;
 
-  public WorldCanvas(ObjectRegistry ctx) {
+  public WorldCanvas(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, World world) {
     this.ctx = ctx;
-    this.setBackground(COLOR_WATER);
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      this.world = world;
+      this.setBackground(COLOR_WATER);
     Dimension preferredSize = new Dimension(
-      ctx.getWorldConfig().getWorldDimensions().getWidth(),
-      ctx.getWorldConfig().getWorldDimensions().getHeight()
+        this.simulatedEvolutionProperties.getWorldDimensions().getWidth(),
+        this.simulatedEvolutionProperties.getWorldDimensions().getHeight()
     );
     this.setPreferredSize(preferredSize);
   }
@@ -54,21 +61,21 @@ public class WorldCanvas extends JComponent implements GuiConfigDefault, Seriali
    */
   public void paint(Graphics graphics) {
     super.paintComponent(graphics);
-    int width = ctx.getWorldConfig().getWorldDimensions().getWidth();
-    int height = ctx.getWorldConfig().getWorldDimensions().getHeight();
+    int width =  this.simulatedEvolutionProperties.getWorldDimensions().getWidth();
+    int height = this.simulatedEvolutionProperties.getWorldDimensions().getHeight();
     graphics.setColor(COLOR_WATER);
     graphics.fillRect(0, 0, width, height);
     graphics.setColor(COLOR_FOOD);
     for (int posY = 0; posY < height; posY++) {
       for (int posX = 0; posX < width; posX++) {
-        if (ctx.getWorld().hasFood(posX, posY)) {
+        if (world.hasFood(posX, posY)) {
           graphics.drawLine(posX, posY, posX, posY);
         }
       }
     }
-    List<Cell> population = ctx.getWorld().getAllCells();
+    List<Cell> population = world.getAllCells();
     for (Cell cell : population) {
-      Point[] square = cell.getPosition().getNeighbourhood(ctx.getWorldConfig().getWorldDimensions());
+      Point[] square = cell.getPosition().getNeighbourhood(this.simulatedEvolutionProperties.getWorldDimensions());
       graphics.setColor(cell.getLifeCycleStatus().getColor());
       for (Point pixel : square) {
         graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
@@ -78,8 +85,8 @@ public class WorldCanvas extends JComponent implements GuiConfigDefault, Seriali
 
   public void update(Graphics graphics) {
     Dimension preferredSize = new Dimension(
-      ctx.getWorldConfig().getWorldDimensions().getWidth(),
-      ctx.getWorldConfig().getWorldDimensions().getHeight()
+        this.simulatedEvolutionProperties.getWorldDimensions().getWidth(),
+        this.simulatedEvolutionProperties.getWorldDimensions().getHeight()
     );
     this.setPreferredSize(preferredSize);
     paint(graphics);

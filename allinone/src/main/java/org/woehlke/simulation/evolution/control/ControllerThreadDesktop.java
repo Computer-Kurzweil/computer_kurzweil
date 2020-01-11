@@ -1,6 +1,10 @@
 package org.woehlke.simulation.evolution.control;
 
-import org.woehlke.simulation.evolution.config.GuiConfigDefault;
+import org.springframework.stereotype.Component;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.evolution.model.World;
+import org.woehlke.simulation.evolution.model.WorldMapFood;
+import org.woehlke.simulation.evolution.view.*;
 
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
@@ -21,13 +25,32 @@ import java.awt.event.WindowStateListener;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
+@Component
 public class ControllerThreadDesktop extends Thread implements Runnable,
   WindowListener,
   WindowFocusListener,
-  WindowStateListener,
-  GuiConfigDefault {
+  WindowStateListener {
 
-  /**
+    private SimulatedEvolutionFrame frame;
+
+    private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+    private final ObjectRegistry objectRegistry;
+
+    private final World world;
+    private final WorldCanvas canvas;
+    private final WorldMapFood worldMapFood;
+    private final PanelLifeCycleStatus panelLifeCycleStatus;
+    /*
+    private final ControllerThreadDesktop controller;
+    private final LifeCycleCountContainer statistics;
+
+    private final PanelSubtitle panelSubtitle;
+    private final PanelCopyright panelCopyright;
+    private final PanelButtons panelButtons;
+
+*/
+
+        /**
    * Time to Wait in ms.
    */
   protected final int TIME_TO_WAIT = 100;
@@ -37,11 +60,15 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
    */
   private Boolean mySemaphore;
 
-  private final ObjectRegistry ctx;
 
-  public ControllerThreadDesktop(ObjectRegistry ctx) {
-    this.ctx = ctx;
-    this.mySemaphore = Boolean.TRUE;
+  public ControllerThreadDesktop(SimulatedEvolutionProperties simulatedEvolutionProperties, ObjectRegistry objectRegistry, World world, WorldCanvas canvas, WorldMapFood worldMapFood, PanelLifeCycleStatus panelLifeCycleStatus) {
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      this.objectRegistry = objectRegistry;
+      this.world = world;
+      this.canvas = canvas;
+      this.worldMapFood = worldMapFood;
+      this.panelLifeCycleStatus = panelLifeCycleStatus;
+      this.mySemaphore = Boolean.TRUE;
   }
 
   public void run() {
@@ -51,8 +78,8 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();
       }
-      ctx.getWorld().letLivePopulation();
-      ctx.getCanvas().repaint();
+        world.letLivePopulation();
+        canvas.repaint();
       try {
         sleep(TIME_TO_WAIT);
       } catch (InterruptedException e) {
@@ -63,7 +90,7 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
   }
 
   protected void show() {
-    this.ctx.getFrame().showMe();
+      frame.showMe();
   }
 
   public void windowOpened(WindowEvent e) {
@@ -80,12 +107,12 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
 
   public void windowClosing(WindowEvent e) {
     this.exit();
-    System.exit(EXIT_STATUS);
+    System.exit(simulatedEvolutionProperties.getExitStatus());
   }
 
   public void windowClosed(WindowEvent e) {
     this.exit();
-    System.exit(EXIT_STATUS);
+    System.exit(simulatedEvolutionProperties.getExitStatus());
   }
 
   public void windowIconified(WindowEvent e) {
@@ -106,7 +133,7 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
 
   @Override
   public void windowStateChanged(WindowEvent e) {
-    if (e.getSource() == ctx.getFrame()) {
+    if (e.getSource() == frame) {
       switch (e.getNewState()) {
         case Frame.MAXIMIZED_BOTH:
         case Frame.MAXIMIZED_HORIZ:
@@ -121,7 +148,7 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
   }
 
   public void updateLifeCycleCount() {
-    ctx.getPanelLifeCycleStatus().updateLifeCycleCount();
+      panelLifeCycleStatus.updateLifeCycleCount();
   }
 
   public void exit() {
@@ -131,16 +158,16 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
   }
 
   public void increaseFoodPerDay() {
-    ctx.getWorldMapFoodConfig().increaseFoodPerDay();
+      objectRegistry.increaseFoodPerDay();
   }
 
   public void decreaseFoodPerDay() {
-    ctx.getWorldMapFoodConfig().decreaseFoodPerDay();
+      objectRegistry.decreaseFoodPerDay();
   }
 
   public void toggleGardenOfEden() {
-    ctx.getWorldMapFoodConfig().toggleGardenOfEden();
-    ctx.getWorldMapFood().toggleGardenOfEden();
+    objectRegistry.toggleGardenOfEden();
+    worldMapFood.toggleGardenOfEden();
   }
 
   public void showStatistic() {

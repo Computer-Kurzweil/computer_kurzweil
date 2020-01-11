@@ -1,6 +1,9 @@
 package org.woehlke.simulation.evolution.model;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ import java.util.List;
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
+@Component
 public class World {
 
   /**
@@ -31,13 +35,18 @@ public class World {
   private List<Cell> cells;
 
   private final ObjectRegistry ctx;
+    private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+    private final WorldMapFood worldMapFood;
 
   /**
    * TODO write doc.
    */
-  public World(ObjectRegistry ctx) {
+  @Autowired
+  public World(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, WorldMapFood worldMapFood) {
     this.ctx = ctx;
-    cells = new ArrayList<>();
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      this.worldMapFood = worldMapFood;
+      cells = new ArrayList<>();
     createPopulation();
   }
 
@@ -46,13 +55,13 @@ public class World {
    */
   private void createPopulation() {
     LifeCycleCount lifeCycleCount = new LifeCycleCount();
-    for (int i = 0; i < ctx.getWorldConfig().getInitialPopulation(); i++) {
-      int worldMapFoodX = ctx.getRandom().nextInt(ctx.getWorldConfig().getWidth());
-      int worldMapFoodY = ctx.getRandom().nextInt(ctx.getWorldConfig().getHeight());
+    for (int i = 0; i < simulatedEvolutionProperties.getInitialPopulation(); i++) {
+      int worldMapFoodX = ctx.getRandom().nextInt(simulatedEvolutionProperties.getWidth());
+      int worldMapFoodY = ctx.getRandom().nextInt(simulatedEvolutionProperties.getHeight());
       worldMapFoodX *= Integer.signum(worldMapFoodX);
       worldMapFoodY *= Integer.signum(worldMapFoodY);
       Point position = new Point(worldMapFoodX, worldMapFoodY);
-      Cell cell = new Cell(ctx.getWorldConfig().getWorldDimensions(), position, ctx.getRandom());
+      Cell cell = new Cell(simulatedEvolutionProperties.getWorldDimensions(), position, ctx.getRandom());
       cells.add(cell);
     }
     for (Cell cell : cells) {
@@ -68,7 +77,7 @@ public class World {
    */
   public void letLivePopulation() {
     LifeCycleCount lifeCycleCount = new LifeCycleCount();
-    ctx.getWorldMapFood().letFoodGrow();
+    worldMapFood.letFoodGrow();
     Point pos;
     List<Cell> children = new ArrayList<>();
     List<Cell> died = new ArrayList<>();
@@ -78,7 +87,7 @@ public class World {
         died.add(cell);
       } else {
         pos = cell.getPosition();
-        int food = ctx.getWorldMapFood().eat(pos);
+        int food = worldMapFood.eat(pos);
         cell.eat(food);
         if (cell.isPregnant()) {
           Cell child = cell.performReproductionByCellDivision();
@@ -101,7 +110,7 @@ public class World {
   }
 
   public boolean hasFood(int x, int y) {
-    return ctx.getWorldMapFood().hasFood(x, y);
+    return worldMapFood.hasFood(x, y);
   }
 
 }

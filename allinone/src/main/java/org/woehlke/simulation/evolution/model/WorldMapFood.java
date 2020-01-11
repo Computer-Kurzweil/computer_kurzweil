@@ -1,6 +1,8 @@
 package org.woehlke.simulation.evolution.model;
 
-import org.woehlke.simulation.evolution.config.WorldMapFoodConfigDefault;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 
@@ -17,19 +19,24 @@ import org.woehlke.simulation.evolution.control.ObjectRegistry;
  * Date: 24.08.13
  * Time: 12:37
  */
-public class WorldMapFood implements WorldMapFoodConfigDefault {
+@Component
+public class WorldMapFood {
 
   /**
    * Grid of World where every Place can have food.
    */
   private int[][] worldMapFood;
 
-  private final ObjectRegistry ctx;
+  private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+  private final ObjectRegistry objectRegistry;
 
-  public WorldMapFood(ObjectRegistry ctx) {
-    this.ctx = ctx;
-    worldMapFood = new int[ctx.getWorldConfig().getWorldDimensions().getX()]
-      [ctx.getWorldConfig().getWorldDimensions().getY()];
+  @Autowired
+  public WorldMapFood(SimulatedEvolutionProperties simulatedEvolutionProperties, ObjectRegistry objectRegistry) {
+      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+      this.objectRegistry = objectRegistry;
+      int x = simulatedEvolutionProperties.getWorldDimensions().getX();
+      int y = simulatedEvolutionProperties.getWorldDimensions().getY();
+      worldMapFood = new int[x][y];
   }
 
   /**
@@ -37,25 +44,27 @@ public class WorldMapFood implements WorldMapFoodConfigDefault {
    */
   public void letFoodGrow() {
     int food = 0;
-    while (food < ctx.getWorldMapFoodConfig().getFoodPerDay()) {
+    while (food < simulatedEvolutionProperties.getFoodPerDay()) {
       food++;
-      int posX = ctx.getRandom().nextInt(ctx.getWorldConfig().getWorldDimensions().getX());
-      int posY = ctx.getRandom().nextInt(ctx.getWorldConfig().getWorldDimensions().getY());
+      int posX = objectRegistry.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getX());
+      int posY = objectRegistry.getRandom().nextInt(simulatedEvolutionProperties.getWorldDimensions().getY());
       posX *= Integer.signum(posX);
       posY *= Integer.signum(posY);
       worldMapFood[posX][posY]++;
     }
-    if (ctx.getWorldMapFoodConfig().isEableGardenOfEden()) {
+    if (simulatedEvolutionProperties.getGardenOfEdenEnabled()) {
       food = 0;
-      int startX = ctx.getWorldConfig().getWorldDimensions().getX() / 5;
-      int startY = ctx.getWorldConfig().getWorldDimensions().getY() / 5;
-      while (food < FOOD_PER_DAY * 4) {
+      int gardenOfEdenParts = 5;
+      int gardenOfEdenPartsPadding = 2;
+      int startX = ( simulatedEvolutionProperties.getWorldDimensions().getX() / gardenOfEdenParts ) * gardenOfEdenPartsPadding;
+      int startY = ( simulatedEvolutionProperties.getWorldDimensions().getY() / gardenOfEdenParts ) * gardenOfEdenPartsPadding;
+      while (food < simulatedEvolutionProperties.getGardenOfEdenFoodPerDay()) {
         food++;
-        int posX = ctx.getRandom().nextInt(startX);
-        int posY = ctx.getRandom().nextInt(startY);
+        int posX = objectRegistry.getRandom().nextInt(startX);
+        int posY = objectRegistry.getRandom().nextInt(startY);
         posX *= Integer.signum(posX);
         posY *= Integer.signum(posY);
-        worldMapFood[posX + startX * 2][posY + startY * 2]++;
+        worldMapFood[posX + startX][posY + startY]++;
       }
     }
   }
@@ -75,7 +84,7 @@ public class WorldMapFood implements WorldMapFoodConfigDefault {
    * @see LifeCycle
    */
   public int eat(Point position) {
-    Point[] neighbourhood = position.getNeighbourhood(ctx.getWorldConfig().getWorldDimensions());
+    Point[] neighbourhood = position.getNeighbourhood(simulatedEvolutionProperties.getWorldDimensions());
     int food = 0;
     for (Point neighbourhoodPosition : neighbourhood) {
       food += worldMapFood[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
@@ -85,9 +94,9 @@ public class WorldMapFood implements WorldMapFoodConfigDefault {
   }
 
   public void toggleGardenOfEden() {
-    if (!ctx.getWorldMapFoodConfig().isEableGardenOfEden()) {
-      int startx = ctx.getWorldConfig().getWorldDimensions().getX() / 5;
-      int starty = ctx.getWorldConfig().getWorldDimensions().getY() / 5;
+    if (!simulatedEvolutionProperties.getGardenOfEdenEnabled()) {
+      int startx = simulatedEvolutionProperties.getWorldDimensions().getX() / 5;
+      int starty = simulatedEvolutionProperties.getWorldDimensions().getY() / 5;
       for (int posX = 0; posX < startx; posX++) {
         for (int posY = 0; posY < starty; posY++) {
           worldMapFood[posX + startx * 2][posY + starty * 2] = 0;
@@ -95,4 +104,5 @@ public class WorldMapFood implements WorldMapFoodConfigDefault {
       }
     }
   }
+
 }
