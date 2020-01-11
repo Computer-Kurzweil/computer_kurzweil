@@ -17,6 +17,7 @@ gradle-app.setting
 .idea
 *.iml
 
+/allinone/build/
 /cyclic-cellular-automaton/build/
 /diffusion-limited-aggregation/build/
 /koch-snowflake/build/
