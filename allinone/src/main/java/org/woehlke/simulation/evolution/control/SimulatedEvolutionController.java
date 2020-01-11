@@ -3,9 +3,7 @@ package org.woehlke.simulation.evolution.control;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
-import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldMapFood;
 import org.woehlke.simulation.evolution.view.*;
 
 import java.awt.Frame;
@@ -34,15 +32,12 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
     private final SimulatedEvolutionProperties properties;
     private final SimulatedEvolutionContext context;
 
-    private final SimulatedEvolutionWorld world;
-    private final SimulatedEvolutionWorldCanvas canvas;
-    private final SimulatedEvolutionWorldMapFood worldMapFood;
-    private final SimulatedEvolutionPanelStatistics panelStatistics;
-
-    private SimulatedEvolutionPanelStatistics statisticsPanel;
+    private SimulatedEvolutionWorld world;
+    //private SimulatedEvolutionWorldCanvas canvas;
     private SimulatedEvolutionFrame frame;
+    private SimulatedEvolutionPanelStatistics panelStatistics;
     private SimulatedEvolutionPanelButtons panelButtons;
-    private SimulatedEvolutionWorldStatisticsContainer statisticsContainer;
+
 
     /**
    * Time to Wait in ms.
@@ -56,20 +51,10 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
 
   public SimulatedEvolutionController(
       SimulatedEvolutionProperties properties,
-      SimulatedEvolutionContext context,
-      SimulatedEvolutionWorld world,
-      SimulatedEvolutionWorldCanvas canvas,
-      SimulatedEvolutionWorldMapFood worldMapFood,
-      SimulatedEvolutionPanelStatistics panelStatistics,
-      SimulatedEvolutionWorldStatisticsContainer statisticsContainer
+      SimulatedEvolutionContext context
   ) {
       this.properties = properties;
       this.context = context;
-      this.world = world;
-      this.canvas = canvas;
-      this.worldMapFood = worldMapFood;
-      this.panelStatistics = panelStatistics;
-      this.statisticsContainer = statisticsContainer;
       this.mySemaphore = Boolean.TRUE;
   }
 
@@ -79,16 +64,16 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==  panelButtons.) {
-            this.increaseFoodPerDay();
-            this.foodPerDayField.setText(context.getFoodPerDay()+"");
-        } else if (ae.getSource() == this.buttonFoodPerDayDecrease) {
-            simulatedEvolutionController.decreaseFoodPerDay();
-            this.properties.getFoodPerDay().setText(context.getFoodPerDay()+"");
-        } else if (ae.getSource() == this.buttonToggleGardenOfEden) {
+        if (ae.getSource() ==  panelButtons.getButtonFoodPerDayIncrease()) {
+            context.increaseFoodPerDay();
+            panelButtons.setFoodPerDayFieldText(context.getFoodPerDay()+"");
+        } else if (ae.getSource() == panelButtons.getButtonFoodPerDayDecrease()) {
+            context.decreaseFoodPerDay();
+            panelButtons.setFoodPerDayFieldText(context.getFoodPerDay()+"");
+        } else if (ae.getSource() == this.panelButtons.getButtonToggleGardenOfEden()) {
             this.toggleGardenOfEden();
             boolean selected = context.isGardenOfEdenEnabled();
-            gardenOfEdenEnabled.setSelected(selected);
+            panelButtons.setGardenOfEdenEnabled(selected);
         }
     }
 
@@ -100,7 +85,7 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
         doMyJob = mySemaphore.booleanValue();
       }
         world.letLivePopulation();
-        canvas.repaint();
+        frame.repaint();
       try {
         sleep(TIME_TO_WAIT);
       } catch (InterruptedException e) {
@@ -166,10 +151,11 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
           break;
       }
     }
+    panelStatistics.updateTextFields();
   }
 
   public void updateLifeCycleCount() {
-      statisticsPanel.updateTextFields();
+      panelStatistics.updateTextFields();
   }
 
   public void exit() {
@@ -178,68 +164,24 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
     }
   }
 
-  public void increaseFoodPerDay() {
-      context.increaseFoodPerDay();
-  }
-
-  public void decreaseFoodPerDay() {
-      context.decreaseFoodPerDay();
-  }
-
   public void toggleGardenOfEden() {
-    context.toggleGardenOfEden();
-    worldMapFood.toggleGardenOfEden();
+    world.toggleGardenOfEden();
   }
-
-  public void showStatistic() {
-
-  }
-
-    public void setFrame(SimulatedEvolutionFrame frame) {
-        this.frame = frame;
-    }
-
-    public SimulatedEvolutionWorld getWorld() {
-        return world;
-    }
 
     public void setWorld(SimulatedEvolutionWorld world) {
         this.world = world;
     }
 
-    public SimulatedEvolutionWorldMapFood getWorldMapFood() {
-        return worldMapFood;
+    public void setPanelStatistics(SimulatedEvolutionPanelStatistics panelStatistics) {
+        this.panelStatistics = panelStatistics;
     }
 
-    public void setWorldMapFood(SimulatedEvolutionWorldMapFood worldMapFood) {
-        this.worldMapFood = worldMapFood;
-    }
-
-    public SimulatedEvolutionPanelStatistics getStatisticsPanel() {
-        return statisticsPanel;
-    }
-
-    public void setStatisticsPanel(SimulatedEvolutionPanelStatistics statisticsPanel) {
-        this.statisticsPanel = statisticsPanel;
-    }
-
-    public SimulatedEvolutionWorldCanvas getCanvas() {
-        return canvas;
-    }
-
-    public void setCanvas(SimulatedEvolutionWorldCanvas canvas) {
-        this.canvas = canvas;
-    }
-
-    public SimulatedEvolutionFrame getFrame() {
-        return frame;
-    }
-
-    public SimulatedEvolutionPanelButtons getPanelButtons() {
-        return panelButtons;
+    public void setFrame(SimulatedEvolutionFrame frame) {
+        this.frame = frame;
     }
 
     public void setPanelButtons(SimulatedEvolutionPanelButtons panelButtons) {
         this.panelButtons = panelButtons;
     }
+
 }

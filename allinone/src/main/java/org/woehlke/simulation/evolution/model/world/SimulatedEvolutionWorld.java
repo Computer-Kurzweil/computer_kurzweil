@@ -39,9 +39,9 @@ public class SimulatedEvolutionWorld {
   private List<Cell> cells;
 
     private final SimulatedEvolutionContext ctx;
-    private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-    private final SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood;
-    private final SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer;
+    private final SimulatedEvolutionProperties properties;
+    private final SimulatedEvolutionWorldMapFood worldMapFood;
+    private final SimulatedEvolutionWorldStatisticsContainer statisticsContainer;
 
   /**
    * TODO write doc.
@@ -53,10 +53,10 @@ public class SimulatedEvolutionWorld {
       SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood,
       SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer
   ) {
-        this.ctx = ctx;
-      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      this.simulatedEvolutionWorldMapFood = simulatedEvolutionWorldMapFood;
-      this.simulatedEvolutionWorldStatisticsContainer = simulatedEvolutionWorldStatisticsContainer;
+      this.ctx = ctx;
+      this.properties = simulatedEvolutionProperties;
+      this.worldMapFood = simulatedEvolutionWorldMapFood;
+      this.statisticsContainer = simulatedEvolutionWorldStatisticsContainer;
       cells = new ArrayList<>();
     createPopulation();
   }
@@ -66,20 +66,20 @@ public class SimulatedEvolutionWorld {
    */
   private void createPopulation() {
     SimulatedEvolutionWorldStatistics simulatedEvolutionWorldStatistics = new SimulatedEvolutionWorldStatistics();
-    for (int i = 0; i < simulatedEvolutionProperties.getInitialPopulation(); i++) {
-      int worldMapFoodX = ctx.getRandom().nextInt(simulatedEvolutionProperties.getWidth());
-      int worldMapFoodY = ctx.getRandom().nextInt(simulatedEvolutionProperties.getHeight());
+    for (int i = 0; i < properties.getInitialPopulation(); i++) {
+      int worldMapFoodX = ctx.getRandom().nextInt(properties.getWidth());
+      int worldMapFoodY = ctx.getRandom().nextInt(properties.getHeight());
       worldMapFoodX *= Integer.signum(worldMapFoodX);
       worldMapFoodY *= Integer.signum(worldMapFoodY);
       Point position = new Point(worldMapFoodX, worldMapFoodY);
-      Cell cell = new Cell(position,simulatedEvolutionProperties, ctx);
+      Cell cell = new Cell(position,properties, ctx);
       cells.add(cell);
     }
     for (Cell cell : cells) {
       simulatedEvolutionWorldStatistics.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
     System.out.println(simulatedEvolutionWorldStatistics);
-      simulatedEvolutionWorldStatisticsContainer.add(simulatedEvolutionWorldStatistics);
+      statisticsContainer.add(simulatedEvolutionWorldStatistics);
   }
 
   /**
@@ -87,8 +87,8 @@ public class SimulatedEvolutionWorld {
    * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
    */
   public void letLivePopulation() {
-    SimulatedEvolutionWorldStatistics simulatedEvolutionWorldStatistics = new SimulatedEvolutionWorldStatistics();
-    simulatedEvolutionWorldMapFood.letFoodGrow();
+    SimulatedEvolutionWorldStatistics oneStatisticsTimestamp = new SimulatedEvolutionWorldStatistics();
+    worldMapFood.letFoodGrow();
     Point pos;
     List<Cell> children = new ArrayList<>();
     List<Cell> died = new ArrayList<>();
@@ -98,7 +98,7 @@ public class SimulatedEvolutionWorld {
         died.add(cell);
       } else {
         pos = cell.getPosition();
-        int food = simulatedEvolutionWorldMapFood.eat(pos);
+        int food = worldMapFood.eat(pos);
         cell.eat(food);
         if (cell.isPregnant()) {
           Cell child = cell.performReproductionByCellDivision();
@@ -111,9 +111,9 @@ public class SimulatedEvolutionWorld {
     }
     cells.addAll(children);
     for (Cell cell : cells) {
-      simulatedEvolutionWorldStatistics.countStatusOfOneCell(cell.getLifeCycleStatus());
+        oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
-      simulatedEvolutionWorldStatisticsContainer.add(simulatedEvolutionWorldStatistics);
+    statisticsContainer.add(oneStatisticsTimestamp);
   }
 
   public List<Cell> getAllCells() {
@@ -121,7 +121,11 @@ public class SimulatedEvolutionWorld {
   }
 
   public boolean hasFood(int x, int y) {
-    return simulatedEvolutionWorldMapFood.hasFood(x, y);
+    return worldMapFood.hasFood(x, y);
   }
 
+    public void toggleGardenOfEden() {
+        ctx.toggleGardenOfEden();
+        worldMapFood.toggleGardenOfEden();
+    }
 }

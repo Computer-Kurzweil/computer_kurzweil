@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.integration.config.EnableIntegration;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
@@ -48,51 +47,34 @@ import java.awt.*;
 })
 public class ComputerKurzweilApplication {
 
-    private final SimulatedEvolutionContext ctx;
-    private final SimulatedEvolutionProperties properties;
     private final SimulatedEvolutionController controller;
-    private final SimulatedEvolutionWorld simulatedEvolutionWorld;
-    private final SimulatedEvolutionWorldMapFood worldMapFood;
-    private final SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer;
-
-    private final SimulatedEvolutionFrame simulatedEvolutionFrame;
-    private final SimulatedEvolutionPanelStatistics statisticsPanel;
-    private final SimulatedEvolutionWorldCanvas simulatedEvolutionWorldCanvas;
-    private final SimulatedEvolutionPanelButtons simulatedEvolutionPanelButtons;
+    private final SimulatedEvolutionFrame frame;
+    private final SimulatedEvolutionWorld world;
+    private final SimulatedEvolutionPanelButtons panelButtons;
+    private final SimulatedEvolutionPanelStatistics panelStatistics;
 
     @Autowired
       public ComputerKurzweilApplication(
-        SimulatedEvolutionContext ctx,
-        SimulatedEvolutionProperties properties,
-        SimulatedEvolutionFrame simulatedEvolutionFrame,
-        SimulatedEvolutionWorld simulatedEvolutionWorld,
-        SimulatedEvolutionWorldMapFood worldMapFood,
-        SimulatedEvolutionPanelStatistics statisticsPanel,
-        SimulatedEvolutionWorldCanvas simulatedEvolutionWorldCanvas,
-        SimulatedEvolutionController simulatedEvolutionController,
-        SimulatedEvolutionPanelButtons simulatedEvolutionPanelButtons,
-        SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer
+        SimulatedEvolutionController controller,
+        SimulatedEvolutionFrame frame,
+        SimulatedEvolutionWorld world,
+        SimulatedEvolutionPanelButtons panelButtons,
+        SimulatedEvolutionPanelStatistics panelStatistics
     ) {
-        this.ctx = ctx;
-        this.properties = properties;
+        this.frame = frame;
+        this.world = world;
+        this.panelButtons = panelButtons;
+        this.panelStatistics = panelStatistics;
+        this.controller = controller;
+        setupController();
+    }
 
-        this.simulatedEvolutionWorld = simulatedEvolutionWorld;
-
-        this.simulatedEvolutionWorldStatisticsContainer = simulatedEvolutionWorldStatisticsContainer;
-
-        this.worldMapFood = worldMapFood;
-        this.simulatedEvolutionFrame = simulatedEvolutionFrame;
-        this.statisticsPanel = statisticsPanel;
-        this.simulatedEvolutionWorldCanvas = simulatedEvolutionWorldCanvas;
-        this.simulatedEvolutionPanelButtons = simulatedEvolutionPanelButtons;
-        this.controller = simulatedEvolutionController;
-
-        this.controller.setStatisticsPanel(this.statisticsPanel);
-        this.controller.setFrame(this.simulatedEvolutionFrame);
-        this.controller.setWorld(this.simulatedEvolutionWorld);
-        this.controller.setCanvas(this.simulatedEvolutionWorldCanvas);
-        this.controller.setStatisticsPanel(this.statisticsPanel);
-        this.controller.setWorldMapFood(this.worldMapFood);
+    private void setupController(){
+        this.controller.setFrame(this.frame);
+        this.controller.setWorld(this.world);
+        this.controller.setPanelButtons(this.panelButtons);
+        this.controller.setPanelStatistics(this.panelStatistics);
+        this.panelButtons.registerController(this.controller);
     }
 
     public void start(){
@@ -101,11 +83,11 @@ public class ComputerKurzweilApplication {
         } catch (IllegalThreadStateException e){
             System.out.println(e.getLocalizedMessage());
         }
-        this.simulatedEvolutionFrame.showMe();
+        this.frame.showMe();
     }
 
     public void exit() {
-        this.simulatedEvolutionFrame.dispose();
+        this.frame.dispose();
     }
 
     /**

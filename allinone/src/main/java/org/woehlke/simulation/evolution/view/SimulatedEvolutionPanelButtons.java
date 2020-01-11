@@ -26,8 +26,9 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
     private final JButton buttonFoodPerDayIncrease;
     private final JButton buttonFoodPerDayDecrease;
     private final JButton buttonToggleGardenOfEden;
-    private JCheckBox gardenOfEdenEnabled;
-    private JTextField foodPerDayField;
+    private final JCheckBox gardenOfEdenEnabled;
+    private final JTextField foodPerDayField;
+    private final JLabel foodPerDayLabel;
 
     @Autowired
   public SimulatedEvolutionPanelButtons(
@@ -36,8 +37,11 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
     ) {
     this.ctx=ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-        JLabel foodPerDayLabel = new JLabel(this.simulatedEvolutionProperties.getFoodPerDayLabel());
-        foodPerDayField = new JTextField(this.simulatedEvolutionProperties.getFoodPerDay()+"", simulatedEvolutionProperties.getFoodPerDayFieldColumns());
+      foodPerDayLabel = new JLabel(this.simulatedEvolutionProperties.getFoodPerDayLabel());
+        foodPerDayField = new JTextField(
+            this.simulatedEvolutionProperties.getFoodPerDay()+"",
+            simulatedEvolutionProperties.getFoodPerDayFieldColumns()
+        );
         boolean selected = this.ctx.isGardenOfEdenEnabled();
         this.gardenOfEdenEnabled = new JCheckBox(this.simulatedEvolutionProperties.getGardenOfEdenEnabledString(), selected);
         this.buttonFoodPerDayIncrease = new JButton(simulatedEvolutionProperties.getButtonFoodPerDayIncrease());
@@ -45,11 +49,11 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
         this.buttonToggleGardenOfEden = new JButton(simulatedEvolutionProperties.getGardenOfEdenEnabledString());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
-        this.add(foodPerDayLabel);
-        this.add(foodPerDayField);
+        this.add(this.foodPerDayLabel);
+        this.add(this.foodPerDayField);
         this.add(this.buttonFoodPerDayIncrease);
         this.add(this.buttonFoodPerDayDecrease);
-        this.add(gardenOfEdenEnabled);
+        this.add(this.gardenOfEdenEnabled);
         this.add(this.buttonToggleGardenOfEden);
   }
 
@@ -59,4 +63,27 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
       this.buttonToggleGardenOfEden.addActionListener(controller);
   }
 
+    public JButton getButtonFoodPerDayIncrease() {
+        return buttonFoodPerDayIncrease;
+    }
+
+    public JButton getButtonFoodPerDayDecrease() {
+        return buttonFoodPerDayDecrease;
+    }
+
+    public JButton getButtonToggleGardenOfEden() {
+        return buttonToggleGardenOfEden;
+    }
+
+    public JCheckBox getGardenOfEdenEnabled() {
+        return gardenOfEdenEnabled;
+    }
+
+    public void setFoodPerDayFieldText(String text){
+        this.foodPerDayField.setText(text);
+    }
+
+    public void setGardenOfEdenEnabled(boolean selected) {
+        this.gardenOfEdenEnabled.setSelected(selected);
+    }
 }

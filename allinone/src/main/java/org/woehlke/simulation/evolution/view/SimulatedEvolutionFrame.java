@@ -32,48 +32,54 @@ import java.awt.image.ImageObserver;
 @Component
 public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, MenuContainer {
 
-  /**
-   * TODO write doc.
-   */
-  public void showMe() {
-    pack();
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    double height = rootPane.getHeight();
-    double width = rootPane.getWidth();
-    double startX = (screenSize.getWidth() - width) / 2d;
-    double startY = (screenSize.getHeight() - height) / 2d;
-    int myheight = Double.valueOf(height).intValue();
-    int mywidth = Double.valueOf(width).intValue();
-    int mystartX = Double.valueOf(startX).intValue();
-    int mystartY = Double.valueOf(startY).intValue();
-    this.setBounds(mystartX, mystartY, mywidth, myheight);
-    rootPane.setVisible(true);
-    this.setVisible(true);
-    toFront();
-  }
+  private final SimulatedEvolutionWorldCanvas canvas;
 
   @Autowired
   public SimulatedEvolutionFrame(
-      SimulatedEvolutionProperties simulatedEvolutionProperties,
-      SimulatedEvolutionPanelSubtitle simulatedEvolutionPanelSubtitle,
-      SimulatedEvolutionWorldCanvas simulatedEvolutionWorldCanvas,
-      SimulatedEvolutionPanelCopyright simulatedEvolutionPanelCopyright,
-      SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics,
-      SimulatedEvolutionPanelButtons simulatedEvolutionPanelButtons
+      SimulatedEvolutionProperties properties,
+      SimulatedEvolutionPanelSubtitle panelSubtitle,
+      SimulatedEvolutionWorldCanvas canvas,
+      SimulatedEvolutionPanelCopyright panelCopyright,
+      SimulatedEvolutionPanelStatistics panelStatistics,
+      SimulatedEvolutionPanelButtons panelButtons
     ) {
-    super(simulatedEvolutionProperties.getTitle());
+    super(properties.getTitle());
+    this.canvas = canvas;
     JSeparator separator1 = new JSeparator();
     JSeparator separator2 = new JSeparator();
     BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
     rootPane.setLayout(layout);
-    rootPane.add(simulatedEvolutionPanelSubtitle);
-    rootPane.add(simulatedEvolutionWorldCanvas);
-    rootPane.add(simulatedEvolutionPanelCopyright);
+    rootPane.add(panelSubtitle);
+    rootPane.add(canvas);
+    rootPane.add(panelCopyright);
     rootPane.add(separator1);
-    rootPane.add(simulatedEvolutionPanelStatistics);
+    rootPane.add(panelStatistics);
     rootPane.add(separator2);
-    rootPane.add(simulatedEvolutionPanelButtons);
-    pack();
+    rootPane.add(panelButtons);
     showMe();
   }
+
+    /**
+     * TODO write doc.
+     */
+    public void showMe() {
+        pack();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double height = rootPane.getHeight();
+        double width = rootPane.getWidth();
+        double startX = (screenSize.getWidth() - width) / 2d;
+        double startY = (screenSize.getHeight() - height) / 2d;
+        int myheight = Double.valueOf(height).intValue();
+        int mywidth = Double.valueOf(width).intValue();
+        int mystartX = Double.valueOf(startX).intValue();
+        int mystartY = Double.valueOf(startY).intValue();
+        this.setBounds(mystartX, mystartY, mywidth, myheight);
+        rootPane.setVisible(true);
+        this.setVisible(true);
+        toFront();
+    }
+
+    public void repaint(){
+        canvas.repaint();
+    }
 }
