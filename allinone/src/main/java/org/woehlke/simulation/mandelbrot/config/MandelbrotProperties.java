@@ -3,10 +3,12 @@ package org.woehlke.simulation.mandelbrot.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.beans.Transient;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -21,7 +23,7 @@ import javax.validation.constraints.NotNull;
 @ConfigurationProperties("org.woehlke.simulation.mandelbrot.config")
 @Valid
 @Validated
-public class Config implements ConfigProperties {
+public class MandelbrotProperties {
 
     @NotBlank private String title;
     @NotBlank private String subtitle;
@@ -37,6 +39,14 @@ public class Config implements ConfigProperties {
     @NotBlank private String buttonsZoomOut;
 
     @NotNull private Boolean logDebug;
+
+    @Transient
+    public LatticePoint getWorldDimensions() {
+        return new LatticePoint(
+            this.getWidth(),
+            this.getHeight()
+        );
+    }
 
     public String getTitle() {
         return title;

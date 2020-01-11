@@ -1,7 +1,8 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.simulation.mandelbrot.model.numbers.*;
@@ -20,7 +21,8 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
 
     private final ZoomLevel zoomLevel;
 
-    public GaussianNumberPlaneMandelbrotImpl(ApplicationContext ctx) {
+    @Autowired
+    public GaussianNumberPlaneMandelbrotImpl(MandelbrotApplicationContext ctx) {
         super(ctx,FractalSetType.MANDELBROT_SET);
         zoomLevel = new ZoomLevel();
         this.setZoomCenter(startCenterForMandelbrot);
@@ -90,7 +92,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
     }
 
     public void zoomInto(LatticePoint zoomLatticePoint) {
-        if(ctx.getConfig().getLogDebug()){
+        if(ctx.getProperties().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }
         boolean LowestZoomLevel = this.zoomLevel.isLowestZoomLevel();
@@ -103,7 +105,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
             this.setZoomCenter(getComplexNumberFromLatticeCoordsForZoomedMandelbrot(zoomLatticePoint));
         }
         complexCenterForZoomedMandelbrot.push(this.getZoomCenter());
-        if(ctx.getConfig().getLogDebug()) {
+        if(ctx.getProperties().getLogDebug()) {
             String msg = "zoomPoint: "+ zoomLatticePoint
                 + " zoomCenterNew: " + this.getZoomCenter()
                 + " zoomLevel:  "+ this.zoomLevel.getZoomLevel();
@@ -114,7 +116,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
 
 
     public void zoomOut() {
-        if(ctx.getConfig().getLogDebug()) {
+        if(ctx.getProperties().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }
         if(!this.zoomLevel.isLowestZoomLevel()) {
@@ -122,7 +124,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
         }
         ComplexNumber zoomCenter = complexCenterForZoomedMandelbrot.pop();
         this.setZoomCenter(zoomCenter);
-        if(ctx.getConfig().getLogDebug()) {
+        if(ctx.getProperties().getLogDebug()) {
             log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.zoomLevel.getZoomLevel());
         }
         computeWZoomedWorld();

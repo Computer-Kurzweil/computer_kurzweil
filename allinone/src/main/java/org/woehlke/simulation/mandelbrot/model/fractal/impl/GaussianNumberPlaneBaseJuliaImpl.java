@@ -1,8 +1,9 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.numbers.*;
@@ -23,7 +24,8 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
 
     private ComplexNumber complexNumberForJuliaSetC;
 
-    public GaussianNumberPlaneBaseJuliaImpl(ApplicationContext ctx) {
+    @Autowired
+    public GaussianNumberPlaneBaseJuliaImpl(MandelbrotApplicationContext ctx) {
         super(ctx,FractalSetType.JULIA_SET);
         zoomLevel = new ZoomLevel();
     }
@@ -136,7 +138,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
 
     //TODO:
     public void zoomInto(LatticePoint zoomLatticePoint) {
-        if(ctx.getConfig().getLogDebug()){
+        if(ctx.getProperties().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }
         boolean LowestZoomLevel = zoomLevel.isLowestZoomLevel();
@@ -149,7 +151,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
             this.setZoomCenter(getComplexNumberFromLatticeCoordsForZoomedJulia(zoomLatticePoint));
         }
         // complexCenterForZoomedJulia.push(this.getZoomCenter());
-        if(ctx.getConfig().getLogDebug()) {
+        if(ctx.getProperties().getLogDebug()) {
             String msg = "zoomPoint: "+ zoomLatticePoint
                 + " zoomCenterNew: " + this.getZoomCenter()
                 + " zoomLevel:  "+ this.zoomLevel.getZoomLevel();
@@ -162,7 +164,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
 
     //TODO:
     public void zoomOut() {
-        if(ctx.getConfig().getLogDebug()) {
+        if(ctx.getProperties().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         }
         if(!this.zoomLevel.isLowestZoomLevel()) {
@@ -174,7 +176,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
 
             }
         }
-        if(ctx.getConfig().getLogDebug()) {
+        if(ctx.getProperties().getLogDebug()) {
             log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.zoomLevel.getZoomLevel());
         }
         ComplexNumber c = this.complexNumberForJuliaSetC;

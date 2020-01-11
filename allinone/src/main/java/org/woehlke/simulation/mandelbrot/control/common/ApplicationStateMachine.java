@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.control;
+package org.woehlke.simulation.mandelbrot.control.common;
 
 
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;

@@ -2,10 +2,10 @@ package org.woehlke.simulation.mandelbrot.control.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.config.Config;
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
-import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.control.common.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
@@ -15,7 +15,7 @@ import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachineImpl;
 import org.woehlke.simulation.mandelbrot.view.ApplicationCanvas;
-import org.woehlke.simulation.mandelbrot.view.ApplicationFrame;
+import org.woehlke.simulation.mandelbrot.view.MandelbrotApplicationFrame;
 import org.woehlke.simulation.mandelbrot.view.PanelButtons;
 import org.woehlke.simulation.mandelbrot.view.PanelSubtitle;
 
@@ -25,12 +25,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 
 @Component
-public class ApplicationContextImpl implements ApplicationContext {
-
+public class MandelbrotApplicationContextImpl implements MandelbrotApplicationContext {
 
     private Rectangle rectangleBounds;
     private Dimension dimensionSize;
     private PanelButtons panelButtons;
+    private MandelbrotApplicationFrame frame;
 
     private final PanelSubtitle panelSubtitle;
     private final ApplicationCanvas canvas;
@@ -38,24 +38,26 @@ public class ApplicationContextImpl implements ApplicationContext {
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final MandelbrotTuringMachine mandelbrotTuringMachine;
     private final ApplicationStateMachine applicationStateMachine;
-    private final ApplicationFrame frame;
-    private final Config config;
+    private final MandelbrotProperties properties;
+
 
     @Autowired
-    public ApplicationContextImpl(Config config, ApplicationFrame frame) {
-        this.config = config;
-        this.frame = frame;
+    public MandelbrotApplicationContextImpl(
+        MandelbrotProperties properties
+    ) {
+        this.properties = properties;
         this.canvas = new ApplicationCanvas(this);
-        this.panelSubtitle = new PanelSubtitle(config);
+        this.panelSubtitle = new PanelSubtitle(properties);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJuliaImpl(this);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrotImpl(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachineImpl(this);
         this.applicationStateMachine = new ApplicationStateMachineImpl(this);
-        this.canvas.addMouseListener( this );
-        this.frame.addWindowListener( this );
+
     }
 
     @Override public void start() {
+        this.canvas.addMouseListener( this );
+        this.frame.addWindowListener( this );
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneMandelbrot.start();
         this.mandelbrotTuringMachine.start();
@@ -82,9 +84,7 @@ public class ApplicationContextImpl implements ApplicationContext {
 
     @Deprecated
     @Override public LatticePoint getWorldDimensions() {
-        int width = config.getWidth();
-        int height = config.getHeight();
-        return new LatticePoint(width, height);
+        return properties.getWorldDimensions();
     }
 
     @Override public void setModeSwitch() {
@@ -239,11 +239,15 @@ public class ApplicationContextImpl implements ApplicationContext {
         return panelButtons;
     }
 
-    @Override public Config getConfig() {
-        return config;
+    @Override public MandelbrotProperties getProperties() {
+        return properties;
     }
 
-    @Override public ApplicationFrame getFrame() {
+    public void setFrame(MandelbrotApplicationFrame frame) {
+        this.frame = frame;
+    }
+
+    @Override public MandelbrotApplicationFrame getFrame() {
         return frame;
     }
 
@@ -274,5 +278,7 @@ public class ApplicationContextImpl implements ApplicationContext {
     @Override public ApplicationStateMachine getApplicationStateMachine() {
         return applicationStateMachine;
     }
+
+
 
 }

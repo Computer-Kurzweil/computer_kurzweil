@@ -1,7 +1,8 @@
 package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
@@ -26,10 +27,11 @@ public class MandelbrotTuringMachineImpl implements MandelbrotTuringMachine {
     private TuringPositionsStateMachine turingPositionsStateMachine;
     private TuringPhaseStateMachine turingPhaseStateMachine;
 
-    public MandelbrotTuringMachineImpl(ApplicationContext model) {
+    @Autowired
+    public MandelbrotTuringMachineImpl(MandelbrotApplicationContext model) {
         this.gaussianNumberPlaneMandelbrot = model.getGaussianNumberPlaneMandelbrot();
         this.turingPhaseStateMachine = new TuringPhaseStateMachineImpl();
-        this.turingPositionsStateMachine = new TuringPositionsStateMachineImpl(model.getWorldDimensions());
+        this.turingPositionsStateMachine = new TuringPositionsStateMachineImpl(model.getProperties());
         start();
     }
 

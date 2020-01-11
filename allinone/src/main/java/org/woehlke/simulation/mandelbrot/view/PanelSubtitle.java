@@ -1,7 +1,8 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.config.Config;
+import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,9 +19,10 @@ import java.awt.*;
 @Component
 public class PanelSubtitle extends JPanel {
 
-  public PanelSubtitle(Config config) {
+    @Autowired
+  public PanelSubtitle(MandelbrotProperties mandelbrotProperties) {
       this.setLayout(new FlowLayout());
-      String label = config.getSubtitle() + " - " + config.getCopyright();
+      String label = mandelbrotProperties.getSubtitle() + " - " + mandelbrotProperties.getCopyright();
       this.add(new JLabel(label));
   }
 

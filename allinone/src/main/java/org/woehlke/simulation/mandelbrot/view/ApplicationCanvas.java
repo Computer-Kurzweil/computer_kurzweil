@@ -1,7 +1,8 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,10 +21,11 @@ import java.awt.*;
 @Component
 public class ApplicationCanvas extends JComponent {
 
-    private final ApplicationContext ctx;
+    private final MandelbrotApplicationContext ctx;
     private final Dimension preferredSize;
 
-    public ApplicationCanvas(ApplicationContext ctx) {
+    @Autowired
+    public ApplicationCanvas(MandelbrotApplicationContext ctx) {
         this.ctx = ctx;
         int width = this.ctx.getWorldDimensions().getWidth();
         int height = this.ctx.getWorldDimensions().getHeight();

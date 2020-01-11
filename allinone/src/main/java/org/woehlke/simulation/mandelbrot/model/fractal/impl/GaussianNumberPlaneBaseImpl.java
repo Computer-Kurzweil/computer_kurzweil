@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
@@ -26,14 +26,14 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
 
     private ComplexNumber zoomCenter;
 
-    protected final ApplicationContext ctx;
+    protected final MandelbrotApplicationContext ctx;
 
     private ClickBehaviour clickBehaviour;
     private final FractalSetType fractalSetType;
 
     public static Logger log = Logger.getLogger(GaussianNumberPlaneBaseImpl.class.getName());
 
-    public GaussianNumberPlaneBaseImpl(ApplicationContext ctx, FractalSetType fractalSetType) {
+    protected GaussianNumberPlaneBaseImpl(MandelbrotApplicationContext ctx, FractalSetType fractalSetType) {
         this.ctx = ctx;
         this.fractalSetType = fractalSetType;
         clickBehaviour = ClickBehaviour.start();

@@ -1,9 +1,8 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.config.Config;
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
-import org.woehlke.simulation.mandelbrot.control.impl.ApplicationContextImpl;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -18,16 +17,18 @@ import java.awt.image.ImageObserver;
  * Time: 18:47:46
  */
 @Component
-public class ApplicationFrame extends JFrame implements
+public class MandelbrotApplicationFrame extends JFrame implements
         ImageObserver,
         MenuContainer,
         Accessible {
 
-    private final ApplicationContext ctx;
+    private final MandelbrotApplicationContext ctx;
 
-    public ApplicationFrame(Config config) {
-        super(config.getTitle());
-        this.ctx = new ApplicationContextImpl(config, this);
+    @Autowired
+    public MandelbrotApplicationFrame(MandelbrotApplicationContext ctx) {
+        super(ctx.getProperties().getTitle());
+        this.ctx=ctx;
+        this.ctx.setFrame(this);
         PanelButtons panelButtons = new PanelButtons( this.ctx );
         this.ctx.setPanelButtons(panelButtons);
         rootPane.setLayout(new BoxLayout(rootPane, BoxLayout.PAGE_AXIS));

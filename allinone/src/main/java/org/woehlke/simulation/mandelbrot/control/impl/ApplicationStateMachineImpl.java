@@ -1,9 +1,9 @@
 package org.woehlke.simulation.mandelbrot.control.impl;
 
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
-import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.control.common.ApplicationStateMachine;
 
 import java.util.logging.Logger;
 
@@ -23,9 +23,9 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
 
     private ApplicationState applicationState;
 
-    private final ApplicationContext ctx;
+    private final MandelbrotApplicationContext ctx;
 
-    public ApplicationStateMachineImpl(ApplicationContext ctx) {
+    public ApplicationStateMachineImpl(MandelbrotApplicationContext ctx) {
         this.applicationState = MANDELBROT_SWITCH;
         this.ctx = ctx;
     }
@@ -51,7 +51,7 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
-        if(this.ctx.getConfig().getLogDebug()){
+        if(this.ctx.getProperties().getLogDebug()){
             log.info("click: "+ applicationState + " -> "+ nextApplicationState);
         }
         this.setApplicationState(nextApplicationState);
@@ -69,7 +69,7 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_SWITCH;
                 break;
         }
-        if(this.ctx.getConfig().getLogDebug()){
+        if(this.ctx.getProperties().getLogDebug()){
             String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
             log.info(msg);
         }
@@ -88,7 +88,7 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
-        if(this.ctx.getConfig().getLogDebug()){
+        if(this.ctx.getProperties().getLogDebug()){
             String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
             log.info(msg);
         }

@@ -2,16 +2,17 @@ package org.woehlke.simulation.mandelbrot.control;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 
 import java.util.logging.Logger;
 
 @Component
 public class ComputeMandelbrotSetThread extends Thread implements Runnable {
 
-    private final ApplicationContext ctx;
+    private final MandelbrotApplicationContext ctx;
 
     @Autowired
-    public ComputeMandelbrotSetThread(ApplicationContext ctx) {
+    public ComputeMandelbrotSetThread(MandelbrotApplicationContext ctx) {
         super("ComputeMandelbrotSetThread");
         this.ctx = ctx;
     }

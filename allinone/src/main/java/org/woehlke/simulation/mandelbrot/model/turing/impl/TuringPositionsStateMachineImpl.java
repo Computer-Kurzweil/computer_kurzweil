@@ -2,6 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.state.TuringDirection;
@@ -29,8 +30,8 @@ public class TuringPositionsStateMachineImpl implements TuringPositionsStateMach
     private int steps;
 
     @Autowired
-    public TuringPositionsStateMachineImpl(LatticePoint worldDimensions) {
-        this.worldDimensions = worldDimensions;
+    public TuringPositionsStateMachineImpl(MandelbrotProperties properties) {
+        this.worldDimensions = properties.getWorldDimensions();
         start();
     }
 
