@@ -48,45 +48,44 @@ public class Cell {
    */
   private LifeCycle lifeCycle;
 
-  /**
-   * The World Dimensions in which this Cell can move.
-   */
-  private final Point worldDimensions;
+  private SimulatedEvolutionProperties properties;
+  private SimulatedEvolutionContext ctx;
 
-  /**
-   * Random Generator is set from outside by Constructor.
-   */
-  private Random random;
-
-    private SimulatedEvolutionProperties simulatedEvolutionProperties;
-
-  public Cell(Point position, SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionContext ctx) {
-      this.simulatedEvolutionProperties=simulatedEvolutionProperties;
-      this.lifeCycle = new LifeCycle(simulatedEvolutionProperties);
-    this.worldDimensions = new Point(simulatedEvolutionProperties.getWorldDimensions());
+  public Cell(
+      Point position,
+      SimulatedEvolutionProperties properties,
+      SimulatedEvolutionContext ctx
+  ) {
     this.position = new Point(position);
+    this.ctx = ctx;
+    this.properties = properties;
+    this.lifeCycle = new LifeCycle(properties);
     this.cellCore = new CellCore(ctx);
-    this.worldDimensions.absoluteValue();
-    this.position.setX(random.nextInt() % worldDimensions.getX());
-    this.position.setY(random.nextInt() % worldDimensions.getY());
+    this.position.setX(ctx.getRandom().nextInt() % properties.getWorldDimensions().getX());
+    this.position.setY(ctx.getRandom().nextInt() % properties.getWorldDimensions().getY());
     this.position.absoluteValue();
     this.orientation = getRandomOrientation();
 
   }
 
-  private Cell(int fat, CellCore rna, Point position, Point worldDimensions, Random random, SimulatedEvolutionProperties simulatedEvolutionProperties) {
-      this.simulatedEvolutionProperties=simulatedEvolutionProperties;
-      this.lifeCycle = new LifeCycle(fat, simulatedEvolutionProperties);
-    this.worldDimensions = new Point(worldDimensions);
+  private Cell(
+      int fat,
+      CellCore rna,
+      Point position,
+      SimulatedEvolutionProperties properties,
+      SimulatedEvolutionContext ctx
+  ) {
+      this.properties=properties;
+      this.lifeCycle = new LifeCycle(fat, properties);
     this.position = new Point(position);
-    this.random = random;
+    this.ctx = ctx;
     this.cellCore = rna;
     orientation = getRandomOrientation();
   }
 
   private Orientation getRandomOrientation() {
     int dnaLength = Orientation.values().length;
-    int dnaBase = random.nextInt(dnaLength);
+    int dnaBase = this.ctx.getRandom().nextInt(dnaLength);
     if (dnaBase < 0) {
       dnaBase *= -1;
     }
@@ -108,8 +107,8 @@ public class Cell {
     if (lifeCycle.move()) {
       getNextOrientation();
       position.add(orientation.getMove());
-      position.add(worldDimensions);
-      position.normalize(worldDimensions);
+      position.add(properties.getWorldDimensions());
+      position.normalize(properties.getWorldDimensions());
     }
   }
 
@@ -123,7 +122,7 @@ public class Cell {
   public Cell performReproductionByCellDivision() {
     CellCore rna = cellCore.performMitosis();
     lifeCycle.haveSex();
-    Cell child = new Cell(lifeCycle.getFat(), rna, position, worldDimensions, random, this.simulatedEvolutionProperties);
+    Cell child = new Cell(lifeCycle.getFat(), rna, position, properties, ctx);
     return child;
   }
 

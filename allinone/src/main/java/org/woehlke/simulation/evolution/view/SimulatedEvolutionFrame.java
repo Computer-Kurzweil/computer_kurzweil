@@ -80,6 +80,7 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, Me
     }
 
     public void repaint(){
+        super.repaint();
         canvas.repaint();
     }
 }
