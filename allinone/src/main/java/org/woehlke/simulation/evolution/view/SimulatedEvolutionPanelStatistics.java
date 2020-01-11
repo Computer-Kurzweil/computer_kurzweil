@@ -11,7 +11,6 @@ import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 import static org.woehlke.simulation.evolution.model.cell.LifeCycleStatus.*;
-import static org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldColor.*;
 
 
 /**
