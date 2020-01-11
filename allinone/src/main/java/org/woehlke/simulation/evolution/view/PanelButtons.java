@@ -21,25 +21,26 @@ import java.awt.event.ActionListener;
 @Component
 public class PanelButtons extends JPanel implements ActionListener {
 
-  private final JButton buttonFoodPerDayIncrease;
-  private final JButton buttonFoodPerDayDecrease;
-  private final JButton buttonToggleGardenOfEden;
+
   private final SimulatedEvolutionProperties simulatedEvolutionProperties;
   private final ControllerThreadDesktop controllerThreadDesktop;
-    private final ObjectRegistry ctx;
+  private final ObjectRegistry ctx;
 
+    private final JButton buttonFoodPerDayIncrease;
+    private final JButton buttonFoodPerDayDecrease;
+    private final JButton buttonToggleGardenOfEden;
     private JCheckBox gardenOfEdenEnabled;
     private JTextField foodPerDayField;
 
     @Autowired
-  public PanelButtons(ObjectRegistry ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, ControllerThreadDesktop controllerThreadDesktop) {
+  public PanelButtons(SimulatedEvolutionProperties simulatedEvolutionProperties,ControllerThreadDesktop controllerThreadDesktop, ObjectRegistry ctx) {
     this.ctx=ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
         this.controllerThreadDesktop = controllerThreadDesktop;
         JLabel foodPerDayLabel = new JLabel(this.simulatedEvolutionProperties.getFoodPerDayLabel());
-        foodPerDayField = new JTextField((this.simulatedEvolutionProperties.getFoodPerDay()+"", 3);
+        foodPerDayField = new JTextField(this.simulatedEvolutionProperties.getFoodPerDay()+"", simulatedEvolutionProperties.getFoodPerDayFieldColumns());
         boolean selected = this.ctx.isGardenOfEdenEnabled();
-        this.gardenOfEdenEnabled = new JCheckBox("Garden of Eden enabled", selected);
+        this.gardenOfEdenEnabled = new JCheckBox(this.simulatedEvolutionProperties.getGardenOfEdenEnabledString(), selected);
         this.buttonFoodPerDayIncrease = new JButton(simulatedEvolutionProperties.getButtonFoodPerDayIncrease());
         this.buttonFoodPerDayDecrease = new JButton(simulatedEvolutionProperties.getButtonFoodPerDayDecrease());
         this.buttonToggleGardenOfEden = new JButton(simulatedEvolutionProperties.getGardenOfEdenEnabledString());

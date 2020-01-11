@@ -3,7 +3,6 @@ package org.woehlke.simulation.evolution.view;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.ObjectRegistry;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

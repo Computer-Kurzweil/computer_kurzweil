@@ -1,7 +1,5 @@
 package org.woehlke.simulation;
 
-import static org.woehlke.simulation.evolution.config.GuiConfigDefault.TITLE;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.integration.config.EnableIntegration;
+import org.woehlke.simulation.evolution.control.ControllerThreadDesktop;
 import org.woehlke.simulation.evolution.control.ObjectRegistry;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.mandelbrot.config.Config;
@@ -43,18 +42,18 @@ import java.awt.*;
 })
 public class ComputerKurzweilApplication {
 
-    private final ObjectRegistry ctx;
-
     private final SimulatedEvolutionFrame simulatedEvolutionFrame;
+
+    private final ControllerThreadDesktop controllerThreadDesktop;
 
 
         @Autowired
-      private ComputerKurzweilApplication(ObjectRegistry ctx, SimulatedEvolutionFrame simulatedEvolutionFrame) {
-        this.ctx = ctx;
+      private ComputerKurzweilApplication(SimulatedEvolutionFrame simulatedEvolutionFrame, ControllerThreadDesktop controllerThreadDesktop) {
         this.simulatedEvolutionFrame = simulatedEvolutionFrame;
-        this.ctx.setFrame(this.simulatedEvolutionFrame);
+            this.controllerThreadDesktop = controllerThreadDesktop;
+            this.controllerThreadDesktop.setFrame(this.simulatedEvolutionFrame);
         try {
-            this.ctx.getController().start();
+            this.controllerThreadDesktop.start();
         } catch (IllegalThreadStateException e){
             System.out.println(e.getLocalizedMessage());
         }
@@ -74,7 +73,7 @@ public class ComputerKurzweilApplication {
      * @param args CLI Parameter.
      */
     public static void main(String[] args) {
-        System.out.println(TITLE + ": Started the Desktop Application");
+        System.out.println("Started the Desktop Application");
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(ComputerKurzweilApplication.class)
             .web(WebApplicationType.NONE)
             .headless(false)

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.mandelbrot.config.Config;
 import org.woehlke.simulation.mandelbrot.control.ApplicationContext;
-import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThead;
+import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
 import org.woehlke.simulation.mandelbrot.control.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
@@ -193,7 +193,7 @@ public class ApplicationContextImpl implements ApplicationContext {
     }
 
     private void computeTheMandelbrotSet() {
-        ComputeMandelbrotSetThead t = new ComputeMandelbrotSetThead(this);
+        ComputeMandelbrotSetThread t = new ComputeMandelbrotSetThread(this);
         t.start();
     }
 

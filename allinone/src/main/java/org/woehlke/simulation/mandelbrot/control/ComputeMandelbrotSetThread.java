@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 import java.util.logging.Logger;
 
 @Component
-public class ComputeMandelbrotSetThead extends Thread implements Runnable {
+public class ComputeMandelbrotSetThread extends Thread implements Runnable {
 
     private final ApplicationContext ctx;
 
     @Autowired
-    public ComputeMandelbrotSetThead(ApplicationContext ctx) {
+    public ComputeMandelbrotSetThread(ApplicationContext ctx) {
         super("ComputeMandelbrotSetThread");
         this.ctx = ctx;
     }
@@ -36,5 +36,5 @@ public class ComputeMandelbrotSetThead extends Thread implements Runnable {
         ctx.showMe();
     }
 
-    private static Logger log = Logger.getLogger(ComputeMandelbrotSetThead.class.getName());
+    private static Logger log = Logger.getLogger(ComputeMandelbrotSetThread.class.getName());
 }

@@ -174,4 +174,7 @@ public class ControllerThreadDesktop extends Thread implements Runnable,
 
   }
 
+    public void setFrame(SimulatedEvolutionFrame frame) {
+        this.frame = frame;
+    }
 }

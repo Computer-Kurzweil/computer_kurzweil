@@ -13,8 +13,8 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.simulation.evolution.config.GuiConfigColors.COLOR_FOOD;
-import static org.woehlke.simulation.evolution.config.GuiConfigColors.COLOR_WATER;
+import static org.woehlke.simulation.evolution.view.GuiConfigColors.COLOR_FOOD;
+import static org.woehlke.simulation.evolution.view.GuiConfigColors.COLOR_WATER;
 
 
 /**
@@ -46,7 +46,7 @@ public class WorldCanvas extends JComponent implements Serializable {
     this.ctx = ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
       this.world = world;
-      this.setBackground(COLOR_WATER);
+      this.setBackground(COLOR_WATER.getColor());
     Dimension preferredSize = new Dimension(
         this.simulatedEvolutionProperties.getWorldDimensions().getWidth(),
         this.simulatedEvolutionProperties.getWorldDimensions().getHeight()
@@ -63,9 +63,9 @@ public class WorldCanvas extends JComponent implements Serializable {
     super.paintComponent(graphics);
     int width =  this.simulatedEvolutionProperties.getWorldDimensions().getWidth();
     int height = this.simulatedEvolutionProperties.getWorldDimensions().getHeight();
-    graphics.setColor(COLOR_WATER);
+    graphics.setColor(COLOR_WATER.getColor());
     graphics.fillRect(0, 0, width, height);
-    graphics.setColor(COLOR_FOOD);
+    graphics.setColor(COLOR_FOOD.getColor());
     for (int posY = 0; posY < height; posY++) {
       for (int posX = 0; posX < width; posX++) {
         if (world.hasFood(posX, posY)) {

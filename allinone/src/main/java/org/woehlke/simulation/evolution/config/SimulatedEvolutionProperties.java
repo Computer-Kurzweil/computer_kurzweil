@@ -30,6 +30,7 @@ public class SimulatedEvolutionProperties {
      */
     @NotNull private Integer foodPerDay;
     @NotBlank private String foodPerDayLabel;
+    @NotNull private Integer foodPerDayFieldColumns;
 
     /**
      * A Garden of Eden is an Area where much more Food grows within the same time.
@@ -341,5 +342,13 @@ public class SimulatedEvolutionProperties {
 
     public void setPopulationLabel(String populationLabel) {
         this.populationLabel = populationLabel;
+    }
+
+    public Integer getFoodPerDayFieldColumns() {
+        return foodPerDayFieldColumns;
+    }
+
+    public void setFoodPerDayFieldColumns(Integer foodPerDayFieldColumns) {
+        this.foodPerDayFieldColumns = foodPerDayFieldColumns;
     }
 }

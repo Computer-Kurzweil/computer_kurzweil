@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
 
-import static org.woehlke.simulation.evolution.config.GuiConfigColors.*;
+import static org.woehlke.simulation.evolution.view.GuiConfigColors.*;
 
 /**
  * TODO write doc.
@@ -48,13 +48,13 @@ public class PanelLifeCycleStatus extends JPanel {
     oldCells = new JTextField(""+lifeCycleCount.getOldCells(),cols);
     JLabel populationLabel = new JLabel(simulatedEvolutionProperties.getPopulationLabel());
     population = new JTextField(""+lifeCycleCount.getPopulation(),cols);
-    youngCells.setForeground(COLOR_YOUNG_FOREGROUND);
-    youngCells.setBackground(COLOR_YOUNG);
-    youngAndFatCells.setBackground(COLOR_YOUNG_AND_FAT);
-    fullAgeCells.setBackground(COLOR_FULL_AGE);
-    hungryCells.setBackground(COLOR_HUNGRY);
-    oldCells.setBackground(COLOR_OLD);
-    oldCells.setForeground(COLOR_OLD_FOREGROUND);
+    youngCells.setForeground(COLOR_YOUNG_FOREGROUND.getColor());
+    youngCells.setBackground(COLOR_YOUNG.getColor());
+    youngAndFatCells.setBackground(COLOR_YOUNG_AND_FAT.getColor());
+    fullAgeCells.setBackground(COLOR_FULL_AGE.getColor());
+    hungryCells.setBackground(COLOR_HUNGRY.getColor());
+    oldCells.setBackground(COLOR_OLD.getColor());
+    oldCells.setForeground(COLOR_OLD_FOREGROUND.getColor());
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
     this.add(youngCellsLabel);
