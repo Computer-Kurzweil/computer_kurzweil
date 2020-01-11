@@ -6,11 +6,8 @@ import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.FlowLayout;
 
 /**
@@ -47,14 +44,10 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
         this.buttonFoodPerDayIncrease = new JButton(simulatedEvolutionProperties.getButtonFoodPerDayIncrease());
         this.buttonFoodPerDayDecrease = new JButton(simulatedEvolutionProperties.getButtonFoodPerDayDecrease());
         this.buttonToggleGardenOfEden = new JButton(simulatedEvolutionProperties.getGardenOfEdenEnabledString());
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        this.add(this.foodPerDayLabel);
-        this.add(this.foodPerDayField);
-        this.add(this.buttonFoodPerDayIncrease);
-        this.add(this.buttonFoodPerDayDecrease);
-        this.add(this.gardenOfEdenEnabled);
-        this.add(this.buttonToggleGardenOfEden);
+        FlowLayout flowLayout1 = new FlowLayout();
+        this.setLayout(flowLayout1);
+        this.add(getFoodPanel());
+        this.add(getGardenOfEdenPanel());
   }
 
   public void registerController(SimulatedEvolutionController controller){
@@ -62,6 +55,36 @@ public class SimulatedEvolutionPanelButtons extends JPanel  {
       this.buttonFoodPerDayDecrease.addActionListener(controller);
       this.buttonToggleGardenOfEden.addActionListener(controller);
   }
+
+  private JPanel getFoodPanel(){
+      FlowLayout flowLayout2 = new FlowLayout();
+      JPanel foodPanel = new JPanel(flowLayout2);
+      foodPanel.setBorder(getBorder(  this.simulatedEvolutionProperties.getPanelFood()));
+      foodPanel.add(this.foodPerDayLabel);
+      foodPanel.add(this.foodPerDayField);
+      foodPanel.add(this.buttonFoodPerDayIncrease);
+      foodPanel.add(this.buttonFoodPerDayDecrease);
+      return foodPanel;
+  }
+    private JPanel getGardenOfEdenPanel(){
+        FlowLayout flowLayout3 = new FlowLayout();
+        JPanel gardenOfEdenPanel = new JPanel(flowLayout3);
+        gardenOfEdenPanel.setBorder(getBorder(this.simulatedEvolutionProperties.getPanelGardenOfEden()));
+        gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
+        gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
+        return gardenOfEdenPanel;
+    }
+
+    private CompoundBorder getBorder(String label){
+        int top = this.simulatedEvolutionProperties.getBorderPadding();
+        int left = this.simulatedEvolutionProperties.getBorderPadding();
+        int bottom = this.simulatedEvolutionProperties.getBorderPadding();
+        int right = this.simulatedEvolutionProperties.getBorderPadding();
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(label),
+            BorderFactory.createEmptyBorder(top,left,bottom,right)
+        );
+    }
 
     public JButton getButtonFoodPerDayIncrease() {
         return buttonFoodPerDayIncrease;

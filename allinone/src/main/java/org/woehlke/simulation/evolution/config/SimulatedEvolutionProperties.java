@@ -25,6 +25,7 @@ public class SimulatedEvolutionProperties {
     @NotNull private Integer height;
     @NotNull private Integer initialPopulation;
     @NotNull private Integer queueMaxLength;
+    @NotNull private Integer borderPadding;
 
     /**
      * How much food per Time Step (a day) shall be placed in this World.
@@ -46,6 +47,9 @@ public class SimulatedEvolutionProperties {
     @NotBlank private String buttonFoodPerDayIncrease;
     @NotBlank private String buttonFoodPerDayDecrease;
     @NotBlank private String buttonToggleGardenOfEden;
+
+    @NotBlank private String panelFood;
+    @NotBlank private String panelGardenOfEden;
 
     @NotNull private Integer maxFat;
     @NotNull private Integer maxHunger;
@@ -127,6 +131,14 @@ public class SimulatedEvolutionProperties {
 
     public void setQueueMaxLength(Integer queueMaxLength) {
         this.queueMaxLength = queueMaxLength;
+    }
+
+    public Integer getBorderPadding() {
+        return borderPadding;
+    }
+
+    public void setBorderPadding(Integer borderPadding) {
+        this.borderPadding = borderPadding;
     }
 
     public Integer getFoodPerDay() {
@@ -343,5 +355,21 @@ public class SimulatedEvolutionProperties {
 
     public void setFoodPerDayFieldColumns(Integer foodPerDayFieldColumns) {
         this.foodPerDayFieldColumns = foodPerDayFieldColumns;
+    }
+
+    public String getPanelFood() {
+        return panelFood;
+    }
+
+    public void setPanelFood(String panelFood) {
+        this.panelFood = panelFood;
+    }
+
+    public String getPanelGardenOfEden() {
+        return panelGardenOfEden;
+    }
+
+    public void setPanelGardenOfEden(String panelGardenOfEden) {
+        this.panelGardenOfEden = panelGardenOfEden;
     }
 }

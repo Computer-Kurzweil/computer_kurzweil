@@ -6,9 +6,8 @@ import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatistics;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 import static org.woehlke.simulation.evolution.model.cell.LifeCycleStatus.*;
@@ -63,6 +62,19 @@ public class SimulatedEvolutionPanelStatistics extends JPanel {
     this.add(populationLabel);
     this.add(populationStatistics);
   }
+
+    private int BORDER_PADDING = 5;
+
+    private CompoundBorder getBorder(String label){
+        int top = BORDER_PADDING;
+        int left = BORDER_PADDING;
+        int bottom = BORDER_PADDING;
+        int right = BORDER_PADDING;
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(label),
+            BorderFactory.createEmptyBorder(top,left,bottom,right)
+        );
+    }
 
     private void setLabels(){
         youngCellsLabel = new JLabel(simulatedEvolutionProperties.getYoungCellsLabel());
