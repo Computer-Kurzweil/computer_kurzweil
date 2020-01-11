@@ -4,7 +4,7 @@ package org.woehlke.simulation.evolution.model.world;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.Point;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatistics;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
@@ -47,8 +47,13 @@ public class SimulatedEvolutionWorld {
    * TODO write doc.
    */
   @Autowired
-  public SimulatedEvolutionWorld(SimulatedEvolutionContext ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood, SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer) {
-    this.ctx = ctx;
+  public SimulatedEvolutionWorld(
+      SimulatedEvolutionContext ctx,
+      SimulatedEvolutionProperties simulatedEvolutionProperties,
+      SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood,
+      SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer
+  ) {
+        this.ctx = ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
       this.simulatedEvolutionWorldMapFood = simulatedEvolutionWorldMapFood;
       this.simulatedEvolutionWorldStatisticsContainer = simulatedEvolutionWorldStatisticsContainer;

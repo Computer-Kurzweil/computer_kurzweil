@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -17,24 +17,25 @@ public class SimulatedEvolutionWorldStatisticsContainer {
   /**
    * TODO write doc.
    */
-  private ConcurrentLinkedQueue<SimulatedEvolutionWorldStatistics> count;
+  private ConcurrentLinkedQueue<SimulatedEvolutionWorldStatistics> statistics;
 
   private volatile long worldIteration;
 
   private SimulatedEvolutionWorldStatistics simulatedEvolutionWorldStatistics;
 
-  private final SimulatedEvolutionController simulatedEvolutionController;
+  private SimulatedEvolutionController controller;
 
   private final SimulatedEvolutionContext ctx;
 
-  private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+  private final SimulatedEvolutionProperties properties;
 
   @Autowired
-  public SimulatedEvolutionWorldStatisticsContainer(SimulatedEvolutionController simulatedEvolutionController, SimulatedEvolutionContext ctx, SimulatedEvolutionProperties simulatedEvolutionProperties) {
-      this.simulatedEvolutionController = simulatedEvolutionController;
+  public SimulatedEvolutionWorldStatisticsContainer(
+      SimulatedEvolutionContext ctx,
+      SimulatedEvolutionProperties simulatedEvolutionProperties) {
       this.ctx = ctx;
-      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      count = new ConcurrentLinkedQueue<>();
+      this.properties = simulatedEvolutionProperties;
+      statistics = new ConcurrentLinkedQueue<>();
     worldIteration = 0L;
   }
 
@@ -43,13 +44,13 @@ public class SimulatedEvolutionWorldStatisticsContainer {
    */
   public synchronized void add(SimulatedEvolutionWorldStatistics simulatedEvolutionWorldStatistics) {
     this.simulatedEvolutionWorldStatistics = simulatedEvolutionWorldStatistics;
-    count.add(simulatedEvolutionWorldStatistics);
-    if (count.size() > simulatedEvolutionProperties.getQueueMaxLength()) {
-      count.poll();
+      statistics.add(simulatedEvolutionWorldStatistics);
+    if (statistics.size() > properties.getQueueMaxLength()) {
+        statistics.poll();
     }
     worldIteration++;
-    if(simulatedEvolutionController !=null){
-        simulatedEvolutionController.updateLifeCycleCount();
+    if(controller !=null){
+        controller.updateLifeCycleCount();
     }
     //System.out.println(worldIteration + " : " + lifeCycleCount);
   }

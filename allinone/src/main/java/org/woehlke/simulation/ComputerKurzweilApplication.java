@@ -9,9 +9,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.integration.config.EnableIntegration;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
+import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
+import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldMapFood;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
+import org.woehlke.simulation.evolution.view.SimulatedEvolutionPanelButtons;
+import org.woehlke.simulation.evolution.view.SimulatedEvolutionPanelStatistics;
+import org.woehlke.simulation.evolution.view.SimulatedEvolutionWorldCanvas;
 
 import java.awt.*;
 
@@ -42,32 +48,59 @@ import java.awt.*;
 })
 public class ComputerKurzweilApplication {
 
-    private final SimulatedEvolutionFrame simulatedEvolutionFrame;
-
+    private final SimulatedEvolutionContext ctx;
+    private final SimulatedEvolutionProperties properties;
+    private final SimulatedEvolutionController controller;
     private final SimulatedEvolutionWorld simulatedEvolutionWorld;
+    private final SimulatedEvolutionWorldMapFood worldMapFood;
+    private final SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer;
 
-    private final SimulatedEvolutionController simulatedEvolutionController;
-
+    private final SimulatedEvolutionFrame simulatedEvolutionFrame;
+    private final SimulatedEvolutionPanelStatistics statisticsPanel;
+    private final SimulatedEvolutionWorldCanvas simulatedEvolutionWorldCanvas;
+    private final SimulatedEvolutionPanelButtons simulatedEvolutionPanelButtons;
 
     @Autowired
       public ComputerKurzweilApplication(
+        SimulatedEvolutionContext ctx,
+        SimulatedEvolutionProperties properties,
         SimulatedEvolutionFrame simulatedEvolutionFrame,
         SimulatedEvolutionWorld simulatedEvolutionWorld,
-        SimulatedEvolutionController simulatedEvolutionController
+        SimulatedEvolutionWorldMapFood worldMapFood,
+        SimulatedEvolutionPanelStatistics statisticsPanel,
+        SimulatedEvolutionWorldCanvas simulatedEvolutionWorldCanvas,
+        SimulatedEvolutionController simulatedEvolutionController,
+        SimulatedEvolutionPanelButtons simulatedEvolutionPanelButtons,
+        SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer
     ) {
-        this.simulatedEvolutionFrame = simulatedEvolutionFrame;
+        this.ctx = ctx;
+        this.properties = properties;
+
         this.simulatedEvolutionWorld = simulatedEvolutionWorld;
-        this.simulatedEvolutionController = simulatedEvolutionController;
-        this.simulatedEvolutionController.setFrame(this.simulatedEvolutionFrame);
-        this.simulatedEvolutionController.setWorld(this.simulatedEvolutionWorld);
+
+        this.simulatedEvolutionWorldStatisticsContainer = simulatedEvolutionWorldStatisticsContainer;
+
+        this.worldMapFood = worldMapFood;
+        this.simulatedEvolutionFrame = simulatedEvolutionFrame;
+        this.statisticsPanel = statisticsPanel;
+        this.simulatedEvolutionWorldCanvas = simulatedEvolutionWorldCanvas;
+        this.simulatedEvolutionPanelButtons = simulatedEvolutionPanelButtons;
+        this.controller = simulatedEvolutionController;
+
+        this.controller.setStatisticsPanel(this.statisticsPanel);
+        this.controller.setFrame(this.simulatedEvolutionFrame);
+        this.controller.setWorld(this.simulatedEvolutionWorld);
+        this.controller.setCanvas(this.simulatedEvolutionWorldCanvas);
+        this.controller.setStatisticsPanel(this.statisticsPanel);
+        this.controller.setWorldMapFood(this.worldMapFood);
+    }
+
+    public void start(){
         try {
-            this.simulatedEvolutionController.start();
+            this.controller.start();
         } catch (IllegalThreadStateException e){
             System.out.println(e.getLocalizedMessage());
         }
-      }
-
-    public void start(){
         this.simulatedEvolutionFrame.showMe();
     }
 

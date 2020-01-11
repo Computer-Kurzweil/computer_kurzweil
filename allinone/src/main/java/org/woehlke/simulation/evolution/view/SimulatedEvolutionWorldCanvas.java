@@ -2,7 +2,7 @@ package org.woehlke.simulation.evolution.view;
 
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.cell.Cell;
 import org.woehlke.simulation.evolution.model.Point;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
@@ -38,15 +38,16 @@ public class SimulatedEvolutionWorldCanvas extends JComponent implements Seriali
   /**
    * Reference to the Data Model.
    */
-  private final SimulatedEvolutionContext ctx;
     private final SimulatedEvolutionProperties simulatedEvolutionProperties;
     private final SimulatedEvolutionWorld simulatedEvolutionWorld;
 
-  public SimulatedEvolutionWorldCanvas(SimulatedEvolutionContext ctx, SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionWorld simulatedEvolutionWorld) {
-    this.ctx = ctx;
-      this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-      this.simulatedEvolutionWorld = simulatedEvolutionWorld;
-      this.setBackground(COLOR_WATER.getColor());
+  public SimulatedEvolutionWorldCanvas(
+      SimulatedEvolutionProperties simulatedEvolutionProperties,
+      SimulatedEvolutionWorld simulatedEvolutionWorld
+  ) {
+    this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+    this.simulatedEvolutionWorld = simulatedEvolutionWorld;
+    this.setBackground(COLOR_WATER.getColor());
     Dimension preferredSize = new Dimension(
         this.simulatedEvolutionProperties.getWorldDimensions().getWidth(),
         this.simulatedEvolutionProperties.getWorldDimensions().getHeight()

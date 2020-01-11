@@ -3,7 +3,7 @@ package org.woehlke.simulation.evolution.model.world;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.Point;
 import org.woehlke.simulation.evolution.model.cell.LifeCycle;
 
@@ -33,7 +33,10 @@ public class SimulatedEvolutionWorldMapFood {
   private final SimulatedEvolutionContext simulatedEvolutionContext;
 
   @Autowired
-  public SimulatedEvolutionWorldMapFood(SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionContext simulatedEvolutionContext) {
+  public SimulatedEvolutionWorldMapFood(
+      SimulatedEvolutionProperties simulatedEvolutionProperties,
+      SimulatedEvolutionContext simulatedEvolutionContext
+  ) {
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
       this.simulatedEvolutionContext = simulatedEvolutionContext;
       int x = simulatedEvolutionProperties.getWorldDimensions().getX();

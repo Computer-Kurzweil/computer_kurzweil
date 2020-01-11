@@ -1,6 +1,6 @@
 package org.woehlke.simulation.evolution.model.cell;
 
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.util.List;
 import java.util.ArrayList;

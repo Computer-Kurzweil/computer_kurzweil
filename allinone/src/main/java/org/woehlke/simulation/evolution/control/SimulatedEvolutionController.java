@@ -2,15 +2,14 @@ package org.woehlke.simulation.evolution.control;
 
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldMapFood;
 import org.woehlke.simulation.evolution.view.*;
 
 import java.awt.Frame;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
-import java.awt.event.WindowListener;
-import java.awt.event.WindowStateListener;
+import java.awt.event.*;
 
 /**
  * The ControllerThreadApplet controls the Interactions between Model and View (MVC-Pattern).
@@ -27,18 +26,23 @@ import java.awt.event.WindowStateListener;
  */
 @Component
 public class SimulatedEvolutionController extends Thread implements Runnable,
-  WindowListener,
-  WindowFocusListener,
-  WindowStateListener {
+    WindowListener,
+    WindowFocusListener,
+    WindowStateListener,
+    ActionListener {
 
     private final SimulatedEvolutionProperties properties;
     private final SimulatedEvolutionContext context;
-    private final SimulatedEvolutionWorldMapFood worldMapFood;
-    private final SimulatedEvolutionPanelStatistics statisticsPanel;
-    private final SimulatedEvolutionWorldCanvas canvas;
 
-    private SimulatedEvolutionWorld world;
+    private final SimulatedEvolutionWorld world;
+    private final SimulatedEvolutionWorldCanvas canvas;
+    private final SimulatedEvolutionWorldMapFood worldMapFood;
+    private final SimulatedEvolutionPanelStatistics panelStatistics;
+
+    private SimulatedEvolutionPanelStatistics statisticsPanel;
     private SimulatedEvolutionFrame frame;
+    private SimulatedEvolutionPanelButtons panelButtons;
+    private SimulatedEvolutionWorldStatisticsContainer statisticsContainer;
 
     /**
    * Time to Wait in ms.
@@ -51,19 +55,42 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
   private Boolean mySemaphore;
 
   public SimulatedEvolutionController(
-      SimulatedEvolutionProperties simulatedEvolutionProperties,
-      SimulatedEvolutionContext simulatedEvolutionContext,
+      SimulatedEvolutionProperties properties,
+      SimulatedEvolutionContext context,
+      SimulatedEvolutionWorld world,
       SimulatedEvolutionWorldCanvas canvas,
-      SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood,
-      SimulatedEvolutionPanelStatistics simulatedEvolutionPanelStatistics
+      SimulatedEvolutionWorldMapFood worldMapFood,
+      SimulatedEvolutionPanelStatistics panelStatistics,
+      SimulatedEvolutionWorldStatisticsContainer statisticsContainer
   ) {
-      this.properties = simulatedEvolutionProperties;
-      this.context = simulatedEvolutionContext;
+      this.properties = properties;
+      this.context = context;
+      this.world = world;
       this.canvas = canvas;
-      this.worldMapFood = simulatedEvolutionWorldMapFood;
-      this.statisticsPanel = simulatedEvolutionPanelStatistics;
+      this.worldMapFood = worldMapFood;
+      this.panelStatistics = panelStatistics;
+      this.statisticsContainer = statisticsContainer;
       this.mySemaphore = Boolean.TRUE;
   }
+
+
+    /**
+     * TODO write doc.
+     */
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() ==  panelButtons.) {
+            this.increaseFoodPerDay();
+            this.foodPerDayField.setText(context.getFoodPerDay()+"");
+        } else if (ae.getSource() == this.buttonFoodPerDayDecrease) {
+            simulatedEvolutionController.decreaseFoodPerDay();
+            this.properties.getFoodPerDay().setText(context.getFoodPerDay()+"");
+        } else if (ae.getSource() == this.buttonToggleGardenOfEden) {
+            this.toggleGardenOfEden();
+            boolean selected = context.isGardenOfEdenEnabled();
+            gardenOfEdenEnabled.setSelected(selected);
+        }
+    }
 
   public void run() {
     show();
@@ -178,5 +205,41 @@ public class SimulatedEvolutionController extends Thread implements Runnable,
 
     public void setWorld(SimulatedEvolutionWorld world) {
         this.world = world;
+    }
+
+    public SimulatedEvolutionWorldMapFood getWorldMapFood() {
+        return worldMapFood;
+    }
+
+    public void setWorldMapFood(SimulatedEvolutionWorldMapFood worldMapFood) {
+        this.worldMapFood = worldMapFood;
+    }
+
+    public SimulatedEvolutionPanelStatistics getStatisticsPanel() {
+        return statisticsPanel;
+    }
+
+    public void setStatisticsPanel(SimulatedEvolutionPanelStatistics statisticsPanel) {
+        this.statisticsPanel = statisticsPanel;
+    }
+
+    public SimulatedEvolutionWorldCanvas getCanvas() {
+        return canvas;
+    }
+
+    public void setCanvas(SimulatedEvolutionWorldCanvas canvas) {
+        this.canvas = canvas;
+    }
+
+    public SimulatedEvolutionFrame getFrame() {
+        return frame;
+    }
+
+    public SimulatedEvolutionPanelButtons getPanelButtons() {
+        return panelButtons;
+    }
+
+    public void setPanelButtons(SimulatedEvolutionPanelButtons panelButtons) {
+        this.panelButtons = panelButtons;
     }
 }

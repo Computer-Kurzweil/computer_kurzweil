@@ -1,4 +1,4 @@
-package org.woehlke.simulation.evolution.control;
+package org.woehlke.simulation.evolution.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

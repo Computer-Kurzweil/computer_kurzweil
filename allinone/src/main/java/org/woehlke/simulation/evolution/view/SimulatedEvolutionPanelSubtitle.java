@@ -17,7 +17,9 @@ public class SimulatedEvolutionPanelSubtitle extends JPanel {
   private final JLabel subtitleLabel;
 
   @Autowired
-  public SimulatedEvolutionPanelSubtitle(SimulatedEvolutionProperties simulatedEvolutionProperties) {
+  public SimulatedEvolutionPanelSubtitle(
+      SimulatedEvolutionProperties simulatedEvolutionProperties
+  ) {
     this.subtitleLabel = new JLabel(simulatedEvolutionProperties.getSubtitle());
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);

@@ -1,7 +1,7 @@
 package org.woehlke.simulation.evolution.model.cell;
 
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.*;
 
 import java.util.Random;

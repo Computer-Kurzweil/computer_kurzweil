@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -12,18 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * TODO write doc.
  */
 @Component
-public class SimulatedEvolutionPanelButtons extends JPanel implements ActionListener {
+public class SimulatedEvolutionPanelButtons extends JPanel  {
 
 
   private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-  private final SimulatedEvolutionController simulatedEvolutionController;
   private final SimulatedEvolutionContext ctx;
 
     private final JButton buttonFoodPerDayIncrease;
@@ -33,10 +30,12 @@ public class SimulatedEvolutionPanelButtons extends JPanel implements ActionList
     private JTextField foodPerDayField;
 
     @Autowired
-  public SimulatedEvolutionPanelButtons(SimulatedEvolutionProperties simulatedEvolutionProperties, SimulatedEvolutionController simulatedEvolutionController, SimulatedEvolutionContext ctx) {
+  public SimulatedEvolutionPanelButtons(
+      SimulatedEvolutionProperties simulatedEvolutionProperties,
+      SimulatedEvolutionContext ctx
+    ) {
     this.ctx=ctx;
       this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-        this.simulatedEvolutionController = simulatedEvolutionController;
         JLabel foodPerDayLabel = new JLabel(this.simulatedEvolutionProperties.getFoodPerDayLabel());
         foodPerDayField = new JTextField(this.simulatedEvolutionProperties.getFoodPerDay()+"", simulatedEvolutionProperties.getFoodPerDayFieldColumns());
         boolean selected = this.ctx.isGardenOfEdenEnabled();
@@ -52,26 +51,12 @@ public class SimulatedEvolutionPanelButtons extends JPanel implements ActionList
         this.add(this.buttonFoodPerDayDecrease);
         this.add(gardenOfEdenEnabled);
         this.add(this.buttonToggleGardenOfEden);
-        this.buttonFoodPerDayIncrease.addActionListener(this);
-        this.buttonFoodPerDayDecrease.addActionListener(this);
-        this.buttonToggleGardenOfEden.addActionListener(this);
   }
 
-  /**
-   * TODO write doc.
-   */
-  @Override
-  public void actionPerformed(ActionEvent ae) {
-    if (ae.getSource() == this.buttonFoodPerDayIncrease) {
-        simulatedEvolutionController.increaseFoodPerDay();
-      this.foodPerDayField.setText(ctx.getFoodPerDay()+"");
-    } else if (ae.getSource() == this.buttonFoodPerDayDecrease) {
-        simulatedEvolutionController.decreaseFoodPerDay();
-      this.foodPerDayField.setText(ctx.getFoodPerDay()+"");
-    } else if (ae.getSource() == this.buttonToggleGardenOfEden) {
-        simulatedEvolutionController.toggleGardenOfEden();
-      boolean selected = ctx.isGardenOfEdenEnabled();
-      gardenOfEdenEnabled.setSelected(selected);
-    }
+  public void registerController(SimulatedEvolutionController controller){
+      this.buttonFoodPerDayIncrease.addActionListener(controller);
+      this.buttonFoodPerDayDecrease.addActionListener(controller);
+      this.buttonToggleGardenOfEden.addActionListener(controller);
   }
+
 }
