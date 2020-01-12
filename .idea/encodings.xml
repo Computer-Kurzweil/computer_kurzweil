@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/allinone/src/main/resources/application.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cyclic-cellular-automaton/src/main/resources/application.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cyclic-cellular-automaton/system.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/diffusion-limited-aggregation/system.properties" charset="UTF-8" />

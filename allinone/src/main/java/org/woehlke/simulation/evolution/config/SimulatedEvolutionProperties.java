@@ -86,8 +86,8 @@ public class SimulatedEvolutionProperties {
         @NotNull @Getter @Setter private Integer fatHungerMax;
         @NotNull @Getter @Setter private Integer fatMinimumForSex;
         @NotNull @Getter @Setter private Integer ageOfAdulthood;
-        @NotNull @Getter @Setter private Integer ageMax;
         @NotNull @Getter @Setter private Integer ageOld;
+        @NotNull @Getter @Setter private Integer ageMax;
     }
 
     @Validated
