@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.woehlke.simulation.all.view.SimulatedEvolutionPanelCopyright;
 import org.woehlke.simulation.all.view.SimulatedEvolutionPanelSubtitle;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -38,25 +39,21 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, Me
 
   @Autowired
   public SimulatedEvolutionFrame(
-      SimulatedEvolutionProperties properties,
-      SimulatedEvolutionPanelSubtitle panelSubtitle,
+      SimulatedEvolutionContext ctx,
       SimulatedEvolutionCanvas canvas,
-      SimulatedEvolutionPanelCopyright panelCopyright,
       SimulatedEvolutionStatisticsPanel panelStatistics,
-      SimulatedEvolutionButtonRowPanel panelButtons
+      SimulatedEvolutionButtonRowPanel panelButtons,
+      SimulatedEvolutionPanelSubtitle panelSubtitle,
+      SimulatedEvolutionPanelCopyright panelCopyright
     ) {
-    super(properties.getView().getTitle());
+    super(ctx.getProperties().getView().getTitle());
     this.canvas = canvas;
-    JSeparator separator1 = new JSeparator();
-    JSeparator separator2 = new JSeparator();
     BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
     rootPane.setLayout(layout);
     rootPane.add(panelSubtitle);
     rootPane.add(canvas);
     rootPane.add(panelCopyright);
-    //rootPane.add(separator1);
     rootPane.add(panelStatistics);
-    //rootPane.add(separator2);
     rootPane.add(panelButtons);
     showMe();
   }

@@ -70,8 +70,8 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();
       }
-        world.letLivePopulation();
-        frame.repaint();
+      world.letLivePopulation();
+      frame.repaint();
       try {
         sleep(context.getProperties().getControl().getTime2wait());
       } catch (InterruptedException e) {
