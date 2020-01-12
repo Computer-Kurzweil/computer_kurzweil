@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/cyclic-cellular-automaton/src/main/resources/application.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cyclic-cellular-automaton/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/diffusion-limited-aggregation/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/koch-snowflake/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mandelbrot/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/samegame/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/simulated-evolution/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/swingtutorial/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tetris/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/turmite/system.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wator/system.properties" charset="UTF-8" />
+  </component>
+</project>

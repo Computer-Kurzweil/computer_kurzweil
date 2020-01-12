@@ -14,7 +14,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 #
 
-.idea
+
 *.iml
 
 /allinone/build/
@@ -30,5 +30,6 @@ gradle-app.setting
 /wator/build
 /swingtutorial/build
 /dir.txt
-
-!.idea
+/.idea/uiDesigner.xml
+/.idea/compiler.xml
+/.idea/workspace.xml
