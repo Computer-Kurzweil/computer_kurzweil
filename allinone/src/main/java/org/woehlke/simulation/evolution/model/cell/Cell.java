@@ -1,10 +1,9 @@
 package org.woehlke.simulation.evolution.model.cell;
 
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.evolution.model.*;
 
-import java.util.Random;
+import java.io.Serializable;
 
 /**
  * The Cell of one Bacterium.
@@ -18,13 +17,13 @@ import java.util.Random;
  * Date: 04.02.2006
  * Time: 19:06:43
  * @see CellCore
- * @see LifeCycle
- * @see LifeCycleStatus
+ * @see CellLifeCycle
+ * @see CellLifeCycleStatus
  * <p>
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
-public class Cell {
+public class Cell implements Serializable {
 
   private static final long serialVersionUID = -7194182402841173981L;
 
@@ -36,68 +35,49 @@ public class Cell {
   /**
    * The Cell's state is position, orientation and LifeCycle.
    */
-  private Point position;
+  private LatticePointSimulatedEvolution position;
 
   /**
    * The Cell's state is position, orientation and LifeCycle.
    */
-  private Orientation orientation;
+  private CellOrientation orientation;
 
   /**
    * The Cell's state is position, orientation and LifeCycle.
    */
-  private LifeCycle lifeCycle;
+  private CellLifeCycle lifeCycle;
 
-  private SimulatedEvolutionProperties properties;
   private SimulatedEvolutionContext ctx;
 
   public Cell(
-      Point position,
-      SimulatedEvolutionProperties properties,
       SimulatedEvolutionContext ctx
   ) {
-    this.position = new Point(position);
     this.ctx = ctx;
-    this.properties = properties;
-    this.lifeCycle = new LifeCycle(properties);
+    this.position = new LatticePointSimulatedEvolution(ctx);
+    this.lifeCycle = new CellLifeCycle(ctx);
     this.cellCore = new CellCore(ctx);
-    this.position.setX(ctx.getRandom().nextInt() % properties.getWorldDimensions().getX());
-    this.position.setY(ctx.getRandom().nextInt() % properties.getWorldDimensions().getY());
-    this.position.absoluteValue();
     this.orientation = getRandomOrientation();
-
   }
 
-  private Cell(
-      int fat,
-      CellCore rna,
-      Point position,
-      SimulatedEvolutionProperties properties,
-      SimulatedEvolutionContext ctx
-  ) {
-    this.properties=properties;
-    this.lifeCycle = new LifeCycle(fat, properties);
-    this.position = new Point(position);
-    this.ctx = ctx;
-    this.cellCore = rna;
-    orientation = getRandomOrientation();
-  }
-
-  private Orientation getRandomOrientation() {
-    int dnaLength = Orientation.values().length;
-    int dnaBase = this.ctx.getRandom().nextInt(dnaLength);
-    if (dnaBase < 0) {
-      dnaBase *= -1;
+    private Cell(Cell other) {
+        this.ctx = other.ctx;
+        this.position = other.position;
+        this.lifeCycle = other.lifeCycle.reproduction();
+        this.cellCore = other.cellCore.reproductionMitosis();
+        this.orientation = this.getRandomOrientation();
     }
-    return Orientation.values()[dnaBase];
+
+  private CellOrientation getRandomOrientation() {
+    int dnaBase = this.ctx.getRandom().nextInt(CellOrientation.values().length);
+    return CellOrientation.values()[(dnaBase < 0)?(dnaBase * -1):dnaBase];
   }
 
   private void getNextOrientation() {
-    Orientation randomOrientation = cellCore.getRandomOrientation();
+    CellOrientation randomOrientation = cellCore.getRandomOrientation();
     int iOrientation = orientation.ordinal();
     int iRandomOrientation = randomOrientation.ordinal();
-    int newOrientation = (iOrientation + iRandomOrientation) % Orientation.values().length;
-    orientation = Orientation.values()[newOrientation];
+    int newOrientation = (iOrientation + iRandomOrientation) % CellOrientation.values().length;
+    orientation = CellOrientation.values()[newOrientation];
   }
 
   /**
@@ -107,8 +87,8 @@ public class Cell {
     if (lifeCycle.move()) {
       getNextOrientation();
       position.add(orientation.getMove());
-      position.add(properties.getWorldDimensions());
-      position.normalize(properties.getWorldDimensions());
+      position.add(ctx.getWorldDimensions());
+      position.normalize(ctx.getWorldDimensions());
     }
   }
 
@@ -117,27 +97,25 @@ public class Cell {
    * returns the other Child.
    *
    * @return the other Child.
-   * @see CellCore#performMitosis()
+   * @see CellCore#reproductionMitosis()
    */
-  public Cell performReproductionByCellDivision() {
-    CellCore rna = cellCore.performMitosis();
-    lifeCycle.haveSex();
-    Cell child = new Cell(lifeCycle.getFat(), rna, position, properties, ctx);
+  public Cell reproductionByCellDivision() {
+    Cell child = new Cell(this);
     return child;
   }
 
   /**
    * @return The new Position after the last move.
    */
-  public Point getPosition() {
+  public LatticePointSimulatedEvolution getPosition() {
     return position;
   }
 
   /**
    * @return true, if this Cell is able to perform Reproduction by Cell Division.
    */
-  public boolean isPregnant() {
-    return lifeCycle.isPregnant();
+  public boolean isAbleForReproduction() {
+    return lifeCycle.isAbleForReproduction();
   }
 
   /**
@@ -159,8 +137,8 @@ public class Cell {
   /**
    * @return the LifeCycleStatus of this Cell.
    */
-  public LifeCycleStatus getLifeCycleStatus() {
-    return lifeCycle.getLifeCycleStatus();
+  public CellLifeCycleStatus getLifeCycleStatus() {
+    return lifeCycle.getStatus();
   }
 
 }

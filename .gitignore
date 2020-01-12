@@ -30,3 +30,5 @@ gradle-app.setting
 /wator/build
 /swingtutorial/build
 /dir.txt
+
+!.idea

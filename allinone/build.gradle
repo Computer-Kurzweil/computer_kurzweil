@@ -2,10 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id "com.gorylenko.gradle-git-properties" version "1.5.1"
+    id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
 }
 
-group = 'org.woehlke'
+group = 'org.woehlke.simulation'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '12'
 
@@ -23,20 +24,23 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set('snippetsDir', file("build/generated-snippets"))
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    //implementation 'org.springframework.boot:spring-boot-starter-jta-bitronix'
-    //implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-json'
-    //implementation 'com.google.guava:guava:28.0-jre'
-    runtimeOnly 'com.h2database:h2'
     implementation 'org.springframework.boot:spring-boot-configuration-metadata'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
@@ -44,11 +48,15 @@ dependencies {
 }
 
 test {
+    outputs.dir snippetsDir
     useJUnitPlatform()
+}
+
+asciidoctor {
+    inputs.dir snippetsDir
+    dependsOn test
 }
 
 springBoot {
     buildInfo()
 }
-
-

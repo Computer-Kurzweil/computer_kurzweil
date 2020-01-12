@@ -1,6 +1,6 @@
 package org.woehlke.simulation.cca.view;
 
-import org.woehlke.simulation.cca.config.ObjectRegistry;
+import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,9 +20,9 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private ObjectRegistry ctx;
+    private CyclicCellularAutomatonContext ctx;
 
-    public CyclicCellularAutomatonCanvas(ObjectRegistry ctx) {
+    public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
         Dimension preferredSize = new Dimension(
             (int) ctx.getConfig().getLatticeDimensions().getX(),

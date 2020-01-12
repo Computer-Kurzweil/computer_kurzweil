@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
-import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
+import org.woehlke.simulation.all.model.LatticePointMandelbrot;
 
 public interface TuringPositionsStateMachine {
 
@@ -11,5 +11,5 @@ public interface TuringPositionsStateMachine {
     void turnLeft();
     boolean isFinishedWalkAround();
 
-    LatticePoint getTuringPosition();
+    LatticePointMandelbrot getTuringPosition();
 }

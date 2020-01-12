@@ -3,11 +3,10 @@ package org.woehlke.simulation.evolution.model.world;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.evolution.model.Point;
-import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatistics;
-import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionWorldStatisticsContainer;
+import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
+import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
+import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.simulation.evolution.model.cell.Cell;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ import java.util.logging.Logger;
  * Date: 04.02.2006
  * Time: 19:06:20
  * @see Cell
- * @see SimulatedEvolutionWorldMapFood
+ * @see SimulatedEvolutionWorldLattice
  * <p>
  * Simulated Evolution.
  * Artificial Life Simulation of Bacteria Motion depending on DNA.
@@ -40,9 +39,8 @@ public class SimulatedEvolutionWorld {
   private List<Cell> cells;
 
     private final SimulatedEvolutionContext ctx;
-    private final SimulatedEvolutionProperties properties;
-    private final SimulatedEvolutionWorldMapFood worldMapFood;
-    private final SimulatedEvolutionWorldStatisticsContainer statisticsContainer;
+    private final SimulatedEvolutionWorldLattice worldLattice;
+    private final SimulatedEvolutionStatistics statisticsContainer;
 
   /**
    * TODO write doc.
@@ -50,13 +48,11 @@ public class SimulatedEvolutionWorld {
   @Autowired
   public SimulatedEvolutionWorld(
       SimulatedEvolutionContext ctx,
-      SimulatedEvolutionProperties simulatedEvolutionProperties,
-      SimulatedEvolutionWorldMapFood simulatedEvolutionWorldMapFood,
-      SimulatedEvolutionWorldStatisticsContainer simulatedEvolutionWorldStatisticsContainer
+      SimulatedEvolutionWorldLattice simulatedEvolutionWorldMapFood,
+      SimulatedEvolutionStatistics simulatedEvolutionWorldStatisticsContainer
   ) {
       this.ctx = ctx;
-      this.properties = simulatedEvolutionProperties;
-      this.worldMapFood = simulatedEvolutionWorldMapFood;
+      this.worldLattice = simulatedEvolutionWorldMapFood;
       this.statisticsContainer = simulatedEvolutionWorldStatisticsContainer;
       cells = new ArrayList<>();
       createPopulation();
@@ -66,16 +62,11 @@ public class SimulatedEvolutionWorld {
    * Create the initial Population of Bacteria Cells and give them their position in the World.
    */
   private void createPopulation() {
-    for (int i = 0; i < properties.getInitialPopulation(); i++) {
-      int worldMapFoodX = ctx.getRandom().nextInt(properties.getWidth());
-      int worldMapFoodY = ctx.getRandom().nextInt(properties.getHeight());
-      worldMapFoodX *= Integer.signum(worldMapFoodX);
-      worldMapFoodY *= Integer.signum(worldMapFoodY);
-      Point position = new Point(worldMapFoodX, worldMapFoodY);
-      Cell cell = new Cell(position,properties, ctx);
+    for (int i = 0; i < ctx.getProperties().getCellPopulation().getInitialPopulation(); i++) {
+      Cell cell = new Cell(ctx);
       cells.add(cell);
     }
-    SimulatedEvolutionWorldStatistics simulatedEvolutionWorldStatistics = new SimulatedEvolutionWorldStatistics();
+    SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = new SimulatedEvolutionPopulationCensus();
     for (Cell cell : cells) {
       simulatedEvolutionWorldStatistics.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
@@ -88,8 +79,8 @@ public class SimulatedEvolutionWorld {
    * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
    */
   public void letLivePopulation() {
-    worldMapFood.letFoodGrow();
-    Point pos;
+    worldLattice.letFoodGrow();
+    LatticePointSimulatedEvolution pos;
     List<Cell> children = new ArrayList<>();
     List<Cell> died = new ArrayList<>();
     for (Cell cell : cells) {
@@ -98,10 +89,10 @@ public class SimulatedEvolutionWorld {
         died.add(cell);
       } else {
         pos = cell.getPosition();
-        int food = worldMapFood.eat(pos);
+        int food = worldLattice.eat(pos);
         cell.eat(food);
-        if (cell.isPregnant()) {
-          Cell child = cell.performReproductionByCellDivision();
+        if (cell.isAbleForReproduction()) {
+          Cell child = cell.reproductionByCellDivision();
           children.add(child);
         }
       }
@@ -110,7 +101,7 @@ public class SimulatedEvolutionWorld {
       cells.remove(dead);
     }
     cells.addAll(children);
-    SimulatedEvolutionWorldStatistics oneStatisticsTimestamp = new SimulatedEvolutionWorldStatistics();
+    SimulatedEvolutionPopulationCensus oneStatisticsTimestamp = new SimulatedEvolutionPopulationCensus();
     for (Cell cell : cells) {
         oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
@@ -122,12 +113,12 @@ public class SimulatedEvolutionWorld {
   }
 
   public boolean hasFood(int x, int y) {
-    return worldMapFood.hasFood(x, y);
+    return worldLattice.hasFood(x, y);
   }
 
     public void toggleGardenOfEden() {
         ctx.toggleGardenOfEden();
-        worldMapFood.toggleGardenOfEden();
+        worldLattice.toggleGardenOfEden();
     }
 
     private static Logger log = Logger.getLogger(SimulatedEvolutionWorld.class.getName());

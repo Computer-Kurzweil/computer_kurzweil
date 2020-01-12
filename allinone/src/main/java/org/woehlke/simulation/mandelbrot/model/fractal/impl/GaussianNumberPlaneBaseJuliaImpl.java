@@ -3,6 +3,7 @@ package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.woehlke.simulation.all.model.LatticePointMandelbrot;
 import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
@@ -53,7 +54,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         super.setModeSwitch();
     }
 
-    private ComplexNumber getComplexNumberFromLatticeCoordsForJulia(LatticePoint turingPosition) {
+    private ComplexNumber getComplexNumberFromLatticeCoordsForJulia(LatticePointMandelbrot turingPosition) {
         double realX =startCenterForJulia.getReal()
             + (startWorldDimension.getReal()*turingPosition.getX())/this.ctx.getWorldDimensions().getX();
         double imgY = startCenterForJulia.getImg()
@@ -62,7 +63,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
     }
 
     //TODO:
-    private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedJulia(LatticePoint turingPosition) {
+    private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedJulia(LatticePointMandelbrot turingPosition) {
         double realX = ( startCenterForJulia.getReal() / this.zoomLevel.getZoomLevel() )
             + ( startWorldDimension.getReal()*turingPosition.getX())/(this.ctx.getWorldDimensions().getX() * this.zoomLevel.getZoomLevel());
         double imgY = ( startCenterForJulia.getImg() / this.zoomLevel.getZoomLevel() )
@@ -74,7 +75,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         this.complexNumberForJuliaSetC = c;
         for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++) {
             for (int x = 0; x < this.ctx.getWorldDimensions().getX(); x++) {
-                LatticePoint zLatticePoint = new LatticePoint(x, y);
+                LatticePointMandelbrot zLatticePoint = new LatticePointMandelbrot(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForJulia(zLatticePoint);
                 ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
                 super.setCellStatusFor(zLatticePoint,result.getIterations());
@@ -86,7 +87,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         this.complexNumberForJuliaSetC = c;
         for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++) {
             for (int x = 0; x < this.ctx.getWorldDimensions().getX(); x++) {
-                LatticePoint zLatticePoint = new LatticePoint(x, y);
+                LatticePointMandelbrot zLatticePoint = new LatticePointMandelbrot(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForZoomedJulia(zLatticePoint);
                 ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
                 super.setCellStatusFor(x,y,result.getIterations());
@@ -94,7 +95,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         }
     }
 
-    public void computeTheSet(LatticePoint latticePoint) {
+    public void computeTheSet(LatticePointMandelbrot latticePoint) {
         if(super.isModeZoom()){
             ComplexNumber c = getComplexNumberFromLatticeCoordsForZoomedJulia(latticePoint);
             computeTheZoomedJuliaSetForC(c);
@@ -106,14 +107,14 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
         }
     }
 
-    public boolean isInZooomed(LatticePoint turingPosition) {
+    public boolean isInZooomed(LatticePointMandelbrot turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForZoomedJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();
         ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
         return result.getInJuliaSet();
     }
 
-    public boolean isInSet(LatticePoint turingPosition) {
+    public boolean isInSet(LatticePointMandelbrot turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();
         ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
@@ -123,7 +124,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
     private void computeWZoomedWorld(ComplexNumber c){
         for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
             for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
-                LatticePoint p = new LatticePoint(x, y);
+                LatticePointMandelbrot p = new LatticePointMandelbrot(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForZoomedJulia(p);
                 ComplexNumberFractal f = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
                 if(f.getInJuliaSet()){
@@ -136,7 +137,7 @@ public class GaussianNumberPlaneBaseJuliaImpl extends GaussianNumberPlaneBaseImp
     }
 
     //TODO:
-    public void zoomInto(LatticePoint zoomLatticePoint) {
+    public void zoomInto(LatticePointMandelbrot zoomLatticePoint) {
         if(ctx.getProperties().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }

@@ -7,7 +7,7 @@ import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
-import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
+import org.woehlke.simulation.all.model.LatticePointMandelbrot;
 
 import java.util.logging.Logger;
 
@@ -70,13 +70,13 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
         return new CellStatus(lattice[x][y]);
     }
 
-    public CellStatus getCellStatusFor(final LatticePoint turingPosition){
+    public CellStatus getCellStatusFor(final LatticePointMandelbrot turingPosition){
         int x = turingPosition.getX() % ctx.getWorldDimensions().getX();
         int y = turingPosition.getY() % ctx.getWorldDimensions().getY();
         return new CellStatus(lattice[x][y]);
     }
 
-    public void setCellStatusFor(final LatticePoint turingPosition, final int state){
+    public void setCellStatusFor(final LatticePointMandelbrot turingPosition, final int state){
         int x = turingPosition.getX() % ctx.getWorldDimensions().getX();
         int y = turingPosition.getY() % ctx.getWorldDimensions().getY();
         lattice[x][y]=state;

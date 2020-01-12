@@ -1,6 +1,6 @@
 package org.woehlke.simulation.cca.view;
 
-import org.woehlke.simulation.cca.config.ObjectRegistry;
+import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -27,9 +27,9 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    private ObjectRegistry ctx;
+    private CyclicCellularAutomatonContext ctx;
 
-    public CyclicCellularAutomatonFrame(ObjectRegistry ctx) {
+    public CyclicCellularAutomatonFrame(CyclicCellularAutomatonContext ctx) {
         super(ctx.getConfig().getTitle());
         this.ctx=ctx;
         ctx.setFrame(this);

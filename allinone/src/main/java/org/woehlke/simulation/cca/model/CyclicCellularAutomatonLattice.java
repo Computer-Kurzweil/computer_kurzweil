@@ -1,13 +1,14 @@
 package org.woehlke.simulation.cca.model;
 
-import org.woehlke.simulation.cca.config.ObjectRegistry;
+import org.woehlke.simulation.all.model.LatticeNeighbourhoodType;
+import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
 
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import static org.woehlke.simulation.cca.model.LatticeNeighbourhood.*;
+import static org.woehlke.simulation.all.model.LatticeNeighbourhoodType.*;
 
 /**
  * Cyclic Cellular Automaton.
@@ -26,11 +27,11 @@ public class CyclicCellularAutomatonLattice implements Serializable {
     private volatile int source;
     private volatile int target;
 
-    private final ObjectRegistry ctx;
+    private final CyclicCellularAutomatonContext ctx;
 
-    private volatile LatticeNeighbourhood neighbourhood;
+    private volatile LatticeNeighbourhoodType neighbourhood;
 
-    public CyclicCellularAutomatonLattice(ObjectRegistry ctx) {
+    public CyclicCellularAutomatonLattice(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
         random = new Random(new Date().getTime());
         startVonNeumann();

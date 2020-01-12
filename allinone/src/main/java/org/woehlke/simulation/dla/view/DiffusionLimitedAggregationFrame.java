@@ -1,8 +1,9 @@
 package org.woehlke.simulation.dla.view;
 
-import org.woehlke.simulation.dla.control.ControllerThread;
-import org.woehlke.simulation.dla.model.LatticePoint;
-import org.woehlke.simulation.dla.model.Particles;
+import org.woehlke.simulation.all.view.PanelSubtitle;
+import org.woehlke.simulation.dla.control.DiffusionLimitedAggregationControllerThread;
+import org.woehlke.simulation.all.model.LatticePointDla;
+import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -12,8 +13,8 @@ import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
-import static org.woehlke.simulation.dla.config.ConfigProperties.SUBTITLE;
-import static org.woehlke.simulation.dla.config.ConfigProperties.TITLE;
+import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPropertiesI.SUBTITLE;
+import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPropertiesI.TITLE;
 
 /**
  * Diffusion Limited Aggregation.
@@ -32,9 +33,9 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         WindowListener {
 
     private PanelSubtitle subtitle = new PanelSubtitle(SUBTITLE);
-    private ControllerThread controllerThread;
-    private WorldCanvas canvas;
-    private Particles particles;
+    private DiffusionLimitedAggregationControllerThread controllerThread;
+    private DiffusionLimitedAggregationCanvas canvas;
+    private DiffusionLimitedAggregationWorld particles;
 
     public DiffusionLimitedAggregationFrame() {
         super(TITLE);
@@ -52,11 +53,11 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         int height = 234 * scale;
         this.setLayout(new BorderLayout());
         this.add(subtitle, BorderLayout.NORTH);
-        LatticePoint worldDimensions = new LatticePoint(width,height);
-        particles = new Particles(worldDimensions);
-        canvas = new WorldCanvas(worldDimensions,particles);
+        LatticePointDla worldDimensions = new LatticePointDla(width,height);
+        particles = new DiffusionLimitedAggregationWorld(worldDimensions);
+        canvas = new DiffusionLimitedAggregationCanvas(worldDimensions,particles);
         this.add(canvas, BorderLayout.CENTER);
-        controllerThread = new ControllerThread(canvas,particles);
+        controllerThread = new DiffusionLimitedAggregationControllerThread(canvas,particles);
         controllerThread.start();
     }
 
@@ -91,7 +92,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     public void windowDeactivated(WindowEvent e) {
     }
 
-    public LatticePoint getCanvasDimensions() {
+    public LatticePointDla getCanvasDimensions() {
         return canvas.getWorldDimensions();
     }
 }

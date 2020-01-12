@@ -1,12 +1,12 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
 import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
-import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
+import org.woehlke.simulation.all.model.LatticePointMandelbrot;
 
 public interface GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
 
     void fillTheOutsideWithColors();
 
-    boolean isInSet(LatticePoint turingPosition);
+    boolean isInSet(LatticePointMandelbrot turingPosition);
 
 }

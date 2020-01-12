@@ -1,6 +1,6 @@
 package org.woehlke.simulation.cca.control;
 
-import org.woehlke.simulation.cca.config.ObjectRegistry;
+import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
 
 import java.io.Serializable;
 
@@ -23,9 +23,9 @@ public class CyclicCellularAutomatonController extends Thread
 
     private Boolean goOn;
 
-    private final ObjectRegistry ctx;
+    private final CyclicCellularAutomatonContext ctx;
 
-    public CyclicCellularAutomatonController(ObjectRegistry ctx) {
+    public CyclicCellularAutomatonController(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
         goOn = Boolean.TRUE;
     }

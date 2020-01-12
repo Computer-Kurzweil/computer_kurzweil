@@ -8,11 +8,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionController;
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionPanelButtons;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionPanelStatistics;
+import org.woehlke.simulation.evolution.view.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.simulation.evolution.view.SimulatedEvolutionStatisticsPanel;
 
 import java.awt.*;
 import java.util.logging.Logger;
@@ -43,19 +43,19 @@ import java.util.logging.Logger;
 })
 public class ComputerKurzweilApplication {
 
-    private final SimulatedEvolutionController controller;
+    private final SimulatedEvolutionControllerThread controller;
     private final SimulatedEvolutionFrame frame;
     private final SimulatedEvolutionWorld world;
-    private final SimulatedEvolutionPanelButtons panelButtons;
-    private final SimulatedEvolutionPanelStatistics panelStatistics;
+    private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private final SimulatedEvolutionStatisticsPanel panelStatistics;
 
     @Autowired
       public ComputerKurzweilApplication(
-        SimulatedEvolutionController controller,
+        SimulatedEvolutionControllerThread controller,
         SimulatedEvolutionFrame frame,
         SimulatedEvolutionWorld world,
-        SimulatedEvolutionPanelButtons panelButtons,
-        SimulatedEvolutionPanelStatistics panelStatistics
+        SimulatedEvolutionButtonRowPanel panelButtons,
+        SimulatedEvolutionStatisticsPanel panelStatistics
     ) {
         this.frame = frame;
         this.world = world;

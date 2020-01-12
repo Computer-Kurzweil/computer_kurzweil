@@ -2,8 +2,7 @@ package org.woehlke.simulation.evolution.model.cell;
 
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  * The CellCore contains the DNA which has influence on orientation at moving.
@@ -18,126 +17,110 @@ import java.util.ArrayList;
  * Date: 04.02.2006
  * Time: 19:55:23
  */
-public class CellCore {
+public class CellCore implements Serializable {
 
-  /**
-   * The DNA Values of the Genome.
-   */
-  private List<Integer> dna;
+    /**
+    * The DNA Values of the Genome.
+    */
+    private Integer[] dna;
 
-  private final static int MIN_VALUE = 0;
-  private final static int MAX_VALUE = 16;
-  private final static int MAX_INITIAL_VALUE = 8;
+    private final SimulatedEvolutionContext ctx;
 
-  private final SimulatedEvolutionContext ctx;
+    private final static int MIN_VALUE = 0;
+    private final static int MAX_VALUE = 16;
+    private final static int MAX_INITIAL_VALUE = 8;
 
-  public CellCore(final SimulatedEvolutionContext ctx) {
-    this.ctx=ctx;
-    dna = new ArrayList<>();
-    for (int i = 0; i < Orientation.values().length; i++) {
-      int gen = ctx.getRandom().nextInt() % MAX_INITIAL_VALUE;
-      dna.add(gen);
+    public CellCore(final SimulatedEvolutionContext ctx) {
+        this.ctx=ctx;
+        dna = new Integer[CellOrientation.values().length];
+        for (int i = 0; i < CellOrientation.values().length; i++) {
+            dna[i] = ctx.getRandom().nextInt() % MAX_INITIAL_VALUE;
+        }
     }
-  }
 
-  private CellCore(final SimulatedEvolutionContext ctx, List<Integer> rna) {
-    this.ctx=ctx;
-    dna = new ArrayList<>();
-    dna.addAll(rna);
-  }
+    private CellCore(CellCore other) {
+        this.ctx = other.ctx;
+        this.dna = other.dna;
+    }
 
   /**
    * Mitosis is the Cell Core Division where the DNA changes for Evolution.
    * After Mitosis this Cell Core is one of the two Children.
    *
    * @return the other Child CellCore.
-   * @see Cell#performReproductionByCellDivision()
+   * @see Cell#reproductionByCellDivision()
    */
-  public CellCore performMitosis() {
-    List<Integer> rna = new ArrayList<>();
-    for (Integer dnaBase : dna) {
-      rna.add(dnaBase);
-    }
-    CellCore child = new CellCore(ctx, rna);
-    int baseIndex = ctx.getRandom().nextInt() % Orientation.values().length;
-    if (baseIndex < MIN_VALUE) {
-      baseIndex *= -1;
-    }
-    Orientation[] base = Orientation.values();
-    this.decrease(base[baseIndex]);
-    child.increase(base[baseIndex]);
+  public CellCore reproductionMitosis() {
+    CellCore child = new CellCore(this);
+    CellOrientation dnaMutationBase = CellOrientation.values()[getRandomBaseForMutation()];
+    this.decrease(dnaMutationBase);
+    child.increase(dnaMutationBase);
     return child;
   }
 
-  private void increase(Orientation base) {
-    int value = dna.get(base.ordinal());
-    if (value == MAX_VALUE) {
-      for (int i = 0; i < dna.size(); i++) {
-        Integer val = dna.get(i);
-        val--;
-        dna.set(i, val);
-      }
-    }
-    Integer val = dna.get(base.ordinal());
-    val++;
-    dna.set(base.ordinal(), val);
+  private int getRandomBaseForMutation(){
+      int baseIndex = ctx.getRandom().nextInt() % CellOrientation.values().length;
+      return (baseIndex < MIN_VALUE)?( baseIndex * -1):baseIndex;
   }
 
-  private void decrease(Orientation base) {
-    int value = dna.get(base.ordinal());
-    if (value == -MAX_VALUE) {
-      for (int i = 0; i < dna.size(); i++) {
-        Integer val = dna.get(i);
-        val++;
-        dna.set(i, val);
+  private void increase(CellOrientation dnaMutationBase) {
+    if (dna[dnaMutationBase.ordinal()] == MAX_VALUE) {
+      for (int i = 0; i < dna.length; i++) {
+          dna[i]--;
       }
-      dna.set(base.ordinal(), 0);
-    } else {
-      dna.set(base.ordinal(), value - 1);
     }
+    dna[dnaMutationBase.ordinal()]++;
   }
+
+  private void decrease(CellOrientation dnaMutationBase) {
+    if (dna[dnaMutationBase.ordinal()] == -MAX_VALUE) {
+      for (int i = 0; i < dna.length; i++) {
+          dna[i]++;
+      }
+    }
+    dna[dnaMutationBase.ordinal()]--;
+  }
+
+      private double getDnaValue(){
+          double value;
+          double dnaValue = 0.0d;
+          for (int i = 0; i < CellOrientation.values().length; i++) {
+              value = dna[i].longValue() ^ 2;
+              dnaValue += (value < MIN_VALUE)?(value * -1):value;
+          }
+          return dnaValue;
+      }
+
+    private Double[] getRna(double dnaValue){
+        Double[] rna = new Double[CellOrientation.values().length];
+        double rnaValue = 0.0d;
+        double value;
+        for (int i = 0; i < CellOrientation.values().length; i++) {
+            value = dna[i].longValue() ^ 2;
+            rnaValue += ((value < MIN_VALUE)?(value * -1):value) / dnaValue;
+            rna[i] = rnaValue;
+        }
+        return rna;
+    }
+
+    private double getSumRandom(){
+        double sumRandom = ctx.getRandom().nextInt(MAX_VALUE) ^ 2;
+        return ((sumRandom < MIN_VALUE)?(sumRandom * -1):sumRandom) / (MAX_VALUE ^ 2);
+    }
 
   /**
    * @return gives a new Orientation based on the Combinition of Random and DNA.
    */
-  public Orientation getRandomOrientation() {
-    Orientation orientation = Orientation.FORWARD;
-    int dnaLength = Orientation.values().length;
-    double sumDna = 0.0;
-    for (int i = 0; i < dnaLength; i++) {
-      double val = dna.get(i).longValue() ^ 2;
-      if (val < MIN_VALUE) {
-        val *= -1;
-      }
-      sumDna += val;
-    }
-    double sum = 0.0;
-    double[] rna = new double[dnaLength];
-    for (int i = 0; i < dnaLength; i++) {
-      double val = dna.get(i).longValue() ^ 2;
-      if (val < MIN_VALUE) {
-        val *= -1;
-      }
-      sum += val / sumDna;
-      rna[i] = sum;
-    }
-    if (sumDna != 0) {
-      double val = Double.valueOf(ctx.getRandom().nextInt(MAX_VALUE) ^ 2);
-      if (val < MIN_VALUE) {
-        val *= -1;
-      }
-      double sumRandom = val / Double.valueOf(MAX_VALUE ^ 2);
-      if (sumRandom < MIN_VALUE) {
-        sumRandom *= -1;
-      }
-      int newInt = 0;
-      for (int i = 0; i < dnaLength; i++) {
+  public CellOrientation getRandomOrientation() {
+      double dnaValue = getDnaValue();
+      Double[] rna = getRna(dnaValue);
+      double sumRandom = getSumRandom();
+      for (int i = 0; i < CellOrientation.values().length; i++) {
         if (sumRandom > rna[i]) {
-          newInt = i;
+            return CellOrientation.values()[i];
         }
       }
-      orientation = Orientation.values()[newInt];
-    }
-    return orientation;
+      return CellOrientation.FORWARD;
   }
+
 }

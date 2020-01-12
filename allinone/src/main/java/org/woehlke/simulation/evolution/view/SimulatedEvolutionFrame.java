@@ -2,6 +2,8 @@ package org.woehlke.simulation.evolution.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.all.view.SimulatedEvolutionPanelCopyright;
+import org.woehlke.simulation.all.view.SimulatedEvolutionPanelSubtitle;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 
 import javax.swing.BoxLayout;
@@ -32,18 +34,18 @@ import java.awt.image.ImageObserver;
 @Component
 public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, MenuContainer {
 
-  private final SimulatedEvolutionWorldCanvas canvas;
+  private final SimulatedEvolutionCanvas canvas;
 
   @Autowired
   public SimulatedEvolutionFrame(
       SimulatedEvolutionProperties properties,
       SimulatedEvolutionPanelSubtitle panelSubtitle,
-      SimulatedEvolutionWorldCanvas canvas,
+      SimulatedEvolutionCanvas canvas,
       SimulatedEvolutionPanelCopyright panelCopyright,
-      SimulatedEvolutionPanelStatistics panelStatistics,
-      SimulatedEvolutionPanelButtons panelButtons
+      SimulatedEvolutionStatisticsPanel panelStatistics,
+      SimulatedEvolutionButtonRowPanel panelButtons
     ) {
-    super(properties.getTitle());
+    super(properties.getView().getTitle());
     this.canvas = canvas;
     JSeparator separator1 = new JSeparator();
     JSeparator separator2 = new JSeparator();

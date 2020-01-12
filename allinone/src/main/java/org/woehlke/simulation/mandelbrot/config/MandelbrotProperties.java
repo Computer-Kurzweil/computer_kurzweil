@@ -3,7 +3,7 @@ package org.woehlke.simulation.mandelbrot.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
-import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
+import org.woehlke.simulation.all.model.LatticePointMandelbrot;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -41,8 +41,8 @@ public class MandelbrotProperties {
     @NotNull private Boolean logDebug;
 
     @Transient
-    public LatticePoint getWorldDimensions() {
-        return new LatticePoint(
+    public LatticePointMandelbrot getWorldDimensions() {
+        return new LatticePointMandelbrot(
             this.getWidth(),
             this.getHeight()
         );
