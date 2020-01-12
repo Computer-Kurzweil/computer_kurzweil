@@ -29,7 +29,6 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     WindowStateListener,
     ActionListener {
 
-    private final SimulatedEvolutionProperties properties;
     private final SimulatedEvolutionContext context;
 
     private SimulatedEvolutionWorld world;
@@ -43,10 +42,8 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
   private Boolean mySemaphore;
 
   public SimulatedEvolutionControllerThread(
-      SimulatedEvolutionProperties properties,
       SimulatedEvolutionContext context
   ) {
-      this.properties = properties;
       this.context = context;
       this.mySemaphore = Boolean.TRUE;
   }
@@ -76,7 +73,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
         world.letLivePopulation();
         frame.repaint();
       try {
-        sleep(TIME_TO_WAIT);
+        sleep(context.getProperties().getControl().getTime2wait());
       } catch (InterruptedException e) {
         System.out.println(e.getLocalizedMessage());
       }
@@ -149,7 +146,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     synchronized (mySemaphore) {
       mySemaphore = Boolean.FALSE;
     }
-    System.exit(properties.getControl().getExitStatus());
+    System.exit(context.getProperties().getControl().getExitStatus());
   }
 
   public void toggleGardenOfEden() {
