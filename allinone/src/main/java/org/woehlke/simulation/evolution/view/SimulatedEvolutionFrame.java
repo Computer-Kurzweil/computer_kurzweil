@@ -31,29 +31,35 @@ import java.awt.image.ImageObserver;
 @Component
 public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
 
+    @Getter
     private final SimulatedEvolutionContext ctx;
+
+    @Getter
     private final SimulatedEvolutionCanvas canvas;
+
     @Getter
     private final SimulatedEvolutionWorld world;
 
   @Autowired
   public SimulatedEvolutionFrame(
       SimulatedEvolutionContext ctx,
-      SimulatedEvolutionCanvas canvas, SimulatedEvolutionWorld world) {
-    this.ctx=ctx;
+      SimulatedEvolutionCanvas canvas,
+      SimulatedEvolutionWorld world
+  ) {
+      this.ctx = ctx;
       this.canvas = canvas;
       this.world = world;
       PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
-    PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
-    BoxLayout layout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
+      PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
+      BoxLayout layout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
       this.setLayout(layout);
       this.add(panelSubtitle);
       this.add(this.canvas);
       this.add(panelCopyright);
-      this.add(ctx.getPanelStatistics());
-      this.add(ctx.getPanelButtons());
+      this.add(this.ctx.getPanelStatistics());
+      this.add(this.ctx.getPanelButtons());
       showMe();
-    this.ctx.setFrame(this);
+      this.ctx.setFrame(this);
   }
 
     /**

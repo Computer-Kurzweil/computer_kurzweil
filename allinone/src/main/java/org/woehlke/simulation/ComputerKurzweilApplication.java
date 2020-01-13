@@ -48,7 +48,7 @@ public class ComputerKurzweilApplication {
     private final ComputerKurzweilApplicationFrame frame;
 
     @Autowired
-      public ComputerKurzweilApplication(
+    public ComputerKurzweilApplication(
         ComputerKurzweilApplicationFrame frame
     ) {
         this.frame=frame;

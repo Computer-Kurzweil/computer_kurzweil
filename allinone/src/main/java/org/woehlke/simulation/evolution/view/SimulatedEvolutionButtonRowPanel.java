@@ -55,6 +55,7 @@ public class SimulatedEvolutionButtonRowPanel extends JPanel  {
         this.setLayout(flowLayout1);
         this.add(foodPanel);
         this.add(gardenOfEdenPanel);
+      ctx.setButtonRowPanel(this);
   }
 
   public void registerController(SimulatedEvolutionControllerThread controller){
@@ -62,9 +63,6 @@ public class SimulatedEvolutionButtonRowPanel extends JPanel  {
       this.buttonFoodPerDayDecrease.addActionListener(controller);
       this.buttonToggleGardenOfEden.addActionListener(controller);
   }
-
-
-
 
     private CompoundBorder getBorder(String label){
         int top = this.ctx.getProperties().getView().getBorderPadding();

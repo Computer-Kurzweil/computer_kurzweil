@@ -49,7 +49,12 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
      */
     public void showMe() {
         pack();
-        this.setBounds(bounds.getMystartX(), bounds.getMystartY(), bounds.getMywidth(), bounds.getMyheight());
+        this.setBounds(
+            bounds.getMystartX(),
+            bounds.getMystartY(),
+            bounds.getMywidth(),
+            bounds.getMyheight()
+        );
         rootPane.setVisible(true);
         this.setVisible(true);
         toFront();

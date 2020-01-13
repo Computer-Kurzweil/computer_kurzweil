@@ -33,13 +33,6 @@ public class SimulatedEvolutionContext implements Serializable {
     @Getter @Setter
     private volatile int foodPerDayGardenOfEden;
 
-
-    /**
-     * Random Generator used for placing food.
-     */
-    @Getter
-    private  final Random random;
-
     @Getter @Setter
     private volatile SimulatedEvolutionStatistics statisticsContainer;
 
@@ -57,11 +50,26 @@ public class SimulatedEvolutionContext implements Serializable {
     @Getter @Setter
     private volatile SimulatedEvolutionControllerThread controllerThread;
 
+    @Getter @Setter
+    private volatile SimulatedEvolutionWorld world;
+
+    @Getter @Setter
+    private volatile SimulatedEvolutionCanvas canvas;
+
+    @Getter @Setter
+    private volatile SimulatedEvolutionButtonRowPanel buttonRowPanel;
+
     @Getter
     private final SimulatedEvolutionProperties properties;
 
+    /**
+     * Random Generator used for placing food.
+     */
+    @Getter
+    private  final Random random;
+
     @Autowired
-    public SimulatedEvolutionContext(SimulatedEvolutionProperties properties, SimulatedEvolutionCanvas canvas) {
+    public SimulatedEvolutionContext(SimulatedEvolutionProperties properties) {
       this.properties = properties;
       this.foodPerDay = properties.getFood().getFoodPerDay();
       this.gardenOfEdenEnabled = properties.getGardenOfEden().getGardenOfEdenEnabled();

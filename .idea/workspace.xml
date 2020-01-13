@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/control/ComputerKurzweilControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/control/ComputerKurzweilControllerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/model/ComputerKurzweilApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/model/ComputerKurzweilApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/view/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionButtonRowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionButtonRowPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" afterDir="false" />
     </list>
@@ -322,6 +321,7 @@
       <workItem from="1578876164052" duration="189000" />
       <workItem from="1578888458031" duration="3734000" />
       <workItem from="1578909616075" duration="2813000" />
+      <workItem from="1578918724535" duration="1837000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -448,10 +448,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1578867157699" />
-    <state x="97" y="0" key="CommitChangelistDialog2" timestamp="1578893153766">
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2" timestamp="1578912522610">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="97" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1578893153766" />
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1578912522610" />
     <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -462,25 +462,25 @@
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1237" height="508" key="GridCell.Tab.0.bottom" timestamp="1578912500216">
+    <state width="1237" height="499" key="GridCell.Tab.0.bottom" timestamp="1578920143140">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="508" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1578912500216" />
+    <state width="1237" height="499" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1578920143140" />
     <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
-    <state width="1237" height="508" key="GridCell.Tab.0.center" timestamp="1578912500216">
+    <state width="1237" height="499" key="GridCell.Tab.0.center" timestamp="1578920143140">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="508" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1578912500216" />
+    <state width="1237" height="499" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1578920143140" />
     <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="508" key="GridCell.Tab.0.left" timestamp="1578912500216">
+    <state width="1237" height="499" key="GridCell.Tab.0.left" timestamp="1578920143140">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="508" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1578912500216" />
+    <state width="1237" height="499" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1578920143140" />
     <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="508" key="GridCell.Tab.0.right" timestamp="1578912500216">
+    <state width="1237" height="499" key="GridCell.Tab.0.right" timestamp="1578920143140">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="508" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1578912500216" />
+    <state width="1237" height="499" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1578920143140" />
     <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
     <state x="352" y="96" key="MultipleFileMergeDialog" timestamp="1578909889610">
       <screen x="0" y="0" width="1280" height="760" />
@@ -495,19 +495,19 @@
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577558215454" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
-    <state x="95" y="184" key="Vcs.Push.Dialog.v2" timestamp="1578893173109">
+    <state x="95" y="184" key="Vcs.Push.Dialog.v2" timestamp="1578912530847">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="95" y="184" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1578893173109" />
+    <state x="95" y="184" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1578912530847" />
     <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876516148" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844172030" />
-    <state x="165" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1578909761101">
+    <state x="602" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1578918739919">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="165" y="251" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1578909761101" />
+    <state x="602" y="271" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1578918739919" />
     <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876282357" />
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578866183417">
       <screen x="0" y="0" width="1920" height="1040" />

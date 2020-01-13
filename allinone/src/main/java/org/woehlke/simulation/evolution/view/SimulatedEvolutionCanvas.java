@@ -43,15 +43,17 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
 
   public SimulatedEvolutionCanvas(
       SimulatedEvolutionWorld world,
-      SimulatedEvolutionContext ctx) {
+      SimulatedEvolutionContext ctx
+  ) {
     this.world = world;
-      this.ctx = ctx;
-      this.setBackground(COLOR_WATER.getColor());
+    this.ctx = ctx;
+    this.setBackground(COLOR_WATER.getColor());
     Dimension preferredSize = new Dimension(
         this.world.getCtx().getWorldDimensions().getWidth(),
         this.world.getCtx().getWorldDimensions().getHeight()
     );
     this.setPreferredSize(preferredSize);
+    this.ctx.setCanvas(this);
   }
 
   /**

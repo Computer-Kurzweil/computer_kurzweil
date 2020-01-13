@@ -70,6 +70,7 @@ public class SimulatedEvolutionWorld {
       }
       log.info(populationCensus.toString());
       statisticsContainer.add(populationCensus);
+      this.ctx.setWorld(this);
   }
 
   /**
