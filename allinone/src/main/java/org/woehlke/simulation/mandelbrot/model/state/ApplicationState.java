@@ -1,9 +1,9 @@
-package org.woehlke.simulation.mandelbrot.control.state;
+package org.woehlke.simulation.mandelbrot.model.state;
 
-import static org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour.SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET;
-import static org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour.ZOOM_IN;
-import static org.woehlke.simulation.mandelbrot.control.state.FractalSetType.JULIA_SET;
-import static org.woehlke.simulation.mandelbrot.control.state.FractalSetType.MANDELBROT_SET;
+import static org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour.SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET;
+import static org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour.ZOOM_IN;
+import static org.woehlke.simulation.mandelbrot.model.state.FractalSetType.JULIA_SET;
+import static org.woehlke.simulation.mandelbrot.model.state.FractalSetType.MANDELBROT_SET;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -15,6 +15,7 @@ import static org.woehlke.simulation.mandelbrot.control.state.FractalSetType.MAN
  * Created by tw on 23.08.15.
  */
 public enum ApplicationState {
+
     MANDELBROT_SWITCH(MANDELBROT_SET, SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET),
     JULIA_SET_SWITCH(JULIA_SET, SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET),
     MANDELBROT_ZOOM(MANDELBROT_SET, ZOOM_IN),

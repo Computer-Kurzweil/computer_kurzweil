@@ -1,7 +1,7 @@
 package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
-import org.woehlke.simulation.mandelbrot.model.turing.state.TuringPhase;
+import org.woehlke.simulation.mandelbrot.model.state.TuringPhase;
 
 import java.util.logging.Logger;
 

@@ -1,8 +1,9 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -16,16 +17,19 @@ import java.awt.image.ImageObserver;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Log
 @Component
 public class MandelbrotFrame extends JPanel implements
         ImageObserver,
         MenuContainer,
         Accessible {
 
-    private final MandelbrotApplicationContext ctx;
+    private final MandelbrotContext ctx;
 
     @Autowired
-    public MandelbrotFrame(MandelbrotApplicationContext ctx) {
+    public MandelbrotFrame(
+        MandelbrotContext ctx
+    ) {
         this.ctx=ctx;
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.add(this.ctx.getPanelSubtitle());

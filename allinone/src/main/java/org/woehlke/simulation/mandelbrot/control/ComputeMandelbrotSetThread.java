@@ -1,18 +1,18 @@
 package org.woehlke.simulation.mandelbrot.control;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
-import java.util.logging.Logger;
-
+@Log
 @Component
 public class ComputeMandelbrotSetThread extends Thread implements Runnable {
 
-    private final MandelbrotApplicationContext ctx;
+    private final MandelbrotContext ctx;
 
     @Autowired
-    public ComputeMandelbrotSetThread(MandelbrotApplicationContext ctx) {
+    public ComputeMandelbrotSetThread(MandelbrotContext ctx) {
         super("ComputeMandelbrotSetThread");
         this.ctx = ctx;
     }
@@ -37,5 +37,4 @@ public class ComputeMandelbrotSetThread extends Thread implements Runnable {
         ctx.showMe();
     }
 
-    private static Logger log = Logger.getLogger(ComputeMandelbrotSetThread.class.getName());
 }

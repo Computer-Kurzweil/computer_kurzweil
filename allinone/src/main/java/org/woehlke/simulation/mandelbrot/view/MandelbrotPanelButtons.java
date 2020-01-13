@@ -1,15 +1,17 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import lombok.Getter;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
-import static org.woehlke.simulation.mandelbrot.control.state.RadioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.simulation.mandelbrot.control.state.RadioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.simulation.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.simulation.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_ZOOM;
 
 
 /**
@@ -21,21 +23,23 @@ import static org.woehlke.simulation.mandelbrot.control.state.RadioButtons.RADIO
  *
  * Created by tw on 16.12.2019.
  */
+@Log
 @Component
 public class MandelbrotPanelButtons extends JPanel {
 
-    private JRadioButton radioButtonsSwitch;
-    private JRadioButton radioButtonsZoom;
-    private JButton zoomOutButton;
+    @Getter private JRadioButton radioButtonsSwitch;
+    @Getter private JRadioButton radioButtonsZoom;
+    @Getter private JButton zoomOutButton;
+
     private ButtonGroup radioButtonsGroup;
     private JPanel panelButtonsGroup;
     private JPanel panelZoomButtons;
     private TextField zoomLevelField;
 
-    private MandelbrotApplicationContext ctx;
+    private MandelbrotContext ctx;
 
     @Autowired
-    public MandelbrotPanelButtons(MandelbrotApplicationContext ctx) {
+    public MandelbrotPanelButtons(MandelbrotContext ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
         this.radioButtonsSwitch = new JRadioButton(ctx.getProperties().getButtonsSwitch());
@@ -99,18 +103,6 @@ public class MandelbrotPanelButtons extends JPanel {
         this.zoomLevelField.setText(text);
         this.zoomLevelField.repaint();
         super.repaint();
-    }
-
-    public JRadioButton getRadioButtonsSwitch() {
-        return radioButtonsSwitch;
-    }
-
-    public JRadioButton getRadioButtonsZoom() {
-        return radioButtonsZoom;
-    }
-
-    public JButton getZoomOutButton() {
-        return zoomOutButton;
     }
 
     public void enableZoomButton() {

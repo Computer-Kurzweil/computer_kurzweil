@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.turing.impl;
 
 import org.woehlke.simulation.mandelbrot.model.numbers.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
-import org.woehlke.simulation.mandelbrot.model.turing.state.TuringDirection;
+import org.woehlke.simulation.mandelbrot.model.state.TuringDirection;
 
 import java.util.logging.Logger;
 

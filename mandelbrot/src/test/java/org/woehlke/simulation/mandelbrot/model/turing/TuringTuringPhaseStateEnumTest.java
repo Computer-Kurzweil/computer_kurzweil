@@ -6,7 +6,7 @@ import org.woehlke.simulation.mandelbrot.model.turing.impl.TuringPhaseStateMachi
 
 import java.util.logging.Logger;
 
-import static org.woehlke.simulation.mandelbrot.model.turing.state.TuringPhase.*;
+import static org.woehlke.simulation.mandelbrot.model.state.TuringPhase.*;
 
 public class TuringTuringPhaseStateEnumTest {
 

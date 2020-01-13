@@ -1,6 +1,7 @@
-package org.woehlke.simulation.mandelbrot.control.state;
+package org.woehlke.simulation.mandelbrot.model.state;
 
 public enum FractalSetType {
+
     MANDELBROT_SET,
     JULIA_SET;
 

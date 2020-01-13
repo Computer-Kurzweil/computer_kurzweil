@@ -1,6 +1,7 @@
-package org.woehlke.simulation.mandelbrot.control.state;
+package org.woehlke.simulation.mandelbrot.model.state;
 
 public enum ClickBehaviour {
+
     SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET,
     ZOOM_IN;
 

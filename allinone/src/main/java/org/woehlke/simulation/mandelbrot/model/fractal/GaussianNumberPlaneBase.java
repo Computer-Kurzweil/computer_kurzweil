@@ -1,15 +1,15 @@
-package org.woehlke.simulation.mandelbrot.model.fractal.impl;
+package org.woehlke.simulation.mandelbrot.model.fractal;
 
-import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
-import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
-import org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour;
-import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
-import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
+import lombok.Getter;
+import lombok.Setter;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
+import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
+import org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour;
+import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 
-import java.util.logging.Logger;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -20,20 +20,22 @@ import java.util.logging.Logger;
  *
  * Created by tw on 16.12.2019.
  */
-public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlaneBase {
+public abstract class GaussianNumberPlaneBase {
 
     private int[][] lattice;
 
+    @Getter @Setter
     private ComplexNumber zoomCenter;
 
-    protected final MandelbrotApplicationContext ctx;
-
+    @Getter @Setter
     private ClickBehaviour clickBehaviour;
+
+    @Getter
     private final FractalSetType fractalSetType;
 
-    public static Logger log = Logger.getLogger(GaussianNumberPlaneBaseImpl.class.getName());
+    protected final MandelbrotContext ctx;
 
-    protected GaussianNumberPlaneBaseImpl(MandelbrotApplicationContext ctx, FractalSetType fractalSetType) {
+    protected GaussianNumberPlaneBase(MandelbrotContext ctx, FractalSetType fractalSetType) {
         this.ctx = ctx;
         this.fractalSetType = fractalSetType;
         clickBehaviour = ClickBehaviour.start();
@@ -91,24 +93,6 @@ public abstract class GaussianNumberPlaneBaseImpl implements GaussianNumberPlane
     public ApplicationState resolve(){
         return ApplicationState.resolve(fractalSetType,clickBehaviour);
     }
-
-    public ClickBehaviour getClickBehaviour() {
-        return clickBehaviour;
-    }
-
-    public FractalSetType getFractalSetType() {
-        return fractalSetType;
-    }
-
-    public ComplexNumber getZoomCenter() {
-        return zoomCenter;
-    }
-
-    public void setZoomCenter(ComplexNumber zoomCenter) {
-        this.zoomCenter = zoomCenter;
-    }
-
-
 
 
 }

@@ -1,9 +1,9 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
 import org.woehlke.simulation.allinone.model.LatticePoint;
-import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
-import org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour;
-import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
+import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
+import org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour;
+import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 
 public class ComputingPlan {
 

@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,6 +40,14 @@ public class PanelSubtitle extends JPanel {
         this.subtitleLabel = new JLabel(ctx.getProperties().getView().getSubtitle());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
+        this.add(subtitleLabel);
+    }
+
+    public PanelSubtitle( MandelbrotContext ctx) {
+        FlowLayout layout = new FlowLayout();
+        this.setLayout(layout);
+        String label = ctx.getProperties().getSubtitle() + " - " + ctx.getProperties().getSubtitle();
+        subtitleLabel = new JLabel(label);
         this.add(subtitleLabel);
     }
 }

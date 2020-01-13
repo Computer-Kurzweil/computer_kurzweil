@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
-import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
+import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 
 import java.util.Objects;
 

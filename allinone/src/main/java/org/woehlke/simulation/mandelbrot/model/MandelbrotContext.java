@@ -1,58 +1,67 @@
-package org.woehlke.simulation.mandelbrot.control.impl;
+package org.woehlke.simulation.mandelbrot.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
-import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
-import org.woehlke.simulation.mandelbrot.control.common.ApplicationStateMachine;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
-import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl;
-import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneMandelbrotImpl;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.allinone.model.LatticePoint;
-import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachineImpl;
+import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
+import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
+import org.woehlke.simulation.mandelbrot.model.turing.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotPanelButtons;
-import org.woehlke.simulation.mandelbrot.view.MandelbrotPanelSubtitle;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+@Log
 @Component
-public class MandelbrotApplicationContextImpl implements MandelbrotApplicationContext {
+public class MandelbrotContext implements MouseListener, ActionListener {
 
-    private MandelbrotPanelButtons panelButtons;
-    private MandelbrotFrame frame;
+    @Getter @Setter private MandelbrotFrame frame;
+    @Getter private final MandelbrotProperties properties;
+    @Getter private final MandelbrotCanvas canvas;
+    @Getter private final MandelbrotPanelButtons panelButtons;
+    @Getter private final PanelSubtitle panelSubtitle;
+    @Getter private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
+    @Getter private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
+    @Getter private final MandelbrotTuringMachine mandelbrotTuringMachine;
+    @Getter private final ApplicationStateMachine applicationStateMachine;
+    @Getter private final TuringPhaseStateMachine turingPhaseStateMachine;
+    @Getter private final TuringPositionsStateMachine turingPositionsStateMachine;
 
-    private final MandelbrotPanelSubtitle panelSubtitle;
-    private final MandelbrotCanvas canvas;
-    private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
-    private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-    private final MandelbrotTuringMachine mandelbrotTuringMachine;
-    private final ApplicationStateMachine applicationStateMachine;
-    private final MandelbrotProperties properties;
-
+    private ComputeMandelbrotSetThread computeMandelbrotSetThread;
 
     @Autowired
-    public MandelbrotApplicationContextImpl(
-        MandelbrotProperties properties
+    public MandelbrotContext(
+        MandelbrotProperties properties,
+        MandelbrotPanelButtons panelButtons
     ) {
         this.properties = properties;
+        this.panelButtons = panelButtons;
         this.canvas = new MandelbrotCanvas(this);
-        this.panelSubtitle = new MandelbrotPanelSubtitle(properties);
-        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJuliaImpl(this);
-        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrotImpl(this);
-        this.mandelbrotTuringMachine = new MandelbrotTuringMachineImpl(this);
-        this.applicationStateMachine = new ApplicationStateMachineImpl(this);
+        this.panelSubtitle = new PanelSubtitle(this);
+        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this);
+        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot(this);
+        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
+        this.applicationStateMachine = new ApplicationStateMachine(this);
+        this.turingPhaseStateMachine = new TuringPhaseStateMachine();
+        this.turingPositionsStateMachine = new TuringPositionsStateMachine(this);
 
     }
 
-    @Override public void start() {
+    public void start() {
         this.canvas.addMouseListener( this );
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneMandelbrot.start();
@@ -62,13 +71,13 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         this.computeTheMandelbrotSet();
     }
 
-    @Override public void showMe(){
+    public void showMe(){
         this.getCanvas().repaint();
         this.getPanelButtons().repaint();
         this.getFrame().showMe();
     }
 
-    @Override public CellStatus getCellStatusFor(int x, int y) {
+    public CellStatus getCellStatusFor(int x, int y) {
         switch (applicationStateMachine.getState().getFractalSetType()) {
             case JULIA_SET:
                 return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
@@ -78,12 +87,11 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         }
     }
 
-    @Deprecated
-    @Override public LatticePoint getWorldDimensions() {
+    public LatticePoint getWorldDimensions() {
         return properties.getWorldDimensions();
     }
 
-    @Override public void setModeSwitch() {
+    public void setModeSwitch() {
         this.gaussianNumberPlaneBaseJulia.setModeSwitch();
         this.gaussianNumberPlaneMandelbrot.setModeSwitch();
         this.getApplicationStateMachine().setModeSwitch();
@@ -92,7 +100,7 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         this.showMe();
     }
 
-    @Override public void setModeZoom() {
+    public void setModeZoom() {
         this.gaussianNumberPlaneBaseJulia.setModeZoom();
         this.gaussianNumberPlaneMandelbrot.setModeZoom();
         this.getApplicationStateMachine().setModeZoom();
@@ -101,7 +109,7 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         this.showMe();
     }
 
-    @Override public void zoomOut() {
+    public void zoomOut() {
         switch (applicationStateMachine.getState().getFractalSetType()) {
             case JULIA_SET:
                 gaussianNumberPlaneBaseJulia.zoomOut();
@@ -113,7 +121,6 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         }
     }
 
-    @Override
     public String getZoomLevel() {
         switch (applicationStateMachine.getState().getFractalSetType()) {
             case MANDELBROT_SET:
@@ -125,9 +132,6 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         }
     }
 
-    /**
-     * TODO write doc.
-     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == this.getPanelButtons().getRadioButtonsSwitch()) {
@@ -163,8 +167,8 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
     }
 
     private void computeTheMandelbrotSet() {
-        ComputeMandelbrotSetThread t = new ComputeMandelbrotSetThread(this);
-        t.start();
+        computeMandelbrotSetThread = new ComputeMandelbrotSetThread(this);
+        computeMandelbrotSetThread.start();
     }
 
     @Override
@@ -186,53 +190,5 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
     public void mouseExited(MouseEvent e) {
 
     }
-
-    @Override public void setPanelButtons(MandelbrotPanelButtons panelButtons) {
-        this.panelButtons = panelButtons;
-    }
-
-    @Override
-    public GaussianNumberPlaneBaseJulia getGaussianNumberPlaneBaseJulia() {
-        return gaussianNumberPlaneBaseJulia;
-    }
-
-    @Override
-    public GaussianNumberPlaneMandelbrot getGaussianNumberPlaneMandelbrot() {
-        return gaussianNumberPlaneMandelbrot;
-    }
-
-    @Override public MandelbrotCanvas getCanvas() {
-        return canvas;
-    }
-
-    @Override public MandelbrotPanelButtons getPanelButtons() {
-        return panelButtons;
-    }
-
-    @Override public MandelbrotProperties getProperties() {
-        return properties;
-    }
-
-    public void setFrame(MandelbrotFrame frame) {
-        this.frame = frame;
-    }
-
-    @Override public MandelbrotFrame getFrame() {
-        return frame;
-    }
-
-    @Override public MandelbrotPanelSubtitle getPanelSubtitle() {
-        return panelSubtitle;
-    }
-
-    @Override public MandelbrotTuringMachine getMandelbrotTuringMachine() {
-        return mandelbrotTuringMachine;
-    }
-
-    @Override public ApplicationStateMachine getApplicationStateMachine() {
-        return applicationStateMachine;
-    }
-
-
 
 }

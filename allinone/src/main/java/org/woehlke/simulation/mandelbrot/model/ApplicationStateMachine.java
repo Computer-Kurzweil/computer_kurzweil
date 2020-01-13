@@ -1,13 +1,10 @@
-package org.woehlke.simulation.mandelbrot.control.impl;
+package org.woehlke.simulation.mandelbrot.model;
 
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
-import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
-import org.woehlke.simulation.mandelbrot.control.common.ApplicationStateMachine;
+import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
 
-import java.util.logging.Logger;
-
-import static org.woehlke.simulation.mandelbrot.control.state.ApplicationState.*;
+import static org.woehlke.simulation.mandelbrot.model.state.ApplicationState.*;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -18,19 +15,19 @@ import static org.woehlke.simulation.mandelbrot.control.state.ApplicationState.*
  *
  * Created by tw on 16.12.2019.
  */
+@Log
 @Service
-public class ApplicationStateMachineImpl implements ApplicationStateMachine {
+public class ApplicationStateMachine {
 
     private ApplicationState applicationState;
 
-    private final MandelbrotApplicationContext ctx;
+    private final MandelbrotContext ctx;
 
-    public ApplicationStateMachineImpl(MandelbrotApplicationContext ctx) {
+    public ApplicationStateMachine(MandelbrotContext ctx) {
         this.applicationState = MANDELBROT_SWITCH;
         this.ctx = ctx;
     }
 
-    @Override
     public void start() {
         this.applicationState = ApplicationState.start();
     }
@@ -103,5 +100,4 @@ public class ApplicationStateMachineImpl implements ApplicationStateMachine {
         this.applicationState = applicationState;
     }
 
-    public static Logger log = Logger.getLogger(ApplicationStateMachineImpl.class.getName());
 }

@@ -1,8 +1,9 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,14 +19,15 @@ import java.awt.*;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
+@Log
 @Component
 public class MandelbrotCanvas extends JComponent {
 
-    private final MandelbrotApplicationContext ctx;
+    private final MandelbrotContext ctx;
     private final Dimension preferredSize;
 
     @Autowired
-    public MandelbrotCanvas(MandelbrotApplicationContext ctx) {
+    public MandelbrotCanvas(MandelbrotContext ctx) {
         this.ctx = ctx;
         int width = this.ctx.getWorldDimensions().getWidth();
         int height = this.ctx.getWorldDimensions().getHeight();

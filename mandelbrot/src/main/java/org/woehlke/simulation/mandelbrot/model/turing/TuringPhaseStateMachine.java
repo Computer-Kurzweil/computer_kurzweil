@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
-import org.woehlke.simulation.mandelbrot.model.turing.state.TuringPhase;
+import org.woehlke.simulation.mandelbrot.model.state.TuringPhase;
 
 public interface TuringPhaseStateMachine {
 

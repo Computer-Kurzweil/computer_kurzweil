@@ -10,7 +10,6 @@ import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import javax.swing.*;
 import java.awt.image.ImageObserver;
-import java.util.logging.Logger;
 
 /**
  * This Frame wraps the SimulatedEvolutionApplet which is the Container for this Simulation.
@@ -39,13 +38,26 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     @Getter
     private final SimulatedEvolutionCanvas canvas;
 
+    @Getter
+    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
+
+    @Getter
+    private final SimulatedEvolutionButtonRowPanel panelButtons;
+
   @Autowired
   public SimulatedEvolutionFrame(
       SimulatedEvolutionContext ctx,
-      SimulatedEvolutionCanvas canvas
+      SimulatedEvolutionCanvas canvas,
+      SimulatedEvolutionStatisticsPanel statisticsPanel,
+      SimulatedEvolutionButtonRowPanel panelButtons
   ) {
       this.ctx = ctx;
       this.canvas = canvas;
+      this.statisticsPanel = statisticsPanel;
+      this.panelButtons = panelButtons;
+      this.ctx.setPanelStatistics(this.statisticsPanel);
+      this.ctx.setPanelButtons(this.panelButtons);
+      this.ctx.setCanvas(this.canvas);
       if(this.ctx == null){
           log.warning("ctx==null but should not");
       } else {
@@ -54,7 +66,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
           BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
           this.setLayout(layout);
           this.add(panelSubtitle);
-          this.add(this.canvas);
+          this.add(this.ctx.getCanvas());
           this.add(panelCopyright);
           this.add(this.ctx.getPanelStatistics());
           this.add(this.ctx.getPanelButtons());
