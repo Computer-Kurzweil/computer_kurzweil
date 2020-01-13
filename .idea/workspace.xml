@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/model/ComputerKurzweilApplicationContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/config/ComputerKurzweilProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/config/ComputerKurzweilProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/control/ComputerKurzweilControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/control/ComputerKurzweilControllerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/view/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/config/MandelbrotProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/config/MandelbrotProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/common/EventDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/common/EventDispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/common/MandelbrotApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/common/MandelbrotApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/common/ObjectRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/common/ObjectRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/impl/MandelbrotApplicationContextImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/impl/MandelbrotApplicationContextImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/ApplicationCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotApplicationFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/PanelButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotPanelButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/PanelSubtitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotPanelSubtitle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +120,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean compileJava compileTestJava]">
+  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean bootRun]">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -341,7 +326,7 @@
       <workItem from="1578844150348" duration="13496000" />
       <workItem from="1578858204031" duration="15324000" />
       <workItem from="1578876164052" duration="503000" />
-      <workItem from="1578889285962" duration="11532000" />
+      <workItem from="1578889285962" duration="11954000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -448,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578901465209</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="switch from one app to allinone app">
+      <created>1578905238252</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1578905238252</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,10 +491,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
-    <state x="540" y="115" key="CommitChangelistDialog2" timestamp="1578901459482">
+    <state x="540" y="115" key="CommitChangelistDialog2" timestamp="1578905233620">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578901459482" />
+    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578905233620" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -512,22 +504,22 @@
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1877" height="309" key="GridCell.Tab.0.bottom" timestamp="1578905224265">
+    <state width="1877" height="445" key="GridCell.Tab.0.bottom" timestamp="1578905650776">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="309" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578905224265" />
-    <state width="1877" height="309" key="GridCell.Tab.0.center" timestamp="1578905224265">
+    <state width="1877" height="445" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578905650776" />
+    <state width="1877" height="445" key="GridCell.Tab.0.center" timestamp="1578905650776">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="309" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578905224264" />
-    <state width="1877" height="309" key="GridCell.Tab.0.left" timestamp="1578905224264">
+    <state width="1877" height="445" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578905650776" />
+    <state width="1877" height="445" key="GridCell.Tab.0.left" timestamp="1578905650776">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="309" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578905224264" />
-    <state width="1877" height="309" key="GridCell.Tab.0.right" timestamp="1578905224265">
+    <state width="1877" height="445" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578905650776" />
+    <state width="1877" height="445" key="GridCell.Tab.0.right" timestamp="1578905650776">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="309" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578905224265" />
+    <state width="1877" height="445" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578905650776" />
     <state x="672" y="236" key="MultipleFileMergeDialog" timestamp="1578895605710">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

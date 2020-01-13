@@ -30,30 +30,21 @@ import java.awt.image.ImageObserver;
 public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
 
     private final SimulatedEvolutionContext ctx;
-    private final SimulatedEvolutionCanvas canvas;
-    private final SimulatedEvolutionStatisticsPanel panelStatistics;
-    private final SimulatedEvolutionButtonRowPanel panelButtons;
 
   @Autowired
   public SimulatedEvolutionFrame(
-      SimulatedEvolutionContext ctx,
-      SimulatedEvolutionCanvas canvas,
-      SimulatedEvolutionStatisticsPanel panelStatistics,
-      SimulatedEvolutionButtonRowPanel panelButtons
+      SimulatedEvolutionContext ctx
     ) {
     this.ctx=ctx;
-    this.canvas = canvas;
-    this.panelStatistics =  panelStatistics;
-    this.panelButtons = panelButtons;
     PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
     PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
     BoxLayout layout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
       this.setLayout(layout);
       this.add(panelSubtitle);
-      this.add(canvas);
+      this.add(ctx.getCanvas());
       this.add(panelCopyright);
-      this.add(panelStatistics);
-      this.add(panelButtons);
+      this.add(ctx.getPanelStatistics());
+      this.add(ctx.getPanelButtons());
       showMe();
     this.ctx.setFrame(this);
   }
@@ -63,17 +54,17 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
      */
     public void showMe() {
         this.setVisible(true);
-        canvas.setVisible(true);
-        panelStatistics.setVisible(true);
-        panelButtons.setVisible(true);
+        ctx.getCanvas().setVisible(true);
+        ctx.getPanelStatistics().setVisible(true);
+        ctx.getPanelButtons().setVisible(true);
         this.setVisible(true);
         repaint();
     }
 
     public void repaint(){
-        canvas.repaint();
-        panelStatistics.repaint();
-        panelButtons.repaint();
+        ctx.getCanvas().repaint();
+        ctx.getPanelStatistics().repaint();
+        ctx.getPanelButtons().repaint();
         super.repaint();
     }
 

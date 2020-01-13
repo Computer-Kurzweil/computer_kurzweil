@@ -11,6 +11,7 @@ import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStati
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldLattice;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.simulation.evolution.view.SimulatedEvolutionCanvas;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionStatisticsPanel;
 
@@ -63,13 +64,17 @@ public class SimulatedEvolutionContext implements Serializable {
     @Getter
     private final SimulatedEvolutionProperties properties;
 
+    @Getter
+    private final  SimulatedEvolutionCanvas canvas;
+
     @Autowired
-    public SimulatedEvolutionContext(SimulatedEvolutionProperties properties) {
+    public SimulatedEvolutionContext(SimulatedEvolutionProperties properties, SimulatedEvolutionCanvas canvas) {
       this.properties = properties;
       this.foodPerDay = properties.getFood().getFoodPerDay();
       this.gardenOfEdenEnabled = properties.getGardenOfEden().getGardenOfEdenEnabled();
       this.foodPerDayGardenOfEden = properties.getGardenOfEden().getFoodPerDay();
-      long seed = new Date().getTime();
+        this.canvas = canvas;
+        long seed = new Date().getTime();
       this.random = new Random(seed);
     }
 
