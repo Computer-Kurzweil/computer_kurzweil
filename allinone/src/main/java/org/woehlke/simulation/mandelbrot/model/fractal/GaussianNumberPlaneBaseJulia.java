@@ -1,10 +1,10 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
 import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
-import org.woehlke.simulation.all.model.LatticePointMandelbrot;
+import org.woehlke.simulation.all.model.LatticePoint;
 
 public interface GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
-    void computeTheSet(LatticePointMandelbrot latticePoint);
+    void computeTheSet(LatticePoint latticePoint);
 
 }

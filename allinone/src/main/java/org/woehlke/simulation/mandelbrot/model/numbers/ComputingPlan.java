@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
-import org.woehlke.simulation.all.model.LatticePointMandelbrot;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.control.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.control.state.ClickBehaviour;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
@@ -40,14 +40,14 @@ public class ComputingPlan {
     private final FractalSetType fractalSetType;
     private final ComplexNumber worldDimension;
     private final ComplexNumber center;
-    private final LatticePointMandelbrot latticePoint;
+    private final LatticePoint latticePoint;
 
     public ComputingPlan(ClickBehaviour clickBehaviour,
                          FractalSetType fractalSetType,
                          ComplexNumber worldDimension,
                          ComplexNumber center,
                          ZoomLevel zoomLevel,
-                         LatticePointMandelbrot latticePoint) {
+                         LatticePoint latticePoint) {
         this.zoomLevel = zoomLevel;
         this.clickBehaviour = clickBehaviour;
         this.fractalSetType = fractalSetType;
@@ -63,7 +63,7 @@ public class ComputingPlan {
         this.clickBehaviour = applicationState.getClickBehaviour();
         this.fractalSetType = applicationState.getFractalSetType();
         this.worldDimension = startWorldDimension;
-        this.latticePoint = new LatticePointMandelbrot();
+        this.latticePoint = new LatticePoint();
         switch (this.fractalSetType){
             case JULIA_SET:
                 this.center = startCenterForJulia;
@@ -82,7 +82,7 @@ public class ComputingPlan {
         this.fractalSetType = FractalSetType.start();
         this.applicationState = ApplicationState.resolve(fractalSetType,clickBehaviour);
         this.worldDimension = startWorldDimension;
-        this.latticePoint = new LatticePointMandelbrot();
+        this.latticePoint = new LatticePoint();
         switch (this.fractalSetType){
             case JULIA_SET:
                 this.center = startCenterForJulia;

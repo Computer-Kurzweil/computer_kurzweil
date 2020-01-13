@@ -3,7 +3,7 @@ package org.woehlke.simulation.mandelbrot.model.turing.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
-import org.woehlke.simulation.all.model.LatticePointMandelbrot;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.state.TuringDirection;
 
@@ -21,9 +21,9 @@ import java.util.logging.Logger;
 @Service
 public class TuringPositionsStateMachineImpl implements TuringPositionsStateMachine {
 
-    private LatticePointMandelbrot turingPosition;
-    private LatticePointMandelbrot worldDimensions;
-    private LatticePointMandelbrot firstSetPosition;
+    private LatticePoint turingPosition;
+    private LatticePoint worldDimensions;
+    private LatticePoint firstSetPosition;
 
     private TuringDirection turingDirection;
 
@@ -37,7 +37,7 @@ public class TuringPositionsStateMachineImpl implements TuringPositionsStateMach
 
     public void start() {
         this.steps = 0;
-        this.turingPosition = LatticePointMandelbrot.start(worldDimensions);
+        this.turingPosition = LatticePoint.start(worldDimensions);
         this.firstSetPosition = null;
         this.turingDirection = TuringDirection.start();
     }
@@ -47,7 +47,7 @@ public class TuringPositionsStateMachineImpl implements TuringPositionsStateMach
         this.steps = 0;
     }
 
-    public LatticePointMandelbrot getTuringPosition() {
+    public LatticePoint getTuringPosition() {
         return turingPosition;
     }
 

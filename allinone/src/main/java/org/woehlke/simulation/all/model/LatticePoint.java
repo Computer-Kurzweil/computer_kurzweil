@@ -29,6 +29,10 @@ public class LatticePoint {
    */
   private int y = 0;
 
+
+    public LatticePoint() {
+    }
+
     public LatticePoint(LatticePoint other) {
         this.x = other.getX();
         this.y = other.getY();

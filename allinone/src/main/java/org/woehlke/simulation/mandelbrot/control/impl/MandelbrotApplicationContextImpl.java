@@ -12,7 +12,7 @@ import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandel
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl;
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneMandelbrotImpl;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
-import org.woehlke.simulation.all.model.LatticePointMandelbrot;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachineImpl;
 import org.woehlke.simulation.mandelbrot.view.ApplicationCanvas;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotApplicationFrame;
@@ -83,7 +83,7 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
     }
 
     @Deprecated
-    @Override public LatticePointMandelbrot getWorldDimensions() {
+    @Override public LatticePoint getWorldDimensions() {
         return properties.getWorldDimensions();
     }
 
@@ -172,7 +172,7 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        LatticePointMandelbrot latticePoint = new LatticePointMandelbrot(e.getX(), e.getY());
+        LatticePoint latticePoint = new LatticePoint(e.getX(), e.getY());
         applicationStateMachine.click();
         switch (applicationStateMachine.getState()) {
             case MANDELBROT_SWITCH:

@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.all.model.LatticePointMandelbrot;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
@@ -47,7 +47,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
 
     }
 
-    private ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(LatticePointMandelbrot turingPosition) {
+    private ComplexNumber getComplexNumberFromLatticeCoordsForMandelbrot(LatticePoint turingPosition) {
         double realX = (
             startCenterForMandelbrot.getReal()
                 + ( startWorldDimension.getReal() * turingPosition.getX() )
@@ -61,7 +61,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
         return new ComplexNumber(realX,imgY);
     }
 
-    private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedMandelbrot(LatticePointMandelbrot turingPosition) {
+    private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedMandelbrot(LatticePoint turingPosition) {
         double realX = (
             ( startCenterForMandelbrot.getReal() / this.zoomLevel.getZoomLevel() )
                 + getZoomCenter().getReal()
@@ -80,7 +80,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
     private void computeWZoomedWorld(){
         for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
             for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
-                LatticePointMandelbrot p = new LatticePointMandelbrot(x, y);
+                LatticePoint p = new LatticePoint(x, y);
                 ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(p);
                 ComplexNumberFractal f = ComplexNumberFractal.iterateMandelbrotSetFunction(position);
                 if(f.getInMandelbrotSet()){
@@ -92,7 +92,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
         }
     }
 
-    public void zoomInto(LatticePointMandelbrot zoomLatticePoint) {
+    public void zoomInto(LatticePoint zoomLatticePoint) {
         if(ctx.getProperties().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         }
@@ -136,7 +136,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
             for(int x=0;x < ctx.getWorldDimensions().getX();x++){
                 CellStatus cellStatus  = super.getCellStatusFor(x,y);
                 if(cellStatus.isCellStatusForYetUncomputed()){
-                    LatticePointMandelbrot p = new LatticePointMandelbrot(x, y);
+                    LatticePoint p = new LatticePoint(x, y);
                     ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(p);
                     ComplexNumberFractal.iterateMandelbrotSetFunction(position);
                     ComplexNumberFractal f = ComplexNumberFractal.iterateMandelbrotSetFunction(position);
@@ -151,7 +151,7 @@ public class GaussianNumberPlaneMandelbrotImpl extends GaussianNumberPlaneBaseIm
     }
 
     @Override
-    public boolean isInSet(LatticePointMandelbrot p) {
+    public boolean isInSet(LatticePoint p) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(p);
         ComplexNumberFractal f = ComplexNumberFractal.iterateMandelbrotSetFunction(position);
         if(f.getInMandelbrotSet()){
