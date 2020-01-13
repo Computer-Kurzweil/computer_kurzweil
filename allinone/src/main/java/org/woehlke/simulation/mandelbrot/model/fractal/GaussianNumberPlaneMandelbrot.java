@@ -21,7 +21,7 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
 
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
 
-    @Getter private final ZoomLevel zoomLevel;
+    private final ZoomLevel zoomLevel;
 
     @Autowired
     public GaussianNumberPlaneMandelbrot(MandelbrotContext ctx) {
