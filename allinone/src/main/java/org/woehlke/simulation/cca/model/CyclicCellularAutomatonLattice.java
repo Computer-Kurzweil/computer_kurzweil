@@ -1,7 +1,6 @@
 package org.woehlke.simulation.cca.model;
 
 import org.woehlke.simulation.all.model.LatticeNeighbourhoodType;
-import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
 
 import java.awt.*;
 import java.io.Serializable;

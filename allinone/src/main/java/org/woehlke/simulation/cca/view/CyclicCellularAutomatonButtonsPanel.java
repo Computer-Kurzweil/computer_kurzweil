@@ -1,6 +1,6 @@
 package org.woehlke.simulation.cca.view;
 
-import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
+import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import javax.swing.*;
 import java.awt.*;

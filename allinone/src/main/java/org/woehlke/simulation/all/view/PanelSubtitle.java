@@ -1,8 +1,8 @@
 package org.woehlke.simulation.all.view;
 
 import lombok.Getter;
-import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,8 +29,8 @@ public class PanelSubtitle extends JPanel {
         this.add(subtitleLabel);
     }
 
-    public PanelSubtitle(SimulatedEvolutionProperties simulatedEvolutionProperties) {
-        this.subtitleLabel = new JLabel(simulatedEvolutionProperties.getView().getSubtitle());
+    public PanelSubtitle(SimulatedEvolutionContext ctx) {
+        this.subtitleLabel = new JLabel(ctx.getProperties().getView().getSubtitle());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         this.add(subtitleLabel);

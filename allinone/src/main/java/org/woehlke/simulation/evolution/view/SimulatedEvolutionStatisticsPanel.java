@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
-import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -33,16 +32,13 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
     private JLabel oldCellsLabel;
     private JLabel populationLabel;
 
-  private final SimulatedEvolutionStatistics simulatedEvolutionWorldStatisticsContainer;
   private final SimulatedEvolutionContext ctx;
 
   @Autowired
   public SimulatedEvolutionStatisticsPanel(
-      SimulatedEvolutionStatistics simulatedEvolutionWorldStatisticsContainer,
       SimulatedEvolutionContext ctx
   ) {
-    this.simulatedEvolutionWorldStatisticsContainer = simulatedEvolutionWorldStatisticsContainer;
-    this.ctx = ctx;
+      this.ctx = ctx;
     setLabels();
     setTextFields();
     setColors();
@@ -64,6 +60,7 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
       subPanel.add(populationLabel);
       subPanel.add(populationStatistics);
       this.add(subPanel);
+      this.ctx.setPanelStatistics(this);
   }
 
 
@@ -89,7 +86,7 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
     private void setTextFields(){
         int cols = 3;
-        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = simulatedEvolutionWorldStatisticsContainer.getSimulatedEvolutionWorldStatistics();
+        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = ctx.getStatisticsContainer().getPopulationCensus();
         youngCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getDeadCells(),cols);
         youngAndFatCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getYoungAndFatCells(),cols);
         fullAgeCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getFullAgeCells(),cols);
@@ -99,7 +96,7 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
     }
 
     public void updateTextFields() {
-        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = simulatedEvolutionWorldStatisticsContainer.getSimulatedEvolutionWorldStatistics();
+        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = ctx.getStatisticsContainer().getPopulationCensus();
         youngCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getYoungCells());
         youngAndFatCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getYoungAndFatCells());
         fullAgeCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getFullAgeCells());

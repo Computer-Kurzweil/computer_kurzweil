@@ -42,6 +42,8 @@ public class SimulatedEvolutionPopulationCensus {
    */
   private int population;
 
+  private long worldIteration;
+
   /**
    * TODO write doc.
    */
@@ -125,7 +127,15 @@ public class SimulatedEvolutionPopulationCensus {
     this.population = population;
   }
 
-  @Override
+    public long getWorldIteration() {
+        return worldIteration;
+    }
+
+    public void setWorldIteration(long worldIteration) {
+        this.worldIteration = worldIteration;
+    }
+
+    @Override
   public String toString() {
     return "LifeCycleCount{" +
       "young=" + youngCells +

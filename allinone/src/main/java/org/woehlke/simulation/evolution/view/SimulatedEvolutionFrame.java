@@ -2,14 +2,13 @@ package org.woehlke.simulation.evolution.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.all.view.SimulatedEvolutionPanelCopyright;
-import org.woehlke.simulation.all.view.SimulatedEvolutionPanelSubtitle;
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.all.view.Bounds;
+import org.woehlke.simulation.all.view.PanelCopyright;
+import org.woehlke.simulation.all.view.PanelSubtitle;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JSeparator;
 import java.awt.Dimension;
 import java.awt.MenuContainer;
 import java.awt.Toolkit;
@@ -36,24 +35,25 @@ import java.awt.image.ImageObserver;
 public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, MenuContainer {
 
     private final SimulatedEvolutionContext ctx;
-  private final SimulatedEvolutionCanvas canvas;
+    private final SimulatedEvolutionCanvas canvas;
     private final SimulatedEvolutionStatisticsPanel panelStatistics;
     private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private final Bounds bounds;
 
   @Autowired
   public SimulatedEvolutionFrame(
       SimulatedEvolutionContext ctx,
       SimulatedEvolutionCanvas canvas,
       SimulatedEvolutionStatisticsPanel panelStatistics,
-      SimulatedEvolutionButtonRowPanel panelButtons,
-      SimulatedEvolutionPanelSubtitle panelSubtitle,
-      SimulatedEvolutionPanelCopyright panelCopyright
+      SimulatedEvolutionButtonRowPanel panelButtons
     ) {
     super(ctx.getProperties().getView().getTitle());
     this.ctx=ctx;
     this.canvas = canvas;
     this.panelStatistics =  panelStatistics;
     this.panelButtons = panelButtons;
+    PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
+    PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
     BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
     rootPane.setLayout(layout);
     rootPane.add(panelSubtitle);
@@ -61,7 +61,13 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, Me
     rootPane.add(panelCopyright);
     rootPane.add(panelStatistics);
     rootPane.add(panelButtons);
-    showMe();
+      pack();
+      double height = rootPane.getHeight();
+      double width = rootPane.getWidth();
+      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+      bounds= new Bounds(height,width,screenSize);
+      showMe();
+    this.ctx.setFrame(this);
   }
 
     /**
@@ -69,25 +75,21 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, Me
      */
     public void showMe() {
         pack();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double height = rootPane.getHeight();
-        double width = rootPane.getWidth();
-        double startX = (screenSize.getWidth() - width) / 2d;
-        double startY = (screenSize.getHeight() - height) / 2d;
-        int myheight = Double.valueOf(height).intValue();
-        int mywidth = Double.valueOf(width).intValue();
-        int mystartX = Double.valueOf(startX).intValue();
-        int mystartY = Double.valueOf(startY).intValue();
-        this.setBounds(mystartX, mystartY, mywidth, myheight);
+        this.setBounds(bounds.getMystartX(), bounds.getMystartY(), bounds.getMywidth(), bounds.getMyheight());
         rootPane.setVisible(true);
+        canvas.setVisible(true);
+        panelStatistics.setVisible(true);
+        panelButtons.setVisible(true);
         this.setVisible(true);
         toFront();
+        repaint();
     }
 
     public void repaint(){
-        //super.repaint();
-        panelStatistics.repaint();
+        rootPane.repaint();
         canvas.repaint();
+        panelStatistics.repaint();
         panelButtons.repaint();
+        super.repaint();
     }
 }

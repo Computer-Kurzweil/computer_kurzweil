@@ -26,7 +26,7 @@ public class SimulatedEvolutionWorldLattice {
   /**
    * Grid of World where every Place can have food.
    */
-  private int[][] worldMapFood;
+  private int[][] worldMapFoodLattice;
 
   private final SimulatedEvolutionContext ctx;
 
@@ -37,7 +37,8 @@ public class SimulatedEvolutionWorldLattice {
       this.ctx = ctx;
       int x = ctx.getWorldDimensions().getX();
       int y = ctx.getWorldDimensions().getY();
-      worldMapFood = new int[x][y];
+      worldMapFoodLattice = new int[x][y];
+      ctx.setLattice(this);
   }
 
     private void letFoodGrowGardenOfEden() {
@@ -52,7 +53,7 @@ public class SimulatedEvolutionWorldLattice {
                 int posY = ctx.getRandom().nextInt(startY);
                 posX *= Integer.signum(posX);
                 posY *= Integer.signum(posY);
-                worldMapFood[posX + startX][posY + startY]++;
+                worldMapFoodLattice[posX + startX][posY + startY]++;
             }
         }
     }
@@ -65,7 +66,7 @@ public class SimulatedEvolutionWorldLattice {
             int posY = ctx.getRandom().nextInt(ctx.getWorldDimensions().getY());
             posX *= Integer.signum(posX);
             posY *= Integer.signum(posY);
-            worldMapFood[posX][posY]++;
+            worldMapFoodLattice[posX][posY]++;
         }
     }
 
@@ -81,7 +82,7 @@ public class SimulatedEvolutionWorldLattice {
    * TODO write doc.
    */
   public boolean hasFood(int x, int y) {
-    return worldMapFood[x][y] > 0;
+    return worldMapFoodLattice[x][y] > 0;
   }
 
   /**
@@ -95,8 +96,8 @@ public class SimulatedEvolutionWorldLattice {
     LatticePoint[] neighbourhood = position.getNeighbourhood(ctx.getWorldDimensions());
     int food = 0;
     for (LatticePoint neighbourhoodPosition : neighbourhood) {
-      food += worldMapFood[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
-      worldMapFood[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()] = 0;
+      food += worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
+      worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()] = 0;
     }
     return food;
   }

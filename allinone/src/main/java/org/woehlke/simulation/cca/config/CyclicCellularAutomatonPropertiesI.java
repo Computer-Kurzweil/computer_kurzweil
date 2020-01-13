@@ -24,6 +24,9 @@ public interface CyclicCellularAutomatonPropertiesI {
     String KEY_BUTTON_MOORE = KEY + "buttonMoore";
     String KEY_BUTTON_WOEHLKE = KEY + "buttonWoehlke";
 
+    String KEY_COPYRIGHT= KEY + "copyright";
+    String COPYRIGHT="(c) 2019 Thomas Woehlke";
+
     String APP_PROPERTIES_FILENAME ="src" + separator
         +"main" + separator + "resources" + separator  + "application.properties";
 }

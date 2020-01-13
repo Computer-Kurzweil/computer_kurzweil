@@ -1,6 +1,6 @@
 package org.woehlke.simulation.cca.control;
 
-import org.woehlke.simulation.cca.config.CyclicCellularAutomatonContext;
+import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import java.io.Serializable;
 

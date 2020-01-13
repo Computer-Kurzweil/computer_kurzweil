@@ -30,11 +30,6 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
 
     private final SimulatedEvolutionContext ctx;
 
-    private SimulatedEvolutionWorld world;
-    private SimulatedEvolutionFrame frame;
-    private SimulatedEvolutionStatisticsPanel panelStatistics;
-    private SimulatedEvolutionButtonRowPanel panelButtons;
-
   private Boolean mySemaphore;
 
   public SimulatedEvolutionControllerThread(
@@ -42,20 +37,21 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
   ) {
       this.ctx = ctx;
       this.mySemaphore = Boolean.TRUE;
+      this.ctx.setControllerThread(this);
   }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==  panelButtons.getButtonFoodPerDayIncrease()) {
+        if (ae.getSource() ==  ctx.getPanelButtons().getButtonFoodPerDayIncrease()) {
             ctx.increaseFoodPerDay();
-            panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
-        } else if (ae.getSource() == panelButtons.getButtonFoodPerDayDecrease()) {
+            ctx.getPanelButtons().setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
+        } else if (ae.getSource() ==  ctx.getPanelButtons().getButtonFoodPerDayDecrease()) {
             ctx.decreaseFoodPerDay();
-            panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
-        } else if (ae.getSource() == this.panelButtons.getButtonToggleGardenOfEden()) {
+            ctx.getPanelButtons().setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
+        } else if (ae.getSource() == this. ctx.getPanelButtons().getButtonToggleGardenOfEden()) {
             this.toggleGardenOfEden();
             boolean selected = ctx.isGardenOfEdenEnabled();
-            panelButtons.setGardenOfEdenEnabled(selected);
+            ctx.getPanelButtons().setGardenOfEdenEnabled(selected);
         }
     }
 
@@ -66,8 +62,8 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();
       }
-      world.letLivePopulation();
-      frame.repaint();
+      ctx.getWorld().letLivePopulation();
+      ctx.getFrame().repaint();
       try {
         sleep(ctx.getProperties().getControl().getTime2wait());
       } catch (InterruptedException e) {
@@ -78,7 +74,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
   }
 
   protected void show() {
-      frame.showMe();
+      this.ctx.getFrame().showMe();
   }
 
   public void windowOpened(WindowEvent e) {
@@ -119,7 +115,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
 
   @Override
   public void windowStateChanged(WindowEvent e) {
-    if (e.getSource() == frame) {
+    if (e.getSource() ==  this.ctx.getFrame()) {
       switch (e.getNewState()) {
         case Frame.MAXIMIZED_BOTH:
         case Frame.MAXIMIZED_HORIZ:
@@ -131,11 +127,11 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
           break;
       }
     }
-    panelStatistics.updateTextFields();
+    ctx.getPanelStatistics().updateTextFields();
   }
 
   public void updateLifeCycleCount() {
-      panelStatistics.updateTextFields();
+      ctx.getPanelStatistics().updateTextFields();
   }
 
   public void exit() {
@@ -146,24 +142,24 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
   }
 
   public void toggleGardenOfEden() {
-    world.toggleGardenOfEden();
+      ctx.getWorld().toggleGardenOfEden();
   }
 
     public void setWorld(SimulatedEvolutionWorld world) {
-        this.world = world;
+        this.ctx.setWorld(world);
     }
 
     public void setPanelStatistics(SimulatedEvolutionStatisticsPanel panelStatistics) {
-        this.panelStatistics = panelStatistics;
+        this.ctx.setPanelStatistics(panelStatistics);
     }
 
     public void setFrame(SimulatedEvolutionFrame frame) {
-        this.frame = frame;
+        this.ctx.setFrame(frame);
     }
 
     public void setPanelButtons(SimulatedEvolutionButtonRowPanel panelButtons) {
-        this.panelButtons = panelButtons;
-        this.panelButtons.registerController(this);
+        panelButtons.registerController(this);
+        this.ctx.setPanelButtons(panelButtons);
     }
 
 }

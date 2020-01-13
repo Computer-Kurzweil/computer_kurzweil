@@ -1,6 +1,7 @@
 package org.woehlke.simulation.evolution.model.world;
 
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
@@ -38,6 +39,7 @@ public class SimulatedEvolutionWorld {
    */
   private List<Cell> cells;
 
+    @Getter
     private final SimulatedEvolutionContext ctx;
     private final SimulatedEvolutionWorldLattice worldLattice;
     private final SimulatedEvolutionStatistics statisticsContainer;
@@ -54,24 +56,21 @@ public class SimulatedEvolutionWorld {
       this.ctx = ctx;
       this.worldLattice = simulatedEvolutionWorldMapFood;
       this.statisticsContainer = simulatedEvolutionWorldStatisticsContainer;
+      /**
+       * Create the initial Population of Bacteria Cells and give them their position in the World.
+       */
       cells = new ArrayList<>();
-      createPopulation();
-  }
-
-  /**
-   * Create the initial Population of Bacteria Cells and give them their position in the World.
-   */
-  private void createPopulation() {
-    for (int i = 0; i < ctx.getProperties().getCellPopulation().getInitialPopulation(); i++) {
-      Cell cell = new Cell(ctx);
-      cells.add(cell);
-    }
-    SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = new SimulatedEvolutionPopulationCensus();
-    for (Cell cell : cells) {
-      simulatedEvolutionWorldStatistics.countStatusOfOneCell(cell.getLifeCycleStatus());
-    }
-    log.info(simulatedEvolutionWorldStatistics.toString());
-    statisticsContainer.add(simulatedEvolutionWorldStatistics);
+      for (int i = 0; i < ctx.getProperties().getCellPopulation().getInitialPopulation(); i++) {
+          Cell cell = new Cell(ctx);
+          cells.add(cell);
+      }
+      SimulatedEvolutionPopulationCensus populationCensus = new SimulatedEvolutionPopulationCensus();
+      for (Cell cell : cells) {
+          populationCensus.countStatusOfOneCell(cell.getLifeCycleStatus());
+      }
+      log.info(populationCensus.toString());
+      statisticsContainer.add(populationCensus);
+      this.ctx.setWorld(this);
   }
 
   /**

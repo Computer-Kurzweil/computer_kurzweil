@@ -16,6 +16,7 @@ public class CyclicCellularAutomatonProperties implements CyclicCellularAutomato
     private String buttonVonNeumann;
     private String buttonMoore;
     private String buttonWoehlke;
+    private String copyright;
 
     private static final int TITLE_HEIGHT = 30;
 
@@ -38,6 +39,7 @@ public class CyclicCellularAutomatonProperties implements CyclicCellularAutomato
             buttonVonNeumann=prop.getProperty(KEY_BUTTON_VON_NEUMANN,BUTTON_VON_NEUMANN);
             buttonMoore=prop.getProperty(KEY_BUTTON_MOORE,BUTTON_MOORE);
             buttonWoehlke=prop.getProperty(KEY_BUTTON_WOEHLKE,BUTTON_WOEHLKE);
+            copyright=prop.getProperty(KEY_COPYRIGHT,COPYRIGHT);
         } catch (IOException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
@@ -95,4 +97,7 @@ public class CyclicCellularAutomatonProperties implements CyclicCellularAutomato
     }
 
 
+    public String getCopyright() {
+        return copyright;
+    }
 }
