@@ -24,10 +24,10 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Getter @Setter
+    @Getter
     private final SimulatedEvolutionFrame simulatedEvolutionFrame;
 
-    @Getter @Setter
+    @Getter
     private final MandelbrotFrame mandelbrotFrame;
 
     @Autowired
