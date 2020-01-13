@@ -30,9 +30,9 @@ import java.awt.event.MouseListener;
 public class MandelbrotContext implements MouseListener, ActionListener {
 
     @Getter @Setter private MandelbrotFrame frame;
+    @Getter @Setter private MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotProperties properties;
     @Getter private final MandelbrotCanvas canvas;
-    @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final PanelSubtitle panelSubtitle;
     @Getter private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     @Getter private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
@@ -45,11 +45,9 @@ public class MandelbrotContext implements MouseListener, ActionListener {
 
     @Autowired
     public MandelbrotContext(
-        MandelbrotProperties properties,
-        MandelbrotPanelButtons panelButtons
+        MandelbrotProperties properties
     ) {
         this.properties = properties;
-        this.panelButtons = panelButtons;
         this.canvas = new MandelbrotCanvas(this);
         this.panelSubtitle = new PanelSubtitle(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this);

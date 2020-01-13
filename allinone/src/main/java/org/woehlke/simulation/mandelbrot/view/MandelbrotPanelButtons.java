@@ -41,6 +41,7 @@ public class MandelbrotPanelButtons extends JPanel {
     @Autowired
     public MandelbrotPanelButtons(MandelbrotContext ctx) {
         this.ctx = ctx;
+        this.ctx.setPanelButtons(this);
         FlowLayout layout = new FlowLayout();
         this.radioButtonsSwitch = new JRadioButton(ctx.getProperties().getButtonsSwitch());
         this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
