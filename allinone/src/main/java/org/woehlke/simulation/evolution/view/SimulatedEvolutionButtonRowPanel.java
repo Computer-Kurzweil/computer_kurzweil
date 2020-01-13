@@ -39,10 +39,22 @@ public class SimulatedEvolutionButtonRowPanel extends JPanel  {
         this.buttonFoodPerDayIncrease = new JButton(this.ctx.getProperties().getFood().getButtonFoodPerDayIncrease());
         this.buttonFoodPerDayDecrease = new JButton(this.ctx.getProperties().getFood().getButtonFoodPerDayDecrease());
         this.buttonToggleGardenOfEden = new JButton(this.ctx.getProperties().getGardenOfEden().getGardenOfEdenEnabledToggleButton());
+      FlowLayout flowLayout2 = new FlowLayout();
+      JPanel foodPanel = new JPanel(flowLayout2);
+      foodPanel.setBorder(getBorder(  this.ctx.getProperties().getFood().getPanelFood()));
+      foodPanel.add(this.foodPerDayLabel);
+      foodPanel.add(this.foodPerDayField);
+      foodPanel.add(this.buttonFoodPerDayIncrease);
+      foodPanel.add(this.buttonFoodPerDayDecrease);
+      FlowLayout flowLayout3 = new FlowLayout();
+      JPanel gardenOfEdenPanel = new JPanel(flowLayout3);
+      gardenOfEdenPanel.setBorder(getBorder(this.ctx.getProperties().getGardenOfEden().getPanelGardenOfEden()));
+      gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
+      gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
         FlowLayout flowLayout1 = new FlowLayout();
         this.setLayout(flowLayout1);
-        this.add(getFoodPanel());
-        this.add(getGardenOfEdenPanel());
+        this.add(foodPanel);
+        this.add(gardenOfEdenPanel);
   }
 
   public void registerController(SimulatedEvolutionControllerThread controller){
@@ -51,24 +63,8 @@ public class SimulatedEvolutionButtonRowPanel extends JPanel  {
       this.buttonToggleGardenOfEden.addActionListener(controller);
   }
 
-  private JPanel getFoodPanel(){
-      FlowLayout flowLayout2 = new FlowLayout();
-      JPanel foodPanel = new JPanel(flowLayout2);
-      foodPanel.setBorder(getBorder(  this.ctx.getProperties().getFood().getPanelFood()));
-      foodPanel.add(this.foodPerDayLabel);
-      foodPanel.add(this.foodPerDayField);
-      foodPanel.add(this.buttonFoodPerDayIncrease);
-      foodPanel.add(this.buttonFoodPerDayDecrease);
-      return foodPanel;
-  }
-    private JPanel getGardenOfEdenPanel(){
-        FlowLayout flowLayout3 = new FlowLayout();
-        JPanel gardenOfEdenPanel = new JPanel(flowLayout3);
-        gardenOfEdenPanel.setBorder(getBorder(this.ctx.getProperties().getGardenOfEden().getPanelGardenOfEden()));
-        gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
-        gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
-        return gardenOfEdenPanel;
-    }
+
+
 
     private CompoundBorder getBorder(String label){
         int top = this.ctx.getProperties().getView().getBorderPadding();

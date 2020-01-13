@@ -1,7 +1,6 @@
 package org.woehlke.simulation.evolution.control;
 
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.view.*;
@@ -29,36 +28,33 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     WindowStateListener,
     ActionListener {
 
-    private final SimulatedEvolutionContext context;
+    private final SimulatedEvolutionContext ctx;
 
     private SimulatedEvolutionWorld world;
     private SimulatedEvolutionFrame frame;
     private SimulatedEvolutionStatisticsPanel panelStatistics;
     private SimulatedEvolutionButtonRowPanel panelButtons;
 
-
-  protected final int TIME_TO_WAIT = 100;
-
   private Boolean mySemaphore;
 
   public SimulatedEvolutionControllerThread(
-      SimulatedEvolutionContext context
+      SimulatedEvolutionContext ctx
   ) {
-      this.context = context;
+      this.ctx = ctx;
       this.mySemaphore = Boolean.TRUE;
   }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() ==  panelButtons.getButtonFoodPerDayIncrease()) {
-            context.increaseFoodPerDay();
-            panelButtons.setFoodPerDayFieldText(context.getFoodPerDay()+"");
+            ctx.increaseFoodPerDay();
+            panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
         } else if (ae.getSource() == panelButtons.getButtonFoodPerDayDecrease()) {
-            context.decreaseFoodPerDay();
-            panelButtons.setFoodPerDayFieldText(context.getFoodPerDay()+"");
+            ctx.decreaseFoodPerDay();
+            panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
         } else if (ae.getSource() == this.panelButtons.getButtonToggleGardenOfEden()) {
             this.toggleGardenOfEden();
-            boolean selected = context.isGardenOfEdenEnabled();
+            boolean selected = ctx.isGardenOfEdenEnabled();
             panelButtons.setGardenOfEdenEnabled(selected);
         }
     }
@@ -73,7 +69,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       world.letLivePopulation();
       frame.repaint();
       try {
-        sleep(context.getProperties().getControl().getTime2wait());
+        sleep(ctx.getProperties().getControl().getTime2wait());
       } catch (InterruptedException e) {
         System.out.println(e.getLocalizedMessage());
       }
@@ -146,7 +142,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     synchronized (mySemaphore) {
       mySemaphore = Boolean.FALSE;
     }
-    System.exit(context.getProperties().getControl().getExitStatus());
+    System.exit(ctx.getProperties().getControl().getExitStatus());
   }
 
   public void toggleGardenOfEden() {
@@ -167,6 +163,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
 
     public void setPanelButtons(SimulatedEvolutionButtonRowPanel panelButtons) {
         this.panelButtons = panelButtons;
+        this.panelButtons.registerController(this);
     }
 
 }

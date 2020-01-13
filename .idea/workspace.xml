@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
+    <list default="true" id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/model/LatticePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all/model/LatticePoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/impl/MandelbrotApplicationContextImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/impl/MandelbrotApplicationContextImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBaseJulia.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBaseJulia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneMandelbrot.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneMandelbrot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/common/GaussianNumberPlaneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/common/GaussianNumberPlaneBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/impl/GaussianNumberPlaneBaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/impl/GaussianNumberPlaneBaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/impl/GaussianNumberPlaneBaseJuliaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/impl/GaussianNumberPlaneBaseJuliaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/impl/GaussianNumberPlaneMandelbrotImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/impl/GaussianNumberPlaneMandelbrotImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComputingPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComputingPlan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPositionsStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPositionsStateMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/impl/TuringPositionsStateMachineImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/impl/TuringPositionsStateMachineImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionButtonRowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionButtonRowPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +26,6 @@
           <activation />
         </task>
         <task path="$PROJECT_DIR$/allinone">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/mandelbrot">
           <activation />
         </task>
         <projects_view>
@@ -84,7 +72,6 @@
     </option>
   </component>
   <component name="ProjectId" id="1Vcgt8ORWJumiVf8RsBIaXLB9oK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -127,7 +114,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean compileJava compileTestJava]">
+  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean bootRun]">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -293,7 +280,17 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -311,7 +308,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="switch from one app to allinone app" />
+      <changelist id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="" />
       <created>1577558008127</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -322,8 +319,8 @@
       <workItem from="1578844010343" duration="112000" />
       <workItem from="1578844150348" duration="13496000" />
       <workItem from="1578858204031" duration="15324000" />
-      <workItem from="1578876164052" duration="189000" />
-      <workItem from="1578888458031" duration="3104000" />
+      <workItem from="1578876164052" duration="503000" />
+      <workItem from="1578889285962" duration="2814000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -389,13 +386,34 @@
       <updated>1578873584606</updated>
     </task>
     <task id="LOCAL-00010" summary="switch from one app to allinone app">
-      <created>1578892877499</created>
+      <created>1578876410983</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1578892877499</updated>
+      <updated>1578876410984</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="switch from one app to allinone app">
+      <created>1578876513926</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1578876513926</updated>
+    </task>
+    <task id="LOCAL-00012" summary="switch from one app to allinone app">
+      <created>1578876575153</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1578876575153</updated>
+    </task>
+    <task id="LOCAL-00013" summary="switch from one app to allinone app">
+      <created>1578890577237</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1578890577237</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,11 +436,10 @@
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577558595678" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser" timestamp="1578891634365">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1578896293507">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser/0.0.1280.760@0.0.1280.760" timestamp="1578891634365" />
-    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578861456195" />
+    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578896293507" />
     <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1578525204381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -443,11 +460,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1578867157699" />
-    <state x="97" y="0" key="CommitChangelistDialog2" timestamp="1578892872997">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578896430100">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="97" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1578892872997" />
-    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
+    <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
+    <state x="540" y="115" key="CommitChangelistDialog2" timestamp="1578890573511">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578890573511" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -457,30 +477,26 @@
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1237" height="499" key="GridCell.Tab.0.bottom" timestamp="1578893142169">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1877" height="604" key="GridCell.Tab.0.bottom" timestamp="1578895677668">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1237" height="499" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1578893142169" />
-    <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
-    <state width="1237" height="499" key="GridCell.Tab.0.center" timestamp="1578893142169">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578895677668" />
+    <state width="1877" height="604" key="GridCell.Tab.0.center" timestamp="1578895677668">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1237" height="499" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1578893142169" />
-    <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="499" key="GridCell.Tab.0.left" timestamp="1578893142169">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578895677668" />
+    <state width="1877" height="604" key="GridCell.Tab.0.left" timestamp="1578895677668">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1237" height="499" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1578893142169" />
-    <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="499" key="GridCell.Tab.0.right" timestamp="1578893142169">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578895677668" />
+    <state width="1877" height="604" key="GridCell.Tab.0.right" timestamp="1578895677668">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1237" height="499" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1578893142169" />
-    <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state x="352" y="96" key="MultipleFileMergeDialog" timestamp="1578890650418">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578895677668" />
+    <state x="672" y="236" key="MultipleFileMergeDialog" timestamp="1578895605710">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="352" y="96" key="MultipleFileMergeDialog/0.0.1280.760@0.0.1280.760" timestamp="1578890650418" />
+    <state x="672" y="236" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578895605710" />
     <state x="410" y="231" key="RollbackChangesDialog" timestamp="1578845281025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -490,32 +506,26 @@
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577558215454" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578876516148">
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578890590866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876516148" />
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578890590866" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844172030" />
-    <state x="165" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1578890611592">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="248" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1578889285949">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="165" y="251" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1578890611592" />
-    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876282357" />
+    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578889285949" />
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578866183417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1578866183417" />
-    <state x="341" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578890616921">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578895580906">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="341" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.760@0.0.1280.760" timestamp="1578890616921" />
-    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578845290001" />
-    <state x="336" y="112" width="737" height="606" key="find.popup" timestamp="1578892990628">
-      <screen x="0" y="0" width="1280" height="760" />
-    </state>
-    <state x="336" y="112" width="737" height="606" key="find.popup/0.0.1280.760@0.0.1280.760" timestamp="1578892990628" />
+    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578895580906" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1578868553727">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
