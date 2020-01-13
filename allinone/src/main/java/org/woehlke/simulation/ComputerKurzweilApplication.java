@@ -7,14 +7,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.woehlke.simulation.all.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.all.view.ComputerKurzweilApplicationFrame;
+import org.woehlke.simulation.allinone.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
-import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionButtonRowPanel;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionStatisticsPanel;
 
 import java.awt.*;
 import java.util.logging.Logger;

@@ -1,7 +1,7 @@
 package org.woehlke.simulation.dla.view;
 
-import org.woehlke.simulation.all.model.LatticePoint;
-import org.woehlke.simulation.all.view.PanelSubtitle;
+import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.dla.control.DiffusionLimitedAggregationControllerThread;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 

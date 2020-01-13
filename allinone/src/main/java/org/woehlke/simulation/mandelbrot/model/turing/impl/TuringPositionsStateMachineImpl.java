@@ -3,7 +3,7 @@ package org.woehlke.simulation.mandelbrot.model.turing.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.state.TuringDirection;
 

@@ -2,7 +2,7 @@ package org.woehlke.simulation.cca.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.woehlke.simulation.all.view.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.cca.config.CyclicCellularAutomatonColorScheme;
 import org.woehlke.simulation.cca.config.CyclicCellularAutomatonProperties;
 import org.woehlke.simulation.cca.control.CyclicCellularAutomatonController;

@@ -3,8 +3,8 @@ package org.woehlke.simulation.evolution.view;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.all.view.PanelCopyright;
-import org.woehlke.simulation.all.view.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.PanelCopyright;
+import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import javax.swing.*;

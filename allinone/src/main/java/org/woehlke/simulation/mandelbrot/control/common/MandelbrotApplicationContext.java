@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.control.common;
 
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotTuringMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;

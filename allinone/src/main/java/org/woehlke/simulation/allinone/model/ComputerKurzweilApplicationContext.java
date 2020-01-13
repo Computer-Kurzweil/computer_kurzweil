@@ -1,8 +1,8 @@
-package org.woehlke.simulation.all.model;
+package org.woehlke.simulation.allinone.model;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.all.config.ComputerKurzweilProperties;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
 
 @Component
 public class ComputerKurzweilApplicationContext {

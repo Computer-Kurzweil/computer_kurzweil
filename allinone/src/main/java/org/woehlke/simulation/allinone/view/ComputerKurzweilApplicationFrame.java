@@ -1,8 +1,8 @@
-package org.woehlke.simulation.all.view;
+package org.woehlke.simulation.allinone.view;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.all.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 

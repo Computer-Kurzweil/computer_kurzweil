@@ -1,6 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 
 public interface TuringPositionsStateMachine {
 

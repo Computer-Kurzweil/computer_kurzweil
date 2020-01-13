@@ -1,6 +1,6 @@
 package org.woehlke.simulation.evolution.model.cell;
 
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.io.Serializable;

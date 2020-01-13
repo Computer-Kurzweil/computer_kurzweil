@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.fractal.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.control.common.MandelbrotApplicationContext;
 import org.woehlke.simulation.mandelbrot.control.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;

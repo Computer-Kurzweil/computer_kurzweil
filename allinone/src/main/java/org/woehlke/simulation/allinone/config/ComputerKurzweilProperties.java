@@ -1,4 +1,4 @@
-package org.woehlke.simulation.all.config;
+package org.woehlke.simulation.allinone.config;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 @SpringBootConfiguration
 @Configuration
-@ConfigurationProperties("org.woehlke.simulation.all.config")
+@ConfigurationProperties("org.woehlke.simulation.allinone.config")
 @Valid
 @Validated
 @NoArgsConstructor

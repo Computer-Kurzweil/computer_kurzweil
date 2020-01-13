@@ -1,4 +1,4 @@
-package org.woehlke.simulation.all.model;
+package org.woehlke.simulation.allinone.model;
 
 public enum LatticeNeighbourhoodType {
 

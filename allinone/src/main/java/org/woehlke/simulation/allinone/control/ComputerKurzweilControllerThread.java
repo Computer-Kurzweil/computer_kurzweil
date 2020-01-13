@@ -1,9 +1,9 @@
-package org.woehlke.simulation.all.control;
+package org.woehlke.simulation.allinone.control;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.all.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.all.view.ComputerKurzweilApplicationFrame;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.simulation.mandelbrot.control.common.EventDispatcher;
 
 import java.awt.event.*;

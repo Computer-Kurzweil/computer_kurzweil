@@ -1,4 +1,4 @@
-package org.woehlke.simulation.all.view;
+package org.woehlke.simulation.allinone.view;
 
 import lombok.Getter;
 

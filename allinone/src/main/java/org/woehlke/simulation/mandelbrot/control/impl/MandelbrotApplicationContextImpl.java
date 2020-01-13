@@ -12,7 +12,7 @@ import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandel
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneBaseJuliaImpl;
 import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneMandelbrotImpl;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachineImpl;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
@@ -22,7 +22,6 @@ import org.woehlke.simulation.mandelbrot.view.MandelbrotPanelSubtitle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowEvent;
 
 @Component
 public class MandelbrotApplicationContextImpl implements MandelbrotApplicationContext {

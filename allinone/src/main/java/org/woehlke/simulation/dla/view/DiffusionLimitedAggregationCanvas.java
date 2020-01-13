@@ -1,6 +1,6 @@
 package org.woehlke.simulation.dla.view;
 
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 
 import javax.swing.*;

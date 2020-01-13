@@ -1,7 +1,7 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
 import org.woehlke.simulation.mandelbrot.model.fractal.common.GaussianNumberPlaneBase;
-import org.woehlke.simulation.all.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 
 public interface GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
 

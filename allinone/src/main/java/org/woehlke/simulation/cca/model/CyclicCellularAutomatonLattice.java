@@ -1,13 +1,13 @@
 package org.woehlke.simulation.cca.model;
 
-import org.woehlke.simulation.all.model.LatticeNeighbourhoodType;
+import org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType;
 
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import static org.woehlke.simulation.all.model.LatticeNeighbourhoodType.*;
+import static org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType.*;
 
 /**
  * Cyclic Cellular Automaton.
