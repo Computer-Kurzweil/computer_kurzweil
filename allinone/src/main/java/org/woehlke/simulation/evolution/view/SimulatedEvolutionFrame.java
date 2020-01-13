@@ -6,10 +6,11 @@ import org.springframework.stereotype.Component;
 import org.woehlke.simulation.all.view.PanelCopyright;
 import org.woehlke.simulation.all.view.PanelSubtitle;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
+import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
 
 import javax.swing.*;
 import java.awt.image.ImageObserver;
+import java.util.logging.Logger;
 
 /**
  * This Frame wraps the SimulatedEvolutionApplet which is the Container for this Simulation.
@@ -37,29 +38,28 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     @Getter
     private final SimulatedEvolutionCanvas canvas;
 
-    @Getter
-    private final SimulatedEvolutionWorld world;
-
   @Autowired
   public SimulatedEvolutionFrame(
       SimulatedEvolutionContext ctx,
-      SimulatedEvolutionCanvas canvas,
-      SimulatedEvolutionWorld world
+      SimulatedEvolutionCanvas canvas
   ) {
       this.ctx = ctx;
       this.canvas = canvas;
-      this.world = world;
-      PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
-      PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
-      BoxLayout layout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
-      this.setLayout(layout);
-      this.add(panelSubtitle);
-      this.add(this.canvas);
-      this.add(panelCopyright);
-      this.add(this.ctx.getPanelStatistics());
-      this.add(this.ctx.getPanelButtons());
-      showMe();
-      this.ctx.setFrame(this);
+      if(this.ctx == null){
+          log.warning("ctx==null but should not");
+      } else {
+          PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
+          PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
+          BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
+          this.setLayout(layout);
+          this.add(panelSubtitle);
+          this.add(this.canvas);
+          this.add(panelCopyright);
+          this.add(this.ctx.getPanelStatistics());
+          this.add(this.ctx.getPanelButtons());
+          showMe();
+          this.ctx.setFrame(this);
+      }
   }
 
     /**
@@ -75,9 +75,17 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     }
 
     public void repaint(){
-        this.canvas.repaint();
-        ctx.getPanelStatistics().repaint();
-        ctx.getPanelButtons().repaint();
+        if(ctx !=null) {
+            if (ctx.getCanvas() != null) {
+                ctx.getCanvas().repaint();
+            }
+            if (ctx.getPanelStatistics() != null) {
+                ctx.getPanelStatistics().repaint();
+            }
+            if (ctx.getPanelButtons() != null) {
+                ctx.getPanelButtons().repaint();
+            }
+        }
         super.repaint();
     }
 
@@ -85,4 +93,5 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
         ctx.getControllerThread().start();
     }
 
+    private static Logger log = Logger.getLogger(SimulatedEvolutionFrame.class.getName());
 }
