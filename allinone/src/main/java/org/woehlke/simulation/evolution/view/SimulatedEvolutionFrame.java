@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import org.woehlke.simulation.all.view.PanelCopyright;
 import org.woehlke.simulation.all.view.PanelSubtitle;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
 
 import javax.swing.*;
 import java.awt.image.ImageObserver;
