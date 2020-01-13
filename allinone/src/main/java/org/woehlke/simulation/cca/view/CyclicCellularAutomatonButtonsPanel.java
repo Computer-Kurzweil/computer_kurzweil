@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
  */
 @Log
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @Component
 public class CyclicCellularAutomatonButtonsPanel extends JPanel implements ActionListener {
 

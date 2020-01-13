@@ -35,8 +35,11 @@ public class DiffusionLimitedAggregationWorld {
 
     private DiffusionLimitedAggregationWorldLattice dendrite;
 
+    private final CyclicCellularAutomatonContext ctx;
+
     @Autowired
-    public DiffusionLimitedAggregationWorld(/*LatticePoint worldDimensions*/CyclicCellularAutomatonContext ctx) {
+    public DiffusionLimitedAggregationWorld(CyclicCellularAutomatonContext ctx) {
+        this.ctx=ctx;
         this.worldDimensions=ctx.getWorldDimensions();
         random = new Random(new Date().getTime());
         for(int i=0; i<NUMBER_OF_PARTICLES;i++){

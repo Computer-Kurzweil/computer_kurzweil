@@ -23,7 +23,7 @@ import java.io.Serializable;
  */
 @Log
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @Component
 public class CyclicCellularAutomatonCanvas extends JComponent implements Serializable {
 

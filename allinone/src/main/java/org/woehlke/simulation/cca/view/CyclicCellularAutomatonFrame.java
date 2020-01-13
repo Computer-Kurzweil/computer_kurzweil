@@ -26,7 +26,7 @@ import java.io.Serializable;
  */
 @Log
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @Component
 public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserver,
         MenuContainer,

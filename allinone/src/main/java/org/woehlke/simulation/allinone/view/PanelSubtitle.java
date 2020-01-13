@@ -15,7 +15,7 @@ import java.awt.*;
  */
 @Log
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 public class PanelSubtitle extends JPanel {
 
     @Getter

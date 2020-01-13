@@ -13,7 +13,7 @@ import java.awt.*;
 
 @Log
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 public class PanelCopyright extends JPanel {
 
     @Getter
