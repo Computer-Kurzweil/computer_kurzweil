@@ -4,7 +4,7 @@ package org.woehlke.simulation.evolution.model.world;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.simulation.evolution.model.cell.Cell;
@@ -80,7 +80,7 @@ public class SimulatedEvolutionWorld {
    */
   public void letLivePopulation() {
     worldLattice.letFoodGrow();
-    LatticePointSimulatedEvolution pos;
+    LatticePoint pos;
     List<Cell> children = new ArrayList<>();
     List<Cell> died = new ArrayList<>();
     for (Cell cell : cells) {

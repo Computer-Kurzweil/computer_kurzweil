@@ -1,6 +1,6 @@
 package org.woehlke.simulation.evolution.model.cell;
 
-import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.io.Serializable;
@@ -35,7 +35,7 @@ public class Cell implements Serializable {
   /**
    * The Cell's state is position, orientation and LifeCycle.
    */
-  private LatticePointSimulatedEvolution position;
+  private LatticePoint position;
 
   /**
    * The Cell's state is position, orientation and LifeCycle.
@@ -53,7 +53,7 @@ public class Cell implements Serializable {
       SimulatedEvolutionContext ctx
   ) {
     this.ctx = ctx;
-    this.position = new LatticePointSimulatedEvolution(ctx);
+    this.position = new LatticePoint(ctx);
     this.lifeCycle = new CellLifeCycle(ctx);
     this.cellCore = new CellCore(ctx);
     this.orientation = getRandomOrientation();
@@ -107,7 +107,7 @@ public class Cell implements Serializable {
   /**
    * @return The new Position after the last move.
    */
-  public LatticePointSimulatedEvolution getPosition() {
+  public LatticePoint getPosition() {
     return position;
   }
 

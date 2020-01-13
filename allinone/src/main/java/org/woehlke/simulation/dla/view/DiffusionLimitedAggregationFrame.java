@@ -1,8 +1,8 @@
 package org.woehlke.simulation.dla.view;
 
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.all.view.PanelSubtitle;
 import org.woehlke.simulation.dla.control.DiffusionLimitedAggregationControllerThread;
-import org.woehlke.simulation.all.model.LatticePointDla;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 
 import javax.accessibility.Accessible;
@@ -53,7 +53,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         int height = 234 * scale;
         this.setLayout(new BorderLayout());
         this.add(subtitle, BorderLayout.NORTH);
-        LatticePointDla worldDimensions = new LatticePointDla(width,height);
+        LatticePoint worldDimensions = new LatticePoint(width,height);
         particles = new DiffusionLimitedAggregationWorld(worldDimensions);
         canvas = new DiffusionLimitedAggregationCanvas(worldDimensions,particles);
         this.add(canvas, BorderLayout.CENTER);
@@ -92,7 +92,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     public void windowDeactivated(WindowEvent e) {
     }
 
-    public LatticePointDla getCanvasDimensions() {
+    public LatticePoint getCanvasDimensions() {
         return canvas.getWorldDimensions();
     }
 }

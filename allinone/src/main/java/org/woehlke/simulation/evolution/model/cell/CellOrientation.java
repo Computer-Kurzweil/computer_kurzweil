@@ -1,6 +1,6 @@
 package org.woehlke.simulation.evolution.model.cell;
 
-import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
+import org.woehlke.simulation.all.model.LatticePoint;
 
 /**
  * Orientation defines the new position after next move.
@@ -24,14 +24,14 @@ public enum CellOrientation {
   SOFT_LEFT(-2, -1),
   HARD_LEFT(-2, 1);
 
-  private LatticePointSimulatedEvolution move;
+  private LatticePoint move;
 
-  public LatticePointSimulatedEvolution getMove() {
+  public LatticePoint getMove() {
     return move;
   }
 
   CellOrientation(int x, int y) {
-    move = new LatticePointSimulatedEvolution(x, y);
+    move = new LatticePoint(x, y);
   }
 
 }

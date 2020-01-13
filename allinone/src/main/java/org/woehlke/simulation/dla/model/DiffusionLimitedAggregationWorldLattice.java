@@ -1,6 +1,6 @@
 package org.woehlke.simulation.dla.model;
 
-import org.woehlke.simulation.all.model.LatticePointDla;
+import org.woehlke.simulation.all.model.LatticePoint;
 
 /**
  * Diffusion Limited Aggregation.
@@ -15,10 +15,10 @@ import org.woehlke.simulation.all.model.LatticePointDla;
 public class DiffusionLimitedAggregationWorldLattice {
 
     private int worldMap[][];
-    private LatticePointDla dimensions;
+    private LatticePoint dimensions;
     private int age=1;
 
-    public DiffusionLimitedAggregationWorldLattice(LatticePointDla dimensions) {
+    public DiffusionLimitedAggregationWorldLattice(LatticePoint dimensions) {
         this.dimensions = dimensions;
         worldMap = new int[dimensions.getX()][dimensions.getY()];
         int x = dimensions.getX() / 2;
@@ -27,10 +27,10 @@ public class DiffusionLimitedAggregationWorldLattice {
         age++;
     }
 
-    public boolean hasDendriteNeighbour(LatticePointDla pixel){
+    public boolean hasDendriteNeighbour(LatticePoint pixel){
         if(worldMap[pixel.getX()][pixel.getY()]==0){
-            LatticePointDla[] neighbours=pixel.getNeighbourhood(dimensions);
-            for(LatticePointDla neighbour:neighbours){
+            LatticePoint[] neighbours=pixel.getNeighbourhood(dimensions);
+            for(LatticePoint neighbour:neighbours){
                if(worldMap[neighbour.getX()][neighbour.getY()]>0){
                    worldMap[pixel.getX()][pixel.getY()]=age;
                    age++;

@@ -3,7 +3,7 @@ package org.woehlke.simulation.evolution.view;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.cell.Cell;
-import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 
 import javax.swing.JComponent;
@@ -69,9 +69,9 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
     private void paintPopulation(Graphics graphics){
         List<Cell> population = world.getAllCells();
         for (Cell cell : population) {
-            LatticePointSimulatedEvolution[] square = cell.getPosition().getNeighbourhood(this.ctx.getWorldDimensions());
+            LatticePoint[] square = cell.getPosition().getNeighbourhood(this.ctx.getWorldDimensions());
             graphics.setColor(cell.getLifeCycleStatus().getColor());
-            for (LatticePointSimulatedEvolution pixel : square) {
+            for (LatticePoint pixel : square) {
                 graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
             }
         }

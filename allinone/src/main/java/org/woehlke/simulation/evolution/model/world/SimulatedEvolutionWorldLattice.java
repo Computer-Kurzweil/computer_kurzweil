@@ -2,9 +2,8 @@ package org.woehlke.simulation.evolution.model.world;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.evolution.model.cell.CellLifeCycle;
 
 
@@ -92,10 +91,10 @@ public class SimulatedEvolutionWorldLattice {
    * @return the engergy of the food, will be added to cell's fat.
    * @see CellLifeCycle
    */
-  public int eat(LatticePointSimulatedEvolution position) {
-    LatticePointSimulatedEvolution[] neighbourhood = position.getNeighbourhood(ctx.getWorldDimensions());
+  public int eat(LatticePoint position) {
+    LatticePoint[] neighbourhood = position.getNeighbourhood(ctx.getWorldDimensions());
     int food = 0;
-    for (LatticePointSimulatedEvolution neighbourhoodPosition : neighbourhood) {
+    for (LatticePoint neighbourhoodPosition : neighbourhood) {
       food += worldMapFood[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
       worldMapFood[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()] = 0;
     }

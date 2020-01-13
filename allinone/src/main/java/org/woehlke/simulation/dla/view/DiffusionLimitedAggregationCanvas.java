@@ -1,6 +1,6 @@
 package org.woehlke.simulation.dla.view;
 
-import org.woehlke.simulation.all.model.LatticePointDla;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 
 import javax.swing.*;
@@ -20,13 +20,13 @@ import java.awt.*;
 public class DiffusionLimitedAggregationCanvas extends JComponent {
 
     private DiffusionLimitedAggregationWorld particles;
-    private LatticePointDla worldDimensions;
+    private LatticePoint worldDimensions;
 
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
 
     public DiffusionLimitedAggregationCanvas(
-        LatticePointDla worldDimensions,
+        LatticePoint worldDimensions,
         DiffusionLimitedAggregationWorld particles
     ) {
         this.worldDimensions = worldDimensions;
@@ -42,7 +42,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent {
         g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
         g.setColor(PARTICLES);
-        for(LatticePointDla pixel:particles.getParticles()){
+        for(LatticePoint pixel:particles.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0;y<worldDimensions.getY();y++){
@@ -65,7 +65,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent {
         paint(g);
     }
 
-    public LatticePointDla getWorldDimensions() {
+    public LatticePoint getWorldDimensions() {
         return worldDimensions;
     }
 }

@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;
+import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 
 import java.beans.Transient;
@@ -41,8 +41,8 @@ public class SimulatedEvolutionContext implements Serializable {
     }
 
     @Transient
-    public LatticePointSimulatedEvolution getWorldDimensions() {
-        return new LatticePointSimulatedEvolution(
+    public LatticePoint getWorldDimensions() {
+        return new LatticePoint(
             this.properties.getLattice().getWidth(),
             this.properties.getLattice().getHeight()
         );
