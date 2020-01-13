@@ -33,12 +33,12 @@ public class MandelbrotCanvas extends JComponent {
         int height = this.ctx.getWorldDimensions().getHeight();
         this.preferredSize = new Dimension(width, height);
         this.setSize(this.preferredSize);
-        this.setPreferredSize(preferredSize);
+        this.setPreferredSize(this.preferredSize);
     }
 
     @Override public void paint(Graphics g) {
         this.setSize(this.preferredSize);
-        this.setPreferredSize(preferredSize);
+        this.setPreferredSize(this.preferredSize);
         super.paintComponent(g);
         for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
             for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){

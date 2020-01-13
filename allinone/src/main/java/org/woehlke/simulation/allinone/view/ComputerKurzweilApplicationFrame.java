@@ -1,6 +1,7 @@
 package org.woehlke.simulation.allinone.view;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,12 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
+    @Getter @Setter
+    private final SimulatedEvolutionFrame simulatedEvolutionFrame;
+
+    @Getter @Setter
+    private final MandelbrotFrame mandelbrotFrame;
+
     @Autowired
     public ComputerKurzweilApplicationFrame(
         ComputerKurzweilApplicationContext ctx,
@@ -31,8 +38,8 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
     ) throws HeadlessException {
         super(ctx.getProperties().getView().getTitle());
         this.ctx = ctx;
-        this.ctx.setMandelbrotFrame(mandelbrotFrame);
-        this.ctx.setSimulatedEvolutionFrame(simulatedEvolutionFrame);
+        this.simulatedEvolutionFrame = simulatedEvolutionFrame;
+        this.mandelbrotFrame = mandelbrotFrame;
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.add(simulatedEvolutionFrame);
         pack();
@@ -66,11 +73,11 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
     }
 
     public void start() {
-        this.ctx.getSimulatedEvolutionFrame().start();
+        this.getSimulatedEvolutionFrame().start();
     }
 
     public void repaint(){
         super.repaint();
-        this.ctx.getSimulatedEvolutionFrame().repaint();
+        this.getSimulatedEvolutionFrame().repaint();
     }
 }

@@ -8,7 +8,9 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 
 
@@ -22,10 +24,10 @@ public class ComputerKurzweilApplicationContext {
     private final ComputerKurzweilProperties properties;
 
     @Getter @Setter
-    private SimulatedEvolutionFrame simulatedEvolutionFrame;
+    private MandelbrotContext mandelbrotContext;
 
     @Getter @Setter
-    private MandelbrotFrame mandelbrotFrame;
+    private SimulatedEvolutionContext simulatedEvolutionContext;
 
     @Autowired
     public ComputerKurzweilApplicationContext(

@@ -52,10 +52,10 @@ public class MandelbrotContext implements MouseListener, ActionListener {
         this.panelSubtitle = new PanelSubtitle(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot(this);
-        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
         this.applicationStateMachine = new ApplicationStateMachine(this);
         this.turingPhaseStateMachine = new TuringPhaseStateMachine();
         this.turingPositionsStateMachine = new TuringPositionsStateMachine(this);
+        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
 
     }
 
