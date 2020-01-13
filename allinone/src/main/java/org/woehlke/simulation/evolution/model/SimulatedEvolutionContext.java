@@ -44,14 +44,10 @@ public class SimulatedEvolutionContext implements Serializable {
     private volatile SimulatedEvolutionStatistics statisticsContainer;
 
     @Getter @Setter
-    private volatile SimulatedEvolutionWorld world;
-
-    @Getter @Setter
     private volatile SimulatedEvolutionWorldLattice lattice;
 
     @Getter @Setter
     private volatile SimulatedEvolutionFrame frame;
-
     @Getter @Setter
     private volatile SimulatedEvolutionStatisticsPanel panelStatistics;
 
@@ -64,16 +60,12 @@ public class SimulatedEvolutionContext implements Serializable {
     @Getter
     private final SimulatedEvolutionProperties properties;
 
-    @Getter
-    private final  SimulatedEvolutionCanvas canvas;
-
     @Autowired
     public SimulatedEvolutionContext(SimulatedEvolutionProperties properties, SimulatedEvolutionCanvas canvas) {
       this.properties = properties;
       this.foodPerDay = properties.getFood().getFoodPerDay();
       this.gardenOfEdenEnabled = properties.getGardenOfEden().getGardenOfEdenEnabled();
       this.foodPerDayGardenOfEden = properties.getGardenOfEden().getFoodPerDay();
-        this.canvas = canvas;
         long seed = new Date().getTime();
       this.random = new Random(seed);
     }

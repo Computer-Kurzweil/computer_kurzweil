@@ -3,6 +3,7 @@ package org.woehlke.simulation.all.control;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.all.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.all.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.simulation.mandelbrot.control.common.EventDispatcher;
 
 import java.awt.event.*;
@@ -12,14 +13,15 @@ public class ComputerKurzweilControllerThread extends Thread implements Runnable
 
     private final ComputerKurzweilApplicationContext ctx;
 
+    private final ComputerKurzweilApplicationFrame frame;
+
     @Autowired
-    public ComputerKurzweilControllerThread(ComputerKurzweilApplicationContext ctx) {
+    public ComputerKurzweilControllerThread(ComputerKurzweilApplicationContext ctx, ComputerKurzweilApplicationFrame frame) {
         this.ctx = ctx;
+        this.frame = frame;
     }
 
-    public void showMe(){
-        this.ctx.getSimulatedEvolutionFrame().showMe();
-    }
+    public void showMe() { this.frame.showMe(); }
 
     @Override public void windowOpened(WindowEvent e) {
         showMe();

@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.control;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
@@ -30,12 +31,16 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
 
     private final SimulatedEvolutionContext ctx;
 
+    @Getter
+    private final SimulatedEvolutionWorld world;
+
   private Boolean mySemaphore;
 
   public SimulatedEvolutionControllerThread(
-      SimulatedEvolutionContext ctx
-  ) {
+      SimulatedEvolutionContext ctx,
+      SimulatedEvolutionWorld world) {
       this.ctx = ctx;
+      this.world = world;
       this.mySemaphore = Boolean.TRUE;
       this.ctx.setControllerThread(this);
   }
@@ -62,7 +67,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();
       }
-      ctx.getWorld().letLivePopulation();
+        this.world .letLivePopulation();
       ctx.getFrame().repaint();
       try {
         sleep(ctx.getProperties().getControl().getTime2wait());
@@ -141,13 +146,8 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     System.exit(ctx.getProperties().getControl().getExitStatus());
   }
 
-  public void toggleGardenOfEden() {
-      ctx.getWorld().toggleGardenOfEden();
+  public void toggleGardenOfEden(){ this.world.toggleGardenOfEden();
   }
-
-    public void setWorld(SimulatedEvolutionWorld world) {
-        this.ctx.setWorld(world);
-    }
 
     public void setPanelStatistics(SimulatedEvolutionStatisticsPanel panelStatistics) {
         this.ctx.setPanelStatistics(panelStatistics);

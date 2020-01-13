@@ -1,10 +1,12 @@
 package org.woehlke.simulation.evolution.view;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.all.view.PanelCopyright;
 import org.woehlke.simulation.all.view.PanelSubtitle;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 
 import javax.swing.*;
 import java.awt.image.ImageObserver;
@@ -30,18 +32,23 @@ import java.awt.image.ImageObserver;
 public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
 
     private final SimulatedEvolutionContext ctx;
+    private final SimulatedEvolutionCanvas canvas;
+    @Getter
+    private final SimulatedEvolutionWorld world;
 
   @Autowired
   public SimulatedEvolutionFrame(
-      SimulatedEvolutionContext ctx
-    ) {
+      SimulatedEvolutionContext ctx,
+      SimulatedEvolutionCanvas canvas, SimulatedEvolutionWorld world) {
     this.ctx=ctx;
-    PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
+      this.canvas = canvas;
+      this.world = world;
+      PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
     PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
     BoxLayout layout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
       this.setLayout(layout);
       this.add(panelSubtitle);
-      this.add(ctx.getCanvas());
+      this.add(this.canvas);
       this.add(panelCopyright);
       this.add(ctx.getPanelStatistics());
       this.add(ctx.getPanelButtons());
@@ -54,7 +61,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
      */
     public void showMe() {
         this.setVisible(true);
-        ctx.getCanvas().setVisible(true);
+        this.canvas.setVisible(true);
         ctx.getPanelStatistics().setVisible(true);
         ctx.getPanelButtons().setVisible(true);
         this.setVisible(true);
@@ -62,7 +69,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     }
 
     public void repaint(){
-        ctx.getCanvas().repaint();
+        this.canvas.repaint();
         ctx.getPanelStatistics().repaint();
         ctx.getPanelButtons().repaint();
         super.repaint();
