@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionStatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionStatisticsPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +105,14 @@
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean compileJava compileTestJava]">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean bootRun]">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -123,6 +127,26 @@
             <option value="clean" />
             <option value="compileJava" />
             <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="computer_kurzweil:allinone [clean bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+            <option value="bootRun" />
           </list>
         </option>
         <option name="vmOptions" value="" />
@@ -240,6 +264,7 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.computer_kurzweil:allinone [clean compileJava compileTestJava]" />
+      <item itemvalue="Gradle.computer_kurzweil:allinone [clean bootRun]" />
       <item itemvalue="Gradle.computer_kurzweil:cyclic-cellular-automaton [clean run]" />
       <item itemvalue="Gradle.computer_kurzweil:diffusion-limited-aggregation [clean run]" />
       <item itemvalue="Gradle.computer_kurzweil:mandelbrot [clean run]" />
@@ -253,7 +278,17 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -281,7 +316,8 @@
       <workItem from="1578526537925" duration="280000" />
       <workItem from="1578844010343" duration="112000" />
       <workItem from="1578844150348" duration="13496000" />
-      <workItem from="1578858204031" duration="15286000" />
+      <workItem from="1578858204031" duration="15324000" />
+      <workItem from="1578876164052" duration="189000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -339,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578873131259</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="switch from one app to allinone app">
+      <created>1578873584606</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1578873584606</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,11 +400,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" width="1234" height="682" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1578858946280" />
-    <state x="193" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578870998972">
+    <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578876357808">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577558595678" />
-    <state x="193" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578870998972" />
+    <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
     <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1578861456195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -386,10 +429,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1578867157699" />
-    <state x="540" y="115" key="CommitChangelistDialog2" timestamp="1578873128680">
+    <state x="540" y="115" key="CommitChangelistDialog2" timestamp="1578876404138">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578873128680" />
+    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876404138" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -399,22 +442,22 @@
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1877" height="604" key="GridCell.Tab.0.bottom" timestamp="1578873120980">
+    <state width="1877" height="604" key="GridCell.Tab.0.bottom" timestamp="1578876389144">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578873120980" />
-    <state width="1877" height="604" key="GridCell.Tab.0.center" timestamp="1578873120980">
+    <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
+    <state width="1877" height="604" key="GridCell.Tab.0.center" timestamp="1578876389143">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578873120980" />
-    <state width="1877" height="604" key="GridCell.Tab.0.left" timestamp="1578873120980">
+    <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
+    <state width="1877" height="604" key="GridCell.Tab.0.left" timestamp="1578876389143">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578873120980" />
-    <state width="1877" height="604" key="GridCell.Tab.0.right" timestamp="1578873120980">
+    <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
+    <state width="1877" height="604" key="GridCell.Tab.0.right" timestamp="1578876389143">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578873120980" />
+    <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
     <state x="410" y="231" key="RollbackChangesDialog" timestamp="1578845281025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -424,18 +467,18 @@
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577558215454" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578871543108">
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578873589389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578871543108" />
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578873589389" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844172030" />
-    <state x="248" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1578858207864">
+    <state x="248" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1578876282357">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578858207864" />
+    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876282357" />
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578866183417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
