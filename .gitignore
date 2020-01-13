@@ -33,3 +33,4 @@ gradle-app.setting
 /.idea/uiDesigner.xml
 /.idea/compiler.xml
 /.idea/workspace.xml
+.idea/modules/swingtutorial/
