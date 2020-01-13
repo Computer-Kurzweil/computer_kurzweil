@@ -1,5 +1,6 @@
 package org.woehlke.simulation.allinone.control;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
@@ -8,6 +9,7 @@ import org.woehlke.simulation.mandelbrot.control.common.EventDispatcher;
 
 import java.awt.event.*;
 
+@Log
 @Component
 public class ComputerKurzweilControllerThread extends Thread implements Runnable, EventDispatcher {
 
@@ -16,7 +18,10 @@ public class ComputerKurzweilControllerThread extends Thread implements Runnable
     private final ComputerKurzweilApplicationFrame frame;
 
     @Autowired
-    public ComputerKurzweilControllerThread(ComputerKurzweilApplicationContext ctx, ComputerKurzweilApplicationFrame frame) {
+    public ComputerKurzweilControllerThread(
+        ComputerKurzweilApplicationContext ctx,
+        ComputerKurzweilApplicationFrame frame
+    ) {
         this.ctx = ctx;
         this.frame = frame;
     }
@@ -48,8 +53,6 @@ public class ComputerKurzweilControllerThread extends Thread implements Runnable
     }
 
     @Override public void windowDeactivated(WindowEvent e) {}
-
-
 
     @Override
     public void windowGainedFocus(WindowEvent e) {

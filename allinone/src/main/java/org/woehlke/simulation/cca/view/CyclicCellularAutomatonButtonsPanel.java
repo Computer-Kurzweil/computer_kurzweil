@@ -1,5 +1,10 @@
 package org.woehlke.simulation.cca.view;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import javax.swing.*;
@@ -11,13 +16,18 @@ import java.awt.event.ActionListener;
 /**
  * TODO write doc.
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@Component
 public class CyclicCellularAutomatonButtonsPanel extends JPanel implements ActionListener {
 
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;
   private final JButton buttonWoehlke;
-  private CyclicCellularAutomatonContext ctx;
+  private final CyclicCellularAutomatonContext ctx;
 
+  @Autowired
   public CyclicCellularAutomatonButtonsPanel(CyclicCellularAutomatonContext ctx) {
     this.ctx = ctx;
     JLabel neighborhood = new JLabel("Neighborhood");

@@ -2,6 +2,7 @@ package org.woehlke.simulation.evolution.model.world;
 
 
 import lombok.Getter;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
@@ -31,6 +32,7 @@ import java.util.logging.Logger;
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
+@Log
 @Component
 public class SimulatedEvolutionWorld {
 
@@ -41,7 +43,11 @@ public class SimulatedEvolutionWorld {
 
     @Getter
     private final SimulatedEvolutionContext ctx;
+
+    @Getter
     private final SimulatedEvolutionWorldLattice worldLattice;
+
+    @Getter
     private final SimulatedEvolutionStatistics statisticsContainer;
 
   /**
@@ -120,5 +126,4 @@ public class SimulatedEvolutionWorld {
         worldLattice.toggleGardenOfEden();
     }
 
-    private static Logger log = Logger.getLogger(SimulatedEvolutionWorld.class.getName());
 }

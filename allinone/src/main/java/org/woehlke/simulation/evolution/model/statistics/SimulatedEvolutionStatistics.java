@@ -1,28 +1,20 @@
 package org.woehlke.simulation.evolution.model.statistics;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.logging.Logger;
 
-/**
- * TODO write doc.
- */
+@Log
 @Service
 public class SimulatedEvolutionStatistics {
 
-  /**
-   * TODO write doc.
-   */
   private ConcurrentLinkedQueue<SimulatedEvolutionPopulationCensus> statistics;
-
   private long worldIteration;
-
   private SimulatedEvolutionControllerThread controller;
-
   private final SimulatedEvolutionContext ctx;
 
   @Autowired
@@ -67,5 +59,4 @@ public class SimulatedEvolutionStatistics {
         this.controller = controller;
     }
 
-    private static Logger log = Logger.getLogger(SimulatedEvolutionStatistics.class.getName());
 }

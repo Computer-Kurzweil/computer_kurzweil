@@ -1,6 +1,9 @@
 package org.woehlke.simulation.allinone.view;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
+import lombok.extern.java.Log;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
@@ -10,6 +13,9 @@ import java.awt.*;
 /**
  * TODO write doc.
  */
+@Log
+@ToString
+@EqualsAndHashCode
 public class PanelSubtitle extends JPanel {
 
     @Getter

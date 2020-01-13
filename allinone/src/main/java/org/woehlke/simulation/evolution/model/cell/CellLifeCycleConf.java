@@ -1,8 +1,14 @@
 package org.woehlke.simulation.evolution.model.cell;
 
-import lombok.Getter;
+import lombok.*;
+import lombok.extern.java.Log;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
+
+@Log
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 public class CellLifeCycleConf {
 
     @Getter private final int confFatAtBirth;

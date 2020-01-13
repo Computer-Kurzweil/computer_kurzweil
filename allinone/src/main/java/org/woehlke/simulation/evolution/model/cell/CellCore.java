@@ -1,5 +1,10 @@
 package org.woehlke.simulation.evolution.model.cell;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.extern.java.Log;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.io.Serializable;
@@ -17,6 +22,10 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 19:55:23
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 public class CellCore implements Serializable {
 
     /**
@@ -24,13 +33,13 @@ public class CellCore implements Serializable {
     */
     private Integer[] dna;
 
-    private final SimulatedEvolutionContext ctx;
-
     private final static int MIN_VALUE = 0;
     private final static int MAX_VALUE = 16;
     private final static int MAX_INITIAL_VALUE = 8;
 
-    public CellCore(final SimulatedEvolutionContext ctx) {
+    private final SimulatedEvolutionContext ctx;
+
+    public CellCore(SimulatedEvolutionContext ctx) {
         this.ctx=ctx;
         dna = new Integer[CellOrientation.values().length];
         for (int i = 0; i < CellOrientation.values().length; i++) {
@@ -38,7 +47,7 @@ public class CellCore implements Serializable {
         }
     }
 
-    private CellCore(CellCore other) {
+    private CellCore(final CellCore other) {
         this.ctx = other.ctx;
         this.dna = other.dna;
     }

@@ -1,22 +1,42 @@
 package org.woehlke.simulation.cca.config;
 
+import lombok.*;
+import lombok.extern.java.Log;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
+@Log
+@ToString
+@EqualsAndHashCode
+@SpringBootConfiguration
+@Configuration
+@Valid
+@Validated
+@AllArgsConstructor
+@ConfigurationProperties("org.woehlke.simulation.cca.config")
 public class CyclicCellularAutomatonProperties implements CyclicCellularAutomatonPropertiesI {
 
-    private String title;
-    private String subtitle;
-    private int width;
-    private int height;
-    private String neighborhood;
-    private String buttonVonNeumann;
-    private String buttonMoore;
-    private String buttonWoehlke;
-    private String copyright;
+    @NotBlank @Getter @Setter private String title;
+    @NotBlank @Getter @Setter private String subtitle;
+    @NotNull  @Getter @Setter private Integer width;
+    @NotNull  @Getter @Setter private Integer height;
+    @NotBlank @Getter @Setter private String neighborhood;
+    @NotBlank @Getter @Setter private String buttonVonNeumann;
+    @NotBlank @Getter @Setter private String buttonMoore;
+    @NotBlank @Getter @Setter private String buttonWoehlke;
+    @NotBlank @Getter @Setter private String copyright;
 
     private static final int TITLE_HEIGHT = 30;
 
@@ -64,40 +84,4 @@ public class CyclicCellularAutomatonProperties implements CyclicCellularAutomato
         return new Point(width,height);
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getSubtitle() {
-        return subtitle;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public String getButtonVonNeumann() {
-        return buttonVonNeumann;
-    }
-
-    public String getButtonMoore() {
-        return buttonMoore;
-    }
-
-    public String getButtonWoehlke() {
-        return buttonWoehlke;
-    }
-
-
-    public String getCopyright() {
-        return copyright;
-    }
 }

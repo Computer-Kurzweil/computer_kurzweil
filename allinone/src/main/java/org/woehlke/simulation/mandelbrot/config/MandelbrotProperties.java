@@ -1,8 +1,8 @@
 package org.woehlke.simulation.mandelbrot.config;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.extern.java.Log;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
@@ -22,11 +22,16 @@ import java.beans.Transient;
  *
  * Created by tw on 16.12.2019.
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@SpringBootConfiguration
 @Configuration
-@ConfigurationProperties("org.woehlke.simulation.mandelbrot.config")
 @Valid
 @Validated
 @NoArgsConstructor
+@AllArgsConstructor
+@ConfigurationProperties("org.woehlke.simulation.mandelbrot.config")
 public class MandelbrotProperties {
 
     @Getter @Setter @NotBlank private String title;

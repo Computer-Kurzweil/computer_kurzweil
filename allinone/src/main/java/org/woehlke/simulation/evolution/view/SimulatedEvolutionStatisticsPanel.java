@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.view;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
@@ -15,6 +16,7 @@ import static org.woehlke.simulation.evolution.model.cell.CellLifeCycleStatus.*;
 /**
  * TODO write doc.
  */
+@Log
 @Component
 public class SimulatedEvolutionStatisticsPanel extends JPanel {
 

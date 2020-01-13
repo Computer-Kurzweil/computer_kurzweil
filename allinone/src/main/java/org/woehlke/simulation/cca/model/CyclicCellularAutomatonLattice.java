@@ -1,5 +1,10 @@
 package org.woehlke.simulation.cca.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType;
 
 import java.awt.*;
@@ -16,6 +21,10 @@ import static org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType.*;
  * Date: 28.08.13
  * Time: 12:39
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@Component
 public class CyclicCellularAutomatonLattice implements Serializable {
 
     private static final long serialVersionUID = -594681595882016258L;
@@ -30,6 +39,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     private volatile LatticeNeighbourhoodType neighbourhood;
 
+    @Autowired
     public CyclicCellularAutomatonLattice(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
         random = new Random(new Date().getTime());

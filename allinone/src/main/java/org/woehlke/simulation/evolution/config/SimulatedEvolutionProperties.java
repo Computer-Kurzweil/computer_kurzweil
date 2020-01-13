@@ -1,8 +1,7 @@
 package org.woehlke.simulation.evolution.config;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.extern.java.Log;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +17,10 @@ import javax.validation.constraints.NotNull;
 @Valid
 @Validated
 @NoArgsConstructor
+@Log
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 public class SimulatedEvolutionProperties {
 
     @NotNull @Getter @Setter private Integer queueMaxLength;

@@ -1,6 +1,10 @@
 package org.woehlke.simulation.dla.model;
 
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +23,8 @@ import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPrope
  * Date: 27.08.13
  * Time: 14:57
  */
+@Log
+@Component
 public class DiffusionLimitedAggregationWorld {
 
     private LatticePoint worldDimensions;
@@ -29,8 +35,9 @@ public class DiffusionLimitedAggregationWorld {
 
     private DiffusionLimitedAggregationWorldLattice dendrite;
 
-    public DiffusionLimitedAggregationWorld(LatticePoint worldDimensions) {
-        this.worldDimensions=worldDimensions;
+    @Autowired
+    public DiffusionLimitedAggregationWorld(/*LatticePoint worldDimensions*/CyclicCellularAutomatonContext ctx) {
+        this.worldDimensions=ctx.getWorldDimensions();
         random = new Random(new Date().getTime());
         for(int i=0; i<NUMBER_OF_PARTICLES;i++){
             int x = random.nextInt(worldDimensions.getX());

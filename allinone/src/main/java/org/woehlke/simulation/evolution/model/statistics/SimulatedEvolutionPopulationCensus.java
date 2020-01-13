@@ -1,48 +1,27 @@
 package org.woehlke.simulation.evolution.model.statistics;
 
+import lombok.*;
+import lombok.extern.java.Log;
 import org.woehlke.simulation.evolution.model.cell.CellLifeCycleStatus;
 
 /**
  * TODO write doc.
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class SimulatedEvolutionPopulationCensus {
 
-  /**
-   * TODO write doc.
-   */
-  private int youngCells;
-
-  /**
-   * TODO write doc.
-   */
-  private int youngAndFatCells;
-
-  /**
-   * TODO write doc.
-   */
-  private int fullAgeCells;
-
-  /**
-   * TODO write doc.
-   */
-  private int hungryCells;
-
-  /**
-   * TODO write doc.
-   */
-  private int oldCells;
-
-  /**
-   * TODO write doc.
-   */
-  private int deadCells;
-
-  /**
-   * TODO write doc.
-   */
-  private int population;
-
-  private long worldIteration;
+    @Getter @Setter private int youngCells;
+    @Getter @Setter private int youngAndFatCells;
+    @Getter @Setter private int fullAgeCells;
+    @Getter @Setter private int hungryCells;
+    @Getter @Setter private int oldCells;
+    @Getter @Setter private int deadCells;
+    @Getter @Setter private int population;
+    @Getter @Setter private long worldIteration;
 
   /**
    * TODO write doc.
@@ -71,79 +50,4 @@ public class SimulatedEvolutionPopulationCensus {
     }
   }
 
-  public int getYoungCells() {
-    return youngCells;
-  }
-
-  public void setYoungCells(int youngCells) {
-    this.youngCells = youngCells;
-  }
-
-  public int getYoungAndFatCells() {
-    return youngAndFatCells;
-  }
-
-  public void setYoungAndFatCells(int youngAndFatCells) {
-    this.youngAndFatCells = youngAndFatCells;
-  }
-
-  public int getFullAgeCells() {
-    return fullAgeCells;
-  }
-
-  public void setFullAgeCells(int fullAgeCells) {
-    this.fullAgeCells = fullAgeCells;
-  }
-
-  public int getHungryCells() {
-    return hungryCells;
-  }
-
-  public void setHungryCells(int hungryCells) {
-    this.hungryCells = hungryCells;
-  }
-
-  public int getOldCells() {
-    return oldCells;
-  }
-
-  public void setOldCells(int oldCells) {
-    this.oldCells = oldCells;
-  }
-
-  public int getDeadCells() {
-    return deadCells;
-  }
-
-  public void setDeadCells(int deadCells) {
-    this.deadCells = deadCells;
-  }
-
-  public int getPopulation() {
-    return population;
-  }
-
-  public void setPopulation(int population) {
-    this.population = population;
-  }
-
-    public long getWorldIteration() {
-        return worldIteration;
-    }
-
-    public void setWorldIteration(long worldIteration) {
-        this.worldIteration = worldIteration;
-    }
-
-    @Override
-  public String toString() {
-    return "LifeCycleCount{" +
-      "young=" + youngCells +
-      ", youngAndFat=" + youngAndFatCells +
-      ", fullAge=" + fullAgeCells +
-      ", hungry=" + hungryCells +
-      ", old=" + oldCells +
-      ", total=" + population +
-      '}';
-  }
 }

@@ -1,5 +1,10 @@
 package org.woehlke.simulation.cca.view;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import javax.swing.*;
@@ -16,12 +21,17 @@ import java.io.Serializable;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@Component
 public class CyclicCellularAutomatonCanvas extends JComponent implements Serializable {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
     private CyclicCellularAutomatonContext ctx;
 
+    @Autowired
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
         Dimension preferredSize = new Dimension(

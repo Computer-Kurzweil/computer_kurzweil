@@ -1,6 +1,8 @@
 package org.woehlke.simulation.allinone.view;
 
 import lombok.Getter;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
@@ -12,6 +14,7 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
+@Log
 @Component
 public class ComputerKurzweilApplicationFrame extends JFrame implements MenuContainer, ImageObserver, Serializable, Accessible {
 
@@ -26,9 +29,12 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
     @Getter
     private final MandelbrotFrame mandelbrotFrame;
 
+    @Autowired
     public ComputerKurzweilApplicationFrame(
         ComputerKurzweilApplicationContext ctx,
-        SimulatedEvolutionFrame simulatedEvolutionFrame, MandelbrotFrame mandelbrotFrame) throws HeadlessException {
+        SimulatedEvolutionFrame simulatedEvolutionFrame,
+        MandelbrotFrame mandelbrotFrame
+    ) throws HeadlessException {
         super(ctx.getProperties().getView().getTitle());
         this.ctx = ctx;
         this.simulatedEvolutionFrame = simulatedEvolutionFrame;

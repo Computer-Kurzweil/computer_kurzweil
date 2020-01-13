@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.view;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
@@ -12,6 +13,7 @@ import java.awt.FlowLayout;
 /**
  * TODO write doc.
  */
+@Log
 @Component
 public class SimulatedEvolutionButtonRowPanel extends JPanel  {
 

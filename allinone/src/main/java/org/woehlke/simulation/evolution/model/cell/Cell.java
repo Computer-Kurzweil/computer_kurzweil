@@ -1,5 +1,10 @@
 package org.woehlke.simulation.evolution.model.cell;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
@@ -23,6 +28,9 @@ import java.io.Serializable;
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 public class Cell implements Serializable {
 
   private static final long serialVersionUID = -7194182402841173981L;
@@ -47,7 +55,7 @@ public class Cell implements Serializable {
    */
   private CellLifeCycle lifeCycle;
 
-  private SimulatedEvolutionContext ctx;
+  private final SimulatedEvolutionContext ctx;
 
   public Cell(
       SimulatedEvolutionContext ctx

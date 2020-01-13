@@ -1,5 +1,7 @@
 package org.woehlke.simulation.dla.view;
 
+import lombok.extern.java.Log;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.dla.control.DiffusionLimitedAggregationControllerThread;
@@ -26,6 +28,8 @@ import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPrope
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Log
+@Component
 public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObserver,
         MenuContainer,
         Serializable,

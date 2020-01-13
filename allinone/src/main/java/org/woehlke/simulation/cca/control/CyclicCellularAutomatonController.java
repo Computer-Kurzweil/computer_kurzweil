@@ -1,5 +1,8 @@
 package org.woehlke.simulation.cca.control;
 
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import java.io.Serializable;
@@ -14,6 +17,8 @@ import java.io.Serializable;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
+@Log
+@Component
 public class CyclicCellularAutomatonController extends Thread
         implements Runnable, Serializable {
 
@@ -25,6 +30,7 @@ public class CyclicCellularAutomatonController extends Thread
 
     private final CyclicCellularAutomatonContext ctx;
 
+    @Autowired
     public CyclicCellularAutomatonController(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
         goOn = Boolean.TRUE;

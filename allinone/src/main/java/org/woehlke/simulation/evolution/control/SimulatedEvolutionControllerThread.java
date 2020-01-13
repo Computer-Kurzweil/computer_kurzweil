@@ -1,6 +1,7 @@
 package org.woehlke.simulation.evolution.control;
 
 import lombok.Getter;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
@@ -22,6 +23,7 @@ import java.awt.event.*;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
+@Log
 @Component
 public class SimulatedEvolutionControllerThread extends Thread implements Runnable,
     WindowListener,

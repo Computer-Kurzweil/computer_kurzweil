@@ -1,8 +1,7 @@
 package org.woehlke.simulation.allinone.config;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.extern.java.Log;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -13,12 +12,16 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Log
+@ToString
+@EqualsAndHashCode
 @SpringBootConfiguration
 @Configuration
-@ConfigurationProperties("org.woehlke.simulation.allinone.config")
 @Valid
 @Validated
 @NoArgsConstructor
+@AllArgsConstructor
+@ConfigurationProperties("org.woehlke.simulation.allinone.config")
 public class ComputerKurzweilProperties {
 
     @Valid

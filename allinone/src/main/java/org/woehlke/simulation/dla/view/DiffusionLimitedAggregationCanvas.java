@@ -1,5 +1,7 @@
 package org.woehlke.simulation.dla.view;
 
+import lombok.extern.java.Log;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 
@@ -17,6 +19,8 @@ import java.awt.*;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
+@Log
+@Component
 public class DiffusionLimitedAggregationCanvas extends JComponent {
 
     private DiffusionLimitedAggregationWorld particles;

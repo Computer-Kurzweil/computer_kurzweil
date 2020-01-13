@@ -1,6 +1,7 @@
 package org.woehlke.simulation.evolution.view;
 
 import lombok.Getter;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.view.PanelCopyright;
@@ -28,6 +29,7 @@ import java.util.logging.Logger;
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
+@Log
 @Component
 public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
 
@@ -92,5 +94,4 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
         ctx.getControllerThread().start();
     }
 
-    private static Logger log = Logger.getLogger(SimulatedEvolutionFrame.class.getName());
 }

@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.model.world;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
@@ -20,6 +21,7 @@ import org.woehlke.simulation.evolution.model.cell.CellLifeCycle;
  * Date: 24.08.13
  * Time: 12:37
  */
+@Log
 @Component
 public class SimulatedEvolutionWorldLattice {
 

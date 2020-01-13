@@ -2,6 +2,7 @@ package org.woehlke.simulation.evolution.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.woehlke.simulation.allinone.model.LatticePoint;
@@ -21,6 +22,7 @@ import java.util.Date;
 import java.util.Random;
 
 
+@Log
 @Service
 public class SimulatedEvolutionContext implements Serializable {
 
@@ -41,6 +43,7 @@ public class SimulatedEvolutionContext implements Serializable {
 
     @Getter @Setter
     private volatile SimulatedEvolutionFrame frame;
+
     @Getter @Setter
     private volatile SimulatedEvolutionStatisticsPanel panelStatistics;
 
@@ -74,7 +77,7 @@ public class SimulatedEvolutionContext implements Serializable {
       this.foodPerDay = properties.getFood().getFoodPerDay();
       this.gardenOfEdenEnabled = properties.getGardenOfEden().getGardenOfEdenEnabled();
       this.foodPerDayGardenOfEden = properties.getGardenOfEden().getFoodPerDay();
-        long seed = new Date().getTime();
+      long seed = new Date().getTime();
       this.random = new Random(seed);
     }
 

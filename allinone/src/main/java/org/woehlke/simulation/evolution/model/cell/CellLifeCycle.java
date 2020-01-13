@@ -1,6 +1,7 @@
 package org.woehlke.simulation.evolution.model.cell;
 
-import lombok.Getter;
+import lombok.*;
+import lombok.extern.java.Log;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 /**
@@ -19,37 +20,18 @@ import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
  * Date: 04.02.2006
  * Time: 23:12:31
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 public class CellLifeCycle {
 
-      /**
-       * Status of the LifeCycle is fat, age and hunger.
-       */
-      @Getter
-      private int fat;
-
-      /**
-       * Status of the LifeCycle is fat, age and hunger.
-       */
-      @Getter
-      private int age;
-
-      /**
-       * Status of the LifeCycle is fat, age and hunger.
-       */
-      @Getter
-      private int hunger;
-
-    /**
-     * Status of the LifeCycle is fat, age and hunger.
-     */
-    @Getter
-    private int generation;
-
-    @Getter
-    private CellLifeCycleStatus status;
-
-    @Getter
-    private final CellLifeCycleConf conf;
+      @Getter private int fat;
+      @Getter private int age;
+      @Getter private int hunger;
+      @Getter private int generation;
+      @Getter private CellLifeCycleStatus status;
+      @Getter private final CellLifeCycleConf conf;
 
     public CellLifeCycle(SimulatedEvolutionContext ctx) {
         this.conf = new CellLifeCycleConf(ctx);

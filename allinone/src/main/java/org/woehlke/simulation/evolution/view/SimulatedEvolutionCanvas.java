@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.view;
 
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.cell.Cell;
@@ -29,6 +30,7 @@ import static org.woehlke.simulation.evolution.config.SimulatedEvolutionWorldCol
  * Date: 05.02.2006
  * Time: 00:51:51
  */
+@Log
 @Component
 public class SimulatedEvolutionCanvas extends JComponent implements Serializable {
 

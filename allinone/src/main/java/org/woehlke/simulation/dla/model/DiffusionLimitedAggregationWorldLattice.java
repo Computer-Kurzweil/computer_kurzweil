@@ -1,5 +1,6 @@
 package org.woehlke.simulation.dla.model;
 
+import lombok.extern.java.Log;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 
 /**
@@ -12,6 +13,7 @@ import org.woehlke.simulation.allinone.model.LatticePoint;
  * Date: 27.08.13
  * Time: 16:56
  */
+@Log
 public class DiffusionLimitedAggregationWorldLattice {
 
     private int worldMap[][];

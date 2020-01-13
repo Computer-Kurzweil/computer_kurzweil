@@ -1,5 +1,8 @@
 package org.woehlke.simulation.dla.control;
 
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 import org.woehlke.simulation.dla.view.DiffusionLimitedAggregationCanvas;
 
@@ -15,6 +18,8 @@ import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPrope
  * Date: 05.02.2006
  * Time: 00:36:20
  */
+@Log
+@Component
 public class DiffusionLimitedAggregationControllerThread extends Thread
         implements Runnable {
 
@@ -23,6 +28,7 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
 
     private Boolean goOn;
 
+    @Autowired
     public DiffusionLimitedAggregationControllerThread(
         DiffusionLimitedAggregationCanvas canvas,
         DiffusionLimitedAggregationWorld particles

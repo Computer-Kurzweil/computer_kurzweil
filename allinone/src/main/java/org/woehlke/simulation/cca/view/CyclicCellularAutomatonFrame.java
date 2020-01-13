@@ -1,5 +1,10 @@
 package org.woehlke.simulation.cca.view;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import javax.accessibility.Accessible;
@@ -19,6 +24,10 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Log
+@ToString
+@EqualsAndHashCode
+@Component
 public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserver,
         MenuContainer,
         Serializable,
@@ -29,6 +38,7 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private CyclicCellularAutomatonContext ctx;
 
+    @Autowired
     public CyclicCellularAutomatonFrame(CyclicCellularAutomatonContext ctx) {
         super(ctx.getConfig().getTitle());
         this.ctx=ctx;

@@ -1,10 +1,20 @@
 package org.woehlke.simulation.allinone.view;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.extern.java.Log;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Bounds {
+
+@Log
+@ToString
+@NoArgsConstructor
+@EqualsAndHashCode
+public class Bounds implements Serializable {
 
     @Getter
     int myheight;

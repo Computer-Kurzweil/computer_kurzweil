@@ -1,5 +1,8 @@
 package org.woehlke.simulation.allinone.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.extern.java.Log;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.util.Objects;
@@ -17,6 +20,9 @@ import java.util.Objects;
  * Date: 04.02.2006
  * Time: 23:47:05
  */
+@Log
+@ToString
+@EqualsAndHashCode
 public class LatticePoint {
 
   /**
@@ -149,25 +155,4 @@ public class LatticePoint {
     return neighbourhood;
   }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof LatticePoint)) return false;
-        LatticePoint that = (LatticePoint) o;
-        return getX() == that.getX() &&
-            getY() == that.getY();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getX(), getY());
-    }
-
-    @Override
-    public String toString() {
-        return "LatticePoint{" +
-            "x=" + x +
-            ", y=" + y +
-            '}';
-    }
 }
