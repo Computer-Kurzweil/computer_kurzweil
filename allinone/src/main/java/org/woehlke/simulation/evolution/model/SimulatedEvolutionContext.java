@@ -24,41 +24,41 @@ import java.util.Random;
 public class SimulatedEvolutionContext implements Serializable {
 
     @Getter @Setter
-    private int foodPerDay;
+    private volatile int foodPerDay;
 
     @Getter @Setter
-    private boolean gardenOfEdenEnabled;
+    private volatile boolean gardenOfEdenEnabled;
 
     @Getter @Setter
-    private int foodPerDayGardenOfEden;
+    private volatile int foodPerDayGardenOfEden;
 
 
     /**
      * Random Generator used for placing food.
      */
     @Getter
-    private final Random random;
+    private  final Random random;
 
     @Getter @Setter
-    private SimulatedEvolutionStatistics statisticsContainer;
+    private volatile SimulatedEvolutionStatistics statisticsContainer;
 
     @Getter @Setter
-    private SimulatedEvolutionWorld world;
+    private volatile SimulatedEvolutionWorld world;
 
     @Getter @Setter
-    private SimulatedEvolutionWorldLattice lattice;
+    private volatile SimulatedEvolutionWorldLattice lattice;
 
     @Getter @Setter
-    private SimulatedEvolutionFrame frame;
+    private volatile SimulatedEvolutionFrame frame;
 
     @Getter @Setter
-    private SimulatedEvolutionStatisticsPanel panelStatistics;
+    private volatile SimulatedEvolutionStatisticsPanel panelStatistics;
 
     @Getter @Setter
-    private SimulatedEvolutionButtonRowPanel panelButtons;
+    private volatile SimulatedEvolutionButtonRowPanel panelButtons;
 
     @Getter @Setter
-    private SimulatedEvolutionControllerThread controllerThread;
+    private volatile SimulatedEvolutionControllerThread controllerThread;
 
     @Getter
     private final SimulatedEvolutionProperties properties;

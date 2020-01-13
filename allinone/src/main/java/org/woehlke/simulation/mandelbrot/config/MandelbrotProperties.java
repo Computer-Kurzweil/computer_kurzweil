@@ -31,7 +31,7 @@ public class MandelbrotProperties {
 
     @Getter @Setter @NotBlank private String title;
     @Getter @Setter @NotBlank private String subtitle;
-    @Getter @Setter @NotBlank private String copyright;
+    @Getter @Setter @NotBlank private String footer;
     @Getter @Setter @NotNull private Integer width;
     @Getter @Setter @NotNull private Integer height;
 

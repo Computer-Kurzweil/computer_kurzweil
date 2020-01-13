@@ -7,6 +7,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.woehlke.simulation.all.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.all.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
@@ -43,48 +45,21 @@ import java.util.logging.Logger;
 })
 public class ComputerKurzweilApplication {
 
-    private final SimulatedEvolutionControllerThread controller;
-    private final SimulatedEvolutionFrame frame;
-    private final SimulatedEvolutionWorld world;
-    private final SimulatedEvolutionButtonRowPanel panelButtons;
-    private final SimulatedEvolutionStatisticsPanel panelStatistics;
+    private final ComputerKurzweilApplicationFrame frame;
 
     @Autowired
       public ComputerKurzweilApplication(
-        SimulatedEvolutionControllerThread controller,
-        SimulatedEvolutionFrame frame,
-        SimulatedEvolutionWorld world,
-        SimulatedEvolutionButtonRowPanel panelButtons,
-        SimulatedEvolutionStatisticsPanel panelStatistics
+        ComputerKurzweilApplicationFrame frame
     ) {
-        this.frame = frame;
-        this.world = world;
-        this.panelButtons = panelButtons;
-        this.panelStatistics = panelStatistics;
-        this.controller = controller;
-        setupController();
-    }
-
-    private void setupController(){
-        this.controller.setFrame(this.frame);
-        this.controller.setWorld(this.world);
-        this.controller.setPanelButtons(this.panelButtons);
-        this.controller.setPanelStatistics(this.panelStatistics);
-        this.panelButtons.registerController(this.controller);
+        this.frame=frame;
     }
 
     public void start(){
         try {
-            this.controller.start();
-            this.frame.showMe();
+            this.frame.start();
         } catch (IllegalThreadStateException e){
             log.info(e.getLocalizedMessage());
         }
-
-    }
-
-    public void exit() {
-        this.frame.dispose();
     }
 
     /**

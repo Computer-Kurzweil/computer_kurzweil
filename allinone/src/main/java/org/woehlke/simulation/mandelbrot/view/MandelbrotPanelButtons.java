@@ -22,7 +22,7 @@ import static org.woehlke.simulation.mandelbrot.control.state.RadioButtons.RADIO
  * Created by tw on 16.12.2019.
  */
 @Component
-public class PanelButtons extends JPanel {
+public class MandelbrotPanelButtons extends JPanel {
 
     private JRadioButton radioButtonsSwitch;
     private JRadioButton radioButtonsZoom;
@@ -35,7 +35,7 @@ public class PanelButtons extends JPanel {
     private MandelbrotApplicationContext ctx;
 
     @Autowired
-    public PanelButtons(MandelbrotApplicationContext ctx) {
+    public MandelbrotPanelButtons(MandelbrotApplicationContext ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
         this.radioButtonsSwitch = new JRadioButton(ctx.getProperties().getButtonsSwitch());

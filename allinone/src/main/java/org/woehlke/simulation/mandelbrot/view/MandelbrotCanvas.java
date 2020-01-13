@@ -19,13 +19,13 @@ import java.awt.*;
  * Time: 00:51:51
  */
 @Component
-public class ApplicationCanvas extends JComponent {
+public class MandelbrotCanvas extends JComponent {
 
     private final MandelbrotApplicationContext ctx;
     private final Dimension preferredSize;
 
     @Autowired
-    public ApplicationCanvas(MandelbrotApplicationContext ctx) {
+    public MandelbrotCanvas(MandelbrotApplicationContext ctx) {
         this.ctx = ctx;
         int width = this.ctx.getWorldDimensions().getWidth();
         int height = this.ctx.getWorldDimensions().getHeight();

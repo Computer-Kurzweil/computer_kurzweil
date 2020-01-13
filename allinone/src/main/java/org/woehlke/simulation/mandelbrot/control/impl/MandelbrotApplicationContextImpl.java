@@ -14,10 +14,10 @@ import org.woehlke.simulation.mandelbrot.model.fractal.impl.GaussianNumberPlaneM
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.all.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.impl.MandelbrotTuringMachineImpl;
-import org.woehlke.simulation.mandelbrot.view.ApplicationCanvas;
-import org.woehlke.simulation.mandelbrot.view.MandelbrotApplicationFrame;
-import org.woehlke.simulation.mandelbrot.view.PanelButtons;
-import org.woehlke.simulation.mandelbrot.view.PanelSubtitle;
+import org.woehlke.simulation.mandelbrot.view.MandelbrotCanvas;
+import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
+import org.woehlke.simulation.mandelbrot.view.MandelbrotPanelButtons;
+import org.woehlke.simulation.mandelbrot.view.MandelbrotPanelSubtitle;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,13 +27,11 @@ import java.awt.event.WindowEvent;
 @Component
 public class MandelbrotApplicationContextImpl implements MandelbrotApplicationContext {
 
-    private Rectangle rectangleBounds;
-    private Dimension dimensionSize;
-    private PanelButtons panelButtons;
-    private MandelbrotApplicationFrame frame;
+    private MandelbrotPanelButtons panelButtons;
+    private MandelbrotFrame frame;
 
-    private final PanelSubtitle panelSubtitle;
-    private final ApplicationCanvas canvas;
+    private final MandelbrotPanelSubtitle panelSubtitle;
+    private final MandelbrotCanvas canvas;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final MandelbrotTuringMachine mandelbrotTuringMachine;
@@ -46,8 +44,8 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         MandelbrotProperties properties
     ) {
         this.properties = properties;
-        this.canvas = new ApplicationCanvas(this);
-        this.panelSubtitle = new PanelSubtitle(properties);
+        this.canvas = new MandelbrotCanvas(this);
+        this.panelSubtitle = new MandelbrotPanelSubtitle(properties);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJuliaImpl(this);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrotImpl(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachineImpl(this);
@@ -57,7 +55,6 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
 
     @Override public void start() {
         this.canvas.addMouseListener( this );
-        this.frame.addWindowListener( this );
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneMandelbrot.start();
         this.mandelbrotTuringMachine.start();
@@ -144,32 +141,6 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         showMe();
     }
 
-    @Override public void windowOpened(WindowEvent e) {
-        showMe();
-    }
-
-    @Override
-    public void windowClosing(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-
-    }
-
-    @Override public void windowIconified(WindowEvent e) {}
-
-    @Override public void windowDeiconified(WindowEvent e) {
-        showMe();
-    }
-
-    @Override public void windowActivated(WindowEvent e) {
-        showMe();
-    }
-
-    @Override public void windowDeactivated(WindowEvent e) {}
-
     @Override
     public void mouseClicked(MouseEvent e) {
         LatticePoint latticePoint = new LatticePoint(e.getX(), e.getY());
@@ -217,7 +188,7 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
 
     }
 
-    @Override public void setPanelButtons(PanelButtons panelButtons) {
+    @Override public void setPanelButtons(MandelbrotPanelButtons panelButtons) {
         this.panelButtons = panelButtons;
     }
 
@@ -231,11 +202,11 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         return gaussianNumberPlaneMandelbrot;
     }
 
-    @Override public ApplicationCanvas getCanvas() {
+    @Override public MandelbrotCanvas getCanvas() {
         return canvas;
     }
 
-    @Override public PanelButtons getPanelButtons() {
+    @Override public MandelbrotPanelButtons getPanelButtons() {
         return panelButtons;
     }
 
@@ -243,31 +214,15 @@ public class MandelbrotApplicationContextImpl implements MandelbrotApplicationCo
         return properties;
     }
 
-    public void setFrame(MandelbrotApplicationFrame frame) {
+    public void setFrame(MandelbrotFrame frame) {
         this.frame = frame;
     }
 
-    @Override public MandelbrotApplicationFrame getFrame() {
+    @Override public MandelbrotFrame getFrame() {
         return frame;
     }
 
-    @Override public Rectangle getRectangleBounds() {
-        return rectangleBounds;
-    }
-
-    @Override public void setRectangleBounds(Rectangle rectangleBounds) {
-        this.rectangleBounds = rectangleBounds;
-    }
-
-    @Override public Dimension getDimensionSize() {
-        return dimensionSize;
-    }
-
-    @Override public void setDimensionSize(Dimension dimensionSize) {
-        this.dimensionSize = dimensionSize;
-    }
-
-    @Override public PanelSubtitle getPanelSubtitle() {
+    @Override public MandelbrotPanelSubtitle getPanelSubtitle() {
         return panelSubtitle;
     }
 

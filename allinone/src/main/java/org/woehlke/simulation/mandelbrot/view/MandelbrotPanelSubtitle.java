@@ -17,12 +17,12 @@ import java.awt.*;
  * Created by tw on 16.12.2019.
  */
 @Component
-public class PanelSubtitle extends JPanel {
+public class MandelbrotPanelSubtitle extends JPanel {
 
     @Autowired
-  public PanelSubtitle(MandelbrotProperties mandelbrotProperties) {
+  public MandelbrotPanelSubtitle(MandelbrotProperties mandelbrotProperties) {
       this.setLayout(new FlowLayout());
-      String label = mandelbrotProperties.getSubtitle() + " - " + mandelbrotProperties.getCopyright();
+      String label = mandelbrotProperties.getSubtitle() + " - " + mandelbrotProperties.getSubtitle();
       this.add(new JLabel(label));
   }
 
