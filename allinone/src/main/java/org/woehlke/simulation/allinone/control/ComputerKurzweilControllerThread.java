@@ -5,13 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.ComputerKurzweilApplicationFrame;
-import org.woehlke.simulation.mandelbrot.control.common.EventDispatcher;
 
 import java.awt.event.*;
 
 @Log
 @Component
-public class ComputerKurzweilControllerThread extends Thread implements Runnable, EventDispatcher {
+public class ComputerKurzweilControllerThread extends Thread implements Runnable,
+    WindowListener,
+    WindowFocusListener,
+    WindowStateListener {
 
     private final ComputerKurzweilApplicationContext ctx;
 
