@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelCopyright.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelCopyright.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelSubtitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelSubtitle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonButtonsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonButtonsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/model/DiffusionLimitedAggregationWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/model/DiffusionLimitedAggregationWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/view/DiffusionLimitedAggregationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/view/DiffusionLimitedAggregationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +318,7 @@
       <workItem from="1578909616075" duration="2813000" />
       <workItem from="1578918724535" duration="2564000" />
       <workItem from="1578934366756" duration="2152000" />
-      <workItem from="1578937885181" duration="3840000" />
+      <workItem from="1578937885181" duration="3980000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -431,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578941388977</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="switch from one app to allinone app">
+      <created>1578941765632</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1578941765632</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,12 +486,12 @@
       <screen x="0" y="0" width="1920" height="1053" />
     </state>
     <state x="535" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1053@0.0.1920.1053" timestamp="1578938159576" />
-    <state x="210" y="17" width="1019" height="798" key="CommitChangelistDialog2" timestamp="1578941388634">
+    <state x="210" y="17" width="1019" height="798" key="CommitChangelistDialog2" timestamp="1578941765535">
       <screen x="0" y="0" width="1920" height="1053" />
     </state>
     <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1578937069637" />
     <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
-    <state x="210" y="17" width="1019" height="798" key="CommitChangelistDialog2/0.0.1920.1053@0.0.1920.1053" timestamp="1578941388634" />
+    <state x="210" y="17" width="1019" height="798" key="CommitChangelistDialog2/0.0.1920.1053@0.0.1920.1053" timestamp="1578941765535" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -500,30 +501,30 @@
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1878" height="295" key="GridCell.Tab.0.bottom" timestamp="1578941750971">
+    <state width="1878" height="549" key="GridCell.Tab.0.bottom" timestamp="1578941839394">
       <screen x="0" y="0" width="1920" height="1053" />
     </state>
     <state width="1237" height="359" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1578937026061" />
     <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
-    <state width="1878" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1053@0.0.1920.1053" timestamp="1578941750971" />
-    <state width="1878" height="295" key="GridCell.Tab.0.center" timestamp="1578941750970">
+    <state width="1878" height="549" key="GridCell.Tab.0.bottom/0.0.1920.1053@0.0.1920.1053" timestamp="1578941839394" />
+    <state width="1878" height="549" key="GridCell.Tab.0.center" timestamp="1578941839392">
       <screen x="0" y="0" width="1920" height="1053" />
     </state>
     <state width="1237" height="359" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1578937026061" />
     <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1878" height="295" key="GridCell.Tab.0.center/0.0.1920.1053@0.0.1920.1053" timestamp="1578941750970" />
-    <state width="1878" height="295" key="GridCell.Tab.0.left" timestamp="1578941750970">
+    <state width="1878" height="549" key="GridCell.Tab.0.center/0.0.1920.1053@0.0.1920.1053" timestamp="1578941839392" />
+    <state width="1878" height="549" key="GridCell.Tab.0.left" timestamp="1578941839391">
       <screen x="0" y="0" width="1920" height="1053" />
     </state>
     <state width="1237" height="359" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1578937026060" />
     <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1878" height="295" key="GridCell.Tab.0.left/0.0.1920.1053@0.0.1920.1053" timestamp="1578941750970" />
-    <state width="1878" height="295" key="GridCell.Tab.0.right" timestamp="1578941750970">
+    <state width="1878" height="549" key="GridCell.Tab.0.left/0.0.1920.1053@0.0.1920.1053" timestamp="1578941839391" />
+    <state width="1878" height="549" key="GridCell.Tab.0.right" timestamp="1578941839393">
       <screen x="0" y="0" width="1920" height="1053" />
     </state>
     <state width="1237" height="359" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1578937026061" />
     <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1878" height="295" key="GridCell.Tab.0.right/0.0.1920.1053@0.0.1920.1053" timestamp="1578941750970" />
+    <state width="1878" height="549" key="GridCell.Tab.0.right/0.0.1920.1053@0.0.1920.1053" timestamp="1578941839393" />
     <state x="352" y="96" key="MultipleFileMergeDialog" timestamp="1578909889610">
       <screen x="0" y="0" width="1280" height="760" />
     </state>

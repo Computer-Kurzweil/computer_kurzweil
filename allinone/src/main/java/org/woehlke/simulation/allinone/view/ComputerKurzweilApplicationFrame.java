@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -26,19 +25,17 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
     @Getter
     private final SimulatedEvolutionFrame simulatedEvolutionFrame;
 
-    @Getter
-    private final MandelbrotFrame mandelbrotFrame;
+   // @Getter
+    //private final MandelbrotFrame mandelbrotFrame;
 
     @Autowired
     public ComputerKurzweilApplicationFrame(
         ComputerKurzweilApplicationContext ctx,
-        SimulatedEvolutionFrame simulatedEvolutionFrame,
-        MandelbrotFrame mandelbrotFrame
+        SimulatedEvolutionFrame simulatedEvolutionFrame
     ) throws HeadlessException {
         super(ctx.getProperties().getView().getTitle());
         this.ctx = ctx;
         this.simulatedEvolutionFrame = simulatedEvolutionFrame;
-        this.mandelbrotFrame = mandelbrotFrame;
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.add(simulatedEvolutionFrame);
         pack();
