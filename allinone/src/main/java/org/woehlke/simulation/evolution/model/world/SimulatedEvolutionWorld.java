@@ -108,7 +108,7 @@ public class SimulatedEvolutionWorld {
     statisticsContainer.add(oneStatisticsTimestamp);
   }
 
-  public synchronized List<Cell> getAllCells() {
+  public List<Cell> getAllCells() {
     return cells;
   }
 

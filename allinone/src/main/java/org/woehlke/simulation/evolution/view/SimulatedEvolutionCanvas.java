@@ -1,7 +1,6 @@
 package org.woehlke.simulation.evolution.view;
 
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.cell.Cell;
 import org.woehlke.simulation.all.model.LatticePointSimulatedEvolution;

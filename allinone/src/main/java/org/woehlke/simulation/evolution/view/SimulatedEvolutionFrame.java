@@ -35,7 +35,10 @@ import java.awt.image.ImageObserver;
 @Component
 public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, MenuContainer {
 
+    private final SimulatedEvolutionContext ctx;
   private final SimulatedEvolutionCanvas canvas;
+    private final SimulatedEvolutionStatisticsPanel panelStatistics;
+    private final SimulatedEvolutionButtonRowPanel panelButtons;
 
   @Autowired
   public SimulatedEvolutionFrame(
@@ -47,7 +50,10 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, Me
       SimulatedEvolutionPanelCopyright panelCopyright
     ) {
     super(ctx.getProperties().getView().getTitle());
+    this.ctx=ctx;
     this.canvas = canvas;
+    this.panelStatistics =  panelStatistics;
+    this.panelButtons = panelButtons;
     BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
     rootPane.setLayout(layout);
     rootPane.add(panelSubtitle);
@@ -79,7 +85,9 @@ public class SimulatedEvolutionFrame extends JFrame implements ImageObserver, Me
     }
 
     public void repaint(){
-        super.repaint();
+        //super.repaint();
+        panelStatistics.repaint();
         canvas.repaint();
+        panelButtons.repaint();
     }
 }
