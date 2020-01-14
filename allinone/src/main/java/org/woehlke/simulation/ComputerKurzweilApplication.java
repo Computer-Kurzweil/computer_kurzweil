@@ -74,10 +74,9 @@ public class ComputerKurzweilApplication {
      */
     public static void main(String[] args) {
         log.info("Started the Desktop Application");
-        ConfigurableApplicationContext springCtx = new SpringApplicationBuilder(ComputerKurzweilApplication.class)
-            .web(WebApplicationType.NONE)
-            .headless(false)
-            .run(args);
+        ConfigurableApplicationContext springCtx = new SpringApplicationBuilder(
+            ComputerKurzweilApplication.class
+        ).web(WebApplicationType.NONE).headless(false).run(args);
         EventQueue.invokeLater(() -> {
             ComputerKurzweilApplication application = springCtx.getBean(ComputerKurzweilApplication.class);
             application.start();
