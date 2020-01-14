@@ -1,8 +1,10 @@
 package org.woehlke.simulation.mandelbrot.view;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 import javax.accessibility.Accessible;
@@ -26,18 +28,37 @@ public class MandelbrotFrame extends JPanel implements
 
     private final MandelbrotContext ctx;
 
+    @Getter private final PanelSubtitle panelSubtitle;
+    @Getter private final MandelbrotPanelButtons panelButtons;
+    @Getter private final MandelbrotCanvas canvas;
+
+
     @Autowired
     public MandelbrotFrame(
         MandelbrotContext ctx
     ) {
         this.ctx=ctx;
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        this.add(this.ctx.getPanelSubtitle());
-        this.add(this.ctx.getCanvas());
-        this.add(this.ctx.getPanelButtons());
+        this.panelSubtitle = new PanelSubtitle(ctx);
+        this.panelButtons = new MandelbrotPanelButtons(ctx);
+        this.canvas = new MandelbrotCanvas(ctx);
+        this.add(this.panelSubtitle);
+        this.add(this.canvas);
+        this.add(this.panelButtons);
         showMe();
         this.ctx.setFrame(this);
         this.ctx.start();
+        this.canvas.addMouseListener( ctx );
+    }
+
+    public void setModeSwitch() {
+        this.getCanvas().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.getPanelButtons().enableZoomButton();
+    }
+
+    public void setModeZoom() {
+        this.getCanvas().setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        this.getPanelButtons().disableZoomButton();
     }
 
     /**
@@ -46,9 +67,11 @@ public class MandelbrotFrame extends JPanel implements
     public void showMe() {
         try {
             this.setVisible(true);
-            this.ctx.getCanvas().setVisible(true);
-            this.ctx.getPanelSubtitle().setVisible(true);
-            this.ctx.getPanelButtons().setVisible(true);
+            this.canvas.setVisible(true);
+            this.panelSubtitle.setVisible(true);
+            this.panelButtons.setVisible(true);
+            this.panelButtons.repaint();
+            this.canvas.repaint();
         } catch (Exception e){
             log.warning("Error in showMe() "+e.getMessage());
         }
@@ -57,17 +80,17 @@ public class MandelbrotFrame extends JPanel implements
     @Override
     public void repaint(){
         try {
-            this.ctx.getCanvas().repaint();
+            this.canvas.repaint();
         } catch (Exception e){
             log.warning("Error in repaint() "+e.getMessage());
         }
         try {
-            this.ctx.getPanelSubtitle().repaint();
+            this.panelSubtitle.repaint();
         } catch (Exception e){
             log.warning("Error in repaint() "+e.getMessage());
         }
         try {
-            this.ctx.getPanelButtons().repaint();
+            this.panelButtons.repaint();
         } catch (Exception e){
             log.warning("Error in repaint() "+e.getMessage());
         }

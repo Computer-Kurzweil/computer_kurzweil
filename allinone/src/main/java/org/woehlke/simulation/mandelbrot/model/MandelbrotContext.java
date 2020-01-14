@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
@@ -15,11 +14,8 @@ import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
 import org.woehlke.simulation.mandelbrot.model.turing.MandelbrotTuringMachine;
-import org.woehlke.simulation.mandelbrot.view.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
-import org.woehlke.simulation.mandelbrot.view.MandelbrotPanelButtons;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -30,10 +26,7 @@ import java.awt.event.MouseListener;
 public class MandelbrotContext implements MouseListener, ActionListener {
 
     @Getter @Setter private MandelbrotFrame frame;
-    @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotProperties properties;
-    @Getter private final MandelbrotCanvas canvas;
-    @Getter private final PanelSubtitle panelSubtitle;
     @Getter private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     @Getter private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     @Getter private final MandelbrotTuringMachine mandelbrotTuringMachine;
@@ -48,9 +41,6 @@ public class MandelbrotContext implements MouseListener, ActionListener {
        MandelbrotProperties properties
     ) {
         this.properties = properties;
-        this.panelButtons = new MandelbrotPanelButtons(this);
-        this.canvas = new MandelbrotCanvas(this);
-        this.panelSubtitle = new PanelSubtitle(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot(this);
         this.applicationStateMachine = new ApplicationStateMachine(this);
@@ -61,7 +51,6 @@ public class MandelbrotContext implements MouseListener, ActionListener {
     }
 
     public void start() {
-        this.canvas.addMouseListener( this );
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneMandelbrot.start();
         this.mandelbrotTuringMachine.start();
@@ -71,8 +60,6 @@ public class MandelbrotContext implements MouseListener, ActionListener {
     }
 
     public void showMe(){
-        this.getCanvas().repaint();
-        this.getPanelButtons().repaint();
         this.getFrame().showMe();
     }
 
@@ -94,8 +81,7 @@ public class MandelbrotContext implements MouseListener, ActionListener {
         this.gaussianNumberPlaneBaseJulia.setModeSwitch();
         this.gaussianNumberPlaneMandelbrot.setModeSwitch();
         this.getApplicationStateMachine().setModeSwitch();
-        this.getCanvas().setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.getPanelButtons().enableZoomButton();
+        this.setModeSwitch();
         this.showMe();
     }
 
@@ -103,8 +89,7 @@ public class MandelbrotContext implements MouseListener, ActionListener {
         this.gaussianNumberPlaneBaseJulia.setModeZoom();
         this.gaussianNumberPlaneMandelbrot.setModeZoom();
         this.getApplicationStateMachine().setModeZoom();
-        this.getCanvas().setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        this.getPanelButtons().disableZoomButton();
+        this.setModeZoom();
         this.showMe();
     }
 
@@ -133,11 +118,11 @@ public class MandelbrotContext implements MouseListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.getPanelButtons().getRadioButtonsSwitch()) {
+        if (ae.getSource() == frame.getPanelButtons().getRadioButtonsSwitch()) {
             this.setModeSwitch();
-        } else if(ae.getSource() == this.getPanelButtons().getRadioButtonsZoom()) {
+        } else if(ae.getSource() == frame.getPanelButtons().getRadioButtonsZoom()) {
             this.setModeZoom();
-        } else if(ae.getSource() == this.getPanelButtons().getZoomOutButton()){
+        } else if(ae.getSource() == frame.getPanelButtons().getZoomOutButton()){
             this.zoomOut();
         }
         showMe();

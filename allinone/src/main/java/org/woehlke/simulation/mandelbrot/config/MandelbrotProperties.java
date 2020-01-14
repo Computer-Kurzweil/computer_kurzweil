@@ -52,8 +52,8 @@ public class MandelbrotProperties {
     @Transient
     public LatticePoint getWorldDimensions() {
         return new LatticePoint(
-            this.getWidth(),
-            this.getHeight()
+            this.width,
+            this.height
         );
     }
 
