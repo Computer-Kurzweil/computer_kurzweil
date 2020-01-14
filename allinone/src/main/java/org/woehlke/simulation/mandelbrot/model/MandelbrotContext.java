@@ -80,16 +80,16 @@ public class MandelbrotContext implements MouseListener, ActionListener {
     public void setModeSwitch() {
         this.gaussianNumberPlaneBaseJulia.setModeSwitch();
         this.gaussianNumberPlaneMandelbrot.setModeSwitch();
-        this.getApplicationStateMachine().setModeSwitch();
-        this.setModeSwitch();
+        this.applicationStateMachine.setModeSwitch();
+        this.frame.setModeSwitch();
         this.showMe();
     }
 
     public void setModeZoom() {
         this.gaussianNumberPlaneBaseJulia.setModeZoom();
         this.gaussianNumberPlaneMandelbrot.setModeZoom();
-        this.getApplicationStateMachine().setModeZoom();
-        this.setModeZoom();
+        this.applicationStateMachine.setModeZoom();
+        this.frame.setModeZoom();
         this.showMe();
     }
 

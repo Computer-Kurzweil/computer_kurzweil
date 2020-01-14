@@ -82,22 +82,22 @@ public class MandelbrotFrame extends JPanel implements
         try {
             this.canvas.repaint();
         } catch (Exception e){
-            log.warning("Error in repaint() "+e.getMessage());
+            log.warning("Error MandelbrotFrame.repaint() -> canvas.repaint() "+e.getMessage());
         }
         try {
             this.panelSubtitle.repaint();
         } catch (Exception e){
-            log.warning("Error in repaint() "+e.getMessage());
+            log.warning("Error MandelbrotFrame.repaint() ->  panelSubtitle.repaint() "+e.getMessage());
         }
         try {
             this.panelButtons.repaint();
         } catch (Exception e){
-            log.warning("Error in repaint() "+e.getMessage());
+            log.warning("Error MandelbrotFrame.repaint() -> panelButtons.repaint() "+e.getMessage());
         }
         try {
             super.repaint();
         } catch (Exception e){
-            log.warning("Error in repaint() "+e.getMessage());
+            log.warning("Error MandelbrotFrame.repaint() -> super.repaint() "+e.getMessage());
         }
     }
 

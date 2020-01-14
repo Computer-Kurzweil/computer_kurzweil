@@ -25,7 +25,7 @@ public class ComputeMandelbrotSetThread extends Thread implements Runnable {
             log.info(".");
             ctx.getMandelbrotTuringMachine().step();
             log.info("[");
-            ctx.getCanvas().repaint();
+            ctx.getFrame().getCanvas().repaint();
             log.info("]");
             try {
                 Thread.sleep(1);
