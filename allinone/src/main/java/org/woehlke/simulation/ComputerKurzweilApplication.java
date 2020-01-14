@@ -11,8 +11,10 @@ import org.springframework.context.annotation.Import;
 import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
 import org.woehlke.simulation.allinone.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.simulation.cca.config.CyclicCellularAutomatonProperties;
+import org.woehlke.simulation.dla.config.DiffusionLimitedAggregationProperties;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
+import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 
 import java.awt.*;
 import java.util.logging.Logger;
@@ -42,7 +44,9 @@ import java.util.logging.Logger;
 @Import({
     ComputerKurzweilProperties.class,
     SimulatedEvolutionProperties.class,
-    CyclicCellularAutomatonProperties.class
+    CyclicCellularAutomatonProperties.class,
+    MandelbrotProperties.class,
+    DiffusionLimitedAggregationProperties.class
 })
 public class ComputerKurzweilApplication {
 

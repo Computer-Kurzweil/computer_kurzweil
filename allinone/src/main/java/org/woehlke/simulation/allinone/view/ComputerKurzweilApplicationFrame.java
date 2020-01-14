@@ -14,12 +14,18 @@ import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 import javax.accessibility.Accessible;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
 @Log
 @Component
-public class ComputerKurzweilApplicationFrame extends JFrame implements MenuContainer, ImageObserver, Serializable, Accessible {
+public class ComputerKurzweilApplicationFrame extends JFrame implements
+    MenuContainer,
+    ImageObserver,
+    Serializable,
+    Accessible, WindowListener {
 
     private final Bounds bounds;
 
@@ -28,32 +34,36 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
 
     @Getter
     private final SimulatedEvolutionFrame simulatedEvolutionFrame;
+    /*
     @Getter
     private final MandelbrotFrame mandelbrotFrame;
     @Getter
     private final CyclicCellularAutomatonFrame cyclicCellularAutomatonFrame;
     @Getter
     private final DiffusionLimitedAggregationFrame diffusionLimitedAggregationFrame;
-
+*/
     @Autowired
     public ComputerKurzweilApplicationFrame(
         ComputerKurzweilApplicationContext ctx,
-        SimulatedEvolutionFrame simulatedEvolutionFrame,
+        SimulatedEvolutionFrame simulatedEvolutionFrame/*,
         MandelbrotFrame mandelbrotFrame,
         CyclicCellularAutomatonFrame cyclicCellularAutomatonFrame,
-        DiffusionLimitedAggregationFrame diffusionLimitedAggregationFrame
+        DiffusionLimitedAggregationFrame diffusionLimitedAggregationFrame*/
     ) throws HeadlessException {
         super(ctx.getProperties().getView().getTitle());
         this.ctx = ctx;
-        this.simulatedEvolutionFrame = simulatedEvolutionFrame;
+        this.simulatedEvolutionFrame = simulatedEvolutionFrame;/*
         this.mandelbrotFrame = mandelbrotFrame;
         this.cyclicCellularAutomatonFrame = cyclicCellularAutomatonFrame;
-        this.diffusionLimitedAggregationFrame = diffusionLimitedAggregationFrame;
+        this.diffusionLimitedAggregationFrame = diffusionLimitedAggregationFrame;*/
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.Y_AXIS);
         rootPane.setLayout(layout);
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.add(this.simulatedEvolutionFrame.getCtx().getProperties().getView().getTitle(), this.simulatedEvolutionFrame);
-        tabbedPane.add(this.mandelbrotFrame.getCtx().getProperties().getTitle(), this.mandelbrotFrame);
+        tabbedPane.add(
+            this.simulatedEvolutionFrame.getCtx().getProperties().getView().getTitle(),
+            this.simulatedEvolutionFrame
+        );
+        //tabbedPane.add(this.mandelbrotFrame.getCtx().getProperties().getTitle(), this.mandelbrotFrame);
         //tabbedPane.add(this.cyclicCellularAutomatonFrame.getCtx().getProperties().getTitle(), this.cyclicCellularAutomatonFrame);
         //tabbedPane.add(this.diffusionLimitedAggregationFrame.getCtx().getProperties().getTitle(), this.diffusionLimitedAggregationFrame);
         rootPane.add(tabbedPane);
@@ -63,6 +73,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         bounds = new Bounds(height,width,screenSize);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(this);
         showMe();
     }
 
@@ -94,5 +105,30 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
     public void repaint(){
         super.repaint();
         this.getSimulatedEvolutionFrame().repaint();
+    }
+
+    public void windowOpened(WindowEvent e) {
+        showMe();
+    }
+
+    public void windowClosing(WindowEvent e) {
+        System.exit(0);
+    }
+
+    public void windowClosed(WindowEvent e) {
+        System.exit(0);
+    }
+
+    public void windowIconified(WindowEvent e) { }
+
+    public void windowDeiconified(WindowEvent e) {
+        showMe();
+    }
+
+    public void windowActivated(WindowEvent e) {
+        toFront();
+    }
+
+    public void windowDeactivated(WindowEvent e) {
     }
 }

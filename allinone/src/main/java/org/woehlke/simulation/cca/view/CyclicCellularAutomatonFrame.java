@@ -34,8 +34,7 @@ import java.io.Serializable;
 public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserver,
         MenuContainer,
         Serializable,
-        Accessible,
-        WindowListener {
+        Accessible {
 
     private static final long serialVersionUID = 4357793241219932594L;
 
@@ -58,7 +57,6 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
         rootPane.add(this.subtitle);
         rootPane.add(this.canvas);
         rootPane.add(this.panelButtons);
-        addWindowListener(this);
     }
 
     public void start() {
@@ -73,28 +71,4 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
         toFront();
     }
 
-    public void windowOpened(WindowEvent e) {
-        showMe();
-    }
-
-    public void windowClosing(WindowEvent e) {
-        System.exit(0);
-    }
-
-    public void windowClosed(WindowEvent e) {
-        System.exit(0);
-    }
-
-    public void windowIconified(WindowEvent e) { }
-
-    public void windowDeiconified(WindowEvent e) {
-        showMe();
-    }
-
-    public void windowActivated(WindowEvent e) {
-        toFront();
-    }
-
-    public void windowDeactivated(WindowEvent e) {
-    }
 }

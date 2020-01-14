@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/ComputeMandelbrotSetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/ComputeMandelbrotSetThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/MandelbrotTuringMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/MandelbrotTuringMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +329,7 @@
       <workItem from="1578949787166" duration="3640000" />
       <workItem from="1578953683346" duration="10000" />
       <workItem from="1579007518341" duration="6680000" />
-      <workItem from="1579025303038" duration="4870000" />
+      <workItem from="1579025303038" duration="5970000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -486,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579017059191</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="switch from one app to allinone app">
+      <created>1579036880359</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1579036880359</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,25 +555,25 @@
     <state x="414" y="109" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579014597777" />
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1237" height="279" key="GridCell.Tab.0.bottom" timestamp="1579036630226">
+    <state width="1237" height="443" key="GridCell.Tab.0.bottom" timestamp="1579037173018">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="279" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1237" height="443" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579037173018" />
     <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
-    <state width="1237" height="279" key="GridCell.Tab.0.center" timestamp="1579036630226">
+    <state width="1237" height="443" key="GridCell.Tab.0.center" timestamp="1579037173018">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="279" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1237" height="443" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579037173018" />
     <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="279" key="GridCell.Tab.0.left" timestamp="1579036630226">
+    <state width="1237" height="443" key="GridCell.Tab.0.left" timestamp="1579037173018">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="279" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1237" height="443" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579037173018" />
     <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="279" key="GridCell.Tab.0.right" timestamp="1579036630226">
+    <state width="1237" height="443" key="GridCell.Tab.0.right" timestamp="1579037173018">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="279" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1237" height="443" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579037173018" />
     <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
     <state x="352" y="96" key="MultipleFileMergeDialog" timestamp="1579035031590">
       <screen x="0" y="0" width="1280" height="760" />

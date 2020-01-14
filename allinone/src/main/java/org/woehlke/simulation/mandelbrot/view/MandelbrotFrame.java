@@ -28,7 +28,8 @@ import java.awt.image.ImageObserver;
 public class MandelbrotFrame extends JPanel implements
         ImageObserver,
         MenuContainer,
-        Accessible, ActionListener {
+        Accessible,
+        ActionListener {
 
     @Getter private final MandelbrotContext ctx;
 
