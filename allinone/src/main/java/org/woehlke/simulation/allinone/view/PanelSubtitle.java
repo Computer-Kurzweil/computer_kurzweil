@@ -30,7 +30,7 @@ public class PanelSubtitle extends JPanel {
     }
 
     public PanelSubtitle(CyclicCellularAutomatonContext ctx) {
-        this.subtitleLabel = new JLabel(ctx.getConfig().getSubtitle());
+        this.subtitleLabel = new JLabel(ctx.getProperties().getSubtitle());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         this.add(subtitleLabel);

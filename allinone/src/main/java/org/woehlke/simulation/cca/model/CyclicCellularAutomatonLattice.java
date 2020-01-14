@@ -48,15 +48,15 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     private void initCreateLattice(){
         lattice = new int[2]
-            [(int) this.ctx.getConfig().getLatticeDimensions().getX()]
-            [(int) this.ctx.getConfig().getLatticeDimensions().getY()];
+            [(int) this.ctx.getProperties().getLatticeDimensions().getX()]
+            [(int) this.ctx.getProperties().getLatticeDimensions().getY()];
         source = 0;
         target = 1;
     }
 
     private void initFillLatticeByRandom(){
-        for(int y = 0; y<this.ctx.getConfig().getLatticeDimensions().getY(); y++){
-            for(int x = 0; x<this.ctx.getConfig().getLatticeDimensions().getX(); x++){
+        for(int y = 0; y<this.ctx.getProperties().getLatticeDimensions().getY(); y++){
+            for(int x = 0; x<this.ctx.getProperties().getLatticeDimensions().getX(); x++){
                 lattice[source][x][y] = random.nextInt(ctx.getColorScheme().getMaxState());
             }
         }
@@ -64,7 +64,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     public synchronized void step(){
         //System.out.print(".");
-        Point worldDimensions = this.ctx.getConfig().getLatticeDimensions();
+        Point worldDimensions = this.ctx.getProperties().getLatticeDimensions();
         for(int y = 0; y < worldDimensions.getY(); y++){
             for(int x = 0; x < worldDimensions.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];

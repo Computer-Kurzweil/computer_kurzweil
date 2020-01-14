@@ -40,7 +40,7 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     @Autowired
     public CyclicCellularAutomatonFrame(CyclicCellularAutomatonContext ctx) {
-        super(ctx.getConfig().getTitle());
+        super(ctx.getProperties().getTitle());
         this.ctx=ctx;
         ctx.setFrame(this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
@@ -55,7 +55,7 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     public void showMe() {
         pack();
-        this.setBounds(ctx.getConfig().getFrameBounds());
+        this.setBounds(ctx.getProperties().getFrameBounds());
         setVisible(true);
         toFront();
     }

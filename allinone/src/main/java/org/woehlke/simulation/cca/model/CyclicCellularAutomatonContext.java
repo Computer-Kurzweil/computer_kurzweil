@@ -26,7 +26,6 @@ public class CyclicCellularAutomatonContext {
     @Getter @Setter private volatile CyclicCellularAutomatonCanvas canvas;
     @Getter @Setter private volatile CyclicCellularAutomatonLattice lattice;
     @Getter @Setter private volatile CyclicCellularAutomatonFrame frame;
-    @Getter @Setter private volatile CyclicCellularAutomatonProperties config;
     @Getter @Setter private volatile CyclicCellularAutomatonColorScheme colorScheme;
     @Getter @Setter private volatile CyclicCellularAutomatonButtonsPanel panelButtons;
     @Getter @Setter private volatile PanelSubtitle subtitle;
@@ -35,7 +34,6 @@ public class CyclicCellularAutomatonContext {
     @Autowired
     public CyclicCellularAutomatonContext(CyclicCellularAutomatonProperties properties) {
         this.properties = properties;
-        this.config = new CyclicCellularAutomatonProperties();
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
         this.lattice = new CyclicCellularAutomatonLattice(this);
         this.canvas = new CyclicCellularAutomatonCanvas(this);
