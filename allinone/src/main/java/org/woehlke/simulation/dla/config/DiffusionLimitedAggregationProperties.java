@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 @Configuration
 @Valid
 @Validated
-@AllArgsConstructor
+@NoArgsConstructor
 @ConfigurationProperties("org.woehlke.simulation.dla.config")
 public class DiffusionLimitedAggregationProperties {
 

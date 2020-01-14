@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.view.PanelCopyright;
-import org.woehlke.simulation.allinone.view.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.parts.PanelCopyright;
+import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
@@ -69,18 +69,16 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
           this.add(this.panelButtons);
       }
 
-    /**
-     * TODO write doc.
-     */
     public void showMe() {
         this.setVisible(true);
         this.canvas.setVisible(true);
         this.panelButtons.setVisible(true);
         this.statisticsPanel.setVisible(true);
         this.setVisible(true);
-        repaint();
+        //repaint();
     }
 
+    /*
     public void repaint(){
         try {
             this.canvas.repaint();
@@ -92,6 +90,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
         }
         super.repaint();
     }
+*/
 
     public void start() {
         showMe();

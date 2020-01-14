@@ -1,31 +1,35 @@
 package org.woehlke.simulation.mandelbrot.control;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
+import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotCanvas;
+import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
 
 @Log
-@Component
 public class ComputeMandelbrotSetThread extends Thread implements Runnable {
 
     private final MandelbrotContext ctx;
 
-    @Autowired
-    public ComputeMandelbrotSetThread(MandelbrotContext ctx) {
+    @Getter private final MandelbrotPanelButtons panelButtons;
+    @Getter private final MandelbrotCanvas canvas;
+
+    public ComputeMandelbrotSetThread(MandelbrotContext ctx, MandelbrotPanelButtons panelButtons, MandelbrotCanvas canvas) {
         super("ComputeMandelbrotSetThread");
         this.ctx = ctx;
+        this.panelButtons = panelButtons;
+        this.canvas = canvas;
     }
 
     public void run() {
-        ctx.getMandelbrotTuringMachine().start();
+        canvas.getMandelbrotTuringMachine().start();
         ctx.showMe();
         log.info(" ( ");
-        while( ! ctx.getMandelbrotTuringMachine().isFinished()){
+        while( ! canvas.getMandelbrotTuringMachine().isFinished()){
             log.info(".");
-            ctx.getMandelbrotTuringMachine().step();
+            canvas.getMandelbrotTuringMachine().step();
             log.info("[");
-            ctx.getFrame().getCanvas().repaint();
+            this.canvas.repaint();
             log.info("]");
             try {
                 Thread.sleep(1);

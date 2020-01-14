@@ -1,9 +1,10 @@
 package org.woehlke.simulation.dla.view;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.view.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.dla.control.DiffusionLimitedAggregationControllerThread;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
 
@@ -33,6 +34,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     private final PanelSubtitle subtitle;
     private final DiffusionLimitedAggregationControllerThread controllerThread;
     private final DiffusionLimitedAggregationCanvas canvas;
+    @Getter
     private final DiffusionLimitedAggregatioContext ctx;
 
     @Autowired

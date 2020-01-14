@@ -1,10 +1,13 @@
 package org.woehlke.simulation.cca.view;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
+import org.woehlke.simulation.cca.control.CyclicCellularAutomatonController;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import javax.accessibility.Accessible;
@@ -36,20 +39,30 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    private CyclicCellularAutomatonContext ctx;
+    @Getter private final CyclicCellularAutomatonContext ctx;
+    @Getter private final CyclicCellularAutomatonController controller;
+    @Getter private final CyclicCellularAutomatonCanvas canvas;
+    @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
+    @Getter private final PanelSubtitle subtitle;
 
     @Autowired
     public CyclicCellularAutomatonFrame(CyclicCellularAutomatonContext ctx) {
         super(ctx.getProperties().getTitle());
         this.ctx=ctx;
-        ctx.setFrame(this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
+        this.canvas = new CyclicCellularAutomatonCanvas(   this.ctx);
+        this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
+        this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
+        this.subtitle = new PanelSubtitle(   this.ctx);
         rootPane.setLayout(layout);
-        rootPane.add(ctx.getSubtitle());
-        rootPane.add(ctx.getCanvas());
-        rootPane.add(ctx.getPanelButtons());
+        rootPane.add(this.subtitle);
+        rootPane.add(this.canvas);
+        rootPane.add(this.panelButtons);
         addWindowListener(this);
-        ctx.getController().start();
+    }
+
+    public void start() {
+        this.controller.start();
         showMe();
     }
 

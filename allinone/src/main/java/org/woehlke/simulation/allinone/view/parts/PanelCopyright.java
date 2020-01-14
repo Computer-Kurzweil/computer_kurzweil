@@ -1,4 +1,4 @@
-package org.woehlke.simulation.allinone.view;
+package org.woehlke.simulation.allinone.view.parts;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,17 +20,18 @@ public class PanelCopyright extends JPanel {
     private final JLabel copyrightLabel;
 
     public PanelCopyright(CyclicCellularAutomatonContext ctx) {
-        this.copyrightLabel = new JLabel(ctx.getProperties().getCopyright());
         FlowLayout layout = new FlowLayout();
+        layout.setAlignment(FlowLayout.CENTER);
         this.setLayout(layout);
+        this.copyrightLabel = new JLabel(ctx.getProperties().getCopyright());
         this.add(copyrightLabel);
     }
 
     public PanelCopyright(SimulatedEvolutionContext ctx) {
         FlowLayout layout = new FlowLayout();
-        this.copyrightLabel = new JLabel(ctx.getProperties().getView().getFooter());
         layout.setAlignment(FlowLayout.CENTER);
         this.setLayout(layout);
+        this.copyrightLabel = new JLabel(ctx.getProperties().getView().getFooter());
         this.add(this.copyrightLabel);
     }
 }

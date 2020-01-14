@@ -1,10 +1,14 @@
 package org.woehlke.simulation.cca.control;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
+import org.woehlke.simulation.cca.view.CyclicCellularAutomatonButtonsPanel;
+import org.woehlke.simulation.cca.view.CyclicCellularAutomatonCanvas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 /**
@@ -20,20 +24,27 @@ import java.io.Serializable;
 @Log
 @Component
 public class CyclicCellularAutomatonController extends Thread
-        implements Runnable, Serializable {
+        implements Runnable, Serializable , ActionListener {
 
     private static final int THREAD_SLEEP_TIME = 100;
-
     private static final long serialVersionUID = 3642865135701767557L;
 
     private Boolean goOn;
 
-    private final CyclicCellularAutomatonContext ctx;
+    @Getter private final CyclicCellularAutomatonCanvas canvas;
+    @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
 
     @Autowired
-    public CyclicCellularAutomatonController(CyclicCellularAutomatonContext ctx) {
-        this.ctx = ctx;
+    public CyclicCellularAutomatonController(
+        CyclicCellularAutomatonCanvas canvas,
+        CyclicCellularAutomatonButtonsPanel panelButtons
+    ) {
+        this.canvas = canvas;
+        this.panelButtons = panelButtons;
         goOn = Boolean.TRUE;
+        panelButtons.getButtonVonNeumann().addActionListener(  this);
+        panelButtons.getButtonMoore().addActionListener(  this);
+        panelButtons.getButtonWoehlke().addActionListener(  this);
     }
 
     public void run() {
@@ -42,8 +53,8 @@ public class CyclicCellularAutomatonController extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            ctx.getLattice().step();
-            ctx.getCanvas().repaint();
+            this.canvas.getLattice().step();
+            this.canvas.repaint();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
@@ -56,16 +67,14 @@ public class CyclicCellularAutomatonController extends Thread
         }
     }
 
-
-    public void pushButtonVonNeumann() {
-        ctx.getLattice().startVonNeumann();
-    }
-
-    public void pushButtonMoore() {
-        ctx.getLattice().startMoore();
-    }
-
-    public void pushButtonWoehlke() {
-        ctx.getLattice().startWoehlke();
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == panelButtons.getButtonVonNeumann()) {
+            this.canvas.getLattice().startVonNeumann();
+        } else if (ae.getSource() == panelButtons.getButtonMoore()) {
+            this.canvas.getLattice().startMoore();
+        } else if (ae.getSource() == panelButtons.getButtonWoehlke()) {
+            this.canvas.getLattice().startWoehlke();
+        }
     }
 }

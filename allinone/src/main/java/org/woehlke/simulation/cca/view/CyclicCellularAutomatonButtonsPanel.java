@@ -1,6 +1,7 @@
 package org.woehlke.simulation.cca.view;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,22 +10,16 @@ import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-
-/**
- * TODO write doc.
- */
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
 @Component
-public class CyclicCellularAutomatonButtonsPanel extends JPanel implements ActionListener {
+public class CyclicCellularAutomatonButtonsPanel extends JPanel {
 
-  private final JButton buttonVonNeumann;
-  private final JButton buttonMoore;
-  private final JButton buttonWoehlke;
+  @Getter private final JButton buttonVonNeumann;
+  @Getter private final JButton buttonMoore;
+  @Getter private final JButton buttonWoehlke;
   private final CyclicCellularAutomatonContext ctx;
 
   @Autowired
@@ -40,22 +35,6 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Actio
     this.add(this.buttonVonNeumann);
     this.add(this.buttonMoore);
     this.add(this.buttonWoehlke);
-    this.buttonVonNeumann.addActionListener(this);
-    this.buttonMoore.addActionListener(this);
-    this.buttonWoehlke.addActionListener(this);
   }
 
-  /**
-   * TODO write doc.
-   */
-  @Override
-  public void actionPerformed(ActionEvent ae) {
-    if (ae.getSource() == this.buttonVonNeumann) {
-        this.ctx.getController().pushButtonVonNeumann();
-    } else if (ae.getSource() == this.buttonMoore) {
-        this.ctx.getController().pushButtonMoore();
-    } else if (ae.getSource() == this.buttonWoehlke) {
-        this.ctx.getController().pushButtonWoehlke();
-    }
-  }
 }

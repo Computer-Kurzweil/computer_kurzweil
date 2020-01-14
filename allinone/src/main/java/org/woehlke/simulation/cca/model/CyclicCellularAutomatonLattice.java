@@ -24,7 +24,6 @@ import static org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType.*;
 @Log
 @ToString
 @EqualsAndHashCode
-@Component
 public class CyclicCellularAutomatonLattice implements Serializable {
 
     private static final long serialVersionUID = -594681595882016258L;
@@ -39,7 +38,6 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     private volatile LatticeNeighbourhoodType neighbourhood;
 
-    @Autowired
     public CyclicCellularAutomatonLattice(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
         random = new Random(new Date().getTime());
@@ -129,19 +127,19 @@ public class CyclicCellularAutomatonLattice implements Serializable {
         return this.lattice[source][x][y];
     }
 
-    public synchronized void startVonNeumann() {
+    public void startVonNeumann() {
         initCreateLattice();
         initFillLatticeByRandom();
         this.neighbourhood=VON_NEUMANN_NEIGHBORHOOD;
     }
 
-    public synchronized void startMoore() {
+    public void startMoore() {
         initCreateLattice();
         initFillLatticeByRandom();
         this.neighbourhood=MOORE_NEIGHBORHOOD;
     }
 
-    public synchronized void startWoehlke() {
+    public void startWoehlke() {
         initCreateLattice();
         initFillLatticeByRandom();
         this.neighbourhood=WOEHLKE_NEIGHBORHOOD;

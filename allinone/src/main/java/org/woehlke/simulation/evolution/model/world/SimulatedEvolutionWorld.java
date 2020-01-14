@@ -68,7 +68,7 @@ public class SimulatedEvolutionWorld {
           populationCensus.countStatusOfOneCell(cell.getLifeCycleStatus());
       }
       log.info(populationCensus.toString());
-      statisticsContainer.add(populationCensus);
+      statisticsContainer.push(populationCensus);
   }
 
   /**
@@ -102,7 +102,7 @@ public class SimulatedEvolutionWorld {
     for (Cell cell : cells) {
         oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
     }
-    statisticsContainer.add(oneStatisticsTimestamp);
+    statisticsContainer.push(oneStatisticsTimestamp);
   }
 
   public List<Cell> getAllCells() {

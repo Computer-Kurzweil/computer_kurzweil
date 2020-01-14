@@ -5,6 +5,9 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.view.parts.Bounds;
+import org.woehlke.simulation.cca.view.CyclicCellularAutomatonFrame;
+import org.woehlke.simulation.dla.view.DiffusionLimitedAggregationFrame;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 
@@ -25,22 +28,35 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
 
     @Getter
     private final SimulatedEvolutionFrame simulatedEvolutionFrame;
-
     @Getter
     private final MandelbrotFrame mandelbrotFrame;
+    @Getter
+    private final CyclicCellularAutomatonFrame cyclicCellularAutomatonFrame;
+    @Getter
+    private final DiffusionLimitedAggregationFrame diffusionLimitedAggregationFrame;
 
     @Autowired
     public ComputerKurzweilApplicationFrame(
         ComputerKurzweilApplicationContext ctx,
         SimulatedEvolutionFrame simulatedEvolutionFrame,
-        MandelbrotFrame mandelbrotFrame
+        MandelbrotFrame mandelbrotFrame,
+        CyclicCellularAutomatonFrame cyclicCellularAutomatonFrame,
+        DiffusionLimitedAggregationFrame diffusionLimitedAggregationFrame
     ) throws HeadlessException {
         super(ctx.getProperties().getView().getTitle());
         this.ctx = ctx;
         this.simulatedEvolutionFrame = simulatedEvolutionFrame;
         this.mandelbrotFrame = mandelbrotFrame;
-        rootPane.setLayout(new BoxLayout(rootPane, BoxLayout.PAGE_AXIS));
-        rootPane.add(simulatedEvolutionFrame);
+        this.cyclicCellularAutomatonFrame = cyclicCellularAutomatonFrame;
+        this.diffusionLimitedAggregationFrame = diffusionLimitedAggregationFrame;
+        BoxLayout layout = new BoxLayout(rootPane, BoxLayout.Y_AXIS);
+        rootPane.setLayout(layout);
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.add(this.simulatedEvolutionFrame.getCtx().getProperties().getView().getTitle(), this.simulatedEvolutionFrame);
+        tabbedPane.add(this.mandelbrotFrame.getCtx().getProperties().getTitle(), this.mandelbrotFrame);
+        //tabbedPane.add(this.cyclicCellularAutomatonFrame.getCtx().getProperties().getTitle(), this.cyclicCellularAutomatonFrame);
+        //tabbedPane.add(this.diffusionLimitedAggregationFrame.getCtx().getProperties().getTitle(), this.diffusionLimitedAggregationFrame);
+        rootPane.add(tabbedPane);
         pack();
         double height = rootPane.getHeight();
         double width = rootPane.getWidth();

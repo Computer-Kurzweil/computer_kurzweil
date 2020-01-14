@@ -2,17 +2,15 @@ package org.woehlke.simulation.allinone.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
-import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
-
+import org.woehlke.simulation.cca.config.CyclicCellularAutomatonProperties;
+import org.woehlke.simulation.dla.config.DiffusionLimitedAggregationProperties;
+import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
+import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 
 @Log
 @ToString
@@ -20,20 +18,26 @@ import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 @Component
 public class ComputerKurzweilApplicationContext {
 
-    @Getter
-    private final ComputerKurzweilProperties properties;
+    @Getter private final ComputerKurzweilProperties computerKurzweilProperties;
 
-    @Getter @Setter
-    private MandelbrotContext mandelbrotContext;
-
-    @Getter @Setter
-    private SimulatedEvolutionContext simulatedEvolutionContext;
+    @Getter private final MandelbrotProperties mandelbrotProperties;
+    @Getter private final SimulatedEvolutionProperties simulatedEvolutionProperties;
+    @Getter private final DiffusionLimitedAggregationProperties diffusionLimitedAggregationProperties;
+    @Getter private final CyclicCellularAutomatonProperties cyclicCellularAutomatonProperties;
 
     @Autowired
     public ComputerKurzweilApplicationContext(
-        ComputerKurzweilProperties properties
+        ComputerKurzweilProperties computerKurzweilProperties,
+        MandelbrotProperties mandelbrotProperties,
+        SimulatedEvolutionProperties simulatedEvolutionProperties,
+        DiffusionLimitedAggregationProperties diffusionLimitedAggregationProperties,
+        CyclicCellularAutomatonProperties cyclicCellularAutomatonProperties
     ) {
-        this.properties = properties;
+        this.computerKurzweilProperties = computerKurzweilProperties;
+        this.mandelbrotProperties = mandelbrotProperties;
+        this.simulatedEvolutionProperties = simulatedEvolutionProperties;
+        this.diffusionLimitedAggregationProperties = diffusionLimitedAggregationProperties;
+        this.cyclicCellularAutomatonProperties = cyclicCellularAutomatonProperties;
     }
 
     public void exit() {

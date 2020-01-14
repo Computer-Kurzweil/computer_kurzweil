@@ -1,9 +1,9 @@
 package org.woehlke.simulation.mandelbrot.view.parts;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.view.PanelBorder;
-import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
+import org.woehlke.simulation.allinone.view.parts.PanelBorder;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 import javax.swing.*;
@@ -37,6 +37,9 @@ public class MandelbrotPanelButtons extends JPanel {
 
     private final MandelbrotContext ctx;
 
+    @Getter @Setter
+    private MandelbrotCanvas canvas;
+
     public MandelbrotPanelButtons(MandelbrotContext ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
@@ -68,15 +71,12 @@ public class MandelbrotPanelButtons extends JPanel {
         this.add(panelZoomButtons);
         this.radioButtonsSwitch.setSelected( true );
         this.disableZoomButton();
-        this.radioButtonsSwitch.addActionListener(this.ctx);
-        this.radioButtonsZoom.addActionListener(this.ctx);
-        this.zoomOutButton.addActionListener(this.ctx);
     }
 
     @Override
     public void repaint() {
         try {
-            String text = ctx.getZoomLevel();
+            String text = canvas.getZoomLevel();
             this.zoomLevelField.setText(text);
             this.zoomLevelField.repaint();
         } catch (NullPointerException e){

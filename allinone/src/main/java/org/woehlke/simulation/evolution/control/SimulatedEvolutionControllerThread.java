@@ -43,14 +43,20 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
 
   public SimulatedEvolutionControllerThread(
       SimulatedEvolutionContext ctx,
-      SimulatedEvolutionWorld world, SimulatedEvolutionStatisticsPanel statisticsPanel, SimulatedEvolutionButtonRowPanel panelButtons, SimulatedEvolutionFrame frame) {
+      SimulatedEvolutionWorld world,
+      SimulatedEvolutionStatisticsPanel statisticsPanel,
+      SimulatedEvolutionButtonRowPanel panelButtons,
+      SimulatedEvolutionFrame frame
+  ) {
       this.ctx = ctx;
       this.world = world;
       this.statisticsPanel = statisticsPanel;
       this.panelButtons = panelButtons;
       this.frame = frame;
       this.mySemaphore = Boolean.TRUE;
-      this.panelButtons.registerController(this);
+      this.panelButtons.getButtonFoodPerDayIncrease().addActionListener(this);
+      this.panelButtons.getButtonFoodPerDayDecrease().addActionListener(this);
+      this.panelButtons.getButtonToggleGardenOfEden().addActionListener(this);
   }
 
     @Override
@@ -147,7 +153,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     synchronized (mySemaphore) {
       mySemaphore = Boolean.FALSE;
     }
-    System.exit(ctx.getProperties().getControl().getExitStatus());
+   //System.exit(ctx.getProperties().getControl().getExitStatus());
   }
 
   public void toggleGardenOfEden(){

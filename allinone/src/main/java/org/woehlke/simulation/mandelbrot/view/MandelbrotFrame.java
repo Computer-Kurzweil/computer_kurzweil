@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.view.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
@@ -12,6 +12,8 @@ import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
 import javax.accessibility.Accessible;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
 
 /**
@@ -26,49 +28,48 @@ import java.awt.image.ImageObserver;
 public class MandelbrotFrame extends JPanel implements
         ImageObserver,
         MenuContainer,
-        Accessible {
+        Accessible, ActionListener {
 
-    private final MandelbrotContext ctx;
+    @Getter private final MandelbrotContext ctx;
 
     @Getter private final PanelSubtitle panelSubtitle;
     @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotCanvas canvas;
-
 
     @Autowired
     public MandelbrotFrame(
         MandelbrotContext ctx
     ) {
         this.ctx=ctx;
-        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.panelSubtitle = new PanelSubtitle(ctx);
         this.panelButtons = new MandelbrotPanelButtons(ctx);
-        this.canvas = new MandelbrotCanvas(ctx);
+        this.canvas = new MandelbrotCanvas(ctx, this.panelButtons,this);
+        this.panelButtons.setCanvas(this.canvas);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.panelButtons);
-        this.canvas.addMouseListener( ctx );
-        this.ctx.setFrame(this);
+        this.canvas.addMouseListener( canvas );
+        this.getPanelButtons().getRadioButtonsSwitch().addActionListener(this);
+        this.getPanelButtons().getRadioButtonsZoom().addActionListener(this);
+        this.getPanelButtons().getZoomOutButton().addActionListener(this);
     }
 
     public void start() {
+        this.canvas.start();
         showMe();
-        this.ctx.start();
     }
 
     public void setModeSwitch() {
-        this.canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.canvas.setModeSwitch();
         this.panelButtons.enableZoomButton();
     }
 
     public void setModeZoom() {
-        this.canvas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        this.canvas.setModeZoom();
         this.panelButtons.disableZoomButton();
     }
 
-    /**
-     * TODO write doc.
-     */
     public void showMe() {
         try {
             this.setVisible(true);
@@ -105,4 +106,15 @@ public class MandelbrotFrame extends JPanel implements
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == this.getPanelButtons().getRadioButtonsSwitch()) {
+            this.setModeSwitch();
+        } else if(ae.getSource() == this.getPanelButtons().getRadioButtonsZoom()) {
+            this.setModeZoom();
+        } else if(ae.getSource() == this.getPanelButtons().getZoomOutButton()){
+            this.canvas.zoomOut();
+        }
+        showMe();
+    }
 }

@@ -20,7 +20,7 @@ import java.awt.*;
 @Configuration
 @Valid
 @Validated
-@AllArgsConstructor
+@NoArgsConstructor
 @ConfigurationProperties("org.woehlke.simulation.cca.config")
 public class CyclicCellularAutomatonProperties {
 

@@ -1,4 +1,4 @@
-package org.woehlke.simulation.allinone.view;
+package org.woehlke.simulation.allinone.view.parts;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,9 +11,7 @@ import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * TODO write doc.
- */
+
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
@@ -23,27 +21,27 @@ public class PanelSubtitle extends JPanel {
     private final JLabel subtitleLabel;
 
     public PanelSubtitle(String text) {
-        this.subtitleLabel = new JLabel(text);
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
+        this.subtitleLabel = new JLabel(text);
         this.add(subtitleLabel);
     }
 
     public PanelSubtitle(CyclicCellularAutomatonContext ctx) {
-        this.subtitleLabel = new JLabel(ctx.getProperties().getSubtitle());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
+        this.subtitleLabel = new JLabel(ctx.getProperties().getSubtitle());
         this.add(subtitleLabel);
     }
 
     public PanelSubtitle(SimulatedEvolutionContext ctx) {
-        this.subtitleLabel = new JLabel(ctx.getProperties().getView().getSubtitle());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
+        this.subtitleLabel = new JLabel(ctx.getProperties().getView().getSubtitle());
         this.add(subtitleLabel);
     }
 
-    public PanelSubtitle( MandelbrotContext ctx) {
+    public PanelSubtitle(MandelbrotContext ctx) {
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         String label = ctx.getProperties().getSubtitle() + " - " + ctx.getProperties().getSubtitle();

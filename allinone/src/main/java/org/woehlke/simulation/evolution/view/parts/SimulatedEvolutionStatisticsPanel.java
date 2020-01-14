@@ -12,10 +12,6 @@ import java.awt.*;
 
 import static org.woehlke.simulation.evolution.model.cell.CellLifeCycleStatus.*;
 
-
-/**
- * TODO write doc.
- */
 @Log
 public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
@@ -43,7 +39,7 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
   ) {
       this.ctx = ctx;
     setLabels();
-    setTextFields();
+    setTextFields(this.ctx.getProperties().getCellPopulation().getInitialPopulation());
     setColors();
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
@@ -87,19 +83,18 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
         populationLabel = new JLabel(ctx.getProperties().getCellPopulation().getPopulationLabel());
     }
 
-    private void setTextFields(){
+    private void setTextFields(int initialPopulation){
         int cols = 3;
-        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = statistics.getPopulationCensus();
-        youngCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getDeadCells(),cols);
-        youngAndFatCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getYoungAndFatCells(),cols);
-        fullAgeCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getFullAgeCells(),cols);
-        hungryCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getHungryCells(),cols);
-        oldCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getOldCells(),cols);
-        populationStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getPopulation(),cols);
+        youngCellsStatistics = new JTextField("0",cols);
+        youngAndFatCellsStatistics = new JTextField("0",cols);
+        fullAgeCellsStatistics = new JTextField("0",cols);
+        hungryCellsStatistics = new JTextField("0",cols);
+        oldCellsStatistics = new JTextField("0",cols);
+        populationStatistics = new JTextField(""+ initialPopulation, cols);
     }
 
     public void update() {
-        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = statistics.getPopulationCensus();
+        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = statistics.peek();;
         youngCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getYoungCells());
         youngAndFatCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getYoungAndFatCells());
         fullAgeCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getFullAgeCells());

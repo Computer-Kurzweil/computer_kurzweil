@@ -1,11 +1,13 @@
 package org.woehlke.simulation.cca.view;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
+import org.woehlke.simulation.cca.model.CyclicCellularAutomatonLattice;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,10 +32,13 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
     private static final long serialVersionUID = -3057254130516052936L;
 
     private CyclicCellularAutomatonContext ctx;
+    @Getter
+    private final CyclicCellularAutomatonLattice lattice;
 
     @Autowired
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext ctx) {
         this.ctx = ctx;
+        this.lattice = new CyclicCellularAutomatonLattice(   this.ctx);
         Dimension preferredSize = new Dimension(
             (int) ctx.getProperties().getLatticeDimensions().getX(),
             (int) ctx.getProperties().getLatticeDimensions().getY()
@@ -45,7 +50,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
         super.paintComponent(g);
         for(int y = 0; y < ctx.getProperties().getLatticeDimensions().getY(); y++){
             for(int x = 0; x < ctx.getProperties().getLatticeDimensions().getX(); x++){
-                int state = this.ctx.getLattice().getCellStatusFor(x,y);
+                int state =  this.lattice.getCellStatusFor(x,y);
                 Color stateColor = this.ctx.getColorScheme().getColorForState(state);
                 g.setColor(stateColor);
                 g.drawLine(x,y,x,y);

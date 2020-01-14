@@ -20,7 +20,6 @@ import javax.validation.constraints.NotNull;
 @Log
 @ToString
 @EqualsAndHashCode
-@AllArgsConstructor
 public class SimulatedEvolutionProperties {
 
     @NotNull @Getter @Setter private Integer queueMaxLength;

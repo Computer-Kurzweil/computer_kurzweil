@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Log
 public class SimulatedEvolutionStatistics {
 
-  private ConcurrentLinkedQueue<SimulatedEvolutionPopulationCensus> statistics;
+  private final ConcurrentLinkedQueue<SimulatedEvolutionPopulationCensus> statistics = new ConcurrentLinkedQueue<>();
   private long worldIteration;
   private final SimulatedEvolutionContext ctx;
 
@@ -16,14 +16,13 @@ public class SimulatedEvolutionStatistics {
       SimulatedEvolutionContext ctx
   ) {
       this.ctx = ctx;
-      statistics = new ConcurrentLinkedQueue<>();
       worldIteration = 0L;
   }
 
   /**
    * TODO write doc.
    */
-  public void add(SimulatedEvolutionPopulationCensus populationCensus) {
+  public void push(SimulatedEvolutionPopulationCensus populationCensus) {
     worldIteration++;
     populationCensus.setWorldIteration(worldIteration);
     statistics.add(populationCensus);
@@ -33,12 +32,12 @@ public class SimulatedEvolutionStatistics {
     log.info(worldIteration + " : " + populationCensus);
   }
 
-  public SimulatedEvolutionPopulationCensus getPopulationCensus() {
-    SimulatedEvolutionPopulationCensus populationCensus = statistics.element();
-    if(populationCensus == null){
-        populationCensus = new SimulatedEvolutionPopulationCensus();
-    }
-    return populationCensus;
-  }
 
+    public SimulatedEvolutionPopulationCensus peek() {
+        SimulatedEvolutionPopulationCensus populationCensus = statistics.peek();
+        if(populationCensus == null){
+            populationCensus = new SimulatedEvolutionPopulationCensus();
+        }
+        return populationCensus;
+    }
 }
