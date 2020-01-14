@@ -18,7 +18,7 @@ import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 @Component
 public class ComputerKurzweilApplicationContext {
 
-    @Getter private final ComputerKurzweilProperties computerKurzweilProperties;
+    @Getter private final ComputerKurzweilProperties properties;
 
     @Getter private final MandelbrotProperties mandelbrotProperties;
     @Getter private final SimulatedEvolutionProperties simulatedEvolutionProperties;
@@ -33,7 +33,7 @@ public class ComputerKurzweilApplicationContext {
         DiffusionLimitedAggregationProperties diffusionLimitedAggregationProperties,
         CyclicCellularAutomatonProperties cyclicCellularAutomatonProperties
     ) {
-        this.computerKurzweilProperties = computerKurzweilProperties;
+        this.properties = computerKurzweilProperties;
         this.mandelbrotProperties = mandelbrotProperties;
         this.simulatedEvolutionProperties = simulatedEvolutionProperties;
         this.diffusionLimitedAggregationProperties = diffusionLimitedAggregationProperties;

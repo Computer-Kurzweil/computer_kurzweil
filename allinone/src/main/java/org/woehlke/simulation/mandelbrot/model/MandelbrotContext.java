@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 
 @Log
@@ -20,4 +21,7 @@ public class MandelbrotContext  {
 
     }
 
+    public LatticePoint getWorldDimensions() {
+        return this.properties.getWorldDimensions();
+    }
 }
