@@ -1,5 +1,6 @@
 package org.woehlke.simulation;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +8,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
 import org.woehlke.simulation.allinone.view.ComputerKurzweilApplicationFrame;
+import org.woehlke.simulation.cca.config.CyclicCellularAutomatonProperties;
 import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 
@@ -33,10 +36,13 @@ import java.util.logging.Logger;
  * <p>
  * &copy; 2006 - 2008 Thomas Woehlke.
  */
+@Log
 @SpringBootApplication
 @Configuration
 @Import({
-    SimulatedEvolutionProperties.class
+    ComputerKurzweilProperties.class,
+    SimulatedEvolutionProperties.class,
+    CyclicCellularAutomatonProperties.class
 })
 public class ComputerKurzweilApplication {
 
@@ -70,9 +76,7 @@ public class ComputerKurzweilApplication {
             .run(args);
         EventQueue.invokeLater(() -> {
             ComputerKurzweilApplication application = springCtx.getBean(ComputerKurzweilApplication.class);
-            application.start();
         });
     }
 
-    private static Logger log = Logger.getLogger(ComputerKurzweilApplication.class.getName());
 }

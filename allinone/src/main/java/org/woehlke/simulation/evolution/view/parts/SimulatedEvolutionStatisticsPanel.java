@@ -17,7 +17,6 @@ import static org.woehlke.simulation.evolution.model.cell.CellLifeCycleStatus.*;
  * TODO write doc.
  */
 @Log
-@Component
 public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
     private JTextField youngCellsStatistics;
@@ -36,7 +35,6 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
   private final SimulatedEvolutionContext ctx;
 
-  @Autowired
   public SimulatedEvolutionStatisticsPanel(
       SimulatedEvolutionContext ctx
   ) {
@@ -62,7 +60,6 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
       subPanel.add(populationLabel);
       subPanel.add(populationStatistics);
       this.add(subPanel);
-      this.ctx.setPanelStatistics(this);
   }
 
 

@@ -31,32 +31,26 @@ import static org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWor
  * Time: 00:51:51
  */
 @Log
-@Component
 public class SimulatedEvolutionCanvas extends JComponent implements Serializable {
 
-  private static final long serialVersionUID = -27002509360079509L;
+    private static final long serialVersionUID = -27002509360079509L;
 
-  /**
-   * Reference to the Data Model.
-   */
     private final SimulatedEvolutionWorld world;
 
     private final SimulatedEvolutionContext ctx;
 
-  public SimulatedEvolutionCanvas(
-      SimulatedEvolutionWorld world,
-      SimulatedEvolutionContext ctx
-  ) {
-    this.world = world;
-    this.ctx = ctx;
-    this.setBackground(COLOR_WATER.getColor());
-    Dimension preferredSize = new Dimension(
-        this.world.getCtx().getWorldDimensions().getWidth(),
-        this.world.getCtx().getWorldDimensions().getHeight()
-    );
-    this.setPreferredSize(preferredSize);
-    this.ctx.setCanvas(this);
-  }
+    public SimulatedEvolutionCanvas(
+        SimulatedEvolutionContext ctx
+    ) {
+        this.ctx = ctx;
+        this.world = new SimulatedEvolutionWorld(this.ctx);
+        this.setBackground(COLOR_WATER.getColor());
+        Dimension preferredSize = new Dimension(
+            this.ctx.getWorldDimensions().getWidth(),
+            this.ctx.getWorldDimensions().getWidth()
+        );
+        this.setPreferredSize(preferredSize);
+    }
 
   /**
    * Paint the World on the Canvas and show Food and Bacteria Cells.
@@ -73,7 +67,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
     private void paintPopulation(Graphics graphics){
         List<Cell> population = world.getAllCells();
         for (Cell cell : population) {
-            LatticePoint[] square = cell.getPosition().getNeighbourhood(this.world.getCtx().getWorldDimensions());
+            LatticePoint[] square = cell.getPosition().getNeighbourhood(this.ctx.getWorldDimensions());
             graphics.setColor(cell.getLifeCycleStatus().getColor());
             for (LatticePoint pixel : square) {
                 graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
@@ -83,8 +77,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
 
     private void paintFood(Graphics graphics){
         graphics.setColor(COLOR_FOOD.getColor());
-        for (int posY = 0; posY < this.world.getCtx().getWorldDimensions().getHeight(); posY++) {
-            for (int posX = 0; posX < this.world.getCtx().getWorldDimensions().getWidth(); posX++) {
+        for (int posY = 0; posY < this.ctx.getWorldDimensions().getHeight(); posY++) {
+            for (int posX = 0; posX < this.ctx.getWorldDimensions().getWidth(); posX++) {
                 if (world.hasFood(posX, posY)) {
                     graphics.drawLine(posX, posY, posX, posY);
                 }
@@ -94,7 +88,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
 
   private void paintBackground(Graphics graphics){
       graphics.setColor(COLOR_WATER.getColor());
-      graphics.fillRect(startX, startY, this.world.getCtx().getWorldDimensions().getWidth(), this.world.getCtx().getWorldDimensions().getHeight());
+      graphics.fillRect(startX, startY, this.ctx.getProperties().getLattice().getWidth(), this.ctx.getProperties().getLattice().getHeight());
   }
 
     private final static int startX = 0;
@@ -102,8 +96,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
 
   public void update(Graphics graphics) {
     Dimension preferredSize = new Dimension(
-        this.world.getCtx().getWorldDimensions().getWidth(),
-        this.world.getCtx().getWorldDimensions().getHeight()
+        this.ctx.getProperties().getLattice().getWidth(),
+        this.ctx.getProperties().getLattice().getHeight()
     );
     this.setPreferredSize(preferredSize);
     paint(graphics);

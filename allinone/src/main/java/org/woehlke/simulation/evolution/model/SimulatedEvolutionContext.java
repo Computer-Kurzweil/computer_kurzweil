@@ -101,4 +101,7 @@ public class SimulatedEvolutionContext implements Serializable {
       this.gardenOfEdenEnabled = ! this.gardenOfEdenEnabled;
     }
 
+    public void updateLifeCycleCount() {
+       getPanelStatistics().updateTextFields();
+    }
 }

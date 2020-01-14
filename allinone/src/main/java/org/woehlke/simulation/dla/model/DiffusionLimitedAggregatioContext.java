@@ -18,6 +18,6 @@ public class DiffusionLimitedAggregatioContext {
     }
 
     public LatticePoint getWorldDimensions(){
-        return new LatticePoint(600,400);
+        return new LatticePoint(properties.getWidth(),properties.getHeight());
     }
 }

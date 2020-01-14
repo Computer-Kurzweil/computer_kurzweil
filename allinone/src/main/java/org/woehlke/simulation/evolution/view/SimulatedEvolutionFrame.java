@@ -49,15 +49,12 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
 
   @Autowired
   public SimulatedEvolutionFrame(
-      SimulatedEvolutionContext ctx,
-      SimulatedEvolutionCanvas canvas,
-      SimulatedEvolutionStatisticsPanel statisticsPanel,
-      SimulatedEvolutionButtonRowPanel panelButtons
+      SimulatedEvolutionContext ctx
   ) {
       this.ctx = ctx;
-      this.canvas = canvas;
-      this.statisticsPanel = statisticsPanel;
-      this.panelButtons = panelButtons;
+      this.canvas = new SimulatedEvolutionCanvas(this.ctx);
+      this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.ctx);
+      this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.ctx);
       this.ctx.setPanelStatistics(this.statisticsPanel);
       this.ctx.setPanelButtons(this.panelButtons);
       this.ctx.setCanvas(this.canvas);
@@ -73,8 +70,6 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
           this.add(panelCopyright);
           this.add(this.ctx.getPanelStatistics());
           this.add(this.ctx.getPanelButtons());
-          showMe();
-          this.ctx.setFrame(this);
       }
   }
 
@@ -106,6 +101,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     }
 
     public void start() {
+        showMe();
         ctx.getControllerThread().start();
     }
 

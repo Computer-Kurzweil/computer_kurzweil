@@ -10,8 +10,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationProperties.NUMBER_OF_PARTICLES;
-
 /**
  * Diffusion Limited Aggregation.
  *
@@ -41,7 +39,7 @@ public class DiffusionLimitedAggregationWorld {
         this.ctx=ctx;
         this.worldDimensions=ctx.getWorldDimensions();
         random = new Random(new Date().getTime());
-        for(int i=0; i<NUMBER_OF_PARTICLES;i++){
+        for(int i=0; i<ctx.getProperties().getNumberOfParticles();i++){
             int x = random.nextInt(worldDimensions.getX());
             int y = random.nextInt(worldDimensions.getY());
             particles.add(new LatticePoint(x>=0?x:-x,y>=0?y:-y));

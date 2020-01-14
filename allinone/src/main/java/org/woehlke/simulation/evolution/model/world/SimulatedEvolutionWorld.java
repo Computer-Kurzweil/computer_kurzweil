@@ -36,12 +36,11 @@ import java.util.logging.Logger;
 @Component
 public class SimulatedEvolutionWorld {
 
-  /**
-   * List of the Simulated Bacteria Cells.
-   */
-  private List<Cell> cells;
+    /**
+    * List of the Simulated Bacteria Cells.
+    */
+    private List<Cell> cells;
 
-    @Getter
     private final SimulatedEvolutionContext ctx;
 
     @Getter
@@ -50,18 +49,12 @@ public class SimulatedEvolutionWorld {
     @Getter
     private final SimulatedEvolutionStatistics statisticsContainer;
 
-  /**
-   * TODO write doc.
-   */
-  @Autowired
   public SimulatedEvolutionWorld(
-      SimulatedEvolutionContext ctx,
-      SimulatedEvolutionWorldLattice simulatedEvolutionWorldMapFood,
-      SimulatedEvolutionStatistics simulatedEvolutionWorldStatisticsContainer
+      SimulatedEvolutionContext ctx
   ) {
       this.ctx = ctx;
-      this.worldLattice = simulatedEvolutionWorldMapFood;
-      this.statisticsContainer = simulatedEvolutionWorldStatisticsContainer;
+      this.worldLattice = new SimulatedEvolutionWorldLattice(this.ctx);
+      this.statisticsContainer = new SimulatedEvolutionStatistics(this.ctx);
       /**
        * Create the initial Population of Bacteria Cells and give them their position in the World.
        */
@@ -76,7 +69,6 @@ public class SimulatedEvolutionWorld {
       }
       log.info(populationCensus.toString());
       statisticsContainer.add(populationCensus);
-      this.ctx.setWorld(this);
   }
 
   /**

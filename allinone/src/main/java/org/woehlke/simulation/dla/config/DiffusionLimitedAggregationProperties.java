@@ -1,22 +1,33 @@
 package org.woehlke.simulation.dla.config;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import lombok.extern.java.Log;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Log
 @ToString
 @EqualsAndHashCode
-@Component
+@SpringBootConfiguration
+@Configuration
+@Valid
+@Validated
+@AllArgsConstructor
+@ConfigurationProperties("org.woehlke.simulation.dla.config")
 public class DiffusionLimitedAggregationProperties {
 
-    public final static String TITLE = "diffusion limited aggregation (DLA)";
-
-    public final static String SUBTITLE = "(c) 2019 Thomas Woehlke";
-
-    public final static int THREAD_SLEEP_TIME = 50;
-
-    public final static int NUMBER_OF_PARTICLES = 30000;
+    @NotBlank @Getter @Setter private String title;
+    @NotBlank @Getter @Setter private String subtitle;
+    @NotNull @Getter @Setter private Integer width;
+    @NotNull  @Getter @Setter private Integer height;
+    @NotBlank @Getter @Setter private String copyright;
+    @NotNull  @Getter @Setter private Integer threadSleepTime;
+    @NotNull  @Getter @Setter private Integer numberOfParticles;
 }

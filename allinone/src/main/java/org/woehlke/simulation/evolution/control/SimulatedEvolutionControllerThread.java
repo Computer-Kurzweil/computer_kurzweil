@@ -139,10 +139,6 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     ctx.getPanelStatistics().updateTextFields();
   }
 
-  public void updateLifeCycleCount() {
-      ctx.getPanelStatistics().updateTextFields();
-  }
-
   public void exit() {
     synchronized (mySemaphore) {
       mySemaphore = Boolean.FALSE;
@@ -150,20 +146,8 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     System.exit(ctx.getProperties().getControl().getExitStatus());
   }
 
-  public void toggleGardenOfEden(){ this.world.toggleGardenOfEden();
+  public void toggleGardenOfEden(){
+      this.world.toggleGardenOfEden();
   }
-
-    public void setPanelStatistics(SimulatedEvolutionStatisticsPanel panelStatistics) {
-        this.ctx.setPanelStatistics(panelStatistics);
-    }
-
-    public void setFrame(SimulatedEvolutionFrame frame) {
-        this.ctx.setFrame(frame);
-    }
-
-    public void setPanelButtons(SimulatedEvolutionButtonRowPanel panelButtons) {
-        panelButtons.registerController(this);
-        this.ctx.setPanelButtons(panelButtons);
-    }
 
 }

@@ -14,7 +14,6 @@ public class SimulatedEvolutionStatistics {
 
   private ConcurrentLinkedQueue<SimulatedEvolutionPopulationCensus> statistics;
   private long worldIteration;
-  private SimulatedEvolutionControllerThread controller;
   private final SimulatedEvolutionContext ctx;
 
   @Autowired
@@ -24,7 +23,6 @@ public class SimulatedEvolutionStatistics {
       this.ctx = ctx;
       statistics = new ConcurrentLinkedQueue<>();
       worldIteration = 0L;
-      this.ctx.setStatisticsContainer(this);
   }
 
   /**
@@ -37,8 +35,8 @@ public class SimulatedEvolutionStatistics {
     if (statistics.size() > this.ctx.getProperties().getQueueMaxLength()) {
         statistics.poll();
     }
-    if(controller !=null){
-        controller.updateLifeCycleCount();
+    if(this.ctx !=null){
+        this.ctx.updateLifeCycleCount();
     }
     log.info(worldIteration + " : " + populationCensus);
   }
@@ -50,13 +48,5 @@ public class SimulatedEvolutionStatistics {
     }
     return populationCensus;
   }
-
-    public long getWorldIteration() {
-        return worldIteration;
-    }
-
-    public void setController(SimulatedEvolutionControllerThread controller) {
-        this.controller = controller;
-    }
 
 }

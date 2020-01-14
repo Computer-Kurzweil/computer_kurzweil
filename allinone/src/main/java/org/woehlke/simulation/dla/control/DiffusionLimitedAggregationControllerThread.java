@@ -3,10 +3,11 @@ package org.woehlke.simulation.dla.control;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 import org.woehlke.simulation.dla.view.DiffusionLimitedAggregationCanvas;
 
-import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationProperties.THREAD_SLEEP_TIME;
+
 
 
 /**
@@ -24,15 +25,17 @@ import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPrope
 public class DiffusionLimitedAggregationControllerThread extends Thread
         implements Runnable {
 
-    private DiffusionLimitedAggregationWorld particles;
-    private DiffusionLimitedAggregationCanvas canvas;
-
     private Boolean goOn;
+
+    private final DiffusionLimitedAggregatioContext ctx;
+    private final DiffusionLimitedAggregationWorld particles;
+    private final DiffusionLimitedAggregationCanvas canvas;
 
     @Autowired
     public DiffusionLimitedAggregationControllerThread(
-        DiffusionLimitedAggregationCanvas canvas
-    ) {
+        DiffusionLimitedAggregationCanvas canvas,
+        DiffusionLimitedAggregatioContext ctx) {
+        this.ctx = ctx;
         goOn = Boolean.TRUE;
         this.canvas=canvas;
         this.particles=canvas.getWorld();
@@ -46,7 +49,7 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
             }
             particles.move();
             canvas.repaint();
-            try { sleep(THREAD_SLEEP_TIME); }
+            try { sleep(ctx.getProperties().getThreadSleepTime()); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
         while (doIt);
