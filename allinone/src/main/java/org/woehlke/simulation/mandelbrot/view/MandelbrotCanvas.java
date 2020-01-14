@@ -20,7 +20,6 @@ import java.awt.*;
  * Time: 00:51:51
  */
 @Log
-@Component
 public class MandelbrotCanvas extends JComponent {
 
     private final MandelbrotContext ctx;

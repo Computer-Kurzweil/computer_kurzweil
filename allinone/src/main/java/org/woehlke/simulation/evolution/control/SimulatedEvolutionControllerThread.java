@@ -36,7 +36,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     @Getter
     private final SimulatedEvolutionWorld world;
 
-  private Boolean mySemaphore;
+    private Boolean mySemaphore;
 
   public SimulatedEvolutionControllerThread(
       SimulatedEvolutionContext ctx,

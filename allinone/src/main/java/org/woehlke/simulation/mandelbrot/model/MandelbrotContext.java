@@ -30,7 +30,7 @@ import java.awt.event.MouseListener;
 public class MandelbrotContext implements MouseListener, ActionListener {
 
     @Getter @Setter private MandelbrotFrame frame;
-    @Getter @Setter private MandelbrotPanelButtons panelButtons;
+    @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotProperties properties;
     @Getter private final MandelbrotCanvas canvas;
     @Getter private final PanelSubtitle panelSubtitle;
@@ -41,13 +41,14 @@ public class MandelbrotContext implements MouseListener, ActionListener {
     @Getter private final TuringPhaseStateMachine turingPhaseStateMachine;
     @Getter private final TuringPositionsStateMachine turingPositionsStateMachine;
 
-    private ComputeMandelbrotSetThread computeMandelbrotSetThread;
+    private final ComputeMandelbrotSetThread computeMandelbrotSetThread;
 
     @Autowired
     public MandelbrotContext(
-        MandelbrotProperties properties
+       MandelbrotProperties properties
     ) {
         this.properties = properties;
+        this.panelButtons = new MandelbrotPanelButtons(this);
         this.canvas = new MandelbrotCanvas(this);
         this.panelSubtitle = new PanelSubtitle(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this);
@@ -56,7 +57,7 @@ public class MandelbrotContext implements MouseListener, ActionListener {
         this.turingPhaseStateMachine = new TuringPhaseStateMachine();
         this.turingPositionsStateMachine = new TuringPositionsStateMachine(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
-
+        this.computeMandelbrotSetThread = new ComputeMandelbrotSetThread(this);
     }
 
     public void start() {
@@ -126,7 +127,7 @@ public class MandelbrotContext implements MouseListener, ActionListener {
             case JULIA_SET:
                 return gaussianNumberPlaneBaseJulia.getZoomLevel();
             default:
-                return "ERR";
+                return "1";
         }
     }
 
@@ -165,7 +166,6 @@ public class MandelbrotContext implements MouseListener, ActionListener {
     }
 
     private void computeTheMandelbrotSet() {
-        computeMandelbrotSetThread = new ComputeMandelbrotSetThread(this);
         computeMandelbrotSetThread.start();
     }
 

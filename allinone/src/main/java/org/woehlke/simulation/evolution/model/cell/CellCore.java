@@ -2,7 +2,6 @@ package org.woehlke.simulation.evolution.model.cell;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
@@ -39,7 +38,7 @@ public class CellCore implements Serializable {
 
     private final SimulatedEvolutionContext ctx;
 
-    public CellCore(SimulatedEvolutionContext ctx) {
+    public CellCore(final SimulatedEvolutionContext ctx) {
         this.ctx=ctx;
         dna = new Integer[CellOrientation.values().length];
         for (int i = 0; i < CellOrientation.values().length; i++) {

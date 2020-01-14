@@ -35,32 +35,47 @@ public class MandelbrotFrame extends JPanel implements
         this.add(this.ctx.getPanelSubtitle());
         this.add(this.ctx.getCanvas());
         this.add(this.ctx.getPanelButtons());
-        showMeInit();
+        showMe();
         this.ctx.setFrame(this);
         this.ctx.start();
-    }
-
-    public void showMeInit() {
-        showMe();
-        repaint();
     }
 
     /**
      * TODO write doc.
      */
     public void showMe() {
-        this.setVisible(true);
-        this.ctx.getCanvas().setVisible(true);
-        this.ctx.getPanelSubtitle().setVisible(true);
-        this.ctx.getPanelButtons().setVisible(true);
+        try {
+            this.setVisible(true);
+            this.ctx.getCanvas().setVisible(true);
+            this.ctx.getPanelSubtitle().setVisible(true);
+            this.ctx.getPanelButtons().setVisible(true);
+        } catch (Exception e){
+            log.warning("Error in showMe() "+e.getMessage());
+        }
     }
 
     @Override
     public void repaint(){
-        this.ctx.getCanvas().repaint();
-        this.ctx.getPanelSubtitle().repaint();
-        this.ctx.getPanelButtons().repaint();
-        super.repaint();
+        try {
+            this.ctx.getCanvas().repaint();
+        } catch (Exception e){
+            log.warning("Error in repaint() "+e.getMessage());
+        }
+        try {
+            this.ctx.getPanelSubtitle().repaint();
+        } catch (Exception e){
+            log.warning("Error in repaint() "+e.getMessage());
+        }
+        try {
+            this.ctx.getPanelButtons().repaint();
+        } catch (Exception e){
+            log.warning("Error in repaint() "+e.getMessage());
+        }
+        try {
+            super.repaint();
+        } catch (Exception e){
+            log.warning("Error in repaint() "+e.getMessage());
+        }
     }
 
 }
