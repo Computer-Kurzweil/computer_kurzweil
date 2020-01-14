@@ -82,10 +82,14 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     }
 
     public void repaint(){
-        this.canvas.repaint();
-        this.panelButtons.repaint();
-        this.statisticsPanel.update();
-        this.statisticsPanel.repaint();
+        try {
+            this.canvas.repaint();
+            this.panelButtons.repaint();
+            this.statisticsPanel.update();
+            this.statisticsPanel.repaint();
+        } catch (NullPointerException e){
+            log.info(e.getMessage());
+        }
         super.repaint();
     }
 
