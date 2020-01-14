@@ -61,9 +61,27 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
    */
   public void paint(Graphics graphics) {
     super.paintComponent(graphics);
-    paintBackground(graphics);
-    paintFood(graphics);
-    paintPopulation(graphics);
+    //paintBackground(graphics);
+      graphics.setColor(COLOR_WATER.getColor());
+      graphics.fillRect(startX, startY, this.ctx.getProperties().getLattice().getWidth(), this.ctx.getProperties().getLattice().getHeight());
+    //paintFood(graphics);
+      graphics.setColor(COLOR_FOOD.getColor());
+      for (int posY = 0; posY < this.ctx.getWorldDimensions().getHeight(); posY++) {
+          for (int posX = 0; posX < this.ctx.getWorldDimensions().getWidth(); posX++) {
+              if (world.hasFood(posX, posY)) {
+                  graphics.drawLine(posX, posY, posX, posY);
+              }
+          }
+      }
+    //paintPopulation(graphics);
+      graphics.setColor(COLOR_FOOD.getColor());
+      for (int posY = 0; posY < this.ctx.getWorldDimensions().getHeight(); posY++) {
+          for (int posX = 0; posX < this.ctx.getWorldDimensions().getWidth(); posX++) {
+              if (world.hasFood(posX, posY)) {
+                  graphics.drawLine(posX, posY, posX, posY);
+              }
+          }
+      }
   }
 
     private void paintPopulation(Graphics graphics){

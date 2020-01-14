@@ -75,10 +75,8 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
         this.panelButtons.setVisible(true);
         this.statisticsPanel.setVisible(true);
         this.setVisible(true);
-        //repaint();
     }
 
-    /*
     public void repaint(){
         try {
             this.canvas.repaint();
@@ -88,14 +86,20 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
         } catch (NullPointerException e){
             log.info(e.getMessage());
         }
-        super.repaint();
+       // super.repaint();
     }
-*/
 
     public void start() {
         showMe();
-        this.controllerThread = new SimulatedEvolutionControllerThread( this.ctx , this.canvas.getWorld(),this.statisticsPanel, panelButtons,   this);
+        this.controllerThread = new SimulatedEvolutionControllerThread(
+            this.ctx ,
+            this.canvas.getWorld(),
+            this.statisticsPanel,
+            panelButtons,
+            this
+        );
         this.controllerThread.start();
+        //repaint();
     }
 
     public void stop(){
