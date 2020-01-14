@@ -1,4 +1,4 @@
-package org.woehlke.simulation.evolution.config;
+package org.woehlke.simulation.evolution.model.world;
 
 import java.awt.*;
 

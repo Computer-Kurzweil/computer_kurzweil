@@ -39,8 +39,8 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements MenuCont
         this.ctx = ctx;
         this.simulatedEvolutionFrame = simulatedEvolutionFrame;
         this.mandelbrotFrame = mandelbrotFrame;
-        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        this.add(simulatedEvolutionFrame);
+        rootPane.setLayout(new BoxLayout(rootPane, BoxLayout.PAGE_AXIS));
+        rootPane.add(simulatedEvolutionFrame);
         pack();
         double height = rootPane.getHeight();
         double width = rootPane.getWidth();

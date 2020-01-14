@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 import org.woehlke.simulation.dla.view.DiffusionLimitedAggregationCanvas;
 
-import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPropertiesI.THREAD_SLEEP_TIME;
+import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationProperties.THREAD_SLEEP_TIME;
+
 
 /**
  * Diffusion Limited Aggregation.
@@ -30,12 +31,11 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
 
     @Autowired
     public DiffusionLimitedAggregationControllerThread(
-        DiffusionLimitedAggregationCanvas canvas,
-        DiffusionLimitedAggregationWorld particles
+        DiffusionLimitedAggregationCanvas canvas
     ) {
         goOn = Boolean.TRUE;
         this.canvas=canvas;
-        this.particles=particles;
+        this.particles=canvas.getWorld();
     }
 
     public void run() {

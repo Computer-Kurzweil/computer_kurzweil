@@ -11,10 +11,10 @@ import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThre
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldLattice;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionButtonRowPanel;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionCanvas;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionCanvas;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionStatisticsPanel;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
 
 import java.beans.Transient;
 import java.io.Serializable;

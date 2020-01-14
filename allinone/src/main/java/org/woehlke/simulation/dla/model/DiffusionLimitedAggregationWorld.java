@@ -4,14 +4,13 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.LatticePoint;
-import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationPropertiesI.NUMBER_OF_PARTICLES;
+import static org.woehlke.simulation.dla.config.DiffusionLimitedAggregationProperties.NUMBER_OF_PARTICLES;
 
 /**
  * Diffusion Limited Aggregation.
@@ -35,10 +34,10 @@ public class DiffusionLimitedAggregationWorld {
 
     private DiffusionLimitedAggregationWorldLattice dendrite;
 
-    private final CyclicCellularAutomatonContext ctx;
+    private final DiffusionLimitedAggregatioContext ctx;
 
     @Autowired
-    public DiffusionLimitedAggregationWorld(CyclicCellularAutomatonContext ctx) {
+    public DiffusionLimitedAggregationWorld(DiffusionLimitedAggregatioContext ctx) {
         this.ctx=ctx;
         this.worldDimensions=ctx.getWorldDimensions();
         random = new Random(new Date().getTime());
@@ -47,7 +46,7 @@ public class DiffusionLimitedAggregationWorld {
             int y = random.nextInt(worldDimensions.getY());
             particles.add(new LatticePoint(x>=0?x:-x,y>=0?y:-y));
         }
-        this.dendrite = new DiffusionLimitedAggregationWorldLattice(worldDimensions);
+        this.dendrite = new DiffusionLimitedAggregationWorldLattice(this.ctx);
     }
 
     public List<LatticePoint> getParticles() {

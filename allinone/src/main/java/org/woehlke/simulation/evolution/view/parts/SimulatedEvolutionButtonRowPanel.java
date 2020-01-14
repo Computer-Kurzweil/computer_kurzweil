@@ -1,4 +1,4 @@
-package org.woehlke.simulation.evolution.view;
+package org.woehlke.simulation.evolution.view.parts;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;

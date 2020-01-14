@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.view.*;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
 
 import java.awt.Frame;
 import java.awt.event.*;

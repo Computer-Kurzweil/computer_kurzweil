@@ -3,9 +3,8 @@ package org.woehlke.simulation.allinone.model;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
+import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-
-import java.util.Objects;
 
 /**
  * A Point is used to define the Position of Cell or as a Vector for defining Dimensions.
@@ -155,4 +154,7 @@ public class LatticePoint {
     return neighbourhood;
   }
 
+    public LatticePoint[] getNeighbourhood(DiffusionLimitedAggregatioContext ctx) {
+        return this.getNeighbourhood(ctx.getWorldDimensions());
+    }
 }

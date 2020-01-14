@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.view.PanelCopyright;
 import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionCanvas;
+import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
 
 import javax.swing.*;
 import java.awt.image.ImageObserver;
@@ -104,6 +107,10 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
 
     public void start() {
         ctx.getControllerThread().start();
+    }
+
+    public void stop(){
+
     }
 
 }

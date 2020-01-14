@@ -10,5 +10,13 @@ import org.springframework.stereotype.Component;
 @ToString
 @EqualsAndHashCode
 @Component
-public class DiffusionLimitedAggregationProperties implements DiffusionLimitedAggregationPropertiesI {
+public class DiffusionLimitedAggregationProperties {
+
+    public final static String TITLE = "diffusion limited aggregation (DLA)";
+
+    public final static String SUBTITLE = "(c) 2019 Thomas Woehlke";
+
+    public final static int THREAD_SLEEP_TIME = 50;
+
+    public final static int NUMBER_OF_PARTICLES = 30000;
 }

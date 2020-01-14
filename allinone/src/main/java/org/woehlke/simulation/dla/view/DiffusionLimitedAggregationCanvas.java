@@ -1,8 +1,10 @@
 package org.woehlke.simulation.dla.view;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 
 import javax.swing.*;
@@ -23,20 +25,25 @@ import java.awt.*;
 @Component
 public class DiffusionLimitedAggregationCanvas extends JComponent {
 
-    private DiffusionLimitedAggregationWorld particles;
-    private LatticePoint worldDimensions;
+    @Getter
+    private final DiffusionLimitedAggregationWorld world;
+
+    @Getter
+    private final LatticePoint worldDimensions;
 
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
 
+    private final DiffusionLimitedAggregatioContext ctx;
+
     public DiffusionLimitedAggregationCanvas(
-        LatticePoint worldDimensions,
-        DiffusionLimitedAggregationWorld particles
+        DiffusionLimitedAggregatioContext ctx
     ) {
-        this.worldDimensions = worldDimensions;
+        this.ctx = ctx;
+        this.worldDimensions = ctx.getWorldDimensions();
         this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
-        this.particles=particles;
+        this.world=new DiffusionLimitedAggregationWorld(this.ctx);
     }
 
     public void paint(Graphics g) {
@@ -46,12 +53,12 @@ public class DiffusionLimitedAggregationCanvas extends JComponent {
         g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
         g.setColor(PARTICLES);
-        for(LatticePoint pixel:particles.getParticles()){
+        for(LatticePoint pixel : world.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0;y<worldDimensions.getY();y++){
             for(int x=0;x<worldDimensions.getX();x++){
-                int age = particles.getDendriteColor(x,y);
+                int age = world.getDendriteColor(x,y);
                 if(age>0){
                     age /= 25;
                     int blue = (age / 256) % (256*256);
@@ -69,7 +76,4 @@ public class DiffusionLimitedAggregationCanvas extends JComponent {
         paint(g);
     }
 
-    public LatticePoint getWorldDimensions() {
-        return worldDimensions;
-    }
 }

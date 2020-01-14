@@ -17,21 +17,21 @@ import org.woehlke.simulation.allinone.model.LatticePoint;
 public class DiffusionLimitedAggregationWorldLattice {
 
     private int worldMap[][];
-    private LatticePoint dimensions;
+    private final DiffusionLimitedAggregatioContext ctx;
     private int age=1;
 
-    public DiffusionLimitedAggregationWorldLattice(LatticePoint dimensions) {
-        this.dimensions = dimensions;
-        worldMap = new int[dimensions.getX()][dimensions.getY()];
-        int x = dimensions.getX() / 2;
-        int y = dimensions.getY() / 2;
+    public DiffusionLimitedAggregationWorldLattice(DiffusionLimitedAggregatioContext ctx) {
+        this.ctx=ctx;
+        worldMap = new int[this.ctx.getWorldDimensions().getX()][this.ctx.getWorldDimensions().getY()];
+        int x = this.ctx.getWorldDimensions().getX() / 2;
+        int y = this.ctx.getWorldDimensions().getY() / 2;
         worldMap[x][y]=age;
         age++;
     }
 
     public boolean hasDendriteNeighbour(LatticePoint pixel){
         if(worldMap[pixel.getX()][pixel.getY()]==0){
-            LatticePoint[] neighbours=pixel.getNeighbourhood(dimensions);
+            LatticePoint[] neighbours=pixel.getNeighbourhood(this.ctx);
             for(LatticePoint neighbour:neighbours){
                if(worldMap[neighbour.getX()][neighbour.getY()]>0){
                    worldMap[pixel.getX()][pixel.getY()]=age;

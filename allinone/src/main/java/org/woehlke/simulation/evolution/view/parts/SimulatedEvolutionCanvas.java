@@ -1,4 +1,4 @@
-package org.woehlke.simulation.evolution.view;
+package org.woehlke.simulation.evolution.view.parts;
 
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
@@ -13,8 +13,8 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.simulation.evolution.config.SimulatedEvolutionWorldColor.COLOR_FOOD;
-import static org.woehlke.simulation.evolution.config.SimulatedEvolutionWorldColor.COLOR_WATER;
+import static org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**
