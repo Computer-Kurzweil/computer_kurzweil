@@ -1,10 +1,10 @@
 package org.woehlke.simulation.evolution.view.parts;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
+import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -35,6 +35,9 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
   private final SimulatedEvolutionContext ctx;
 
+  @Getter
+  private final SimulatedEvolutionStatistics statistics;
+
   public SimulatedEvolutionStatisticsPanel(
       SimulatedEvolutionContext ctx
   ) {
@@ -60,6 +63,7 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
       subPanel.add(populationLabel);
       subPanel.add(populationStatistics);
       this.add(subPanel);
+      this.statistics = new SimulatedEvolutionStatistics( this.ctx );
   }
 
 
@@ -85,7 +89,7 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
     private void setTextFields(){
         int cols = 3;
-        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = ctx.getStatisticsContainer().getPopulationCensus();
+        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = statistics.getPopulationCensus();
         youngCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getDeadCells(),cols);
         youngAndFatCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getYoungAndFatCells(),cols);
         fullAgeCellsStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getFullAgeCells(),cols);
@@ -94,8 +98,8 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
         populationStatistics = new JTextField(""+ simulatedEvolutionWorldStatistics.getPopulation(),cols);
     }
 
-    public void updateTextFields() {
-        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = ctx.getStatisticsContainer().getPopulationCensus();
+    public void update() {
+        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = statistics.getPopulationCensus();
         youngCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getYoungCells());
         youngAndFatCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getYoungAndFatCells());
         fullAgeCellsStatistics.setText(""+ simulatedEvolutionWorldStatistics.getFullAgeCells());

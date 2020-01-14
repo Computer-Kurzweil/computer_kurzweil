@@ -1,5 +1,6 @@
 package org.woehlke.simulation.evolution.view.parts;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
@@ -35,6 +36,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements Serializable
 
     private static final long serialVersionUID = -27002509360079509L;
 
+    @Getter
     private final SimulatedEvolutionWorld world;
 
     private final SimulatedEvolutionContext ctx;

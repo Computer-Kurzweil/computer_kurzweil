@@ -20,7 +20,7 @@ public class PanelCopyright extends JPanel {
     private final JLabel copyrightLabel;
 
     public PanelCopyright(CyclicCellularAutomatonContext ctx) {
-        this.copyrightLabel = new JLabel(ctx.getConfig().getCopyright());
+        this.copyrightLabel = new JLabel(ctx.getProperties().getCopyright());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         this.add(copyrightLabel);

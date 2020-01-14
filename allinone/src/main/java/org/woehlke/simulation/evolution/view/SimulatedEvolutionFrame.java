@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.view.PanelCopyright;
 import org.woehlke.simulation.allinone.view.PanelSubtitle;
+import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionCanvas;
@@ -47,31 +48,26 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     @Getter
     private final SimulatedEvolutionButtonRowPanel panelButtons;
 
-  @Autowired
-  public SimulatedEvolutionFrame(
-      SimulatedEvolutionContext ctx
-  ) {
-      this.ctx = ctx;
-      this.canvas = new SimulatedEvolutionCanvas(this.ctx);
-      this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.ctx);
-      this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.ctx);
-      this.ctx.setPanelStatistics(this.statisticsPanel);
-      this.ctx.setPanelButtons(this.panelButtons);
-      this.ctx.setCanvas(this.canvas);
-      if(this.ctx == null){
-          log.warning("ctx==null but should not");
-      } else {
+    private SimulatedEvolutionControllerThread controllerThread;
+
+    @Autowired
+      public SimulatedEvolutionFrame(
+          SimulatedEvolutionContext ctx
+      ) {
+          this.ctx = ctx;
+          this.canvas = new SimulatedEvolutionCanvas(this.ctx);
+          this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.ctx);
+          this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.ctx);
           PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
           PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
           BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
           this.setLayout(layout);
           this.add(panelSubtitle);
-          this.add(this.ctx.getCanvas());
+          this.add(this.canvas);
           this.add(panelCopyright);
-          this.add(this.ctx.getPanelStatistics());
-          this.add(this.ctx.getPanelButtons());
+          this.add(this.statisticsPanel);
+          this.add(this.panelButtons);
       }
-  }
 
     /**
      * TODO write doc.
@@ -79,30 +75,24 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     public void showMe() {
         this.setVisible(true);
         this.canvas.setVisible(true);
-        ctx.getPanelStatistics().setVisible(true);
-        ctx.getPanelButtons().setVisible(true);
+        this.panelButtons.setVisible(true);
+        this.statisticsPanel.setVisible(true);
         this.setVisible(true);
         repaint();
     }
 
     public void repaint(){
-        if(ctx !=null) {
-            if (ctx.getCanvas() != null) {
-                ctx.getCanvas().repaint();
-            }
-            if (ctx.getPanelStatistics() != null) {
-                ctx.getPanelStatistics().repaint();
-            }
-            if (ctx.getPanelButtons() != null) {
-                ctx.getPanelButtons().repaint();
-            }
-        }
+        this.canvas.repaint();
+        this.panelButtons.repaint();
+        this.statisticsPanel.update();
+        this.statisticsPanel.repaint();
         super.repaint();
     }
 
     public void start() {
         showMe();
-        ctx.getControllerThread().start();
+        this.controllerThread = new SimulatedEvolutionControllerThread( this.ctx , this.canvas.getWorld(),this.statisticsPanel, panelButtons,   this);
+        this.controllerThread.start();
     }
 
     public void stop(){

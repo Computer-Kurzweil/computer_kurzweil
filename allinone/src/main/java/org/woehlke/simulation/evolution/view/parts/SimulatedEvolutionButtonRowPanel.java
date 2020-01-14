@@ -57,7 +57,6 @@ public class SimulatedEvolutionButtonRowPanel extends JPanel  {
         this.setLayout(flowLayout1);
         this.add(foodPanel);
         this.add(gardenOfEdenPanel);
-      ctx.setButtonRowPanel(this);
   }
 
   public void registerController(SimulatedEvolutionControllerThread controller){

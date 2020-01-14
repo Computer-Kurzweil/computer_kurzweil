@@ -2,10 +2,9 @@ package org.woehlke.simulation.evolution.control;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.stereotype.Component;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
-import org.woehlke.simulation.evolution.view.*;
+import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
 
@@ -26,7 +25,6 @@ import java.awt.event.*;
  * Time: 00:36:20
  */
 @Log
-@Component
 public class SimulatedEvolutionControllerThread extends Thread implements Runnable,
     WindowListener,
     WindowFocusListener,
@@ -37,30 +35,36 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
 
     @Getter
     private final SimulatedEvolutionWorld world;
+    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
+    private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private final SimulatedEvolutionFrame frame;
 
     private Boolean mySemaphore;
 
   public SimulatedEvolutionControllerThread(
       SimulatedEvolutionContext ctx,
-      SimulatedEvolutionWorld world) {
+      SimulatedEvolutionWorld world, SimulatedEvolutionStatisticsPanel statisticsPanel, SimulatedEvolutionButtonRowPanel panelButtons, SimulatedEvolutionFrame frame) {
       this.ctx = ctx;
       this.world = world;
+      this.statisticsPanel = statisticsPanel;
+      this.panelButtons = panelButtons;
+      this.frame = frame;
       this.mySemaphore = Boolean.TRUE;
-      this.ctx.setControllerThread(this);
+      this.panelButtons.registerController(this);
   }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==  ctx.getPanelButtons().getButtonFoodPerDayIncrease()) {
+        if (ae.getSource() ==   this.panelButtons.getButtonFoodPerDayIncrease()) {
             ctx.increaseFoodPerDay();
-            ctx.getPanelButtons().setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
-        } else if (ae.getSource() ==  ctx.getPanelButtons().getButtonFoodPerDayDecrease()) {
+            this.panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
+        } else if (ae.getSource() == this.panelButtons.getButtonFoodPerDayDecrease()) {
             ctx.decreaseFoodPerDay();
-            ctx.getPanelButtons().setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
-        } else if (ae.getSource() == this. ctx.getPanelButtons().getButtonToggleGardenOfEden()) {
+            this.panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
+        } else if (ae.getSource() == this.panelButtons.getButtonToggleGardenOfEden()) {
             this.toggleGardenOfEden();
             boolean selected = ctx.isGardenOfEdenEnabled();
-            ctx.getPanelButtons().setGardenOfEdenEnabled(selected);
+            this.panelButtons.setGardenOfEdenEnabled(selected);
         }
     }
 
@@ -71,8 +75,9 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       synchronized (mySemaphore) {
         doMyJob = mySemaphore.booleanValue();
       }
-        this.world .letLivePopulation();
-      ctx.getFrame().repaint();
+     this.world.letLivePopulation();
+      this.statisticsPanel.update();
+     this.frame.repaint();
       try {
         sleep(ctx.getProperties().getControl().getTime2wait());
       } catch (InterruptedException e) {
@@ -83,7 +88,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
   }
 
   protected void show() {
-      this.ctx.getFrame().showMe();
+      this.frame.showMe();
   }
 
   public void windowOpened(WindowEvent e) {
@@ -124,19 +129,18 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
 
   @Override
   public void windowStateChanged(WindowEvent e) {
-    if (e.getSource() ==  this.ctx.getFrame()) {
-      switch (e.getNewState()) {
-        case Frame.MAXIMIZED_BOTH:
-        case Frame.MAXIMIZED_HORIZ:
-        case Frame.MAXIMIZED_VERT:
-        case Frame.NORMAL:
-          show();
-          break;
-        default:
-          break;
-      }
+    if (e.getSource() ==  this.frame) {
+        switch (e.getNewState()) {
+            case Frame.MAXIMIZED_BOTH:
+            case Frame.MAXIMIZED_HORIZ:
+            case Frame.MAXIMIZED_VERT:
+            case Frame.NORMAL:
+                show();
+                break;
+            default:
+                break;
+        }
     }
-    ctx.getPanelStatistics().updateTextFields();
   }
 
   public void exit() {

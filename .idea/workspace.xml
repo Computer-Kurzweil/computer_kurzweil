@@ -3,11 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelSubtitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelSubtitle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonLattice.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonLattice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelCopyright.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/PanelCopyright.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/statistics/SimulatedEvolutionStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/statistics/SimulatedEvolutionStatistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorldLattice.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorldLattice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionButtonRowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionButtonRowPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionStatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionStatisticsPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,7 +333,7 @@
       <workItem from="1578858204031" duration="15324000" />
       <workItem from="1578876164052" duration="503000" />
       <workItem from="1578889285962" duration="12002000" />
-      <workItem from="1579017341035" duration="5918000" />
+      <workItem from="1579017341035" duration="7616000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -471,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579023003560</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="switch from one app to allinone app">
+      <created>1579023281151</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1579023281151</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,10 +533,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
-    <state x="370" y="115" key="CommitChangelistDialog2" timestamp="1579022998072">
+    <state x="370" y="115" key="CommitChangelistDialog2" timestamp="1579023278094">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579022998072" />
+    <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579023278094" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -535,22 +546,22 @@
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1877" height="635" key="GridCell.Tab.0.bottom" timestamp="1579023238025">
+    <state width="1877" height="664" key="GridCell.Tab.0.bottom" timestamp="1579024896349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="635" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579023238025" />
-    <state width="1877" height="635" key="GridCell.Tab.0.center" timestamp="1579023238025">
+    <state width="1877" height="664" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579024896349" />
+    <state width="1877" height="664" key="GridCell.Tab.0.center" timestamp="1579024896349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="635" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579023238025" />
-    <state width="1877" height="635" key="GridCell.Tab.0.left" timestamp="1579023238025">
+    <state width="1877" height="664" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579024896349" />
+    <state width="1877" height="664" key="GridCell.Tab.0.left" timestamp="1579024896349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="635" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579023238025" />
-    <state width="1877" height="635" key="GridCell.Tab.0.right" timestamp="1579023238025">
+    <state width="1877" height="664" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579024896349" />
+    <state width="1877" height="664" key="GridCell.Tab.0.right" timestamp="1579024896349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="635" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579023238025" />
+    <state width="1877" height="664" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579024896349" />
     <state x="672" y="236" key="MultipleFileMergeDialog" timestamp="1578895605710">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -564,10 +575,10 @@
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577558215454" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1579018193078">
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1579023283040">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579018193078" />
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579023283040" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -592,10 +603,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="118" width="615" height="804" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578901221442" />
-    <state x="702" y="139" key="refactoring.ChangeSignatureDialog" timestamp="1579022782907">
+    <state x="702" y="139" key="refactoring.ChangeSignatureDialog" timestamp="1579024611344">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="702" y="139" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579022782907" />
+    <state x="702" y="139" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579024611344" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1578901871209">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

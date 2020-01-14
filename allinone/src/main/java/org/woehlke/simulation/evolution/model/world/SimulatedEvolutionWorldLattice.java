@@ -40,7 +40,6 @@ public class SimulatedEvolutionWorldLattice {
       int x = ctx.getWorldDimensions().getX();
       int y = ctx.getWorldDimensions().getY();
       worldMapFoodLattice = new int[x][y];
-      ctx.setLattice(this);
   }
 
     private void letFoodGrowGardenOfEden() {
