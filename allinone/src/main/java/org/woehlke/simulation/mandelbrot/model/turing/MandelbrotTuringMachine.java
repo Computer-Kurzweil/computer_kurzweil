@@ -1,9 +1,9 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
+import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 
 
 /**
@@ -17,29 +17,34 @@ import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
  * Time: 12:39
  */
 @Log
-@Service
 public class MandelbrotTuringMachine {
 
     private final MandelbrotContext ctx;
 
-    @Autowired
-    public MandelbrotTuringMachine(MandelbrotContext ctx) {
-        this.ctx=ctx;
+    @Getter private final TuringPositionsStateMachine turingPositionsStateMachine;
+    @Getter private final TuringPhaseStateMachine turingPhaseStateMachine;
+    @Getter private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
+
+    public MandelbrotTuringMachine(GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot) {
+        this.gaussianNumberPlaneMandelbrot = gaussianNumberPlaneMandelbrot;
+        this.ctx=gaussianNumberPlaneMandelbrot.getCtx();
+        turingPhaseStateMachine = new TuringPhaseStateMachine();
+        turingPositionsStateMachine = new TuringPositionsStateMachine( this.ctx);
         start();
     }
 
     public void start() {
-        this.ctx.getTuringPhaseStateMachine().start();
-        this.ctx.getGaussianNumberPlaneMandelbrot().start();
-        this.ctx.getTuringPositionsStateMachine().start();
+        this.getTuringPhaseStateMachine().start();
+        this.getGaussianNumberPlaneMandelbrot().start();
+        this.getTuringPositionsStateMachine().start();
     }
 
     public boolean isFinished() {
-        return  this.ctx.getTuringPhaseStateMachine().isFinished();
+        return  this.getTuringPhaseStateMachine().isFinished();
     }
 
     public void step() {
-        switch( this.ctx.getTuringPhaseStateMachine().getTuringTuringPhase()){
+        switch( this.getTuringPhaseStateMachine().getTuringTuringPhase()){
             case SEARCH_THE_SET:
                 stepGoToSet();
                 break;
@@ -55,31 +60,31 @@ public class MandelbrotTuringMachine {
     }
 
     private void stepGoToSet(){
-        if(this.ctx.getGaussianNumberPlaneMandelbrot().isInSet(
-            this.ctx.getTuringPositionsStateMachine().getTuringPosition()
+        if(this.getGaussianNumberPlaneMandelbrot().isInSet(
+            this.getTuringPositionsStateMachine().getTuringPosition()
         )){
-            this.ctx.getTuringPositionsStateMachine().markFirstSetPosition();
-            this.ctx.getTuringPhaseStateMachine().finishSearchTheSet();
+            this.getTuringPositionsStateMachine().markFirstSetPosition();
+            this.getTuringPhaseStateMachine().finishSearchTheSet();
         } else {
-            this.ctx.getTuringPositionsStateMachine().goForward();
+            this.getTuringPositionsStateMachine().goForward();
         }
     }
 
     private void stepWalkAround(){
-        if(this.ctx.getGaussianNumberPlaneMandelbrot().isInSet(this.ctx.getTuringPositionsStateMachine().getTuringPosition())){
-            this.ctx.getTuringPositionsStateMachine().turnRight();
+        if(this.getGaussianNumberPlaneMandelbrot().isInSet(this.getTuringPositionsStateMachine().getTuringPosition())){
+            this.getTuringPositionsStateMachine().turnRight();
         } else {
-            this.ctx.getTuringPositionsStateMachine().turnLeft();
+            this.getTuringPositionsStateMachine().turnLeft();
         }
-        this.ctx.getTuringPositionsStateMachine().goForward();
-        if(this.ctx.getTuringPositionsStateMachine().isFinishedWalkAround()){
-            this.ctx.getTuringPhaseStateMachine().finishWalkAround();
+        this.getTuringPositionsStateMachine().goForward();
+        if(this.getTuringPositionsStateMachine().isFinishedWalkAround()){
+            this.getTuringPhaseStateMachine().finishWalkAround();
         }
     }
 
     private void stepFillTheOutsideWithColors(){
-        this.ctx.getGaussianNumberPlaneMandelbrot().fillTheOutsideWithColors();
-        this.ctx.getTuringPhaseStateMachine().finishFillTheOutsideWithColors();
+        this.getGaussianNumberPlaneMandelbrot().fillTheOutsideWithColors();
+        this.getTuringPhaseStateMachine().finishFillTheOutsideWithColors();
     }
 
 }

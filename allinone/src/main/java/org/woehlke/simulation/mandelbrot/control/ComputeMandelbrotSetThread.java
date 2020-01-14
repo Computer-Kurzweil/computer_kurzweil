@@ -3,6 +3,7 @@ package org.woehlke.simulation.mandelbrot.control;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
+import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
 
@@ -13,17 +14,24 @@ public class ComputeMandelbrotSetThread extends Thread implements Runnable {
 
     @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotCanvas canvas;
+    @Getter private final MandelbrotFrame frame;
 
-    public ComputeMandelbrotSetThread(MandelbrotContext ctx, MandelbrotPanelButtons panelButtons, MandelbrotCanvas canvas) {
+    public ComputeMandelbrotSetThread(
+        MandelbrotContext ctx,
+        MandelbrotPanelButtons panelButtons,
+        MandelbrotCanvas canvas,
+        MandelbrotFrame frame
+    ) {
         super("ComputeMandelbrotSetThread");
         this.ctx = ctx;
         this.panelButtons = panelButtons;
         this.canvas = canvas;
+        this.frame = frame;
     }
 
     public void run() {
         canvas.getMandelbrotTuringMachine().start();
-        ctx.showMe();
+        this.frame.showMe();
         log.info(" ( ");
         while( ! canvas.getMandelbrotTuringMachine().isFinished()){
             log.info(".");
@@ -38,7 +46,7 @@ public class ComputeMandelbrotSetThread extends Thread implements Runnable {
             }
         }
         log.info(" ) ");
-        ctx.showMe();
+        this.frame.showMe();
     }
 
 }

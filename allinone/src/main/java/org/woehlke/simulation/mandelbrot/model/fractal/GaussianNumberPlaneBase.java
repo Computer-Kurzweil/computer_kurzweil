@@ -33,6 +33,7 @@ public abstract class GaussianNumberPlaneBase {
     @Getter
     private final FractalSetType fractalSetType;
 
+    @Getter
     protected final MandelbrotContext ctx;
 
     protected GaussianNumberPlaneBase(MandelbrotContext ctx, FractalSetType fractalSetType) {

@@ -39,13 +39,15 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     @Getter private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     @Getter private final MandelbrotTuringMachine mandelbrotTuringMachine;
     @Getter private final ApplicationStateMachine applicationStateMachine;
-    @Getter private final TuringPhaseStateMachine turingPhaseStateMachine;
-    @Getter private final TuringPositionsStateMachine turingPositionsStateMachine;
     @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotFrame frame;
     @Getter private final ComputeMandelbrotSetThread computeMandelbrotSetThread;
 
-    public MandelbrotCanvas(MandelbrotContext ctx, MandelbrotPanelButtons panelButtons, MandelbrotFrame frame) {
+    public MandelbrotCanvas(
+        MandelbrotContext ctx,
+        MandelbrotPanelButtons panelButtons,
+        MandelbrotFrame frame
+    ) {
         this.ctx = ctx;
         this.panelButtons = panelButtons;
         this.frame = frame;
@@ -56,11 +58,12 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
         this.setPreferredSize(this.preferredSize);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(    this.ctx );
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot(    this.ctx );
-        this.applicationStateMachine = new ApplicationStateMachine(    this.ctx );
-        this.turingPhaseStateMachine = new TuringPhaseStateMachine();
-        this.turingPositionsStateMachine = new TuringPositionsStateMachine(    this.ctx );
-        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(    this.ctx );
-        this.computeMandelbrotSetThread = new ComputeMandelbrotSetThread(this.ctx, this.panelButtons,this);
+        this.applicationStateMachine = new ApplicationStateMachine(   this.ctx );
+        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(
+            this.gaussianNumberPlaneMandelbrot
+        );
+        this.computeMandelbrotSetThread = new ComputeMandelbrotSetThread(
+            this.ctx, this.panelButtons,this, frame);
     }
 
     public CellStatus getCellStatusFor(int x, int y) {

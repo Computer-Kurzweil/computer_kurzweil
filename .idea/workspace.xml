@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="">
+    <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/MandelbrotContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/MandelbrotContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/ComputeMandelbrotSetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/ComputeMandelbrotSetThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/MandelbrotTuringMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/MandelbrotTuringMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +29,15 @@
           <activation />
         </task>
         <task path="$PROJECT_DIR$/allinone">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/mandelbrot">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/diffusion-limited-aggregation">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/simulated-evolution">
           <activation />
         </task>
         <projects_view>
@@ -72,6 +84,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1Vcgt8ORWJumiVf8RsBIaXLB9oK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -94,6 +107,9 @@
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.woehlke.simulation" />
     </key>
@@ -103,14 +119,6 @@
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\cyclic\cellular\automaton" />
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="ComputerKurzweilApplicationContext" />
-    </option>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -285,17 +293,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -313,7 +311,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="" />
+      <changelist id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="switch from one app to allinone app" />
       <created>1577558008127</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -324,9 +322,15 @@
       <workItem from="1578844010343" duration="112000" />
       <workItem from="1578844150348" duration="13496000" />
       <workItem from="1578858204031" duration="15324000" />
-      <workItem from="1578876164052" duration="503000" />
-      <workItem from="1578889285962" duration="12002000" />
-      <workItem from="1579017341035" duration="16647000" />
+      <workItem from="1578876164052" duration="189000" />
+      <workItem from="1578888458031" duration="3734000" />
+      <workItem from="1578909616075" duration="2813000" />
+      <workItem from="1578918724535" duration="2564000" />
+      <workItem from="1578934366756" duration="2187000" />
+      <workItem from="1578949787166" duration="3640000" />
+      <workItem from="1578953683346" duration="10000" />
+      <workItem from="1579007518341" duration="6680000" />
+      <workItem from="1579025303038" duration="4870000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -392,111 +396,97 @@
       <updated>1578873584606</updated>
     </task>
     <task id="LOCAL-00010" summary="switch from one app to allinone app">
-      <created>1578876410983</created>
+      <created>1578892877499</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1578876410984</updated>
+      <updated>1578892877499</updated>
     </task>
     <task id="LOCAL-00011" summary="switch from one app to allinone app">
-      <created>1578876513926</created>
+      <created>1578893157923</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1578876513926</updated>
+      <updated>1578893157923</updated>
     </task>
     <task id="LOCAL-00012" summary="switch from one app to allinone app">
-      <created>1578876575153</created>
+      <created>1578920657740</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1578876575153</updated>
+      <updated>1578920657740</updated>
     </task>
     <task id="LOCAL-00013" summary="switch from one app to allinone app">
-      <created>1578890577237</created>
+      <created>1578937076257</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1578890577237</updated>
+      <updated>1578937076257</updated>
     </task>
     <task id="LOCAL-00014" summary="switch from one app to allinone app">
-      <created>1578896495774</created>
+      <created>1578937118807</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1578896495774</updated>
+      <updated>1578937118807</updated>
     </task>
     <task id="LOCAL-00015" summary="switch from one app to allinone app">
-      <created>1578901465209</created>
+      <created>1578950790233</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1578901465209</updated>
+      <updated>1578950790233</updated>
     </task>
     <task id="LOCAL-00016" summary="switch from one app to allinone app">
-      <created>1578905238252</created>
+      <created>1578952138511</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1578905238252</updated>
+      <updated>1578952138511</updated>
     </task>
     <task id="LOCAL-00017" summary="switch from one app to allinone app">
-      <created>1578905663044</created>
+      <created>1578952385548</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1578905663044</updated>
+      <updated>1578952385548</updated>
     </task>
     <task id="LOCAL-00018" summary="switch from one app to allinone app">
-      <created>1579018185989</created>
+      <created>1579010956826</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1579018185989</updated>
+      <updated>1579010956826</updated>
     </task>
     <task id="LOCAL-00019" summary="switch from one app to allinone app">
-      <created>1579020479424</created>
+      <created>1579013863881</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1579020479424</updated>
+      <updated>1579013863881</updated>
     </task>
     <task id="LOCAL-00020" summary="switch from one app to allinone app">
-      <created>1579023003560</created>
+      <created>1579015219430</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1579023003560</updated>
+      <updated>1579015219430</updated>
     </task>
     <task id="LOCAL-00021" summary="switch from one app to allinone app">
-      <created>1579023281151</created>
+      <created>1579015691046</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1579023281151</updated>
+      <updated>1579015691046</updated>
     </task>
     <task id="LOCAL-00022" summary="switch from one app to allinone app">
-      <created>1579024994365</created>
+      <created>1579017059191</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1579024994365</updated>
+      <updated>1579017059191</updated>
     </task>
-    <task id="LOCAL-00023" summary="switch from one app to allinone app">
-      <created>1579025085355</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1579025085355</updated>
-    </task>
-    <task id="LOCAL-00024" summary="switch from one app to allinone app">
-      <created>1579034659499</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1579034659500</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,10 +509,11 @@
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577558595678" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1579033401047">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser" timestamp="1578912223286">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579033401047" />
+    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser/0.0.1280.760@0.0.1280.760" timestamp="1578912223286" />
+    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578861456195" />
     <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1578525204381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -535,99 +526,98 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="332" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844123314" />
-    <state x="373" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579029281768">
+    <state x="373" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1578525991484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="373" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579029281768" />
+    <state x="373" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578525991484" />
     <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578867157699">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1578867157699" />
-    <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578896430100">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2" timestamp="1579036875919">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
-    <state x="370" y="115" key="CommitChangelistDialog2" timestamp="1579034653756">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579034653756" />
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579036875919" />
+    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="473" y="134" key="EnvironmentVariablesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578870818263" />
-    <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl" timestamp="1578856870899">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="414" y="109" width="689" height="489" key="FileChooserDialogImpl" timestamp="1579014597777">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
+    <state x="414" y="109" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579014597777" />
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1877" height="592" key="GridCell.Tab.0.bottom" timestamp="1579034756562">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="279" key="GridCell.Tab.0.bottom" timestamp="1579036630226">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1877" height="592" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579034756562" />
-    <state width="1877" height="592" key="GridCell.Tab.0.center" timestamp="1579034756562">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="279" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
+    <state width="1237" height="279" key="GridCell.Tab.0.center" timestamp="1579036630226">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1877" height="592" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579034756562" />
-    <state width="1877" height="592" key="GridCell.Tab.0.left" timestamp="1579034756562">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="279" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
+    <state width="1237" height="279" key="GridCell.Tab.0.left" timestamp="1579036630226">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1877" height="592" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579034756562" />
-    <state width="1877" height="592" key="GridCell.Tab.0.right" timestamp="1579034756562">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="279" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
+    <state width="1237" height="279" key="GridCell.Tab.0.right" timestamp="1579036630226">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1877" height="592" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579034756562" />
-    <state x="672" y="236" key="MultipleFileMergeDialog" timestamp="1578895605710">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="279" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579036630226" />
+    <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
+    <state x="352" y="96" key="MultipleFileMergeDialog" timestamp="1579035031590">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="672" y="236" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578895605710" />
-    <state x="410" y="231" key="RollbackChangesDialog" timestamp="1578902685672">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="352" y="96" key="MultipleFileMergeDialog/0.0.1280.760@0.0.1280.760" timestamp="1579035031590" />
+    <state x="273" y="169" key="RollbackChangesDialog" timestamp="1578950314940">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="410" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578902685672" />
+    <state x="273" y="169" key="RollbackChangesDialog/0.0.1280.760@0.0.1280.760" timestamp="1578950314940" />
+    <state x="410" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578845281025" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor" timestamp="1578870982019">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577558215454" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1579023283040">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="328" y="134" key="Vcs.Push.Dialog.v2" timestamp="1579017063731">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579023283040" />
+    <state x="328" y="134" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579017063731" />
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876516148" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844172030" />
-    <state x="248" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1579017223283">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="602" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1579025312324">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579017223283" />
+    <state x="602" y="271" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1579025312324" />
+    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876282357" />
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578866183417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1578866183417" />
-    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579017243010">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="341" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579035009812">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579017243010" />
-    <state x="707" y="239" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1578903458451">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="341" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.760@0.0.1280.760" timestamp="1579035009812" />
+    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578845290001" />
+    <state x="336" y="112" width="737" height="606" key="find.popup" timestamp="1578892990628">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="707" y="239" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578903458451" />
-    <state x="656" y="118" width="615" height="804" key="find.popup" timestamp="1578901221442">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="336" y="112" width="737" height="606" key="find.popup/0.0.1280.760@0.0.1280.760" timestamp="1578892990628" />
+    <state x="382" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1579036414823">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="656" y="118" width="615" height="804" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578901221442" />
-    <state x="702" y="139" key="refactoring.ChangeSignatureDialog" timestamp="1579032192934">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="382" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.760@0.0.1280.760" timestamp="1579036414823" />
+    <state x="411" y="175" key="run.anything.popup" timestamp="1579008923648">
+      <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="702" y="139" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579032192934" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1579034578236">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579034578236" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579018992225">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579018992225" />
+    <state x="411" y="175" key="run.anything.popup/0.0.1280.760@0.0.1280.760" timestamp="1579008923648" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578868553727" />
   </component>
 </project>
