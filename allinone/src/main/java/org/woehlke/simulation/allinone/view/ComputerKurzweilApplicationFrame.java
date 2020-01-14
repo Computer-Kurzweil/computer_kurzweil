@@ -99,7 +99,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements
     }
 
     public void start() {
-        this.getSimulatedEvolutionFrame().start();
+        this.simulatedEvolutionFrame.start();
     }
 
     public void repaint(){

@@ -80,6 +80,7 @@ public class ComputerKurzweilApplication {
             .run(args);
         EventQueue.invokeLater(() -> {
             ComputerKurzweilApplication application = springCtx.getBean(ComputerKurzweilApplication.class);
+            application.start();
         });
     }
 
