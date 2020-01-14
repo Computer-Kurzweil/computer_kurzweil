@@ -1,5 +1,6 @@
-package org.woehlke.simulation.mandelbrot.view;
+package org.woehlke.simulation.mandelbrot.view.parts;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,9 +24,7 @@ import java.awt.*;
 public class MandelbrotCanvas extends JComponent {
 
     private final MandelbrotContext ctx;
-    private final Dimension preferredSize;
 
-    @Autowired
     public MandelbrotCanvas(MandelbrotContext ctx) {
         this.ctx = ctx;
         int width = this.ctx.getWorldDimensions().getWidth();
@@ -51,5 +50,7 @@ public class MandelbrotCanvas extends JComponent {
         paint(g);
     }
 
-    public double getCanvasHeight() { return preferredSize.getHeight(); }
+    @Getter
+    private final Dimension preferredSize;
+
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.view.PanelSubtitle;
 import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
+import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotCanvas;
+import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -45,20 +47,23 @@ public class MandelbrotFrame extends JPanel implements
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.panelButtons);
-        showMe();
-        this.ctx.setFrame(this);
-        this.ctx.start();
         this.canvas.addMouseListener( ctx );
+        this.ctx.setFrame(this);
+    }
+
+    public void start() {
+        showMe();
+        this.ctx.start();
     }
 
     public void setModeSwitch() {
-        this.getCanvas().setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.getPanelButtons().enableZoomButton();
+        this.canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.panelButtons.enableZoomButton();
     }
 
     public void setModeZoom() {
-        this.getCanvas().setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        this.getPanelButtons().disableZoomButton();
+        this.canvas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        this.panelButtons.disableZoomButton();
     }
 
     /**
@@ -70,9 +75,8 @@ public class MandelbrotFrame extends JPanel implements
             this.canvas.setVisible(true);
             this.panelSubtitle.setVisible(true);
             this.panelButtons.setVisible(true);
-            this.panelButtons.repaint();
-            this.canvas.repaint();
-        } catch (Exception e){
+            this.repaint();
+        } catch (NullPointerException e){
             log.warning("Error in showMe() "+e.getMessage());
         }
     }
@@ -81,23 +85,23 @@ public class MandelbrotFrame extends JPanel implements
     public void repaint(){
         try {
             this.canvas.repaint();
-        } catch (Exception e){
-            log.warning("Error MandelbrotFrame.repaint() -> canvas.repaint() "+e.getMessage());
+        } catch (NullPointerException e){
+            log.warning("Error MandelbrotFrame.repaint() -> canvas.repaint() " + e.getMessage());
         }
         try {
             this.panelSubtitle.repaint();
-        } catch (Exception e){
-            log.warning("Error MandelbrotFrame.repaint() ->  panelSubtitle.repaint() "+e.getMessage());
+        } catch (NullPointerException e){
+            log.warning("Error MandelbrotFrame.repaint() ->  panelSubtitle.repaint() " + e.getMessage());
         }
         try {
             this.panelButtons.repaint();
-        } catch (Exception e){
-            log.warning("Error MandelbrotFrame.repaint() -> panelButtons.repaint() "+e.getMessage());
+        } catch (NullPointerException e){
+            log.warning("Error MandelbrotFrame.repaint() -> panelButtons.repaint() " + e.getMessage());
         }
         try {
             super.repaint();
-        } catch (Exception e){
-            log.warning("Error MandelbrotFrame.repaint() -> super.repaint() "+e.getMessage());
+        } catch (NullPointerException e){
+            log.warning("Error MandelbrotFrame.repaint() -> super.repaint() " + e.getMessage());
         }
     }
 

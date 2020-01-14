@@ -1,4 +1,4 @@
-package org.woehlke.simulation.mandelbrot.view;
+package org.woehlke.simulation.mandelbrot.view.parts;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
@@ -26,41 +26,33 @@ import static org.woehlke.simulation.mandelbrot.model.state.RadioButtons.RADIO_B
 @Log
 public class MandelbrotPanelButtons extends JPanel {
 
-    @Getter private JRadioButton radioButtonsSwitch;
-    @Getter private JRadioButton radioButtonsZoom;
-    @Getter private JButton zoomOutButton;
+    @Getter private final JRadioButton radioButtonsSwitch;
+    @Getter private final JRadioButton radioButtonsZoom;
+    @Getter private final JButton zoomOutButton;
 
-    private ButtonGroup radioButtonsGroup;
-    private JPanel panelButtonsGroup;
-    private JPanel panelZoomButtons;
-    private TextField zoomLevelField;
+    private final ButtonGroup radioButtonsGroup;
+    private final JPanel panelButtonsGroup;
+    private final JPanel panelZoomButtons;
+    private final TextField zoomLevelField;
 
     private final MandelbrotContext ctx;
 
     public MandelbrotPanelButtons(MandelbrotContext ctx) {
         this.ctx = ctx;
-        init(ctx.getProperties());
-        this.radioButtonsSwitch.addActionListener(this.ctx);
-        this.radioButtonsZoom.addActionListener(this.ctx);
-        this.zoomOutButton.addActionListener(this.ctx);
-    }
-
-    private void init(MandelbrotProperties properties){
         FlowLayout layout = new FlowLayout();
-        this.radioButtonsSwitch = new JRadioButton(properties.getButtonsSwitch());
+        this.radioButtonsSwitch = new JRadioButton(this.ctx.getProperties().getButtonsSwitch());
         this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
-        this.radioButtonsZoom = new JRadioButton(properties.getButtonsZoom());
+        this.radioButtonsZoom = new JRadioButton(this.ctx.getProperties().getButtonsZoom());
         this.radioButtonsZoom.setMnemonic(RADIO_BUTTONS_ZOOM.ordinal());
         this.radioButtonsGroup = new ButtonGroup();
         this.radioButtonsGroup.add(radioButtonsSwitch);
         this.radioButtonsGroup.add(radioButtonsZoom);
-        this.zoomOutButton = new JButton(properties.getButtonsZoomOut());
+        this.zoomOutButton = new JButton(this.ctx.getProperties().getButtonsZoomOut());
         this.panelButtonsGroup = new JPanel();
-        CompoundBorder borderPanelRadioButtons = PanelBorder.getBorder(properties.getButtonsLabel());
-        CompoundBorder borderPanelPushButtons = PanelBorder.getBorder(properties.getButtonsZoomLabel());
+        CompoundBorder borderPanelRadioButtons = PanelBorder.getBorder(this.ctx.getProperties().getButtonsLabel());
+        CompoundBorder borderPanelPushButtons = PanelBorder.getBorder(this.ctx.getProperties().getButtonsZoomLabel());
         JLabel zoomLevelFieldLabel = new JLabel("Zoom Level");
         zoomLevelField = new TextField("1",3);
-        //zoomLevelField.setText("1");
         panelButtonsGroup.setLayout(layout);
         panelButtonsGroup.setBorder(borderPanelRadioButtons);
         panelButtonsGroup.add(radioButtonsSwitch);
@@ -76,21 +68,20 @@ public class MandelbrotPanelButtons extends JPanel {
         this.add(panelZoomButtons);
         this.radioButtonsSwitch.setSelected( true );
         this.disableZoomButton();
+        this.radioButtonsSwitch.addActionListener(this.ctx);
+        this.radioButtonsZoom.addActionListener(this.ctx);
+        this.zoomOutButton.addActionListener(this.ctx);
     }
 
     @Override
     public void repaint() {
-        if(this.zoomLevelField == null){
-            zoomLevelField = new TextField("1");
-        }
-        String text;
         try {
-            text = ctx.getZoomLevel();
+            String text = ctx.getZoomLevel();
+            this.zoomLevelField.setText(text);
+            this.zoomLevelField.repaint();
         } catch (NullPointerException e){
-            text = "ERR";
+            log.info(e.getMessage());
         }
-        this.zoomLevelField.setText(text);
-        this.zoomLevelField.repaint();
         super.repaint();
     }
 
