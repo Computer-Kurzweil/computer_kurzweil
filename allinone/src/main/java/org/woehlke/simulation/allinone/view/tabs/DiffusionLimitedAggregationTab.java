@@ -30,7 +30,7 @@ public class DiffusionLimitedAggregationTab extends JPanel implements ActionList
         CompoundBorder border = PanelBorder.getBorder();
         this.setBorder(border);
         this.ctx = ctx;
-        PanelSubtitle panelSubtitle = new PanelSubtitle(ctx);
+        PanelSubtitle panelSubtitle = new PanelSubtitle(ctx.getDiffusionLimitedAggregationPContext());
         this.startStopPanel = new StartStopPanel(this);
         this.framePanel = new FramePanel(this);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);

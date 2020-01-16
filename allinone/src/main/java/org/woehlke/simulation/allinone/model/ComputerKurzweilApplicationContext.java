@@ -7,10 +7,10 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
-import org.woehlke.simulation.cca.config.CyclicCellularAutomatonProperties;
-import org.woehlke.simulation.dla.config.DiffusionLimitedAggregationProperties;
-import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
-import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
+import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
+import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 @Log
 @Component
@@ -20,24 +20,24 @@ public class ComputerKurzweilApplicationContext {
 
     @Getter private final ComputerKurzweilProperties properties;
 
-    @Getter private final MandelbrotProperties mandelbrotProperties;
-    @Getter private final SimulatedEvolutionProperties simulatedEvolutionProperties;
-    @Getter private final DiffusionLimitedAggregationProperties diffusionLimitedAggregationProperties;
-    @Getter private final CyclicCellularAutomatonProperties cyclicCellularAutomatonProperties;
+    @Getter private final MandelbrotContext mandelbrotContext;
+    @Getter private final SimulatedEvolutionContext simulatedEvolutionContext;
+    @Getter private final DiffusionLimitedAggregatioContext diffusionLimitedAggregationPContext;
+    @Getter private final CyclicCellularAutomatonContext cyclicCellularAutomatonContext;
 
     @Autowired
     public ComputerKurzweilApplicationContext(
         ComputerKurzweilProperties computerKurzweilProperties,
-        MandelbrotProperties mandelbrotProperties,
-        SimulatedEvolutionProperties simulatedEvolutionProperties,
-        DiffusionLimitedAggregationProperties diffusionLimitedAggregationProperties,
-        CyclicCellularAutomatonProperties cyclicCellularAutomatonProperties
+        MandelbrotContext mandelbrotContext,
+        SimulatedEvolutionContext simulatedEvolutionContext,
+        DiffusionLimitedAggregatioContext diffusionLimitedAggregationPContext,
+        CyclicCellularAutomatonContext cyclicCellularAutomatonContext
     ) {
         this.properties = computerKurzweilProperties;
-        this.mandelbrotProperties = mandelbrotProperties;
-        this.simulatedEvolutionProperties = simulatedEvolutionProperties;
-        this.diffusionLimitedAggregationProperties = diffusionLimitedAggregationProperties;
-        this.cyclicCellularAutomatonProperties = cyclicCellularAutomatonProperties;
+        this.mandelbrotContext = mandelbrotContext;
+        this.simulatedEvolutionContext = simulatedEvolutionContext;
+        this.diffusionLimitedAggregationPContext = diffusionLimitedAggregationPContext;
+        this.cyclicCellularAutomatonContext = cyclicCellularAutomatonContext;
     }
 
     public void exit() {

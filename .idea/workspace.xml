@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/StartStopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/StartStopPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/CyclicCellularAutomatonTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/CyclicCellularAutomatonTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/DiffusionLimitedAggregationTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/DiffusionLimitedAggregationTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/MandelbrotTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/MandelbrotTab.java" afterDir="false" />
@@ -332,7 +332,7 @@
       <workItem from="1579007518341" duration="6680000" />
       <workItem from="1579025303038" duration="11526000" />
       <workItem from="1579201338868" duration="849000" />
-      <workItem from="1579205415181" duration="9408000" />
+      <workItem from="1579205415181" duration="10079000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -537,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579214189967</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="switch from one app to allinone app">
+      <created>1579214893010</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1579214893010</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,10 +567,10 @@
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577558595678" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser" timestamp="1579210020780">
+    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser" timestamp="1579215342201">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser/0.0.1280.760@0.0.1280.760" timestamp="1579210020780" />
+    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser/0.0.1280.760@0.0.1280.760" timestamp="1579215342201" />
     <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578861456195" />
     <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1578525204381">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -589,10 +596,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="111" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.760@0.0.1280.760" timestamp="1579206525776" />
-    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2" timestamp="1579214183389">
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2" timestamp="1579214888585">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579214183389" />
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579214888585" />
     <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
