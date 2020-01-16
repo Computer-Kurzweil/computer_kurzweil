@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/FramePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/StartStopPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/CyclicCellularAutomatonTab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/DiffusionLimitedAggregationTab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/MandelbrotTab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/SimulatedEvolutionTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/config/ComputerKurzweilProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/config/ComputerKurzweilProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelBorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelBorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelCopyright.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelCopyright.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelSubtitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelSubtitle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/StartStopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/StartStopPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/CyclicCellularAutomatonTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/CyclicCellularAutomatonTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/DiffusionLimitedAggregationTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/DiffusionLimitedAggregationTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/MandelbrotTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/MandelbrotTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/SimulatedEvolutionTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/SimulatedEvolutionTab.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +332,7 @@
       <workItem from="1579007518341" duration="6680000" />
       <workItem from="1579025303038" duration="11526000" />
       <workItem from="1579201338868" duration="849000" />
-      <workItem from="1579205415181" duration="8582000" />
+      <workItem from="1579205415181" duration="9408000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -538,7 +530,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579043910035</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="switch from one app to allinone app">
+      <created>1579214189967</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1579214189967</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,10 +589,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="111" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.760@0.0.1280.760" timestamp="1579206525776" />
-    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2" timestamp="1579043906488">
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2" timestamp="1579214183389">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579043906488" />
+    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579214183389" />
     <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -605,25 +604,25 @@
     <state x="414" y="109" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579014597777" />
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1237" height="495" key="GridCell.Tab.0.bottom" timestamp="1579214172534">
+    <state width="1237" height="495" key="GridCell.Tab.0.bottom" timestamp="1579214872709">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="495" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579214172534" />
+    <state width="1237" height="495" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579214872709" />
     <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
-    <state width="1237" height="495" key="GridCell.Tab.0.center" timestamp="1579214172534">
+    <state width="1237" height="495" key="GridCell.Tab.0.center" timestamp="1579214872709">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="495" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579214172534" />
+    <state width="1237" height="495" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579214872709" />
     <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="495" key="GridCell.Tab.0.left" timestamp="1579214172534">
+    <state width="1237" height="495" key="GridCell.Tab.0.left" timestamp="1579214872709">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="495" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579214172534" />
+    <state width="1237" height="495" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579214872709" />
     <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1237" height="495" key="GridCell.Tab.0.right" timestamp="1579214172534">
+    <state width="1237" height="495" key="GridCell.Tab.0.right" timestamp="1579214872709">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="495" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579214172534" />
+    <state width="1237" height="495" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579214872709" />
     <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
     <state x="352" y="96" key="MultipleFileMergeDialog" timestamp="1579042639890">
       <screen x="0" y="0" width="1280" height="760" />

@@ -35,6 +35,8 @@ public class StartStopPanel extends JPanel {
         this.add(panelButton);
         this.startButton.addActionListener(tab);
         this.stopButton.addActionListener(tab);
+        this.startButton.setEnabled(true);
+        this.stopButton.setEnabled(false);
     }
 
     public StartStopPanel(DiffusionLimitedAggregationTab tab) {
@@ -50,6 +52,8 @@ public class StartStopPanel extends JPanel {
         this.add(panelButton);
         this.startButton.addActionListener(tab);
         this.stopButton.addActionListener(tab);
+        this.startButton.setEnabled(true);
+        this.stopButton.setEnabled(false);
     }
 
     public StartStopPanel(MandelbrotTab tab) {
@@ -65,6 +69,8 @@ public class StartStopPanel extends JPanel {
         this.add(panelButton);
         this.startButton.addActionListener(tab);
         this.stopButton.addActionListener(tab);
+        this.startButton.setEnabled(true);
+        this.stopButton.setEnabled(false);
     }
 
     public StartStopPanel(SimulatedEvolutionTab tab) {
@@ -80,6 +86,8 @@ public class StartStopPanel extends JPanel {
         this.add(panelButton);
         this.startButton.addActionListener(tab);
         this.stopButton.addActionListener(tab);
+        this.startButton.setEnabled(true);
+        this.stopButton.setEnabled(false);
     }
 
 }

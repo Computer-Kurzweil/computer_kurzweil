@@ -50,9 +50,13 @@ public class SimulatedEvolutionTab extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.startStopPanel.getStartButton()){
+            this.startStopPanel.getStartButton().setEnabled(false);
+            this.startStopPanel.getStopButton().setEnabled(true);
             this.start();
         }
         if(e.getSource() == this.startStopPanel.getStopButton()){
+            this.startStopPanel.getStartButton().setEnabled(true);
+            this.startStopPanel.getStopButton().setEnabled(false);
             this.stop();
         }
     }
