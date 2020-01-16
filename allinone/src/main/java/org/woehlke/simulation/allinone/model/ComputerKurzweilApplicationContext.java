@@ -13,9 +13,9 @@ import org.woehlke.simulation.evolution.config.SimulatedEvolutionProperties;
 import org.woehlke.simulation.mandelbrot.config.MandelbrotProperties;
 
 @Log
+@Component
 @ToString
 @EqualsAndHashCode
-@Component
 public class ComputerKurzweilApplicationContext {
 
     @Getter private final ComputerKurzweilProperties properties;

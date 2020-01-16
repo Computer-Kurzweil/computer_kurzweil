@@ -27,7 +27,7 @@ public class ComputerKurzweilProperties {
     @Valid
     @Getter
     @Setter
-    public SimulatedEvolutionProperties.View view = new SimulatedEvolutionProperties.View();
+    public View view = new View();
 
     @Validated
     public static class View {

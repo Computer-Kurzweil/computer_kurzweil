@@ -17,4 +17,15 @@ public class PanelBorder {
             BorderFactory.createEmptyBorder(top,left,bottom,right)
         );
     }
+
+    public static CompoundBorder getBorder(){
+        int top = BORDER_PADDING;
+        int left = BORDER_PADDING;
+        int bottom = BORDER_PADDING;
+        int right = BORDER_PADDING;
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createEmptyBorder(top,left,bottom,right),
+            BorderFactory.createEmptyBorder(top,left,bottom,right)
+        );
+    }
 }

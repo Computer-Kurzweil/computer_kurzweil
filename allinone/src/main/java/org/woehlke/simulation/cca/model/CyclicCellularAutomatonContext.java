@@ -11,9 +11,6 @@ import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.cca.config.CyclicCellularAutomatonColorScheme;
 import org.woehlke.simulation.cca.config.CyclicCellularAutomatonProperties;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 @Log
 @ToString
 @EqualsAndHashCode

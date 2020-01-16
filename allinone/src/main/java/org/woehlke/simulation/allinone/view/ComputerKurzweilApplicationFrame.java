@@ -6,13 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.parts.Bounds;
-import org.woehlke.simulation.cca.view.CyclicCellularAutomatonFrame;
-import org.woehlke.simulation.dla.view.DiffusionLimitedAggregationFrame;
-import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
+import org.woehlke.simulation.allinone.view.parts.PanelBorder;
+import org.woehlke.simulation.allinone.view.parts.PanelCopyright;
+import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.tabs.CyclicCellularAutomatonTab;
+import org.woehlke.simulation.allinone.view.tabs.DiffusionLimitedAggregationTab;
+import org.woehlke.simulation.allinone.view.tabs.MandelbrotTab;
+import org.woehlke.simulation.allinone.view.tabs.SimulatedEvolutionTab;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -33,40 +37,53 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements
     private final ComputerKurzweilApplicationContext ctx;
 
     @Getter
-    private final SimulatedEvolutionFrame simulatedEvolutionFrame;
-    /*
+    private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
+
     @Getter
-    private final MandelbrotFrame mandelbrotFrame;
+    private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;
+
     @Getter
-    private final CyclicCellularAutomatonFrame cyclicCellularAutomatonFrame;
+    private final MandelbrotTab mandelbrotTab;
+
     @Getter
-    private final DiffusionLimitedAggregationFrame diffusionLimitedAggregationFrame;
-*/
+    private final SimulatedEvolutionTab simulatedEvolutionTab;
+
     @Autowired
     public ComputerKurzweilApplicationFrame(
         ComputerKurzweilApplicationContext ctx,
-        SimulatedEvolutionFrame simulatedEvolutionFrame/*,
-        MandelbrotFrame mandelbrotFrame,
-        CyclicCellularAutomatonFrame cyclicCellularAutomatonFrame,
-        DiffusionLimitedAggregationFrame diffusionLimitedAggregationFrame*/
+        CyclicCellularAutomatonTab cyclicCellularAutomatonTab,
+        DiffusionLimitedAggregationTab diffusionLimitedAggregationTab,
+        MandelbrotTab mandelbrotTab,
+        SimulatedEvolutionTab simulatedEvolutionTab
     ) throws HeadlessException {
         super(ctx.getProperties().getView().getTitle());
+        CompoundBorder border = PanelBorder.getBorder();
         this.ctx = ctx;
-        this.simulatedEvolutionFrame = simulatedEvolutionFrame;/*
-        this.mandelbrotFrame = mandelbrotFrame;
-        this.cyclicCellularAutomatonFrame = cyclicCellularAutomatonFrame;
-        this.diffusionLimitedAggregationFrame = diffusionLimitedAggregationFrame;*/
+        this.cyclicCellularAutomatonTab = cyclicCellularAutomatonTab;
+        this.diffusionLimitedAggregationTab = diffusionLimitedAggregationTab;
+        this.mandelbrotTab = mandelbrotTab;
+        this.simulatedEvolutionTab = simulatedEvolutionTab;
+        PanelSubtitle panelSubtitle = new PanelSubtitle(ctx);
+        PanelCopyright panelCopyright = new PanelCopyright(ctx);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.Y_AXIS);
         rootPane.setLayout(layout);
+        rootPane.setBorder(border);
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.add(
-            this.simulatedEvolutionFrame.getCtx().getProperties().getView().getTitle(),
-            this.simulatedEvolutionFrame
+            "Cyclic Cellular Automaton ", this.cyclicCellularAutomatonTab
         );
-        //tabbedPane.add(this.mandelbrotFrame.getCtx().getProperties().getTitle(), this.mandelbrotFrame);
-        //tabbedPane.add(this.cyclicCellularAutomatonFrame.getCtx().getProperties().getTitle(), this.cyclicCellularAutomatonFrame);
-        //tabbedPane.add(this.diffusionLimitedAggregationFrame.getCtx().getProperties().getTitle(), this.diffusionLimitedAggregationFrame);
+        tabbedPane.add(
+            "Diffusion Limited Aggregation", this.diffusionLimitedAggregationTab
+        );
+        tabbedPane.add(
+            "Mandelbrot", this.mandelbrotTab
+        );
+        tabbedPane.add(
+            "Simulated Evolution ", this.simulatedEvolutionTab
+        );
+        rootPane.add(panelSubtitle);
         rootPane.add(tabbedPane);
+        rootPane.add(panelCopyright);
         pack();
         double height = rootPane.getHeight();
         double width = rootPane.getWidth();
@@ -99,12 +116,12 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements
     }
 
     public void start() {
-        this.simulatedEvolutionFrame.start();
+        //this.simulatedEvolutionFrame.start();
     }
 
     public void repaint(){
         super.repaint();
-        this.getSimulatedEvolutionFrame().repaint();
+        //this.getSimulatedEvolutionFrame().repaint();
     }
 
     public void windowOpened(WindowEvent e) {
