@@ -1,5 +1,6 @@
 package org.woehlke.simulation.allinone.view.tabs;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import java.awt.event.ActionListener;
 @Component
 public class MandelbrotTab extends JPanel implements ActionListener {
 
+    @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
     private final StartStopPanel startStopPanel;
