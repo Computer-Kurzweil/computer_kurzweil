@@ -7,7 +7,7 @@ org:
           height: 585
         view:
           title: 'Computer Kurzweil'
-          subtitle: 'Some nice Scientific Imfotainment'
+          subtitle: 'Scientific Imfotainment'
           copyright: '(c) 2020 Thomas Woehlke'
           borderPadding: 5
           titleHeight: 30
@@ -65,7 +65,7 @@ org:
           gardenOfEdenLatticeDivisorPadding: 2
       cca:
         view:
-          title: 'cyclic cellular automaton'
+          title: 'Cyclic Cellular Automaton'
           subtitle: 'Cyclic Cellular Automaton'
           neighborhood:
             title: 'Neighborhood'
@@ -74,8 +74,8 @@ org:
             typeWoehlke: 'Woehlke'
       dla:
         view:
-          title: 'diffusion limited aggregation'
-          subtitle: 'the fractal geometry of nature'
+          title: 'Diffusion Limited Aggregation'
+          subtitle: 'The fractal Geometry of Nature'
         control:
           threadSleepTime: 50
           numberOfParticles: 30000
