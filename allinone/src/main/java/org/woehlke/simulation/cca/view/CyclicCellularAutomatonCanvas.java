@@ -6,7 +6,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonLattice;
 
 import javax.swing.*;

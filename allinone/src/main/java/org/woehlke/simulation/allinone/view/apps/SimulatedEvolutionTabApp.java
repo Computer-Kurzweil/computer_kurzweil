@@ -1,13 +1,13 @@
 package org.woehlke.simulation.allinone.view.apps;
 
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.view.apps.parts.AppTabPanel;
+import org.woehlke.simulation.allinone.view.apps.parts.TabAppPanel;
 import org.woehlke.simulation.allinone.view.tabs.parts.TabPanel;
 
 @Log
-public class MandelbrotApp extends AppTabPanel {
+public class SimulatedEvolutionTabApp extends TabAppPanel {
 
-    public MandelbrotApp(TabPanel tab) {
+    public SimulatedEvolutionTabApp(TabPanel tab) {
         super(tab);
     }
 

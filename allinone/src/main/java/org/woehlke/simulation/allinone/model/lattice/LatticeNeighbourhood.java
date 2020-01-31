@@ -1,4 +1,6 @@
-package org.woehlke.simulation.allinone.model;
+package org.woehlke.simulation.allinone.model.lattice;
+
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 
 public class LatticeNeighbourhood {
 

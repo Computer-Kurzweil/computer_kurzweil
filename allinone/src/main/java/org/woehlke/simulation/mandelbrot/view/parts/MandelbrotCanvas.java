@@ -2,8 +2,8 @@ package org.woehlke.simulation.mandelbrot.view.parts;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
 import org.woehlke.simulation.mandelbrot.model.ApplicationStateMachine;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;

@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 
 @Log
 @Service

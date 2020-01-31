@@ -3,13 +3,13 @@ package org.woehlke.simulation.cca.model;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.model.lattice.LatticeNeighbourhoodType;
 
 import java.awt.*;
 import java.io.Serializable;
 
-import static org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType.*;
+import static org.woehlke.simulation.allinone.model.lattice.LatticeNeighbourhoodType.*;
 
 /**
  * Cyclic Cellular Automaton.

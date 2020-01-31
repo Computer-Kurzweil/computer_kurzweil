@@ -1,9 +1,9 @@
-package org.woehlke.simulation.allinone.view.apps.parts;
+package org.woehlke.simulation.allinone.view.frame;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class AppTabLayout extends BoxLayout {
+public class ComputerKurzweilApplicationFrameLayout extends BoxLayout {
 
     /**
      * Creates a layout manager that will lay out components along the
@@ -12,7 +12,7 @@ public class AppTabLayout extends BoxLayout {
      * @param target the container that needs to be laid out
      * @throws AWTError if the value of {@code axis} is invalid
      */
-    public AppTabLayout(Container target) {
+    public ComputerKurzweilApplicationFrameLayout(Container target) {
         super(target, BoxLayout.Y_AXIS);
     }
 }

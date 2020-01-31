@@ -1,4 +1,4 @@
-package org.woehlke.simulation.allinone.model;
+package org.woehlke.simulation.allinone.config;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 import org.woehlke.simulation.cca.model.CyclicCellularAutomatonColorScheme;
 import org.woehlke.simulation.evolution.model.cell.CellCore;
 import org.woehlke.simulation.evolution.model.cell.CellLifeCycle;

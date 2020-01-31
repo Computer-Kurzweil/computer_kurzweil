@@ -3,8 +3,8 @@ package org.woehlke.simulation.evolution.model.cell;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 
 import java.io.Serializable;
 

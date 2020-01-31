@@ -2,13 +2,13 @@ package org.woehlke.simulation.mandelbrot.model.fractal;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.numbers.ComplexNumber;
-import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 
 
 /**

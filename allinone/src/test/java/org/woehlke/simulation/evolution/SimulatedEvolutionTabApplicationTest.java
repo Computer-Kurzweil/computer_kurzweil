@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Unit test for simple AppMainDesktop.
  */
-public class SimulatedEvolutionApplicationTest {
+public class SimulatedEvolutionTabApplicationTest {
 
   /**
    * When I am grown up, I will be a cool Uni Test.

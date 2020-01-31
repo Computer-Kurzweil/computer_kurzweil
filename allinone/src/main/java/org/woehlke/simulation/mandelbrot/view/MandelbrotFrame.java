@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.common.PanelSubtitle;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;

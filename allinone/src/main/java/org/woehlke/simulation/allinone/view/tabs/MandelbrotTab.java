@@ -2,19 +2,19 @@ package org.woehlke.simulation.allinone.view.tabs;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.view.apps.MandelbrotApp;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.view.apps.MandelbrotTabApp;
 import org.woehlke.simulation.allinone.view.tabs.parts.TabPanel;
 
 @Log
 public class MandelbrotTab extends TabPanel {
 
     @Getter
-    private final MandelbrotApp app;
+    private final MandelbrotTabApp app;
 
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx) {
         super(ctx, ctx.getProperties().getMandelbrot().getView().getSubtitle());
-        this.app = new MandelbrotApp(this);
+        this.app = new MandelbrotTabApp(this);
         this.add(this.panelSubtitle);
         this.add(this.app);
         this.add(this.startStopButtonsPanel);

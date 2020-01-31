@@ -1,8 +1,7 @@
 package org.woehlke.simulation.evolution.model.world;
 
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.simulation.evolution.model.cell.CellLifeCycle;
 

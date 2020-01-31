@@ -4,9 +4,6 @@ import lombok.*;
 import lombok.extern.java.Log;
 import org.woehlke.simulation.evolution.model.cell.CellLifeCycleStatus;
 
-/**
- * TODO write doc.
- */
 @Log
 @ToString
 @EqualsAndHashCode

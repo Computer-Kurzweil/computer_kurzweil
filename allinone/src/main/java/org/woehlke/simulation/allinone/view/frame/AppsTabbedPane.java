@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.common.PanelBorder;
 import org.woehlke.simulation.allinone.view.tabs.CyclicCellularAutomatonTab;
 import org.woehlke.simulation.allinone.view.tabs.DiffusionLimitedAggregationTab;

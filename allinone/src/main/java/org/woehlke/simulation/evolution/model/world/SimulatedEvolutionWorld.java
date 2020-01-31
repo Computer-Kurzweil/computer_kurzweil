@@ -4,7 +4,7 @@ package org.woehlke.simulation.evolution.model.world;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 import org.woehlke.simulation.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;

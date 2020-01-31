@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.frame.ComputerKurzweilApplicationFrame;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 

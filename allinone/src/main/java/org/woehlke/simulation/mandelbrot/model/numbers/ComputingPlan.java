@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;

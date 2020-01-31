@@ -2,13 +2,13 @@ package org.woehlke.simulation.allinone.view.apps;
 
 
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.view.apps.parts.AppTabPanel;
+import org.woehlke.simulation.allinone.view.apps.parts.TabAppPanel;
 import org.woehlke.simulation.allinone.view.tabs.parts.TabPanel;
 
 @Log
-public class CyclicCellularAutomatonApp extends AppTabPanel {
+public class CyclicCellularAutomatonTabApp extends TabAppPanel {
 
-    public CyclicCellularAutomatonApp(TabPanel tab) {
+    public CyclicCellularAutomatonTabApp(TabPanel tab) {
         super(tab);
     }
 

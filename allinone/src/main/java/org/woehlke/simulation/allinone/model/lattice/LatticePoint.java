@@ -1,8 +1,9 @@
-package org.woehlke.simulation.allinone.model;
+package org.woehlke.simulation.allinone.model.lattice;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 
 /**
  * A Point is used to define the Position of Cell or as a Vector for defining Dimensions.

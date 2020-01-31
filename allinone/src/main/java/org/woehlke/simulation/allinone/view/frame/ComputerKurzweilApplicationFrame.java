@@ -4,16 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.common.Bounds;
 import org.woehlke.simulation.allinone.view.common.PanelBorder;
 import org.woehlke.simulation.allinone.view.common.PanelCopyright;
-import org.woehlke.simulation.allinone.view.frame.parts.*;
 import org.woehlke.simulation.allinone.view.common.PanelSubtitle;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;

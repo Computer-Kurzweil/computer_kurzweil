@@ -1,6 +1,7 @@
-package org.woehlke.simulation.allinone.model;
+package org.woehlke.simulation.allinone.model.lattice;
 
 import lombok.Getter;
+import org.woehlke.simulation.allinone.model.lattice.LatticeNeighbourhoodType;
 
 public enum LatticePointNeighbourhoodPosition {
 

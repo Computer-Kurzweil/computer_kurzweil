@@ -1,18 +1,18 @@
 package org.woehlke.simulation.allinone.view.tabs;
 
 import lombok.extern.java.Log;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.view.apps.SimulatedEvolutionApp;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.view.apps.SimulatedEvolutionTabApp;
 import org.woehlke.simulation.allinone.view.tabs.parts.TabPanel;
 
 @Log
 public class SimulatedEvolutionTab extends TabPanel {
 
-    private final SimulatedEvolutionApp app;
+    private final SimulatedEvolutionTabApp app;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
         super(ctx,ctx.getProperties().getEvolution().getView().getSubtitle());
-        this.app = new SimulatedEvolutionApp(this);
+        this.app = new SimulatedEvolutionTabApp(this);
         this.add(this.panelSubtitle);
         this.add(this.app);
         this.add(this.startStopButtonsPanel);

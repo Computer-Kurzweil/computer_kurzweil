@@ -3,8 +3,8 @@ package org.woehlke.simulation.dla.view;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.model.lattice.LatticePoint;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 
 import javax.swing.*;
