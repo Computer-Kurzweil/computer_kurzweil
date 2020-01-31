@@ -4,8 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.cca.control.CyclicCellularAutomatonController;
@@ -28,7 +26,6 @@ import java.io.Serializable;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-@Component
 public class CyclicCellularAutomatonFrame extends JPanel implements ImageObserver,
         MenuContainer,
         Serializable,
@@ -42,12 +39,13 @@ public class CyclicCellularAutomatonFrame extends JPanel implements ImageObserve
     @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
     @Getter private final PanelSubtitle subtitle;
 
-    @Autowired
-    public CyclicCellularAutomatonFrame(ComputerKurzweilApplicationContext ctx) {
+    public CyclicCellularAutomatonFrame(
+        ComputerKurzweilApplicationContext ctx
+    ) {
         //super(ctx.getProperties().getCca().getView().getTitle());
         this.ctx=ctx;
         BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
-        this.canvas = new CyclicCellularAutomatonCanvas(   this.ctx);
+        this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
         this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
         this.subtitle = PanelSubtitle.getPanelSubtitleForCca(this.ctx);

@@ -10,6 +10,7 @@ import org.woehlke.simulation.allinone.view.parts.FramePanel;
 import org.woehlke.simulation.allinone.view.parts.PanelBorder;
 import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.allinone.view.parts.StartStopPanel;
+import org.woehlke.simulation.cca.view.CyclicCellularAutomatonFrame;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -29,11 +30,15 @@ public class CyclicCellularAutomatonTab extends JPanel implements ActionListener
     @Getter
     private final FramePanel framePanel;
 
+    @Getter
+    private final CyclicCellularAutomatonFrame cyclicCellularAutomatonFrame;
+
     @Autowired
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
         CompoundBorder border = PanelBorder.getBorder();
         this.setBorder(border);
         this.ctx = ctx;
+        this.cyclicCellularAutomatonFrame = new CyclicCellularAutomatonFrame( this.ctx );
         PanelSubtitle panelSubtitle = new PanelSubtitle(
             ctx.getProperties().getCca().getView().getSubtitle()
         );
@@ -42,6 +47,7 @@ public class CyclicCellularAutomatonTab extends JPanel implements ActionListener
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setLayout(layout);
         this.add(panelSubtitle);
+        this.add(this.cyclicCellularAutomatonFrame);
         this.add(this.framePanel);
         this.add(this.startStopPanel);
     }
