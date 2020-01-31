@@ -28,7 +28,7 @@ org:
           time2wait: 100
           exitStatus: 0
           queueMaxLength: 1000
-        cell:
+        cellConf:
           fatMax: 2000
           fatHungerMax: 1000
           fatMinimumForSex: 800
@@ -63,7 +63,7 @@ org:
           foodPerDay: 80
           gardenOfEdenLatticeDivisor: 5
           gardenOfEdenLatticeDivisorPadding: 2
-	  cca:
+      cca:
         view:
           title: 'cyclic cellular automaton'
           subtitle: 'Cyclic Cellular Automaton'
@@ -72,7 +72,7 @@ org:
             typeVonNeumann: 'Von Neumann'
             typeMoore: 'Moore'
             typeWoehlke: 'Woehlke'
-	  dla:
+      dla:
         view:
           title: 'diffusion limited aggregation'
           subtitle: 'the fractal geometry of nature'
@@ -121,10 +121,12 @@ spring:
 logging:
   level:
     root: INFO
-    javax.swing: INFO
-    java.io: INFO
+    javax:
+      swing: INFO
+    java:
+      io: INFO
     org:
-      springframework: INFO
+      springframework:
         data: INFO
         batch: INFO
         context: INFO

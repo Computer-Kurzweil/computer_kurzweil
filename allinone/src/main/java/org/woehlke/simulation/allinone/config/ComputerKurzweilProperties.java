@@ -63,7 +63,6 @@ public class ComputerKurzweilProperties {
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
-            @NotBlank @Getter @Setter private String footer;
             @NotBlank @Getter @Setter private String buttonsZoom;
             @NotBlank @Getter @Setter private String buttonsZoomOut;
             @NotBlank @Getter @Setter private String buttonsSwitch;
