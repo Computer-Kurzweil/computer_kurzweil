@@ -7,8 +7,6 @@ import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.state.TuringDirection;
 
-import java.util.logging.Logger;
-
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *

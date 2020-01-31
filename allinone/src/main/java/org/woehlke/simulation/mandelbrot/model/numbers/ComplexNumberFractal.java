@@ -1,18 +1,33 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
+import lombok.*;
 import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 
-import java.util.Objects;
-
+import java.io.Serializable;
 import static org.woehlke.simulation.mandelbrot.model.numbers.CellStatus.MAX_ITERATIONS;
 
-public class ComplexNumberFractal {
 
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+public class ComplexNumberFractal implements Serializable {
+
+    @Getter
     private final ComplexNumber z;
+
+    @Getter
     private final ComplexNumber c;
+
+    @Getter
     private final Boolean inMandelbrotSet;
+
+    @Getter
     private final Boolean inJuliaSet;
+
+    @Getter
     private final int iterations;
+
+    @Getter
     private final FractalSetType fractalSetType;
 
     private ComplexNumberFractal() {
@@ -24,7 +39,14 @@ public class ComplexNumberFractal {
         this.fractalSetType = null;
     }
 
-    public ComplexNumberFractal(FractalSetType fractalSetType, ComplexNumber z, ComplexNumber c, Boolean inMandelbrotSet, Boolean inJuliaSet, int iterations) {
+    public ComplexNumberFractal(
+        FractalSetType fractalSetType,
+        ComplexNumber z,
+        ComplexNumber c,
+        Boolean inMandelbrotSet,
+        Boolean inJuliaSet,
+        int iterations
+    ) {
         this.z = z;
         this.c = c;
         this.inMandelbrotSet = inMandelbrotSet;
@@ -61,59 +83,5 @@ public class ComplexNumberFractal {
         Boolean inJuliaSet =  z.isNotDivergent();
         int iterations =  inJuliaSet?0:iterationsTmp;
         return new ComplexNumberFractal(fractalSetType,z,c,inMandelbrotSet,inJuliaSet, iterations);
-    }
-
-    public ComplexNumber getZ() {
-        return z;
-    }
-
-    public ComplexNumber getC() {
-        return c;
-    }
-
-    public Boolean getInMandelbrotSet() {
-        return inMandelbrotSet;
-    }
-
-    public Boolean getInJuliaSet() {
-        return inJuliaSet;
-    }
-
-    public int getIterations() {
-        return iterations;
-    }
-
-    public FractalSetType getFractalSetType() {
-        return fractalSetType;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ComplexNumberFractal)) return false;
-        ComplexNumberFractal that = (ComplexNumberFractal) o;
-        return getIterations() == that.getIterations() &&
-            getZ().equals(that.getZ()) &&
-            getC().equals(that.getC()) &&
-            Objects.equals(getInMandelbrotSet(), that.getInMandelbrotSet()) &&
-            Objects.equals(getInJuliaSet(), that.getInJuliaSet()) &&
-            getFractalSetType() == that.getFractalSetType();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getZ(), getC(), getInMandelbrotSet(), getInJuliaSet(), getIterations(), getFractalSetType());
-    }
-
-    @Override
-    public String toString() {
-        return "ComplexNumberFractal{" +
-            "z=" + z +
-            ", c=" + c +
-            ", inMandelbrotSet=" + inMandelbrotSet +
-            ", inJuliaSet=" + inJuliaSet +
-            ", iterations=" + iterations +
-            ", fractalSetType=" + fractalSetType +
-            '}';
     }
 }

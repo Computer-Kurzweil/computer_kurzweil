@@ -24,7 +24,7 @@ import java.io.Serializable;
 @Log
 @Component
 public class CyclicCellularAutomatonController extends Thread
-        implements Runnable, Serializable , ActionListener {
+        implements Runnable, Serializable, ActionListener {
 
     private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;

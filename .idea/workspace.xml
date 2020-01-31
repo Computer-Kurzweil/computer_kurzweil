@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/config/ComputerKurzweilProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/config/ComputerKurzweilProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/config/CyclicCellularAutomatonColorScheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonColorScheme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/control/CyclicCellularAutomatonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/control/CyclicCellularAutomatonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/config/DiffusionLimitedAggregationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/CellStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/CellStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComplexNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComplexNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComplexNumberFractal.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComplexNumberFractal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComplexWorldRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComplexWorldRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComputingPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ComputingPlan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/WorldDimensionsComplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/WorldDimensionsComplex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ZoomLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/numbers/ZoomLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPhaseStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPhaseStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPositionsStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPositionsStateMachine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,7 +336,8 @@
       <workItem from="1579427358954" duration="443000" />
       <workItem from="1579429869494" duration="597000" />
       <workItem from="1579430582567" duration="3769000" />
-      <workItem from="1580387137781" duration="36239000" />
+      <workItem from="1580387137781" duration="37049000" />
+      <workItem from="1580436957117" duration="3527000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -502,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580433275254</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="switch from one app to allinone app">
+      <created>1580433733825</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1580433733825</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,20 +644,22 @@
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577558215454" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
     <state x="246" y="189" width="1428" height="725" key="SettingsEditor/0.0.1920.1053@0.0.1920.1053" timestamp="1578937969784" />
-    <state x="143" y="255" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1578950418827">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state x="102" y="179" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1580433796548">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="95" y="184" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1578937081165" />
+    <state x="102" y="179" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580433796548" />
     <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876516148" />
     <state x="143" y="255" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1920.1053@0.0.1920.1053" timestamp="1578950418827" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844172030" />
-    <state x="903" y="375" key="com.intellij.ide.util.TipDialog" timestamp="1579430589405">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state x="642" y="264" key="com.intellij.ide.util.TipDialog" timestamp="1580436957100">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="602" y="271" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1578934367022" />
+    <state x="642" y="264" key="com.intellij.ide.util.TipDialog/0.0.1366.741@0.0.1366.741" timestamp="1580436957100" />
     <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876282357" />
     <state x="903" y="375" key="com.intellij.ide.util.TipDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1579430589405" />
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578866183417">

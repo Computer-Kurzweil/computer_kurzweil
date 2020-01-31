@@ -1,5 +1,6 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 import org.woehlke.simulation.mandelbrot.model.state.TuringPhase;
@@ -17,6 +18,7 @@ import org.woehlke.simulation.mandelbrot.model.state.TuringPhase;
 @Service
 public class TuringPhaseStateMachine {
 
+    @Getter
     private TuringPhase turingTuringPhase;
 
     public TuringPhaseStateMachine() {
@@ -43,7 +45,4 @@ public class TuringPhaseStateMachine {
         return turingTuringPhase == TuringPhase.FINISHED;
     }
 
-    public TuringPhase getTuringTuringPhase() {
-        return turingTuringPhase;
-    }
 }

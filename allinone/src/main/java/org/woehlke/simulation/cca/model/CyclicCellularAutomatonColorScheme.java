@@ -1,4 +1,4 @@
-package org.woehlke.simulation.cca.config;
+package org.woehlke.simulation.cca.model;
 
 import java.awt.*;
 import java.util.ArrayList;

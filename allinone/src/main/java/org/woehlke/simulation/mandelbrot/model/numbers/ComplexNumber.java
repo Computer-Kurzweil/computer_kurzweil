@@ -1,5 +1,7 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
+import lombok.*;
+
 import java.io.Serializable;
 
 /**
@@ -11,33 +13,25 @@ import java.io.Serializable;
  *
  * Created by tw on 18.08.15.
  */
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 public class ComplexNumber implements Serializable {
 
+    @Getter
     private final double real;
+
+    @Getter
     private final double img;
-
-    private final static double DIVERGENCE_THRESHOLD = 4.0d;
-
-    public double getReal() {
-        return real;
-    }
-    public double getImg() {
-        return img;
-    }
 
     public ComplexNumber() {
         this.real = 0.0d;
         this.img = 0.0d;
     }
 
-    public ComplexNumber(ComplexNumber complexNumber) {
+    public ComplexNumber(final ComplexNumber complexNumber) {
         this.real = complexNumber.real;
         this.img = complexNumber.img;
-    }
-
-    public ComplexNumber(double real, double img) {
-        this.real = real;
-        this.img = img;
     }
 
     public ComplexNumber copy() {
@@ -76,4 +70,5 @@ public class ComplexNumber implements Serializable {
         return (( real*real + img*img ) < DIVERGENCE_THRESHOLD);
     }
 
+    private final static double DIVERGENCE_THRESHOLD = 4.0d;
 }

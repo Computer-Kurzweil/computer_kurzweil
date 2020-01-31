@@ -1,10 +1,18 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 
+@Getter
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
 public class ComputingPlan {
 
     private final static double startWorldDimensionReal = 3.2d;
@@ -42,12 +50,14 @@ public class ComputingPlan {
     private final ComplexNumber center;
     private final LatticePoint latticePoint;
 
-    public ComputingPlan(ClickBehaviour clickBehaviour,
-                         FractalSetType fractalSetType,
-                         ComplexNumber worldDimension,
-                         ComplexNumber center,
-                         ZoomLevel zoomLevel,
-                         LatticePoint latticePoint) {
+    public ComputingPlan(
+        ClickBehaviour clickBehaviour,
+        FractalSetType fractalSetType,
+        ComplexNumber worldDimension,
+        ComplexNumber center,
+        ZoomLevel zoomLevel,
+        LatticePoint latticePoint
+    ) {
         this.zoomLevel = zoomLevel;
         this.clickBehaviour = clickBehaviour;
         this.fractalSetType = fractalSetType;
@@ -57,7 +67,9 @@ public class ComputingPlan {
         this.latticePoint = latticePoint;
     }
 
-    public ComputingPlan(ApplicationState applicationState) {
+    public ComputingPlan(
+        ApplicationState applicationState
+    ) {
         this.applicationState = applicationState;
         this.zoomLevel = new ZoomLevel();
         this.clickBehaviour = applicationState.getClickBehaviour();
@@ -92,29 +104,5 @@ public class ComputingPlan {
                 this.center = startCenterForMandelbrot;
                 break;
         }
-    }
-
-    public ApplicationState getApplicationState() {
-        return applicationState;
-    }
-
-    public ZoomLevel getZoomLevel() {
-        return zoomLevel;
-    }
-
-    public ClickBehaviour getClickBehaviour() {
-        return clickBehaviour;
-    }
-
-    public FractalSetType getFractalSetType() {
-        return fractalSetType;
-    }
-
-    public ComplexNumber getWorldDimension() {
-        return worldDimension;
-    }
-
-    public ComplexNumber getCenter() {
-        return center;
     }
 }

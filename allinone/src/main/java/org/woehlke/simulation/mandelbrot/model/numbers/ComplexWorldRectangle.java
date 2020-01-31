@@ -1,14 +1,26 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
-public class ComplexWorldRectangle {
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import java.io.Serializable;
+
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+public class ComplexWorldRectangle implements Serializable {
 
     private ComplexNumber northWest;
     private ComplexNumber southEast;
 
+    /*
     public ComplexWorldRectangle(ComplexNumber northWest, ComplexNumber southEast) {
         this.northWest = northWest;
         this.southEast = southEast;
     }
+    */
 
     public ComplexNumber getDelta(){
         return this.southEast.minus(this.northWest);
@@ -19,11 +31,4 @@ public class ComplexWorldRectangle {
         return this.southEast.minus(this.northWest);
     }
 
-    public ComplexNumber getNorthWest() {
-        return northWest;
-    }
-
-    public ComplexNumber getSouthEast() {
-        return southEast;
-    }
 }

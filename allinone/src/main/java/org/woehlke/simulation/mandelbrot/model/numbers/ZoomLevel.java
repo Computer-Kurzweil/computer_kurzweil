@@ -1,17 +1,16 @@
 package org.woehlke.simulation.mandelbrot.model.numbers;
 
-public class ZoomLevel {
+import lombok.Getter;
 
-    private final int LEVEL_NO_ZOOM = 1;
+import java.io.Serializable;
 
+public class ZoomLevel implements Serializable {
+
+    @Getter
     private int zoomLevel;
 
     public ZoomLevel(){
         this.zoomLevel = LEVEL_NO_ZOOM;
-    }
-
-    public int getZoomLevel() {
-        return zoomLevel;
     }
 
     public void inceaseZoomLevel() {
@@ -35,5 +34,7 @@ public class ZoomLevel {
     public void start() {
         this.zoomLevel = LEVEL_NO_ZOOM;
     }
+
+    private final int LEVEL_NO_ZOOM = 1;
 
 }
