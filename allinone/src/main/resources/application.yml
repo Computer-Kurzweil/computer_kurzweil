@@ -11,6 +11,10 @@ org:
           copyright: '(c) 2020 Thomas Woehlke'
           borderPadding: 5
           titleHeight: 30
+          startStopp: 'Start / Stop'
+          start: 'Start'
+          stop: 'Stop'
+          info: 'Info'
       mandelbrot:
         view:
           title: 'Mandelbrot Set'

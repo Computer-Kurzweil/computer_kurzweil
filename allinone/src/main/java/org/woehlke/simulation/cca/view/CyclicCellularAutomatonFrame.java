@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.common.PanelSubtitle;
 import org.woehlke.simulation.cca.control.CyclicCellularAutomatonController;
 
 import javax.accessibility.Accessible;

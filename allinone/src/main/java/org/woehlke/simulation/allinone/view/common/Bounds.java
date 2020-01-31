@@ -1,4 +1,4 @@
-package org.woehlke.simulation.allinone.view.parts;
+package org.woehlke.simulation.allinone.view.common;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,14 +16,10 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class Bounds implements Serializable {
 
-    @Getter
-    int myheight;
-    @Getter
-    int mywidth;
-    @Getter
-    int mystartX;
-    @Getter
-    int mystartY;
+    @Getter int myheight;
+    @Getter int mywidth;
+    @Getter int mystartX;
+    @Getter int mystartY;
 
     public Bounds(double height, double width, Dimension screenSize){
         double startX = (screenSize.getWidth() - width) / 2d;

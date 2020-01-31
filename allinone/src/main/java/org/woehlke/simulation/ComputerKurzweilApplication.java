@@ -9,7 +9,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
-import org.woehlke.simulation.allinone.view.ComputerKurzweilApplicationFrame;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
+import org.woehlke.simulation.allinone.view.frame.ComputerKurzweilApplicationFrame;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 
 import java.awt.*;
@@ -42,17 +43,20 @@ import java.awt.*;
 public class ComputerKurzweilApplication {
 
     private final ComputerKurzweilApplicationFrame frame;
+    private final ComputerKurzweilApplicationContext ctx;
 
     @Autowired
     public ComputerKurzweilApplication(
-        ComputerKurzweilApplicationFrame frame
+        ComputerKurzweilApplicationContext ctx
     ) {
-        this.frame=frame;
+        this.ctx = ctx;
+        this.frame = new ComputerKurzweilApplicationFrame(ctx);
     }
 
     public void start(){
         try {
             this.frame.start();
+            log.info("Started the Desktop Application");
         } catch (IllegalThreadStateException e){
             log.info(e.getLocalizedMessage());
         }
@@ -64,7 +68,6 @@ public class ComputerKurzweilApplication {
      * @param args CLI Parameter.
      */
     public static void main(String[] args) {
-        log.info("Started the Desktop Application");
         ConfigurableApplicationContext springCtx = new SpringApplicationBuilder(
             ComputerKurzweilApplication.class
         ).web(WebApplicationType.NONE).headless(false).run(args);

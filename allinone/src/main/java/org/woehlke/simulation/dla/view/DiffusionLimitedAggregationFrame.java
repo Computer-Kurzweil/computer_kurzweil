@@ -5,7 +5,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
+import org.woehlke.simulation.allinone.view.common.PanelSubtitle;
 import org.woehlke.simulation.dla.control.DiffusionLimitedAggregationControllerThread;
 
 import javax.accessibility.Accessible;
@@ -42,7 +42,7 @@ public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObs
     public DiffusionLimitedAggregationFrame(ComputerKurzweilApplicationContext ctx) {
         //super(ctx.getProperties().getDla().getView().getTitle());
         this.ctx=ctx;
-        this.subtitle = new PanelSubtitle(ctx.getProperties().getDla().getView().getSubtitle());
+        this.subtitle = PanelSubtitle.getPanelSubtitleForDla(this.ctx);
         this.setLayout(new BorderLayout());
         this.add(subtitle, BorderLayout.NORTH);
         canvas = new DiffusionLimitedAggregationCanvas(this.ctx);

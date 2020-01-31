@@ -1,7 +1,6 @@
-package org.woehlke.simulation.allinone.view.parts;
+package org.woehlke.simulation.allinone.view.common;
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
@@ -15,14 +14,9 @@ import java.awt.*;
 @EqualsAndHashCode(callSuper=true)
 public class PanelSubtitle extends JPanel {
 
-    @Getter
-    private final JLabel subtitleLabel;
-
     public PanelSubtitle(String text) {
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        this.subtitleLabel = new JLabel(text);
-        this.add(subtitleLabel);
+        this.setLayout(new FlowLayout());
+        this.add(new JLabel(text));
     }
 
     public static PanelSubtitle getPanelSubtitleForAllinone(ComputerKurzweilApplicationContext ctx) {
@@ -49,5 +43,4 @@ public class PanelSubtitle extends JPanel {
         String text = ctx.getProperties().getMandelbrot().getView().getSubtitle();
         return new PanelSubtitle(text);
     }
-
 }

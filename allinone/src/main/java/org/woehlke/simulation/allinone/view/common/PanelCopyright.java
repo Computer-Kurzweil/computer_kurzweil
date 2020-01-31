@@ -1,4 +1,4 @@
-package org.woehlke.simulation.allinone.view.parts;
+package org.woehlke.simulation.allinone.view.common;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
