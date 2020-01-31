@@ -35,7 +35,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     private final SimulatedEvolutionButtonRowPanel panelButtons;
     private final SimulatedEvolutionFrame frame;
 
-    private Boolean mySemaphore;
+    private Boolean goOn;
 
   public SimulatedEvolutionControllerThread(
       SimulatedEvolutionStateService ctxService,
@@ -49,7 +49,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       this.statisticsPanel = statisticsPanel;
       this.panelButtons = panelButtons;
       this.frame = frame;
-      this.mySemaphore = Boolean.TRUE;
+      this.goOn = Boolean.TRUE;
       this.panelButtons.getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
       this.panelButtons.getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
       this.panelButtons.getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
@@ -79,8 +79,8 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     show();
     boolean doMyJob;
     do {
-      synchronized (mySemaphore) {
-        doMyJob = mySemaphore.booleanValue();
+      synchronized (goOn) {
+        doMyJob = goOn.booleanValue();
       }
      this.world.letLivePopulation();
       this.statisticsPanel.update();
@@ -98,10 +98,15 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       this.frame.showMe();
   }
 
-  public void stopControllerThread() {
-    synchronized (mySemaphore) {
-      mySemaphore = Boolean.FALSE;
+    public void exit() {
+        try {
+            synchronized (goOn) {
+                goOn = Boolean.FALSE;
+            }
+            join();
+        } catch (InterruptedException e){
+            log.info(e.getMessage());
+        }
     }
-  }
 
 }

@@ -15,14 +15,12 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.Comput
 import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
 @Log
-@Service
 public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
 
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
 
     private final ZoomLevel zoomLevel;
 
-    @Autowired
     public GaussianNumberPlaneMandelbrot(ComputerKurzweilApplicationContext ctx) {
         super(ctx,FractalSetType.MANDELBROT_SET);
         zoomLevel = new ZoomLevel();
@@ -32,6 +30,11 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
     @Override
     public void start(){
         super.start();
+    }
+
+    @Override
+    public void stop() {
+
     }
 
     @Override

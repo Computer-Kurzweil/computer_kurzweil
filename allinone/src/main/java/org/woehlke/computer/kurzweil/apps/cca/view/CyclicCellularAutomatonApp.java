@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.model.Startable;
 import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonController;
@@ -28,14 +29,13 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper=true)
 public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
         Serializable,
-        Accessible {
+        Accessible, Startable {
 
     private static final long serialVersionUID = 4357793241219932594L;
 
     @Getter private ComputerKurzweilApplicationContext ctx;
     @Getter private CyclicCellularAutomatonCanvas canvas;
     @Getter private CyclicCellularAutomatonButtonsPanel panelButtons;
-    @Getter private PanelSubtitle subtitle;
 
     @Getter private CyclicCellularAutomatonController controller;
 
@@ -44,14 +44,13 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
     ) {
         this.ctx=ctx;
         this.setLayout(new BoxLayoutVertical(this));
+        this.setBounds(ctx.getFrameBounds());
     }
 
     public void start() {
-        this.subtitle = PanelSubtitle.getPanelSubtitleForCca(this.ctx);
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
         this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
-        this.add(this.subtitle);
         this.add(this.canvas);
         this.add(this.panelButtons);
         this.controller = new CyclicCellularAutomatonController( this.canvas,  this.panelButtons);
@@ -61,25 +60,20 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
 
     public void stop() {
         this.controller.exit();
-        this.remove(this.subtitle);
         this.remove(this.canvas);
         this.remove(this.panelButtons);
-        this.subtitle.stop();
         this.canvas.stop();
         this.panelButtons.stop();
-        this.subtitle=null;
         this.canvas=null;
         this.panelButtons=null;
         hideMe();
     }
 
     public void showMe() {
-        this.setBounds(ctx.getFrameBounds());
         this.setVisible(true);
     }
 
     public void hideMe() {
-        this.setBounds(ctx.getFrameBounds());
         this.setVisible(false);
     }
 }

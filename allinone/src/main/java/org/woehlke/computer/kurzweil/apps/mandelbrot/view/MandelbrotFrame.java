@@ -24,7 +24,6 @@ import java.awt.image.ImageObserver;
  * Time: 18:47:46
  */
 @Log
-@Component
 public class MandelbrotFrame extends JPanel implements
         ImageObserver,
         MenuContainer,
@@ -37,7 +36,6 @@ public class MandelbrotFrame extends JPanel implements
     @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotCanvas canvas;
 
-    @Autowired
     public MandelbrotFrame(
         ComputerKurzweilApplicationContext ctx
     ) {

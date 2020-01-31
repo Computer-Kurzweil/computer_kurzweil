@@ -2,9 +2,8 @@ package org.woehlke.computer.kurzweil.apps.dla.view;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.model.Startable;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.dla.control.DiffusionLimitedAggregationControllerThread;
 
@@ -25,11 +24,10 @@ import java.io.Serializable;
  * Time: 18:47:46
  */
 @Log
-@Component
 public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObserver,
         MenuContainer,
         Serializable,
-        Accessible {
+        Accessible, Startable {
 
     private final PanelSubtitle subtitle;
     private final DiffusionLimitedAggregationControllerThread controllerThread;
@@ -38,7 +36,6 @@ public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObs
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Autowired
     public DiffusionLimitedAggregationFrame(ComputerKurzweilApplicationContext ctx) {
         //super(ctx.getProperties().getDla().getView().getTitle());
         this.ctx=ctx;
@@ -59,7 +56,8 @@ public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObs
     }
 
     public void stop(){
-
+        controllerThread.exit();
+        setVisible(false);
     }
 
 }

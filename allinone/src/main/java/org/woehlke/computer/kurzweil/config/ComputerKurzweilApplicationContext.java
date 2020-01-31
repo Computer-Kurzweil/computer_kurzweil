@@ -79,16 +79,24 @@ public class ComputerKurzweilApplicationContext {
         int start=0;
         return new Rectangle(
             start, start,
-            this.properties.getAllinone().getLattice().getWidth(),
-            this.properties.getAllinone().getLattice().getHeight()
+            this.getWorldDimensions().getX(),
+            this.getWorldDimensions().getY()
+        );
+    }
+
+    @Transient
+    public Dimension getLatticeDimension(){
+        return new Dimension(
+            this.getWorldDimensions().getX(),
+            this.getWorldDimensions().getY()
         );
     }
 
     @Transient
     public Point getLatticeDimensions(){
         return new Point(
-            this.properties.getAllinone().getLattice().getWidth(),
-            this.properties.getAllinone().getLattice().getHeight()
+            this.getWorldDimensions().getX(),
+            this.getWorldDimensions().getY()
         );
     }
 
@@ -102,8 +110,8 @@ public class ComputerKurzweilApplicationContext {
 
     @Transient
     public LatticePoint getNextRandomLatticePoint() {
-        int x = this.getRandom().nextInt(this.getProperties().getAllinone().getLattice().getWidth());
-        int y = this.getRandom().nextInt(this.getProperties().getAllinone().getLattice().getHeight());
+        int x = this.getRandom().nextInt(this.getWorldDimensions().getWidth());
+        int y = this.getRandom().nextInt(this.getWorldDimensions().getHeight());
         LatticePoint p = new LatticePoint(x,y);
         p.normalize(this.getWorldDimensions());
         p.absoluteValue();

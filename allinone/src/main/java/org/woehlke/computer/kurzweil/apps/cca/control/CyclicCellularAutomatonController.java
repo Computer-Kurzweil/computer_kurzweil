@@ -22,7 +22,6 @@ import java.io.Serializable;
  * Time: 00:36:20
  */
 @Log
-@Component
 public class CyclicCellularAutomatonController extends Thread
         implements Runnable, Serializable, ActionListener {
 
@@ -34,7 +33,6 @@ public class CyclicCellularAutomatonController extends Thread
     @Getter private final CyclicCellularAutomatonCanvas canvas;
     @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
 
-    @Autowired
     public CyclicCellularAutomatonController(
         CyclicCellularAutomatonCanvas canvas,
         CyclicCellularAutomatonButtonsPanel panelButtons

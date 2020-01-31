@@ -19,7 +19,6 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.Applicat
  * Created by tw on 16.12.2019.
  */
 @Log
-@Service
 public class ApplicationStateMachine {
 
     @Getter
@@ -28,7 +27,6 @@ public class ApplicationStateMachine {
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Autowired
     public ApplicationStateMachine(ComputerKurzweilApplicationContext ctx) {
         this.applicationState = MANDELBROT_SWITCH;
         this.ctx = ctx;

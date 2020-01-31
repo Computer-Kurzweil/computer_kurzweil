@@ -11,7 +11,6 @@ import javax.swing.*;
 import java.awt.FlowLayout;
 
 @Log
-@Component
 public class SimulatedEvolutionButtonRowPanel extends JPanel {
 
     @Getter
@@ -23,7 +22,6 @@ public class SimulatedEvolutionButtonRowPanel extends JPanel {
     @Getter
     private final GardenOfEdenPanel gardenOfEdenPanel;
 
-  @Autowired
   public SimulatedEvolutionButtonRowPanel(
       SimulatedEvolutionStateService stateService
   ) {

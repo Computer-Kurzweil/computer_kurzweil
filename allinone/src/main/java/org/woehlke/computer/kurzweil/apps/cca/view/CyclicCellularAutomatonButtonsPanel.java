@@ -15,7 +15,6 @@ import java.awt.*;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-@Component
 public class CyclicCellularAutomatonButtonsPanel extends JPanel {
 
   @Getter private final JButton buttonVonNeumann;
@@ -24,7 +23,6 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel {
 
   @Getter private final ComputerKurzweilApplicationContext ctx;
 
-  @Autowired
   public CyclicCellularAutomatonButtonsPanel(ComputerKurzweilApplicationContext ctx) {
     this.ctx = ctx;
     ComputerKurzweilProperties.Cca.View.Neighborhood neighborhoodConf = ctx.getProperties().getCca().getView().getNeighborhood();

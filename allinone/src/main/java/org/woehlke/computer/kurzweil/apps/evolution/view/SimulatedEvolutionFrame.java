@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.computer.kurzweil.model.Startable;
 import org.woehlke.computer.kurzweil.view.common.PanelCopyright;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.evolution.control.SimulatedEvolutionControllerThread;
@@ -33,42 +34,41 @@ import java.awt.image.ImageObserver;
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
 @Log
-@Component
-public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
+public class SimulatedEvolutionFrame extends JPanel implements ImageObserver, Startable {
 
     @Getter
-    private final SimulatedEvolutionCanvas canvas;
+    private SimulatedEvolutionCanvas canvas;
 
     @Getter
-    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
+    private SimulatedEvolutionStatisticsPanel statisticsPanel;
 
     @Getter
-    private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private SimulatedEvolutionButtonRowPanel panelButtons;
 
     @Getter
     private final SimulatedEvolutionStateService stateService;
 
+    private PanelCopyright panelCopyright;
+    private PanelSubtitle panelSubtitle;
+    private BoxLayout layout;
 
     private SimulatedEvolutionControllerThread controllerThread;
 
-    @Autowired
       public SimulatedEvolutionFrame(
         SimulatedEvolutionStateService stateService
     ) {
         this.stateService = stateService;
-        this.canvas = new SimulatedEvolutionCanvas(this.stateService);
-          this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.stateService);
-          this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.stateService);
-          PanelCopyright panelCopyright = new PanelCopyright(this.stateService.getCtx());
-          PanelSubtitle panelSubtitle = PanelSubtitle.getPanelSubtitleForSimulatedEvolution(this.stateService.getCtx());
-          BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
-          this.setLayout(layout);
-          this.add(panelSubtitle);
-          this.add(this.canvas);
-          this.add(panelCopyright);
-          this.add(this.statisticsPanel);
-          this.add(this.panelButtons);
+        this.layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
+        this.setLayout(layout);
       }
+
+    public void hideMe() {
+        this.setVisible(false);
+        this.canvas.setVisible(false);
+        this.panelButtons.setVisible(false);
+        this.statisticsPanel.setVisible(false);
+        this.setVisible(false);
+    }
 
     public void showMe() {
         this.setVisible(true);
@@ -91,6 +91,16 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     }
 
     public void start() {
+        this.canvas = new SimulatedEvolutionCanvas(this.stateService);
+        this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.stateService);
+        this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.stateService);
+        this.panelCopyright = new PanelCopyright(this.stateService.getCtx());
+        this.panelSubtitle = PanelSubtitle.getPanelSubtitleForSimulatedEvolution(this.stateService.getCtx());
+        this.add(this.panelSubtitle);
+        this.add(this.canvas);
+        this.add(this.panelCopyright);
+        this.add(this.statisticsPanel);
+        this.add(this.panelButtons);
         showMe();
         this.controllerThread = new SimulatedEvolutionControllerThread(
             this.stateService,
@@ -104,7 +114,16 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     }
 
     public void stop(){
-
+        hideMe();
+        this.controllerThread.exit();
+        this.remove(this.panelSubtitle);
+        this.remove(this.canvas);
+        this.remove(this.panelCopyright);
+        this.remove(this.statisticsPanel);
+        this.remove(this.panelButtons);
+        this.canvas = null;
+        this.statisticsPanel = null;
+        this.panelButtons = null;
     }
 
 }

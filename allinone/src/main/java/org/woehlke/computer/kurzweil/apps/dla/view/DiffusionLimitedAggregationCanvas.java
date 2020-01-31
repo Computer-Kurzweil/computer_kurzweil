@@ -22,7 +22,6 @@ import java.awt.*;
  * Time: 00:51:51
  */
 @Log
-@Component
 public class DiffusionLimitedAggregationCanvas extends JComponent {
 
     @Getter

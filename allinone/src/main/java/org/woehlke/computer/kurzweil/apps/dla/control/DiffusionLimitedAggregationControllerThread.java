@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.dla.model.DiffusionLimitedAggregationWorld;
 import org.woehlke.computer.kurzweil.apps.dla.view.DiffusionLimitedAggregationCanvas;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 /**
  * Diffusion Limited Aggregation.
@@ -18,7 +19,6 @@ import org.woehlke.computer.kurzweil.apps.dla.view.DiffusionLimitedAggregationCa
  * Time: 00:36:20
  */
 @Log
-@Component
 public class DiffusionLimitedAggregationControllerThread extends Thread
         implements Runnable {
 
@@ -28,7 +28,6 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
     private final DiffusionLimitedAggregationWorld particles;
     private final DiffusionLimitedAggregationCanvas canvas;
 
-    @Autowired
     public DiffusionLimitedAggregationControllerThread(
         DiffusionLimitedAggregationCanvas canvas,
         ComputerKurzweilApplicationContext ctx) {
@@ -53,10 +52,14 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
     }
 
     public void exit() {
-        synchronized (goOn) {
-            goOn = Boolean.FALSE;
+        try {
+            synchronized (goOn) {
+                goOn = Boolean.FALSE;
+            }
+            join();
+        } catch (InterruptedException e){
+            log.info(e.getMessage());
         }
     }
-
 
 }

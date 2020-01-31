@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringPhase;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -15,8 +16,7 @@ import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringPhase;
  * Created by tw on 16.12.2019.
  */
 @Log
-@Service
-public class TuringPhaseStateMachine {
+public class TuringPhaseStateMachine  implements Startable {
 
     @Getter
     private TuringPhase turingTuringPhase;
@@ -25,8 +25,14 @@ public class TuringPhaseStateMachine {
         turingTuringPhase = TuringPhase.start();
     }
 
+    @Override
     public void start(){
         turingTuringPhase = TuringPhase.start();
+    }
+
+    @Override
+    public void stop() {
+        turingTuringPhase = TuringPhase.FINISHED;
     }
 
     public void finishSearchTheSet(){

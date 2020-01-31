@@ -4,6 +4,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 
 /**
@@ -20,7 +21,7 @@ import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
  * Time: 12:37
  */
 @Log
-public class SimulatedEvolutionWorldLattice {
+public class SimulatedEvolutionWorldLattice implements Startable {
 
   /**
    * Grid of World where every Place can have food.
@@ -111,4 +112,13 @@ public class SimulatedEvolutionWorldLattice {
       letFoodGrowGardenOfEden();
   }
 
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void stop() {
+
+    }
 }

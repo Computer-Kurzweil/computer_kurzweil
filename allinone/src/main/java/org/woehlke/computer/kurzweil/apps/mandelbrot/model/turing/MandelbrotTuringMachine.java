@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 
 /**
@@ -16,7 +17,7 @@ import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumbe
  * Time: 12:39
  */
 @Log
-public class MandelbrotTuringMachine {
+public class MandelbrotTuringMachine  implements Startable {
 
     @Getter private final TuringPositionsStateMachine turingPositionsStateMachine;
     @Getter private final TuringPhaseStateMachine turingPhaseStateMachine;
@@ -33,6 +34,11 @@ public class MandelbrotTuringMachine {
         this.getTuringPhaseStateMachine().start();
         this.getGaussianNumberPlaneMandelbrot().start();
         this.getTuringPositionsStateMachine().start();
+    }
+
+    @Override
+    public void stop() {
+
     }
 
     public boolean isFinished() {

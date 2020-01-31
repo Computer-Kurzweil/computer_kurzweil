@@ -16,7 +16,6 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.Comput
 import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
 @Log
-@Service
 public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     private Deque<ComputingPlan> complexCenterForZoomedJulia = new ArrayDeque<>();
@@ -25,7 +24,6 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     private ComplexNumber complexNumberForJuliaSetC;
 
-    @Autowired
     public GaussianNumberPlaneBaseJulia(ComputerKurzweilApplicationContext ctx) {
         super(ctx, FractalSetType.JULIA_SET);
         zoomLevel = new ZoomLevel();
@@ -35,6 +33,11 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
     public void start(){
         super.start();
         zoomLevel.setLowestZoomLevel();
+    }
+
+    @Override
+    public void stop() {
+
     }
 
     @Override

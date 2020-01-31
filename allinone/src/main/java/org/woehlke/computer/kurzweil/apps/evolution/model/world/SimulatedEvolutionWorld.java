@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStat
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.Cell;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,7 @@ import java.util.List;
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
 @Log
-@Component
-public class SimulatedEvolutionWorld {
+public class SimulatedEvolutionWorld implements Startable {
 
     /**
     * List of the Simulated Bacteria Cells.
@@ -117,4 +117,13 @@ public class SimulatedEvolutionWorld {
         worldLattice.toggleGardenOfEden();
     }
 
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void stop() {
+
+    }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringDirection;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -17,8 +18,7 @@ import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringDirection
  * Created by tw on 16.12.2019.
  */
 @Log
-@Service
-public class TuringPositionsStateMachine {
+public class TuringPositionsStateMachine implements Startable {
 
     private LatticePoint turingPosition;
     private LatticePoint firstSetPosition;
@@ -26,7 +26,6 @@ public class TuringPositionsStateMachine {
     private int steps;
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Autowired
     public TuringPositionsStateMachine(ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
         start();
@@ -37,6 +36,11 @@ public class TuringPositionsStateMachine {
         this.turingPosition = LatticePoint.start(ctx.getWorldDimensions());
         this.firstSetPosition = null;
         this.turingDirection = TuringDirection.start();
+    }
+
+    @Override
+    public void stop() {
+
     }
 
     public void markFirstSetPosition(){

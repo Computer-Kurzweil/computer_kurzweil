@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.FractalSetType;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.ComplexNumber;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 
 /**
@@ -20,7 +21,7 @@ import org.woehlke.computer.kurzweil.model.LatticePoint;
  *
  * Created by tw on 16.12.2019.
  */
-public abstract class GaussianNumberPlaneBase {
+public abstract class GaussianNumberPlaneBase implements Startable {
 
     private int[][] lattice;
 

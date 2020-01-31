@@ -20,7 +20,6 @@ import java.util.List;
  * Time: 14:57
  */
 @Log
-@Component
 public class DiffusionLimitedAggregationWorld {
 
     private LatticePoint worldDimensions;
@@ -31,7 +30,6 @@ public class DiffusionLimitedAggregationWorld {
 
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Autowired
     public DiffusionLimitedAggregationWorld(ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
         this.worldDimensions=ctx.getWorldDimensions();
