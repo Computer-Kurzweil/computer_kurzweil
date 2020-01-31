@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.control.ComputeMandelbrotSetThread;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.control.ComputeMandelbrotSetControllerThread;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.ApplicationStateMachine;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
@@ -39,7 +39,7 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     @Getter private final ApplicationStateMachine applicationStateMachine;
     @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotFrame frame;
-    @Getter private final ComputeMandelbrotSetThread computeMandelbrotSetThread;
+    @Getter private final ComputeMandelbrotSetControllerThread computeMandelbrotSetControllerThread;
 
     public MandelbrotCanvas(
         ComputerKurzweilApplicationContext ctx,
@@ -60,7 +60,7 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
         this.mandelbrotTuringMachine = new MandelbrotTuringMachine(
             this.gaussianNumberPlaneMandelbrot
         );
-        this.computeMandelbrotSetThread = new ComputeMandelbrotSetThread(
+        this.computeMandelbrotSetControllerThread = new ComputeMandelbrotSetControllerThread(
             this.ctx, this.panelButtons,this, frame
         );
     }
@@ -149,7 +149,7 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     }
 
     private void computeTheMandelbrotSet() {
-        computeMandelbrotSetThread.start();
+        computeMandelbrotSetControllerThread.start();
     }
 
     @Override

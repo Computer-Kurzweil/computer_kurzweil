@@ -1,9 +1,8 @@
 package org.woehlke.computer.kurzweil.apps.dla.model;
 
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.control.Stepper;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import java.util.List;
  * Time: 14:57
  */
 @Log
-public class DiffusionLimitedAggregationWorld {
+public class DiffusionLimitedAggregationWorld implements Stepper {
 
     private LatticePoint worldDimensions;
 
@@ -45,7 +44,7 @@ public class DiffusionLimitedAggregationWorld {
         return particles;
     }
 
-    public void move() {
+    public void step() {
         List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
         for(LatticePoint particle:particles){
             int x = particle.getX()+worldDimensions.getX();

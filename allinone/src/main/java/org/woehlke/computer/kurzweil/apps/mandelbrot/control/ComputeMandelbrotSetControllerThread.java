@@ -6,9 +6,10 @@ import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.MandelbrotFrame;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotCanvas;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotPanelButtons;
+import org.woehlke.computer.kurzweil.control.ControllerThread;
 
 @Log
-public class ComputeMandelbrotSetThread extends Thread implements Runnable {
+public class ComputeMandelbrotSetControllerThread extends Thread implements Runnable, ControllerThread {
 
     private final ComputerKurzweilApplicationContext ctx;
 
@@ -16,7 +17,9 @@ public class ComputeMandelbrotSetThread extends Thread implements Runnable {
     @Getter private final MandelbrotCanvas canvas;
     @Getter private final MandelbrotFrame frame;
 
-    public ComputeMandelbrotSetThread(
+    private Boolean goOn;
+
+    public ComputeMandelbrotSetControllerThread(
         ComputerKurzweilApplicationContext ctx,
         MandelbrotPanelButtons panelButtons,
         MandelbrotCanvas canvas,
@@ -30,10 +33,14 @@ public class ComputeMandelbrotSetThread extends Thread implements Runnable {
     }
 
     public void run() {
+        boolean doMyJob;
         canvas.getMandelbrotTuringMachine().start();
         this.frame.showMe();
         log.info(" ( ");
-        while( ! canvas.getMandelbrotTuringMachine().isFinished()){
+        do {
+            synchronized (goOn) {
+                doMyJob = goOn.booleanValue();
+            }
             log.info(".");
             canvas.getMandelbrotTuringMachine().step();
             log.info("[");
@@ -44,9 +51,19 @@ public class ComputeMandelbrotSetThread extends Thread implements Runnable {
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
-        }
+        } while( doMyJob && (! canvas.getMandelbrotTuringMachine().isFinished()));
         log.info(" ) ");
         this.frame.showMe();
     }
 
+    public void exit() {
+        try {
+            synchronized (goOn) {
+                goOn = Boolean.FALSE;
+            }
+            join();
+        } catch (InterruptedException e){
+            log.info(e.getMessage());
+        }
+    }
 }

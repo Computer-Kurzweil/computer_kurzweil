@@ -4,6 +4,7 @@ package org.woehlke.computer.kurzweil.apps.evolution.model.world;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
+import org.woehlke.computer.kurzweil.control.Stepper;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
@@ -32,7 +33,7 @@ import java.util.List;
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
 @Log
-public class SimulatedEvolutionWorld implements Startable {
+public class SimulatedEvolutionWorld implements Startable, Stepper {
 
     /**
     * List of the Simulated Bacteria Cells.
@@ -74,7 +75,7 @@ public class SimulatedEvolutionWorld implements Startable {
    * One Step of Time in the World in which the Population of Bacteria Cell perform Life.
    * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
    */
-  public void letLivePopulation() {
+  private void letLivePopulation() {
     worldLattice.letFoodGrow();
     LatticePoint pos;
     List<Cell> children = new ArrayList<>();
@@ -125,5 +126,10 @@ public class SimulatedEvolutionWorld implements Startable {
     @Override
     public void stop() {
 
+    }
+
+    @Override
+    public void step() {
+        this.letLivePopulation();
     }
 }

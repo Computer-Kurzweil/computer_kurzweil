@@ -7,8 +7,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.Startable;
 import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
-import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
-import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonController;
+import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonControllerThread;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -37,7 +36,7 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
     @Getter private CyclicCellularAutomatonCanvas canvas;
     @Getter private CyclicCellularAutomatonButtonsPanel panelButtons;
 
-    @Getter private CyclicCellularAutomatonController controller;
+    @Getter private CyclicCellularAutomatonControllerThread controller;
 
     public CyclicCellularAutomatonApp(
         ComputerKurzweilApplicationContext ctx
@@ -50,10 +49,10 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
     public void start() {
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
-        this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
+        this.controller = new CyclicCellularAutomatonControllerThread( this.canvas, this.panelButtons);
         this.add(this.canvas);
         this.add(this.panelButtons);
-        this.controller = new CyclicCellularAutomatonController( this.canvas,  this.panelButtons);
+        this.controller = new CyclicCellularAutomatonControllerThread( this.canvas,  this.panelButtons);
         this.controller.start();
         this.showMe();
     }

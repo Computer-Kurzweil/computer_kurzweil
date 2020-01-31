@@ -7,6 +7,7 @@ import org.woehlke.computer.kurzweil.apps.evolution.model.world.SimulatedEvoluti
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
+import org.woehlke.computer.kurzweil.control.ControllerThread;
 
 import java.awt.event.*;
 
@@ -25,7 +26,7 @@ import java.awt.event.*;
  */
 @Log
 public class SimulatedEvolutionControllerThread extends Thread implements Runnable,
-    ActionListener {
+    ActionListener, ControllerThread {
 
     private final SimulatedEvolutionStateService ctxService;
 
@@ -82,7 +83,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       synchronized (goOn) {
         doMyJob = goOn.booleanValue();
       }
-     this.world.letLivePopulation();
+     this.world.step();
       this.statisticsPanel.update();
      this.frame.repaint();
       try {

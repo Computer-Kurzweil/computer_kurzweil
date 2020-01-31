@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.awt.*;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class CyclicCellularAutomatonButtonsPanel extends JPanel {
+public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Startable {
 
   @Getter private final JButton buttonVonNeumann;
   @Getter private final JButton buttonMoore;
@@ -34,6 +35,12 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel {
     this.add(this.buttonWoehlke);
   }
 
-    public void stop() {
+    @Override
+  public void stop() {
+    }
+
+    @Override
+    public void start() {
+
     }
 }

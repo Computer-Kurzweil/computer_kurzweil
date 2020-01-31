@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.control.Stepper;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.model.Startable;
@@ -23,7 +24,7 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
 @Log
 @ToString
 @EqualsAndHashCode
-public class CyclicCellularAutomatonLattice implements Serializable, Startable {
+public class CyclicCellularAutomatonLattice implements Serializable, Startable, Stepper {
 
     private static final long serialVersionUID = -594681595882016258L;
 

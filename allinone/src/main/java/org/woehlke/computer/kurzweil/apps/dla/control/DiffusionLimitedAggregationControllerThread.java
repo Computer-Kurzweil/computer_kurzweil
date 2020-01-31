@@ -1,12 +1,10 @@
 package org.woehlke.computer.kurzweil.apps.dla.control;
 
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.dla.model.DiffusionLimitedAggregationWorld;
 import org.woehlke.computer.kurzweil.apps.dla.view.DiffusionLimitedAggregationCanvas;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.ControllerThread;
 
 /**
  * Diffusion Limited Aggregation.
@@ -20,7 +18,7 @@ import org.woehlke.computer.kurzweil.model.Startable;
  */
 @Log
 public class DiffusionLimitedAggregationControllerThread extends Thread
-        implements Runnable {
+        implements Runnable, ControllerThread {
 
     private Boolean goOn;
 
@@ -30,11 +28,12 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
 
     public DiffusionLimitedAggregationControllerThread(
         DiffusionLimitedAggregationCanvas canvas,
-        ComputerKurzweilApplicationContext ctx) {
+        ComputerKurzweilApplicationContext ctx
+    ) {
         this.ctx = ctx;
         goOn = Boolean.TRUE;
-        this.canvas=canvas;
-        this.particles=canvas.getWorld();
+        this.canvas = canvas;
+        this.particles = canvas.getWorld();
     }
 
     public void run() {
@@ -43,7 +42,7 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            particles.move();
+            particles.step();
             canvas.repaint();
             try { sleep(ctx.getProperties().getDla().getControl().getThreadSleepTime()); }
             catch (InterruptedException e) { e.printStackTrace(); }

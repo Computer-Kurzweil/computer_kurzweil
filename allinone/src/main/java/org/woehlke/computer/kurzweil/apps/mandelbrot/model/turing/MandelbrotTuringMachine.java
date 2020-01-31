@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
+import org.woehlke.computer.kurzweil.control.Stepper;
 import org.woehlke.computer.kurzweil.model.Startable;
 
 
@@ -17,7 +18,7 @@ import org.woehlke.computer.kurzweil.model.Startable;
  * Time: 12:39
  */
 @Log
-public class MandelbrotTuringMachine  implements Startable {
+public class MandelbrotTuringMachine  implements Startable, Stepper {
 
     @Getter private final TuringPositionsStateMachine turingPositionsStateMachine;
     @Getter private final TuringPhaseStateMachine turingPhaseStateMachine;
@@ -30,6 +31,7 @@ public class MandelbrotTuringMachine  implements Startable {
         start();
     }
 
+    @Override
     public void start() {
         this.getTuringPhaseStateMachine().start();
         this.getGaussianNumberPlaneMandelbrot().start();
@@ -45,6 +47,7 @@ public class MandelbrotTuringMachine  implements Startable {
         return  this.getTuringPhaseStateMachine().isFinished();
     }
 
+    @Override
     public void step() {
         switch( this.getTuringPhaseStateMachine().getTuringTuringPhase()){
             case SEARCH_THE_SET:

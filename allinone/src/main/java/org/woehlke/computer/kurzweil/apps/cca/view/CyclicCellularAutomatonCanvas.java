@@ -62,10 +62,12 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
     @Override
     public void start() {
         this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
+        this.lattice.start();
     }
 
     @Override
     public void stop() {
+        this.lattice.stop();
         this.lattice = null;
     }
 }

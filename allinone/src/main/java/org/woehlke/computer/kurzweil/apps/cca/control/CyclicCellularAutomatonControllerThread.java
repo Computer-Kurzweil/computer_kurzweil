@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.control.ControllerThread;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +21,8 @@ import java.io.Serializable;
  * Time: 00:36:20
  */
 @Log
-public class CyclicCellularAutomatonController extends Thread
-        implements Runnable, Serializable, ActionListener {
+public class CyclicCellularAutomatonControllerThread extends Thread
+        implements Serializable, ActionListener, ControllerThread {
 
     private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;
@@ -31,7 +32,7 @@ public class CyclicCellularAutomatonController extends Thread
     @Getter private final CyclicCellularAutomatonCanvas canvas;
     @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
 
-    public CyclicCellularAutomatonController(
+    public CyclicCellularAutomatonControllerThread(
         CyclicCellularAutomatonCanvas canvas,
         CyclicCellularAutomatonButtonsPanel panelButtons
     ) {
