@@ -29,7 +29,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 @Component
-public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserver,
+public class CyclicCellularAutomatonFrame extends JPanel implements ImageObserver,
         MenuContainer,
         Serializable,
         Accessible {
@@ -44,29 +44,29 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     @Autowired
     public CyclicCellularAutomatonFrame(ComputerKurzweilApplicationContext ctx) {
-        super(ctx.getProperties().getCca().getView().getTitle());
+        //super(ctx.getProperties().getCca().getView().getTitle());
         this.ctx=ctx;
-        BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
+        BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
         this.canvas = new CyclicCellularAutomatonCanvas(   this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
         this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
         this.subtitle = PanelSubtitle.getPanelSubtitleForCca(this.ctx);
-        rootPane.setLayout(layout);
-        rootPane.add(this.subtitle);
-        rootPane.add(this.canvas);
-        rootPane.add(this.panelButtons);
+        this.setLayout(layout);
+        this.add(this.subtitle);
+        this.add(this.canvas);
+        this.add(this.panelButtons);
     }
 
     public void start() {
         this.controller.start();
-        showMe();
+        this.showMe();
     }
 
     public void showMe() {
-        pack();
+        //pack();
         this.setBounds(ctx.getFrameBounds());
-        setVisible(true);
-        toFront();
+        this.setVisible(true);
+        //toFront();
     }
 
 }

@@ -26,7 +26,7 @@ import java.io.Serializable;
  */
 @Log
 @Component
-public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObserver,
+public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObserver,
         MenuContainer,
         Serializable,
         Accessible {
@@ -34,12 +34,13 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     private final PanelSubtitle subtitle;
     private final DiffusionLimitedAggregationControllerThread controllerThread;
     private final DiffusionLimitedAggregationCanvas canvas;
+
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
     @Autowired
     public DiffusionLimitedAggregationFrame(ComputerKurzweilApplicationContext ctx) {
-        super(ctx.getProperties().getDla().getView().getTitle());
+        //super(ctx.getProperties().getDla().getView().getTitle());
         this.ctx=ctx;
         this.subtitle = new PanelSubtitle(ctx.getProperties().getDla().getView().getSubtitle());
         this.setLayout(new BorderLayout());
@@ -47,13 +48,13 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         canvas = new DiffusionLimitedAggregationCanvas(this.ctx);
         this.add(canvas, BorderLayout.CENTER);
         controllerThread = new DiffusionLimitedAggregationControllerThread(canvas, this.ctx);
-        pack();
-        setBounds(100, 100, canvas.getWorldDimensions().getX(), canvas.getWorldDimensions().getY() + 30);
+        //pack();
+        //setBounds(100, 100, canvas.getWorldDimensions().getX(), canvas.getWorldDimensions().getY() + 30);
     }
 
     public void start(){
         setVisible(true);
-        toFront();
+        //toFront();
         controllerThread.start();
     }
 
