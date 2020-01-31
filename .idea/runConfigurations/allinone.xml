@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="allinone" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <module name="computer_kurzweil.allinone.main" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="org.woehlke.simulation.ComputerKurzweilApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="org.woehlke.computer.kurzweil.ComputerKurzweilApplication" />
     <option name="DEBUG_MODE" value="true" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/all" />
     <option name="ALTERNATIVE_JRE_PATH" />
