@@ -4,8 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 
