@@ -60,7 +60,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
           this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.stateService);
           this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.stateService);
           PanelCopyright panelCopyright = new PanelCopyright(this.stateService.getCtx());
-          PanelSubtitle panelSubtitle = new PanelSubtitle(this.stateService.getCtx());
+          PanelSubtitle panelSubtitle = PanelSubtitle.getPanelSubtitleForSimulatedEvolution(this.stateService.getCtx());
           BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
           this.setLayout(layout);
           this.add(panelSubtitle);

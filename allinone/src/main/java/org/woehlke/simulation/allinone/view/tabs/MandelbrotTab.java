@@ -31,7 +31,7 @@ public class MandelbrotTab extends JPanel implements ActionListener {
         CompoundBorder border = PanelBorder.getBorder();
         this.setBorder(border);
         this.ctx = ctx;
-        PanelSubtitle panelSubtitle = new PanelSubtitle(ctx.getMandelbrotContext());
+        PanelSubtitle panelSubtitle = PanelSubtitle.getPanelSubtitleForMandelbrot(   this.ctx );
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.startStopPanel = new StartStopPanel(this);
         this.framePanel = new FramePanel(this);

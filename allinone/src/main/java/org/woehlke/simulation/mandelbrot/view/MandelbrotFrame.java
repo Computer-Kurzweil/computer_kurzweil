@@ -43,9 +43,9 @@ public class MandelbrotFrame extends JPanel implements
     ) {
         this.ctx=ctx;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.panelSubtitle = new PanelSubtitle(ctx);
-        this.panelButtons = new MandelbrotPanelButtons(ctx);
-        this.canvas = new MandelbrotCanvas(ctx, this.panelButtons,this);
+        this.panelSubtitle = PanelSubtitle.getPanelSubtitleForMandelbrot(this.ctx);
+        this.panelButtons = new MandelbrotPanelButtons(this.ctx);
+        this.canvas = new MandelbrotCanvas(this.ctx, this.panelButtons,this);
         this.panelButtons.setCanvas(this.canvas);
         this.add(this.panelSubtitle);
         this.add(this.canvas);

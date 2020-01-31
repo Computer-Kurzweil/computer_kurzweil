@@ -63,7 +63,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements
         this.diffusionLimitedAggregationTab = diffusionLimitedAggregationTab;
         this.mandelbrotTab = mandelbrotTab;
         this.simulatedEvolutionTab = simulatedEvolutionTab;
-        PanelSubtitle panelSubtitle = new PanelSubtitle(ctx);
+        PanelSubtitle panelSubtitle = PanelSubtitle.getPanelSubtitleForAllinone(ctx);
         PanelCopyright panelCopyright = new PanelCopyright(ctx);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.Y_AXIS);
         rootPane.setLayout(layout);

@@ -6,15 +6,13 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.cca.control.CyclicCellularAutomatonController;
-import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
@@ -38,21 +36,21 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    @Getter private final CyclicCellularAutomatonContext ctx;
+    @Getter private final ComputerKurzweilApplicationContext ctx;
     @Getter private final CyclicCellularAutomatonController controller;
     @Getter private final CyclicCellularAutomatonCanvas canvas;
     @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
     @Getter private final PanelSubtitle subtitle;
 
     @Autowired
-    public CyclicCellularAutomatonFrame(CyclicCellularAutomatonContext ctx) {
-        super(ctx.getProperties().getTitle());
+    public CyclicCellularAutomatonFrame(ComputerKurzweilApplicationContext ctx) {
+        super(ctx.getProperties().getCca().getView().getTitle());
         this.ctx=ctx;
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         this.canvas = new CyclicCellularAutomatonCanvas(   this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
         this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
-        this.subtitle = new PanelSubtitle(   this.ctx);
+        this.subtitle = PanelSubtitle.getPanelSubtitleForCca(this.ctx);
         rootPane.setLayout(layout);
         rootPane.add(this.subtitle);
         rootPane.add(this.canvas);
@@ -66,7 +64,7 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     public void showMe() {
         pack();
-        this.setBounds(ctx.getProperties().getFrameBounds());
+        this.setBounds(ctx.getFrameBounds());
         setVisible(true);
         toFront();
     }
