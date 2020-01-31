@@ -23,8 +23,10 @@ public class CyclicCellularAutomatonTab extends JPanel implements ActionListener
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
+    @Getter
     private final StartStopPanel startStopPanel;
 
+    @Getter
     private final FramePanel framePanel;
 
     @Autowired

@@ -11,23 +11,30 @@ import java.awt.*;
 public class FramePanel extends JPanel {
 
     public FramePanel(CyclicCellularAutomatonTab tab){
-        Dimension preferredSize = new Dimension(640,480);
+        int x = tab.getCtx().getWorldDimensions().getX();
+        int y = tab.getCtx().getWorldDimensions().getY();
+        Dimension preferredSize = new Dimension(x,y);
         this.setPreferredSize(preferredSize);
     }
 
     public FramePanel(DiffusionLimitedAggregationTab tab){
-        Dimension preferredSize = new Dimension(640,480);
+        int x = tab.getCtx().getWorldDimensions().getX();
+        int y = tab.getCtx().getWorldDimensions().getY();
+        Dimension preferredSize = new Dimension(x,y);
         this.setPreferredSize(preferredSize);
-
     }
 
     public FramePanel(MandelbrotTab tab){
-        Dimension preferredSize = new Dimension(640,480);
+        int x = tab.getCtx().getWorldDimensions().getX();
+        int y = tab.getCtx().getWorldDimensions().getY();
+        Dimension preferredSize = new Dimension(x,y);
         this.setPreferredSize(preferredSize);
     }
 
     public FramePanel(SimulatedEvolutionTab tab){
-        Dimension preferredSize = new Dimension(640,480);
+        int x = tab.getCtx().getWorldDimensions().getX();
+        int y = tab.getCtx().getWorldDimensions().getY();
+        Dimension preferredSize = new Dimension(x,y);
         this.setPreferredSize(preferredSize);
     }
 }
