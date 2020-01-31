@@ -4,10 +4,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonLattice;
+import org.woehlke.computer.kurzweil.control.AppCanvas;
 import org.woehlke.computer.kurzweil.model.Startable;
 
 import javax.swing.*;
@@ -27,7 +26,7 @@ import java.io.Serializable;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class CyclicCellularAutomatonCanvas extends JComponent implements Serializable, Startable {
+public class CyclicCellularAutomatonCanvas extends JComponent implements Serializable, Startable, AppCanvas {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
@@ -61,13 +60,17 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
 
     @Override
     public void start() {
+        log.info("start");
         this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
         this.lattice.start();
+        log.info("started");
     }
 
     @Override
     public void stop() {
+        log.info("stop");
         this.lattice.stop();
         this.lattice = null;
+        log.info("stopped");
     }
 }

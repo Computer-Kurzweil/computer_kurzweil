@@ -40,6 +40,7 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
     }
 
     private void initCreateLattice(){
+        log.info("initCreateLattice: "+neighbourhoodType.name());
         lattice = new int[2]
             [this.ctx.getWorldDimensions().getX()]
             [this.ctx.getWorldDimensions().getY()];
@@ -47,22 +48,24 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
         target = 1;
         for(int y = 0; y<this.ctx.getWorldDimensions().getY(); y++){
             for(int x = 0; x<this.ctx.getWorldDimensions().getX(); x++){
-                lattice[source][x][y] = this.ctx.getRandom().nextInt(ctx.getColorScheme().getMaxState());
+                lattice[source][x][y] = this.ctx.getRandom().nextInt(
+                    ctx.getColorScheme().getMaxState()
+                );
             }
         }
     }
 
     public void step(){
-        //System.out.print(".");
-        LatticePoint worldDimensions = this.ctx.getWorldDimensions();
-        for(int y = 0; y < worldDimensions.getY(); y++){
-            for(int x = 0; x < worldDimensions.getX(); x++){
+        log.info("step");
+        LatticePoint dim = this.ctx.getWorldDimensions();
+        for(int y = 0; y < dim.getY(); y++){
+            for(int x = 0; x < dim.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];
                 int nextState = (lattice[source][x][y] + 1) % ctx.getColorScheme().getMaxState();
-                int west = ((x-1+worldDimensions.getX())%worldDimensions.getX());
-                int north = ((y-1+worldDimensions.getY())%worldDimensions.getY());
-                int east =  ((x+1+worldDimensions.getX())%worldDimensions.getX());
-                int south = ((y+1+worldDimensions.getY())%worldDimensions.getY());
+                int west = ((x-1+dim.getX())%dim.getX());
+                int north = ((y-1+dim.getY())%dim.getY());
+                int east =  ((x+1+dim.getX())%dim.getX());
+                int south = ((y+1+dim.getY())%dim.getY());
                 if(neighbourhoodType == MOORE_NEIGHBORHOOD || neighbourhoodType == WOEHLKE_NEIGHBORHOOD) {
                     //North-West
                     if (nextState == lattice[source][west][north]) {
@@ -113,6 +116,7 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
         }
         this.source = (this.source + 1 ) % 2;
         this.target =  (this.target + 1 ) % 2;
+        log.info("stepped");
     }
 
     public int getCellStatusFor(int x,int y){
@@ -136,11 +140,12 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
 
     @Override
     public void start() {
+        log.info("start");
         startWithNeighbourhoodVonNeumann();
     }
 
     @Override
     public void stop() {
-
+        log.info("stop");
     }
 }

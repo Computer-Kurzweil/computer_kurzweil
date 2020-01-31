@@ -45,25 +45,31 @@ public class CyclicCellularAutomatonControllerThread extends Thread
     }
 
     public void run() {
+        log.info("run() - started");
+        canvas.start();
         boolean doIt;
         do {
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
             this.canvas.getLattice().step();
-            this.canvas.repaint();
+            this.canvas.updateUI();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);
+        canvas.stop();
+        log.info("run() - finished");
     }
 
     public void exit() {
+        log.info("exit");
         try {
             synchronized (goOn) {
                 goOn = Boolean.FALSE;
             }
             join();
+            log.info("exited");
         } catch (InterruptedException e){
             log.info(e.getMessage());
         }

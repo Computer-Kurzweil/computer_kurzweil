@@ -45,6 +45,7 @@ public class DiffusionLimitedAggregationWorld implements Stepper {
     }
 
     public void step() {
+        log.info("stop");
         List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
         for(LatticePoint particle:particles){
             int x = particle.getX()+worldDimensions.getX();

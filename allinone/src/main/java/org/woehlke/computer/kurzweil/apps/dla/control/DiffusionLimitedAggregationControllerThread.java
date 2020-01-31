@@ -37,6 +37,7 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
     }
 
     public void run() {
+        log.info("run() started");
         boolean doIt;
         do {
             synchronized (goOn) {
@@ -48,14 +49,17 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
             catch (InterruptedException e) { e.printStackTrace(); }
         }
         while (doIt);
+        log.info("run() finished");
     }
 
     public void exit() {
+        log.info("exit");
         try {
             synchronized (goOn) {
                 goOn = Boolean.FALSE;
             }
             join();
+            log.info("exited");
         } catch (InterruptedException e){
             log.info(e.getMessage());
         }

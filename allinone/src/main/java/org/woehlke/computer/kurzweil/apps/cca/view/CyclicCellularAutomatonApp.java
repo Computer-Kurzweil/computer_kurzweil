@@ -47,6 +47,7 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
     }
 
     public void start() {
+        log.info("start");
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
         this.controller = new CyclicCellularAutomatonControllerThread( this.canvas, this.panelButtons);
@@ -55,9 +56,11 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
         this.controller = new CyclicCellularAutomatonControllerThread( this.canvas,  this.panelButtons);
         this.controller.start();
         this.showMe();
+        log.info("started");
     }
 
     public void stop() {
+        log.info("stop");
         this.controller.exit();
         this.remove(this.canvas);
         this.remove(this.panelButtons);
@@ -66,13 +69,16 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
         this.canvas=null;
         this.panelButtons=null;
         hideMe();
+        log.info("stopped");
     }
 
     public void showMe() {
+        log.info("showMe");
         this.setVisible(true);
     }
 
     public void hideMe() {
+        log.info("hideMe");
         this.setVisible(false);
     }
 }

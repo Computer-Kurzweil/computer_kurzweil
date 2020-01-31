@@ -1,14 +1,18 @@
 package org.woehlke.computer.kurzweil.apps.dla.view;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
-import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.control.AppCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.dla.model.DiffusionLimitedAggregationWorld;
+import org.woehlke.computer.kurzweil.model.Startable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
 
 /**
@@ -22,7 +26,9 @@ import java.awt.*;
  * Time: 00:51:51
  */
 @Log
-public class DiffusionLimitedAggregationCanvas extends JComponent {
+@ToString
+@EqualsAndHashCode(callSuper=true)
+public class DiffusionLimitedAggregationCanvas extends JComponent implements Serializable,Startable,AppCanvas {
 
     @Getter
     private final DiffusionLimitedAggregationWorld world;
@@ -46,6 +52,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent {
     }
 
     public void paint(Graphics g) {
+        log.info("paint");
         super.paintComponent(g);
         int width = worldDimensions.getX();
         int height = worldDimensions.getY();
@@ -72,7 +79,17 @@ public class DiffusionLimitedAggregationCanvas extends JComponent {
     }
 
     public void update(Graphics g) {
+        log.info("update");
         paint(g);
     }
 
+    @Override
+    public void start() {
+        log.info("start");
+    }
+
+    @Override
+    public void stop() {
+        log.info("stop");
+    }
 }
