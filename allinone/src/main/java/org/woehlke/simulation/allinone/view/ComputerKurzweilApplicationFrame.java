@@ -56,7 +56,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements
         MandelbrotTab mandelbrotTab,
         SimulatedEvolutionTab simulatedEvolutionTab
     ) throws HeadlessException {
-        super(ctx.getProperties().getView().getTitle());
+        super(ctx.getProperties().getAllinone().getView().getTitle());
         CompoundBorder border = PanelBorder.getBorder();
         this.ctx = ctx;
         this.cyclicCellularAutomatonTab = cyclicCellularAutomatonTab;
@@ -70,16 +70,16 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements
         rootPane.setBorder(border);
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.add(
-            "Cyclic Cellular Automaton ", this.cyclicCellularAutomatonTab
+            ctx.getProperties().getCca().getView().getTitle(), this.cyclicCellularAutomatonTab
         );
         tabbedPane.add(
-            "Diffusion Limited Aggregation", this.diffusionLimitedAggregationTab
+            ctx.getProperties().getDla().getView().getTitle(), this.diffusionLimitedAggregationTab
         );
         tabbedPane.add(
-            "Mandelbrot", this.mandelbrotTab
+            ctx.getProperties().getMandelbrot().getView().getTitle(), this.mandelbrotTab
         );
         tabbedPane.add(
-            "Simulated Evolution ", this.simulatedEvolutionTab
+            ctx.getProperties().getEvolution().getView().getTitle(), this.simulatedEvolutionTab
         );
         rootPane.add(panelSubtitle);
         rootPane.add(tabbedPane);

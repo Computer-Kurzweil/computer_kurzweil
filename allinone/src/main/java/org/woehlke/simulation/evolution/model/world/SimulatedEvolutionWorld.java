@@ -3,17 +3,15 @@ package org.woehlke.simulation.evolution.model.world;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.simulation.evolution.model.cell.Cell;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * The World contains Water, Cells and Food.
@@ -41,7 +39,8 @@ public class SimulatedEvolutionWorld {
     */
     private List<Cell> cells;
 
-    private final SimulatedEvolutionContext ctx;
+    @Getter
+    private final SimulatedEvolutionStateService stateService;
 
     @Getter
     private final SimulatedEvolutionWorldLattice worldLattice;
@@ -50,17 +49,17 @@ public class SimulatedEvolutionWorld {
     private final SimulatedEvolutionStatistics statisticsContainer;
 
   public SimulatedEvolutionWorld(
-      SimulatedEvolutionContext ctx
+      SimulatedEvolutionStateService stateService
   ) {
-      this.ctx = ctx;
-      this.worldLattice = new SimulatedEvolutionWorldLattice(this.ctx);
-      this.statisticsContainer = new SimulatedEvolutionStatistics(this.ctx);
+      this.stateService = stateService;
+      this.worldLattice = new SimulatedEvolutionWorldLattice(this.stateService);
+      this.statisticsContainer = new SimulatedEvolutionStatistics(this.stateService.getCtx());
       /**
        * Create the initial Population of Bacteria Cells and give them their position in the World.
        */
       cells = new ArrayList<>();
-      for (int i = 0; i < ctx.getProperties().getCellPopulation().getInitialPopulation(); i++) {
-          Cell cell = new Cell(ctx);
+      for (int i = 0; i < this.stateService.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation(); i++) {
+          Cell cell = new Cell(this.stateService.getCtx());
           cells.add(cell);
       }
       SimulatedEvolutionPopulationCensus populationCensus = new SimulatedEvolutionPopulationCensus();
@@ -114,7 +113,7 @@ public class SimulatedEvolutionWorld {
   }
 
     public void toggleGardenOfEden() {
-        ctx.toggleGardenOfEden();
+        stateService.toggleGardenOfEden();
         worldLattice.toggleGardenOfEden();
     }
 

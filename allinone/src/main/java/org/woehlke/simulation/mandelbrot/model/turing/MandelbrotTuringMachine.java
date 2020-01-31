@@ -2,7 +2,6 @@ package org.woehlke.simulation.mandelbrot.model.turing;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 
 
@@ -19,17 +18,14 @@ import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandel
 @Log
 public class MandelbrotTuringMachine {
 
-    private final MandelbrotContext ctx;
-
     @Getter private final TuringPositionsStateMachine turingPositionsStateMachine;
     @Getter private final TuringPhaseStateMachine turingPhaseStateMachine;
     @Getter private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
 
     public MandelbrotTuringMachine(GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot) {
         this.gaussianNumberPlaneMandelbrot = gaussianNumberPlaneMandelbrot;
-        this.ctx=gaussianNumberPlaneMandelbrot.getCtx();
         turingPhaseStateMachine = new TuringPhaseStateMachine();
-        turingPositionsStateMachine = new TuringPositionsStateMachine( this.ctx);
+        turingPositionsStateMachine = new TuringPositionsStateMachine(this.gaussianNumberPlaneMandelbrot.getCtx());
         start();
     }
 
@@ -71,7 +67,9 @@ public class MandelbrotTuringMachine {
     }
 
     private void stepWalkAround(){
-        if(this.getGaussianNumberPlaneMandelbrot().isInSet(this.getTuringPositionsStateMachine().getTuringPosition())){
+        if(this.getGaussianNumberPlaneMandelbrot().isInSet(
+            this.getTuringPositionsStateMachine().getTuringPosition()
+        )){
             this.getTuringPositionsStateMachine().turnRight();
         } else {
             this.getTuringPositionsStateMachine().turnLeft();

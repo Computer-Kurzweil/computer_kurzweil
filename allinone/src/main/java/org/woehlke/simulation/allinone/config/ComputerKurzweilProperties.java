@@ -10,8 +10,6 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.awt.*;
-import java.beans.Transient;
 
 @Log
 @ToString
@@ -79,7 +77,7 @@ public class ComputerKurzweilProperties {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
-        @Valid @Getter @Setter public Cell cell = new Cell();
+        @Valid @Getter @Setter public CellConf cellConf = new CellConf();
         @Valid @Getter @Setter public Population population = new Population();
         @Valid @Getter @Setter public Food food = new Food();
         @Valid @Getter @Setter public GardenOfEden gardenOfEden = new GardenOfEden();
@@ -98,7 +96,7 @@ public class ComputerKurzweilProperties {
         }
 
         @Validated
-        public static class Cell {
+        public static class CellConf {
             @NotNull  @Getter @Setter private Integer fatMax;
             @NotNull  @Getter @Setter private Integer fatHungerMax;
             @NotNull  @Getter @Setter private Integer fatMinimumForSex;
@@ -187,27 +185,4 @@ public class ComputerKurzweilProperties {
         }
     }
 
-
-
-    @Transient
-    public Rectangle getFrameBounds(){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double startX = (screenSize.getWidth() - allinone.getLattice().getHeight()) / 2d;
-        double startY = (screenSize.getHeight() - allinone.getLattice().getWidth()) / 2d;
-        int myheight = Double.valueOf(allinone.getLattice().getHeight()).intValue()+allinone.getView().getTitleHeight();
-        int mywidth = Double.valueOf(allinone.getLattice().getWidth()).intValue();
-        int mystartX = Double.valueOf(startX).intValue();
-        int mystartY = Double.valueOf(startY).intValue();
-        return new Rectangle(mystartX, mystartY, mywidth, myheight);
-    }
-
-    @Transient
-    public Rectangle getCanvasBounds(){
-        return new Rectangle(0, 0, allinone.getLattice().getWidth() , allinone.getLattice().getHeight());
-    }
-
-    @Transient
-    public Point getLatticeDimensions(){
-        return new Point(allinone.getLattice().getWidth(),allinone.getLattice().getHeight());
-    }
 }

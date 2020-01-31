@@ -5,10 +5,6 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
-import org.woehlke.simulation.cca.model.CyclicCellularAutomatonContext;
-import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,40 +25,29 @@ public class PanelSubtitle extends JPanel {
         this.add(subtitleLabel);
     }
 
-    public PanelSubtitle(ComputerKurzweilApplicationContext ctx) {
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        this.subtitleLabel = new JLabel(ctx.getProperties().getView().getSubtitle());
-        this.add(subtitleLabel);
+    public static PanelSubtitle getPanelSubtitleForAllinone(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getAllinone().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    public PanelSubtitle(CyclicCellularAutomatonContext ctx) {
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        this.subtitleLabel = new JLabel(ctx.getProperties().getSubtitle());
-        this.add(subtitleLabel);
+    public static PanelSubtitle getPanelSubtitleForCca(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getCca().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    public PanelSubtitle(SimulatedEvolutionContext ctx) {
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        this.subtitleLabel = new JLabel(ctx.getProperties().getView().getSubtitle());
-        this.add(subtitleLabel);
+    public static PanelSubtitle getPanelSubtitleForDla(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getDla().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    public PanelSubtitle(DiffusionLimitedAggregatioContext ctx) {
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        String label = ctx.getProperties().getSubtitle() + " - " + ctx.getProperties().getSubtitle();
-        subtitleLabel = new JLabel(label);
-        this.add(subtitleLabel);
+    public static PanelSubtitle getPanelSubtitleForSimulatedEvolution(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getEvolution().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    public PanelSubtitle(MandelbrotContext ctx) {
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        String label = ctx.getProperties().getSubtitle() + " - " + ctx.getProperties().getSubtitle();
-        subtitleLabel = new JLabel(label);
-        this.add(subtitleLabel);
+    public static PanelSubtitle getPanelSubtitleForMandelbrot(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getMandelbrot().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
+
 }

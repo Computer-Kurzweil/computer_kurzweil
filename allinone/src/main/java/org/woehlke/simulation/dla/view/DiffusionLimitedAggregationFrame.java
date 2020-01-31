@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.dla.control.DiffusionLimitedAggregationControllerThread;
-import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -35,18 +35,18 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     private final DiffusionLimitedAggregationControllerThread controllerThread;
     private final DiffusionLimitedAggregationCanvas canvas;
     @Getter
-    private final DiffusionLimitedAggregatioContext ctx;
+    private final ComputerKurzweilApplicationContext ctx;
 
     @Autowired
-    public DiffusionLimitedAggregationFrame(DiffusionLimitedAggregatioContext ctx) {
-        super(ctx.getProperties().getTitle());
+    public DiffusionLimitedAggregationFrame(ComputerKurzweilApplicationContext ctx) {
+        super(ctx.getProperties().getDla().getView().getTitle());
         this.ctx=ctx;
-        this.subtitle = new PanelSubtitle(ctx.getProperties().getSubtitle());
+        this.subtitle = new PanelSubtitle(ctx.getProperties().getDla().getView().getSubtitle());
         this.setLayout(new BorderLayout());
         this.add(subtitle, BorderLayout.NORTH);
         canvas = new DiffusionLimitedAggregationCanvas(this.ctx);
         this.add(canvas, BorderLayout.CENTER);
-        controllerThread = new DiffusionLimitedAggregationControllerThread(canvas, ctx);
+        controllerThread = new DiffusionLimitedAggregationControllerThread(canvas, this.ctx);
         pack();
         setBounds(100, 100, canvas.getWorldDimensions().getX(), canvas.getWorldDimensions().getY() + 30);
     }

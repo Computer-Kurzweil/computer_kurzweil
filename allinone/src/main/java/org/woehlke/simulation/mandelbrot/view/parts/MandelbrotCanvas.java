@@ -2,16 +2,14 @@ package org.woehlke.simulation.mandelbrot.view.parts;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 import org.woehlke.simulation.mandelbrot.control.ComputeMandelbrotSetThread;
 import org.woehlke.simulation.mandelbrot.model.ApplicationStateMachine;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.simulation.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.simulation.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.simulation.mandelbrot.model.turing.MandelbrotTuringMachine;
-import org.woehlke.simulation.mandelbrot.model.turing.TuringPhaseStateMachine;
-import org.woehlke.simulation.mandelbrot.model.turing.TuringPositionsStateMachine;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 
 import javax.swing.*;
@@ -33,7 +31,7 @@ import java.awt.event.MouseListener;
 @Log
 public class MandelbrotCanvas extends JComponent implements MouseListener {
 
-    private final MandelbrotContext ctx;
+    @Getter private final ComputerKurzweilApplicationContext ctx;
 
     @Getter private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     @Getter private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
@@ -44,15 +42,15 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     @Getter private final ComputeMandelbrotSetThread computeMandelbrotSetThread;
 
     public MandelbrotCanvas(
-        MandelbrotContext ctx,
+        ComputerKurzweilApplicationContext ctx,
         MandelbrotPanelButtons panelButtons,
         MandelbrotFrame frame
     ) {
         this.ctx = ctx;
         this.panelButtons = panelButtons;
         this.frame = frame;
-        int width = this.ctx.getProperties().getWorldDimensions().getWidth();
-        int height = this.ctx.getProperties().getHeight();
+        int width = this.ctx.getWorldDimensions().getWidth();
+        int height = this.ctx.getWorldDimensions().getHeight();
         this.preferredSize = new Dimension(width, height);
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
@@ -63,7 +61,8 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
             this.gaussianNumberPlaneMandelbrot
         );
         this.computeMandelbrotSetThread = new ComputeMandelbrotSetThread(
-            this.ctx, this.panelButtons,this, frame);
+            this.ctx, this.panelButtons,this, frame
+        );
     }
 
     public CellStatus getCellStatusFor(int x, int y) {
@@ -77,7 +76,7 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     }
 
     public LatticePoint getWorldDimensions() {
-        return this.ctx.getProperties().getWorldDimensions();
+        return this.ctx.getWorldDimensions();
     }
 
     public void start() {
@@ -111,8 +110,8 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
         super.paintComponent(g);
-        for(int y = 0; y < this.ctx.getProperties().getWorldDimensions().getY(); y++){
-            for(int x = 0; x < this.ctx.getProperties().getWorldDimensions().getX(); x++){
+        for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < this.ctx.getWorldDimensions().getX(); x++){
                 g.setColor( this.getCellStatusFor(x,y).canvasColor());
                 g.drawLine(x,y,x,y);
             }

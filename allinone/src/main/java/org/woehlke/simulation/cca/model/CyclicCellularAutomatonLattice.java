@@ -3,14 +3,11 @@ package org.woehlke.simulation.cca.model;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType;
 
 import java.awt.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Random;
 
 import static org.woehlke.simulation.allinone.model.LatticeNeighbourhoodType.*;
 
@@ -28,41 +25,38 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     private static final long serialVersionUID = -594681595882016258L;
 
-    private Random random;
+    private int[][][] lattice;
+    private int source;
+    private int target;
+    private LatticeNeighbourhoodType neighbourhoodType;
 
-    private volatile int[][][] lattice;
-    private volatile int source;
-    private volatile int target;
+    private final ComputerKurzweilApplicationContext ctx;
 
-    private final CyclicCellularAutomatonContext ctx;
-
-    private volatile LatticeNeighbourhoodType neighbourhood;
-
-    public CyclicCellularAutomatonLattice(CyclicCellularAutomatonContext ctx) {
+    public CyclicCellularAutomatonLattice(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
-        random = new Random(new Date().getTime());
-        startVonNeumann();
+        startWithNeighbourhoodVonNeumann();
     }
 
     private void initCreateLattice(){
         lattice = new int[2]
-            [(int) this.ctx.getProperties().getLatticeDimensions().getX()]
-            [(int) this.ctx.getProperties().getLatticeDimensions().getY()];
+            [(int) this.ctx.getLatticeDimensions().getX()]
+            [(int) this.ctx.getLatticeDimensions().getY()];
         source = 0;
         target = 1;
+        initFillLatticeByRandom();
     }
 
     private void initFillLatticeByRandom(){
-        for(int y = 0; y<this.ctx.getProperties().getLatticeDimensions().getY(); y++){
-            for(int x = 0; x<this.ctx.getProperties().getLatticeDimensions().getX(); x++){
-                lattice[source][x][y] = random.nextInt(ctx.getColorScheme().getMaxState());
+        for(int y = 0; y<this.ctx.getLatticeDimensions().getY(); y++){
+            for(int x = 0; x<this.ctx.getLatticeDimensions().getX(); x++){
+                lattice[source][x][y] = this.ctx.getRandom().nextInt(ctx.getColorScheme().getMaxState());
             }
         }
     }
 
-    public synchronized void step(){
+    public void step(){
         //System.out.print(".");
-        Point worldDimensions = this.ctx.getProperties().getLatticeDimensions();
+        Point worldDimensions = this.ctx.getLatticeDimensions();
         for(int y = 0; y < worldDimensions.getY(); y++){
             for(int x = 0; x < worldDimensions.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];
@@ -71,7 +65,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
                 int north = (int) ((y-1+worldDimensions.getY())%worldDimensions.getY());
                 int east = (int) ((x+1+worldDimensions.getX())%worldDimensions.getX());
                 int south = (int) ((y+1+worldDimensions.getY())%worldDimensions.getY());
-                if(neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == WOEHLKE_NEIGHBORHOOD) {
+                if(neighbourhoodType == MOORE_NEIGHBORHOOD || neighbourhoodType == WOEHLKE_NEIGHBORHOOD) {
                     //North-West
                     if (nextState == lattice[source][west][north]) {
                         lattice[target][x][y] = nextState;
@@ -82,7 +76,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
                         lattice[target][x][y] = nextState;
                         continue;
                     }
-                    if(neighbourhood == MOORE_NEIGHBORHOOD) {
+                    if(neighbourhoodType == MOORE_NEIGHBORHOOD) {
                         //South-East
                         if (nextState == lattice[source][east][south]) {
                             lattice[target][x][y] = nextState;
@@ -106,7 +100,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
                     lattice[target][x][y] = nextState;
                     continue;
                 }
-                if(neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == VON_NEUMANN_NEIGHBORHOOD) {
+                if(neighbourhoodType == MOORE_NEIGHBORHOOD || neighbourhoodType == VON_NEUMANN_NEIGHBORHOOD) {
                     //South
                     if (nextState == lattice[source][x][south]) {
                         lattice[target][x][y] = nextState;
@@ -127,21 +121,18 @@ public class CyclicCellularAutomatonLattice implements Serializable {
         return this.lattice[source][x][y];
     }
 
-    public void startVonNeumann() {
+    public void startWithNeighbourhoodVonNeumann() {
+        this.neighbourhoodType=VON_NEUMANN_NEIGHBORHOOD;
         initCreateLattice();
-        initFillLatticeByRandom();
-        this.neighbourhood=VON_NEUMANN_NEIGHBORHOOD;
     }
 
-    public void startMoore() {
+    public void startWithNeighbourhoodMoore() {
+        this.neighbourhoodType=MOORE_NEIGHBORHOOD;
         initCreateLattice();
-        initFillLatticeByRandom();
-        this.neighbourhood=MOORE_NEIGHBORHOOD;
     }
 
-    public void startWoehlke() {
+    public void startWithNeighbourhoodWoehlke() {
+        this.neighbourhoodType=WOEHLKE_NEIGHBORHOOD;
         initCreateLattice();
-        initFillLatticeByRandom();
-        this.neighbourhood=WOEHLKE_NEIGHBORHOOD;
     }
 }

@@ -2,11 +2,9 @@ package org.woehlke.simulation.evolution.model.cell;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 
 import java.io.Serializable;
 
@@ -55,15 +53,15 @@ public class Cell implements Serializable {
    */
   private CellLifeCycle lifeCycle;
 
-  private final SimulatedEvolutionContext ctx;
+  private final ComputerKurzweilApplicationContext ctx;
 
   public Cell(
-      SimulatedEvolutionContext ctx
+      ComputerKurzweilApplicationContext ctx
   ) {
     this.ctx = ctx;
-    this.position = new LatticePoint(ctx);
-    this.lifeCycle = new CellLifeCycle(ctx);
-    this.cellCore = new CellCore(ctx);
+    this.position = ctx.getNextRandomLatticePoint();
+    this.lifeCycle = ctx.getNewCellLifeCycle();
+    this.cellCore = ctx.getNewCellCore();
     this.orientation = getRandomOrientation();
   }
 

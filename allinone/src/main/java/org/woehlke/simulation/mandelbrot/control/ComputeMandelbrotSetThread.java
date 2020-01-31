@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.control;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.mandelbrot.view.MandelbrotFrame;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
@@ -10,14 +10,14 @@ import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
 @Log
 public class ComputeMandelbrotSetThread extends Thread implements Runnable {
 
-    private final MandelbrotContext ctx;
+    private final ComputerKurzweilApplicationContext ctx;
 
     @Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotCanvas canvas;
     @Getter private final MandelbrotFrame frame;
 
     public ComputeMandelbrotSetThread(
-        MandelbrotContext ctx,
+        ComputerKurzweilApplicationContext ctx,
         MandelbrotPanelButtons panelButtons,
         MandelbrotCanvas canvas,
         MandelbrotFrame frame

@@ -1,11 +1,10 @@
 package org.woehlke.simulation.mandelbrot.model.fractal;
 
-import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.numbers.*;
 
@@ -24,7 +23,7 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
     private final ZoomLevel zoomLevel;
 
     @Autowired
-    public GaussianNumberPlaneMandelbrot(MandelbrotContext ctx) {
+    public GaussianNumberPlaneMandelbrot(ComputerKurzweilApplicationContext ctx) {
         super(ctx,FractalSetType.MANDELBROT_SET);
         zoomLevel = new ZoomLevel();
         this.setZoomCenter(startCenterForMandelbrot);
@@ -94,9 +93,7 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
     }
 
     public void zoomInto(LatticePoint zoomLatticePoint) {
-        if(ctx.getProperties().getLogDebug()){
             log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
-        }
         boolean LowestZoomLevel = this.zoomLevel.isLowestZoomLevel();
         this.zoomLevel.inceaseZoomLevel();
         if(LowestZoomLevel){
@@ -107,28 +104,22 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
             this.setZoomCenter(getComplexNumberFromLatticeCoordsForZoomedMandelbrot(zoomLatticePoint));
         }
         complexCenterForZoomedMandelbrot.push(this.getZoomCenter());
-        if(ctx.getProperties().getLogDebug()) {
             String msg = "zoomPoint: "+ zoomLatticePoint
                 + " zoomCenterNew: " + this.getZoomCenter()
                 + " zoomLevel:  "+ this.zoomLevel.getZoomLevel();
             log.info(msg);
-        }
         computeWZoomedWorld();
     }
 
 
     public void zoomOut() {
-        if(ctx.getProperties().getLogDebug()) {
             log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
-        }
         if(!this.zoomLevel.isLowestZoomLevel()) {
             this.zoomLevel.decreaseZoomLevel();
         }
         ComplexNumber zoomCenter = complexCenterForZoomedMandelbrot.pop();
         this.setZoomCenter(zoomCenter);
-        if(ctx.getProperties().getLogDebug()) {
             log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.zoomLevel.getZoomLevel());
-        }
         computeWZoomedWorld();
     }
 

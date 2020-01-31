@@ -2,7 +2,7 @@ package org.woehlke.simulation.mandelbrot.model.fractal;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
 import org.woehlke.simulation.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
@@ -34,9 +34,12 @@ public abstract class GaussianNumberPlaneBase {
     private final FractalSetType fractalSetType;
 
     @Getter
-    protected final MandelbrotContext ctx;
+    protected final ComputerKurzweilApplicationContext ctx;
 
-    protected GaussianNumberPlaneBase(MandelbrotContext ctx, FractalSetType fractalSetType) {
+    protected GaussianNumberPlaneBase(
+        ComputerKurzweilApplicationContext ctx,
+        FractalSetType fractalSetType
+    ) {
         this.ctx = ctx;
         this.fractalSetType = fractalSetType;
         clickBehaviour = ClickBehaviour.start();

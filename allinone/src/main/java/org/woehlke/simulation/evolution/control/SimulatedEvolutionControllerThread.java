@@ -2,13 +2,12 @@ package org.woehlke.simulation.evolution.control;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.simulation.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.simulation.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
 
-import java.awt.Frame;
 import java.awt.event.*;
 
 /**
@@ -26,12 +25,9 @@ import java.awt.event.*;
  */
 @Log
 public class SimulatedEvolutionControllerThread extends Thread implements Runnable,
-    WindowListener,
-    WindowFocusListener,
-    WindowStateListener,
     ActionListener {
 
-    private final SimulatedEvolutionContext ctx;
+    private final SimulatedEvolutionStateService ctxService;
 
     @Getter
     private final SimulatedEvolutionWorld world;
@@ -42,35 +38,40 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
     private Boolean mySemaphore;
 
   public SimulatedEvolutionControllerThread(
-      SimulatedEvolutionContext ctx,
+      SimulatedEvolutionStateService ctxService,
       SimulatedEvolutionWorld world,
       SimulatedEvolutionStatisticsPanel statisticsPanel,
       SimulatedEvolutionButtonRowPanel panelButtons,
       SimulatedEvolutionFrame frame
   ) {
-      this.ctx = ctx;
+      this.ctxService = ctxService;
       this.world = world;
       this.statisticsPanel = statisticsPanel;
       this.panelButtons = panelButtons;
       this.frame = frame;
       this.mySemaphore = Boolean.TRUE;
-      this.panelButtons.getButtonFoodPerDayIncrease().addActionListener(this);
-      this.panelButtons.getButtonFoodPerDayDecrease().addActionListener(this);
-      this.panelButtons.getButtonToggleGardenOfEden().addActionListener(this);
+      this.panelButtons.getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
+      this.panelButtons.getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
+      this.panelButtons.getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
   }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==   this.panelButtons.getButtonFoodPerDayIncrease()) {
-            ctx.increaseFoodPerDay();
-            this.panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
-        } else if (ae.getSource() == this.panelButtons.getButtonFoodPerDayDecrease()) {
-            ctx.decreaseFoodPerDay();
-            this.panelButtons.setFoodPerDayFieldText(ctx.getFoodPerDay()+"");
-        } else if (ae.getSource() == this.panelButtons.getButtonToggleGardenOfEden()) {
-            this.toggleGardenOfEden();
-            boolean selected = ctx.isGardenOfEdenEnabled();
-            this.panelButtons.setGardenOfEdenEnabled(selected);
+        if (ae.getSource() == this.panelButtons.getFoodPanel().getButtonFoodPerDayIncrease()) {
+            ctxService.increaseFoodPerDay();
+            this.panelButtons.getFoodPanel().getFoodPerDayField().setText(
+                ctxService.getSimulatedEvolutionState().getFoodPerDay()+""
+            );
+        } else if (ae.getSource() == this.panelButtons.getFoodPanel().getButtonFoodPerDayDecrease()) {
+            ctxService.decreaseFoodPerDay();
+            this.panelButtons.getFoodPanel().getFoodPerDayField().setText(
+                ctxService.getSimulatedEvolutionState().getFoodPerDay()+""
+            );
+        } else if (ae.getSource() == this.panelButtons.getGardenOfEdenPanel().getButtonToggleGardenOfEden()) {
+            ctxService.toggleGardenOfEden();
+            this.world.toggleGardenOfEden();
+            boolean selected = ctxService.getSimulatedEvolutionState().isGardenOfEdenEnabled();
+            this.panelButtons.getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
         }
     }
 
@@ -85,7 +86,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       this.statisticsPanel.update();
      this.frame.repaint();
       try {
-        sleep(ctx.getProperties().getControl().getTime2wait());
+        sleep( this.ctxService.getCtx().getProperties().getEvolution().getControl().getTime2wait() );
       } catch (InterruptedException e) {
         System.out.println(e.getLocalizedMessage());
       }
@@ -97,67 +98,10 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       this.frame.showMe();
   }
 
-  public void windowOpened(WindowEvent e) {
-    show();
-  }
-
-  public void windowDeiconified(WindowEvent e) {
-    show();
-  }
-
-  public void windowActivated(WindowEvent e) {
-    show();
-  }
-
-  public void windowClosing(WindowEvent e) {
-    this.exit();
-  }
-
-  public void windowClosed(WindowEvent e) {
-    this.exit();
-  }
-
-  public void windowIconified(WindowEvent e) {
-  }
-
-  public void windowDeactivated(WindowEvent e) {
-  }
-
-  @Override
-  public void windowGainedFocus(WindowEvent e) {
-    show();
-  }
-
-  @Override
-  public void windowLostFocus(WindowEvent e) {
-
-  }
-
-  @Override
-  public void windowStateChanged(WindowEvent e) {
-    if (e.getSource() ==  this.frame) {
-        switch (e.getNewState()) {
-            case Frame.MAXIMIZED_BOTH:
-            case Frame.MAXIMIZED_HORIZ:
-            case Frame.MAXIMIZED_VERT:
-            case Frame.NORMAL:
-                show();
-                break;
-            default:
-                break;
-        }
-    }
-  }
-
-  public void exit() {
+  public void stopControllerThread() {
     synchronized (mySemaphore) {
       mySemaphore = Boolean.FALSE;
     }
-   //System.exit(ctx.getProperties().getControl().getExitStatus());
-  }
-
-  public void toggleGardenOfEden(){
-      this.world.toggleGardenOfEden();
   }
 
 }

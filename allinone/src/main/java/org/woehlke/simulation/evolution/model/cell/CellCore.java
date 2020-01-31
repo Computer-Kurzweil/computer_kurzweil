@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 
 import java.io.Serializable;
 
@@ -36,9 +36,9 @@ public class CellCore implements Serializable {
     private final static int MAX_VALUE = 16;
     private final static int MAX_INITIAL_VALUE = 8;
 
-    private final SimulatedEvolutionContext ctx;
+    private final ComputerKurzweilApplicationContext ctx;
 
-    public CellCore(final SimulatedEvolutionContext ctx) {
+    public CellCore(final ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
         dna = new Integer[CellOrientation.values().length];
         for (int i = 0; i < CellOrientation.values().length; i++) {

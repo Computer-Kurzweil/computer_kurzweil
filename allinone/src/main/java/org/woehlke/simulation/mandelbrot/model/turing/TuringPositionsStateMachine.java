@@ -1,9 +1,10 @@
 package org.woehlke.simulation.mandelbrot.model.turing;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.model.state.TuringDirection;
 
 import java.util.logging.Logger;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
  *
  * Created by tw on 16.12.2019.
  */
+@Log
 @Service
 public class TuringPositionsStateMachine {
 
@@ -24,17 +26,17 @@ public class TuringPositionsStateMachine {
     private LatticePoint firstSetPosition;
     private TuringDirection turingDirection;
     private int steps;
-    private final MandelbrotContext ctx;
+    private final ComputerKurzweilApplicationContext ctx;
 
     @Autowired
-    public TuringPositionsStateMachine(MandelbrotContext ctx) {
+    public TuringPositionsStateMachine(ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
         start();
     }
 
     public void start() {
         this.steps = 0;
-        this.turingPosition = LatticePoint.start(ctx.getProperties().getWorldDimensions());
+        this.turingPosition = LatticePoint.start(ctx.getWorldDimensions());
         this.firstSetPosition = null;
         this.turingDirection = TuringDirection.start();
     }
@@ -96,5 +98,4 @@ public class TuringPositionsStateMachine {
         return (this.turingPosition.equals(this.firstSetPosition)) && (this.steps>100);
     }
 
-    public static Logger log = Logger.getLogger(TuringPositionsStateMachine.class.getName());
 }

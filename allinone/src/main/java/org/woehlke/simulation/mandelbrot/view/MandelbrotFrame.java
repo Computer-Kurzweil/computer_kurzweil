@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotCanvas;
 import org.woehlke.simulation.mandelbrot.view.parts.MandelbrotPanelButtons;
 
@@ -31,7 +31,7 @@ public class MandelbrotFrame extends JPanel implements
         Accessible,
         ActionListener {
 
-    @Getter private final MandelbrotContext ctx;
+    @Getter private final ComputerKurzweilApplicationContext ctx;
 
     @Getter private final PanelSubtitle panelSubtitle;
     @Getter private final MandelbrotPanelButtons panelButtons;
@@ -39,7 +39,7 @@ public class MandelbrotFrame extends JPanel implements
 
     @Autowired
     public MandelbrotFrame(
-        MandelbrotContext ctx
+        ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx=ctx;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.woehlke.simulation.allinone.view.parts.PanelCopyright;
 import org.woehlke.simulation.allinone.view.parts.PanelSubtitle;
 import org.woehlke.simulation.evolution.control.SimulatedEvolutionControllerThread;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionCanvas;
 import org.woehlke.simulation.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
@@ -37,9 +37,6 @@ import java.awt.image.ImageObserver;
 public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
 
     @Getter
-    private final SimulatedEvolutionContext ctx;
-
-    @Getter
     private final SimulatedEvolutionCanvas canvas;
 
     @Getter
@@ -48,18 +45,22 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     @Getter
     private final SimulatedEvolutionButtonRowPanel panelButtons;
 
+    @Getter
+    private final SimulatedEvolutionStateService stateService;
+
+
     private SimulatedEvolutionControllerThread controllerThread;
 
     @Autowired
       public SimulatedEvolutionFrame(
-          SimulatedEvolutionContext ctx
-      ) {
-          this.ctx = ctx;
-          this.canvas = new SimulatedEvolutionCanvas(this.ctx);
-          this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.ctx);
-          this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.ctx);
-          PanelCopyright panelCopyright = new PanelCopyright(this.ctx);
-          PanelSubtitle panelSubtitle = new PanelSubtitle(this.ctx);
+        SimulatedEvolutionStateService stateService
+    ) {
+        this.stateService = stateService;
+        this.canvas = new SimulatedEvolutionCanvas(this.stateService);
+          this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.stateService);
+          this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.stateService);
+          PanelCopyright panelCopyright = new PanelCopyright(this.stateService.getCtx());
+          PanelSubtitle panelSubtitle = new PanelSubtitle(this.stateService.getCtx());
           BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
           this.setLayout(layout);
           this.add(panelSubtitle);
@@ -92,10 +93,10 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver {
     public void start() {
         showMe();
         this.controllerThread = new SimulatedEvolutionControllerThread(
-            this.ctx ,
+            this.stateService,
             this.canvas.getWorld(),
             this.statisticsPanel,
-            panelButtons,
+            this.panelButtons,
             this
         );
         this.controllerThread.start();

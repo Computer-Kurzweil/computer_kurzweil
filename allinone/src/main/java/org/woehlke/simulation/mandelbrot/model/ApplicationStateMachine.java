@@ -1,7 +1,10 @@
 package org.woehlke.simulation.mandelbrot.model;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.mandelbrot.model.state.ApplicationState;
 
 import static org.woehlke.simulation.mandelbrot.model.state.ApplicationState.*;
@@ -19,11 +22,14 @@ import static org.woehlke.simulation.mandelbrot.model.state.ApplicationState.*;
 @Service
 public class ApplicationStateMachine {
 
+    @Getter
     private ApplicationState applicationState;
 
-    private final MandelbrotContext ctx;
+    @Getter
+    private final ComputerKurzweilApplicationContext ctx;
 
-    public ApplicationStateMachine(MandelbrotContext ctx) {
+    @Autowired
+    public ApplicationStateMachine(ComputerKurzweilApplicationContext ctx) {
         this.applicationState = MANDELBROT_SWITCH;
         this.ctx = ctx;
     }
@@ -48,9 +54,7 @@ public class ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
-        if(this.ctx.getProperties().getLogDebug()){
-            log.info("click: "+ applicationState + " -> "+ nextApplicationState);
-        }
+        log.info("click: "+ applicationState + " -> "+ nextApplicationState);
         this.setApplicationState(nextApplicationState);
     }
 
@@ -66,10 +70,8 @@ public class ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_SWITCH;
                 break;
         }
-        if(this.ctx.getProperties().getLogDebug()){
-            String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
-            log.info(msg);
-        }
+        String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
+        log.info(msg);
         this.setApplicationState(nextApplicationState);
     }
 
@@ -85,10 +87,8 @@ public class ApplicationStateMachine {
                 nextApplicationState = JULIA_SET_ZOOM;
                 break;
         }
-        if(this.ctx.getProperties().getLogDebug()){
-            String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
-            log.info(msg);
-        }
+        String msg = "setModeZoom: "+ applicationState + " -> "+ nextApplicationState;
+        log.info(msg);
         this.setApplicationState(nextApplicationState);
     }
 

@@ -2,12 +2,12 @@ package org.woehlke.simulation.evolution.view.parts;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.simulation.evolution.model.statistics.SimulatedEvolutionStatistics;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 import static org.woehlke.simulation.evolution.model.cell.CellLifeCycleStatus.*;
@@ -29,23 +29,25 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
     private JLabel oldCellsLabel;
     private JLabel populationLabel;
 
-  private final SimulatedEvolutionContext ctx;
-
   @Getter
-  private final SimulatedEvolutionStatistics statistics;
+  private final SimulatedEvolutionStateService stateService;
+
+    @Getter
+    private final SimulatedEvolutionStatistics statistics;
 
   public SimulatedEvolutionStatisticsPanel(
-      SimulatedEvolutionContext ctx
+      SimulatedEvolutionStateService stateService
   ) {
-      this.ctx = ctx;
+      this.stateService = stateService;
     setLabels();
-    setTextFields(this.ctx.getProperties().getCellPopulation().getInitialPopulation());
+    setTextFields(this.stateService.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation());
     setColors();
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
     FlowLayout layoutSubPanel = new FlowLayout();
     JPanel subPanel = new JPanel(layoutSubPanel);
-    subPanel.setBorder(getBorder(ctx.getProperties().getCellPopulation().getPanelPopulationStatistics()));
+    String borderLabel = this.stateService.getCtx().getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
+    subPanel.setBorder( this.stateService.getCtx().getBorder(borderLabel));
       subPanel.add(youngCellsLabel);
       subPanel.add(youngCellsStatistics);
       subPanel.add(youngAndFatCellsLabel);
@@ -59,28 +61,17 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
       subPanel.add(populationLabel);
       subPanel.add(populationStatistics);
       this.add(subPanel);
-      this.statistics = new SimulatedEvolutionStatistics( this.ctx );
+      this.statistics = new SimulatedEvolutionStatistics(  this.stateService.getCtx() );
   }
 
-
-    private CompoundBorder getBorder(String label){
-        int top = this.ctx.getProperties().getView().getBorderPadding();
-        int left = this.ctx.getProperties().getView().getBorderPadding();
-        int bottom = this.ctx.getProperties().getView().getBorderPadding();
-        int right = this.ctx.getProperties().getView().getBorderPadding();
-        return BorderFactory.createCompoundBorder(
-            BorderFactory.createTitledBorder(label),
-            BorderFactory.createEmptyBorder(top,left,bottom,right)
-        );
-    }
-
     private void setLabels(){
-        youngCellsLabel = new JLabel(ctx.getProperties().getCellPopulation().getYoungCellsLabel());
-        youngAndFatCellsLabel = new JLabel(ctx.getProperties().getCellPopulation().getYoungAndFatCellsLabel());
-        fullAgeCellsLabel = new JLabel(ctx.getProperties().getCellPopulation().getFullAgeCellsLabel());
-        hungryCellsLabel = new JLabel(ctx.getProperties().getCellPopulation().getHungryCellsLabel());
-        oldCellsLabel = new JLabel(ctx.getProperties().getCellPopulation().getOldCellsLabel());
-        populationLabel = new JLabel(ctx.getProperties().getCellPopulation().getPopulationLabel());
+        ComputerKurzweilProperties.Evolution cfg = this.stateService.getCtx().getProperties().getEvolution();
+        youngCellsLabel = new JLabel(cfg.getPopulation().getYoungCellsLabel());
+        youngAndFatCellsLabel = new JLabel(cfg.getPopulation().getYoungAndFatCellsLabel());
+        fullAgeCellsLabel = new JLabel(cfg.getPopulation().getFullAgeCellsLabel());
+        hungryCellsLabel = new JLabel(cfg.getPopulation().getHungryCellsLabel());
+        oldCellsLabel = new JLabel(cfg.getPopulation().getOldCellsLabel());
+        populationLabel = new JLabel(cfg.getPopulation().getPopulationLabel());
     }
 
     private void setTextFields(int initialPopulation){

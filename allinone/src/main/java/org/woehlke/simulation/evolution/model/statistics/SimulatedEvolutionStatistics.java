@@ -1,7 +1,7 @@
 package org.woehlke.simulation.evolution.model.statistics;
 
 import lombok.extern.java.Log;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -9,24 +9,23 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class SimulatedEvolutionStatistics {
 
   private final ConcurrentLinkedQueue<SimulatedEvolutionPopulationCensus> statistics = new ConcurrentLinkedQueue<>();
+
   private long worldIteration;
-  private final SimulatedEvolutionContext ctx;
+
+  private final ComputerKurzweilApplicationContext ctx;
 
   public SimulatedEvolutionStatistics(
-      SimulatedEvolutionContext ctx
+      ComputerKurzweilApplicationContext ctx
   ) {
       this.ctx = ctx;
       worldIteration = 0L;
   }
 
-  /**
-   * TODO write doc.
-   */
   public void push(SimulatedEvolutionPopulationCensus populationCensus) {
     worldIteration++;
     populationCensus.setWorldIteration(worldIteration);
     statistics.add(populationCensus);
-    if (statistics.size() > this.ctx.getProperties().getQueueMaxLength()) {
+    if (statistics.size() > this.ctx.getProperties().getEvolution().getControl().getQueueMaxLength()) {
         statistics.poll();
     }
     log.info(worldIteration + " : " + populationCensus);

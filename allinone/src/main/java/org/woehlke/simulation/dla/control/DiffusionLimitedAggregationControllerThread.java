@@ -3,12 +3,9 @@ package org.woehlke.simulation.dla.control;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.simulation.dla.model.DiffusionLimitedAggregatioContext;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.dla.model.DiffusionLimitedAggregationWorld;
 import org.woehlke.simulation.dla.view.DiffusionLimitedAggregationCanvas;
-
-
-
 
 /**
  * Diffusion Limited Aggregation.
@@ -27,14 +24,14 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
 
     private Boolean goOn;
 
-    private final DiffusionLimitedAggregatioContext ctx;
+    private final ComputerKurzweilApplicationContext ctx;
     private final DiffusionLimitedAggregationWorld particles;
     private final DiffusionLimitedAggregationCanvas canvas;
 
     @Autowired
     public DiffusionLimitedAggregationControllerThread(
         DiffusionLimitedAggregationCanvas canvas,
-        DiffusionLimitedAggregatioContext ctx) {
+        ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         goOn = Boolean.TRUE;
         this.canvas=canvas;
@@ -49,7 +46,7 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
             }
             particles.move();
             canvas.repaint();
-            try { sleep(ctx.getProperties().getThreadSleepTime()); }
+            try { sleep(ctx.getProperties().getDla().getControl().getThreadSleepTime()); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
         while (doIt);

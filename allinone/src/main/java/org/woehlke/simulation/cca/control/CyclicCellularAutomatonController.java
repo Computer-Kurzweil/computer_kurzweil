@@ -70,11 +70,11 @@ public class CyclicCellularAutomatonController extends Thread
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == panelButtons.getButtonVonNeumann()) {
-            this.canvas.getLattice().startVonNeumann();
+            this.canvas.getLattice().startWithNeighbourhoodVonNeumann();
         } else if (ae.getSource() == panelButtons.getButtonMoore()) {
-            this.canvas.getLattice().startMoore();
+            this.canvas.getLattice().startWithNeighbourhoodMoore();
         } else if (ae.getSource() == panelButtons.getButtonWoehlke()) {
-            this.canvas.getLattice().startWoehlke();
+            this.canvas.getLattice().startWithNeighbourhoodWoehlke();
         }
     }
 }

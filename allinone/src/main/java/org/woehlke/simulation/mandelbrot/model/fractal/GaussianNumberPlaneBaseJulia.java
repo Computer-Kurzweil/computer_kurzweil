@@ -4,8 +4,8 @@ package org.woehlke.simulation.mandelbrot.model.fractal;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
-import org.woehlke.simulation.mandelbrot.model.MandelbrotContext;
 import org.woehlke.simulation.mandelbrot.model.state.FractalSetType;
 import org.woehlke.simulation.mandelbrot.model.numbers.*;
 
@@ -26,8 +26,8 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
     private ComplexNumber complexNumberForJuliaSetC;
 
     @Autowired
-    public GaussianNumberPlaneBaseJulia(MandelbrotContext ctx) {
-        super(ctx,FractalSetType.JULIA_SET);
+    public GaussianNumberPlaneBaseJulia(ComputerKurzweilApplicationContext ctx) {
+        super(ctx, FractalSetType.JULIA_SET);
         zoomLevel = new ZoomLevel();
     }
 
@@ -138,9 +138,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     //TODO:
     public void zoomInto(LatticePoint zoomLatticePoint) {
-        if(ctx.getProperties().getLogDebug()){
-            log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
-        }
+        log.info("zoomIntoTheMandelbrotSet: "+ zoomLatticePoint +" - old:  "+this.getZoomCenter());
         boolean LowestZoomLevel = zoomLevel.isLowestZoomLevel();
         this.zoomLevel.inceaseZoomLevel();
         if(LowestZoomLevel){
@@ -151,12 +149,10 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
             this.setZoomCenter(getComplexNumberFromLatticeCoordsForZoomedJulia(zoomLatticePoint));
         }
         // complexCenterForZoomedJulia.push(this.getZoomCenter());
-        if(ctx.getProperties().getLogDebug()) {
             String msg = "zoomPoint: "+ zoomLatticePoint
                 + " zoomCenterNew: " + this.getZoomCenter()
                 + " zoomLevel:  "+ this.zoomLevel.getZoomLevel();
             log.info(msg);
-        }
         //    ComplexNumber c = this.getComplexNumberFromLatticeCoordsForZoomedJulia(zoomLatticePoint);
         ComplexNumber c = this.complexNumberForJuliaSetC;
         computeWZoomedWorld(c);
@@ -164,9 +160,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     //TODO:
     public void zoomOut() {
-        if(ctx.getProperties().getLogDebug()) {
-            log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
-        }
+        log.info("zoomOutOfTheMandelbrotSet: " + this.getZoomCenter());
         if(!this.zoomLevel.isLowestZoomLevel()) {
             this.zoomLevel.decreaseZoomLevel();
             try {
@@ -176,9 +170,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
             }
         }
-        if(ctx.getProperties().getLogDebug()) {
-            log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.zoomLevel.getZoomLevel());
-        }
+        log.info("zoomCenter: " + this.getZoomCenter() + " - zoomLevel:  "+ this.zoomLevel.getZoomLevel());
         ComplexNumber c = this.complexNumberForJuliaSetC;
         computeWZoomedWorld(c);
     }

@@ -47,8 +47,8 @@ public class StartStopPanel extends JPanel {
         this.panelButton.setBorder(border);
         this.startButton = new JButton("Start");
         this.stopButton = new JButton("Stop");
-        this.panelButton.add(    this.startButton);
-        this.panelButton.add(    this.stopButton);
+        this.panelButton.add( this.startButton);
+        this.panelButton.add(  this.stopButton);
         this.add(panelButton);
         this.startButton.addActionListener(tab);
         this.stopButton.addActionListener(tab);

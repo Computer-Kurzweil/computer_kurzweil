@@ -1,6 +1,7 @@
 package org.woehlke.simulation.dla.model;
 
 import lombok.extern.java.Log;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 
 /**
@@ -17,10 +18,11 @@ import org.woehlke.simulation.allinone.model.LatticePoint;
 public class DiffusionLimitedAggregationWorldLattice {
 
     private int worldMap[][];
-    private final DiffusionLimitedAggregatioContext ctx;
     private int age=1;
 
-    public DiffusionLimitedAggregationWorldLattice(DiffusionLimitedAggregatioContext ctx) {
+    private final ComputerKurzweilApplicationContext ctx;
+
+    public DiffusionLimitedAggregationWorldLattice(ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
         worldMap = new int[this.ctx.getWorldDimensions().getX()][this.ctx.getWorldDimensions().getY()];
         int x = this.ctx.getWorldDimensions().getX() / 2;
@@ -31,7 +33,7 @@ public class DiffusionLimitedAggregationWorldLattice {
 
     public boolean hasDendriteNeighbour(LatticePoint pixel){
         if(worldMap[pixel.getX()][pixel.getY()]==0){
-            LatticePoint[] neighbours=pixel.getNeighbourhood(this.ctx);
+            LatticePoint[] neighbours = pixel.getNeighbourhood(this.ctx);
             for(LatticePoint neighbour:neighbours){
                if(worldMap[neighbour.getX()][neighbour.getY()]>0){
                    worldMap[pixel.getX()][pixel.getY()]=age;

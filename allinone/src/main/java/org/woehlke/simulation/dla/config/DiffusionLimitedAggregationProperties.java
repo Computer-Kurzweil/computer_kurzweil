@@ -1,6 +1,6 @@
 package org.woehlke.simulation.dla.config;
 
-
+/*
 import lombok.*;
 import lombok.extern.java.Log;
 import org.springframework.boot.SpringBootConfiguration;
@@ -21,8 +21,9 @@ import javax.validation.constraints.NotNull;
 @Validated
 @NoArgsConstructor
 @ConfigurationProperties("org.woehlke.simulation.dla.config")
+*/
 public class DiffusionLimitedAggregationProperties {
-
+/*
     @NotBlank @Getter @Setter private String title;
     @NotBlank @Getter @Setter private String subtitle;
     @NotNull @Getter @Setter private Integer width;
@@ -30,4 +31,5 @@ public class DiffusionLimitedAggregationProperties {
     @NotBlank @Getter @Setter private String copyright;
     @NotNull  @Getter @Setter private Integer threadSleepTime;
     @NotNull  @Getter @Setter private Integer numberOfParticles;
+ */
 }

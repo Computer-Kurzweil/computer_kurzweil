@@ -3,12 +3,11 @@ package org.woehlke.simulation.dla.model;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Diffusion Limited Aggregation.
@@ -28,20 +27,17 @@ public class DiffusionLimitedAggregationWorld {
 
     private List<LatticePoint> particles = new ArrayList<>();
 
-    private Random random;
-
     private DiffusionLimitedAggregationWorldLattice dendrite;
 
-    private final DiffusionLimitedAggregatioContext ctx;
+    private final ComputerKurzweilApplicationContext ctx;
 
     @Autowired
-    public DiffusionLimitedAggregationWorld(DiffusionLimitedAggregatioContext ctx) {
+    public DiffusionLimitedAggregationWorld(ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
         this.worldDimensions=ctx.getWorldDimensions();
-        random = new Random(new Date().getTime());
-        for(int i=0; i<ctx.getProperties().getNumberOfParticles();i++){
-            int x = random.nextInt(worldDimensions.getX());
-            int y = random.nextInt(worldDimensions.getY());
+        for(int i=0; i<ctx.getProperties().getDla().getControl().getNumberOfParticles();i++){
+            int x = ctx.getRandom().nextInt(worldDimensions.getX());
+            int y = ctx.getRandom().nextInt(worldDimensions.getY());
             particles.add(new LatticePoint(x>=0?x:-x,y>=0?y:-y));
         }
         this.dendrite = new DiffusionLimitedAggregationWorldLattice(this.ctx);
@@ -56,7 +52,8 @@ public class DiffusionLimitedAggregationWorld {
         for(LatticePoint particle:particles){
             int x = particle.getX()+worldDimensions.getX();
             int y = particle.getY()+worldDimensions.getY();
-            int direction = random.nextInt(4);
+            //Todo: make Enum
+            int direction = ctx.getRandom().nextInt(4);
             switch (direction>=0?direction:-direction){
                 case 0: y--; break;
                 case 1: x++; break;

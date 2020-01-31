@@ -32,7 +32,9 @@ public class CyclicCellularAutomatonTab extends JPanel implements ActionListener
         CompoundBorder border = PanelBorder.getBorder();
         this.setBorder(border);
         this.ctx = ctx;
-        PanelSubtitle panelSubtitle = new PanelSubtitle(ctx.getCyclicCellularAutomatonContext());
+        PanelSubtitle panelSubtitle = new PanelSubtitle(
+            ctx.getProperties().getCca().getView().getSubtitle()
+        );
         this.startStopPanel = new StartStopPanel(this);
         this.framePanel = new FramePanel(this);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);

@@ -1,10 +1,9 @@
 package org.woehlke.simulation.evolution.model.world;
 
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.allinone.model.ComputerKurzweilApplicationContext;
 import org.woehlke.simulation.allinone.model.LatticePoint;
+import org.woehlke.simulation.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.simulation.evolution.model.cell.CellLifeCycle;
 
 
@@ -22,7 +21,6 @@ import org.woehlke.simulation.evolution.model.cell.CellLifeCycle;
  * Time: 12:37
  */
 @Log
-@Component
 public class SimulatedEvolutionWorldLattice {
 
   /**
@@ -30,28 +28,27 @@ public class SimulatedEvolutionWorldLattice {
    */
   private int[][] worldMapFoodLattice;
 
-  private final SimulatedEvolutionContext ctx;
+  private final SimulatedEvolutionStateService simulatedEvolutionStateService;
 
-  @Autowired
   public SimulatedEvolutionWorldLattice(
-      SimulatedEvolutionContext ctx
+      SimulatedEvolutionStateService simulatedEvolutionStateService
   ) {
-      this.ctx = ctx;
-      int x = ctx.getWorldDimensions().getX();
-      int y = ctx.getWorldDimensions().getY();
+      this.simulatedEvolutionStateService = simulatedEvolutionStateService;
+      int x = this.simulatedEvolutionStateService.getCtx().getWorldDimensions().getX();
+      int y = this.simulatedEvolutionStateService.getCtx().getWorldDimensions().getY();
       worldMapFoodLattice = new int[x][y];
   }
 
     private void letFoodGrowGardenOfEden() {
-        if (ctx.getProperties().getGardenOfEden().getGardenOfEdenEnabled()) {
+        if (this.simulatedEvolutionStateService.getCtx().getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled()) {
             int food = 0;
             int gardenOfEdenParts = 3;
-            int startX = ( ctx.getWorldDimensions().getX() / gardenOfEdenParts );
-            int startY = ( ctx.getWorldDimensions().getY() / gardenOfEdenParts );
-            while (food < ctx.getProperties().getGardenOfEden().getFoodPerDay()) {
+            int startX = ( this.simulatedEvolutionStateService.getCtx().getWorldDimensions().getX() / gardenOfEdenParts );
+            int startY = ( this.simulatedEvolutionStateService.getCtx().getWorldDimensions().getY() / gardenOfEdenParts );
+            while (food < this.simulatedEvolutionStateService.getCtx().getProperties().getEvolution().getGardenOfEden().getFoodPerDay()) {
                 food++;
-                int posX = ctx.getRandom().nextInt(startX);
-                int posY = ctx.getRandom().nextInt(startY);
+                int posX = this.simulatedEvolutionStateService.getCtx().getRandom().nextInt(startX);
+                int posY = this.simulatedEvolutionStateService.getCtx().getRandom().nextInt(startY);
                 posX *= Integer.signum(posX);
                 posY *= Integer.signum(posY);
                 worldMapFoodLattice[posX + startX][posY + startY]++;
@@ -61,13 +58,18 @@ public class SimulatedEvolutionWorldLattice {
 
     private void letFoodGrowWorld() {
         int food = 0;
-        while (food < ctx.getProperties().getFood().getFoodPerDay()) {
+        final int foodPerDay = this.simulatedEvolutionStateService.getCtx().getProperties().getEvolution().getFood().getFoodPerDay();
+        while (food < foodPerDay) {
             food++;
-            int posX = ctx.getRandom().nextInt(ctx.getWorldDimensions().getX());
-            int posY = ctx.getRandom().nextInt(ctx.getWorldDimensions().getY());
-            posX *= Integer.signum(posX);
-            posY *= Integer.signum(posY);
-            worldMapFoodLattice[posX][posY]++;
+            int newFoodPosX = this.simulatedEvolutionStateService.getCtx().getRandom().nextInt(
+                this.simulatedEvolutionStateService.getCtx().getWorldDimensions().getX()
+            );
+            int newFoodPosY = this.simulatedEvolutionStateService.getCtx().getRandom().nextInt(
+                this.simulatedEvolutionStateService.getCtx().getWorldDimensions().getY()
+            );
+            newFoodPosX *= Integer.signum(newFoodPosX);
+            newFoodPosY *= Integer.signum(newFoodPosY);
+            worldMapFoodLattice[newFoodPosX][newFoodPosY]++;
         }
     }
 
@@ -94,7 +96,9 @@ public class SimulatedEvolutionWorldLattice {
    * @see CellLifeCycle
    */
   public int eat(LatticePoint position) {
-    LatticePoint[] neighbourhood = position.getNeighbourhood(ctx.getWorldDimensions());
+    LatticePoint[] neighbourhood = position.getNeighbourhood(
+        this.simulatedEvolutionStateService.getCtx().getWorldDimensions()
+    );
     int food = 0;
     for (LatticePoint neighbourhoodPosition : neighbourhood) {
       food += worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
@@ -104,7 +108,7 @@ public class SimulatedEvolutionWorldLattice {
   }
 
   public void toggleGardenOfEden() {
-      ctx.toggleGardenOfEden();
+      simulatedEvolutionStateService.toggleGardenOfEden();
       letFoodGrowGardenOfEden();
   }
 

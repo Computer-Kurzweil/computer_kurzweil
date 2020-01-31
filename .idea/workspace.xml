@@ -1,15 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="switch from one app to allinone app">
-      <change afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
+    <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ApplicationTab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/LatticeNeighbourhood.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/LatticePointNeighbourhoodPosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionStateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/FoodPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/GardenOfEdenPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/ComputerKurzweilApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/config/ComputerKurzweilProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/config/ComputerKurzweilProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/ComputerKurzweilApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/LatticePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/model/LatticePoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelCopyright.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelCopyright.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelSubtitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/PanelSubtitle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/StartStopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/parts/StartStopPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/CyclicCellularAutomatonTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/CyclicCellularAutomatonTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/DiffusionLimitedAggregationTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/DiffusionLimitedAggregationTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/MandelbrotTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/MandelbrotTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/SimulatedEvolutionTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/allinone/view/tabs/SimulatedEvolutionTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/config/CyclicCellularAutomatonProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/control/CyclicCellularAutomatonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/control/CyclicCellularAutomatonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonLattice.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/model/CyclicCellularAutomatonLattice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonButtonsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonButtonsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/cca/view/CyclicCellularAutomatonCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/config/DiffusionLimitedAggregationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/config/DiffusionLimitedAggregationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/control/DiffusionLimitedAggregationControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/control/DiffusionLimitedAggregationControllerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/model/DiffusionLimitedAggregatioContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/model/DiffusionLimitedAggregationWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/model/DiffusionLimitedAggregationWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/model/DiffusionLimitedAggregationWorldLattice.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/model/DiffusionLimitedAggregationWorldLattice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/view/DiffusionLimitedAggregationCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/view/DiffusionLimitedAggregationCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/view/DiffusionLimitedAggregationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/dla/view/DiffusionLimitedAggregationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/config/SimulatedEvolutionProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/control/SimulatedEvolutionControllerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/SimulatedEvolutionContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/cell/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/cell/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/cell/CellCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/cell/CellCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/cell/CellLifeCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/cell/CellLifeCycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/cell/CellLifeCycleConf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/statistics/SimulatedEvolutionStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/statistics/SimulatedEvolutionStatistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorldLattice.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/model/world/SimulatedEvolutionWorldLattice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/SimulatedEvolutionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionButtonRowPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionButtonRowPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionStatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/evolution/view/parts/SimulatedEvolutionStatisticsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/config/MandelbrotProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/ComputeMandelbrotSetThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/control/ComputeMandelbrotSetThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/ApplicationStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/ApplicationStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/MandelbrotContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBaseJulia.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneBaseJulia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneMandelbrot.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/fractal/GaussianNumberPlaneMandelbrot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/MandelbrotTuringMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/MandelbrotTuringMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPhaseStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPhaseStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPositionsStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/model/turing/TuringPositionsStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/MandelbrotFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotPanelButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/simulation/mandelbrot/view/parts/MandelbrotPanelButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyclic-cellular-automaton/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cyclic-cellular-automaton/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulated-evolution/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/simulated-evolution/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +105,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -329,7 +382,7 @@
       <workItem from="1579427358954" duration="443000" />
       <workItem from="1579429869494" duration="597000" />
       <workItem from="1579430582567" duration="3769000" />
-      <workItem from="1580387137781" duration="8056000" />
+      <workItem from="1580387137781" duration="34694000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -485,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580387393776</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="switch from one app to allinone app">
+      <created>1580395225284</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1580395225284</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,10 +568,11 @@
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577558595678" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="611" y="206" width="374" height="570" key="#com.intellij.ide.util.MemberChooser" timestamp="1578948268946">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state x="435" y="145" width="311" height="402" key="#com.intellij.ide.util.MemberChooser" timestamp="1580422800707">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser/0.0.1280.760@0.0.1280.760" timestamp="1578912223286" />
+    <state x="435" y="145" width="311" height="402" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1580422800707" />
     <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578861456195" />
     <state x="611" y="206" width="374" height="570" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1053@0.0.1920.1053" timestamp="1578948268946" />
     <state x="281" y="304" width="524" height="437" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1578938070094">
@@ -540,15 +601,16 @@
       <screen x="0" y="0" width="1920" height="1053" />
     </state>
     <state x="535" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1053@0.0.1920.1053" timestamp="1578938159576" />
-    <state x="587" y="0" width="727" height="1048" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578947390665">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state x="418" y="0" width="909" height="736" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580425911209">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="418" y="0" width="909" height="736" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580425911209" />
     <state x="587" y="0" width="727" height="1048" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1578947390665" />
-    <state x="310" y="0" width="790" height="736" key="CommitChangelistDialog2" timestamp="1580395224198">
+    <state x="310" y="0" width="790" height="736" key="CommitChangelistDialog2" timestamp="1580432117391">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1578937069637" />
-    <state x="310" y="0" width="790" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580395224198" />
+    <state x="310" y="0" width="790" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580432117391" />
     <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
     <state x="210" y="17" width="1019" height="798" key="CommitChangelistDialog2/0.0.1920.1053@0.0.1920.1053" timestamp="1578950409138" />
     <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
@@ -626,20 +688,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1578866183417" />
-    <state x="364" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580387349592">
+    <state x="364" y="311" width="395" height="155" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580400508671">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="341" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.760@0.0.1280.760" timestamp="1578909770587" />
-    <state x="364" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.741@0.0.1366.741" timestamp="1580387349592" />
+    <state x="364" y="311" width="395" height="155" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.741@0.0.1366.741" timestamp="1580400508671" />
     <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578845290001" />
     <state x="512" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1053@0.0.1920.1053" timestamp="1578952436344" />
     <state x="336" y="112" width="737" height="606" key="find.popup" timestamp="1578892990628">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="336" y="112" width="737" height="606" key="find.popup/0.0.1280.760@0.0.1280.760" timestamp="1578892990628" />
-    <state x="705" y="147" width="500" height="751" key="refactoring.ChangeSignatureDialog" timestamp="1578938904406">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state x="502" y="103" width="428" height="529" key="refactoring.ChangeSignatureDialog" timestamp="1580409696088">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="502" y="103" width="428" height="529" key="refactoring.ChangeSignatureDialog/0.0.1366.741@0.0.1366.741" timestamp="1580409696088" />
     <state x="705" y="147" width="500" height="751" key="refactoring.ChangeSignatureDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1578938904406" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1578868553727">
       <screen x="0" y="0" width="1920" height="1040" />

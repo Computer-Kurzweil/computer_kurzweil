@@ -2,7 +2,9 @@ package org.woehlke.simulation.evolution.model.cell;
 
 import lombok.*;
 import lombok.extern.java.Log;
-import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
+import org.woehlke.simulation.allinone.config.ComputerKurzweilProperties;
+
+import javax.validation.Valid;
 
 /**
  * State of the Cell which monitors age and getting enough food.
@@ -26,24 +28,25 @@ import org.woehlke.simulation.evolution.model.SimulatedEvolutionContext;
 @AllArgsConstructor
 public class CellLifeCycle {
 
-      @Getter private int fat;
-      @Getter private int age;
-      @Getter private int hunger;
-      @Getter private int generation;
-      @Getter private CellLifeCycleStatus status;
-      @Getter private final CellLifeCycleConf conf;
+    @Getter private int fat;
+    @Getter private int age;
+    @Getter private int hunger;
+    @Getter private int generation;
+    @Getter private CellLifeCycleStatus status;
 
-    public CellLifeCycle(SimulatedEvolutionContext ctx) {
-        this.conf = new CellLifeCycleConf(ctx);
-        this.generation = 0;
-        this.fat = 0;
-        this.hunger = 0;
+    @Getter private final ComputerKurzweilProperties.Evolution.CellConf cellConf;
+
+    public CellLifeCycle(ComputerKurzweilProperties.Evolution.CellConf cellConf) {
+        this.cellConf = cellConf;
+        this.fat = cellConf.getFatAtBirth();
         this.age = 0;
+        this.hunger = 0;
+        this.generation = 0;
         updateLifeCycleStatus();
     }
 
     private CellLifeCycle(CellLifeCycle other) {
-        this.conf = other.conf;
+        this.cellConf =  other.cellConf;
         this.generation = other.generation;
         this.fat = other.fat;
         hunger = other.hunger;
@@ -64,8 +67,8 @@ public class CellLifeCycle {
      */
     public boolean isAbleForReproduction() {
         return (
-            (age >= this.getConf().getConfFullAge()) &&
-            (fat >= this.getConf().getConfFatMinimumForSex())
+            (age >= this.cellConf.getAgeOfAdulthood()) &&
+            (fat >= this.cellConf.getFatMinimumForSex())
         );
     }
 
@@ -91,8 +94,8 @@ public class CellLifeCycle {
     */
     public boolean isDead() {
         return (
-            (hunger >= this.getConf().getConfMaxHunger()) ||
-            (age    >= this.getConf().getConfMaxAge())
+            (hunger >= this.cellConf.getFatHungerMax()) ||
+            (age    >= this.cellConf.getAgeMax())
         );
     }
 
@@ -100,24 +103,27 @@ public class CellLifeCycle {
     * @param food eat the found food and add the energy to the cells fat.
     */
     public void eat(int food) {
-        fat = Integer.min(fat + food * this.getConf().getConfFatPerFood(), this.getConf().getConfMaxFat());
+        fat = Integer.min(
+            fat + food * this.cellConf.getFatPerFood(),
+            this.cellConf.getFatMax()
+        );
     }
 
     private void updateLifeCycleStatus() {
         if (fat == 0 && hunger >= 0) {
             this.status = CellLifeCycleStatus.HUNGRY;
         }
-        if (age < this.getConf().getConfFullAge()) {
-            if (fat < this.getConf().getConfFatMinimumForSex()) {
+        if (age < this.cellConf.getAgeOfAdulthood()) {
+            if (fat < this.cellConf.getFatMinimumForSex()) {
                 this.status = CellLifeCycleStatus.YOUNG;
             } else {
                 this.status = CellLifeCycleStatus.YOUNG_AND_FAT;
             }
         } else {
-            if (age < this.getConf().getConfAgeOfAdulthood()) {
+            if (age < this.cellConf.getAgeOfAdulthood()) {
                 this.status = CellLifeCycleStatus.FULL_AGE;
             } else {
-                if (age < this.getConf().getConfMaxAge()) {
+                if (age < this.cellConf.getAgeMax()) {
                     this.status = CellLifeCycleStatus.OLD;
                 } else {
                     this.status = CellLifeCycleStatus.DEAD;
