@@ -28,16 +28,16 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel {
   public CyclicCellularAutomatonButtonsPanel(ComputerKurzweilApplicationContext ctx) {
     this.ctx = ctx;
     ComputerKurzweilProperties.Cca.View.Neighborhood neighborhoodConf = ctx.getProperties().getCca().getView().getNeighborhood();
-    JLabel neighborhoodLabel = new JLabel(neighborhoodConf.getTitle());
     this.buttonVonNeumann = new JButton(neighborhoodConf.getTypeVonNeumann());
     this.buttonMoore = new JButton(neighborhoodConf.getTypeMoore());
     this.buttonWoehlke = new JButton(neighborhoodConf.getTypeWoehlke());
-    FlowLayout layout = new FlowLayout();
-    this.setLayout(layout);
-    this.add(neighborhoodLabel);
+    this.setLayout(new FlowLayout());
+    this.add(new JLabel(neighborhoodConf.getTitle()));
     this.add(this.buttonVonNeumann);
     this.add(this.buttonMoore);
     this.add(this.buttonWoehlke);
   }
 
+    public void stop() {
+    }
 }

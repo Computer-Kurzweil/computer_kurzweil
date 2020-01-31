@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonController;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
@@ -26,45 +26,60 @@ import java.io.Serializable;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class CyclicCellularAutomatonFrame extends JPanel implements ImageObserver,
-        MenuContainer,
+public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
         Serializable,
         Accessible {
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    @Getter private final ComputerKurzweilApplicationContext ctx;
-    @Getter private final CyclicCellularAutomatonController controller;
-    @Getter private final CyclicCellularAutomatonCanvas canvas;
-    @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
-    @Getter private final PanelSubtitle subtitle;
+    @Getter private ComputerKurzweilApplicationContext ctx;
+    @Getter private CyclicCellularAutomatonCanvas canvas;
+    @Getter private CyclicCellularAutomatonButtonsPanel panelButtons;
+    @Getter private PanelSubtitle subtitle;
 
-    public CyclicCellularAutomatonFrame(
+    @Getter private CyclicCellularAutomatonController controller;
+
+    public CyclicCellularAutomatonApp(
         ComputerKurzweilApplicationContext ctx
     ) {
-        //super(ctx.getProperties().getCca().getView().getTitle());
         this.ctx=ctx;
-        BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
-        this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
-        this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
-        this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
-        this.subtitle = PanelSubtitle.getPanelSubtitleForCca(this.ctx);
-        this.setLayout(layout);
-        this.add(this.subtitle);
-        this.add(this.canvas);
-        this.add(this.panelButtons);
+        this.setLayout(new BoxLayoutVertical(this));
     }
 
     public void start() {
+        this.subtitle = PanelSubtitle.getPanelSubtitleForCca(this.ctx);
+        this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
+        this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
+        this.controller = new CyclicCellularAutomatonController( this.canvas, this.panelButtons);
+        this.add(this.subtitle);
+        this.add(this.canvas);
+        this.add(this.panelButtons);
+        this.controller = new CyclicCellularAutomatonController( this.canvas,  this.panelButtons);
         this.controller.start();
         this.showMe();
     }
 
-    public void showMe() {
-        //pack();
-        this.setBounds(ctx.getFrameBounds());
-        this.setVisible(true);
-        //toFront();
+    public void stop() {
+        this.controller.exit();
+        this.remove(this.subtitle);
+        this.remove(this.canvas);
+        this.remove(this.panelButtons);
+        this.subtitle.stop();
+        this.canvas.stop();
+        this.panelButtons.stop();
+        this.subtitle=null;
+        this.canvas=null;
+        this.panelButtons=null;
+        hideMe();
     }
 
+    public void showMe() {
+        this.setBounds(ctx.getFrameBounds());
+        this.setVisible(true);
+    }
+
+    public void hideMe() {
+        this.setBounds(ctx.getFrameBounds());
+        this.setVisible(false);
+    }
 }

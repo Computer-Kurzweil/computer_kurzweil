@@ -62,4 +62,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
         paint(g);
     }
 
+    public void stop() {
+
+    }
 }

@@ -43,4 +43,7 @@ public class PanelSubtitle extends JPanel {
         String text = ctx.getProperties().getMandelbrot().getView().getSubtitle();
         return new PanelSubtitle(text);
     }
+
+    public void stop() {
+    }
 }

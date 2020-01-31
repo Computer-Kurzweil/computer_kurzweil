@@ -56,14 +56,19 @@ public class CyclicCellularAutomatonController extends Thread
             this.canvas.getLattice().step();
             this.canvas.repaint();
             try { sleep(THREAD_SLEEP_TIME); }
-            catch (InterruptedException e) { e.printStackTrace(); }
+            catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);
     }
 
     public void exit() {
-        synchronized (goOn) {
-            goOn = Boolean.FALSE;
+        try {
+            synchronized (goOn) {
+                goOn = Boolean.FALSE;
+            }
+            join();
+        } catch (InterruptedException e){
+            log.info(e.getMessage());
         }
     }
 
