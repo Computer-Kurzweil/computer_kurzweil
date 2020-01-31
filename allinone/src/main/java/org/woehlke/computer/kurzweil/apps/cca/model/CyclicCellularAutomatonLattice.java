@@ -41,9 +41,10 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
 
     private void initCreateLattice(){
         log.info("initCreateLattice: "+neighbourhoodType.name());
-        lattice = new int[2]
-            [this.ctx.getWorldDimensions().getX()]
-            [this.ctx.getWorldDimensions().getY()];
+        int versions = 2;
+        int latticeX = this.ctx.getWorldDimensions().getX();
+        int latticeY = this.ctx.getWorldDimensions().getY();
+        lattice = new int[versions][latticeX][latticeY];
         source = 0;
         target = 1;
         for(int y = 0; y<this.ctx.getWorldDimensions().getY(); y++){
@@ -53,6 +54,7 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
                 );
             }
         }
+        log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
     public void step(){

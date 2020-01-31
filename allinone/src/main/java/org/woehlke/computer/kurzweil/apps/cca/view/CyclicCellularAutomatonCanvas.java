@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonLattice;
 import org.woehlke.computer.kurzweil.control.AppCanvas;
+import org.woehlke.computer.kurzweil.control.Stepper;
 import org.woehlke.computer.kurzweil.model.Startable;
 
 import javax.swing.*;
@@ -26,7 +27,8 @@ import java.io.Serializable;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class CyclicCellularAutomatonCanvas extends JComponent implements Serializable, Startable, AppCanvas {
+public class CyclicCellularAutomatonCanvas extends JComponent implements
+    Serializable, Startable, AppCanvas, Stepper {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
@@ -72,5 +74,16 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
         this.lattice.stop();
         this.lattice = null;
         log.info("stopped");
+    }
+
+    @Override
+    public void step() {
+        log.info("step");
+        if(this.lattice == null){
+            start();
+        }
+        this.lattice.step();
+        this.repaint();
+        log.info("stepped");
     }
 }

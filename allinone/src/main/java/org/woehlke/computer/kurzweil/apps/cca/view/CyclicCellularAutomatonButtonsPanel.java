@@ -36,11 +36,12 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Start
   }
 
     @Override
-  public void stop() {
+    public void start() {
+        log.info("start");
     }
 
     @Override
-    public void start() {
-
+    public void stop() {
+        log.info("stop");
     }
 }

@@ -5,6 +5,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.control.ControllerThread;
+import org.woehlke.computer.kurzweil.control.Stepper;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,8 +53,8 @@ public class CyclicCellularAutomatonControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            this.canvas.getLattice().step();
-            this.canvas.updateUI();
+            this.canvas.step();
+            //this.canvas.repaint();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
