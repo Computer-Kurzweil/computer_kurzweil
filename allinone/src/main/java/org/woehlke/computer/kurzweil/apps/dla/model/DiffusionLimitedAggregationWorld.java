@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.apps.dla.model;
 
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.controller.Stepper;
+import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 
 import java.util.ArrayList;

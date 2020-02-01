@@ -2,7 +2,8 @@ package org.woehlke.computer.kurzweil.apps.evolution.view;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.view.common.PanelCopyright;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.evolution.control.SimulatedEvolutionControllerThread;
@@ -124,4 +125,8 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver, St
         this.panelButtons = null;
     }
 
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
 }

@@ -3,8 +3,9 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
-import org.woehlke.computer.kurzweil.control.controller.Stepper;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.ctx.Stepper;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 
 
 /**
@@ -94,4 +95,8 @@ public class MandelbrotTuringMachine  implements Startable, Stepper {
         this.getTuringPhaseStateMachine().finishFillTheOutsideWithColors();
     }
 
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
 }

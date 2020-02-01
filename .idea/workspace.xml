@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50dd0d39-5fd2-4984-9510-b0c73a398b47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/canvas/AppGuiComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/events/SignalSlotDispatcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/events/UserSignal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/events/UserSlot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/startables/Startable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/startables/StartablePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/conf/CyclicCellularAutomatonContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/commons/AppCanvas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/commons/AppGuiComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/commons/AppModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/commons/Startable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/commons/StartablePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/ctx/AppContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/ctx/ControllerThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/signals/UserSignal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/ComputerKurzweilApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/ComputerKurzweilApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/control/CyclicCellularAutomatonControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/control/CyclicCellularAutomatonControllerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/model/CyclicCellularAutomatonLattice.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/model/CyclicCellularAutomatonLattice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/view/CyclicCellularAutomatonApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/view/CyclicCellularAutomatonApp.java" afterDir="false" />
@@ -24,31 +28,39 @@
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/evolution/view/SimulatedEvolutionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/evolution/view/SimulatedEvolutionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/control/ComputeMandelbrotSetControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/control/ComputeMandelbrotSetControllerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/fractal/GaussianNumberPlaneBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/fractal/GaussianNumberPlaneBaseJulia.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/fractal/GaussianNumberPlaneBaseJulia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/fractal/GaussianNumberPlaneMandelbrot.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/fractal/GaussianNumberPlaneMandelbrot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/turing/MandelbrotTuringMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/turing/MandelbrotTuringMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/turing/TuringPhaseStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/turing/TuringPhaseStateMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/turing/TuringPositionsStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/mandelbrot/model/turing/TuringPositionsStateMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/config/ComputerKurzweilApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/config/ComputerKurzweilApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/AppCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/canvas/AppCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/ControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/controller/ControllerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/Stepper.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/controller/Stepper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/model/Startable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/CyclicCellularAutomatonTabApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/config/TabApps.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/AppType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/canvas/AppCanvas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/canvas/AppGuiComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/controller/ControllerThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/controller/Stepper.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/ctx/Stepper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/events/SignalSlotDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/signals/SignalSlotDispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/events/UserSignal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/events/UserSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/signals/UserSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/startables/Startable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/control/startables/StartablePanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/DiffusionLimitedAggregationTabApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/DiffusionLimitedAggregationTabApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/MandelbrotTabApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/MandelbrotTabApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/SimulatedEvolutionTabApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/SimulatedEvolutionTabApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/parts/TabAppLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/widgets/TabAppLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/parts/TabAppPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/widgets/TabAppPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/apps/parts/TabApps.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/config/TabApps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/Bounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/model/Bounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/PanelCopyright.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/PanelCopyright.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/PanelSubtitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/PanelSubtitle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/StartStopButtonsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/StartStopButtonsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/frame/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/frame/ComputerKurzweilApplicationFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/frame/ComputerKurzweilApplicationTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/frame/ComputerKurzweilApplicationTabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/frame/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/frame/ComputerKurzweilApplicationFrameLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/widgets/ComputerKurzweilApplicationFrameLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/frame/ComputerKurzweilApplicationTabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/ComputerKurzweilApplicationTabbedPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/CyclicCellularAutomatonTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/CyclicCellularAutomatonTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/DiffusionLimitedAggregationTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/DiffusionLimitedAggregationTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/MandelbrotTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/MandelbrotTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/SimulatedEvolutionTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/SimulatedEvolutionTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/parts/TabPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/parts/TabPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/parts/TabPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/common/TabPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/parts/TabPanelLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/common/TabPanelLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/widgets/TabAppLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/common/TabAppLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/widgets/TabAppPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/common/TabAppPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +340,7 @@
       <workItem from="1580571259591" duration="1398000" />
       <workItem from="1580581501791" duration="2794000" />
       <workItem from="1580584344889" duration="301000" />
-      <workItem from="1580584677318" duration="6032000" />
+      <workItem from="1580584677318" duration="13337000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -547,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580579068215</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="asdf">
+      <created>1580590743711</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1580590743711</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,10 +596,10 @@
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572674395" />
     <state x="0" y="19" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.741@0.0.1366.741" timestamp="1580579803260" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser" timestamp="1580589754113">
+    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser" timestamp="1580598038113">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1580589754113" />
+    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1580598038113" />
     <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579033401047" />
     <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1578525204381">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -669,9 +688,10 @@
     </state>
     <state x="478" y="161" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1580568815876" />
     <state x="672" y="236" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579039283557" />
-    <state x="410" y="231" key="RollbackChangesDialog" timestamp="1578902685672">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="153" y="165" width="1203" height="567" key="RollbackChangesDialog" timestamp="1580594839973">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="153" y="165" width="1203" height="567" key="RollbackChangesDialog/0.0.1366.741@0.0.1366.741" timestamp="1580594839973" />
     <state x="410" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578902685672" />
     <state x="163" y="0" width="1428" height="714" key="SettingsEditor" timestamp="1580571396515">
       <screen x="0" y="0" width="1366" height="728" />
@@ -707,10 +727,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="239" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578903458451" />
-    <state x="467" y="84" width="765" height="573" key="find.popup" timestamp="1580578933098">
+    <state x="467" y="84" width="775" height="573" key="find.popup" timestamp="1580590923904">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="467" y="84" width="765" height="573" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1580578933097" />
+    <state x="467" y="84" width="775" height="573" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1580590923904" />
     <state x="656" y="118" width="615" height="804" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578901221442" />
     <state x="499" y="0" width="500" height="736" key="refactoring.ChangeSignatureDialog" timestamp="1580583408341">
       <screen x="0" y="0" width="1366" height="741" />

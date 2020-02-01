@@ -1,11 +1,11 @@
-package org.woehlke.computer.kurzweil.view.tabs.parts;
+package org.woehlke.computer.kurzweil.view.tabs.common;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.events.UserSlot;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
-import org.woehlke.computer.kurzweil.control.startables.StartablePanel;
+import org.woehlke.computer.kurzweil.control.signals.UserSlot;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.commons.StartablePanel;
 import org.woehlke.computer.kurzweil.view.common.PanelBorder;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.view.common.StartStopButtonsPanel;
@@ -31,7 +31,6 @@ public abstract class TabPanel extends StartablePanel implements ActionListener,
         this.ctx = ctx;
         this.startStopButtonsPanel = new StartStopButtonsPanel(this);
         this.panelSubtitle = new PanelSubtitle(subtitle);
-        super.registerStartables(this.startStopButtonsPanel,this.panelSubtitle);
         this.setLayout(new TabPanelLayout(this));
         this.setBorder(PanelBorder.getBorder());
     }
@@ -51,17 +50,14 @@ public abstract class TabPanel extends StartablePanel implements ActionListener,
     }
 
     public void start(){
-        super.start();
         showMe();
     }
 
     public void stop(){
-        super.stop();
         hideMe();
     }
 
     public void update(){
-        super.update();
         showMe();
     }
 

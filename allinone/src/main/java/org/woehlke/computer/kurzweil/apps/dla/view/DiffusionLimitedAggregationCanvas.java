@@ -5,10 +5,11 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.canvas.AppCanvas;
+import org.woehlke.computer.kurzweil.control.commons.AppCanvas;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.dla.model.DiffusionLimitedAggregationWorld;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -91,5 +92,15 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements Ser
     @Override
     public void stop() {
         log.info("stop");
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
     }
 }

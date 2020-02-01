@@ -4,7 +4,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 
 import javax.swing.*;
 
@@ -12,7 +14,7 @@ import javax.swing.*;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class PanelSubtitle extends JPanel implements Startable {
+public class PanelSubtitle extends JPanel implements Startable, AppGuiComponent {
 
     public PanelSubtitle(String text) {
         this.setLayout(new PanelSubtitleLayout());
@@ -58,5 +60,10 @@ public class PanelSubtitle extends JPanel implements Startable {
     public void update() {
         this.setVisible(true);
         this.repaint();
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
     }
 }

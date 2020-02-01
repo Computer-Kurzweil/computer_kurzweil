@@ -4,17 +4,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.control.events.UserSignal;
-import org.woehlke.computer.kurzweil.control.events.UserSlot;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
-import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
+import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
 import javax.swing.*;
 
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class StartStopButtonsPanel extends JPanel implements Startable,UserSlot {
+public class StartStopButtonsPanel extends JPanel implements Startable, AppGuiComponent {
 
     @Getter private final JButton startButton;
     @Getter private final JButton stopButton;

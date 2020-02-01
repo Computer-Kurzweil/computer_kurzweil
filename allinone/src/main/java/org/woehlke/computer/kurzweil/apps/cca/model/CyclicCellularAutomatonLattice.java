@@ -5,9 +5,11 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.controller.Stepper;
+import org.woehlke.computer.kurzweil.control.ctx.Stepper;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
 
 import java.io.Serializable;
 import java.util.Random;
@@ -24,13 +26,15 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
 @Log
 @ToString
 @EqualsAndHashCode
-public class CyclicCellularAutomatonLattice implements Serializable, Startable, Stepper {
+public class CyclicCellularAutomatonLattice implements Serializable, Startable, Stepper, UserSlot {
 
     private static final long serialVersionUID = -594681595882016258L;
 
     private int[][][] lattice;
     private int source;
     private int target;
+
+    @Getter
     private LatticeNeighbourhoodType neighbourhoodType;
 
     private final ComputerKurzweilApplicationContext ctx;
@@ -41,16 +45,28 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
     public CyclicCellularAutomatonLattice(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        this.versions = 2;
+        this.latticeX = this.ctx.getWorldDimensions().getX();
+        this.latticeY = this.ctx.getWorldDimensions().getY();
     }
+
+    private final int versions;
+
+    @Getter
+    private final int latticeX;
+
+    @Getter
+    private final int latticeY;
 
     private void initCreateLattice(){
         log.info("initCreateLattice: "+neighbourhoodType.name());
-        int versions = 2;
-        int latticeX = this.ctx.getWorldDimensions().getX();
-        int latticeY = this.ctx.getWorldDimensions().getY();
         lattice = new int[versions][latticeX][latticeY];
         source = 0;
         target = 1;
+        log.info("initCreateLattice finished: "+neighbourhoodType.name());
+    }
+
+    private void initFillLattice(){
         Random random = this.ctx.getRandom();
         int maxState = this.colorScheme.getMaxState();
         for(int y = 0; y<latticeY; y++){
@@ -59,6 +75,11 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
             }
         }
         log.info("initCreateLattice finished: "+neighbourhoodType.name());
+    }
+
+    private void resetLattice(){
+        initCreateLattice();
+        initFillLattice();
     }
 
     public void step(){
@@ -136,17 +157,17 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
 
     public void startWithNeighbourhoodVonNeumann() {
         this.neighbourhoodType=VON_NEUMANN_NEIGHBORHOOD;
-        initCreateLattice();
+        resetLattice();
     }
 
     public void startWithNeighbourhoodMoore() {
         this.neighbourhoodType=MOORE_NEIGHBORHOOD;
-        initCreateLattice();
+        resetLattice();
     }
 
     public void startWithNeighbourhoodWoehlke() {
         this.neighbourhoodType=WOEHLKE_NEIGHBORHOOD;
-        initCreateLattice();
+        resetLattice();
     }
 
     @Override
@@ -158,5 +179,10 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
     @Override
     public void stop() {
         log.info("stop");
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        log.info("handleUserSignal: "+userSignal);
     }
 }

@@ -2,9 +2,10 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringDirection;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -98,4 +99,8 @@ public class TuringPositionsStateMachine implements Startable {
         return (this.turingPosition.equals(this.firstSetPosition)) && (this.steps>100);
     }
 
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
 }

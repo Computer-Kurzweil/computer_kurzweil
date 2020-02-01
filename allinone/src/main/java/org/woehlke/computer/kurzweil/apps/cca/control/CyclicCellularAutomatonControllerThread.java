@@ -5,9 +5,8 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.controller.ControllerThread;
-
-import java.io.Serializable;
+import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 
 /**
  * Cyclic Cellular Automaton.
@@ -21,7 +20,7 @@ import java.io.Serializable;
  */
 @Log
 public class CyclicCellularAutomatonControllerThread extends Thread
-        implements Serializable,ControllerThread {
+        implements ControllerThread {
 
     private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;
@@ -44,7 +43,6 @@ public class CyclicCellularAutomatonControllerThread extends Thread
     }
 
     public void run() {
-        this.ctx.start();
         log.info("run() - started");
         boolean doIt;
         do {
@@ -52,13 +50,12 @@ public class CyclicCellularAutomatonControllerThread extends Thread
                 doIt = goOn.booleanValue();
             }
             this.canvas.step();
-            this.ctx.update();
+            this.ctx.getFrame().update();
             try { super.sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);
         log.info("run() - finished");
-        this.ctx.stop();
     }
 
     public void exit() {
@@ -74,4 +71,8 @@ public class CyclicCellularAutomatonControllerThread extends Thread
         log.info("exited");
     }
 
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
 }

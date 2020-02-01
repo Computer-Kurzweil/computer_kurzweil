@@ -1,13 +1,13 @@
 package org.woehlke.computer.kurzweil.view.apps;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.control.events.UserSignal;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
-import org.woehlke.computer.kurzweil.view.widgets.TabAppPanel;
-import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
+import org.woehlke.computer.kurzweil.view.tabs.common.TabAppPanel;
+import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
 @Log
-public class MandelbrotTabApp extends TabAppPanel implements Startable {
+public class MandelbrotTabApp extends TabAppPanel implements AppGuiComponent {
 
     public MandelbrotTabApp(TabPanel tab) {
         super(tab);
@@ -24,12 +24,12 @@ public class MandelbrotTabApp extends TabAppPanel implements Startable {
     }
 
     @Override
-    public void update() {
-        log.info("update");
+    public void handleUserSignal(UserSignal userSignal) {
+        log.info("handleUserSignal: "+userSignal.name());
     }
 
     @Override
-    public void handleUserSignal(UserSignal userSignal) {
-        log.info("handleUserSignal: "+userSignal.name());
+    public void update() {
+
     }
 }

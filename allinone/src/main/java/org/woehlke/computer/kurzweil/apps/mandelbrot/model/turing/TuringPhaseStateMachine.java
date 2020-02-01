@@ -3,7 +3,8 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringPhase;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -15,7 +16,7 @@ import org.woehlke.computer.kurzweil.control.startables.Startable;
  * Created by tw on 16.12.2019.
  */
 @Log
-public class TuringPhaseStateMachine  implements Startable {
+public class TuringPhaseStateMachine implements Startable {
 
     @Getter
     private TuringPhase turingTuringPhase;
@@ -50,4 +51,8 @@ public class TuringPhaseStateMachine  implements Startable {
         return turingTuringPhase == TuringPhase.FINISHED;
     }
 
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
 }

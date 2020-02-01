@@ -3,11 +3,11 @@ package org.woehlke.computer.kurzweil.view.tabs;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.events.UserSignal;
-import org.woehlke.computer.kurzweil.control.events.UserSlot;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 import org.woehlke.computer.kurzweil.view.apps.MandelbrotTabApp;
-import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
+import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
 import javax.accessibility.Accessible;
 import java.awt.image.ImageObserver;
@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Log
 public class MandelbrotTab extends TabPanel implements ImageObserver,
     Serializable,
-    Accessible, Startable, UserSlot {
+    Accessible, Startable, AppGuiComponent {
 
     @Getter
     private final MandelbrotTabApp app;

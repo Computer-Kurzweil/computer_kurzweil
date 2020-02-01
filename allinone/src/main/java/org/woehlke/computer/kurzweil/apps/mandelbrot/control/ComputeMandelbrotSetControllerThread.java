@@ -6,7 +6,8 @@ import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.MandelbrotFrame;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotCanvas;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotPanelButtons;
-import org.woehlke.computer.kurzweil.control.controller.ControllerThread;
+import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 
 @Log
 public class ComputeMandelbrotSetControllerThread extends Thread implements Runnable, ControllerThread {
@@ -65,5 +66,10 @@ public class ComputeMandelbrotSetControllerThread extends Thread implements Runn
         } catch (InterruptedException e){
             log.info(e.getMessage());
         }
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
     }
 }

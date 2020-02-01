@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.config;
+package org.woehlke.computer.kurzweil.apps;
 
-public enum TabApps {
+public enum AppType {
 
     CYCLIC_CELLULAR_AUTOMATON,
     DIFFUSION_LIMITED_AGGREGATION,

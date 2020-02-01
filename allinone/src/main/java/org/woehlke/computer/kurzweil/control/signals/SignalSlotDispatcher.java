@@ -1,13 +1,14 @@
-package org.woehlke.computer.kurzweil.control.events;
+package org.woehlke.computer.kurzweil.control.signals;
 
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.ctx.Stepper;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class SignalSlotDispatcher implements Startable, UserSlot {
+public class SignalSlotDispatcher implements Startable, Stepper,  UserSlot {
 
     private final Map<UserSignal,List<UserSlot>> listenerMap = new TreeMap<>();
 
@@ -24,30 +25,29 @@ public class SignalSlotDispatcher implements Startable, UserSlot {
         listenerMap.put(signal,slotList);
     }
 
-    public void registerSignalAndSlots(UserSignal signal, UserSlot...slotsToAdd){
-        List<UserSlot> listenerList = listenerMap.get(signal);
-        for(UserSlot slotToAdd:slotsToAdd){
-            listenerList.add(slotToAdd);
-        }
-        listenerMap.put(signal,listenerList);
-    }
-
-
     public void registerSignalsAndSlots(UserSignal[] signals, UserSlot[] slots) {
         for(UserSignal signal :signals) {
-            List<UserSlot> listenerList = listenerMap.get(signal);
-            for (UserSlot slotToAdd : slots) {
-                listenerList.add(slotToAdd);
+            for(UserSlot slot: slots){
+                List<UserSlot> slotList = listenerMap.get(signal);
+                slotList.add(slot);
+                listenerMap.put(signal,slotList);
             }
-            listenerMap.put(signal, listenerList);
         }
     }
 
-    public void clearSignalAndSlots(){
+    public void clear(){
         for(UserSignal event: UserSignal.values()) {
             List<UserSlot> listenerList = listenerMap.get(event);
             listenerList.clear();
             listenerMap.put(event,listenerList);
+        }
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        List<UserSlot> listenerList = listenerMap.get(userSignal);
+        for(UserSlot listeners:listenerList){
+            listeners.handleUserSignal(userSignal);
         }
     }
 
@@ -62,15 +62,7 @@ public class SignalSlotDispatcher implements Startable, UserSlot {
     }
 
     @Override
-    public void update() {
-        handleUserSignal(UserSignal.UPDATE);
-    }
-
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
-        List<UserSlot> listenerList = listenerMap.get(userSignal);
-        for(UserSlot listeners:listenerList){
-            listeners.handleUserSignal(userSignal);
-        }
+    public void step() {
+        handleUserSignal(UserSignal.STEP);
     }
 }

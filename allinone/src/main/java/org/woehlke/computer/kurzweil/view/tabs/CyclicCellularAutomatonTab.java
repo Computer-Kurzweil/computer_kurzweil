@@ -7,12 +7,13 @@ import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonCon
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.config.TabApps;
-import org.woehlke.computer.kurzweil.control.events.UserSignal;
-import org.woehlke.computer.kurzweil.control.events.UserSlot;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.apps.AppType;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.signals.UserSlot;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
-import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
+import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
 import javax.accessibility.Accessible;
 import java.awt.image.ImageObserver;
@@ -21,11 +22,13 @@ import java.io.Serializable;
 @Log
 public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserver,
     Serializable,
-    Accessible, Startable, UserSlot {
+    Accessible, Startable, AppGuiComponent {
 
     @Getter private CyclicCellularAutomatonCanvas canvas;
     @Getter private CyclicCellularAutomatonButtonsPanel panelButtons;
     @Getter private CyclicCellularAutomatonControllerThread controller;
+
+    private final static AppType appType = AppType.CYCLIC_CELLULAR_AUTOMATON;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
         super(ctx,ctx.getProperties().getCca().getView().getSubtitle());
@@ -33,18 +36,17 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
         this.setBounds(ctx.getFrameBounds());
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
-        this.ctx.registerSignalAndSlot(TabApps.CYCLIC_CELLULAR_AUTOMATON, UserSignal.START, this.canvas);
-        /*
-        super.registerStartables(
-            this.canvas,
-            this.panelButtons
-        );
-        */
         this.controller = new CyclicCellularAutomatonControllerThread(ctx, this.canvas, this.panelButtons);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.panelButtons);
         this.add(this.startStopButtonsPanel);
+        UserSlot[] slotsModel = {this.canvas.getLattice()};
+        UserSlot[] slotsGui = {this.canvas, this.panelButtons, this};
+        UserSlot[] slotsControllers = {this.controller};
+        this.ctx.registerSignalsAndSlots(appType, UserSignal.getModels(), slotsModel);
+        this.ctx.registerSignalsAndSlots(appType, UserSignal.getGui(), slotsGui);
+        this.ctx.registerSignalsAndSlots(appType, UserSignal.getControllerThreads(), slotsControllers);
     }
 
     @Override

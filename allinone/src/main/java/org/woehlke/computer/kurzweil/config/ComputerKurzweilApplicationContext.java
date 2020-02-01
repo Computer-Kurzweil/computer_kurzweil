@@ -5,15 +5,15 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.woehlke.computer.kurzweil.control.events.UserSignal;
-import org.woehlke.computer.kurzweil.control.events.UserSlot;
-import org.woehlke.computer.kurzweil.control.events.SignalSlotDispatcher;
+import org.woehlke.computer.kurzweil.apps.AppType;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.signals.UserSlot;
+import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcher;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonColorScheme;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellCore;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
-import org.woehlke.computer.kurzweil.view.frame.ComputerKurzweilApplicationFrame;
+import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -26,7 +26,7 @@ import java.util.TreeMap;
 
 @Log
 @Component
-public class ComputerKurzweilApplicationContext implements Startable {
+public class ComputerKurzweilApplicationContext {
 
     @Getter private final ComputerKurzweilProperties properties;
 
@@ -34,7 +34,7 @@ public class ComputerKurzweilApplicationContext implements Startable {
 
     @Getter private final Random random;
 
-    private final Map<TabApps, SignalSlotDispatcher> signalSlotContainer = new TreeMap<>();
+    private final Map<AppType, SignalSlotDispatcher> signalSlotContainer = new TreeMap<>();
 
     @Getter @Setter
     private ComputerKurzweilApplicationFrame frame;
@@ -51,19 +51,19 @@ public class ComputerKurzweilApplicationContext implements Startable {
     }
 
     public void initSignalSlotContainer(){
-        for(TabApps app :TabApps.values()){
+        for(AppType app : AppType.values()){
             SignalSlotDispatcher c = new SignalSlotDispatcher();
             signalSlotContainer.put(app,c);
         }
     }
 
-    public void registerSignalsAndSlots(TabApps app, UserSignal[] signals, UserSlot[] slots) {
+    public void registerSignalsAndSlots(AppType app, UserSignal[] signals, UserSlot[] slots) {
         SignalSlotDispatcher c  = signalSlotContainer.get(app);
         c.registerSignalsAndSlots(signals,slots);
         signalSlotContainer.put(app,c);
     }
 
-    public void sendSignal(TabApps app, UserSignal signal) {
+    public void sendSignal(AppType app, UserSignal signal) {
         SignalSlotDispatcher c  = signalSlotContainer.get(app);
         c.handleUserSignal(signal);
     }
@@ -156,20 +156,4 @@ public class ComputerKurzweilApplicationContext implements Startable {
         return new CellCore(this);
     }
 
-    @Override
-    public void start() {
-        this.frame.start();
-    }
-
-    @Override
-    public void stop() {
-        this.frame.start();
-    }
-
-    @Override
-    public void update() {
-        if(this.frame!=null){
-            this.frame.update();
-        }
-    }
 }

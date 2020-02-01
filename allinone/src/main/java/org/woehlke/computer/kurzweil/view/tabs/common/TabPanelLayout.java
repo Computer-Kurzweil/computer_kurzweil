@@ -1,5 +1,7 @@
-package org.woehlke.computer.kurzweil.view.tabs.parts;
+package org.woehlke.computer.kurzweil.view.tabs.common;
 
+
+import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
 import javax.swing.*;
 import java.awt.*;

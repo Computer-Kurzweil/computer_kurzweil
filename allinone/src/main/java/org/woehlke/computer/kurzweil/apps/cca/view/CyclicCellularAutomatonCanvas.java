@@ -6,8 +6,8 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonLattice;
-import org.woehlke.computer.kurzweil.control.events.UserSignal;
-import org.woehlke.computer.kurzweil.control.events.UserSlot;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,7 +41,8 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     public CyclicCellularAutomatonCanvas(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.setPreferredSize(this.ctx.getLatticeDimension());
-        ready=false;
+        ready = false;
+        this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
     }
 
     public void paint(Graphics g) {
@@ -68,7 +69,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public void start() {
         log.info("start");
-        this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
         ready=true;
         this.lattice.start();
         this.setVisible(true);

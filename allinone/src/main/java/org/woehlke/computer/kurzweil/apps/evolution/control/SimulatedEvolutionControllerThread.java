@@ -7,7 +7,8 @@ import org.woehlke.computer.kurzweil.apps.evolution.model.world.SimulatedEvoluti
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
-import org.woehlke.computer.kurzweil.control.controller.ControllerThread;
+import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 
 import java.awt.event.*;
 
@@ -25,7 +26,7 @@ import java.awt.event.*;
  * Time: 00:36:20
  */
 @Log
-public class SimulatedEvolutionControllerThread extends Thread implements Runnable,
+public class SimulatedEvolutionControllerThread extends Thread implements
     ActionListener, ControllerThread {
 
     private final SimulatedEvolutionStateService ctxService;
@@ -56,6 +57,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
       this.panelButtons.getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
   }
 
+  //TODO: move to View Object.
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == this.panelButtons.getFoodPanel().getButtonFoodPerDayIncrease()) {
@@ -110,4 +112,8 @@ public class SimulatedEvolutionControllerThread extends Thread implements Runnab
         }
     }
 
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
 }

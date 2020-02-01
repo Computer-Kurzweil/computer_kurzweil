@@ -6,7 +6,9 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +18,8 @@ import java.awt.event.ActionListener;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Startable, ActionListener {
+public class CyclicCellularAutomatonButtonsPanel extends JPanel implements
+    ActionListener, Startable, AppGuiComponent {
 
   @Getter private final JButton buttonVonNeumann;
   @Getter private final JButton buttonMoore;
@@ -61,5 +64,15 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Start
         } else if (ae.getSource() == this.buttonWoehlke) {
             ctx.getFrame().startWithNeighbourhoodWoehlke();
         }
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
+
+    @Override
+    public void update() {
+
     }
 }

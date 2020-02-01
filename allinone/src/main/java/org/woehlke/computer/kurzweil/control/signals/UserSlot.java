@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.control.events;
+package org.woehlke.computer.kurzweil.control.signals;
 
 public interface UserSlot {
 

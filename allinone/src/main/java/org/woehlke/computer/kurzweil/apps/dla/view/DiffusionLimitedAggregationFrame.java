@@ -3,7 +3,8 @@ package org.woehlke.computer.kurzweil.apps.dla.view;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.dla.control.DiffusionLimitedAggregationControllerThread;
 
@@ -60,4 +61,8 @@ public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObs
         setVisible(false);
     }
 
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
+    }
 }

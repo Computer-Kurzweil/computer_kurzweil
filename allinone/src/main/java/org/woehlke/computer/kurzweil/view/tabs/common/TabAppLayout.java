@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.view.widgets;
+package org.woehlke.computer.kurzweil.view.tabs.common;
 
 import javax.swing.*;
 import java.awt.*;

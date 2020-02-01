@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonControllerThread;
 
@@ -28,7 +29,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper=true)
 public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
         Serializable,
-        Accessible, Startable {
+        Accessible, AppGuiComponent {
 
     private static final long serialVersionUID = 4357793241219932594L;
 
@@ -79,5 +80,15 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
     public void hideMe() {
         log.info("hideMe");
         this.setVisible(false);
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+
     }
 }
