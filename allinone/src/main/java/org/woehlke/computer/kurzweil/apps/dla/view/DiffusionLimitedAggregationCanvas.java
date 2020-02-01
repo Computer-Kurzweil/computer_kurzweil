@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.AppCanvas;
+import org.woehlke.computer.kurzweil.control.canvas.AppCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.dla.model.DiffusionLimitedAggregationWorld;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 
 import javax.swing.*;
 import java.awt.*;

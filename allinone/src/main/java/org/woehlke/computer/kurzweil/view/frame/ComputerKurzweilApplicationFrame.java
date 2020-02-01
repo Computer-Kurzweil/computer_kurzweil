@@ -3,7 +3,10 @@ package org.woehlke.computer.kurzweil.view.frame;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.view.common.Bounds;
+import org.woehlke.computer.kurzweil.control.events.UserSignal;
+import org.woehlke.computer.kurzweil.control.events.UserSlot;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
+import org.woehlke.computer.kurzweil.model.Bounds;
 import org.woehlke.computer.kurzweil.view.common.PanelBorder;
 import org.woehlke.computer.kurzweil.view.common.PanelCopyright;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
@@ -25,10 +28,13 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     Accessible,
     WindowListener,
     WindowFocusListener,
-    WindowStateListener {
+    WindowStateListener, Startable, UserSlot {
 
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
+
+    @Getter
+    private final ComputerKurzweilApplicationTabbedPane a;
 
     public ComputerKurzweilApplicationFrame(
         ComputerKurzweilApplicationContext ctx
@@ -36,10 +42,11 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         super(ctx.getProperties().getAllinone().getView().getTitle());
         this.ctx = ctx;
         this.ctx.setFrame(this);
+        a = new ComputerKurzweilApplicationTabbedPane(this.ctx);
         rootPane.setLayout(new ComputerKurzweilApplicationFrameLayout( rootPane ));
         rootPane.setBorder(PanelBorder.getBorder());
         rootPane.add(PanelSubtitle.getPanelSubtitleForAllinone(this.ctx));
-        rootPane.add(new ComputerKurzweilApplicationTabbedPane(this.ctx));
+        rootPane.add(a);
         rootPane.add(new PanelCopyright(this.ctx));
         pack();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -47,7 +54,27 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         showMe();
     }
 
-    public void start(){log.info("started");}
+    @Override
+    public void start(){
+        log.info("start");
+        a.start();
+        showMe();
+        log.info("started");
+    }
+
+    @Override
+    public void stop() {
+        log.info("stop");
+        a.stop();
+        log.info("stopped");
+    }
+
+    @Override
+    public void update() {
+        log.info("update");
+        a.update();
+        log.info("updated");
+    }
 
     private Bounds getMyBounds(){
         double height = rootPane.getHeight();
@@ -78,6 +105,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
 
     public void repaint(){
         super.repaint();
+        a.repaint();
     }
 
     public void windowOpened(WindowEvent e) {
@@ -117,5 +145,22 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     @Override
     public void windowStateChanged(WindowEvent e) {
 
+    }
+
+    public void startWithNeighbourhoodVonNeumann() {
+
+    }
+
+    public void startWithNeighbourhoodMoore() {
+
+    }
+
+    public void startWithNeighbourhoodWoehlke() {
+
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        log.info("handleUserSignal: "+userSignal.name());
     }
 }

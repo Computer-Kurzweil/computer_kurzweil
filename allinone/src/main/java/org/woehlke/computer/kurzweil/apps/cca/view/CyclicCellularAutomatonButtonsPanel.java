@@ -6,15 +6,17 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Startable {
+public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Startable, ActionListener {
 
   @Getter private final JButton buttonVonNeumann;
   @Getter private final JButton buttonMoore;
@@ -33,6 +35,9 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Start
     this.add(this.buttonVonNeumann);
     this.add(this.buttonMoore);
     this.add(this.buttonWoehlke);
+    this.buttonVonNeumann.addActionListener(  this);
+    this.buttonMoore.addActionListener(  this);
+    this.buttonWoehlke.addActionListener(  this);
   }
 
     @Override
@@ -45,5 +50,16 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel implements Start
     public void stop() {
         log.info("stop");
         this.setVisible(false);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == this.buttonVonNeumann) {
+            ctx.getFrame().startWithNeighbourhoodVonNeumann();
+        } else if (ae.getSource() == this.buttonMoore) {
+            ctx.getFrame().startWithNeighbourhoodMoore();
+        } else if (ae.getSource() == this.buttonWoehlke) {
+            ctx.getFrame().startWithNeighbourhoodWoehlke();
+        }
     }
 }

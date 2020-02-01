@@ -1,7 +1,8 @@
 package org.woehlke.computer.kurzweil.view.apps;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.view.apps.parts.TabAppPanel;
+import org.woehlke.computer.kurzweil.control.events.UserSignal;
+import org.woehlke.computer.kurzweil.view.widgets.TabAppPanel;
 import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
 
 @Log
@@ -19,5 +20,10 @@ public class SimulatedEvolutionTabApp extends TabAppPanel {
     @Override
     public void stop() {
         log.info("stopped");
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        log.info("handleUserSignal: "+userSignal.name());
     }
 }

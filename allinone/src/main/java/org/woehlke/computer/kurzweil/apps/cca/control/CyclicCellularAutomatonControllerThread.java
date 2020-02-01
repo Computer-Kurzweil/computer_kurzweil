@@ -5,10 +5,8 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.ControllerThread;
+import org.woehlke.computer.kurzweil.control.controller.ControllerThread;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 /**
@@ -23,7 +21,7 @@ import java.io.Serializable;
  */
 @Log
 public class CyclicCellularAutomatonControllerThread extends Thread
-        implements Serializable, ActionListener, ControllerThread {
+        implements Serializable,ControllerThread {
 
     private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;
@@ -43,13 +41,10 @@ public class CyclicCellularAutomatonControllerThread extends Thread
         this.canvas = canvas;
         this.panelButtons = panelButtons;
         goOn = Boolean.TRUE;
-        panelButtons.getButtonVonNeumann().addActionListener(  this);
-        panelButtons.getButtonMoore().addActionListener(  this);
-        panelButtons.getButtonWoehlke().addActionListener(  this);
     }
 
     public void run() {
-        canvas.start();
+        this.ctx.start();
         log.info("run() - started");
         boolean doIt;
         do {
@@ -57,14 +52,13 @@ public class CyclicCellularAutomatonControllerThread extends Thread
                 doIt = goOn.booleanValue();
             }
             this.canvas.step();
-            this.canvas.repaint();
-            this.ctx.repaint();
+            this.ctx.update();
             try { super.sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);
         log.info("run() - finished");
-        canvas.stop();
+        this.ctx.stop();
     }
 
     public void exit() {
@@ -80,14 +74,4 @@ public class CyclicCellularAutomatonControllerThread extends Thread
         log.info("exited");
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == panelButtons.getButtonVonNeumann()) {
-            this.canvas.getLattice().startWithNeighbourhoodVonNeumann();
-        } else if (ae.getSource() == panelButtons.getButtonMoore()) {
-            this.canvas.getLattice().startWithNeighbourhoodMoore();
-        } else if (ae.getSource() == panelButtons.getButtonWoehlke()) {
-            this.canvas.getLattice().startWithNeighbourhoodWoehlke();
-        }
-    }
 }

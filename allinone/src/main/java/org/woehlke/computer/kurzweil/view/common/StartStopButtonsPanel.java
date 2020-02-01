@@ -4,16 +4,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.control.events.UserSignal;
+import org.woehlke.computer.kurzweil.control.events.UserSlot;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
-import java.awt.*;
 
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class StartStopButtonsPanel extends JPanel {
+public class StartStopButtonsPanel extends JPanel implements Startable,UserSlot {
 
     @Getter private final JButton startButton;
     @Getter private final JButton stopButton;
@@ -34,4 +35,24 @@ public class StartStopButtonsPanel extends JPanel {
         this.stopButton.setEnabled(false);
     }
 
+    @Override
+    public void start() {
+        this.setVisible(true);
+        this.repaint();
+    }
+
+    public void stop() {
+        this.setVisible(false);
+    }
+
+    @Override
+    public void update() {
+        this.setVisible(true);
+        this.repaint();
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        log.info("handleUserSignal: "+userSignal.name());
+    }
 }

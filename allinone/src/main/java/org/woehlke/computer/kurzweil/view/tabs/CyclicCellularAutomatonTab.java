@@ -7,7 +7,10 @@ import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonCon
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.config.TabApps;
+import org.woehlke.computer.kurzweil.control.events.UserSignal;
+import org.woehlke.computer.kurzweil.control.events.UserSlot;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
 
@@ -18,7 +21,7 @@ import java.io.Serializable;
 @Log
 public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserver,
     Serializable,
-    Accessible, Startable {
+    Accessible, Startable, UserSlot {
 
     @Getter private CyclicCellularAutomatonCanvas canvas;
     @Getter private CyclicCellularAutomatonButtonsPanel panelButtons;
@@ -30,6 +33,13 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
         this.setBounds(ctx.getFrameBounds());
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
+        this.ctx.registerSignalAndSlot(TabApps.CYCLIC_CELLULAR_AUTOMATON, UserSignal.START, this.canvas);
+        /*
+        super.registerStartables(
+            this.canvas,
+            this.panelButtons
+        );
+        */
         this.controller = new CyclicCellularAutomatonControllerThread(ctx, this.canvas, this.panelButtons);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
@@ -40,8 +50,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     @Override
     public void start() {
         log.info("start");
-        this.panelButtons.start();
-        this.canvas.start();
+        super.start();
         this.showMe();
         this.controller.start();
         log.info("started");
@@ -51,21 +60,22 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     public void stop() {
         log.info("stop");
         this.controller.exit();
-        this.canvas.stop();
-        this.panelButtons.stop();
+        super.stop();
         this.canvas=null;
         this.panelButtons=null;
         hideMe();
         log.info("stopped");
     }
 
-    public void showMe() {
-        log.info("showMe");
-        this.setVisible(true);
+    @Override
+    public void update() {
+        log.info("update");
+        super.update();
+        log.info("updated");
     }
 
-    public void hideMe() {
-        log.info("hideMe");
-        this.setVisible(false);
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        log.info("handleUserSignal: "+userSignal.name());
     }
 }

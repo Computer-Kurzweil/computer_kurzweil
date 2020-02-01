@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.control;
+package org.woehlke.computer.kurzweil.control.controller;
 
 public interface ControllerThread extends Runnable {
 

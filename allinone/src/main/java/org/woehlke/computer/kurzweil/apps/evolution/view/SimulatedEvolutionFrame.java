@@ -2,9 +2,7 @@ package org.woehlke.computer.kurzweil.apps.evolution.view;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 import org.woehlke.computer.kurzweil.view.common.PanelCopyright;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.evolution.control.SimulatedEvolutionControllerThread;

@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.Stepper;
+import org.woehlke.computer.kurzweil.control.controller.Stepper;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 
 import java.io.Serializable;
 import java.util.Random;

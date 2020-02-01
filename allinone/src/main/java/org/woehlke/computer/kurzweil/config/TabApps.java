@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.view.apps.parts;
+package org.woehlke.computer.kurzweil.config;
 
 public enum TabApps {
 

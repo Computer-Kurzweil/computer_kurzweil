@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.view.common;
+package org.woehlke.computer.kurzweil.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

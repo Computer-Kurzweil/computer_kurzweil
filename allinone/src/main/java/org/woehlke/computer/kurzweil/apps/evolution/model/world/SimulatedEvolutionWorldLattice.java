@@ -4,7 +4,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 
 
 /**

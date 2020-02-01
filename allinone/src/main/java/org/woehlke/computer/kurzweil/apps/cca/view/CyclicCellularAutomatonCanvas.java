@@ -6,9 +6,8 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonLattice;
-import org.woehlke.computer.kurzweil.control.AppCanvas;
-import org.woehlke.computer.kurzweil.control.Stepper;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.events.UserSignal;
+import org.woehlke.computer.kurzweil.control.events.UserSlot;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +27,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, Startable, AppCanvas, Stepper {
+    Serializable, UserSlot {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
@@ -63,7 +62,10 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         paint(g);
     }
 
-    @Override
+    public void update(){
+        repaint();;
+    }
+
     public void start() {
         log.info("start");
         this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
@@ -74,7 +76,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         log.info("started");
     }
 
-    @Override
     public void stop() {
         log.info("stop");
         ready=false;
@@ -84,17 +85,27 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         log.info("stopped");
     }
 
-    @Override
     public void step() {
-        //log.info("step");
+        log.info("step");
         if(this.lattice == null){
             log.info("step: start");
             start();
+        } else {
+            if(ready){
+                this.lattice.step();
+            }
         }
-        if(ready){
-            this.lattice.step();
-            this.repaint();
+        log.info("stepped");
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        switch (userSignal){
+            case START: start(); break;
+            case STOP: stop(); break;
+            case UPDATE: update(); break;
+            case STEP: step(); break;
+            default: break;
         }
-        //log.info("stepped");
     }
 }

@@ -4,7 +4,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.dla.model.DiffusionLimitedAggregationWorld;
 import org.woehlke.computer.kurzweil.apps.dla.view.DiffusionLimitedAggregationCanvas;
-import org.woehlke.computer.kurzweil.control.ControllerThread;
+import org.woehlke.computer.kurzweil.control.controller.ControllerThread;
 
 /**
  * Diffusion Limited Aggregation.

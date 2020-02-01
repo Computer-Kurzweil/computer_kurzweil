@@ -2,9 +2,8 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.stereotype.Service;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringPhase;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonControllerThread;
 

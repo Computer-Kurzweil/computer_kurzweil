@@ -1,15 +1,16 @@
-package org.woehlke.computer.kurzweil.view.apps.parts;
+package org.woehlke.computer.kurzweil.view.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.control.events.UserSlot;
 import org.woehlke.computer.kurzweil.view.tabs.parts.TabPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
 @Log
-public abstract class TabAppPanel extends JPanel {
+public abstract class TabAppPanel extends JPanel implements UserSlot {
 
     @Getter
     protected final ComputerKurzweilApplicationContext ctx;

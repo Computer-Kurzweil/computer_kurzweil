@@ -3,14 +3,13 @@ package org.woehlke.computer.kurzweil.apps.evolution.model.world;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.stereotype.Component;
-import org.woehlke.computer.kurzweil.control.Stepper;
+import org.woehlke.computer.kurzweil.control.controller.Stepper;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.Cell;
-import org.woehlke.computer.kurzweil.model.Startable;
+import org.woehlke.computer.kurzweil.control.startables.Startable;
 
 import java.util.ArrayList;
 import java.util.List;
