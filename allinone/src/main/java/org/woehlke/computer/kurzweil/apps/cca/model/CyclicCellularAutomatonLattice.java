@@ -7,10 +7,8 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.Stepper;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
-import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.model.Startable;
 
-import java.awt.*;
 import java.io.Serializable;
 import java.util.Random;
 
@@ -130,6 +128,9 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
     }
 
     public int getCellStatusFor(int x,int y){
+        if(this.lattice == null){
+            return 0;
+        }
         return this.lattice[source][x][y];
     }
 

@@ -159,6 +159,9 @@
       </state>
     </system>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="computer_kurzweil" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -779,10 +782,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1578866183417" />
-    <state x="364" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580572733126">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="364" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580578269168">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="364" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1580572733126" />
+    <state x="364" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.741@0.0.1366.741" timestamp="1580578269168" />
     <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579039264406" />
     <state x="707" y="239" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1578903458451">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -804,5 +808,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579018992225" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/computer_kurzweil$computer_kurzweil_allinone__clean_assemble_.ic" NAME="computer_kurzweil:allinone [clean assemble] Coverage Results" MODIFIED="1580576565462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/computer_kurzweil$ComputerKurzweilApplication.ic" NAME="ComputerKurzweilApplication Coverage Results" MODIFIED="1580576569130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -66,9 +66,10 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Override
     public void start() {
         log.info("start");
-        ready=true;
         this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
+        ready=true;
         this.lattice.start();
+        this.setVisible(true);
         this.repaint();
         log.info("started");
     }
@@ -77,6 +78,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     public void stop() {
         log.info("stop");
         ready=false;
+        this.setVisible(false);
         this.lattice.stop();
         this.lattice = null;
         log.info("stopped");
