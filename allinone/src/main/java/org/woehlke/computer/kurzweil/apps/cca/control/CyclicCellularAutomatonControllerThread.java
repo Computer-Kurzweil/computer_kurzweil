@@ -25,7 +25,7 @@ import java.io.Serializable;
 public class CyclicCellularAutomatonControllerThread extends Thread
         implements Serializable, ActionListener, ControllerThread {
 
-    private static final int THREAD_SLEEP_TIME = 300;
+    private static final int THREAD_SLEEP_TIME = 500;
     private static final long serialVersionUID = 3642865135701767557L;
 
     private Boolean goOn;
