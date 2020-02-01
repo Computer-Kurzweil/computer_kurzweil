@@ -66,15 +66,16 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
     public synchronized void step(){
         //log.info("step");
         int maxState = ctx.getColorScheme().getMaxState();
-        LatticePoint dim = this.ctx.getWorldDimensions();
-        for(int y = 0; y < dim.getY(); y++){
-            for(int x = 0; x < dim.getX(); x++){
+        int dimY = this.ctx.getWorldDimensions().getY();
+        int dimX = this.ctx.getWorldDimensions().getX();
+        for(int y = 0; y < dimY; y++){
+            for(int x = 0; x < dimX; x++){
                 lattice[target][x][y] = lattice[source][x][y];
                 int nextState = (lattice[source][x][y] + 1) % maxState;
-                int west = ((x-1+dim.getX())%dim.getX());
-                int north = ((y-1+dim.getY())%dim.getY());
-                int east =  ((x+1+dim.getX())%dim.getX());
-                int south = ((y+1+dim.getY())%dim.getY());
+                int west = ((x-1+dimX)%dimX);
+                int north = ((y-1+dimY)%dimY);
+                int east =  ((x+1+dimX)%dimX);
+                int south = ((y+1+dimY)%dimY);
                 if(neighbourhoodType == MOORE_NEIGHBORHOOD || neighbourhoodType == WOEHLKE_NEIGHBORHOOD) {
                     //North-West
                     if (nextState == lattice[source][west][north]) {
