@@ -12,5 +12,31 @@
         <module name="computer_kurzweil.allinone.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="computer_kurzweil.allinone.main" target="12" />
+      <module name="computer_kurzweil.allinone.test" target="12" />
+      <module name="computer_kurzweil.cyclic-cellular-automaton.main" target="12" />
+      <module name="computer_kurzweil.cyclic-cellular-automaton.test" target="12" />
+      <module name="computer_kurzweil.diffusion-limited-aggregation.main" target="12" />
+      <module name="computer_kurzweil.diffusion-limited-aggregation.test" target="12" />
+      <module name="computer_kurzweil.koch-snowflake.main" target="12" />
+      <module name="computer_kurzweil.koch-snowflake.test" target="12" />
+      <module name="computer_kurzweil.mandelbrot.main" target="12" />
+      <module name="computer_kurzweil.mandelbrot.test" target="12" />
+      <module name="computer_kurzweil.samegame.main" target="12" />
+      <module name="computer_kurzweil.samegame.test" target="12" />
+      <module name="computer_kurzweil.sierpinski-triangle.main" target="12" />
+      <module name="computer_kurzweil.sierpinski-triangle.test" target="12" />
+      <module name="computer_kurzweil.simulated-evolution.main" target="12" />
+      <module name="computer_kurzweil.simulated-evolution.test" target="12" />
+      <module name="computer_kurzweil.swingtutorial.main" target="12" />
+      <module name="computer_kurzweil.swingtutorial.test" target="12" />
+      <module name="computer_kurzweil.tetris.main" target="12" />
+      <module name="computer_kurzweil.tetris.test" target="12" />
+      <module name="computer_kurzweil.turmite.main" target="12" />
+      <module name="computer_kurzweil.turmite.test" target="12" />
+      <module name="computer_kurzweil.wator.main" target="12" />
+      <module name="computer_kurzweil.wator.test" target="12" />
+    </bytecodeTargetLevel>
   </component>
 </project>

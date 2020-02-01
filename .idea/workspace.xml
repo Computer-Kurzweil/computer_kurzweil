@@ -1,29 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="">
+    <list default="true" id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_failureaccess_1_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_28_0_jre.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_h2database_h2_1_4_200.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sun_istack_istack_commons_runtime_3_0_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_zaxxer_HikariCP_3_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_projectreactor_reactor_core_3_3_1_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_activation_jakarta_activation_api_1_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_validation_jakarta_validation_api_2_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_xml_bind_jakarta_xml_bind_api_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_10_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_agent_1_10_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_api_2_12_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_to_slf4j_2_12_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_9_0_29.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_aspectj_aspectjweaver_1_9_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_assertj_assertj_core_3_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_checkerframework_checker_qual_2_8_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_dom4j_dom4j_2_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jaxb_txw2_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_common_hibernate_commons_annotations_5_1_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_hibernate_core_5_4_9_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_javassist_javassist_3_24_0_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_jandex_2_1_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_params_5_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jvnet_staxex_stax_ex_1_8_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_core_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_junit_jupiter_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_objenesis_objenesis_2_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_projectlombok_lombok_1_18_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_jul_to_slf4j_1_7_29.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_29.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_autoconfigure_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_configuration_metadata_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_configuration_processor_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_devtools_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_aop_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_cache_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_data_jdbc_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_data_jpa_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jdbc_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_json_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_logging_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_test_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_validation_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_autoconfigure_2_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_commons_2_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_jdbc_1_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_jpa_2_2_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_relational_1_1_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_integration_spring_integration_core_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_integration_spring_integration_test_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_integration_spring_integration_test_support_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_retry_spring_retry_1_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aspects_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_support_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jcl_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jdbc_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_messaging_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_orm_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_test_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_tx_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_web_5_2_2_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_xmlunit_xmlunit_core_2_6_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_yaml_snakeyaml_1_25.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/computer_kurzweil.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/computer_kurzweil.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/computer_kurzweil.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/computer_kurzweil.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/allinone.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/control/CyclicCellularAutomatonControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/control/CyclicCellularAutomatonControllerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -40,9 +143,6 @@
           <activation />
         </task>
         <task path="$PROJECT_DIR$/allinone">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/mandelbrot">
           <activation />
         </task>
         <projects_view>
@@ -62,9 +162,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -91,7 +189,6 @@
     </option>
   </component>
   <component name="ProjectId" id="1Vcgt8ORWJumiVf8RsBIaXLB9oK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -104,32 +201,34 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/allinone/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/allinone" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32988507" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.grazie" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="org.woehlke.computer.kurzweil" />
-      <recent name="org.woehlke.simulation.apps" />
-      <recent name="org.woehlke.simulation.allinone" />
-      <recent name="org.woehlke.simulation" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/allinone/src/main/resources" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\mandelbrot" />
-      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\dla" />
-      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\cyclic\cellular\automaton" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.woehlke.simulation" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\mandelbrot" />
+      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\dla" />
+      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\cyclic\cellular\automaton" />
+      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="ComputerKurzweilApplicationContext" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -138,7 +237,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean bootRun]">
+  <component name="RunManager" selected="Spring Boot.ComputerKurzweilApplication">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -153,6 +252,26 @@
             <option value="clean" />
             <option value="compileJava" />
             <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="computer_kurzweil:allinone [clean bootJar]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+            <option value="bootJar" />
           </list>
         </option>
         <option name="vmOptions" value="" />
@@ -281,21 +400,25 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ComputerKurzweilApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ComputerKurzweilApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" editBeforeRun="true">
       <module name="computer_kurzweil.allinone.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.woehlke.computer.kurzweil.ComputerKurzweilApplication" />
+      <option name="DEBUG_MODE" value="true" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/allinone" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="computer_kurzweil:allinone [clean bootJar]" run_configuration_type="GradleRunConfiguration" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.computer_kurzweil:allinone [clean bootJar]" />
       <item itemvalue="Gradle.computer_kurzweil:allinone [clean compileJava compileTestJava]" />
       <item itemvalue="Gradle.computer_kurzweil:allinone [clean bootRun]" />
       <item itemvalue="Gradle.computer_kurzweil:cyclic-cellular-automaton [clean run]" />
       <item itemvalue="Gradle.computer_kurzweil:diffusion-limited-aggregation [clean run]" />
       <item itemvalue="Gradle.computer_kurzweil:mandelbrot [clean run]" />
       <item itemvalue="Gradle.computer_kurzweil:simulated-evolution [clean run]" />
-      <item itemvalue="Spring Boot.allinone" />
       <item itemvalue="Spring Boot.ComputerKurzweilApplication" />
     </list>
   </component>
@@ -304,7 +427,17 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -322,7 +455,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8823477e-ff8d-4d7c-8155-e00f2c72812f" name="Default Changelist" comment="switch from one app to allinone app" />
+      <changelist id="11af89d7-7417-4b06-a7ef-988d43e0dc06" name="Default Changelist" comment="" />
       <created>1577558008127</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -333,19 +466,15 @@
       <workItem from="1578844010343" duration="112000" />
       <workItem from="1578844150348" duration="13496000" />
       <workItem from="1578858204031" duration="15324000" />
-      <workItem from="1578876164052" duration="189000" />
-      <workItem from="1578888458031" duration="3734000" />
-      <workItem from="1578909616075" duration="2813000" />
-      <workItem from="1578918724535" duration="2564000" />
-      <workItem from="1578934366756" duration="2152000" />
-      <workItem from="1578937885181" duration="13182000" />
-      <workItem from="1579427358954" duration="443000" />
-      <workItem from="1579429869494" duration="597000" />
-      <workItem from="1579430582567" duration="3769000" />
-      <workItem from="1580387137781" duration="37049000" />
-      <workItem from="1580436957117" duration="6877000" />
-      <workItem from="1580482534745" duration="7464000" />
-      <workItem from="1580490119566" duration="28122000" />
+      <workItem from="1578876164052" duration="503000" />
+      <workItem from="1578889285962" duration="12002000" />
+      <workItem from="1579017341035" duration="17346000" />
+      <workItem from="1579038997544" duration="1699000" />
+      <workItem from="1579072423252" duration="110000" />
+      <workItem from="1579519024818" duration="548000" />
+      <workItem from="1580568739239" duration="857000" />
+      <workItem from="1580570741196" duration="465000" />
+      <workItem from="1580571259591" duration="1398000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -411,286 +540,125 @@
       <updated>1578873584606</updated>
     </task>
     <task id="LOCAL-00010" summary="switch from one app to allinone app">
-      <created>1578892877499</created>
+      <created>1578876410983</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1578892877499</updated>
+      <updated>1578876410984</updated>
     </task>
     <task id="LOCAL-00011" summary="switch from one app to allinone app">
-      <created>1578893157923</created>
+      <created>1578876513926</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1578893157923</updated>
+      <updated>1578876513926</updated>
     </task>
     <task id="LOCAL-00012" summary="switch from one app to allinone app">
-      <created>1578920657740</created>
+      <created>1578876575153</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1578920657740</updated>
+      <updated>1578876575153</updated>
     </task>
     <task id="LOCAL-00013" summary="switch from one app to allinone app">
-      <created>1578937076257</created>
+      <created>1578890577237</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1578937076257</updated>
+      <updated>1578890577237</updated>
     </task>
     <task id="LOCAL-00014" summary="switch from one app to allinone app">
-      <created>1578938230702</created>
+      <created>1578896495774</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1578938230702</updated>
+      <updated>1578896495774</updated>
     </task>
     <task id="LOCAL-00015" summary="switch from one app to allinone app">
-      <created>1578941388977</created>
+      <created>1578901465209</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1578941388977</updated>
+      <updated>1578901465209</updated>
     </task>
     <task id="LOCAL-00016" summary="switch from one app to allinone app">
-      <created>1578941765632</created>
+      <created>1578905238252</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1578941765632</updated>
+      <updated>1578905238252</updated>
     </task>
     <task id="LOCAL-00017" summary="switch from one app to allinone app">
-      <created>1578941880452</created>
+      <created>1578905663044</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1578941880452</updated>
+      <updated>1578905663044</updated>
     </task>
     <task id="LOCAL-00018" summary="switch from one app to allinone app">
-      <created>1578948178347</created>
+      <created>1579018185989</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1578948178347</updated>
+      <updated>1579018185989</updated>
     </task>
     <task id="LOCAL-00019" summary="switch from one app to allinone app">
-      <created>1578948452523</created>
+      <created>1579020479424</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1578948452523</updated>
+      <updated>1579020479424</updated>
     </task>
     <task id="LOCAL-00020" summary="switch from one app to allinone app">
-      <created>1578949384762</created>
+      <created>1579023003560</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1578949384762</updated>
+      <updated>1579023003560</updated>
     </task>
     <task id="LOCAL-00021" summary="switch from one app to allinone app">
-      <created>1578950409227</created>
+      <created>1579023281151</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1578950409227</updated>
+      <updated>1579023281151</updated>
     </task>
     <task id="LOCAL-00022" summary="switch from one app to allinone app">
-      <created>1580387393776</created>
+      <created>1579024994365</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1580387393776</updated>
+      <updated>1579024994365</updated>
     </task>
     <task id="LOCAL-00023" summary="switch from one app to allinone app">
-      <created>1580395225284</created>
+      <created>1579025085355</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1580395225284</updated>
+      <updated>1579025085355</updated>
     </task>
     <task id="LOCAL-00024" summary="switch from one app to allinone app">
-      <created>1580432119522</created>
+      <created>1579034659499</created>
       <option name="number" value="00024" />
       <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
-      <updated>1580432119522</updated>
+      <updated>1579034659500</updated>
     </task>
     <task id="LOCAL-00025" summary="switch from one app to allinone app">
-      <created>1580433275254</created>
+      <created>1579034876976</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1580433275254</updated>
+      <updated>1579034876977</updated>
     </task>
     <task id="LOCAL-00026" summary="switch from one app to allinone app">
-      <created>1580433733825</created>
+      <created>1579040158273</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1580433733825</updated>
+      <updated>1579040158273</updated>
     </task>
-    <task id="LOCAL-00027" summary="switch from one app to allinone app">
-      <created>1580440906871</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1580440906871</updated>
-    </task>
-    <task id="LOCAL-00028" summary="switch from one app to allinone app">
-      <created>1580441447869</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1580441447869</updated>
-    </task>
-    <task id="LOCAL-00029" summary="switch from one app to allinone app">
-      <created>1580442017773</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1580442017773</updated>
-    </task>
-    <task id="LOCAL-00030" summary="switch from one app to allinone app">
-      <created>1580443103265</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1580443103265</updated>
-    </task>
-    <task id="LOCAL-00031" summary="switch from one app to allinone app">
-      <created>1580444204733</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1580444204733</updated>
-    </task>
-    <task id="LOCAL-00032" summary="switch from one app to allinone app">
-      <created>1580494906420</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1580494906420</updated>
-    </task>
-    <task id="LOCAL-00033" summary="switch from one app to allinone app">
-      <created>1580496137325</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1580496137325</updated>
-    </task>
-    <task id="LOCAL-00034" summary="switch from one app to allinone app">
-      <created>1580497652201</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1580497652201</updated>
-    </task>
-    <task id="LOCAL-00035" summary="switch from one app to allinone app">
-      <created>1580497685986</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1580497685986</updated>
-    </task>
-    <task id="LOCAL-00036" summary="switch from one app to allinone app">
-      <created>1580500083270</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1580500083270</updated>
-    </task>
-    <task id="LOCAL-00037" summary="switch from one app to allinone app">
-      <created>1580504963422</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1580504963422</updated>
-    </task>
-    <task id="LOCAL-00038" summary="switch from one app to allinone app">
-      <created>1580505159406</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1580505159406</updated>
-    </task>
-    <task id="LOCAL-00039" summary="switch from one app to allinone app">
-      <created>1580506416604</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1580506416604</updated>
-    </task>
-    <task id="LOCAL-00040" summary="switch from one app to allinone app">
-      <created>1580508174597</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1580508174597</updated>
-    </task>
-    <task id="LOCAL-00041" summary="switch from one app to allinone app">
-      <created>1580511185203</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1580511185203</updated>
-    </task>
-    <task id="LOCAL-00042" summary="switch from one app to allinone app">
-      <created>1580512305435</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1580512305435</updated>
-    </task>
-    <task id="LOCAL-00043" summary="switch from one app to allinone app">
-      <created>1580515949113</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1580515949113</updated>
-    </task>
-    <task id="LOCAL-00044" summary="switch from one app to allinone app">
-      <created>1580516513842</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1580516513842</updated>
-    </task>
-    <task id="LOCAL-00045" summary="switch from one app to allinone app">
-      <created>1580516603067</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1580516603068</updated>
-    </task>
-    <task id="LOCAL-00046" summary="switch from one app to allinone app">
-      <created>1580516901261</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1580516901261</updated>
-    </task>
-    <task id="LOCAL-00047" summary="switch from one app to allinone app">
-      <created>1580517119201</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1580517119201</updated>
-    </task>
-    <task id="LOCAL-00048" summary="switch from one app to allinone app">
-      <created>1580517373013</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1580517373013</updated>
-    </task>
-    <task id="LOCAL-00049" summary="switch from one app to allinone app">
-      <created>1580518131260</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1580518131260</updated>
-    </task>
-    <option name="localTasksCounter" value="50" />
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -704,162 +672,137 @@
     <option name="LAST_COMMIT_MESSAGE" value="switch from one app to allinone app" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="341" y="0" width="697" height="728" key="#ComputerKurzweilApplication" timestamp="1580572750184">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="341" y="0" width="697" height="728" key="#ComputerKurzweilApplication/0.0.1366.728@0.0.1366.728" timestamp="1580572750184" />
     <state x="552" y="179" width="1234" height="682" key="#Project_Structure" timestamp="1578858946280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" width="1234" height="682" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1578858946280" />
-    <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578876357808">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="137" y="19" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580572674395">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577558595678" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572674395" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="435" y="145" width="325" height="402" key="#com.intellij.ide.util.MemberChooser" timestamp="1580511629874">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="407" y="149" key="#com.intellij.ide.util.MemberChooser/0.0.1280.760@0.0.1280.760" timestamp="1578912223286" />
-    <state x="435" y="145" width="325" height="402" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1580511629874" />
-    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578861456195" />
-    <state x="611" y="206" width="374" height="570" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1053@0.0.1920.1053" timestamp="1578948268946" />
-    <state x="200" y="214" width="524" height="437" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1580505131375">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="200" y="214" width="524" height="437" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1366.741@0.0.1366.741" timestamp="1580505131375" />
-    <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578525204381" />
-    <state x="281" y="304" width="524" height="437" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1578938070094" />
-    <state x="468" y="156" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578856856688">
+    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1579033401047">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579033401047" />
+    <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1578525204381">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578525204381" />
+    <state x="333" y="109" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580572593861">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="333" y="109" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572593861" />
     <state x="468" y="156" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578856856688" />
     <state x="332" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578844123314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="332" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844123314" />
-    <state x="265" y="317" width="942" height="143" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1580496522320">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="265" y="317" width="942" height="143" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.741@0.0.1366.741" timestamp="1580496522320" />
-    <state x="373" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578525991484" />
-    <state x="373" y="451" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1578947898465" />
-    <state x="147" y="270" width="920" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1580505132380">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="147" y="270" width="920" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.741@0.0.1366.741" timestamp="1580505132380" />
-    <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1578867157699" />
-    <state x="381" y="222" width="852" height="228" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1580496224575">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="381" y="222" width="852" height="228" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1366.741@0.0.1366.741" timestamp="1580496224575" />
-    <state x="535" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1053@0.0.1920.1053" timestamp="1578938159576" />
-    <state x="418" y="0" width="909" height="736" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580507225664">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="418" y="0" width="909" height="736" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580507225664" />
-    <state x="587" y="0" width="727" height="1048" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1578947390665" />
-    <state x="310" y="0" width="790" height="736" key="CommitChangelistDialog2" timestamp="1580518131095">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="140" y="12" width="988" height="681" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1578937069637" />
-    <state x="310" y="0" width="790" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580518131095" />
-    <state x="540" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876512248" />
-    <state x="210" y="17" width="1019" height="798" key="CommitChangelistDialog2/0.0.1920.1053@0.0.1920.1053" timestamp="1578950409138" />
-    <state x="473" y="134" key="EnvironmentVariablesDialog" timestamp="1578870818263">
+    <state x="373" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579029281768">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="373" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579029281768" />
+    <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578867157699">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="207" y="379" width="821" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1578867157699" />
+    <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578896430100">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
+    <state x="370" y="115" key="CommitChangelistDialog2" timestamp="1579040156439">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579040156439" />
+    <state x="337" y="94" key="EnvironmentVariablesDialog" timestamp="1580572630620">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="337" y="94" key="EnvironmentVariablesDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572630620" />
     <state x="473" y="134" key="EnvironmentVariablesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578870818263" />
-    <state x="442" y="106" width="424" height="479" key="FileChooserDialogImpl" timestamp="1580392181722">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="442" y="104" width="689" height="489" key="FileChooserDialogImpl" timestamp="1580572601796">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1577558749689" />
-    <state x="442" y="106" width="424" height="479" key="FileChooserDialogImpl/0.0.1366.741@0.0.1366.741" timestamp="1580392181722" />
+    <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1580572601796" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state x="621" y="151" key="FileChooserDialogImpl/0.0.1920.1053@0.0.1920.1053" timestamp="1579427808543" />
-    <state width="1878" height="549" key="GridCell.Tab.0.bottom" timestamp="1578992652026">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state width="1323" height="419" key="GridCell.Tab.0.bottom" timestamp="1580572750570">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1237" height="359" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1578937026061" />
-    <state width="1877" height="604" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389144" />
-    <state width="1878" height="549" key="GridCell.Tab.0.bottom/0.0.1920.1053@0.0.1920.1053" timestamp="1578992652026" />
-    <state width="1878" height="549" key="GridCell.Tab.0.center" timestamp="1578992652026">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state width="1323" height="419" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
+    <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
+    <state width="1323" height="419" key="GridCell.Tab.0.center" timestamp="1580572750570">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1237" height="359" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1578937026061" />
-    <state width="1877" height="604" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1878" height="549" key="GridCell.Tab.0.center/0.0.1920.1053@0.0.1920.1053" timestamp="1578992652026" />
-    <state width="1878" height="549" key="GridCell.Tab.0.left" timestamp="1578992652026">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state width="1323" height="419" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
+    <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
+    <state width="1323" height="419" key="GridCell.Tab.0.left" timestamp="1580572750570">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1237" height="359" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1578937026060" />
-    <state width="1877" height="604" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1878" height="549" key="GridCell.Tab.0.left/0.0.1920.1053@0.0.1920.1053" timestamp="1578992652026" />
-    <state width="1878" height="549" key="GridCell.Tab.0.right" timestamp="1578992652026">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state width="1323" height="419" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
+    <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
+    <state width="1323" height="419" key="GridCell.Tab.0.right" timestamp="1580572750570">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1237" height="359" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1578937026061" />
-    <state width="1877" height="604" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578876389143" />
-    <state width="1878" height="549" key="GridCell.Tab.0.right/0.0.1920.1053@0.0.1920.1053" timestamp="1578992652026" />
-    <state x="376" y="94" width="567" height="557" key="MultipleFileMergeDialog" timestamp="1580387361401">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1323" height="419" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
+    <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
+    <state x="478" y="161" key="MultipleFileMergeDialog" timestamp="1580568815876">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="352" y="96" key="MultipleFileMergeDialog/0.0.1280.760@0.0.1280.760" timestamp="1578909889610" />
-    <state x="376" y="94" key="MultipleFileMergeDialog/0.0.1366.741@0.0.1366.741" timestamp="1580387361401" />
-    <state x="528" y="133" width="567" height="557" key="MultipleFileMergeDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1578952442667" />
-    <state x="598" y="227" width="713" height="591" key="NewModule_or_Project.wizard" timestamp="1579427630411">
-      <screen x="0" y="0" width="1920" height="1053" />
+    <state x="478" y="161" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1580568815876" />
+    <state x="672" y="236" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579039283557" />
+    <state x="410" y="231" key="RollbackChangesDialog" timestamp="1578902685672">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="598" y="227" width="713" height="591" key="NewModule_or_Project.wizard/0.0.1920.1053@0.0.1920.1053" timestamp="1579427630411" />
-    <state x="292" y="165" width="697" height="567" key="RollbackChangesDialog" timestamp="1580492023094">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="410" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578902685672" />
+    <state x="163" y="0" width="1428" height="714" key="SettingsEditor" timestamp="1580571396515">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="292" y="165" width="697" height="567" key="RollbackChangesDialog/0.0.1366.741@0.0.1366.741" timestamp="1580492023094" />
-    <state x="410" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578845281025" />
-    <state x="246" y="189" width="1428" height="725" key="SettingsEditor" timestamp="1578937969784">
-      <screen x="0" y="0" width="1920" height="1053" />
-    </state>
-    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1577558215454" />
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1580571396515" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
-    <state x="246" y="189" width="1428" height="725" key="SettingsEditor/0.0.1920.1053@0.0.1920.1053" timestamp="1578937969784" />
-    <state x="102" y="179" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1580517129666">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2" timestamp="1579040181657">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="95" y="184" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1578937081165" />
-    <state x="102" y="179" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580517129666" />
-    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578876516148" />
-    <state x="143" y="255" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1920.1053@0.0.1920.1053" timestamp="1578950418827" />
+    <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579040181657" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844172030" />
-    <state x="642" y="264" key="com.intellij.ide.util.TipDialog" timestamp="1580490120772">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="176" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1580571269539">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="602" y="271" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1578934367022" />
-    <state x="642" y="264" key="com.intellij.ide.util.TipDialog/0.0.1366.741@0.0.1366.741" timestamp="1580490120772" />
-    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876282357" />
-    <state x="903" y="375" key="com.intellij.ide.util.TipDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1579430589405" />
+    <state x="176" y="241" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1580571269539" />
+    <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579072517594" />
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578866183417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1578866183417" />
-    <state x="364" y="311" width="395" height="155" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580400508671">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="364" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580572733126">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="341" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.760@0.0.1280.760" timestamp="1578909770587" />
-    <state x="364" y="311" width="395" height="155" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.741@0.0.1366.741" timestamp="1580400508671" />
-    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578845290001" />
-    <state x="512" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1053@0.0.1920.1053" timestamp="1578952436344" />
-    <state x="359" y="109" width="787" height="591" key="find.popup" timestamp="1580504223121">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="336" y="112" width="737" height="606" key="find.popup/0.0.1280.760@0.0.1280.760" timestamp="1578892990628" />
-    <state x="359" y="109" width="787" height="591" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1580504223121" />
-    <state x="502" y="103" width="428" height="529" key="refactoring.ChangeSignatureDialog" timestamp="1580514032453">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="502" y="103" width="428" height="529" key="refactoring.ChangeSignatureDialog/0.0.1366.741@0.0.1366.741" timestamp="1580514032453" />
-    <state x="705" y="147" width="500" height="751" key="refactoring.ChangeSignatureDialog/0.0.1920.1053@0.0.1920.1053" timestamp="1578938904406" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1578868553727">
+    <state x="364" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1580572733126" />
+    <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579039264406" />
+    <state x="707" y="239" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1578903458451">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578868553727" />
+    <state x="707" y="239" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578903458451" />
+    <state x="656" y="118" width="615" height="804" key="find.popup" timestamp="1578901221442">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="118" width="615" height="804" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578901221442" />
+    <state x="702" y="139" key="refactoring.ChangeSignatureDialog" timestamp="1579032192934">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="702" y="139" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579032192934" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1579034578236">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579034578236" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579018992225">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579018992225" />
   </component>
 </project>

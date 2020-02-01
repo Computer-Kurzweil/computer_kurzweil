@@ -2,8 +2,45 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/computer_kurzweil.iml" filepath="$PROJECT_DIR$/.idea/modules/computer_kurzweil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/allinone/computer_kurzweil.allinone.iml" filepath="$PROJECT_DIR$/.idea/modules/allinone/computer_kurzweil.allinone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/allinone/computer_kurzweil.allinone.main.iml" filepath="$PROJECT_DIR$/.idea/modules/allinone/computer_kurzweil.allinone.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/allinone/computer_kurzweil.allinone.test.iml" filepath="$PROJECT_DIR$/.idea/modules/allinone/computer_kurzweil.allinone.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cyclic-cellular-automaton/computer_kurzweil.cyclic-cellular-automaton.iml" filepath="$PROJECT_DIR$/.idea/modules/cyclic-cellular-automaton/computer_kurzweil.cyclic-cellular-automaton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cyclic-cellular-automaton/computer_kurzweil.cyclic-cellular-automaton.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cyclic-cellular-automaton/computer_kurzweil.cyclic-cellular-automaton.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cyclic-cellular-automaton/computer_kurzweil.cyclic-cellular-automaton.test.iml" filepath="$PROJECT_DIR$/.idea/modules/cyclic-cellular-automaton/computer_kurzweil.cyclic-cellular-automaton.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/diffusion-limited-aggregation/computer_kurzweil.diffusion-limited-aggregation.iml" filepath="$PROJECT_DIR$/.idea/modules/diffusion-limited-aggregation/computer_kurzweil.diffusion-limited-aggregation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/diffusion-limited-aggregation/computer_kurzweil.diffusion-limited-aggregation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/diffusion-limited-aggregation/computer_kurzweil.diffusion-limited-aggregation.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/diffusion-limited-aggregation/computer_kurzweil.diffusion-limited-aggregation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/diffusion-limited-aggregation/computer_kurzweil.diffusion-limited-aggregation.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/koch-snowflake/computer_kurzweil.koch-snowflake.iml" filepath="$PROJECT_DIR$/.idea/modules/koch-snowflake/computer_kurzweil.koch-snowflake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/koch-snowflake/computer_kurzweil.koch-snowflake.main.iml" filepath="$PROJECT_DIR$/.idea/modules/koch-snowflake/computer_kurzweil.koch-snowflake.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/koch-snowflake/computer_kurzweil.koch-snowflake.test.iml" filepath="$PROJECT_DIR$/.idea/modules/koch-snowflake/computer_kurzweil.koch-snowflake.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/computer_kurzweil.main.iml" filepath="$PROJECT_DIR$/.idea/modules/computer_kurzweil.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mandelbrot/computer_kurzweil.mandelbrot.iml" filepath="$PROJECT_DIR$/.idea/modules/mandelbrot/computer_kurzweil.mandelbrot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mandelbrot/computer_kurzweil.mandelbrot.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mandelbrot/computer_kurzweil.mandelbrot.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mandelbrot/computer_kurzweil.mandelbrot.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mandelbrot/computer_kurzweil.mandelbrot.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samegame/computer_kurzweil.samegame.iml" filepath="$PROJECT_DIR$/.idea/modules/samegame/computer_kurzweil.samegame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samegame/computer_kurzweil.samegame.main.iml" filepath="$PROJECT_DIR$/.idea/modules/samegame/computer_kurzweil.samegame.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samegame/computer_kurzweil.samegame.test.iml" filepath="$PROJECT_DIR$/.idea/modules/samegame/computer_kurzweil.samegame.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sierpinski-triangle/computer_kurzweil.sierpinski-triangle.iml" filepath="$PROJECT_DIR$/.idea/modules/sierpinski-triangle/computer_kurzweil.sierpinski-triangle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sierpinski-triangle/computer_kurzweil.sierpinski-triangle.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sierpinski-triangle/computer_kurzweil.sierpinski-triangle.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sierpinski-triangle/computer_kurzweil.sierpinski-triangle.test.iml" filepath="$PROJECT_DIR$/.idea/modules/sierpinski-triangle/computer_kurzweil.sierpinski-triangle.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simulated-evolution/computer_kurzweil.simulated-evolution.iml" filepath="$PROJECT_DIR$/.idea/modules/simulated-evolution/computer_kurzweil.simulated-evolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simulated-evolution/computer_kurzweil.simulated-evolution.main.iml" filepath="$PROJECT_DIR$/.idea/modules/simulated-evolution/computer_kurzweil.simulated-evolution.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simulated-evolution/computer_kurzweil.simulated-evolution.test.iml" filepath="$PROJECT_DIR$/.idea/modules/simulated-evolution/computer_kurzweil.simulated-evolution.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/swingtutorial/computer_kurzweil.swingtutorial.iml" filepath="$PROJECT_DIR$/.idea/modules/swingtutorial/computer_kurzweil.swingtutorial.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/swingtutorial/computer_kurzweil.swingtutorial.main.iml" filepath="$PROJECT_DIR$/.idea/modules/swingtutorial/computer_kurzweil.swingtutorial.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/swingtutorial/computer_kurzweil.swingtutorial.test.iml" filepath="$PROJECT_DIR$/.idea/modules/swingtutorial/computer_kurzweil.swingtutorial.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/computer_kurzweil.test.iml" filepath="$PROJECT_DIR$/.idea/modules/computer_kurzweil.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tetris/computer_kurzweil.tetris.iml" filepath="$PROJECT_DIR$/.idea/modules/tetris/computer_kurzweil.tetris.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tetris/computer_kurzweil.tetris.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tetris/computer_kurzweil.tetris.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tetris/computer_kurzweil.tetris.test.iml" filepath="$PROJECT_DIR$/.idea/modules/tetris/computer_kurzweil.tetris.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/turmite/computer_kurzweil.turmite.iml" filepath="$PROJECT_DIR$/.idea/modules/turmite/computer_kurzweil.turmite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/turmite/computer_kurzweil.turmite.main.iml" filepath="$PROJECT_DIR$/.idea/modules/turmite/computer_kurzweil.turmite.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/turmite/computer_kurzweil.turmite.test.iml" filepath="$PROJECT_DIR$/.idea/modules/turmite/computer_kurzweil.turmite.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.iml" filepath="$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.main.iml" filepath="$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.test.iml" filepath="$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.test.iml" />
     </modules>
   </component>
 </project>
