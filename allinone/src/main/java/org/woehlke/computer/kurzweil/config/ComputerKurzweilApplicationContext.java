@@ -6,7 +6,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.apps.AppType;
-import org.woehlke.computer.kurzweil.apps.cca.conf.CyclicCellularAutomatonContext;
+import org.woehlke.computer.kurzweil.apps.cca.ctx.CyclicCellularAutomatonContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcher;

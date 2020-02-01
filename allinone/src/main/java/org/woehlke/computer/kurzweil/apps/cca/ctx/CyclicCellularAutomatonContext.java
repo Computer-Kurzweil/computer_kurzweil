@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.apps.cca.conf;
+package org.woehlke.computer.kurzweil.apps.cca.ctx;
 
 import lombok.Getter;
 import lombok.Setter;

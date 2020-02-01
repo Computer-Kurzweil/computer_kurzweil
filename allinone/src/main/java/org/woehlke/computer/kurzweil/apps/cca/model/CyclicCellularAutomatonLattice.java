@@ -7,7 +7,6 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
 
@@ -26,7 +25,7 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
 @Log
 @ToString
 @EqualsAndHashCode
-public class CyclicCellularAutomatonLattice implements Serializable, Startable, Stepper, UserSlot {
+public class CyclicCellularAutomatonLattice implements Serializable, Startable, Stepper {
 
     private static final long serialVersionUID = -594681595882016258L;
 
