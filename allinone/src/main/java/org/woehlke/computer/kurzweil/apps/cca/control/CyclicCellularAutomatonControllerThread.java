@@ -59,7 +59,7 @@ public class CyclicCellularAutomatonControllerThread extends Thread
             this.canvas.step();
             this.canvas.repaint();
             this.ctx.getFrame().repaint();
-            try { sleep(THREAD_SLEEP_TIME); }
+            try { super.sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);
