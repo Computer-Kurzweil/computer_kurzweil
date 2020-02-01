@@ -1,8 +1,6 @@
 package org.woehlke.computer.kurzweil.view.frame;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.view.common.Bounds;
@@ -21,8 +19,6 @@ import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
 @Log
-@ToString
-@EqualsAndHashCode(callSuper=true)
 public class ComputerKurzweilApplicationFrame extends JFrame implements Serializable,
     MenuContainer,
     ImageObserver,
@@ -39,6 +35,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     ) throws HeadlessException {
         super(ctx.getProperties().getAllinone().getView().getTitle());
         this.ctx = ctx;
+        this.ctx.setFrame(this);
         rootPane.setLayout(new ComputerKurzweilApplicationFrameLayout( rootPane ));
         rootPane.setBorder(PanelBorder.getBorder());
         rootPane.add(PanelSubtitle.getPanelSubtitleForAllinone(this.ctx));

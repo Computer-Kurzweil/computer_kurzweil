@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.ControllerThread;
-import org.woehlke.computer.kurzweil.control.Stepper;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,18 +25,21 @@ import java.io.Serializable;
 public class CyclicCellularAutomatonControllerThread extends Thread
         implements Serializable, ActionListener, ControllerThread {
 
-    private static final int THREAD_SLEEP_TIME = 100;
+    private static final int THREAD_SLEEP_TIME = 50;
     private static final long serialVersionUID = 3642865135701767557L;
 
     private Boolean goOn;
 
+    @Getter private final ComputerKurzweilApplicationContext ctx;
     @Getter private final CyclicCellularAutomatonCanvas canvas;
     @Getter private final CyclicCellularAutomatonButtonsPanel panelButtons;
 
     public CyclicCellularAutomatonControllerThread(
+        ComputerKurzweilApplicationContext ctx,
         CyclicCellularAutomatonCanvas canvas,
         CyclicCellularAutomatonButtonsPanel panelButtons
     ) {
+        this.ctx = ctx;
         this.canvas = canvas;
         this.panelButtons = panelButtons;
         goOn = Boolean.TRUE;
@@ -46,21 +49,22 @@ public class CyclicCellularAutomatonControllerThread extends Thread
     }
 
     public void run() {
-        log.info("run() - started");
         canvas.start();
+        log.info("run() - started");
         boolean doIt;
         do {
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
             this.canvas.step();
-            //this.canvas.repaint();
+            this.canvas.repaint();
+            this.ctx.getFrame().repaint();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);
-        canvas.stop();
         log.info("run() - finished");
+        canvas.stop();
     }
 
     public void exit() {
@@ -70,10 +74,10 @@ public class CyclicCellularAutomatonControllerThread extends Thread
                 goOn = Boolean.FALSE;
             }
             join();
-            log.info("exited");
         } catch (InterruptedException e){
             log.info(e.getMessage());
         }
+        log.info("exited");
     }
 
     @Override

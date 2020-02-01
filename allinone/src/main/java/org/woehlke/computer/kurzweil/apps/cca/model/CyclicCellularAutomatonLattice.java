@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.apps.cca.model;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
@@ -11,6 +12,7 @@ import org.woehlke.computer.kurzweil.model.Startable;
 
 import java.awt.*;
 import java.io.Serializable;
+import java.util.Random;
 
 import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
 
@@ -35,8 +37,12 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
 
     private final ComputerKurzweilApplicationContext ctx;
 
+    @Getter
+    private final CyclicCellularAutomatonColorScheme colorScheme;
+
     public CyclicCellularAutomatonLattice(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
+        this.colorScheme = new CyclicCellularAutomatonColorScheme();
     }
 
     private void initCreateLattice(){
@@ -47,23 +53,24 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
         lattice = new int[versions][latticeX][latticeY];
         source = 0;
         target = 1;
-        for(int y = 0; y<this.ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x<this.ctx.getWorldDimensions().getX(); x++){
-                lattice[source][x][y] = this.ctx.getRandom().nextInt(
-                    ctx.getColorScheme().getMaxState()
-                );
+        Random random = this.ctx.getRandom();
+        int maxState = this.colorScheme.getMaxState();
+        for(int y = 0; y<latticeY; y++){
+            for(int x = 0; x<latticeX; x++){
+                lattice[source][x][y] = random.nextInt(maxState);
             }
         }
         log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
-    public void step(){
-        log.info("step");
+    public synchronized void step(){
+        //log.info("step");
+        int maxState = ctx.getColorScheme().getMaxState();
         LatticePoint dim = this.ctx.getWorldDimensions();
         for(int y = 0; y < dim.getY(); y++){
             for(int x = 0; x < dim.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];
-                int nextState = (lattice[source][x][y] + 1) % ctx.getColorScheme().getMaxState();
+                int nextState = (lattice[source][x][y] + 1) % maxState;
                 int west = ((x-1+dim.getX())%dim.getX());
                 int north = ((y-1+dim.getY())%dim.getY());
                 int east =  ((x+1+dim.getX())%dim.getX());
@@ -118,7 +125,7 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
         }
         this.source = (this.source + 1 ) % 2;
         this.target =  (this.target + 1 ) % 2;
-        log.info("stepped");
+        //log.info("stepped");
     }
 
     public int getCellStatusFor(int x,int y){

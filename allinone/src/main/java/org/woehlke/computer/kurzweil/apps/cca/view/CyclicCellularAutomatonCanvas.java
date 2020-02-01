@@ -37,22 +37,25 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Getter
     private CyclicCellularAutomatonLattice lattice;
 
+    private boolean ready;
+
     public CyclicCellularAutomatonCanvas(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.setPreferredSize(this.ctx.getLatticeDimension());
+        ready=false;
     }
 
     public void paint(Graphics g) {
-        super.paintComponent(g);
-        for(int y = 0; y < ctx.getLatticeDimensions().getY(); y++){
-            for(int x = 0; x < ctx.getLatticeDimensions().getX(); x++){
-                if(lattice!=null) {
+        if(ready && (lattice!=null)) {
+            for (int y = 0; y < ctx.getLatticeDimensions().getY(); y++) {
+                for (int x = 0; x < ctx.getLatticeDimensions().getX(); x++) {
                     int state = this.lattice.getCellStatusFor(x, y);
                     Color stateColor = this.ctx.getColorScheme().getColorForState(state);
                     g.setColor(stateColor);
                     g.drawLine(x, y, x, y);
                 }
             }
+            super.paintComponent(g);
         }
     }
 
@@ -63,27 +66,33 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Override
     public void start() {
         log.info("start");
+        ready=true;
         this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
         this.lattice.start();
+        this.repaint();
         log.info("started");
     }
 
     @Override
     public void stop() {
         log.info("stop");
+        ready=false;
         this.lattice.stop();
         this.lattice = null;
         log.info("stopped");
     }
 
     @Override
-    public void step() {
-        log.info("step");
+    public synchronized void step() {
+        //log.info("step");
         if(this.lattice == null){
+            log.info("step: start");
             start();
         }
-        this.lattice.step();
-        this.repaint();
-        log.info("stepped");
+        if(ready){
+            this.lattice.step();
+            this.repaint();
+        }
+        //log.info("stepped");
     }
 }

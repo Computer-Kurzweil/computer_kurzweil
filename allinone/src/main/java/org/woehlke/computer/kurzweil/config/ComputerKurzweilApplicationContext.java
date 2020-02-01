@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.config;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonColorScheme;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellCore;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
+import org.woehlke.computer.kurzweil.view.frame.ComputerKurzweilApplicationFrame;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -20,8 +22,6 @@ import java.util.Random;
 
 @Log
 @Component
-@ToString
-@EqualsAndHashCode
 public class ComputerKurzweilApplicationContext {
 
     @Getter private final ComputerKurzweilProperties properties;
@@ -29,6 +29,9 @@ public class ComputerKurzweilApplicationContext {
     @Getter private final CyclicCellularAutomatonColorScheme colorScheme;
 
     @Getter private final Random random;
+
+    @Getter @Setter
+    private ComputerKurzweilApplicationFrame frame;
 
     @Autowired
     public ComputerKurzweilApplicationContext(

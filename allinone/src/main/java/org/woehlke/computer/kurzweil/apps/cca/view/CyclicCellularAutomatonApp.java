@@ -50,12 +50,11 @@ public class CyclicCellularAutomatonApp extends JPanel implements ImageObserver,
         log.info("start");
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
-        this.controller = new CyclicCellularAutomatonControllerThread( this.canvas, this.panelButtons);
+        this.controller = new CyclicCellularAutomatonControllerThread(ctx, this.canvas, this.panelButtons);
         this.add(this.canvas);
         this.add(this.panelButtons);
-        this.controller = new CyclicCellularAutomatonControllerThread( this.canvas,  this.panelButtons);
-        this.controller.start();
         this.showMe();
+        this.controller.start();
         log.info("started");
     }
 
