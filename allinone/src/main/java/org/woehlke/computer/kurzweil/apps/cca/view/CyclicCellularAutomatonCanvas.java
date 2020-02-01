@@ -85,7 +85,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     @Override
-    public synchronized void step() {
+    public void step() {
         //log.info("step");
         if(this.lattice == null){
             log.info("step: start");

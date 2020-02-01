@@ -61,7 +61,7 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
         log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
-    public synchronized void step(){
+    public void step(){
         //log.info("step");
         int maxState = ctx.getColorScheme().getMaxState();
         int dimY = this.ctx.getWorldDimensions().getY();

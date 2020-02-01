@@ -129,7 +129,7 @@ public class ComputerKurzweilApplicationContext {
         return new CellCore(this);
     }
 
-    public synchronized void repaint() {
+    public void repaint() {
         if(this.frame!=null){
             this.frame.repaint();
         }
