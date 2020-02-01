@@ -6,6 +6,8 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonLattice;
+import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
+import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 
@@ -27,7 +29,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, UserSlot {
+    Serializable, Stepper, AppGuiComponent {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
@@ -50,7 +52,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             for (int y = 0; y < ctx.getLatticeDimensions().getY(); y++) {
                 for (int x = 0; x < ctx.getLatticeDimensions().getX(); x++) {
                     int state = this.lattice.getCellStatusFor(x, y);
-                    Color stateColor = this.ctx.getColorScheme().getColorForState(state);
+                    Color stateColor = this.ctx.getCtxCyclicCellularAutomaton().getColorScheme().getColorForState(state);
                     g.setColor(stateColor);
                     g.drawLine(x, y, x, y);
                 }

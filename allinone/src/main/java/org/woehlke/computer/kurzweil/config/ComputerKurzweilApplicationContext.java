@@ -6,11 +6,11 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.apps.AppType;
+import org.woehlke.computer.kurzweil.apps.cca.conf.CyclicCellularAutomatonContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcher;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonColorScheme;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellCore;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
 import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
@@ -30,8 +30,6 @@ public class ComputerKurzweilApplicationContext {
 
     @Getter private final ComputerKurzweilProperties properties;
 
-    @Getter private final CyclicCellularAutomatonColorScheme colorScheme;
-
     @Getter private final Random random;
 
     private final Map<AppType, SignalSlotDispatcher> signalSlotContainer = new TreeMap<>();
@@ -39,12 +37,14 @@ public class ComputerKurzweilApplicationContext {
     @Getter @Setter
     private ComputerKurzweilApplicationFrame frame;
 
+    @Getter
+    private final CyclicCellularAutomatonContext ctxCyclicCellularAutomaton;
+
     @Autowired
     public ComputerKurzweilApplicationContext(
-        ComputerKurzweilProperties computerKurzweilProperties
-    ) {
+        ComputerKurzweilProperties computerKurzweilProperties) {
         this.properties = computerKurzweilProperties;
-        this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        this.ctxCyclicCellularAutomaton = new CyclicCellularAutomatonContext();
         long seed = new Date().getTime();
         this.random = new Random(seed);
         initSignalSlotContainer();
