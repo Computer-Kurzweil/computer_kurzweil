@@ -3,8 +3,8 @@ org:
     simulation:
       allinone:
         lattice:
-          width: 800
-          height: 585
+          width: 640
+          height: 400
         view:
           title: 'Computer Kurzweil'
           subtitle: 'Scientific Imfotainment'
