@@ -8,9 +8,9 @@ import org.woehlke.computer.kurzweil.view.common.PanelCopyright;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.evolution.control.SimulatedEvolutionControllerThread;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
-import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
-import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionCanvas;
-import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
+import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionCanvas;
+import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionStatisticsPanel;
 
 import javax.swing.*;
 import java.awt.image.ImageObserver;
@@ -32,6 +32,7 @@ import java.awt.image.ImageObserver;
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
+@Deprecated
 @Log
 public class SimulatedEvolutionFrame extends JPanel implements ImageObserver, Startable {
 

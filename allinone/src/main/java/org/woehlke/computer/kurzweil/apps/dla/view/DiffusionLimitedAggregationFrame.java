@@ -24,6 +24,7 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Deprecated
 @Log
 public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObserver,
         MenuContainer,

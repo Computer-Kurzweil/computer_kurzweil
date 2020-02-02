@@ -2,8 +2,6 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.ApplicationState;
 

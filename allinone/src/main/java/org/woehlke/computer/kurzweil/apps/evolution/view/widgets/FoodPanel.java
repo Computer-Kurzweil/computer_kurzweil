@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.apps.evolution.view.parts;
+package org.woehlke.computer.kurzweil.apps.evolution.view.widgets;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;

@@ -2,12 +2,10 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.view;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotCanvas;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotPanelButtons;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets.MandelbrotCanvas;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets.MandelbrotPanelButtons;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -23,6 +21,7 @@ import java.awt.image.ImageObserver;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Deprecated
 @Log
 public class MandelbrotFrame extends JPanel implements
         ImageObserver,

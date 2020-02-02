@@ -2,12 +2,9 @@ package org.woehlke.computer.kurzweil.apps.evolution.model;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 
 @Log
-@Service
 public class SimulatedEvolutionStateService {
 
     @Getter
@@ -16,7 +13,6 @@ public class SimulatedEvolutionStateService {
     @Getter
     private SimulatedEvolutionState simulatedEvolutionState;
 
-    @Autowired
     public SimulatedEvolutionStateService(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         createNewState();

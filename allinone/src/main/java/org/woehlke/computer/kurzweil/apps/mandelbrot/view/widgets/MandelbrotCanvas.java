@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts;
+package org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;

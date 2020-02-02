@@ -5,8 +5,8 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.world.SimulatedEvolutionWorld;
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
-import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionButtonRowPanel;
-import org.woehlke.computer.kurzweil.apps.evolution.view.parts.SimulatedEvolutionStatisticsPanel;
+import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionStatisticsPanel;
 import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 

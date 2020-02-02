@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.MandelbrotFrame;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotCanvas;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.view.parts.MandelbrotPanelButtons;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets.MandelbrotCanvas;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets.MandelbrotPanelButtons;
 import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 
