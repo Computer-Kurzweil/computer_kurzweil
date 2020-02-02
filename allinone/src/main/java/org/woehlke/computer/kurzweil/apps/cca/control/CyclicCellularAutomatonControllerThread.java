@@ -22,7 +22,7 @@ import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 public class CyclicCellularAutomatonControllerThread extends Thread
         implements ControllerThread {
 
-    private static final int THREAD_SLEEP_TIME = 500;
+    private static final int THREAD_SLEEP_TIME = 50;
     private static final long serialVersionUID = 3642865135701767557L;
 
     private Boolean goOn;

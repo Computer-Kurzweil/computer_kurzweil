@@ -102,10 +102,6 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         System.exit(0);
     }
 
-    public void repaint(){
-        super.repaint();
-    }
-
     public void windowOpened(WindowEvent e) {
         showMe();
     }
