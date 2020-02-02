@@ -46,7 +46,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
         this.add(this.startStopButtonsPanel);
         this.appCtx = new CyclicCellularAutomatonContext(this, this.controller, this.canvas);
         this.controller.setAppCtx(  this.appCtx );
-        UserSlot[] slotsModel = {this.canvas.getLattice()};
+        UserSlot[] slotsModel = {this.canvas};
         UserSlot[] slotsGui = {this.canvas, this.panelButtons, this};
         UserSlot[] slotsControllers = {this.controller};
         this.appCtx.registerSignalsAndSlots(UserSignal.getModels(), slotsModel);
