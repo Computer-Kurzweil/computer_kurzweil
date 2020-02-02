@@ -47,7 +47,6 @@ public class StartStopButtonsPanel extends JPanel implements Startable, AppGuiCo
 
     @Override
     public void update() {
-        this.setVisible(true);
         this.repaint();
     }
 

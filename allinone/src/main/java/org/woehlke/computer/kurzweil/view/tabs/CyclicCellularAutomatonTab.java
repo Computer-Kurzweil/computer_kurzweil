@@ -38,7 +38,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
         this.setLayout(new BoxLayoutVertical(this));
         this.setBounds(ctx.getFrameBounds());
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
-        this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
+        this.panelButtons =  this.canvas.getNeighbourhoodButtonsPanel();
         this.controller = new CyclicCellularAutomatonControllerThread(this.ctx);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
@@ -73,8 +73,30 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     @Override
     public void update() {
         log.info("update");
-        super.update();
+        this.canvas.update();
+        this.panelButtons.update();
+        this.panelSubtitle.update();
+        this.startStopButtonsPanel.update();
+        this.repaint();
         log.info("updated");
+    }
+
+    @Override
+    public void showMe() {
+        log.info("showMe");
+        this.canvas.setVisible(true);
+        this.panelButtons.setVisible(true);
+        this.panelSubtitle.setVisible(true);
+        this.startStopButtonsPanel.setVisible(true);
+        this.setVisible(true);
+    }
+
+    @Override
+    public void hideMe() {
+        log.info("hideMe");
+        //this.canvas.setVisible(false);
+        //this.panelButtons.setVisible(false);
+        this.setVisible(false);
     }
 
     @Override

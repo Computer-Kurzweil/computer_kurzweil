@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.ctx.CyclicCellularAutomatonContext;
-import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
-import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;

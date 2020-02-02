@@ -45,6 +45,21 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements ImageObs
     }
 
     @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void showMe() {
+
+    }
+
+    @Override
+    public void hideMe() {
+
+    }
+
+    @Override
     public void handleUserSignal(UserSignal userSignal) {
         log.info("handleUserSignal: "+userSignal.name());
     }

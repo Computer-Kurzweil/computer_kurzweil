@@ -58,7 +58,6 @@ public class PanelSubtitle extends JPanel implements Startable, AppGuiComponent 
 
     @Override
     public void update() {
-        this.setVisible(true);
         this.repaint();
     }
 

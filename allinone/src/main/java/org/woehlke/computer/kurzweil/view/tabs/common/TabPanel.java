@@ -52,28 +52,10 @@ public abstract class TabPanel extends StartablePanel implements ActionListener,
 
     public abstract AppContext getAppCtx();
 
-    public void start(){
-        showMe();
-    }
+    public abstract void start();
+    public abstract void stop();
+    public abstract void update();
+    public abstract void showMe();
+    public abstract void hideMe();
 
-    public void stop(){
-        hideMe();
-    }
-
-    public void update(){
-        this.panelSubtitle.update();
-        this.startStopButtonsPanel.update();
-        this.repaint();
-        showMe();
-    }
-
-    public void showMe() {
-        log.info("showMe");
-        this.setVisible(true);
-    }
-
-    public void hideMe() {
-        log.info("hideMe");
-        this.setVisible(false);
-    }
 }

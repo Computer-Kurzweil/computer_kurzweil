@@ -14,6 +14,8 @@ import org.woehlke.computer.kurzweil.model.LatticePointNeighbourhoodPosition;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.Random;
 
@@ -31,14 +33,10 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.WOEHL
  * Time: 00:51:51
  */
 @Log
-@ToString
-@EqualsAndHashCode(callSuper=true)
 public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, Stepper, AppGuiComponent {
+    Serializable, Stepper, AppGuiComponent, ActionListener {
 
     private static final long serialVersionUID = -3057254130516052936L;
-
-    private ComputerKurzweilApplicationContext ctx;
 
     private int[][][] lattice;
     private int source;
@@ -48,18 +46,22 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final int latticeX;
     private final int latticeY;
 
-    @Getter
-    private LatticeNeighbourhoodType neighbourhoodType;
+    @Getter private LatticeNeighbourhoodType neighbourhoodType;
+
+    @Getter private final ComputerKurzweilApplicationContext ctx;
 
     @Getter private final CyclicCellularAutomatonColorScheme colorScheme;
+
+    @Getter private final CyclicCellularAutomatonButtonsPanel neighbourhoodButtonsPanel;
 
     private boolean ready;
 
     public CyclicCellularAutomatonCanvas(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtonsPanel(this);
         this.setPreferredSize(this.ctx.getLatticeDimension());
-        ready = false;
+        this.ready = false;
         this.versions = 2;
         this.latticeX = this.ctx.getWorldDimensions().getX();
         this.latticeY = this.ctx.getWorldDimensions().getY();
@@ -179,5 +181,16 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     public void startWithNeighbourhoodWoehlke() {
         this.neighbourhoodType=WOEHLKE_NEIGHBORHOOD;
         resetLattice();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == this.neighbourhoodButtonsPanel.getButtonVonNeumann()) {
+            this.startWithNeighbourhoodVonNeumann();
+        } else if (ae.getSource() == this.neighbourhoodButtonsPanel.getButtonMoore()) {
+            this.startWithNeighbourhoodMoore();
+        } else if (ae.getSource() == this.neighbourhoodButtonsPanel.getButtonWoehlke()) {
+            this.startWithNeighbourhoodWoehlke();
+        }
     }
 }

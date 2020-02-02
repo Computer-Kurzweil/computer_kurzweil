@@ -51,6 +51,21 @@ public class MandelbrotTab extends TabPanel implements ImageObserver,
     }
 
     @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void showMe() {
+
+    }
+
+    @Override
+    public void hideMe() {
+
+    }
+
+    @Override
     public void handleUserSignal(UserSignal userSignal) {
         log.info("handleUserSignal: "+userSignal.name());
     }
