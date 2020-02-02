@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.view;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
 import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
@@ -38,11 +39,10 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     private final ComputerKurzweilApplicationTabbedPane tabbedPane;
 
     public ComputerKurzweilApplicationFrame(
-        ComputerKurzweilApplicationContext ctx
+        ComputerKurzweilProperties properties
     ) throws HeadlessException {
-        super(ctx.getProperties().getAllinone().getView().getTitle());
-        this.ctx = ctx;
-        this.ctx.setFrame(this);
+        super(properties.getAllinone().getView().getTitle());
+        this.ctx = new ComputerKurzweilApplicationContext(properties,this);
         tabbedPane = new ComputerKurzweilApplicationTabbedPane(this.ctx);
         rootPane.setLayout(new ComputerKurzweilApplicationFrameLayout( rootPane ));
         rootPane.setBorder(PanelBorder.getBorder());

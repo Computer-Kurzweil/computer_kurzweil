@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.apps.evolution.ctx;
 
+import lombok.Delegate;
 import lombok.Getter;
 import lombok.Setter;
 import org.woehlke.computer.kurzweil.apps.AppType;
@@ -9,6 +10,7 @@ import org.woehlke.computer.kurzweil.control.ctx.AppContext;
 import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
 import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcher;
+import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcherImpl;
 import org.woehlke.computer.kurzweil.view.tabs.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
@@ -23,11 +25,12 @@ public class SimulatedEvolutionContext implements AppContext {
     @Getter @Setter
     private SimulatedEvolutionWorld simulatedEvolutionWorld;
 
+    @Delegate
     @Getter
     private final SignalSlotDispatcher signalSlotDispatcher;
 
     public SimulatedEvolutionContext() {
-        this.signalSlotDispatcher = new SignalSlotDispatcher();
+        this.signalSlotDispatcher = new SignalSlotDispatcherImpl();
     }
 
     @Override

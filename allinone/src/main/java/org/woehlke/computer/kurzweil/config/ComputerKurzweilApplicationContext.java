@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.woehlke.computer.kurzweil.apps.AppType;
 import org.woehlke.computer.kurzweil.apps.cca.ctx.CyclicCellularAutomatonContext;
+import org.woehlke.computer.kurzweil.apps.dla.ctx.DiffusionLimitedAggregationContext;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.ctx.MandelbrotContext;
+import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcherImpl;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcher;
@@ -25,7 +29,6 @@ import java.util.Random;
 import java.util.TreeMap;
 
 @Log
-@Component
 public class ComputerKurzweilApplicationContext {
 
     @Getter private final ComputerKurzweilProperties properties;
@@ -40,11 +43,25 @@ public class ComputerKurzweilApplicationContext {
     @Getter
     private final CyclicCellularAutomatonContext ctxCyclicCellularAutomaton;
 
-    @Autowired
+    @Getter
+    private final MandelbrotContext ctxMandelbrot;
+
+    @Getter
+    private final SimulatedEvolutionContext ctxSimulatedEvolution;
+
+    @Getter
+    private final DiffusionLimitedAggregationContext ctxDiffusionLimitedAggregation;
+
     public ComputerKurzweilApplicationContext(
-        ComputerKurzweilProperties computerKurzweilProperties) {
+        ComputerKurzweilProperties computerKurzweilProperties,
+        ComputerKurzweilApplicationFrame frame
+    ) {
+        this.frame = frame;
         this.properties = computerKurzweilProperties;
+        this.ctxDiffusionLimitedAggregation = new DiffusionLimitedAggregationContext();
+        this.ctxSimulatedEvolution = new SimulatedEvolutionContext();
         this.ctxCyclicCellularAutomaton = new CyclicCellularAutomatonContext();
+        this.ctxMandelbrot = new MandelbrotContext();
         long seed = new Date().getTime();
         this.random = new Random(seed);
         initSignalSlotContainer();
@@ -52,7 +69,7 @@ public class ComputerKurzweilApplicationContext {
 
     public void initSignalSlotContainer(){
         for(AppType app : AppType.values()){
-            SignalSlotDispatcher c = new SignalSlotDispatcher();
+            SignalSlotDispatcher c = new SignalSlotDispatcherImpl();
             signalSlotContainer.put(app,c);
         }
     }

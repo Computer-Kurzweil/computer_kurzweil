@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.WebApplicationType;
@@ -43,14 +44,16 @@ import java.awt.*;
 public class ComputerKurzweilApplication {
 
     private final ComputerKurzweilApplicationFrame frame;
-    private final ComputerKurzweilApplicationContext ctx;
+
+    @Getter
+    private final ComputerKurzweilProperties properties;
 
     @Autowired
     public ComputerKurzweilApplication(
-        ComputerKurzweilApplicationContext ctx
+        ComputerKurzweilProperties properties
     ) {
-        this.ctx = ctx;
-        this.frame = new ComputerKurzweilApplicationFrame(ctx);
+        this.properties = properties;
+        this.frame = new ComputerKurzweilApplicationFrame(properties);
     }
 
     public void start(){
