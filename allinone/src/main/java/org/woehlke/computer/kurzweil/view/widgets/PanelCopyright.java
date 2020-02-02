@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.view.common;
+package org.woehlke.computer.kurzweil.view.widgets;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -24,6 +24,16 @@ public class PanelCopyright extends JPanel implements AppGuiComponent {
     @Override
     public void update() {
         repaint();
+    }
+
+    @Override
+    public void showMe() {
+
+    }
+
+    @Override
+    public void hideMe() {
+
     }
 
     @Override

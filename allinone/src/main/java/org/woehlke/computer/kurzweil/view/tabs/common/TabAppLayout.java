@@ -12,7 +12,7 @@ public class TabAppLayout extends BoxLayout {
      * @param target the container that needs to be laid out
      * @throws AWTError if the value of {@code axis} is invalid
      */
-    public TabAppLayout(Container target) {
+    public TabAppLayout(JComponent target) {
         super(target, BoxLayout.Y_AXIS);
     }
 }

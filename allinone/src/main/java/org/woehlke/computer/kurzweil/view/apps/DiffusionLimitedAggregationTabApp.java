@@ -1,17 +1,18 @@
 package org.woehlke.computer.kurzweil.view.apps;
 
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.view.tabs.common.TabAppPanel;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
+
+import javax.swing.*;
 
 
 @Log
-public class DiffusionLimitedAggregationTabApp extends TabAppPanel implements AppGuiComponent {
+public class DiffusionLimitedAggregationTabApp extends JPanel implements AppGuiComponent, Startable  {
 
     public DiffusionLimitedAggregationTabApp(TabPanel tab) {
-        super(tab);
     }
 
     @Override
@@ -31,6 +32,16 @@ public class DiffusionLimitedAggregationTabApp extends TabAppPanel implements Ap
 
     @Override
     public void update() {
+
+    }
+
+    @Override
+    public void showMe() {
+
+    }
+
+    @Override
+    public void hideMe() {
 
     }
 }

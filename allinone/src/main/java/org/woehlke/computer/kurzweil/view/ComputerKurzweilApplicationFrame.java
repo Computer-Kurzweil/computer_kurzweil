@@ -10,8 +10,8 @@ import org.woehlke.computer.kurzweil.control.commons.Startable;
 import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 import org.woehlke.computer.kurzweil.model.Bounds;
 import org.woehlke.computer.kurzweil.view.common.PanelBorder;
-import org.woehlke.computer.kurzweil.view.common.PanelCopyright;
-import org.woehlke.computer.kurzweil.view.common.PanelSubtitle;
+import org.woehlke.computer.kurzweil.view.widgets.PanelCopyright;
+import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.view.widgets.ComputerKurzweilApplicationFrameLayout;
 
 import javax.accessibility.Accessible;
@@ -95,6 +95,11 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         this.setVisible(true);
         toFront();
         repaint();
+    }
+
+    @Override
+    public void hideMe() {
+
     }
 
     public void exit() {

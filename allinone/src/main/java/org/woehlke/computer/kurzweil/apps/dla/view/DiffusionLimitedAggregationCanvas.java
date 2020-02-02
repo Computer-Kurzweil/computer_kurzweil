@@ -100,6 +100,16 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements Ser
     }
 
     @Override
+    public void showMe() {
+
+    }
+
+    @Override
+    public void hideMe() {
+
+    }
+
+    @Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }

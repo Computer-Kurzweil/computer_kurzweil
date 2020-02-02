@@ -4,9 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.ctx.CyclicCellularAutomatonContext;
+import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
 
 /**
  * Cyclic Cellular Automaton.
@@ -22,7 +24,7 @@ import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 public class CyclicCellularAutomatonControllerThread extends Thread
         implements ControllerThread {
 
-    private static final int THREAD_SLEEP_TIME = 50;
+    private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;
 
     private Boolean goOn;
@@ -42,14 +44,22 @@ public class CyclicCellularAutomatonControllerThread extends Thread
     public void run() {
         log.info("run() - started");
         boolean doIt;
+        CyclicCellularAutomatonCanvas canvas = this.appCtx.getCanvas();
+        ComputerKurzweilApplicationFrame frame = this.ctx.getFrame();
         do {
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            this.appCtx.getCanvas().step();
-            this.appCtx.getCanvas().update();
-            this.appCtx.getCanvas().repaint();
-            this.ctx.getFrame().repaint();
+            synchronized (canvas) {
+                canvas.step();
+            }
+            synchronized (canvas) {
+                canvas.repaint();
+            }
+            //this.appCtx.getCanvas().update();
+            //synchronized (canvas) {
+              //  frame.repaint();
+            //}
             try { super.sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.view.common;
+package org.woehlke.computer.kurzweil.view.widgets;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -59,6 +59,16 @@ public class PanelSubtitle extends JPanel implements Startable, AppGuiComponent 
     @Override
     public void update() {
         this.repaint();
+    }
+
+    @Override
+    public void showMe() {
+
+    }
+
+    @Override
+    public void hideMe() {
+
     }
 
     @Override

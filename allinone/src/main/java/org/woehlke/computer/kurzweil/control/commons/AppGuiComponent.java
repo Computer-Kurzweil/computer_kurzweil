@@ -5,4 +5,6 @@ import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 public interface AppGuiComponent extends UserSlot {
 
     void update();
+    void showMe();
+    void hideMe();
 }

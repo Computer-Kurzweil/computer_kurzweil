@@ -1,8 +1,7 @@
 package org.woehlke.computer.kurzweil.apps.cca.view;
 
-import lombok.EqualsAndHashCode;
+
 import lombok.Getter;
-import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonColorScheme;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
@@ -11,6 +10,8 @@ import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.model.LatticePointNeighbourhoodPosition;
+import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
+import org.woehlke.computer.kurzweil.view.widgets.StartStopButtonsPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,15 +39,15 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private int[][][] lattice;
-    private int source;
-    private int target;
+    @Getter private volatile LatticeNeighbourhoodType neighbourhoodType;
+
+    private volatile int[][][] lattice;
+    private volatile int source;
+    private volatile int target;
 
     private final int versions;
     private final int latticeX;
     private final int latticeY;
-
-    @Getter private LatticeNeighbourhoodType neighbourhoodType;
 
     @Getter private final ComputerKurzweilApplicationContext ctx;
 
@@ -54,9 +55,14 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     @Getter private final CyclicCellularAutomatonButtonsPanel neighbourhoodButtonsPanel;
 
+    @Getter private final StartStopButtonsPanel startStopButtonsPanel;
+
+    @Getter private final PanelSubtitle panelSubtitle;
+
     public CyclicCellularAutomatonCanvas(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        this.panelSubtitle = new PanelSubtitle(ctx.getProperties().getCca().getView().getSubtitle());
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtonsPanel(this);
         this.versions = 2;
         this.latticeX = this.ctx.getWorldDimensions().getX();
@@ -64,20 +70,21 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         Dimension preferredSize = new Dimension(      this.latticeX ,   this.latticeY);
         this.setPreferredSize(preferredSize);
         this.setVisible(true);
+        this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         startWithNeighbourhoodVonNeumann();
     }
 
     public void paint(Graphics g) {
-        if(lattice!=null) {
-            for (int y = 0; y < ctx.getLatticeDimensions().getY(); y++) {
-                for (int x = 0; x < ctx.getLatticeDimensions().getX(); x++) {
-                    int state =this.lattice[source][x][y];
-                    Color stateColor = this.colorScheme.getColorForState(state);
-                    g.setColor(stateColor);
-                    g.drawLine(x, y, x, y);
+            if (lattice != null) {
+                for (int y = 0; y < ctx.getLatticeDimensions().getY(); y++) {
+                    for (int x = 0; x < ctx.getLatticeDimensions().getX(); x++) {
+                        int state = this.lattice[source][x][y];
+                        Color stateColor = this.colorScheme.getColorForState(state);
+                        g.setColor(stateColor);
+                        g.drawLine(x, y, x, y);
+                    }
                 }
             }
-        }
         super.paintComponent(g);
     }
 
@@ -86,18 +93,31 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void update(){
+        this.neighbourhoodButtonsPanel.update();
+        this.panelSubtitle.update();
+        this.startStopButtonsPanel.update();
         repaint();
+    }
+
+    @Override
+    public void showMe() {
+        this.setVisible(true);
+    }
+
+    @Override
+    public void hideMe() {
+        this.setVisible(false);
     }
 
     public void start() {
         log.info("start");
-        this.setVisible(true);
+        showMe();
         log.info("started");
     }
 
     public void stop() {
         log.info("stop");
-        this.setVisible(false);
+        hideMe();
         log.info("stopped");
     }
 
@@ -114,18 +134,19 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
 
     private void initCreateLattice(){
-        log.info("initCreateLattice: "+neighbourhoodType.name());
-        lattice = new int[versions][latticeX][latticeY];
-        source = 0;
-        target = 1;
+        log.info("initCreateLattice start: "+neighbourhoodType.name());
+            lattice = new int[versions][latticeX][latticeY];
+            source = 0;
+            target = 1;
         log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
     private void initFillLattice(){
+        log.info("initCreateLattice start: "+neighbourhoodType.name());
         Random random = this.ctx.getRandom();
         int maxState = this.colorScheme.getMaxState();
-        for(int y = 0; y<latticeY; y++){
-            for(int x = 0; x<latticeX; x++){
+        for (int y = 0; y < latticeY; y++) {
+            for (int x = 0; x < latticeX; x++) {
                 lattice[source][x][y] = random.nextInt(maxState);
             }
         }
@@ -137,30 +158,29 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         initFillLattice();
     }
 
-    public void step(){
+    public synchronized void step(){
         log.info("step");
         int maxState = colorScheme.getMaxState();
         int xx;
         int yy;
         int nextState;
-        for(int y = 0; y < latticeY; y++){
-            for(int x = 0; x < latticeX; x++){
+        for (int y = 0; y < latticeY; y++) {
+            for (int x = 0; x < latticeX; x++) {
                 lattice[target][x][y] = lattice[source][x][y];
                 nextState = (lattice[source][x][y] + 1) % maxState;
                 LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getForfNeighbourhood(neighbourhoodType);
-                for(int i=0; i<pos.length; i++){
-                    xx = ((x+pos[i].getX()+latticeX)%latticeX);
-                    yy = ((y+pos[i].getY()+latticeY)%latticeY);
+                for (int i = 0; i < pos.length; i++) {
+                    xx = ((x + pos[i].getX() + latticeX) % latticeX);
+                    yy = ((y + pos[i].getY() + latticeY) % latticeY);
                     if (nextState == lattice[source][xx][yy]) {
                         lattice[target][x][y] = nextState;
-                        i=pos.length;
+                        i = pos.length;
                     }
                 }
             }
         }
-        this.source = (this.source + 1 ) % 2;
-        this.target =  (this.target + 1 ) % 2;
-        this.update();
+        this.source = (this.source + 1) % 2;
+        this.target = (this.target + 1) % 2;
         log.info("stepped");
     }
 
@@ -187,6 +207,16 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             this.startWithNeighbourhoodMoore();
         } else if (ae.getSource() == this.neighbourhoodButtonsPanel.getButtonWoehlke()) {
             this.startWithNeighbourhoodWoehlke();
+        }
+        if(ae.getSource() == this.startStopButtonsPanel.getStartButton()){
+            this.startStopButtonsPanel.getStartButton().setEnabled(false);
+            this.startStopButtonsPanel.getStopButton().setEnabled(true);
+            this.start();
+        }
+        if(ae.getSource() == this.startStopButtonsPanel.getStopButton()){
+            this.startStopButtonsPanel.getStartButton().setEnabled(true);
+            this.startStopButtonsPanel.getStopButton().setEnabled(false);
+            this.stop();
         }
     }
 }

@@ -1,16 +1,17 @@
 package org.woehlke.computer.kurzweil.view.apps;
 
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.control.commons.Startable;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.view.tabs.common.TabAppPanel;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
+import javax.swing.*;
+
 @Log
-public class MandelbrotTabApp extends TabAppPanel implements AppGuiComponent {
+public class MandelbrotTabApp extends JPanel implements AppGuiComponent, Startable {
 
     public MandelbrotTabApp(TabPanel tab) {
-        super(tab);
     }
 
     @Override
@@ -30,6 +31,16 @@ public class MandelbrotTabApp extends TabAppPanel implements AppGuiComponent {
 
     @Override
     public void update() {
+
+    }
+
+    @Override
+    public void showMe() {
+
+    }
+
+    @Override
+    public void hideMe() {
 
     }
 }

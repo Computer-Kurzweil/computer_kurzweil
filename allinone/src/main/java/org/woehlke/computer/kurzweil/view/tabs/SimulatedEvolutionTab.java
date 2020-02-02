@@ -5,26 +5,37 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.control.commons.Startable;
-import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
+import org.woehlke.computer.kurzweil.view.apps.SimulatedEvolutionTabApp;
+import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
+import org.woehlke.computer.kurzweil.view.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
-import javax.accessibility.Accessible;
-import java.awt.image.ImageObserver;
-import java.io.Serializable;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 @Log
-public class SimulatedEvolutionTab extends TabPanel implements ImageObserver,
-    Serializable,
-    Accessible, Startable, AppGuiComponent {
+public class SimulatedEvolutionTab extends JPanel implements TabPanel, ActionListener {
 
-    @Getter
-    private final SimulatedEvolutionContext appCtx;
+    @Getter private final SimulatedEvolutionContext appCtx;
+
+    @Getter private final ComputerKurzweilApplicationContext ctx;
+
+    @Getter private final StartStopButtonsPanel startStopButtonsPanel;
+
+    @Getter private final PanelSubtitle panelSubtitle;
+
+    @Getter private final SimulatedEvolutionTabApp app;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx,ctx.getProperties().getEvolution().getView().getSubtitle());
+        this.ctx=ctx;
+        String subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
         this.appCtx = new SimulatedEvolutionContext();
+        this.app = new SimulatedEvolutionTabApp(this);
+        this.startStopButtonsPanel = new StartStopButtonsPanel( this );
+        this.panelSubtitle = new PanelSubtitle(subtitle);
         this.add(this.panelSubtitle);
+        this.add(this.app);
         this.add(this.startStopButtonsPanel);
     }
 
@@ -58,4 +69,17 @@ public class SimulatedEvolutionTab extends TabPanel implements ImageObserver,
         log.info("handleUserSignal: "+userSignal.name());
     }
 
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == this.startStopButtonsPanel.getStartButton()){
+            this.startStopButtonsPanel.getStartButton().setEnabled(false);
+            this.startStopButtonsPanel.getStopButton().setEnabled(true);
+            this.start();
+        }
+        if(ae.getSource() == this.startStopButtonsPanel.getStopButton()){
+            this.startStopButtonsPanel.getStartButton().setEnabled(true);
+            this.startStopButtonsPanel.getStopButton().setEnabled(false);
+            this.stop();
+        }
+    }
 }

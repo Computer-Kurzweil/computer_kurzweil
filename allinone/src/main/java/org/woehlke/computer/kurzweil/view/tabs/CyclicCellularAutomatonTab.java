@@ -5,53 +5,48 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonControllerThread;
 import org.woehlke.computer.kurzweil.apps.cca.ctx.CyclicCellularAutomatonContext;
-import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.AppType;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.control.signals.UserSlot;
-import org.woehlke.computer.kurzweil.control.commons.Startable;
-import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.view.common.BoxLayoutVertical;
+import org.woehlke.computer.kurzweil.view.common.PanelBorder;
+import org.woehlke.computer.kurzweil.view.tabs.common.TabAppLayout;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
-import javax.accessibility.Accessible;
-import java.awt.image.ImageObserver;
-import java.io.Serializable;
+import javax.swing.*;
 
 @Log
-public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserver,
-    Serializable,
-    Accessible, Startable, AppGuiComponent {
+public class CyclicCellularAutomatonTab extends JPanel implements TabPanel {
 
     @Getter private CyclicCellularAutomatonCanvas canvas;
-    @Getter private CyclicCellularAutomatonButtonsPanel panelButtons;
     @Getter private CyclicCellularAutomatonControllerThread controller;
     @Getter private final CyclicCellularAutomatonContext appCtx;
+    @Getter private final ComputerKurzweilApplicationContext ctx;
 
     @Getter
     private final static AppType appType = AppType.CYCLIC_CELLULAR_AUTOMATON;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx,ctx.getProperties().getCca().getView().getSubtitle());
-        this.setLayout(new BoxLayoutVertical(this));
+        this.ctx = ctx;
+        this.setBorder(PanelBorder.getBorder());
+        this.setLayout(new TabAppLayout(this));
         this.setBounds(ctx.getFrameBounds());
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
-        this.panelButtons =  this.canvas.getNeighbourhoodButtonsPanel();
         this.controller = new CyclicCellularAutomatonControllerThread(this.ctx);
-        this.add(this.panelSubtitle);
+        this.add(this.canvas.getPanelSubtitle());
         this.add(this.canvas);
-        this.add(this.panelButtons);
-        this.add(this.startStopButtonsPanel);
+        this.add(this.canvas.getNeighbourhoodButtonsPanel());
+        this.add(this.canvas.getStartStopButtonsPanel());
         this.appCtx = new CyclicCellularAutomatonContext(this, this.controller, this.canvas);
         this.controller.setAppCtx(  this.appCtx );
+        /*
         UserSlot[] slotsModel = {this.canvas};
         UserSlot[] slotsGui = {this.canvas, this.panelButtons, this};
         UserSlot[] slotsControllers = {this.controller};
         this.appCtx.registerSignalsAndSlots(UserSignal.getModels(), slotsModel);
         this.appCtx.registerSignalsAndSlots(UserSignal.getGui(), slotsGui);
         this.appCtx.registerSignalsAndSlots(UserSignal.getControllerThreads(), slotsControllers);
+        */
     }
 
     @Override
@@ -75,9 +70,6 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     public void update() {
         log.info("update");
         this.canvas.update();
-        this.panelButtons.update();
-        this.panelSubtitle.update();
-        this.startStopButtonsPanel.update();
         this.repaint();
         log.info("updated");
     }
@@ -85,18 +77,20 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     @Override
     public void showMe() {
         log.info("showMe");
+        this.canvas.getStartStopButtonsPanel().setVisible(true);
+        this.canvas.getNeighbourhoodButtonsPanel().setVisible(true);
+        this.canvas.getPanelSubtitle().setVisible(true);
         this.canvas.setVisible(true);
-        this.panelButtons.setVisible(true);
-        this.panelSubtitle.setVisible(true);
-        this.startStopButtonsPanel.setVisible(true);
         this.setVisible(true);
     }
 
     @Override
     public void hideMe() {
         log.info("hideMe");
-        //this.canvas.setVisible(false);
-        //this.panelButtons.setVisible(false);
+        this.canvas.getStartStopButtonsPanel().setVisible(false);
+        this.canvas.getNeighbourhoodButtonsPanel().setVisible(false);
+        this.canvas.getPanelSubtitle().setVisible(false);
+        this.canvas.setVisible(false);
         this.setVisible(false);
     }
 
@@ -104,4 +98,5 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     public void handleUserSignal(UserSignal userSignal) {
         log.info("handleUserSignal: "+userSignal.name());
     }
+
 }
