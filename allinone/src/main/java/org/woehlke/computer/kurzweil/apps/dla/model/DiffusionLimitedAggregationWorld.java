@@ -69,6 +69,11 @@ public class DiffusionLimitedAggregationWorld implements Stepper {
         particles=newParticles;
     }
 
+    @Override
+    public void update() {
+
+    }
+
     public int getDendriteColor(int x, int y) {
         return dendrite.getAgeForPixel(x,y);
     }

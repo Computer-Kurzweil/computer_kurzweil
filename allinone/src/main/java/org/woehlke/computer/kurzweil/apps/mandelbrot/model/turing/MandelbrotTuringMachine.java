@@ -65,6 +65,11 @@ public class MandelbrotTuringMachine  implements Startable, Stepper {
         }
     }
 
+    @Override
+    public void update() {
+
+    }
+
     private void stepGoToSet(){
         if(this.getGaussianNumberPlaneMandelbrot().isInSet(
             this.getTuringPositionsStateMachine().getTuringPosition()

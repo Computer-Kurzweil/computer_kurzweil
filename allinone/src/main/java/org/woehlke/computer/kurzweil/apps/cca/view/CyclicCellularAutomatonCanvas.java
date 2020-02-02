@@ -54,23 +54,21 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     @Getter private final CyclicCellularAutomatonButtonsPanel neighbourhoodButtonsPanel;
 
-    private boolean ready;
-
     public CyclicCellularAutomatonCanvas(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtonsPanel(this);
-        this.setPreferredSize(this.ctx.getLatticeDimension());
-        this.ready = false;
         this.versions = 2;
         this.latticeX = this.ctx.getWorldDimensions().getX();
         this.latticeY = this.ctx.getWorldDimensions().getY();
+        Dimension preferredSize = new Dimension(      this.latticeX ,   this.latticeY);
+        this.setPreferredSize(preferredSize);
         this.setVisible(true);
         startWithNeighbourhoodVonNeumann();
     }
 
     public void paint(Graphics g) {
-        if(ready && (lattice!=null)) {
+        if(lattice!=null) {
             for (int y = 0; y < ctx.getLatticeDimensions().getY(); y++) {
                 for (int x = 0; x < ctx.getLatticeDimensions().getX(); x++) {
                     int state =this.lattice[source][x][y];
@@ -79,8 +77,8 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
                     g.drawLine(x, y, x, y);
                 }
             }
-            super.paintComponent(g);
         }
+        super.paintComponent(g);
     }
 
     public void update(Graphics g) {
@@ -93,14 +91,12 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public void start() {
         log.info("start");
-        ready=true;
         this.setVisible(true);
         log.info("started");
     }
 
     public void stop() {
         log.info("stop");
-        ready=false;
         this.setVisible(false);
         log.info("stopped");
     }
@@ -139,7 +135,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private void resetLattice(){
         initCreateLattice();
         initFillLattice();
-        this.repaint();
     }
 
     public void step(){

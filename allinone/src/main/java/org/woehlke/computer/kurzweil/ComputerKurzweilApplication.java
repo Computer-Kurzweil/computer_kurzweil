@@ -53,6 +53,7 @@ public class ComputerKurzweilApplication {
     ) {
         this.properties = properties;
         this.frame = new ComputerKurzweilApplicationFrame(properties);
+        start();
     }
 
     public void start(){

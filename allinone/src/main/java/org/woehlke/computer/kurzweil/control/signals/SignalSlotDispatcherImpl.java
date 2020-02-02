@@ -65,4 +65,9 @@ public class SignalSlotDispatcherImpl implements SignalSlotDispatcher {
     public void step() {
         handleUserSignal(UserSignal.STEP);
     }
+
+    @Override
+    public void update() {
+        handleUserSignal(UserSignal.UPDATE);
+    }
 }

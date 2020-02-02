@@ -22,7 +22,7 @@ import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 public class CyclicCellularAutomatonControllerThread extends Thread
         implements ControllerThread {
 
-    private static final int THREAD_SLEEP_TIME = 100;
+    private static final int THREAD_SLEEP_TIME = 500;
     private static final long serialVersionUID = 3642865135701767557L;
 
     private Boolean goOn;
@@ -46,8 +46,10 @@ public class CyclicCellularAutomatonControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            this.appCtx.getStepper().step();
-            this.ctx.getFrame().update();
+            this.appCtx.getCanvas().step();
+            this.appCtx.getCanvas().update();
+            this.appCtx.getCanvas().repaint();
+            this.ctx.getFrame().repaint();
             try { super.sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }

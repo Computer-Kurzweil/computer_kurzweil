@@ -66,7 +66,8 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     public void stop() {
         log.info("stop");
         this.controller = this.appCtx.stopController(this.getCtx());
-        this.hideMe();
+        update();
+        this.showMe();
         log.info("stopped");
     }
 

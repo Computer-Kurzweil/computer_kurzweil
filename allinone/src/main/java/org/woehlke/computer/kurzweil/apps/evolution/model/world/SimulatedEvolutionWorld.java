@@ -134,6 +134,11 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
     }
 
     @Override
+    public void update() {
+
+    }
+
+    @Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }
