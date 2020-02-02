@@ -165,6 +165,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         }
         this.source = (this.source + 1 ) % 2;
         this.target =  (this.target + 1 ) % 2;
+        this.update();
         //log.info("stepped");
     }
 
