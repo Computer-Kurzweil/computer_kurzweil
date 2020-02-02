@@ -31,6 +31,7 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
         DiffusionLimitedAggregationCanvas canvas,
         ComputerKurzweilApplicationContext ctx
     ) {
+        super("DLA-Controller");
         this.ctx = ctx;
         goOn = Boolean.TRUE;
         this.canvas = canvas;

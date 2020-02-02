@@ -26,7 +26,7 @@ public class ComputeMandelbrotSetControllerThread extends Thread implements Runn
         MandelbrotCanvas canvas,
         MandelbrotFrame frame
     ) {
-        super("ComputeMandelbrotSetThread");
+        super("Mandelbrot-Controller");
         this.ctx = ctx;
         this.panelButtons = panelButtons;
         this.canvas = canvas;

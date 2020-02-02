@@ -36,6 +36,7 @@ public class CyclicCellularAutomatonControllerThread extends Thread
     public CyclicCellularAutomatonControllerThread(
         ComputerKurzweilApplicationContext ctx
     ) {
+        super("CCA-Controller");
         this.ctx = ctx;
         goOn = Boolean.TRUE;
     }

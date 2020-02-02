@@ -46,6 +46,7 @@ public class SimulatedEvolutionControllerThread extends Thread implements
       SimulatedEvolutionButtonRowPanel panelButtons,
       SimulatedEvolutionFrame frame
   ) {
+      super("DNA-Controller");
       this.ctxService = ctxService;
       this.world = world;
       this.statisticsPanel = statisticsPanel;
