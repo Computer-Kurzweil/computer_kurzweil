@@ -63,6 +63,7 @@ public class CyclicCellularAutomatonContext implements AppContext {
     public CyclicCellularAutomatonControllerThread stopController(ComputerKurzweilApplicationContext ctx) {
         this.controller.exit();
         this.controller = new CyclicCellularAutomatonControllerThread(ctx);
+        this.controller.setAppCtx(this);
         return this.controller;
     }
 }

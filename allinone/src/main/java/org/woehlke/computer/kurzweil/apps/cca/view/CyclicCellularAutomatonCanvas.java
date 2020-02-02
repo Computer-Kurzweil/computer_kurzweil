@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
+import org.woehlke.computer.kurzweil.model.LatticePointNeighbourhoodPosition;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +64,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.latticeX = this.ctx.getWorldDimensions().getX();
         this.latticeY = this.ctx.getWorldDimensions().getY();
         this.setVisible(true);
-        resetLattice();
+        startWithNeighbourhoodVonNeumann();
     }
 
     public void paint(Graphics g) {
@@ -92,7 +93,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         log.info("start");
         ready=true;
         this.setVisible(true);
-        startWithNeighbourhoodVonNeumann();
         log.info("started");
     }
 
@@ -143,61 +143,21 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     public void step(){
         //log.info("step");
         int maxState = colorScheme.getMaxState();
-        int dimY = this.ctx.getWorldDimensions().getY();
-        int dimX = this.ctx.getWorldDimensions().getX();
-        for(int y = 0; y < dimY; y++){
-            for(int x = 0; x < dimX; x++){
+        int xx;
+        int yy;
+        int nextState;
+        for(int y = 0; y < latticeY; y++){
+            for(int x = 0; x < latticeX; x++){
                 lattice[target][x][y] = lattice[source][x][y];
-                int nextState = (lattice[source][x][y] + 1) % maxState;
-                int west = ((x-1+dimX)%dimX);
-                int north = ((y-1+dimY)%dimY);
-                int east =  ((x+1+dimX)%dimX);
-                int south = ((y+1+dimY)%dimY);
-                if(neighbourhoodType == MOORE_NEIGHBORHOOD || neighbourhoodType == WOEHLKE_NEIGHBORHOOD) {
-                    //North-West
-                    if (nextState == lattice[source][west][north]) {
+                nextState = (lattice[source][x][y] + 1) % maxState;
+                LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getForfNeighbourhood(neighbourhoodType);
+                for(int i=0; i<pos.length; i++){
+                    xx = ((x+pos[i].getX()+latticeX)%latticeX);
+                    yy = ((y+pos[i].getY()+latticeY)%latticeY);
+                    if (nextState == lattice[source][xx][yy]) {
                         lattice[target][x][y] = nextState;
-                        continue;
+                        i=pos.length;
                     }
-                    //North-East
-                    if (nextState == lattice[source][east][north]) {
-                        lattice[target][x][y] = nextState;
-                        continue;
-                    }
-                    if(neighbourhoodType == MOORE_NEIGHBORHOOD) {
-                        //South-East
-                        if (nextState == lattice[source][east][south]) {
-                            lattice[target][x][y] = nextState;
-                            continue;
-                        }
-                    }
-                    //SouthWest
-                    if (nextState == lattice[source][west][south]) {
-                        lattice[target][x][y] = nextState;
-                        continue;
-                    }
-                }
-                //North
-                if (nextState == lattice[source][x][north]
-                ) {
-                    lattice[target][x][y] = nextState;
-                    continue;
-                }
-                //East
-                if(nextState == lattice[source][east][y]){
-                    lattice[target][x][y] = nextState;
-                    continue;
-                }
-                if(neighbourhoodType == MOORE_NEIGHBORHOOD || neighbourhoodType == VON_NEUMANN_NEIGHBORHOOD) {
-                    //South
-                    if (nextState == lattice[source][x][south]) {
-                        lattice[target][x][y] = nextState;
-                        continue;
-                    }
-                }
-                //West
-                if(nextState == lattice[source][west][y]){
-                    lattice[target][x][y] = nextState;
                 }
             }
         }

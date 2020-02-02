@@ -4,40 +4,55 @@ import lombok.Getter;
 
 public enum LatticePointNeighbourhoodPosition {
 
-    NORTH(true, false),
-    EAST(true, true),
-    SOUTH(true, true),
-    WEST(true,  true),
-    NORTH_EAST(false, true),
-    SOUTH_EAST(false, true),
-    SOUTH_WEST(false, true),
-    NORTH_WEST(false, false),
-    CENTER(true, true);
+    NORTH(0,-1),
+    EAST(1,0),
+    SOUTH(0,1),
+    WEST(-1,0),
+    NORTH_EAST(1,-1),
+    SOUTH_EAST(1,1),
+    SOUTH_WEST(-1,1),
+    NORTH_WEST(-1,-1),
+    CENTER(0,0);
 
     @Getter
-    private final boolean partOfNeighbourhoodVonNeumann;
+    private final int x;
 
     @Getter
-    private final boolean partOfNeighbourhoodMoore;
+    private final int y;
 
-    @Getter
-    private final boolean partOfNeighbourhoodWoehlke;
+    LatticePointNeighbourhoodPosition(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
-    LatticePointNeighbourhoodPosition(
-        boolean partOfNeighbourhoodVonNeumann,
-        boolean partOfNeighbourhoodWoehlke
+    public static LatticePointNeighbourhoodPosition[] getForfNeighbourhood(
+        LatticeNeighbourhoodType neighbourhoodType
     ){
-        this.partOfNeighbourhoodVonNeumann = partOfNeighbourhoodVonNeumann;
-        this.partOfNeighbourhoodMoore = true;
-        this.partOfNeighbourhoodWoehlke = partOfNeighbourhoodWoehlke;
+        LatticePointNeighbourhoodPosition[] result;
+        switch (neighbourhoodType) {
+            case VON_NEUMANN_NEIGHBORHOOD:
+                result = new LatticePointNeighbourhoodPosition[4];
+                result[0]=NORTH;
+                result[1]=EAST;
+                result[2]=SOUTH;
+                result[3]=WEST;
+            case MOORE_NEIGHBORHOOD:
+                result = LatticePointNeighbourhoodPosition.values();
+                break;
+            case WOEHLKE_NEIGHBORHOOD:
+                result = new LatticePointNeighbourhoodPosition[4];
+                result[0]=NORTH_WEST;
+                result[1]=NORTH;
+                result[2]=NORTH_EAST;
+                result[3]=EAST;
+                result[4]=SOUTH_WEST;
+                result[5]=WEST;
+                break;
+            default:
+                result = new LatticePointNeighbourhoodPosition[0];
+                break;
+        }
+        return result;
     }
 
-    public boolean isPartOfNeighbourhood(LatticeNeighbourhoodType neighbourhoodType){
-        switch (neighbourhoodType){
-            case VON_NEUMANN_NEIGHBORHOOD: return partOfNeighbourhoodVonNeumann;
-            case MOORE_NEIGHBORHOOD: return partOfNeighbourhoodMoore;
-            case WOEHLKE_NEIGHBORHOOD: return partOfNeighbourhoodWoehlke;
-            default: return false;
-        }
-    }
 }
