@@ -44,7 +44,7 @@ public class MandelbrotContext implements AppContext {
     }
 
     @Override
-    public AppType gaetAppType() {
+    public AppType getAppType() {
         return AppType.MANDELBROT_SET;
     }
 

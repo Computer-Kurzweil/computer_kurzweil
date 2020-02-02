@@ -10,7 +10,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
 

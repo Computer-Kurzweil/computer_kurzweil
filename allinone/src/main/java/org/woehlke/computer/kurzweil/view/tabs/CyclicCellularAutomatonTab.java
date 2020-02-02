@@ -4,9 +4,10 @@ package org.woehlke.computer.kurzweil.view.tabs;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonControllerThread;
+import org.woehlke.computer.kurzweil.apps.cca.ctx.CyclicCellularAutomatonContext;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonButtonsPanel;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.AppType;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.signals.UserSlot;
@@ -27,7 +28,9 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     @Getter private CyclicCellularAutomatonCanvas canvas;
     @Getter private CyclicCellularAutomatonButtonsPanel panelButtons;
     @Getter private CyclicCellularAutomatonControllerThread controller;
+    @Getter private final CyclicCellularAutomatonContext appCtx;
 
+    @Getter
     private final static AppType appType = AppType.CYCLIC_CELLULAR_AUTOMATON;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
@@ -36,23 +39,24 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
         this.setBounds(ctx.getFrameBounds());
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.panelButtons = new CyclicCellularAutomatonButtonsPanel( this.ctx);
-        this.controller = new CyclicCellularAutomatonControllerThread(ctx, this.canvas, this.panelButtons);
+        this.controller = new CyclicCellularAutomatonControllerThread(this.ctx);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.panelButtons);
         this.add(this.startStopButtonsPanel);
+        this.appCtx = new CyclicCellularAutomatonContext(this, this.controller, this.canvas);
+        this.controller.setAppCtx(  this.appCtx );
         UserSlot[] slotsModel = {this.canvas.getLattice()};
         UserSlot[] slotsGui = {this.canvas, this.panelButtons, this};
         UserSlot[] slotsControllers = {this.controller};
-        this.ctx.registerSignalsAndSlots(appType, UserSignal.getModels(), slotsModel);
-        this.ctx.registerSignalsAndSlots(appType, UserSignal.getGui(), slotsGui);
-        this.ctx.registerSignalsAndSlots(appType, UserSignal.getControllerThreads(), slotsControllers);
+        this.appCtx.registerSignalsAndSlots(UserSignal.getModels(), slotsModel);
+        this.appCtx.registerSignalsAndSlots(UserSignal.getGui(), slotsGui);
+        this.appCtx.registerSignalsAndSlots(UserSignal.getControllerThreads(), slotsControllers);
     }
 
     @Override
     public void start() {
         log.info("start");
-        super.start();
         this.showMe();
         this.controller.start();
         log.info("started");
@@ -61,11 +65,8 @@ public class CyclicCellularAutomatonTab extends TabPanel implements ImageObserve
     @Override
     public void stop() {
         log.info("stop");
-        this.controller.exit();
-        super.stop();
-        this.canvas=null;
-        this.panelButtons=null;
-        hideMe();
+        this.controller = this.appCtx.stopController(this.getCtx());
+        this.hideMe();
         log.info("stopped");
     }
 

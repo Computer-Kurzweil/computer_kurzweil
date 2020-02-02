@@ -3,15 +3,10 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.view.common.PanelBorder;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
-
-import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_ZOOM;
 
 
 /**

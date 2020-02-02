@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.view.tabs.common;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
 

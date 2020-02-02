@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
 import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;

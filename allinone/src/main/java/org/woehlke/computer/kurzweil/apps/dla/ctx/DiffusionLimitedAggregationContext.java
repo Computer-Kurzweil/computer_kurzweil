@@ -44,7 +44,7 @@ public class DiffusionLimitedAggregationContext implements AppContext {
     }
 
     @Override
-    public AppType gaetAppType() {
+    public AppType getAppType() {
         return AppType.DIFFUSION_LIMITED_AGGREGATION;
     }
 

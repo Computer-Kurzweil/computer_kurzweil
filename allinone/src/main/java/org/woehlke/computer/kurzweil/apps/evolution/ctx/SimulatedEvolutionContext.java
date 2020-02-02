@@ -44,7 +44,7 @@ public class SimulatedEvolutionContext implements AppContext {
     }
 
     @Override
-    public AppType gaetAppType() {
+    public AppType getAppType() {
         return AppType.SIMULATED_EVOLUTION;
     }
 

@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
@@ -83,7 +83,7 @@ public class CyclicCellularAutomatonLattice implements Serializable, Startable, 
 
     public void step(){
         //log.info("step");
-        int maxState = ctx.getCtxCyclicCellularAutomaton().getColorScheme().getMaxState();
+        int maxState = colorScheme.getMaxState();
         int dimY = this.ctx.getWorldDimensions().getY();
         int dimX = this.ctx.getWorldDimensions().getX();
         for(int y = 0; y < dimY; y++){

@@ -4,12 +4,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonColorScheme;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.cca.model.CyclicCellularAutomatonLattice;
 import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
 import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,10 +38,13 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Getter
     private CyclicCellularAutomatonLattice lattice;
 
+    @Getter private final CyclicCellularAutomatonColorScheme colorScheme;
+
     private boolean ready;
 
     public CyclicCellularAutomatonCanvas(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
+        this.colorScheme = new CyclicCellularAutomatonColorScheme();
         this.setPreferredSize(this.ctx.getLatticeDimension());
         ready = false;
         this.lattice = new CyclicCellularAutomatonLattice(this.ctx);
@@ -52,7 +55,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             for (int y = 0; y < ctx.getLatticeDimensions().getY(); y++) {
                 for (int x = 0; x < ctx.getLatticeDimensions().getX(); x++) {
                     int state = this.lattice.getCellStatusFor(x, y);
-                    Color stateColor = this.ctx.getCtxCyclicCellularAutomaton().getColorScheme().getColorForState(state);
+                    Color stateColor = this.colorScheme.getColorForState(state);
                     g.setColor(stateColor);
                     g.drawLine(x, y, x, y);
                 }
@@ -66,7 +69,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void update(){
-        repaint();;
+        repaint();
     }
 
     public void start() {

@@ -8,7 +8,7 @@ public interface AppContext extends SignalSlotDispatcher {
 
     ControllerThread getControllerThread();
     TabPanel getTabPanel();
-    AppType gaetAppType();
+    AppType getAppType();
     Stepper getStepper();
 
 }

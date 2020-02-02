@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.apps.evolution.model.statistics;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 

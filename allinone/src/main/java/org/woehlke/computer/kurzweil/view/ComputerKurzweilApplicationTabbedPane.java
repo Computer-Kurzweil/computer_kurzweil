@@ -4,7 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.control.ctx.AppContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.signals.UserSlot;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
@@ -18,6 +19,8 @@ import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Log
 @ToString
@@ -31,7 +34,11 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     @Getter private final MandelbrotTab mandelbrotTab;
     @Getter private final SimulatedEvolutionTab simulatedEvolutionTab;
 
-    public ComputerKurzweilApplicationTabbedPane(ComputerKurzweilApplicationContext ctx) {
+    @Getter private final List<AppContext> apps = new ArrayList<>();
+
+    public ComputerKurzweilApplicationTabbedPane(
+        ComputerKurzweilApplicationContext ctx
+    ) {
         this.ctx = ctx;
         CompoundBorder border = PanelBorder.getBorder();
         this.setBorder(border);
@@ -43,6 +50,15 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this.ctx);
         this.mandelbrotTab = new MandelbrotTab(this.ctx);
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this.ctx);
+        TabPanel[] tabPanels = {
+            this.cyclicCellularAutomatonTab,
+            this.diffusionLimitedAggregationTab,
+            this.mandelbrotTab,
+            this.simulatedEvolutionTab
+        };
+        for(TabPanel t:tabPanels){
+            this.apps.add(t.getAppCtx());
+        }
         this.add(cyclicCellularAutomatonTabTitle, this.cyclicCellularAutomatonTab);
         this.add(diffusionLimitedAggregationTabTitle, this.diffusionLimitedAggregationTab);
         this.add(mandelbrotTabTitle, this.mandelbrotTab);

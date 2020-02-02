@@ -2,7 +2,8 @@ package org.woehlke.computer.kurzweil.view;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.control.ctx.AppContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
@@ -22,6 +23,7 @@ import java.awt.event.WindowListener;
 import java.awt.event.WindowStateListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
+import java.util.List;
 
 @Log
 public class ComputerKurzweilApplicationFrame extends JFrame implements Serializable,
@@ -53,6 +55,10 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(this);
         showMe();
+    }
+
+    public List<AppContext> getApps(){
+        return tabbedPane.getApps();
     }
 
     @Override
@@ -157,6 +163,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
 
     @Override
     public void update() {
+        this.tabbedPane.getActiveTab().update();
         this.repaint();
     }
 }

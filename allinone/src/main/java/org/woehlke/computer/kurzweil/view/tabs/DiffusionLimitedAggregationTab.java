@@ -2,7 +2,8 @@ package org.woehlke.computer.kurzweil.view.tabs;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.apps.dla.ctx.DiffusionLimitedAggregationContext;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
 import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
@@ -21,8 +22,12 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements ImageObs
     @Getter
     private final DiffusionLimitedAggregationTabApp app;
 
+    @Getter
+    private final DiffusionLimitedAggregationContext appCtx;
+
     public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationContext ctx) {
         super(ctx,ctx.getProperties().getDla().getView().getSubtitle());
+        this.appCtx = new DiffusionLimitedAggregationContext();
         this.app = new DiffusionLimitedAggregationTabApp(this);
         this.add(this.panelSubtitle);
         this.add(this.app);
