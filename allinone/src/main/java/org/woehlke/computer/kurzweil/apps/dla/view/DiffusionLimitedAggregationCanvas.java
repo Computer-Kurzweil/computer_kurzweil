@@ -49,7 +49,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements Ser
         this.worldDimensions = ctx.getWorldDimensions();
         this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
-        this.world=new DiffusionLimitedAggregationWorld(this.ctx);
+        this.world = new DiffusionLimitedAggregationWorld(this.ctx);
     }
 
     public void paint(Graphics g) {
