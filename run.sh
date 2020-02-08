@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 function bootRunAllinone() {
-    ./gradlew clean allinone:assemble
+    ./gradlew clean allinone:jar
+    ./gradlew allinone:run
 }
 
 function bootRunDefault() {

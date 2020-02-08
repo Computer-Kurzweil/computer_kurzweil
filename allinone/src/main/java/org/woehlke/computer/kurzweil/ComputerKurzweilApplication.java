@@ -1,9 +1,15 @@
 package org.woehlke.computer.kurzweil;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.extern.java.Log;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
+
+import java.io.File;
 
 
 /**
@@ -29,10 +35,19 @@ import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame
 public class ComputerKurzweilApplication {
 
     private final ComputerKurzweilApplicationFrame frame;
-    private final ComputerKurzweilProperties properties;
 
     public ComputerKurzweilApplication() {
-        this.properties = new ComputerKurzweilProperties();
+        String conf = "application.yml";
+        ComputerKurzweilProperties properties;
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        try {
+            properties = mapper.readValue(new File(conf), ComputerKurzweilProperties.class);
+            System.out.println(ReflectionToStringBuilder.toString(properties, ToStringStyle.MULTI_LINE_STYLE));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            properties = new ComputerKurzweilProperties();
+        }
         this.frame = new ComputerKurzweilApplicationFrame(properties);
         start();
     }
