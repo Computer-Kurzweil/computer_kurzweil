@@ -2,7 +2,8 @@
 
 function bootRunAllinone() {
     ./gradlew clean allinone:jar
-    java -jar allinone/build/libs/allinone-0.0.1-SNAPSHOT.jar
+    jar xvf allinone/build/libs/allinone-0.0.1-SNAPSHOT.jar
+    #java -jar allinone/build/libs/allinone-0.0.1-SNAPSHOT.jar
     #./gradlew allinone:run
 }
 
