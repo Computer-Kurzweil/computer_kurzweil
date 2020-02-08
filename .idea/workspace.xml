@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50dd0d39-5fd2-4984-9510-b0c73a398b47" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_failureaccess_1_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_28_0_jre.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_28_0_jre.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_j2objc_j2objc_annotations_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_checkerframework_checker_qual_2_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_checkerframework_checker_qual_2_8_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/BoxLayoutVertical.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/BoxLayoutVertical.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +49,17 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -104,7 +125,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32988507" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="ReactorSettings">
@@ -139,7 +160,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [clean assemble]">
+  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [assemble]">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -161,7 +182,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="computer_kurzweil:allinone [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="computer_kurzweil:allinone [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
@@ -172,54 +193,15 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="bootJar" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="computer_kurzweil:allinone [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="bootRun" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="computer_kurzweil:allinone [clean assemble]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
             <option value="assemble" />
           </list>
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="computer_kurzweil:allinone [clean bootJar]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+    <configuration name="computer_kurzweil:allinone [clean compileJava compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
@@ -231,78 +213,22 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
-            <option value="bootJar" />
+            <option value="compileJava" />
+            <option value="compileTestJava" />
           </list>
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
-    </configuration>
-    <configuration name="computer_kurzweil:allinone [clean bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-            <option value="bootRun" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="computer_kurzweil:allinone [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ComputerKurzweilApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" editBeforeRun="true">
-      <module name="computer_kurzweil.allinone.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.woehlke.computer.kurzweil.ComputerKurzweilApplication" />
-      <option name="DEBUG_MODE" value="true" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/allinone/build" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="RunConfigurationTask" enabled="true" run_configuration_name="computer_kurzweil:allinone [clean bootJar]" run_configuration_type="GradleRunConfiguration" />
-      </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.computer_kurzweil:allinone [clean assemble]" />
-      <item itemvalue="Gradle.computer_kurzweil:allinone [clean bootJar]" />
-      <item itemvalue="Gradle.computer_kurzweil:allinone [clean bootRun]" />
-      <item itemvalue="Gradle.computer_kurzweil:allinone [bootRun]" />
-      <item itemvalue="Gradle.computer_kurzweil:allinone [bootJar]" />
-      <item itemvalue="Gradle.computer_kurzweil:allinone [clean]" />
-      <item itemvalue="Spring Boot.ComputerKurzweilApplication" />
+      <item itemvalue="Gradle.computer_kurzweil:allinone [clean compileJava compileTestJava]" />
+      <item itemvalue="Gradle.computer_kurzweil:allinone [assemble]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.computer_kurzweil:allinone [clean]" />
-        <item itemvalue="Gradle.computer_kurzweil:allinone [bootJar]" />
-        <item itemvalue="Gradle.computer_kurzweil:allinone [bootRun]" />
+        <item itemvalue="Gradle.computer_kurzweil:allinone [assemble]" />
       </list>
     </recent_temporary>
   </component>
@@ -358,14 +284,7 @@
       <workItem from="1580584344889" duration="301000" />
       <workItem from="1580584677318" duration="38100000" />
       <workItem from="1581193732679" duration="1954000" />
-      <workItem from="1581195737745" duration="494000" />
-    </task>
-    <task id="LOCAL-00002" summary="setup changes">
-      <created>1578524110576</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1578524110576</updated>
+      <workItem from="1581195737745" duration="794000" />
     </task>
     <task id="LOCAL-00003" summary="setup changes">
       <created>1578525277598</created>
@@ -703,7 +622,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581196147440</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="allinone without scpringboot">
+      <created>1581196252563</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1581196252563</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -730,13 +656,13 @@
     </state>
     <state x="552" y="179" width="1234" height="682" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1578858946280" />
     <state x="368" y="146" width="823" height="548" key="#Project_Structure/0.23.1280.716@0.23.1280.716" timestamp="1581193823041" />
-    <state x="0" y="41" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581194420675">
+    <state x="139" y="36" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581196484805">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572674395" />
     <state x="0" y="19" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.741@0.0.1366.741" timestamp="1580579803260" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="0" y="41" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1581194420675" />
+    <state x="139" y="36" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1581196484805" />
     <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser" timestamp="1580620861964">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -768,56 +694,57 @@
     </state>
     <state x="237" y="0" width="476" height="713" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580586769956" />
     <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
-    <state x="162" y="23" width="1046" height="715" key="CommitChangelistDialog2" timestamp="1581196147183">
+    <state x="162" y="23" width="1046" height="715" key="CommitChangelistDialog2" timestamp="1581196252358">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580622403875" />
     <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579040156439" />
     <state x="234" y="23" width="1046" height="715" key="CommitChangelistDialog2/0.23.1280.715@0.23.1280.715" timestamp="1581194895883" />
-    <state x="162" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1581196147183" />
-    <state x="337" y="94" key="EnvironmentVariablesDialog" timestamp="1580572630620">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="162" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1581196252358" />
+    <state x="316" y="115" key="EnvironmentVariablesDialog" timestamp="1581196422274">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="337" y="94" key="EnvironmentVariablesDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572630620" />
     <state x="473" y="134" key="EnvironmentVariablesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578870818263" />
+    <state x="316" y="115" key="EnvironmentVariablesDialog/0.23.1280.716@0.23.1280.716" timestamp="1581196422274" />
     <state x="442" y="106" width="424" height="479" key="FileChooserDialogImpl" timestamp="1580586729843">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1580572601796" />
     <state x="442" y="106" width="424" height="479" key="FileChooserDialogImpl/0.0.1366.741@0.0.1366.741" timestamp="1580586729843" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1238" height="242" key="GridCell.Tab.0.bottom" timestamp="1581195309779">
-      <screen x="0" y="23" width="1280" height="715" />
+    <state width="1238" height="380" key="GridCell.Tab.0.bottom" timestamp="1581196567215">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
     <state width="906" height="425" key="GridCell.Tab.0.bottom/0.0.1366.741@0.0.1366.741" timestamp="1580581385678" />
     <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
     <state width="1238" height="242" key="GridCell.Tab.0.bottom/0.23.1280.715@0.23.1280.715" timestamp="1581195309779" />
-    <state width="1238" height="169" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1581194739177" />
-    <state width="1238" height="242" key="GridCell.Tab.0.center" timestamp="1581195309778">
-      <screen x="0" y="23" width="1280" height="715" />
+    <state width="1238" height="380" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1581196567215" />
+    <state width="1238" height="380" key="GridCell.Tab.0.center" timestamp="1581196567214">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
     <state width="906" height="425" key="GridCell.Tab.0.center/0.0.1366.741@0.0.1366.741" timestamp="1580581385677" />
     <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
     <state width="1238" height="242" key="GridCell.Tab.0.center/0.23.1280.715@0.23.1280.715" timestamp="1581195309778" />
-    <state width="1238" height="169" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1581194739176" />
-    <state width="1238" height="242" key="GridCell.Tab.0.left" timestamp="1581195309777">
-      <screen x="0" y="23" width="1280" height="715" />
+    <state width="1238" height="380" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1581196567214" />
+    <state width="1238" height="380" key="GridCell.Tab.0.left" timestamp="1581196567213">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
     <state width="906" height="425" key="GridCell.Tab.0.left/0.0.1366.741@0.0.1366.741" timestamp="1580581385677" />
     <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
     <state width="1238" height="242" key="GridCell.Tab.0.left/0.23.1280.715@0.23.1280.715" timestamp="1581195309777" />
-    <state width="1238" height="169" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1581194739175" />
-    <state width="1238" height="242" key="GridCell.Tab.0.right" timestamp="1581195309778">
-      <screen x="0" y="23" width="1280" height="715" />
+    <state width="1238" height="380" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1581196567213" />
+    <state width="1238" height="380" key="GridCell.Tab.0.right" timestamp="1581196567214">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
     <state width="906" height="425" key="GridCell.Tab.0.right/0.0.1366.741@0.0.1366.741" timestamp="1580581385677" />
     <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
     <state width="1238" height="242" key="GridCell.Tab.0.right/0.23.1280.715@0.23.1280.715" timestamp="1581195309778" />
-    <state width="1238" height="169" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1581194739177" />
+    <state width="1238" height="380" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1581196567214" />
     <state width="1238" height="211" key="GridCell.Tab.1.bottom" timestamp="1581194172091">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
@@ -848,13 +775,13 @@
     </state>
     <state x="153" y="165" width="1203" height="567" key="RollbackChangesDialog/0.0.1366.741@0.0.1366.741" timestamp="1580594839973" />
     <state x="410" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578902685672" />
-    <state x="0" y="23" width="1280" height="716" key="SettingsEditor" timestamp="1581195709341">
+    <state x="0" y="23" width="1280" height="716" key="SettingsEditor" timestamp="1581196519354">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1580571396515" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
     <state x="0" y="23" key="SettingsEditor/0.23.1280.715@0.23.1280.715" timestamp="1581195307170" />
-    <state x="0" y="23" width="1280" height="716" key="SettingsEditor/0.23.1280.716@0.23.1280.716" timestamp="1581195709341" />
+    <state x="0" y="23" width="1280" height="716" key="SettingsEditor/0.23.1280.716@0.23.1280.716" timestamp="1581196519354" />
     <state x="102" y="180" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1580619861605">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -895,10 +822,11 @@
     </state>
     <state x="499" y="0" width="500" height="736" key="refactoring.ChangeSignatureDialog/0.0.1366.741@0.0.1366.741" timestamp="1580606593646" />
     <state x="702" y="139" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579032192934" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1579034578236">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="411" y="188" width="670" height="467" key="run.anything.popup" timestamp="1581196499038">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579034578236" />
+    <state x="411" y="188" width="670" height="467" key="run.anything.popup/0.23.1280.716@0.23.1280.716" timestamp="1581196499038" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579018992225">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
