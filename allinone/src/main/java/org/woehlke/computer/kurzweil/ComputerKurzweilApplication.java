@@ -1,19 +1,10 @@
 package org.woehlke.computer.kurzweil;
 
-import lombok.Getter;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
 
-import java.awt.*;
 
 /**
  * Class with main Method for Starting the Desktop Application.
@@ -35,23 +26,13 @@ import java.awt.*;
  * &copy; 2006 - 2008 Thomas Woehlke.
  */
 @Log
-@SpringBootApplication
-@Configuration
-@Import({
-    ComputerKurzweilProperties.class
-})
 public class ComputerKurzweilApplication {
 
     private final ComputerKurzweilApplicationFrame frame;
-
-    @Getter
     private final ComputerKurzweilProperties properties;
 
-    @Autowired
-    public ComputerKurzweilApplication(
-        ComputerKurzweilProperties properties
-    ) {
-        this.properties = properties;
+    public ComputerKurzweilApplication() {
+        this.properties = new ComputerKurzweilProperties();
         this.frame = new ComputerKurzweilApplicationFrame(properties);
         start();
     }
@@ -71,6 +52,9 @@ public class ComputerKurzweilApplication {
      * @param args CLI Parameter.
      */
     public static void main(String[] args) {
+        ComputerKurzweilApplication application = new ComputerKurzweilApplication();
+        application.start();
+        /*
         ConfigurableApplicationContext springCtx = new SpringApplicationBuilder(
             ComputerKurzweilApplication.class
         ).web(WebApplicationType.NONE).headless(false).run(args);
@@ -78,6 +62,7 @@ public class ComputerKurzweilApplication {
             ComputerKurzweilApplication application = springCtx.getBean(ComputerKurzweilApplication.class);
             application.start();
         });
+        */
     }
 
 }

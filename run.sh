@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function bootRunAllinone() {
-    ./gradlew clean allinone:bootRun --args='--spring.profiles.active=default'
+    ./gradlew clean allinone:run
 }
 
 function bootRunHerokuLocal() {
@@ -12,7 +12,7 @@ function bootRunHerokuLocal() {
 }
 
 function bootRunDefault() {
-    ./gradlew clean bootRun --args='--spring.profiles.active=default'
+    ./gradlew clean allinone:run
 }
 
 bootRunAllinone
