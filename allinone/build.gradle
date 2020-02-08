@@ -4,7 +4,6 @@ plugins {
     id 'application' // https://docs.gradle.org/current/userguide/application_plugin.html
     id 'idea'        // https://docs.gradle.org/current/userguide/idea_plugin.html
     id "com.gorylenko.gradle-git-properties" version "2.2.0"
-    id 'org.asciidoctor.convert' version '2.4.0'
 }
 
 group = 'org.woehlke.simulation'
