@@ -42,6 +42,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.iml" filepath="$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.main.iml" filepath="$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.test.iml" filepath="$PROJECT_DIR$/.idea/modules/wator/computer_kurzweil.wator.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/allinone/org.woehlke.simulation.computer_kurzweil.allinone.iml" filepath="$PROJECT_DIR$/.idea/modules/allinone/org.woehlke.simulation.computer_kurzweil.allinone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/allinone/org.woehlke.simulation.computer_kurzweil.allinone.main.iml" filepath="$PROJECT_DIR$/.idea/modules/allinone/org.woehlke.simulation.computer_kurzweil.allinone.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/allinone/org.woehlke.simulation.computer_kurzweil.allinone.test.iml" filepath="$PROJECT_DIR$/.idea/modules/allinone/org.woehlke.simulation.computer_kurzweil.allinone.test.iml" />
     </modules>
   </component>
 </project>

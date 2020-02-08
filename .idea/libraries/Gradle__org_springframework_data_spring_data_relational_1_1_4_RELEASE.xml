@@ -2,10 +2,12 @@
   <library name="Gradle: org.springframework.data:spring-data-relational:1.1.4.RELEASE">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../tools/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-relational/1.1.4.RELEASE/b200060d6e4468165db1812c219603dc2ddff169/spring-data-relational-1.1.4.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-relational/1.1.4.RELEASE/b200060d6e4468165db1812c219603dc2ddff169/spring-data-relational-1.1.4.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../tools/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-relational/1.1.4.RELEASE/bdf19cc461af17267e4cb74d5575a984be4f425b/spring-data-relational-1.1.4.RELEASE-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-relational/1.1.4.RELEASE/bdf19cc461af17267e4cb74d5575a984be4f425b/spring-data-relational-1.1.4.RELEASE-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

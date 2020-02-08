@@ -2,6 +2,7 @@
   <library name="Gradle: org.hamcrest:hamcrest-core:2.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../tools/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/2.1/70dd49dea4507315b1fa3bc1aa59b1442d55957a/hamcrest-core-2.1.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/2.1/70dd49dea4507315b1fa3bc1aa59b1442d55957a/hamcrest-core-2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

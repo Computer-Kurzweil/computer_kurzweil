@@ -2,6 +2,7 @@
   <library name="Gradle: org.assertj:assertj-core:3.13.2">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../tools/.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.13.2/bb7b963fe752f69f055df0025691eceb83ce0c5d/assertj-core-3.13.2.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.13.2/bb7b963fe752f69f055df0025691eceb83ce0c5d/assertj-core-3.13.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
