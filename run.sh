@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function bootRunAllinone() {
-    ./gradlew clean allinone:run
+    ./gradlew clean allinone:assemble
 }
 
 function bootRunHerokuLocal() {
