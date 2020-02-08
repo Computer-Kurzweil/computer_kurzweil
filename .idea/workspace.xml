@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="50dd0d39-5fd2-4984-9510-b0c73a398b47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/config/ComputerKurzweilProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/config/ComputerKurzweilProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/BoxLayoutVertical.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/common/BoxLayoutVertical.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,14 +358,7 @@
       <workItem from="1580584344889" duration="301000" />
       <workItem from="1580584677318" duration="38100000" />
       <workItem from="1581193732679" duration="1954000" />
-      <workItem from="1581195737745" duration="349000" />
-    </task>
-    <task id="LOCAL-00001" summary="setup changes">
-      <created>1578523975862</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1578523975862</updated>
+      <workItem from="1581195737745" duration="494000" />
     </task>
     <task id="LOCAL-00002" summary="setup changes">
       <created>1578524110576</created>
@@ -704,7 +696,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581195805118</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="allinone without scpringboot">
+      <created>1581196147439</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1581196147440</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -769,13 +768,13 @@
     </state>
     <state x="237" y="0" width="476" height="713" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580586769956" />
     <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
-    <state x="162" y="23" width="1046" height="715" key="CommitChangelistDialog2" timestamp="1581195804665">
+    <state x="162" y="23" width="1046" height="715" key="CommitChangelistDialog2" timestamp="1581196147183">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580622403875" />
     <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579040156439" />
     <state x="234" y="23" width="1046" height="715" key="CommitChangelistDialog2/0.23.1280.715@0.23.1280.715" timestamp="1581194895883" />
-    <state x="162" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1581195804665" />
+    <state x="162" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1581196147183" />
     <state x="337" y="94" key="EnvironmentVariablesDialog" timestamp="1580572630620">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
