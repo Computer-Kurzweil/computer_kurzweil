@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="50dd0d39-5fd2-4984-9510-b0c73a398b47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/control/CyclicCellularAutomatonControllerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/control/CyclicCellularAutomatonControllerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/view/CyclicCellularAutomatonCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/view/CyclicCellularAutomatonCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/ComputerKurzweilApplicationFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/ComputerKurzweilApplicationFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system.properties" beforeDir="false" afterPath="$PROJECT_DIR$/system.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +39,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -289,6 +293,7 @@
       <workItem from="1580581501791" duration="2794000" />
       <workItem from="1580584344889" duration="301000" />
       <workItem from="1580584677318" duration="38100000" />
+      <workItem from="1581193732679" duration="65000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -779,7 +784,7 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579018992225" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/computer_kurzweil$computer_kurzweil_allinone__clean_assemble_.ic" NAME="computer_kurzweil:allinone [clean assemble] Coverage Results" MODIFIED="1580576565462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/computer_kurzweil$ComputerKurzweilApplication.ic" NAME="ComputerKurzweilApplication Coverage Results" MODIFIED="1580576569130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/computer_kurzweil$computer_kurzweil_allinone__clean_assemble_.ic" NAME="computer_kurzweil:allinone [clean assemble] Coverage Results" MODIFIED="1580576565462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
