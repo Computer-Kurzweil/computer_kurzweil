@@ -2,14 +2,17 @@
 
 function bootRunAllinone() {
     ./gradlew clean allinone:jar
-    jar xvf allinone/build/libs/allinone-0.0.1-SNAPSHOT.jar
+    #jar -tf libs/allinone.jar -C allinone/build
+    #jar cfe allinone/build/libs/allinone-0.0.1-SNAPSHOT.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication
     #java -jar allinone/build/libs/allinone-0.0.1-SNAPSHOT.jar
-    #./gradlew allinone:run
+    #./gradlew clean allinone:run
 }
 
 function bootRunDefault() {
     ./gradlew clean allinone:run
 }
+
+
 
 bootRunAllinone
 #bootRunDefault

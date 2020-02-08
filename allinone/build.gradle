@@ -4,13 +4,15 @@ plugins {
     id 'application' // https://docs.gradle.org/current/userguide/application_plugin.html
 }
 
-group = 'org.woehlke.simulation'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+applicationName = 'kurzweil'
 
 repositories {
-    jcenter()
     mavenCentral()
+}
+
+application {
+    mainClassName = 'org.woehlke.computer.kurzweil.ComputerKurzweilApplication'
+    executableDir = 'custom_bin_dir'
 }
 
 dependencies {
@@ -27,17 +29,4 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
     compileOnly 'javax.validation:validation-api:2.0.1.Final'
     testCompileOnly 'javax.validation:validation-api:2.0.1.Final'
-}
-
-ext {
-    set('snippetsDir', file("build/generated-snippets"))
-}
-
-test {
-    outputs.dir snippetsDir
-    useJUnitPlatform()
-}
-
-application {
-    mainClassName = 'org.woehlke.computer.kurzweil.ComputerKurzweilApplication'
 }

@@ -37,7 +37,7 @@ public class ComputerKurzweilApplication {
     private final ComputerKurzweilApplicationFrame frame;
 
     public ComputerKurzweilApplication() {
-        String conf = "application.yml";
+        String conf = "classpath:application.yml";
         ComputerKurzweilProperties properties;
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
