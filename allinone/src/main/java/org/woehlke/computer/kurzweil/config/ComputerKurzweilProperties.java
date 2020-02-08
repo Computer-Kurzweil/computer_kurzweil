@@ -2,10 +2,10 @@ package org.woehlke.computer.kurzweil.config;
 
 import lombok.*;
 import lombok.extern.java.Log;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.boot.SpringBootConfiguration;
+//import org.springframework.boot.context.properties.ConfigurationProperties;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -14,13 +14,13 @@ import javax.validation.constraints.NotNull;
 @Log
 @ToString
 @EqualsAndHashCode
-@SpringBootConfiguration
-@Configuration
-@Valid
-@Validated
 @NoArgsConstructor
 @AllArgsConstructor
-@ConfigurationProperties("org.woehlke.simulation")
+@Valid
+////@Validated
+//@SpringBootConfiguration
+//@Configuration
+//@ConfigurationProperties("org.woehlke.simulation")
 public class ComputerKurzweilProperties {
 
     @Valid @Getter @Setter public Allinone allinone = new Allinone();
@@ -29,19 +29,19 @@ public class ComputerKurzweilProperties {
     @Valid @Getter @Setter public Cca cca = new Cca();
     @Valid @Getter @Setter public Dla dla = new Dla();
 
-    @Validated
+    ////@Validated
     public static class Allinone {
 
         @Valid @Getter @Setter public Lattice lattice = new Lattice();
         @Valid @Getter @Setter public View view = new View();
 
-        @Validated
+        ////@Validated
         public static class Lattice {
             @NotNull  @Getter @Setter private Integer width;
             @NotNull  @Getter @Setter private Integer height;
         }
 
-        @Validated
+        ////@Validated
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
@@ -55,7 +55,7 @@ public class ComputerKurzweilProperties {
         }
     }
 
-    @Validated
+    ////@Validated
     public static class Mandelbrot {
 
         @Valid
@@ -63,7 +63,7 @@ public class ComputerKurzweilProperties {
         @Setter
         public View view = new View();
 
-        @Validated
+        ////@Validated
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
@@ -75,7 +75,7 @@ public class ComputerKurzweilProperties {
         }
     }
 
-    @Validated
+    ////@Validated
     public static class Evolution {
 
         @Valid @Getter @Setter public View view = new View();
@@ -85,20 +85,20 @@ public class ComputerKurzweilProperties {
         @Valid @Getter @Setter public Food food = new Food();
         @Valid @Getter @Setter public GardenOfEden gardenOfEden = new GardenOfEden();
 
-        @Validated
+        ////@Validated
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
-        @Validated
+        ////@Validated
         public static class Control {
             @NotNull  @Getter @Setter private Integer time2wait;
             @NotNull  @Getter @Setter private Integer exitStatus;
             @NotNull  @Getter @Setter private Integer queueMaxLength;
         }
 
-        @Validated
+        ////@Validated
         public static class CellConf {
             @NotNull  @Getter @Setter private Integer fatMax;
             @NotNull  @Getter @Setter private Integer fatHungerMax;
@@ -110,7 +110,7 @@ public class ComputerKurzweilProperties {
             @NotNull  @Getter @Setter private Integer ageMax;
         }
 
-        @Validated
+        ////@Validated
         public static class Population {
             @NotNull  @Getter @Setter private Integer initialPopulation;
             @NotBlank @Getter @Setter private String panelPopulationStatistics;
@@ -124,7 +124,7 @@ public class ComputerKurzweilProperties {
             @NotBlank @Getter @Setter private String generationYoungestLabel;
         }
 
-        @Validated
+        ////@Validated
         public static class Food {
             @NotNull  @Getter @Setter private Integer foodPerDay;
             @NotNull  @Getter @Setter private Integer foodPerDayFieldColumns;
@@ -134,7 +134,7 @@ public class ComputerKurzweilProperties {
             @NotBlank @Getter @Setter private String panelFood;
         }
 
-        @Validated
+        ////@Validated
         public static class GardenOfEden {
             @NotBlank @Getter @Setter private String panelGardenOfEden;
             @NotNull  @Getter @Setter private Boolean gardenOfEdenEnabled;
@@ -146,12 +146,12 @@ public class ComputerKurzweilProperties {
         }
     }
 
-    @Validated
+    ////@Validated
     public static class Cca {
 
         @Valid @Getter @Setter public View view = new View();
 
-        @Validated
+        //@Validated
         public static class View {
 
             @NotBlank @Getter @Setter private String title;
@@ -159,7 +159,7 @@ public class ComputerKurzweilProperties {
 
             @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
 
-            @Validated
+            //@Validated
             public static class Neighborhood {
                 @NotBlank @Getter @Setter private String title;
                 @NotBlank @Getter @Setter private String typeVonNeumann;
@@ -169,19 +169,19 @@ public class ComputerKurzweilProperties {
         }
     }
 
-    @Validated
+    //@Validated
     public static class Dla {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
-        @Validated
+        //@Validated
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
-        @Validated
+        //@Validated
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
