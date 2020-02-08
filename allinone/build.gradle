@@ -1,16 +1,10 @@
-//plugins {
-//    id 'org.springframework.boot' version '2.2.4.RELEASE'
-//    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-//    id "com.gorylenko.gradle-git-properties" version "2.2.0"
-//    id 'org.asciidoctor.convert' version '2.4.0'
-//    id 'java'
-//}
-
 plugins {
     id 'base'        // https://docs.gradle.org/current/userguide/base_plugin.html
     id 'java'        // https://docs.gradle.org/current/userguide/java_plugin.html
     id 'application' // https://docs.gradle.org/current/userguide/application_plugin.html
     id 'idea'        // https://docs.gradle.org/current/userguide/idea_plugin.html
+    id "com.gorylenko.gradle-git-properties" version "2.2.0"
+    id 'org.asciidoctor.convert' version '2.4.0'
 }
 
 group = 'org.woehlke.simulation'

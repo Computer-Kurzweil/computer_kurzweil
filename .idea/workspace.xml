@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50dd0d39-5fd2-4984-9510-b0c73a398b47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +257,7 @@
       <workItem from="1580584677318" duration="38719000" />
       <workItem from="1580643722609" duration="8168000" />
       <workItem from="1580663097042" duration="25000" />
-      <workItem from="1581198032527" duration="277000" />
+      <workItem from="1581198032527" duration="426000" />
     </task>
     <task id="LOCAL-00001" summary="setup changes">
       <created>1578523975862</created>
@@ -596,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580651226341</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="asdf">
+      <created>1581198392628</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1581198392628</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,10 +663,10 @@
     </state>
     <state x="237" y="0" width="476" height="713" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580586769956" />
     <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
-    <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2" timestamp="1580651226248">
+    <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2" timestamp="1581198392286">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580651226248" />
+    <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1581198392286" />
     <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579040156439" />
     <state x="337" y="94" key="EnvironmentVariablesDialog" timestamp="1580572630620">
       <screen x="0" y="0" width="1366" height="728" />
