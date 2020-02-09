@@ -36,8 +36,17 @@ public enum LatticePointNeighbourhoodPosition {
                 result[1]=EAST;
                 result[2]=SOUTH;
                 result[3]=WEST;
+                break;
             case MOORE_NEIGHBORHOOD:
-                result = LatticePointNeighbourhoodPosition.values();
+                result = new LatticePointNeighbourhoodPosition[8];
+                result[0]=NORTH_WEST;
+                result[1]=NORTH;
+                result[2]=NORTH_EAST;
+                result[3]=EAST;
+                result[4]=SOUTH_EAST;
+                result[5]=SOUTH;
+                result[6]=SOUTH_WEST;
+                result[7]=WEST;
                 break;
             case WOEHLKE_NEIGHBORHOOD:
                 result = new LatticePointNeighbourhoodPosition[6];
