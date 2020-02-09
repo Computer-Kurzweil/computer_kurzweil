@@ -76,7 +76,7 @@ cca:
 dla:
   view:
     title: 'Diffusion Limited Aggregation'
-    subtitle: 'The fractal Geometry of Nature'
+    subtitle: 'Fractals and Random Walk due to Brownian Motion Cluster'
   control:
     threadSleepTime: 50
     numberOfParticles: 30000
