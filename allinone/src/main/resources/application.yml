@@ -76,10 +76,49 @@ cca:
 dla:
   view:
     title: 'Diffusion Limited Aggregation'
-    subtitle: 'Fractals and Random Walk due to Brownian Motion Cluster'
+    subtitle: 'Fractal Random Walk due to Brownian Motion Cluster'
   control:
     threadSleepTime: 50
     numberOfParticles: 30000
-
-
-
+kochsnowflake:
+  view:
+    title: 'Koch Snowflake'
+    subtitle: 'Fractal Koch Snowflake'
+  control:
+    threadSleepTime: 50
+    numberOfParticles: 30000
+samegame:
+  view:
+    title: 'Same Game'
+    subtitle: 'Play the Same Game'
+  control:
+    threadSleepTime: 50
+    numberOfParticles: 30000
+sierpinskitriangle:
+  view:
+    title: 'Sierpinski Triangle'
+    subtitle: 'Fractal Sierpinski Triangle'
+  control:
+    threadSleepTime: 50
+    numberOfParticles: 30000
+tetris:
+  view:
+    title: 'Tetris'
+    subtitle: 'Play Tetris'
+  control:
+    threadSleepTime: 50
+    numberOfParticles: 30000
+turmite:
+  view:
+    title: 'Turmite'
+    subtitle: 'Termites as Turing Machines with 2D Tape'
+  control:
+    threadSleepTime: 50
+    numberOfParticles: 30000
+wator:
+  view:
+    title: 'WaTor'
+    subtitle: 'Population Dynamics on Planet Water Torus'
+  control:
+    threadSleepTime: 50
+    numberOfParticles: 30000

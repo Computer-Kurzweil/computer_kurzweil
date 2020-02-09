@@ -28,6 +28,12 @@ public class ComputerKurzweilProperties {
     @Valid @Getter @Setter public Evolution evolution = new Evolution();
     @Valid @Getter @Setter public Cca cca = new Cca();
     @Valid @Getter @Setter public Dla dla = new Dla();
+    @Valid @Getter @Setter public Kochsnowflake kochsnowflake = new Kochsnowflake();
+    @Valid @Getter @Setter public Samegame samegame = new Samegame();
+    @Valid @Getter @Setter public Sierpinskitriangle sierpinskitriangle = new Sierpinskitriangle();
+    @Valid @Getter @Setter public Tetris tetris = new Tetris();
+    @Valid @Getter @Setter public Turmite turmite = new Turmite();
+    @Valid @Getter @Setter public Wator wator = new Wator();
 
     ////@Validated
     public static class Allinone {
@@ -188,6 +194,113 @@ public class ComputerKurzweilProperties {
         }
     }
 
+    public static class Kochsnowflake {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+        }
+
+        //@Validated
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+            @NotNull  @Getter @Setter private Integer numberOfParticles;
+        }
+    }
+
+    public static class Samegame {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+        }
+
+        //@Validated
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+            @NotNull  @Getter @Setter private Integer numberOfParticles;
+        }
+    }
+
+    public static class Sierpinskitriangle {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+        }
+
+        //@Validated
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+            @NotNull  @Getter @Setter private Integer numberOfParticles;
+        }
+    }
+
+    public static class Tetris {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+        }
+
+        //@Validated
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+            @NotNull  @Getter @Setter private Integer numberOfParticles;
+        }
+    }
+
+    public static class Turmite {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+        }
+
+        //@Validated
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+            @NotNull  @Getter @Setter private Integer numberOfParticles;
+        }
+    }
+
+    public static class Wator {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+        }
+
+        //@Validated
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+            @NotNull  @Getter @Setter private Integer numberOfParticles;
+        }
+    }
 
     public static ComputerKurzweilProperties propertiesFactory(String conf, String jar){
         ComputerKurzweilProperties properties;
