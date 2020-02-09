@@ -11,15 +11,11 @@ import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.view.tabs.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
+@Getter
 public class CyclicCellularAutomatonContext implements AppContext {
 
-    @Getter
     private final CyclicCellularAutomatonCanvas canvas;
-
-    @Getter
     private final CyclicCellularAutomatonTab tab;
-
-    @Getter
     private CyclicCellularAutomatonControllerThread controller;
 
     public CyclicCellularAutomatonContext(

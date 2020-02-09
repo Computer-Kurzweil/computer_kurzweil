@@ -2,8 +2,8 @@ package org.woehlke.computer.kurzweil.apps.evolution.view.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionStatistics;
 
@@ -29,25 +29,25 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
     private JLabel oldCellsLabel;
     private JLabel populationLabel;
 
-  @Getter
-  private final SimulatedEvolutionStateService stateService;
+    @Getter
+    private final ComputerKurzweilApplicationContext ctx;
 
     @Getter
     private final SimulatedEvolutionStatistics statistics;
 
   public SimulatedEvolutionStatisticsPanel(
-      SimulatedEvolutionStateService stateService
+      ComputerKurzweilApplicationContext ctx
   ) {
-      this.stateService = stateService;
+      this.ctx = ctx;
     setLabels();
-    setTextFields(this.stateService.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation());
+    setTextFields(this.ctx.getProperties().getEvolution().getPopulation().getInitialPopulation());
     setColors();
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
     FlowLayout layoutSubPanel = new FlowLayout();
     JPanel subPanel = new JPanel(layoutSubPanel);
-    String borderLabel = this.stateService.getCtx().getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
-    subPanel.setBorder( this.stateService.getCtx().getBorder(borderLabel));
+    String borderLabel = this.ctx.getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
+    subPanel.setBorder( this.ctx.getBorder(borderLabel));
       subPanel.add(youngCellsLabel);
       subPanel.add(youngCellsStatistics);
       subPanel.add(youngAndFatCellsLabel);
@@ -61,11 +61,11 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
       subPanel.add(populationLabel);
       subPanel.add(populationStatistics);
       this.add(subPanel);
-      this.statistics = new SimulatedEvolutionStatistics(  this.stateService.getCtx() );
+      this.statistics = new SimulatedEvolutionStatistics(  this.ctx );
   }
 
     private void setLabels(){
-        ComputerKurzweilProperties.Evolution cfg = this.stateService.getCtx().getProperties().getEvolution();
+        ComputerKurzweilProperties.Evolution cfg = this.ctx.getProperties().getEvolution();
         youngCellsLabel = new JLabel(cfg.getPopulation().getYoungCellsLabel());
         youngAndFatCellsLabel = new JLabel(cfg.getPopulation().getYoungAndFatCellsLabel());
         fullAgeCellsLabel = new JLabel(cfg.getPopulation().getFullAgeCellsLabel());

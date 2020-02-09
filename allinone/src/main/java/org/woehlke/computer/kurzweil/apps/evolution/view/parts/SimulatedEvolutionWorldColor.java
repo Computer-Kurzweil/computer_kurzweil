@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.apps.evolution.model.world;
+package org.woehlke.computer.kurzweil.apps.evolution.view.parts;
 
 import java.awt.*;
 

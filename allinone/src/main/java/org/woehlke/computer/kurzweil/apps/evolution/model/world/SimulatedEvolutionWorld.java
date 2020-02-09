@@ -2,11 +2,13 @@ package org.woehlke.computer.kurzweil.apps.evolution.model.world;
 
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Stepper;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.Cell;
@@ -40,8 +42,8 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
     */
     private List<Cell> cells;
 
-    @Getter
-    private final SimulatedEvolutionStateService stateService;
+    @Getter @Setter
+    private SimulatedEvolutionStateService appCtx;
 
     @Getter
     private final SimulatedEvolutionWorldLattice worldLattice;
@@ -49,18 +51,21 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
     @Getter
     private final SimulatedEvolutionStatistics statisticsContainer;
 
+    @Getter
+    private final ComputerKurzweilApplicationContext ctx;
+
   public SimulatedEvolutionWorld(
-      SimulatedEvolutionStateService stateService
+      ComputerKurzweilApplicationContext ctx
   ) {
-      this.stateService = stateService;
-      this.worldLattice = new SimulatedEvolutionWorldLattice(this.stateService);
-      this.statisticsContainer = new SimulatedEvolutionStatistics(this.stateService.getCtx());
+      this.ctx = ctx;
+      this.worldLattice = new SimulatedEvolutionWorldLattice( this.ctx);
+      this.statisticsContainer = new SimulatedEvolutionStatistics( this.ctx);
       /**
        * Create the initial Population of Bacteria Cells and give them their position in the World.
        */
       cells = new ArrayList<>();
-      for (int i = 0; i < this.stateService.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation(); i++) {
-          Cell cell = new Cell(this.stateService.getCtx());
+      for (int i = 0; i < this.ctx.getProperties().getEvolution().getPopulation().getInitialPopulation(); i++) {
+          Cell cell = new Cell(this.ctx);
           cells.add(cell);
       }
       SimulatedEvolutionPopulationCensus populationCensus = new SimulatedEvolutionPopulationCensus();
@@ -114,7 +119,7 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
   }
 
     public void toggleGardenOfEden() {
-        stateService.toggleGardenOfEden();
+        appCtx.toggleGardenOfEden();
         worldLattice.toggleGardenOfEden();
     }
 

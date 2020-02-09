@@ -1,8 +1,8 @@
 package org.woehlke.computer.kurzweil.apps.evolution.view.widgets;
 
 import lombok.Getter;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,16 +10,17 @@ import java.awt.*;
 @Getter
 public class FoodPanel extends JPanel {
 
-    private final SimulatedEvolutionStateService stateService;
+    @Getter
+    private final ComputerKurzweilApplicationContext ctx;
 
     private final JButton buttonFoodPerDayIncrease;
     private final JButton buttonFoodPerDayDecrease;
     private final JTextField foodPerDayField;
     private final JLabel foodPerDayLabel;
 
-    public FoodPanel(SimulatedEvolutionStateService stateService) {
-        this.stateService = stateService;
-        ComputerKurzweilProperties.Evolution cnf = this.stateService.getCtx().getProperties().getEvolution();
+    public FoodPanel(ComputerKurzweilApplicationContext ctx) {
+        this.ctx = ctx;
+        ComputerKurzweilProperties.Evolution cnf = this.ctx.getProperties().getEvolution();
         String foodPerDayLabelString = cnf.getFood().getFoodPerDayLabel();
         String foodPerDayTextFieldString = cnf.getFood().getFoodPerDay()+"";
         int foodPerDayTextFieldCols = cnf.getFood().getFoodPerDayFieldColumns();

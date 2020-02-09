@@ -7,9 +7,8 @@ import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 import org.woehlke.computer.kurzweil.view.widgets.PanelCopyright;
 import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.evolution.control.SimulatedEvolutionControllerThread;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionButtonRowPanel;
-import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionCanvas;
 import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionStatisticsPanel;
 
 import javax.swing.*;
@@ -91,9 +90,9 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver, St
     }
 
     public void start() {
-        this.canvas = new SimulatedEvolutionCanvas(this.stateService);
-        this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.stateService);
-        this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.stateService);
+        this.canvas = new SimulatedEvolutionCanvas(this.stateService.getCtx());
+        this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.stateService.getCtx());
+        this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.stateService.getCtx());
         this.panelCopyright = new PanelCopyright(this.stateService.getCtx());
         this.panelSubtitle = PanelSubtitle.getPanelSubtitleForSimulatedEvolution(this.stateService.getCtx());
         this.add(this.panelSubtitle);
@@ -103,11 +102,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver, St
         this.add(this.panelButtons);
         showMe();
         this.controllerThread = new SimulatedEvolutionControllerThread(
-            this.stateService,
-            this.canvas.getWorld(),
-            this.statisticsPanel,
-            this.panelButtons,
-            this
+            this.stateService
         );
         this.controllerThread.start();
         //repaint();

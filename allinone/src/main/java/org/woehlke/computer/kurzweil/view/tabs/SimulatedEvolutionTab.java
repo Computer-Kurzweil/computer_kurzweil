@@ -2,10 +2,10 @@ package org.woehlke.computer.kurzweil.view.tabs;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionCanvas;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
-import org.woehlke.computer.kurzweil.trashcan.SimulatedEvolutionTabApp;
 import org.woehlke.computer.kurzweil.view.tabs.common.Tab;
 import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.view.widgets.StartStopButtonsPanel;
@@ -15,43 +15,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @Log
+@Getter
 public class SimulatedEvolutionTab extends Tab implements TabPanel, ActionListener {
 
-    @Getter private final SimulatedEvolutionContext appCtx;
-
-    @Getter private final ComputerKurzweilApplicationContext ctx;
-
-    @Getter private final StartStopButtonsPanel startStopButtonsPanel;
-
-    @Getter private final PanelSubtitle panelSubtitle;
-
-    @Getter private final SimulatedEvolutionTabApp app;
+    private final ComputerKurzweilApplicationContext ctx;
+    private final SimulatedEvolutionStateService appCtx;
+    private final StartStopButtonsPanel startStopButtonsPanel;
+    private final PanelSubtitle panelSubtitle;
+    private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
-        this.ctx=ctx;
-        String subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
-        this.appCtx = new SimulatedEvolutionContext();
-        this.app = new SimulatedEvolutionTabApp(this);
+        this.ctx = ctx;
+        this.canvas = new SimulatedEvolutionCanvas(ctx);
+        this.appCtx = new SimulatedEvolutionStateService(this, canvas);
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
+        String subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
         this.panelSubtitle = new PanelSubtitle(subtitle);
         this.add(this.panelSubtitle);
-        this.add(this.app);
+        this.add(this.canvas);
         this.add(this.startStopButtonsPanel);
     }
 
     @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
     public void update() {
-
+        this.appCtx.update();
     }
 
     @Override
@@ -85,11 +72,21 @@ public class SimulatedEvolutionTab extends Tab implements TabPanel, ActionListen
 
     @Override
     public String getTitle() {
-        return ctx.getProperties().getEvolution().getView().getTitle();
+        return this.appCtx.getCtx().getProperties().getEvolution().getView().getTitle();
     }
 
     @Override
     public String getSubTitle() {
-        return ctx.getProperties().getEvolution().getView().getSubtitle();
+        return this.appCtx.getCtx().getProperties().getEvolution().getView().getSubtitle();
+    }
+
+    @Override
+    public void start() {
+        this.appCtx.start();
+    }
+
+    @Override
+    public void stop() {
+        this.appCtx.stop();
     }
 }

@@ -2,31 +2,25 @@ package org.woehlke.computer.kurzweil.apps.evolution.view.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 
 import javax.swing.*;
 import java.awt.FlowLayout;
 
 @Log
+@Getter
 public class SimulatedEvolutionButtonRowPanel extends JPanel {
 
-    @Getter
-    private final SimulatedEvolutionStateService stateService;
-
-    @Getter
+    private final ComputerKurzweilApplicationContext ctx;
     private final FoodPanel foodPanel;
-
-    @Getter
     private final GardenOfEdenPanel gardenOfEdenPanel;
 
   public SimulatedEvolutionButtonRowPanel(
-      SimulatedEvolutionStateService stateService
+      ComputerKurzweilApplicationContext ctx
   ) {
-      this.stateService=stateService;
-      ComputerKurzweilProperties.Evolution cnf = this.stateService.getCtx().getProperties().getEvolution();
-      this.foodPanel = new FoodPanel(this.stateService);
-      this.gardenOfEdenPanel = new GardenOfEdenPanel(this.stateService);
+      this.ctx = ctx;
+      this.foodPanel = new FoodPanel(this.ctx);
+      this.gardenOfEdenPanel = new GardenOfEdenPanel(this.ctx);
       FlowLayout flowLayout = new FlowLayout();
       this.setLayout(flowLayout);
       this.add(foodPanel);
