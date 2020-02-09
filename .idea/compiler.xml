@@ -6,9 +6,9 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$PROJECT_DIR$/../tools/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar" />
+          <entry name="$USER_HOME$/gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar" />
         </processorPath>
-        <module name="computer_kurzweil.allinone.main" />
+        <module name="IdeaProjects.computer_kurzweil.allinone.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -36,6 +36,8 @@
       <module name="computer_kurzweil.turmite.test" target="12" />
       <module name="computer_kurzweil.wator.main" target="12" />
       <module name="computer_kurzweil.wator.test" target="12" />
+      <module name="IdeaProjects.computer_kurzweil.allinone.main" target="13" />
+      <module name="IdeaProjects.computer_kurzweil.allinone.test" target="13" />
       <module name="org.woehlke.simulation.computer_kurzweil.allinone.main" target="11" />
       <module name="org.woehlke.simulation.computer_kurzweil.allinone.test" target="11" />
     </bytecodeTargetLevel>

@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50dd0d39-5fd2-4984-9510-b0c73a398b47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/ComputerKurzweilApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/ComputerKurzweilApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allinone/system.properties" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/system.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system.properties" beforeDir="false" afterPath="$PROJECT_DIR$/system.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/view/CyclicCellularAutomatonCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/apps/cca/view/CyclicCellularAutomatonCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/CyclicCellularAutomatonTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/allinone/src/main/java/org/woehlke/computer/kurzweil/view/tabs/CyclicCellularAutomatonTab.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,65 +41,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="distribution" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="shadow" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="computer_kurzweil" type="f1a62948:ProjectNode" />
-                <item name="allinone" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -166,11 +104,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/allinone/build" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32988507" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -179,14 +120,14 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.woehlke.simulation" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\mandelbrot" />
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\dla" />
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone\src\main\java\org\woehlke\simulation\cyclic\cellular\automaton" />
       <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil\allinone" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tw\IdeaProjects\computer_kurzweil" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -201,7 +142,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.allinone.jar">
+  <component name="RunManager" selected="Gradle.computer_kurzweil:allinone [assemble]">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -223,7 +164,26 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="computer_kurzweil:allinone [clean assemble]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+    <configuration name="computer_kurzweil:allinone [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="computer_kurzweil:allinone [clean compileJava compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/allinone" />
@@ -235,7 +195,8 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
-            <option value="assemble" />
+            <option value="compileJava" />
+            <option value="compileTestJava" />
           </list>
         </option>
         <option name="vmOptions" value="" />
@@ -243,17 +204,13 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="allinone.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/allinone/build/libs/allinone.jar" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Gradle.computer_kurzweil:allinone [clean assemble]" />
-      <item itemvalue="JAR Application.allinone.jar" />
+      <item itemvalue="Gradle.computer_kurzweil:allinone [clean compileJava compileTestJava]" />
+      <item itemvalue="Gradle.computer_kurzweil:allinone [assemble]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.allinone.jar" />
+        <item itemvalue="Gradle.computer_kurzweil:allinone [assemble]" />
       </list>
     </recent_temporary>
   </component>
@@ -262,7 +219,12 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -302,10 +264,44 @@
       <workItem from="1580571259591" duration="1398000" />
       <workItem from="1580581501791" duration="2794000" />
       <workItem from="1580584344889" duration="301000" />
-      <workItem from="1580584677318" duration="38719000" />
-      <workItem from="1580643722609" duration="8168000" />
-      <workItem from="1580663097042" duration="25000" />
-      <workItem from="1581198032527" duration="15354000" />
+      <workItem from="1580584677318" duration="38100000" />
+      <workItem from="1581193732679" duration="1954000" />
+      <workItem from="1581195737745" duration="1308000" />
+    </task>
+    <task id="LOCAL-00004" summary="setup changes">
+      <created>1578526158618</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578526158618</updated>
+    </task>
+    <task id="LOCAL-00005" summary="switch from one app to allinone app">
+      <created>1578871073984</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1578871073984</updated>
+    </task>
+    <task id="LOCAL-00006" summary="switch from one app to allinone app">
+      <created>1578871533043</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1578871533043</updated>
+    </task>
+    <task id="LOCAL-00007" summary="switch from one app to allinone app">
+      <created>1578871717463</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1578871717463</updated>
+    </task>
+    <task id="LOCAL-00008" summary="switch from one app to allinone app">
+      <created>1578873131259</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1578873131259</updated>
     </task>
     <task id="LOCAL-00009" summary="switch from one app to allinone app">
       <created>1578873584606</created>
@@ -560,97 +556,62 @@
       <updated>1580622404221</updated>
     </task>
     <task id="LOCAL-00045" summary="asdf">
-      <created>1580622847059</created>
+      <created>1581193803975</created>
       <option name="number" value="00045" />
       <option name="presentableId" value="LOCAL-00045" />
       <option name="project" value="LOCAL" />
-      <updated>1580622847059</updated>
+      <updated>1581193803975</updated>
     </task>
-    <task id="LOCAL-00046" summary="asdf">
-      <created>1580650951150</created>
+    <task id="LOCAL-00046" summary="java13">
+      <created>1581194802264</created>
       <option name="number" value="00046" />
       <option name="presentableId" value="LOCAL-00046" />
       <option name="project" value="LOCAL" />
-      <updated>1580650951150</updated>
+      <updated>1581194802264</updated>
     </task>
-    <task id="LOCAL-00047" summary="asdf">
-      <created>1580651109015</created>
+    <task id="LOCAL-00047" summary="java13">
+      <created>1581194865883</created>
       <option name="number" value="00047" />
       <option name="presentableId" value="LOCAL-00047" />
       <option name="project" value="LOCAL" />
-      <updated>1580651109016</updated>
+      <updated>1581194865883</updated>
     </task>
-    <task id="LOCAL-00048" summary="asdf">
-      <created>1580651226341</created>
+    <task id="LOCAL-00048" summary="java13">
+      <created>1581194896080</created>
       <option name="number" value="00048" />
       <option name="presentableId" value="LOCAL-00048" />
       <option name="project" value="LOCAL" />
-      <updated>1580651226341</updated>
+      <updated>1581194896080</updated>
     </task>
-    <task id="LOCAL-00049" summary="asdf">
-      <created>1581198392628</created>
+    <task id="LOCAL-00049" summary="allinone without scpringboot">
+      <created>1581195805118</created>
       <option name="number" value="00049" />
       <option name="presentableId" value="LOCAL-00049" />
       <option name="project" value="LOCAL" />
-      <updated>1581198392628</updated>
+      <updated>1581195805118</updated>
     </task>
-    <task id="LOCAL-00050" summary="asdf">
-      <created>1581198556828</created>
+    <task id="LOCAL-00050" summary="allinone without scpringboot">
+      <created>1581196147439</created>
       <option name="number" value="00050" />
       <option name="presentableId" value="LOCAL-00050" />
       <option name="project" value="LOCAL" />
-      <updated>1581198556829</updated>
+      <updated>1581196147440</updated>
     </task>
-    <task id="LOCAL-00051" summary="asdf">
-      <created>1581199052325</created>
+    <task id="LOCAL-00051" summary="allinone without scpringboot">
+      <created>1581196252563</created>
       <option name="number" value="00051" />
       <option name="presentableId" value="LOCAL-00051" />
       <option name="project" value="LOCAL" />
-      <updated>1581199052325</updated>
+      <updated>1581196252563</updated>
     </task>
-    <task id="LOCAL-00052" summary="asdf">
-      <created>1581199135608</created>
+    <task id="LOCAL-00052" summary="allinone without scpringboot">
+      <created>1581196601102</created>
       <option name="number" value="00052" />
       <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1581199135608</updated>
+      <updated>1581196601102</updated>
     </task>
-    <task id="LOCAL-00053" summary="asdf">
-      <created>1581199358114</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1581199358114</updated>
-    </task>
-    <task id="LOCAL-00054" summary="remove springboot">
-      <created>1581200464776</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1581200464776</updated>
-    </task>
-    <task id="LOCAL-00055" summary="remove springboot">
-      <created>1581200886874</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1581200886874</updated>
-    </task>
-    <task id="LOCAL-00056" summary="remove springboot">
-      <created>1581201338618</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1581201338618</updated>
-    </task>
-    <task id="LOCAL-00057" summary="remove springboot">
-      <created>1581204267600</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1581204267600</updated>
-    </task>
-    <option name="localTasksCounter" value="58" />
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,8 +623,9 @@
     <MESSAGE value="setup changes" />
     <MESSAGE value="switch from one app to allinone app" />
     <MESSAGE value="asdf" />
-    <MESSAGE value="remove springboot" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove springboot" />
+    <MESSAGE value="java13" />
+    <MESSAGE value="allinone without scpringboot" />
+    <option name="LAST_COMMIT_MESSAGE" value="allinone without scpringboot" />
   </component>
   <component name="WindowStateProjectService">
     <state x="341" y="0" width="741" height="741" key="#ComputerKurzweilApplication" timestamp="1580579738508">
@@ -671,20 +633,22 @@
     </state>
     <state x="341" y="0" width="697" height="728" key="#ComputerKurzweilApplication/0.0.1366.728@0.0.1366.728" timestamp="1580572750184" />
     <state x="341" y="0" width="741" height="741" key="#ComputerKurzweilApplication/0.0.1366.741@0.0.1366.741" timestamp="1580579738508" />
-    <state x="552" y="179" width="1234" height="682" key="#Project_Structure" timestamp="1578858946280">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="368" y="146" width="823" height="548" key="#Project_Structure" timestamp="1581193823041">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="552" y="179" width="1234" height="682" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1578858946280" />
-    <state x="0" y="19" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581198338642">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="368" y="146" width="823" height="548" key="#Project_Structure/0.23.1280.716@0.23.1280.716" timestamp="1581193823041" />
+    <state x="139" y="36" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581196484805">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572674395" />
-    <state x="0" y="19" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.741@0.0.1366.741" timestamp="1581198338642" />
+    <state x="0" y="19" width="1366" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.741@0.0.1366.741" timestamp="1580579803260" />
     <state x="193" y="27" width="1531" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578876357808" />
-    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser" timestamp="1580650903364">
+    <state x="139" y="36" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1581196484805" />
+    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser" timestamp="1580620861964">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1580650903364" />
+    <state x="434" y="145" width="374" height="570" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1580620861964" />
     <state x="610" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579033401047" />
     <state x="281" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1578525204381">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -712,103 +676,123 @@
     </state>
     <state x="237" y="0" width="476" height="713" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580586769956" />
     <state x="333" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578896430100" />
-    <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2" timestamp="1581204258904">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="162" y="23" width="1046" height="715" key="CommitChangelistDialog2" timestamp="1581196600826">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1581204258904" />
+    <state x="263" y="0" width="1046" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580622403875" />
     <state x="370" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1579040156439" />
-    <state x="337" y="94" key="EnvironmentVariablesDialog" timestamp="1580572630620">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="234" y="23" width="1046" height="715" key="CommitChangelistDialog2/0.23.1280.715@0.23.1280.715" timestamp="1581194895883" />
+    <state x="162" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1581196600826" />
+    <state x="316" y="115" key="EnvironmentVariablesDialog" timestamp="1581196422274">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="337" y="94" key="EnvironmentVariablesDialog/0.0.1366.728@0.0.1366.728" timestamp="1580572630620" />
     <state x="473" y="134" key="EnvironmentVariablesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578870818263" />
+    <state x="316" y="115" key="EnvironmentVariablesDialog/0.23.1280.716@0.23.1280.716" timestamp="1581196422274" />
     <state x="442" y="106" width="424" height="479" key="FileChooserDialogImpl" timestamp="1580586729843">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="442" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1580572601796" />
     <state x="442" y="106" width="424" height="479" key="FileChooserDialogImpl/0.0.1366.741@0.0.1366.741" timestamp="1580586729843" />
     <state x="621" y="149" width="689" height="489" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1578856870899" />
-    <state width="1324" height="430" key="GridCell.Tab.0.bottom" timestamp="1581204368176">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="380" key="GridCell.Tab.0.bottom" timestamp="1581196567215">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
-    <state width="1324" height="430" key="GridCell.Tab.0.bottom/0.0.1366.741@0.0.1366.741" timestamp="1581204368176" />
+    <state width="906" height="425" key="GridCell.Tab.0.bottom/0.0.1366.741@0.0.1366.741" timestamp="1580581385678" />
     <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
-    <state width="1324" height="430" key="GridCell.Tab.0.center" timestamp="1581204368176">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="242" key="GridCell.Tab.0.bottom/0.23.1280.715@0.23.1280.715" timestamp="1581195309779" />
+    <state width="1238" height="380" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1581196567215" />
+    <state width="1238" height="380" key="GridCell.Tab.0.center" timestamp="1581196567214">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
-    <state width="1324" height="430" key="GridCell.Tab.0.center/0.0.1366.741@0.0.1366.741" timestamp="1581204368176" />
+    <state width="906" height="425" key="GridCell.Tab.0.center/0.0.1366.741@0.0.1366.741" timestamp="1580581385677" />
     <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
-    <state width="1324" height="430" key="GridCell.Tab.0.left" timestamp="1581204368175">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="242" key="GridCell.Tab.0.center/0.23.1280.715@0.23.1280.715" timestamp="1581195309778" />
+    <state width="1238" height="380" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1581196567214" />
+    <state width="1238" height="380" key="GridCell.Tab.0.left" timestamp="1581196567213">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
-    <state width="1324" height="430" key="GridCell.Tab.0.left/0.0.1366.741@0.0.1366.741" timestamp="1581204368175" />
+    <state width="906" height="425" key="GridCell.Tab.0.left/0.0.1366.741@0.0.1366.741" timestamp="1580581385677" />
     <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
-    <state width="1324" height="430" key="GridCell.Tab.0.right" timestamp="1581204368176">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="242" key="GridCell.Tab.0.left/0.23.1280.715@0.23.1280.715" timestamp="1581195309777" />
+    <state width="1238" height="380" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1581196567213" />
+    <state width="1238" height="380" key="GridCell.Tab.0.right" timestamp="1581196567214">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="1323" height="419" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580572750570" />
-    <state width="1324" height="430" key="GridCell.Tab.0.right/0.0.1366.741@0.0.1366.741" timestamp="1581204368176" />
+    <state width="906" height="425" key="GridCell.Tab.0.right/0.0.1366.741@0.0.1366.741" timestamp="1580581385677" />
     <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579072533181" />
-    <state width="906" height="425" key="GridCell.Tab.1.bottom" timestamp="1580581385678">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="242" key="GridCell.Tab.0.right/0.23.1280.715@0.23.1280.715" timestamp="1581195309778" />
+    <state width="1238" height="380" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1581196567214" />
+    <state width="1238" height="211" key="GridCell.Tab.1.bottom" timestamp="1581194172091">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="906" height="425" key="GridCell.Tab.1.bottom/0.0.1366.741@0.0.1366.741" timestamp="1580581385678" />
-    <state width="906" height="425" key="GridCell.Tab.1.center" timestamp="1580581385678">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="211" key="GridCell.Tab.1.bottom/0.23.1280.716@0.23.1280.716" timestamp="1581194172091" />
+    <state width="1238" height="211" key="GridCell.Tab.1.center" timestamp="1581194172089">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="906" height="425" key="GridCell.Tab.1.center/0.0.1366.741@0.0.1366.741" timestamp="1580581385678" />
-    <state width="906" height="425" key="GridCell.Tab.1.left" timestamp="1580581385678">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="211" key="GridCell.Tab.1.center/0.23.1280.716@0.23.1280.716" timestamp="1581194172089" />
+    <state width="1238" height="211" key="GridCell.Tab.1.left" timestamp="1581194172088">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="906" height="425" key="GridCell.Tab.1.left/0.0.1366.741@0.0.1366.741" timestamp="1580581385678" />
-    <state width="906" height="425" key="GridCell.Tab.1.right" timestamp="1580581385678">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="211" key="GridCell.Tab.1.left/0.23.1280.716@0.23.1280.716" timestamp="1581194172088" />
+    <state width="1238" height="211" key="GridCell.Tab.1.right" timestamp="1581194172090">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state width="906" height="425" key="GridCell.Tab.1.right/0.0.1366.741@0.0.1366.741" timestamp="1580581385678" />
-    <state x="478" y="164" width="567" height="557" key="MultipleFileMergeDialog" timestamp="1581198047288">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state width="1238" height="211" key="GridCell.Tab.1.right/0.23.1280.716@0.23.1280.716" timestamp="1581194172090" />
+    <state x="448" y="181" key="MultipleFileMergeDialog" timestamp="1581214008164">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="478" y="161" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1580568815876" />
-    <state x="478" y="164" width="567" height="557" key="MultipleFileMergeDialog/0.0.1366.741@0.0.1366.741" timestamp="1581198047288" />
     <state x="672" y="236" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579039283557" />
+    <state x="448" y="181" key="MultipleFileMergeDialog/0.23.1280.716@0.23.1280.716" timestamp="1581214008164" />
     <state x="153" y="165" width="1203" height="567" key="RollbackChangesDialog" timestamp="1580594839973">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="153" y="165" width="1203" height="567" key="RollbackChangesDialog/0.0.1366.741@0.0.1366.741" timestamp="1580594839973" />
     <state x="410" y="231" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578902685672" />
-    <state x="163" y="0" width="1428" height="714" key="SettingsEditor" timestamp="1580571396515">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="0" y="23" width="1280" height="716" key="SettingsEditor" timestamp="1581196519354">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1580571396515" />
     <state x="56" y="176" width="1428" height="714" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578870982019" />
-    <state x="102" y="180" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1580622856061">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="0" y="23" key="SettingsEditor/0.23.1280.715@0.23.1280.715" timestamp="1581195307170" />
+    <state x="0" y="23" width="1280" height="716" key="SettingsEditor/0.23.1280.716@0.23.1280.716" timestamp="1581196519354" />
+    <state x="96" y="197" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1581196609990">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state x="102" y="180" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580622856061" />
+    <state x="102" y="180" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580619861605" />
     <state x="143" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579040181657" />
+    <state x="96" y="197" key="Vcs.Push.Dialog.v2/0.23.1280.716@0.23.1280.716" timestamp="1581196609990" />
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog" timestamp="1578844172030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="365" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578844172030" />
-    <state x="176" y="245" key="com.intellij.ide.util.TipDialog" timestamp="1580663110557">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="165" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1581195737644">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="176" y="241" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1580571269539" />
-    <state x="176" y="245" key="com.intellij.ide.util.TipDialog/0.0.1366.741@0.0.1366.741" timestamp="1580663110557" />
+    <state x="176" y="245" key="com.intellij.ide.util.TipDialog/0.0.1366.741@0.0.1366.741" timestamp="1580584676923" />
     <state x="248" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579072517594" />
+    <state x="165" y="260" key="com.intellij.ide.util.TipDialog/0.23.1280.716@0.23.1280.716" timestamp="1581195737644" />
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578866183417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1578866183417" />
-    <state x="364" y="311" width="405" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581201645568">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="341" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581214014868">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="364" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1580572733126" />
-    <state x="364" y="311" width="405" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.741@0.0.1366.741" timestamp="1581201645568" />
+    <state x="364" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.741@0.0.1366.741" timestamp="1580578269168" />
     <state x="512" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579039264406" />
+    <state x="341" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.716@0.23.1280.716" timestamp="1581214014868" />
     <state x="707" y="239" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1578903458451">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -823,17 +807,18 @@
     </state>
     <state x="499" y="0" width="500" height="736" key="refactoring.ChangeSignatureDialog/0.0.1366.741@0.0.1366.741" timestamp="1580606593646" />
     <state x="702" y="139" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579032192934" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1579034578236">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="411" y="188" width="670" height="467" key="run.anything.popup" timestamp="1581196499038">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579034578236" />
+    <state x="411" y="188" width="670" height="467" key="run.anything.popup/0.23.1280.716@0.23.1280.716" timestamp="1581196499038" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579018992225">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579018992225" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/computer_kurzweil$computer_kurzweil_allinone__clean_assemble_.ic" NAME="computer_kurzweil:allinone [clean assemble] Coverage Results" MODIFIED="1580576565462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/computer_kurzweil$ComputerKurzweilApplication.ic" NAME="ComputerKurzweilApplication Coverage Results" MODIFIED="1580576569130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/computer_kurzweil$computer_kurzweil_allinone__clean_assemble_.ic" NAME="computer_kurzweil:allinone [clean assemble] Coverage Results" MODIFIED="1580576565462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

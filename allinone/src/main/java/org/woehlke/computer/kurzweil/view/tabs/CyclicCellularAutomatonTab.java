@@ -39,14 +39,6 @@ public class CyclicCellularAutomatonTab extends JPanel implements TabPanel {
         this.add(this.canvas.getStartStopButtonsPanel());
         this.appCtx = new CyclicCellularAutomatonContext(this, this.controller, this.canvas);
         this.controller.setAppCtx(  this.appCtx );
-        /*
-        UserSlot[] slotsModel = {this.canvas};
-        UserSlot[] slotsGui = {this.canvas, this.panelButtons, this};
-        UserSlot[] slotsControllers = {this.controller};
-        this.appCtx.registerSignalsAndSlots(UserSignal.getModels(), slotsModel);
-        this.appCtx.registerSignalsAndSlots(UserSignal.getGui(), slotsGui);
-        this.appCtx.registerSignalsAndSlots(UserSignal.getControllerThreads(), slotsControllers);
-        */
     }
 
     @Override
