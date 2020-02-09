@@ -3,9 +3,8 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
-import org.woehlke.computer.kurzweil.control.ctx.Stepper;
-import org.woehlke.computer.kurzweil.control.commons.Startable;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.commons.Stepper;
+import org.woehlke.computer.kurzweil.commons.Startable;
 
 
 /**

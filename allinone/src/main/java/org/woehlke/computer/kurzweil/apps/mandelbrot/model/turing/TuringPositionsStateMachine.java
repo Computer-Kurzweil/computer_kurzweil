@@ -2,10 +2,9 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringDirection;
-import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.Startable;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

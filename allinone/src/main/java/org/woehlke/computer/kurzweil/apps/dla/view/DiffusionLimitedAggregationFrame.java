@@ -3,8 +3,8 @@ package org.woehlke.computer.kurzweil.apps.dla.view;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.commons.Startable;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.apps.dla.control.DiffusionLimitedAggregationControllerThread;
 

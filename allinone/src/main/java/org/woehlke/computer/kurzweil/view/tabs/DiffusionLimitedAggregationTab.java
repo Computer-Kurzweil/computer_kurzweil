@@ -4,18 +4,18 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.dla.ctx.DiffusionLimitedAggregationContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.apps.DiffusionLimitedAggregationTabApp;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
+import org.woehlke.computer.kurzweil.trashcan.DiffusionLimitedAggregationTabApp;
+import org.woehlke.computer.kurzweil.view.tabs.common.Tab;
 import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.view.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @Log
-public class DiffusionLimitedAggregationTab extends JPanel implements TabPanel, ActionListener {
+public class DiffusionLimitedAggregationTab extends Tab implements TabPanel, ActionListener {
 
     @Getter
     private final DiffusionLimitedAggregationTabApp app;
@@ -87,5 +87,15 @@ public class DiffusionLimitedAggregationTab extends JPanel implements TabPanel, 
             this.startStopButtonsPanel.getStopButton().setEnabled(false);
             this.stop();
         }
+    }
+
+    @Override
+    public String getTitle() {
+        return ctx.getProperties().getDla().getView().getTitle();
+    }
+
+    @Override
+    public String getSubTitle() {
+        return ctx.getProperties().getDla().getView().getSubtitle();
     }
 }

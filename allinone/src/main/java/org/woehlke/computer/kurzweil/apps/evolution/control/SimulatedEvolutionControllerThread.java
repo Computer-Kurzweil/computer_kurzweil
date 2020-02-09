@@ -7,8 +7,8 @@ import org.woehlke.computer.kurzweil.apps.evolution.model.world.SimulatedEvoluti
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionStatisticsPanel;
-import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.commons.ControllerThread;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 
 import java.awt.event.*;
 

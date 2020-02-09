@@ -1,11 +1,11 @@
 package org.woehlke.computer.kurzweil.apps.evolution.model.world;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStateService;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
-import org.woehlke.computer.kurzweil.control.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.Startable;
 
 
 /**

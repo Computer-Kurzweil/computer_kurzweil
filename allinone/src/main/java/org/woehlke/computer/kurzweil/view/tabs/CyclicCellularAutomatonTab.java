@@ -8,15 +8,14 @@ import org.woehlke.computer.kurzweil.apps.cca.ctx.CyclicCellularAutomatonContext
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.AppType;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.view.common.PanelBorder;
-import org.woehlke.computer.kurzweil.view.tabs.common.TabAppLayout;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
+import org.woehlke.computer.kurzweil.view.layouts.PanelBorder;
+import org.woehlke.computer.kurzweil.view.tabs.common.Tab;
+import org.woehlke.computer.kurzweil.view.tabs.common.TabLayout;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
-import javax.swing.*;
-
 @Log
-public class CyclicCellularAutomatonTab extends JPanel implements TabPanel {
+public class CyclicCellularAutomatonTab extends Tab implements TabPanel {
 
     @Getter private CyclicCellularAutomatonCanvas canvas;
     @Getter private CyclicCellularAutomatonControllerThread controller;
@@ -29,7 +28,7 @@ public class CyclicCellularAutomatonTab extends JPanel implements TabPanel {
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.setBorder(PanelBorder.getBorder());
-        this.setLayout(new TabAppLayout(this));
+        this.setLayout(new TabLayout(this));
         this.setBounds(ctx.getFrameBounds());
         this.canvas = new CyclicCellularAutomatonCanvas( this.ctx);
         this.controller = new CyclicCellularAutomatonControllerThread(this.ctx);
@@ -93,4 +92,13 @@ public class CyclicCellularAutomatonTab extends JPanel implements TabPanel {
         log.info("handleUserSignal: "+userSignal.name());
     }
 
+    @Override
+    public String getTitle() {
+        return ctx.getProperties().getCca().getView().getTitle();
+    }
+
+    @Override
+    public String getSubTitle() {
+        return ctx.getProperties().getCca().getView().getSubtitle();
+    }
 }

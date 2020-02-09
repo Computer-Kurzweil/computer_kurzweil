@@ -1,13 +1,12 @@
 package org.woehlke.computer.kurzweil.apps.cca.ctx;
 
-import lombok.Delegate;
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.apps.AppType;
 import org.woehlke.computer.kurzweil.apps.cca.control.CyclicCellularAutomatonControllerThread;
 import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas;
-import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
-import org.woehlke.computer.kurzweil.control.ctx.Stepper;
-import org.woehlke.computer.kurzweil.control.ctx.AppContext;
+import org.woehlke.computer.kurzweil.commons.ControllerThread;
+import org.woehlke.computer.kurzweil.commons.Stepper;
+import org.woehlke.computer.kurzweil.commons.AppContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.view.tabs.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;

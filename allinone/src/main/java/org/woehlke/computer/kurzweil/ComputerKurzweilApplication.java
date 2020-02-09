@@ -5,11 +5,10 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.woehlke.computer.kurzweil.config.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;

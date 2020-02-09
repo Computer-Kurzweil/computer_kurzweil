@@ -4,18 +4,18 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.apps.SimulatedEvolutionTabApp;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
+import org.woehlke.computer.kurzweil.trashcan.SimulatedEvolutionTabApp;
+import org.woehlke.computer.kurzweil.view.tabs.common.Tab;
 import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.view.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @Log
-public class SimulatedEvolutionTab extends JPanel implements TabPanel, ActionListener {
+public class SimulatedEvolutionTab extends Tab implements TabPanel, ActionListener {
 
     @Getter private final SimulatedEvolutionContext appCtx;
 
@@ -81,5 +81,15 @@ public class SimulatedEvolutionTab extends JPanel implements TabPanel, ActionLis
             this.startStopButtonsPanel.getStopButton().setEnabled(false);
             this.stop();
         }
+    }
+
+    @Override
+    public String getTitle() {
+        return ctx.getProperties().getEvolution().getView().getTitle();
+    }
+
+    @Override
+    public String getSubTitle() {
+        return ctx.getProperties().getEvolution().getView().getSubtitle();
     }
 }

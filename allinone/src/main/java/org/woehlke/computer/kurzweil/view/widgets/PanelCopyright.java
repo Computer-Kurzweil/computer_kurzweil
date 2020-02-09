@@ -4,8 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.control.commons.AppGuiComponent;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
+import org.woehlke.computer.kurzweil.commons.AppGuiComponent;
 
 import javax.swing.*;
 

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.view.common.PanelBorder;
+import org.woehlke.computer.kurzweil.view.layouts.PanelBorder;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

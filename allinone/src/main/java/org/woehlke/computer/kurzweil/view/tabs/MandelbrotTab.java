@@ -4,18 +4,18 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.ctx.MandelbrotContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.apps.MandelbrotTabApp;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
+import org.woehlke.computer.kurzweil.trashcan.MandelbrotTabApp;
+import org.woehlke.computer.kurzweil.view.tabs.common.Tab;
 import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.view.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @Log
-public class MandelbrotTab extends JPanel implements TabPanel, ActionListener {
+public class MandelbrotTab extends Tab implements TabPanel, ActionListener {
 
     @Getter
     private final MandelbrotTabApp app;
@@ -84,5 +84,15 @@ public class MandelbrotTab extends JPanel implements TabPanel, ActionListener {
             this.startStopButtonsPanel.getStopButton().setEnabled(false);
             this.stop();
         }
+    }
+
+    @Override
+    public String getTitle() {
+        return ctx.getProperties().getMandelbrot().getView().getTitle();
+    }
+
+    @Override
+    public String getSubTitle() {
+        return ctx.getProperties().getMandelbrot().getView().getSubtitle();
     }
 }

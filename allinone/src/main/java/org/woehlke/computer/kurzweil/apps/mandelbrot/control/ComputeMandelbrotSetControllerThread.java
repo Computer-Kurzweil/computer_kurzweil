@@ -6,8 +6,8 @@ import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.MandelbrotFrame;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets.MandelbrotCanvas;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.view.widgets.MandelbrotPanelButtons;
-import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
+import org.woehlke.computer.kurzweil.commons.ControllerThread;
+import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 
 @Log
 public class ComputeMandelbrotSetControllerThread extends Thread implements Runnable, ControllerThread {

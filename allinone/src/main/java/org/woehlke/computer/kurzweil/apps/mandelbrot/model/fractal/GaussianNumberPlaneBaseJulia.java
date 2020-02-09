@@ -3,7 +3,6 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal;
 
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.control.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.FractalSetType;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.*;
