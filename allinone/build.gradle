@@ -2,31 +2,57 @@ plugins {
     id 'base'        // https://docs.gradle.org/current/userguide/base_plugin.html
     id 'java'        // https://docs.gradle.org/current/userguide/java_plugin.html
     id 'application' // https://docs.gradle.org/current/userguide/application_plugin.html
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 applicationName = 'kurzweil'
 
 repositories {
+    jcenter()
     mavenCentral()
+    gradlePluginPortal()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
 }
 
 application {
+    applicationName = 'kurzweil'
     mainClassName = 'org.woehlke.computer.kurzweil.ComputerKurzweilApplication'
-    executableDir = 'custom_bin_dir'
+}
+
+shadowJar {
+    manifest {
+        attributes "Main-Class": "org.woehlke.computer.kurzweil.ComputerKurzweilApplication"
+    }
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "org.woehlke.computer.kurzweil.ComputerKurzweilApplication"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 dependencies {
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.2'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.2'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.10.2'
-    implementation 'org.apache.commons:commons-lang3:3.9'
-    implementation 'org.yaml:snakeyaml:1.25'
-    implementation 'com.google.guava:guava:28.0-jre'
-    testImplementation 'junit:junit:4.12'
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
     testCompileOnly 'org.projectlombok:lombok:1.18.12'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
-    compileOnly 'javax.validation:validation-api:2.0.1.Final'
-    testCompileOnly 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.8'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-properties:2.9.8'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.8'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-ion:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'org.yaml:snakeyaml:1.17'
+    implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    testCompile 'org.codehaus.groovy:groovy-backports-compat23:2.4.15'
+    testImplementation 'junit:junit:4.12'
 }
+

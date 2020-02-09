@@ -10,6 +10,9 @@ import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
 
 import java.io.File;
+import java.io.InputStream;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 
 /**
@@ -37,11 +40,15 @@ public class ComputerKurzweilApplication {
     private final ComputerKurzweilApplicationFrame frame;
 
     public ComputerKurzweilApplication() {
-        String conf = "classpath:application.yml";
+        String conf = "application.yml";
+        String jar = "allinone/build/libs/allinone-all.jar";
         ComputerKurzweilProperties properties;
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
-            properties = mapper.readValue(new File(conf), ComputerKurzweilProperties.class);
+            JarFile jarFile = new JarFile(jar);
+            JarEntry entry = jarFile.getJarEntry(conf);
+            InputStream input = jarFile.getInputStream(entry);
+            properties = mapper.readValue(input, ComputerKurzweilProperties.class);
             System.out.println(ReflectionToStringBuilder.toString(properties, ToStringStyle.MULTI_LINE_STYLE));
         } catch (Exception e) {
             // TODO Auto-generated catch block

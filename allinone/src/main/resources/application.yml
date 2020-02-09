@@ -1,88 +1,85 @@
-org:
-  woehlke:
-    simulation:
-      allinone:
-        lattice:
-          width: 640
-          height: 400
-        view:
-          title: 'Computer Kurzweil'
-          subtitle: 'Scientific Imfotainment'
-          copyright: '(c) 2020 Thomas Woehlke'
-          borderPadding: 5
-          titleHeight: 30
-          startStopp: 'Start / Stop'
-          start: 'Start'
-          stop: 'Stop'
-          info: 'Info'
-      mandelbrot:
-        view:
-          title: 'Mandelbrot Set'
-          subtitle: 'Fractal Mandelbrot Set drawn by a Turing Machine'
-          buttonsZoom: 'Zoom In'
-          buttonsZoomOut: 'Zoom Out'
-          buttonsSwitch: 'Mandelbrot Set <-> Julia Set'
-          buttonsZoomLabel: 'Zoom'
-          buttonsLabel: 'Choose Mouse Click Mode'
-      evolution:
-        view:
-          title: 'Simulated Evolution'
-          subtitle: 'Artificial Life Simulation of Bacteria Motion depending on DNA'
-        control:
-          time2wait: 100
-          exitStatus: 0
-          queueMaxLength: 1000
-        cellConf:
-          fatMax: 2000
-          fatHungerMax: 1000
-          fatMinimumForSex: 800
-          fatAtBirth: 500
-          fatPerFood: 25
-          ageOfAdulthood: 200
-          ageOld: 800
-          ageMax: 1000
-        population:
-          initialPopulation: 20
-          panelPopulationStatistics: 'Statistics'
-          youngCellsLabel: 'young'
-          youngAndFatCellsLabel: 'young and Fat'
-          fullAgeCellsLabel: 'full Age'
-          hungryCellsLabel: 'hungry'
-          oldCellsLabel: 'old'
-          populationLabel: 'population'
-          generationOldestLabel: 'asdf'
-          generationYoungestLabel: 'fvjbfdbvf'
-        food:
-          foodPerDay: 20
-          foodPerDayFieldColumns: 3
-          foodPerDayLabel: 'per Day:'
-          buttonFoodPerDayIncrease: 'More'
-          buttonFoodPerDayDecrease: 'Less'
-          panelFood: 'Food'
-        gardenOfEden:
-          panelGardenOfEden: 'Garden of Eden'
-          gardenOfEdenEnabled: true
-          gardenOfEdenEnabledString: 'enabled'
-          gardenOfEdenEnabledToggleButton: 'Change'
-          foodPerDay: 80
-          gardenOfEdenLatticeDivisor: 5
-          gardenOfEdenLatticeDivisorPadding: 2
-      cca:
-        view:
-          title: 'Cyclic Cellular Automaton'
-          subtitle: 'Cyclic Cellular Automaton'
-          neighborhood:
-            title: 'Neighborhood'
-            typeVonNeumann: 'Von Neumann'
-            typeMoore: 'Moore'
-            typeWoehlke: 'Woehlke'
-      dla:
-        view:
-          title: 'Diffusion Limited Aggregation'
-          subtitle: 'The fractal Geometry of Nature'
-        control:
-          threadSleepTime: 50
-          numberOfParticles: 30000
+allinone:
+  lattice:
+    width: 640
+    height: 400
+  view:
+    title: 'Computer Kurzweil'
+    subtitle: 'Scientific Imfotainment'
+    copyright: '(c) 2020 Thomas Woehlke'
+    borderPadding: 5
+    titleHeight: 30
+    startStopp: 'Start / Stop'
+    start: 'Start'
+    stop: 'Stop'
+    info: 'Info'
+mandelbrot:
+  view:
+    title: 'Mandelbrot Set'
+    subtitle: 'Fractal Mandelbrot Set drawn by a Turing Machine'
+    buttonsZoom: 'Zoom In'
+    buttonsZoomOut: 'Zoom Out'
+    buttonsSwitch: 'Mandelbrot Set <-> Julia Set'
+    buttonsZoomLabel: 'Zoom'
+    buttonsLabel: 'Choose Mouse Click Mode'
+evolution:
+  view:
+    title: 'Simulated Evolution'
+    subtitle: 'Artificial Life Simulation of Bacteria Motion depending on DNA'
+  control:
+    time2wait: 100
+    exitStatus: 0
+    queueMaxLength: 1000
+  cellConf:
+    fatMax: 2000
+    fatHungerMax: 1000
+    fatMinimumForSex: 800
+    fatAtBirth: 500
+    fatPerFood: 25
+    ageOfAdulthood: 200
+    ageOld: 800
+    ageMax: 1000
+  population:
+    initialPopulation: 20
+    panelPopulationStatistics: 'Statistics'
+    youngCellsLabel: 'young'
+    youngAndFatCellsLabel: 'young and Fat'
+    fullAgeCellsLabel: 'full Age'
+    hungryCellsLabel: 'hungry'
+    oldCellsLabel: 'old'
+    populationLabel: 'population'
+    generationOldestLabel: 'asdf'
+    generationYoungestLabel: 'fvjbfdbvf'
+  food:
+    foodPerDay: 20
+    foodPerDayFieldColumns: 3
+    foodPerDayLabel: 'per Day:'
+    buttonFoodPerDayIncrease: 'More'
+    buttonFoodPerDayDecrease: 'Less'
+    panelFood: 'Food'
+  gardenOfEden:
+    panelGardenOfEden: 'Garden of Eden'
+    gardenOfEdenEnabled: true
+    gardenOfEdenEnabledString: 'enabled'
+    gardenOfEdenEnabledToggleButton: 'Change'
+    foodPerDay: 80
+    gardenOfEdenLatticeDivisor: 5
+    gardenOfEdenLatticeDivisorPadding: 2
+cca:
+  view:
+    title: 'Cyclic Cellular Automaton'
+    subtitle: 'Cyclic Cellular Automaton'
+    neighborhood:
+      title: 'Neighborhood'
+      typeVonNeumann: 'Von Neumann'
+      typeMoore: 'Moore'
+      typeWoehlke: 'Woehlke'
+dla:
+  view:
+    title: 'Diffusion Limited Aggregation'
+    subtitle: 'The fractal Geometry of Nature'
+  control:
+    threadSleepTime: 50
+    numberOfParticles: 30000
 
 
 
