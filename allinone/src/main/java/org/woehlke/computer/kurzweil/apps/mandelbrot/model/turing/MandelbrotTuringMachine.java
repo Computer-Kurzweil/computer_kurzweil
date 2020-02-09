@@ -100,8 +100,10 @@ public class MandelbrotTuringMachine  implements Startable, Stepper {
         this.getTuringPhaseStateMachine().finishFillTheOutsideWithColors();
     }
 
+    /*
     @Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }
+    */
 }

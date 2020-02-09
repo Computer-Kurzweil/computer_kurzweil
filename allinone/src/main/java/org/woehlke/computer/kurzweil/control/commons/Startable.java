@@ -1,8 +1,6 @@
 package org.woehlke.computer.kurzweil.control.commons;
 
-import org.woehlke.computer.kurzweil.control.signals.UserSlot;
-
-public interface Startable extends UserSlot {
+public interface Startable {
 
     void start();
     void stop();

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.view.apps;
+package org.woehlke.computer.kurzweil.apps;
 
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.control.commons.Startable;

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.view.apps;
+package org.woehlke.computer.kurzweil.apps;
 
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.control.commons.Startable;
@@ -9,10 +9,9 @@ import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 import javax.swing.*;
 
 @Log
-public class SimulatedEvolutionTabApp extends JPanel implements AppGuiComponent, Startable {
+public class MandelbrotTabApp extends JPanel implements AppGuiComponent, Startable {
 
-    public SimulatedEvolutionTabApp(TabPanel tab) {
-
+    public MandelbrotTabApp(TabPanel tab) {
     }
 
     @Override

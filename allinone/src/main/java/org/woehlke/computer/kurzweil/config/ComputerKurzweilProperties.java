@@ -2,11 +2,6 @@ package org.woehlke.computer.kurzweil.config;
 
 import lombok.*;
 import lombok.extern.java.Log;
-//import org.springframework.boot.SpringBootConfiguration;
-//import org.springframework.boot.context.properties.ConfigurationProperties;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.validation.annotation.Validated;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,9 +13,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Valid
 ////@Validated
-//@SpringBootConfiguration
-//@Configuration
-//@ConfigurationProperties("org.woehlke.simulation")
 public class ComputerKurzweilProperties {
 
     @Valid @Getter @Setter public Allinone allinone = new Allinone();

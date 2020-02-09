@@ -8,8 +8,6 @@ import org.woehlke.computer.kurzweil.apps.cca.view.CyclicCellularAutomatonCanvas
 import org.woehlke.computer.kurzweil.control.ctx.ControllerThread;
 import org.woehlke.computer.kurzweil.control.ctx.Stepper;
 import org.woehlke.computer.kurzweil.control.ctx.AppContext;
-import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcher;
-import org.woehlke.computer.kurzweil.control.signals.SignalSlotDispatcherImpl;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.view.tabs.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
@@ -18,10 +16,6 @@ public class CyclicCellularAutomatonContext implements AppContext {
 
     @Getter
     private final CyclicCellularAutomatonCanvas canvas;
-
-    @Delegate
-    @Getter
-    private final SignalSlotDispatcher signalSlotDispatcher;
 
     @Getter
     private final CyclicCellularAutomatonTab tab;
@@ -37,7 +31,6 @@ public class CyclicCellularAutomatonContext implements AppContext {
         this.tab = tab;
         this.controller = controllerThread;
         this.canvas = canvas;
-        this.signalSlotDispatcher = new SignalSlotDispatcherImpl();
     }
 
     @Override
@@ -65,5 +58,48 @@ public class CyclicCellularAutomatonContext implements AppContext {
         this.controller = new CyclicCellularAutomatonControllerThread(ctx);
         this.controller.setAppCtx(this);
         return this.controller;
+    }
+
+    public CyclicCellularAutomatonControllerThread startController(ComputerKurzweilApplicationContext ctx) {
+        if(this.controller == null){
+            this.controller = new CyclicCellularAutomatonControllerThread(ctx);
+            this.controller.setAppCtx(this);
+        } else {
+            Thread.State controllerState = this.controller.getState();
+            switch (controllerState){
+                case NEW:
+                case RUNNABLE:
+                    break;
+                default:
+                    this.controller = this.stopController(ctx);
+                    break;
+            }
+        }
+        return this.controller;
+    }
+
+    @Override
+    public void step() {
+        this.canvas.step();
+    }
+
+    @Override
+    public void update() {
+        this.canvas.update();
+        this.canvas.repaint();
+    }
+
+    @Override
+    public void start() {
+        this.controller = this.startController(this.getTab().getCtx());
+        this.canvas.start();
+        this.controller.start();
+    }
+
+    @Override
+    public void stop() {
+        this.canvas.stop();
+        this.controller = this.stopController(this.getTab().getCtx());
+        this.controller.start();
     }
 }

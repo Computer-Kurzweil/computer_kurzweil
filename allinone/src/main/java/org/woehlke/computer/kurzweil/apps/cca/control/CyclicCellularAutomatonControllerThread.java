@@ -50,11 +50,11 @@ public class CyclicCellularAutomatonControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            synchronized (canvas) {
-                canvas.step();
+            synchronized (this.appCtx) {
+                this.appCtx.step();
             }
-            synchronized (canvas) {
-                canvas.repaint();
+            synchronized (this.appCtx) {
+                this.appCtx.update();
             }
             //this.appCtx.getCanvas().update();
             //synchronized (canvas) {

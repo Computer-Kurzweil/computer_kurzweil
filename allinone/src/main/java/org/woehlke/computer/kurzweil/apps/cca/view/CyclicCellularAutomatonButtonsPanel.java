@@ -51,22 +51,23 @@ public class CyclicCellularAutomatonButtonsPanel extends JPanel implements
     }
 
     @Override
-    public void handleUserSignal(UserSignal userSignal) {
-
-    }
-
-    @Override
     public void update() {
         this.repaint();
     }
 
     @Override
     public void showMe() {
-
+        log.info("showMe");
     }
 
     @Override
     public void hideMe() {
+        log.info("hideMe");
 
+    }
+
+    @Override
+    public void handleUserSignal(UserSignal userSignal) {
+        log.info("handleUserSignal: "+userSignal.name());
     }
 }

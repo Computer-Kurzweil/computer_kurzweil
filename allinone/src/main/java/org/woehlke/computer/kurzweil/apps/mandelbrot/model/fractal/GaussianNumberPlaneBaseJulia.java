@@ -181,8 +181,10 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
         return this.zoomLevel.getZoomLevel() + "";
     }
 
+    /*
     @Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }
+    */
 }

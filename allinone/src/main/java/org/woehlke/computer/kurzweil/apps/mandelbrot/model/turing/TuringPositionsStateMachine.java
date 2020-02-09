@@ -98,9 +98,10 @@ public class TuringPositionsStateMachine implements Startable {
     public boolean isFinishedWalkAround() {
         return (this.turingPosition.equals(this.firstSetPosition)) && (this.steps>100);
     }
-
+/*
     @Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }
+    */
 }

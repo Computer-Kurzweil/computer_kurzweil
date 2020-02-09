@@ -5,7 +5,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.control.signals.UserSignal;
-import org.woehlke.computer.kurzweil.view.apps.SimulatedEvolutionTabApp;
+import org.woehlke.computer.kurzweil.apps.SimulatedEvolutionTabApp;
 import org.woehlke.computer.kurzweil.view.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.view.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;

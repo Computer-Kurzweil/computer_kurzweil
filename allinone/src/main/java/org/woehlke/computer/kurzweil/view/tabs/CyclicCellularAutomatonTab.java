@@ -39,30 +39,32 @@ public class CyclicCellularAutomatonTab extends JPanel implements TabPanel {
         this.add(this.canvas.getStartStopButtonsPanel());
         this.appCtx = new CyclicCellularAutomatonContext(this, this.controller, this.canvas);
         this.controller.setAppCtx(  this.appCtx );
+        this.canvas.setAppCtx(  this.appCtx );
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.showMe();
-        this.controller.start();
+        //this.showMe();
+        this.getAppCtx().start();
         log.info("started");
     }
 
     @Override
     public void stop() {
         log.info("stop");
-        this.controller = this.appCtx.stopController(this.getCtx());
-        update();
-        this.showMe();
+        this.getAppCtx().stop();
+        //this.update();
+        //this.showMe();
         log.info("stopped");
     }
 
     @Override
     public void update() {
         log.info("update");
-        this.canvas.update();
-        this.repaint();
+        this.getAppCtx().update();
+        //this.canvas.update();
+        //this.repaint();
         log.info("updated");
     }
 

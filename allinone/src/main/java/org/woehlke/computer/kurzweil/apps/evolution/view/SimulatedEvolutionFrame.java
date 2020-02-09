@@ -126,7 +126,7 @@ public class SimulatedEvolutionFrame extends JPanel implements ImageObserver, St
         this.panelButtons = null;
     }
 
-    @Override
+    //@Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }

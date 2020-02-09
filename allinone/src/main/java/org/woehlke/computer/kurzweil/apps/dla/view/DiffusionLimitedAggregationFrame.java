@@ -62,7 +62,7 @@ public class DiffusionLimitedAggregationFrame extends JPanel implements ImageObs
         setVisible(false);
     }
 
-    @Override
+    //@Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }

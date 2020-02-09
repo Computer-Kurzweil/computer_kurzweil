@@ -51,8 +51,10 @@ public class TuringPhaseStateMachine implements Startable {
         return turingTuringPhase == TuringPhase.FINISHED;
     }
 
+    /*
     @Override
     public void handleUserSignal(UserSignal userSignal) {
 
     }
+    */
 }
