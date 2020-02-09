@@ -41,21 +41,9 @@ public class ComputerKurzweilApplication {
     public ComputerKurzweilApplication() {
         String conf = "application.yml";
         String jar = "allinone/build/libs/allinone-all.jar";
-        ComputerKurzweilProperties properties;
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        try {
-            JarFile jarFile = new JarFile(jar);
-            JarEntry entry = jarFile.getJarEntry(conf);
-            InputStream input = jarFile.getInputStream(entry);
-            properties = mapper.readValue(input, ComputerKurzweilProperties.class);
-            System.out.println(ReflectionToStringBuilder.toString(properties, ToStringStyle.MULTI_LINE_STYLE));
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            properties = new ComputerKurzweilProperties();
-        }
+        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(conf, jar);
         this.frame = new ComputerKurzweilApplicationFrame(properties);
-        start();
+        //start();
     }
 
     public void start(){

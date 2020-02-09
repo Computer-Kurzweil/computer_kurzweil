@@ -1,10 +1,18 @@
 package org.woehlke.computer.kurzweil.ctx;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.*;
 import lombok.extern.java.Log;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.InputStream;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 @Log
 @ToString
@@ -180,4 +188,20 @@ public class ComputerKurzweilProperties {
         }
     }
 
+
+    public static ComputerKurzweilProperties propertiesFactory(String conf, String jar){
+        ComputerKurzweilProperties properties;
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        try {
+            JarFile jarFile = new JarFile(jar);
+            JarEntry entry = jarFile.getJarEntry(conf);
+            InputStream input = jarFile.getInputStream(entry);
+            properties = mapper.readValue(input, ComputerKurzweilProperties.class);
+            System.out.println(ReflectionToStringBuilder.toString(properties, ToStringStyle.MULTI_LINE_STYLE));
+        } catch (Exception e) {
+            e.printStackTrace();
+            properties = new ComputerKurzweilProperties();
+        }
+        return properties;
+    }
 }
