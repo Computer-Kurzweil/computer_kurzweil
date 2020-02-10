@@ -3,7 +3,6 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.widgets.MandelbrotPanelButtons;
 import org.woehlke.computer.kurzweil.commons.ControllerThread;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 

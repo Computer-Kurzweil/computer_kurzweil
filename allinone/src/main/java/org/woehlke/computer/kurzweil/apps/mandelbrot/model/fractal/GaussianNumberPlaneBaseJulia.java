@@ -17,9 +17,7 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.Comput
 public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     private Deque<ComputingPlan> complexCenterForZoomedJulia = new ArrayDeque<>();
-
     private final ZoomLevel zoomLevel;
-
     private ComplexNumber complexNumberForJuliaSetC;
 
     public GaussianNumberPlaneBaseJulia(ComputerKurzweilApplicationContext ctx) {

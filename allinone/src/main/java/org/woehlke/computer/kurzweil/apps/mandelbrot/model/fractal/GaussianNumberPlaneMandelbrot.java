@@ -16,7 +16,6 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.Comput
 public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
 
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
-
     private final ZoomLevel zoomLevel;
 
     public GaussianNumberPlaneMandelbrot(ComputerKurzweilApplicationContext ctx) {
@@ -31,9 +30,7 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
     }
 
     @Override
-    public void stop() {
-
-    }
+    public void stop() {}
 
     @Override
     public void setModeZoom() {

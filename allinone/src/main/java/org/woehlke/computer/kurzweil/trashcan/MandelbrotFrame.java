@@ -5,7 +5,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.MandelbrotCanvas;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.widgets.MandelbrotPanelButtons;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.MandelbrotPanelButtons;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;

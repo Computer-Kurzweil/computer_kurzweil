@@ -19,6 +19,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
@@ -115,7 +117,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         log.info("start");
         this.startStopButtonsPanel.getStartButton().setEnabled(false);
         this.startStopButtonsPanel.getStopButton().setEnabled(true);
-        //showMe();
+        showMe();
         synchronized (running) {
             running = Boolean.TRUE;
         }
@@ -146,7 +148,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             doIt = running.booleanValue();
         }
         if(doIt){
-            //log.info("step");
+            log.info("step");
             int maxState = colorScheme.getMaxState();
             int xx;
             int yy;
@@ -168,7 +170,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             }
             this.source = (this.source + 1) % 2;
             this.target = (this.target + 1) % 2;
-            //log.info("stepped");
+            log.info("stepped");
         }
     }
 
@@ -186,9 +188,9 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     private void initCreateLattice(){
         log.info("initCreateLattice start: "+neighbourhoodType.name());
-            lattice = new int[versions][latticeX][latticeY];
-            source = 0;
-            target = 1;
+        lattice = new int[versions][latticeX][latticeY];
+        source = 0;
+        target = 1;
         log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
@@ -248,5 +250,43 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Override
     public void handleUserSignal(UserSignal userSignal) {
         log.info("handleUserSignal: "+userSignal.name());
+    }
+
+
+    public class CyclicCellularAutomatonColorScheme {
+
+        private Color[] stateColor;
+
+        public CyclicCellularAutomatonColorScheme(){
+            List<Color> stateColorList = new ArrayList<>();
+            stateColorList.add(Color.BLACK);
+            stateColorList.add(Color.DARK_GRAY);
+            stateColorList.add(Color.GRAY);
+            stateColorList.add(Color.LIGHT_GRAY);
+            stateColorList.add(Color.WHITE);
+            stateColorList.add(Color.MAGENTA);
+            stateColorList.add(Color.RED);
+            stateColorList.add(Color.ORANGE);
+            stateColorList.add(Color.YELLOW);
+            stateColorList.add(Color.PINK);
+            stateColorList.add(Color.BLUE);
+            stateColorList.add(Color.CYAN);
+            stateColorList.add(Color.GREEN);
+            stateColorList.add(new Color(54,12,88));
+            stateColorList.add(new Color(154,112,38));
+            stateColorList.add(new Color(234,123,254));
+            stateColor = new Color[stateColorList.toArray().length];
+            for(int i=0; i < stateColorList.toArray().length; i++){
+                stateColor[i] = (Color) stateColorList.get(i);
+            }
+        }
+
+        public int getMaxState(){
+            return stateColor.length;
+        }
+
+        public Color getColorForState(int state){
+            return stateColor[state];
+        }
     }
 }

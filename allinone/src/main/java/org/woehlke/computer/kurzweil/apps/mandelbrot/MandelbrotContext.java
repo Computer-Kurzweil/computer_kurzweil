@@ -8,29 +8,17 @@ import org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing.MandelbrotTuri
 import org.woehlke.computer.kurzweil.commons.AppContext;
 import org.woehlke.computer.kurzweil.commons.ControllerThread;
 import org.woehlke.computer.kurzweil.commons.Stepper;
-import org.woehlke.computer.kurzweil.trashcan.signals.SignalSlotDispatcher;
-import org.woehlke.computer.kurzweil.trashcan.signals.SignalSlotDispatcherImpl;
 import org.woehlke.computer.kurzweil.tabs.MandelbrotTab;
 import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
+@Getter
 public class MandelbrotContext implements AppContext {
 
-    @Getter @Setter
-    private MandelbrotControllerThread mandelbrotControllerThread;
+    @Setter private MandelbrotControllerThread mandelbrotControllerThread;
+    @Setter private MandelbrotTab mandelbrotTab;
+    @Setter private MandelbrotTuringMachine mandelbrotTuringMachine;
 
-    @Getter @Setter
-    private MandelbrotTab mandelbrotTab;
-
-    @Getter @Setter
-    private MandelbrotTuringMachine mandelbrotTuringMachine;
-
-    @Delegate
-    @Getter
-    private final SignalSlotDispatcher signalSlotDispatcher;
-
-    public MandelbrotContext() {
-        this.signalSlotDispatcher = new SignalSlotDispatcherImpl();
-    }
+    public MandelbrotContext() {}
 
     @Override
     public ControllerThread getControllerThread() {
@@ -53,4 +41,23 @@ public class MandelbrotContext implements AppContext {
     }
 
 
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void stop() {
+
+    }
 }

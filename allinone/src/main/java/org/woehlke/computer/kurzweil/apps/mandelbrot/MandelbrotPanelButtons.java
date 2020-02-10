@@ -1,9 +1,10 @@
-package org.woehlke.computer.kurzweil.apps.mandelbrot.widgets;
+package org.woehlke.computer.kurzweil.apps.mandelbrot;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.MandelbrotCanvas;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.widgets.PanelButtonsGroup;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.widgets.PanelZoomButtons;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 
 import javax.swing.*;
@@ -20,17 +21,14 @@ import java.awt.*;
  * Created by tw on 16.12.2019.
  */
 @Log
+@Getter
 public class MandelbrotPanelButtons extends JPanel {
 
-    @Getter
     private final PanelButtonsGroup panelButtonsGroup;
-
-    @Getter
     private final PanelZoomButtons panelZoomButtons;
-
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Getter @Setter
+    @Setter
     private MandelbrotCanvas canvas;
 
     public MandelbrotPanelButtons(ComputerKurzweilApplicationContext ctx) {

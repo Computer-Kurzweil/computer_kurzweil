@@ -2,10 +2,8 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.widgets.MandelbrotPanelButtons;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.model.ApplicationStateMachine;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.CellStatus;
@@ -38,6 +36,7 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     private final ApplicationStateMachine applicationStateMachine;
     private final MandelbrotPanelButtons panelButtons;
     private final MandelbrotControllerThread mandelbrotControllerThread;
+    private final Dimension preferredSize;
 
     public MandelbrotCanvas(
         ComputerKurzweilApplicationContext ctx,
@@ -45,6 +44,7 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     ) {
         this.ctx = ctx;
         this.panelButtons = panelButtons;
+        this.panelButtons.setCanvas(this);
         int width = this.ctx.getWorldDimensions().getWidth();
         int height = this.ctx.getWorldDimensions().getHeight();
         this.preferredSize = new Dimension(width, height);
@@ -119,9 +119,6 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     @Override public void update(Graphics g) {
         paint(g);
     }
-
-    @Getter
-    private final Dimension preferredSize;
 
     public void zoomOut() {
         switch (applicationStateMachine.getState().getFractalSetType()) {

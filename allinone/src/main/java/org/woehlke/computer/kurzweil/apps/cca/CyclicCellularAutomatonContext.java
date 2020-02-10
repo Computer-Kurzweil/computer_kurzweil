@@ -5,7 +5,6 @@ import org.woehlke.computer.kurzweil.apps.AppType;
 import org.woehlke.computer.kurzweil.commons.ControllerThread;
 import org.woehlke.computer.kurzweil.commons.Stepper;
 import org.woehlke.computer.kurzweil.commons.AppContext;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
@@ -46,16 +45,15 @@ public class CyclicCellularAutomatonContext implements AppContext {
         return canvas;
     }
 
-    public CyclicCellularAutomatonControllerThread stopController(ComputerKurzweilApplicationContext ctx) {
+    public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonControllerThread(ctx);
+        this.controller = new CyclicCellularAutomatonControllerThread(this.getTab().getCtx());
         this.controller.setAppCtx(this);
-        return this.controller;
     }
 
-    public CyclicCellularAutomatonControllerThread startController(ComputerKurzweilApplicationContext ctx) {
+    public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonControllerThread(ctx);
+            this.controller = new CyclicCellularAutomatonControllerThread(this.getTab().getCtx());
             this.controller.setAppCtx(this);
         } else {
             Thread.State controllerState = this.controller.getState();
@@ -64,11 +62,10 @@ public class CyclicCellularAutomatonContext implements AppContext {
                 case RUNNABLE:
                     break;
                 default:
-                    this.controller = this.stopController(ctx);
+                    this.stopController();
                     break;
             }
         }
-        return this.controller;
     }
 
     @Override
@@ -84,7 +81,7 @@ public class CyclicCellularAutomatonContext implements AppContext {
 
     @Override
     public void start() {
-        this.controller = this.startController(this.getTab().getCtx());
+        this.startController();
         this.canvas.start();
         this.controller.start();
     }
@@ -92,7 +89,6 @@ public class CyclicCellularAutomatonContext implements AppContext {
     @Override
     public void stop() {
         this.canvas.stop();
-        this.controller = this.stopController(this.getTab().getCtx());
-        this.controller.start();
+        this.stopController();
     }
 }
