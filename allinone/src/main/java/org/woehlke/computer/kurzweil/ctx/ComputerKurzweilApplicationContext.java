@@ -5,9 +5,9 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.AppContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellCore;
-import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
-import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
+import org.woehlke.computer.kurzweil.apps.evolution.model.CellCore;
+import org.woehlke.computer.kurzweil.apps.evolution.model.CellLifeCycle;
+import org.woehlke.computer.kurzweil.ComputerKurzweilApplicationFrame;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

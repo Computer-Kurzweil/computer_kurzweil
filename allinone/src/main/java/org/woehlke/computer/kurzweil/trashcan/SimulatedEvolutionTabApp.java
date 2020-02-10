@@ -4,7 +4,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 import org.woehlke.computer.kurzweil.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
 import javax.swing.*;
 
