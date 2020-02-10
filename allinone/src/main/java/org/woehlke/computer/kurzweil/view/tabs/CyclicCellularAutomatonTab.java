@@ -53,8 +53,6 @@ public class CyclicCellularAutomatonTab extends Tab implements TabPanel {
     public void stop() {
         log.info("stop");
         this.getAppCtx().stop();
-        //this.update();
-        //this.showMe();
         log.info("stopped");
     }
 
@@ -62,8 +60,6 @@ public class CyclicCellularAutomatonTab extends Tab implements TabPanel {
     public void update() {
         log.info("update");
         this.getAppCtx().update();
-        //this.canvas.update();
-        //this.repaint();
         log.info("updated");
     }
 

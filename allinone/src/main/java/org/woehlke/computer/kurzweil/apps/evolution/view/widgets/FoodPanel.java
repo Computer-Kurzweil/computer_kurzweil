@@ -10,9 +10,7 @@ import java.awt.*;
 @Getter
 public class FoodPanel extends JPanel {
 
-    @Getter
     private final ComputerKurzweilApplicationContext ctx;
-
     private final JButton buttonFoodPerDayIncrease;
     private final JButton buttonFoodPerDayDecrease;
     private final JTextField foodPerDayField;
@@ -20,24 +18,19 @@ public class FoodPanel extends JPanel {
 
     public FoodPanel(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
-        ComputerKurzweilProperties.Evolution cnf = this.ctx.getProperties().getEvolution();
-        String foodPerDayLabelString = cnf.getFood().getFoodPerDayLabel();
-        String foodPerDayTextFieldString = cnf.getFood().getFoodPerDay()+"";
-        int foodPerDayTextFieldCols = cnf.getFood().getFoodPerDayFieldColumns();
+        String foodPerDayLabelString = this.ctx.getProperties().getEvolution().getFood().getFoodPerDayLabel();
+        String foodPerDayTextFieldString = this.ctx.getProperties().getEvolution().getFood().getFoodPerDay()+"";
+        int foodPerDayTextFieldCols = this.ctx.getProperties().getEvolution().getFood().getFoodPerDayFieldColumns();
         foodPerDayLabel = new JLabel(foodPerDayLabelString);
         foodPerDayField = new JTextField(
             foodPerDayTextFieldString,
             foodPerDayTextFieldCols
         );
-        //boolean selected = cnf.getGardenOfEden().getGardenOfEdenEnabled();
-        //String gardenOfEdenEnabledString = cnf.getGardenOfEden().getGardenOfEdenEnabledString();
-       // this.gardenOfEdenEnabled = new JCheckBox(gardenOfEdenEnabledString, selected);
-        this.buttonFoodPerDayIncrease = new JButton(cnf.getFood().getButtonFoodPerDayIncrease());
-        this.buttonFoodPerDayDecrease = new JButton(cnf.getFood().getButtonFoodPerDayDecrease());
-        //this.buttonToggleGardenOfEden = new JButton(cnf.getGardenOfEden().getGardenOfEdenEnabledToggleButton());
-        FlowLayout foodPanelLayout = new FlowLayout();
+        this.buttonFoodPerDayIncrease = new JButton(this.ctx.getProperties().getEvolution().getFood().getButtonFoodPerDayIncrease());
+        this.buttonFoodPerDayDecrease = new JButton(this.ctx.getProperties().getEvolution().getFood().getButtonFoodPerDayDecrease());
+        FoodPanelLayout foodPanelLayout = new FoodPanelLayout();
         this.setLayout(foodPanelLayout);
-        this.setBorder(getBorder());
+        this.setBorder(this.ctx.getBorder());
         this.add(this.foodPerDayLabel);
         this.add(this.foodPerDayField);
         this.add(this.buttonFoodPerDayIncrease);

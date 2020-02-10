@@ -5,7 +5,6 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 
 import javax.swing.*;
-import java.awt.FlowLayout;
 
 @Log
 @Getter
@@ -14,15 +13,16 @@ public class SimulatedEvolutionButtonRowPanel extends JPanel {
     private final ComputerKurzweilApplicationContext ctx;
     private final FoodPanel foodPanel;
     private final GardenOfEdenPanel gardenOfEdenPanel;
+    private final SimulatedEvolutionButtonRowPanelLayout layout;
 
-  public SimulatedEvolutionButtonRowPanel(
+    public SimulatedEvolutionButtonRowPanel(
       ComputerKurzweilApplicationContext ctx
   ) {
       this.ctx = ctx;
+      this.layout = new SimulatedEvolutionButtonRowPanelLayout();
       this.foodPanel = new FoodPanel(this.ctx);
       this.gardenOfEdenPanel = new GardenOfEdenPanel(this.ctx);
-      FlowLayout flowLayout = new FlowLayout();
-      this.setLayout(flowLayout);
+      this.setLayout(layout);
       this.add(foodPanel);
       this.add(gardenOfEdenPanel);
   }

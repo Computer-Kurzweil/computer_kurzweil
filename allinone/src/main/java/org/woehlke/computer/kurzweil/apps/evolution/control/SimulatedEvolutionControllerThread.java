@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.apps.evolution.control;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.commons.ControllerThread;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 
@@ -24,14 +24,14 @@ import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 public class SimulatedEvolutionControllerThread extends Thread implements ControllerThread {
 
     @Getter
-    private final SimulatedEvolutionStateService appCtx;
+    private final SimulatedEvolutionContext appCtx;
 
     private Boolean goOn;
 
     private final int time2wait;
 
   public SimulatedEvolutionControllerThread(
-      SimulatedEvolutionStateService appCtx
+      SimulatedEvolutionContext appCtx
   ) {
       super("DNA-Controller");
       this.appCtx = appCtx;

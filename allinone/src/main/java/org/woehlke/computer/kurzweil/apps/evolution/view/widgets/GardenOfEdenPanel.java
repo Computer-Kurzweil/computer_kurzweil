@@ -5,7 +5,6 @@ import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
 
 import javax.swing.*;
-import java.awt.*;
 
 @Getter
 public class GardenOfEdenPanel extends JPanel {
@@ -13,19 +12,20 @@ public class GardenOfEdenPanel extends JPanel {
     private final ComputerKurzweilApplicationContext ctx;
     private final JButton buttonToggleGardenOfEden;
     private final JCheckBox gardenOfEdenEnabled;
+    private final GardenOfEdenPanelLayout gardenOfEdenPanelLayout;
+    private final JPanel gardenOfEdenPanel;
 
     public GardenOfEdenPanel(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
-        ComputerKurzweilProperties.Evolution cnf = this.ctx.getProperties().getEvolution();
-        boolean selected = cnf.getGardenOfEden().getGardenOfEdenEnabled();
-        String gardenOfEdenEnabledString = cnf.getGardenOfEden().getGardenOfEdenEnabledString();
-        this.gardenOfEdenEnabled = new JCheckBox(gardenOfEdenEnabledString, selected);
-        this.buttonToggleGardenOfEden = new JButton(cnf.getGardenOfEden().getGardenOfEdenEnabledToggleButton());
-        FlowLayout gardenOfEdenPanelLayout = new FlowLayout();
-        JPanel gardenOfEdenPanel = new JPanel(gardenOfEdenPanelLayout);
+        boolean selected = this.ctx.getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled();
+        String gardenOfEdenEnabledString = this.ctx.getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabledString();
         String label = this.ctx.getProperties().getEvolution().getGardenOfEden().getPanelGardenOfEden();
-        gardenOfEdenPanel.setBorder(this.ctx.getBorder(label));
-        gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
-        gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
+        this.gardenOfEdenEnabled = new JCheckBox(gardenOfEdenEnabledString, selected);
+        this.buttonToggleGardenOfEden = new JButton(this.ctx.getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabledToggleButton());
+        this.gardenOfEdenPanelLayout = new GardenOfEdenPanelLayout();
+        this.gardenOfEdenPanel = new JPanel(this.gardenOfEdenPanelLayout);
+        this.gardenOfEdenPanel.setBorder(this.ctx.getBorder(label));
+        this.gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
+        this.gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
     }
 }

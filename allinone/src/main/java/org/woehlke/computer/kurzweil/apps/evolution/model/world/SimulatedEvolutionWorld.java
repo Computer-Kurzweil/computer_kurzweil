@@ -8,7 +8,7 @@ import org.woehlke.computer.kurzweil.commons.Stepper;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.apps.evolution.model.statistics.SimulatedEvolutionStatistics;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.Cell;
@@ -43,7 +43,7 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
     private List<Cell> cells;
 
     @Getter @Setter
-    private SimulatedEvolutionStateService appCtx;
+    private SimulatedEvolutionContext appCtx;
 
     @Getter
     private final SimulatedEvolutionWorldLattice worldLattice;

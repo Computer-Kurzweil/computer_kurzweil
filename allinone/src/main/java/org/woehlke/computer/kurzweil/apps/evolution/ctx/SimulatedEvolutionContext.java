@@ -20,7 +20,7 @@ import org.woehlke.computer.kurzweil.view.tabs.common.TabPanel;
 
 @Log
 @Getter
-public class SimulatedEvolutionStateService implements AppContext {
+public class SimulatedEvolutionContext implements AppContext {
 
     private SimulatedEvolutionControllerThread controller;
     private final SimulatedEvolutionState simulatedEvolutionState;
@@ -30,7 +30,7 @@ public class SimulatedEvolutionStateService implements AppContext {
     private final SignalSlotDispatcher signalSlotDispatcher;
     private final SimulatedEvolutionCanvas canvas;
 
-    public SimulatedEvolutionStateService(
+    public SimulatedEvolutionContext(
         SimulatedEvolutionTab tab,
         SimulatedEvolutionCanvas canvas
     ) {

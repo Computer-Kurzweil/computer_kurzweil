@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.apps.evolution.view;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.Cell;
 import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.apps.evolution.view.widgets.SimulatedEvolutionStatisticsPanel;
@@ -55,7 +55,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final ComputerKurzweilApplicationContext ctx;
 
     @Getter @Setter
-    private SimulatedEvolutionStateService appCtx;
+    private SimulatedEvolutionContext appCtx;
 
     @Getter
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;

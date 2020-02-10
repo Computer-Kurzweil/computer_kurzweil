@@ -1,17 +1,8 @@
 package org.woehlke.computer.kurzweil;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.extern.java.Log;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.view.ComputerKurzweilApplicationFrame;
-import org.woehlke.computer.kurzweil.apps.evolution.view.SimulatedEvolutionFrame;
-
-import java.io.InputStream;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 
 /**
@@ -20,7 +11,8 @@ import java.util.jar.JarFile;
  * @author Thomas Woehlke
  * <p>
  * http://thomas-woehlke.de/p/simulated-evolution/
- * @see SimulatedEvolutionFrame
+ * @see ComputerKurzweilApplicationFrame
+ * @see ComputerKurzweilProperties
  * <p>
  * Simulated Evolution. Artificial Life Simulation of Bacteria Motion depending on DNA.
  * <p>
@@ -63,6 +55,7 @@ public class ComputerKurzweilApplication {
     public static void main(String[] args) {
         ComputerKurzweilApplication application = new ComputerKurzweilApplication();
         application.start();
+
         /*
         ConfigurableApplicationContext springCtx = new SpringApplicationBuilder(
             ComputerKurzweilApplication.class

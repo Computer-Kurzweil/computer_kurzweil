@@ -6,7 +6,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionStateService;
+import org.woehlke.computer.kurzweil.apps.evolution.ctx.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.apps.evolution.model.cell.CellLifeCycle;
 import org.woehlke.computer.kurzweil.commons.Startable;
 
@@ -33,7 +33,7 @@ public class SimulatedEvolutionWorldLattice implements Startable {
   private int[][] worldMapFoodLattice;
 
     @Getter @Setter
-    private SimulatedEvolutionStateService appCtx;
+    private SimulatedEvolutionContext appCtx;
 
   @Getter private final ComputerKurzweilApplicationContext ctx;
 

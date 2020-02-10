@@ -47,6 +47,18 @@ public class ComputerKurzweilApplicationContext {
     }
 
     @Transient
+    public CompoundBorder getBorder(){
+        int top = this.getProperties().getAllinone().getView().getBorderPadding();
+        int left = top;
+        int bottom = top;
+        int right = top;
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createEmptyBorder(),
+            BorderFactory.createEmptyBorder(top,left,bottom,right)
+        );
+    }
+
+    @Transient
     public CompoundBorder getBorder(String label){
         int top = this.getProperties().getAllinone().getView().getBorderPadding();
         int left = top;

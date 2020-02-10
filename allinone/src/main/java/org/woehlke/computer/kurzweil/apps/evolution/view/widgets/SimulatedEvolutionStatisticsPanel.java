@@ -44,7 +44,7 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
     setColors();
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
-    FlowLayout layoutSubPanel = new FlowLayout();
+    SimulatedEvolutionStatisticsPanelLayout layoutSubPanel = new SimulatedEvolutionStatisticsPanelLayout();
     JPanel subPanel = new JPanel(layoutSubPanel);
     String borderLabel = this.ctx.getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
     subPanel.setBorder( this.ctx.getBorder(borderLabel));

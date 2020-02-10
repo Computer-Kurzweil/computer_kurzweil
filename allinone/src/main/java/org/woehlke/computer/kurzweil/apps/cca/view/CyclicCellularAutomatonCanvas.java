@@ -74,7 +74,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.versions = 2;
         this.latticeX = this.ctx.getWorldDimensions().getX();
         this.latticeY = this.ctx.getWorldDimensions().getY();
-        Dimension preferredSize = new Dimension(      this.latticeX ,   this.latticeY);
+        Dimension preferredSize = new Dimension( this.latticeX, this.latticeY);
         this.setPreferredSize(preferredSize);
         this.setVisible(true);
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
