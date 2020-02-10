@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.apps.dla;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.ControllerThread;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
 
@@ -16,24 +16,21 @@ import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
  * Time: 00:36:20
  */
 @Log
+@Getter
 public class DiffusionLimitedAggregationControllerThread extends Thread
         implements ControllerThread {
 
+    private final DiffusionLimitedAggregationContext appCtx;
+    private final int sleepTime;
     private Boolean goOn;
 
-    private final ComputerKurzweilApplicationContext ctx;
-    private final DiffusionLimitedAggregationWorld particles;
-    private final DiffusionLimitedAggregationCanvas canvas;
-
     public DiffusionLimitedAggregationControllerThread(
-        DiffusionLimitedAggregationCanvas canvas,
-        ComputerKurzweilApplicationContext ctx
+        DiffusionLimitedAggregationContext appCtx
     ) {
         super("DLA-Controller");
-        this.ctx = ctx;
-        goOn = Boolean.TRUE;
-        this.canvas = canvas;
-        this.particles = canvas.getWorld();
+        this.appCtx = appCtx;
+        this.goOn = Boolean.TRUE;
+        this.sleepTime =  this.appCtx.getCtx().getProperties().getDla().getControl().getThreadSleepTime();
     }
 
     public void run() {
@@ -43,9 +40,13 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            particles.step();
-            canvas.repaint();
-            try { sleep(ctx.getProperties().getDla().getControl().getThreadSleepTime()); }
+            synchronized ( this.appCtx){
+                this.appCtx.getWorld().step();
+            }
+            synchronized ( this.appCtx){
+                this.appCtx.getCanvas().repaint();
+            }
+            try { sleep( this.sleepTime ); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
         while (doIt);
@@ -67,6 +68,6 @@ public class DiffusionLimitedAggregationControllerThread extends Thread
 
     @Override
     public void handleUserSignal(UserSignal userSignal) {
-
+        log.info("handleUserSignal "+userSignal.name());
     }
 }

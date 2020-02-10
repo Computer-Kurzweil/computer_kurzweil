@@ -14,16 +14,22 @@ import org.woehlke.computer.kurzweil.trashcan.signals.SignalSlotDispatcherImpl;
 import org.woehlke.computer.kurzweil.tabs.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static org.woehlke.computer.kurzweil.apps.AppType.SIMULATED_EVOLUTION;
+
 @Log
 @Getter
-public class SimulatedEvolutionContext implements AppContext {
+public class SimulatedEvolutionContext implements AppContext, ActionListener {
+
+    private final AppType appType = SIMULATED_EVOLUTION;
 
     private SimulatedEvolutionControllerThread controller;
     private final SimulatedEvolutionState simulatedEvolutionState;
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionTab tab;
     private final SimulatedEvolutionWorld world;
-    private final SignalSlotDispatcher signalSlotDispatcher;
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionContext(
@@ -34,7 +40,6 @@ public class SimulatedEvolutionContext implements AppContext {
         this.canvas = canvas;
         this.ctx = this.canvas.getCtx();
         this.controller = new SimulatedEvolutionControllerThread(this);
-        this.signalSlotDispatcher = new SignalSlotDispatcherImpl();
         this.simulatedEvolutionState = new SimulatedEvolutionState();
         this.world = new SimulatedEvolutionWorld(this.ctx);
         createNewState();
@@ -71,10 +76,6 @@ public class SimulatedEvolutionContext implements AppContext {
         return tab;
     }
 
-    @Override
-    public AppType getAppType() {
-        return AppType.SIMULATED_EVOLUTION;
-    }
 
     @Override
     public Stepper getStepper() {
@@ -122,6 +123,20 @@ public class SimulatedEvolutionContext implements AppContext {
                 default:
                     this.stopController();
                     break;
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == this.tab.getStartStopButtonsPanel().getStartButton()){
+            this.tab.getStartStopButtonsPanel().getStartButton().setEnabled(false);
+            this.tab.getStartStopButtonsPanel().getStopButton().setEnabled(true);
+            this.start();
+        }
+        if(ae.getSource() == this.tab.getStartStopButtonsPanel().getStopButton()){
+            this.tab.getStartStopButtonsPanel().getStartButton().setEnabled(true);
+            this.tab.getStartStopButtonsPanel().getStopButton().setEnabled(false);
+            this.stop();
         }
     }
 }

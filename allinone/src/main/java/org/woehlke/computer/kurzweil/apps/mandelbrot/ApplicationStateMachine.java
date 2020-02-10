@@ -3,6 +3,12 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing.TuringPhaseStateMachine;
+import org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing.TuringPositionsStateMachine;
+import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.Stepper;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.ApplicationState;
 
@@ -19,23 +25,41 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.Applicat
  */
 @Log
 @Getter
-public class ApplicationStateMachine {
+public class ApplicationStateMachine implements Startable, Stepper {
 
     @Setter
     private ApplicationState state;
+    private ApplicationState nextApplicationState;
     private final ComputerKurzweilApplicationContext ctx;
+    private final TuringPositionsStateMachine turingPositionsStateMachine;
+    private final TuringPhaseStateMachine turingPhaseStateMachine;
+    private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
+    private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
 
-    public ApplicationStateMachine(ComputerKurzweilApplicationContext ctx) {
-        this.state = MANDELBROT_SWITCH;
+    public ApplicationStateMachine(
+        ComputerKurzweilApplicationContext ctx
+    ) {
+        this.state = ApplicationState.start();
         this.ctx = ctx;
+        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this.ctx);
+        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot(this.ctx);
+        this.turingPositionsStateMachine = new TuringPositionsStateMachine(this.ctx);
+        this.turingPhaseStateMachine = new TuringPhaseStateMachine();
     }
 
+    @Override
     public void start() {
         this.state = ApplicationState.start();
+        this.getTuringPhaseStateMachine().start();
+        this.getGaussianNumberPlaneMandelbrot().start();
+        this.getTuringPositionsStateMachine().start();
+    }
+
+    @Override
+    public void stop() {
     }
 
     public void click(){
-        ApplicationState nextApplicationState = null;
         switch (this.state){
             case MANDELBROT_SWITCH:
                 nextApplicationState = JULIA_SET_SWITCH;
@@ -56,7 +80,6 @@ public class ApplicationStateMachine {
     }
 
     public void setModeSwitch() {
-        ApplicationState nextApplicationState  = null;
         switch (this.state){
             case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
@@ -73,8 +96,7 @@ public class ApplicationStateMachine {
     }
 
     public void setModeZoom() {
-        ApplicationState nextApplicationState = null;
-        switch (this.state){
+        switch (this.getState()){
             case MANDELBROT_SWITCH:
             case MANDELBROT_ZOOM:
                 nextApplicationState = MANDELBROT_ZOOM;
@@ -87,6 +109,63 @@ public class ApplicationStateMachine {
         String msg = "setModeZoom: "+ this.state + " -> "+ nextApplicationState.name();
         log.info(msg);
         this.setState(nextApplicationState);
+    }
+
+    public boolean isFinished() {
+        return  this.getTuringPhaseStateMachine().isFinished();
+    }
+
+    @Override
+    public void step() {
+        switch( this.getTuringPhaseStateMachine().getTuringTuringPhase()){
+            case SEARCH_THE_SET:
+                stepGoToSet();
+                break;
+            case WALK_AROUND_THE_SET:
+                stepWalkAround();
+                break;
+            case FILL_THE_OUTSIDE_WITH_COLOR:
+                stepFillTheOutsideWithColors();
+                break;
+            case FINISHED:
+                break;
+        }
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+
+    private void stepGoToSet(){
+        if(this.getGaussianNumberPlaneMandelbrot().isInSet(
+            this.getTuringPositionsStateMachine().getTuringPosition()
+        )){
+            this.getTuringPositionsStateMachine().markFirstSetPosition();
+            this.getTuringPhaseStateMachine().finishSearchTheSet();
+        } else {
+            this.getTuringPositionsStateMachine().goForward();
+        }
+    }
+
+    private void stepWalkAround(){
+        if(this.getGaussianNumberPlaneMandelbrot().isInSet(
+            this.getTuringPositionsStateMachine().getTuringPosition()
+        )){
+            this.getTuringPositionsStateMachine().turnRight();
+        } else {
+            this.getTuringPositionsStateMachine().turnLeft();
+        }
+        this.getTuringPositionsStateMachine().goForward();
+        if(this.getTuringPositionsStateMachine().isFinishedWalkAround()){
+            this.getTuringPhaseStateMachine().finishWalkAround();
+        }
+    }
+
+    private void stepFillTheOutsideWithColors(){
+        this.getGaussianNumberPlaneMandelbrot().fillTheOutsideWithColors();
+        this.getTuringPhaseStateMachine().finishFillTheOutsideWithColors();
     }
 
 }

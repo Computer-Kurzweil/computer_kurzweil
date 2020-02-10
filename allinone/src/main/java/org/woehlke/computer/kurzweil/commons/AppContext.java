@@ -9,5 +9,7 @@ public interface AppContext extends Stepper {
     TabPanel getTabPanel();
     AppType getAppType();
     Stepper getStepper();
+    void startController();
+    void stopController();
 
 }

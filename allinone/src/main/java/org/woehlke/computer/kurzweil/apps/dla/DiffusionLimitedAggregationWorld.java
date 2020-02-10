@@ -23,18 +23,18 @@ import java.util.List;
 @Getter
 public class DiffusionLimitedAggregationWorld implements Stepper {
 
-    private LatticePoint worldDimensions;
-
     private List<LatticePoint> particles = new ArrayList<>();
 
-    private DiffusionLimitedAggregationWorldLattice dendrite;
-
+    private final LatticePoint worldDimensions;
+    private final DiffusionLimitedAggregationWorldLattice dendrite;
     private final ComputerKurzweilApplicationContext ctx;
+    private final int initialNumberOfParticles;
 
     public DiffusionLimitedAggregationWorld(ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
         this.worldDimensions=ctx.getWorldDimensions();
-        for(int i=0; i<ctx.getProperties().getDla().getControl().getNumberOfParticles();i++){
+        this.initialNumberOfParticles = ctx.getProperties().getDla().getControl().getNumberOfParticles();
+        for(int i=0; i< this.initialNumberOfParticles; i++){
             int x = ctx.getRandom().nextInt(worldDimensions.getX());
             int y = ctx.getRandom().nextInt(worldDimensions.getY());
             particles.add(new LatticePoint(x>=0?x:-x,y>=0?y:-y));

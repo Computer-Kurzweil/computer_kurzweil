@@ -30,8 +30,8 @@ public class StartStopButtonsPanel extends JPanel implements Startable, AppGuiCo
         this.stopButton = new JButton(getStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        this.startButton.addActionListener(tab);
-        this.stopButton.addActionListener(tab);
+        this.startButton.addActionListener(tab.getAppCtx());
+        this.stopButton.addActionListener(tab.getAppCtx());
         this.startButton.setEnabled(true);
         this.stopButton.setEnabled(false);
     }
@@ -46,8 +46,8 @@ public class StartStopButtonsPanel extends JPanel implements Startable, AppGuiCo
         this.stopButton = new JButton(getStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        this.startButton.addActionListener(tab);
-        this.stopButton.addActionListener(tab);
+        this.startButton.addActionListener(tab.getAppCtx());
+        this.stopButton.addActionListener(tab.getAppCtx());
         this.startButton.setEnabled(true);
         this.stopButton.setEnabled(false);
     }
@@ -62,8 +62,8 @@ public class StartStopButtonsPanel extends JPanel implements Startable, AppGuiCo
         this.stopButton = new JButton(getStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        this.startButton.addActionListener(tab);
-        this.stopButton.addActionListener(tab);
+        this.startButton.addActionListener(tab.getAppCtx());
+        this.stopButton.addActionListener(tab.getAppCtx());
         this.startButton.setEnabled(true);
         this.stopButton.setEnabled(false);
     }

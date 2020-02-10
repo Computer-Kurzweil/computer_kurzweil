@@ -7,7 +7,6 @@ import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.CellStatus;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing.MandelbrotTuringMachine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +31,6 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     private final ComputerKurzweilApplicationContext ctx;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-    private final MandelbrotTuringMachine mandelbrotTuringMachine;
     private final ApplicationStateMachine applicationStateMachine;
     private final MandelbrotPanelButtons panelButtons;
     private final MandelbrotControllerThread mandelbrotControllerThread;
@@ -45,20 +43,17 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
         this.ctx = ctx;
         this.panelButtons = panelButtons;
         this.panelButtons.setCanvas(this);
+        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.ctx );
+        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.ctx );
+        this.applicationStateMachine = new ApplicationStateMachine( this.ctx );
+        this.mandelbrotControllerThread = new MandelbrotControllerThread(
+            this.ctx, this.panelButtons,this
+        );
         int width = this.ctx.getWorldDimensions().getWidth();
         int height = this.ctx.getWorldDimensions().getHeight();
         this.preferredSize = new Dimension(width, height);
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
-        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(    this.ctx );
-        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot(    this.ctx );
-        this.applicationStateMachine = new ApplicationStateMachine(   this.ctx );
-        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(
-            this.gaussianNumberPlaneMandelbrot
-        );
-        this.mandelbrotControllerThread = new MandelbrotControllerThread(
-            this.ctx, this.panelButtons,this
-        );
     }
 
     public CellStatus getCellStatusFor(int x, int y) {
@@ -78,30 +73,23 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
     public void start() {
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneMandelbrot.start();
-        this.mandelbrotTuringMachine.start();
         this.applicationStateMachine.start();
         this.setModeSwitch();
         this.computeTheMandelbrotSet();
     }
 
-    //TODO:
     public void setModeSwitch() {
         this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.gaussianNumberPlaneBaseJulia.setModeSwitch();
         this.gaussianNumberPlaneMandelbrot.setModeSwitch();
         this.applicationStateMachine.setModeSwitch();
-        //this.frame.setModeSwitch();
-        //this.frame.showMe();
     }
 
-    //TODO:
     public void setModeZoom() {
         this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         this.gaussianNumberPlaneBaseJulia.setModeZoom();
         this.gaussianNumberPlaneMandelbrot.setModeZoom();
         this.applicationStateMachine.setModeZoom();
-        //this.frame.setModeZoom();
-        //this.frame.showMe();
     }
 
     @Override public void paint(Graphics g) {
@@ -166,27 +154,22 @@ public class MandelbrotCanvas extends JComponent implements MouseListener {
                 break;
         }
         e.consume();
-        //TODO:
-        //this.frame.showMe();
+        this.showMe();
+    }
+
+    private void showMe() {
+        this.setVisible(true);
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 }

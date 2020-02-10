@@ -12,6 +12,8 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 
@@ -29,7 +31,8 @@ import java.io.Serializable;
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class DiffusionLimitedAggregationCanvas extends JComponent implements Serializable,Startable,AppCanvas {
+public class DiffusionLimitedAggregationCanvas extends JComponent implements
+    Serializable,Startable, AppCanvas {
 
     private final DiffusionLimitedAggregationWorld world;
     private final LatticePoint worldDimensions;
@@ -92,21 +95,24 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements Ser
 
     @Override
     public void update() {
-
+        log.info("update");
+        repaint();
     }
 
     @Override
     public void showMe() {
-
+        log.info("showMe");
     }
 
     @Override
     public void hideMe() {
-
+        log.info("hideMe");
     }
 
     @Override
     public void handleUserSignal(UserSignal userSignal) {
-
+        log.info("handleUserSignal "+userSignal.name());
     }
+
+
 }

@@ -8,11 +8,16 @@ import org.woehlke.computer.kurzweil.commons.AppContext;
 import org.woehlke.computer.kurzweil.tabs.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
+import static org.woehlke.computer.kurzweil.apps.AppType.CYCLIC_CELLULAR_AUTOMATON;
+
 @Getter
 public class CyclicCellularAutomatonContext implements AppContext {
 
+    private final AppType appType = CYCLIC_CELLULAR_AUTOMATON;
+
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonTab tab;
+
     private CyclicCellularAutomatonControllerThread controller;
 
     public CyclicCellularAutomatonContext(
@@ -33,11 +38,6 @@ public class CyclicCellularAutomatonContext implements AppContext {
     @Override
     public TabPanel getTabPanel() {
         return tab;
-    }
-
-    @Override
-    public AppType getAppType() {
-        return AppType.CYCLIC_CELLULAR_AUTOMATON;
     }
 
     @Override

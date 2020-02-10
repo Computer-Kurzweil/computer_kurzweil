@@ -13,12 +13,10 @@ import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 @Log
 @Getter
-public class SimulatedEvolutionTab extends Tab implements TabPanel, ActionListener {
+public class SimulatedEvolutionTab extends Tab implements TabPanel {
 
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionContext appCtx;
@@ -86,20 +84,6 @@ public class SimulatedEvolutionTab extends Tab implements TabPanel, ActionListen
     @Override
     public void handleUserSignal(UserSignal userSignal) {
         log.info("handleUserSignal: "+userSignal.name());
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.startStopButtonsPanel.getStartButton()){
-            this.startStopButtonsPanel.getStartButton().setEnabled(false);
-            this.startStopButtonsPanel.getStopButton().setEnabled(true);
-            this.start();
-        }
-        if(ae.getSource() == this.startStopButtonsPanel.getStopButton()){
-            this.startStopButtonsPanel.getStartButton().setEnabled(true);
-            this.startStopButtonsPanel.getStopButton().setEnabled(false);
-            this.stop();
-        }
     }
 
     @Override

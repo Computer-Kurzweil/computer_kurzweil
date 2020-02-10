@@ -33,7 +33,7 @@ public class MandelbrotControllerThread extends Thread implements Runnable, Cont
         log.info("run() - begin");
         boolean doMyJob;
         synchronized (this.canvas) {
-            canvas.getMandelbrotTuringMachine().start();
+            canvas.start();
         }
         do {
             synchronized (goOn) {
@@ -41,7 +41,7 @@ public class MandelbrotControllerThread extends Thread implements Runnable, Cont
             }
             synchronized (this.canvas) {
                 log.info(".");
-                canvas.getMandelbrotTuringMachine().step();
+                canvas.getApplicationStateMachine().step();
             }
             synchronized (this.canvas) {
                 log.info("[");
@@ -53,7 +53,7 @@ public class MandelbrotControllerThread extends Thread implements Runnable, Cont
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
-        } while( doMyJob && (! canvas.getMandelbrotTuringMachine().isFinished()));
+        } while( doMyJob && (! canvas.getApplicationStateMachine().isFinished()));
         log.info("run() - finished");
     }
 

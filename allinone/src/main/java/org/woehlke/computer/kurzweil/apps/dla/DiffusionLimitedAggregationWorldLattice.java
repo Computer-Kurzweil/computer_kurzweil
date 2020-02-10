@@ -21,12 +21,16 @@ public class DiffusionLimitedAggregationWorldLattice {
     private int age=1;
 
     private final ComputerKurzweilApplicationContext ctx;
+    private final int worldX;
+    private final int worldY;
 
     public DiffusionLimitedAggregationWorldLattice(ComputerKurzweilApplicationContext ctx) {
         this.ctx=ctx;
-        worldMap = new int[this.ctx.getWorldDimensions().getX()][this.ctx.getWorldDimensions().getY()];
-        int x = this.ctx.getWorldDimensions().getX() / 2;
-        int y = this.ctx.getWorldDimensions().getY() / 2;
+        this.worldX = this.ctx.getWorldDimensions().getX();
+        this.worldY = this.ctx.getWorldDimensions().getY();
+        this.worldMap = new int[this.worldX][this.worldY];
+        int x = this.worldY / 2;
+        int y = this.worldY / 2;
         worldMap[x][y]=age;
         age++;
     }

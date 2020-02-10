@@ -17,12 +17,13 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.Comput
 public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     private Deque<ComputingPlan> complexCenterForZoomedJulia = new ArrayDeque<>();
+
     private final ZoomLevel zoomLevel;
     private ComplexNumber complexNumberForJuliaSetC;
 
     public GaussianNumberPlaneBaseJulia(ComputerKurzweilApplicationContext ctx) {
         super(ctx, FractalSetType.JULIA_SET);
-        zoomLevel = new ZoomLevel();
+        this.zoomLevel = new ZoomLevel();
     }
 
     @Override
@@ -32,9 +33,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
     }
 
     @Override
-    public void stop() {
-
-    }
+    public void stop() {}
 
     @Override
     public void setModeZoom() {
@@ -106,6 +105,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
         }
     }
 
+    //TODO: usage
     public boolean isInZooomed(LatticePoint turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForZoomedJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();
@@ -113,6 +113,7 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
         return result.getInJuliaSet();
     }
 
+    //TODO: usage
     public boolean isInSet(LatticePoint turingPosition) {
         ComplexNumber c = this.getComplexNumberFromLatticeCoordsForJulia(turingPosition);
         ComplexNumber z = new ComplexNumber();

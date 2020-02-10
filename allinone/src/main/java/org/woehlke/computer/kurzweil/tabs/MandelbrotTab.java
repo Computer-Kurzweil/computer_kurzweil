@@ -5,41 +5,24 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
-import org.woehlke.computer.kurzweil.trashcan.MandelbrotTabApp;
 import org.woehlke.computer.kurzweil.tabs.common.Tab;
-import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
-import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 @Log
-public class MandelbrotTab extends Tab implements TabPanel, ActionListener {
+@Getter
+public class MandelbrotTab extends Tab implements TabPanel {
 
-    @Getter
-    private final MandelbrotTabApp app;
-
-    @Getter
     private final MandelbrotContext appCtx;
-
-    @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Getter private final StartStopButtonsPanel startStopButtonsPanel;
-
-    @Getter private final PanelSubtitle panelSubtitle;
+    private final String title;
+    private final String subTitle;
 
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
         this.ctx = ctx;
-        String subtitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
-        this.appCtx = new MandelbrotContext();
-        this.app = new MandelbrotTabApp(this);
-        this.startStopButtonsPanel = new StartStopButtonsPanel( this );
-        this.panelSubtitle = new PanelSubtitle(subtitle);
-        this.add(this.panelSubtitle);
-        this.add(this.app);
-        this.add(this.startStopButtonsPanel);
+        this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
+        this.subTitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
+        this.appCtx = new MandelbrotContext(this);
     }
 
     @Override
@@ -81,27 +64,5 @@ public class MandelbrotTab extends Tab implements TabPanel, ActionListener {
         log.info("handleUserSignal: "+userSignal.name());
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.startStopButtonsPanel.getStartButton()){
-            this.startStopButtonsPanel.getStartButton().setEnabled(false);
-            this.startStopButtonsPanel.getStopButton().setEnabled(true);
-            this.start();
-        }
-        if(ae.getSource() == this.startStopButtonsPanel.getStopButton()){
-            this.startStopButtonsPanel.getStartButton().setEnabled(true);
-            this.startStopButtonsPanel.getStopButton().setEnabled(false);
-            this.stop();
-        }
-    }
 
-    @Override
-    public String getTitle() {
-        return ctx.getProperties().getMandelbrot().getView().getTitle();
-    }
-
-    @Override
-    public String getSubTitle() {
-        return ctx.getProperties().getMandelbrot().getView().getSubtitle();
-    }
 }

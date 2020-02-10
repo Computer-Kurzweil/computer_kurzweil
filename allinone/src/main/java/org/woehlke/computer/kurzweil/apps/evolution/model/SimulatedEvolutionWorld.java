@@ -32,6 +32,7 @@ import java.util.List;
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
 @Log
+@Getter
 public class SimulatedEvolutionWorld implements Startable, Stepper {
 
     /**
@@ -39,17 +40,12 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
     */
     private List<Cell> cells;
 
-    @Getter @Setter
+    @Setter
     private SimulatedEvolutionContext appCtx;
 
-    @Getter
-    private final SimulatedEvolutionWorldLattice worldLattice;
-
-    @Getter
-    private final SimulatedEvolutionStatistics statisticsContainer;
-
-    @Getter
     private final ComputerKurzweilApplicationContext ctx;
+    private final SimulatedEvolutionWorldLattice worldLattice;
+    private final SimulatedEvolutionStatistics statisticsContainer;
 
   public SimulatedEvolutionWorld(
       ComputerKurzweilApplicationContext ctx
@@ -73,40 +69,6 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
       statisticsContainer.push(populationCensus);
   }
 
-  /**
-   * One Step of Time in the World in which the Population of Bacteria Cell perform Life.
-   * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
-   */
-  private void letLivePopulation() {
-    worldLattice.letFoodGrow();
-    LatticePoint pos;
-    List<Cell> children = new ArrayList<>();
-    List<Cell> died = new ArrayList<>();
-    for (Cell cell : cells) {
-      cell.move();
-      if (cell.died()) {
-        died.add(cell);
-      } else {
-        pos = cell.getPosition();
-        int food = worldLattice.eat(pos);
-        cell.eat(food);
-        if (cell.isAbleForReproduction()) {
-          Cell child = cell.reproductionByCellDivision();
-          children.add(child);
-        }
-      }
-    }
-    for (Cell dead : died) {
-      cells.remove(dead);
-    }
-    cells.addAll(children);
-    SimulatedEvolutionPopulationCensus oneStatisticsTimestamp = new SimulatedEvolutionPopulationCensus();
-    for (Cell cell : cells) {
-        oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
-    }
-    statisticsContainer.push(oneStatisticsTimestamp);
-  }
-
   public List<Cell> getAllCells() {
     return cells;
   }
@@ -116,32 +78,66 @@ public class SimulatedEvolutionWorld implements Startable, Stepper {
   }
 
     public void toggleGardenOfEden() {
+        log.info("toggleGardenOfEden");
         appCtx.toggleGardenOfEden();
         worldLattice.toggleGardenOfEden();
     }
 
     @Override
     public void start() {
-
+        log.info("start");
     }
 
     @Override
     public void stop() {
-
+        log.info("stop");
     }
 
+    /**
+     * One Step of Time in the World in which the Population of Bacteria Cell perform Life.
+     * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
+     */
     @Override
     public void step() {
-        this.letLivePopulation();
+      log.info("step");
+        worldLattice.letFoodGrow();
+        LatticePoint pos;
+        List<Cell> children = new ArrayList<>();
+        List<Cell> died = new ArrayList<>();
+        for (Cell cell : cells) {
+            cell.move();
+            if (cell.died()) {
+                died.add(cell);
+            } else {
+                pos = cell.getPosition();
+                int food = worldLattice.eat(pos);
+                cell.eat(food);
+                if (cell.isAbleForReproduction()) {
+                    Cell child = cell.reproductionByCellDivision();
+                    children.add(child);
+                }
+            }
+        }
+        for (Cell dead : died) {
+            cells.remove(dead);
+        }
+        cells.addAll(children);
+        SimulatedEvolutionPopulationCensus oneStatisticsTimestamp = new SimulatedEvolutionPopulationCensus();
+        for (Cell cell : cells) {
+            oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
+        }
+        statisticsContainer.push(oneStatisticsTimestamp);
+      log.info("stepped");
     }
 
     @Override
     public void update() {
+        log.info("update");
 
     }
 
     //@Override
     public void handleUserSignal(UserSignal userSignal) {
-
+        log.info("step");
     }
 }

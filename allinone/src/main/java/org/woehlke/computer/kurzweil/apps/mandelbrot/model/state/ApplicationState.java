@@ -16,10 +16,22 @@ import static org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.FractalS
  */
 public enum ApplicationState {
 
-    MANDELBROT_SWITCH(MANDELBROT_SET, SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET),
-    JULIA_SET_SWITCH(JULIA_SET, SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET),
-    MANDELBROT_ZOOM(MANDELBROT_SET, ZOOM_IN),
-    JULIA_SET_ZOOM(JULIA_SET, ZOOM_IN);
+    MANDELBROT_SWITCH(
+        MANDELBROT_SET,
+        SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET
+    ),
+    JULIA_SET_SWITCH(
+        JULIA_SET,
+        SWITCH_BETWEEN_MANDELBROT_AND_JULIA_SET
+    ),
+    MANDELBROT_ZOOM(
+        MANDELBROT_SET,
+        ZOOM_IN
+    ),
+    JULIA_SET_ZOOM(
+        JULIA_SET,
+        ZOOM_IN
+    );
 
     private FractalSetType fractalSetType;
     private ClickBehaviour clickBehaviour;
