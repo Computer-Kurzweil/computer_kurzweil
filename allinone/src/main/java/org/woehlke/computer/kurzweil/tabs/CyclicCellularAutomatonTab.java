@@ -15,14 +15,14 @@ import org.woehlke.computer.kurzweil.tabs.common.TabLayout;
 import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
 
 @Log
+@Getter
 public class CyclicCellularAutomatonTab extends Tab implements TabPanel {
 
-    @Getter private CyclicCellularAutomatonCanvas canvas;
-    @Getter private CyclicCellularAutomatonControllerThread controller;
-    @Getter private final CyclicCellularAutomatonContext appCtx;
-    @Getter private final ComputerKurzweilApplicationContext ctx;
+    private final CyclicCellularAutomatonCanvas canvas;
+    private final CyclicCellularAutomatonContext appCtx;
+    private final ComputerKurzweilApplicationContext ctx;
+    private CyclicCellularAutomatonControllerThread controller;
 
-    @Getter
     private final static AppType appType = AppType.CYCLIC_CELLULAR_AUTOMATON;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
@@ -44,7 +44,7 @@ public class CyclicCellularAutomatonTab extends Tab implements TabPanel {
     @Override
     public void start() {
         log.info("start");
-        //this.showMe();
+        this.showMe();
         this.getAppCtx().start();
         log.info("started");
     }

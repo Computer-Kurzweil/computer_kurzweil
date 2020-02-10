@@ -44,27 +44,36 @@ public class MandelbrotTab extends Tab implements TabPanel, ActionListener {
 
     @Override
     public void start() {
-        this.app.start();
+        log.info("start");
+        this.showMe();
+        this.getAppCtx().start();
+        log.info("started");
     }
 
     @Override
     public void stop() {
-        this.app.stop();
+        log.info("stop");
+        this.getAppCtx().stop();
+        log.info("stopped");
     }
 
     @Override
     public void update() {
-
+        log.info("update");
+        this.getAppCtx().update();
+        log.info("updated");
     }
 
     @Override
     public void showMe() {
-
+        log.info("showMe");
+        this.setVisible(true);
     }
 
     @Override
     public void hideMe() {
-
+        log.info("hideMe");
+        this.setVisible(false);
     }
 
     @Override

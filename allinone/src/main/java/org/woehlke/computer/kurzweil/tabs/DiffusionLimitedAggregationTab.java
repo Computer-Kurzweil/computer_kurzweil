@@ -15,21 +15,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @Log
+@Getter
 public class DiffusionLimitedAggregationTab extends Tab implements TabPanel, ActionListener {
 
-    @Getter
     private final DiffusionLimitedAggregationTabApp app;
-
-    @Getter
     private final ComputerKurzweilApplicationContext ctx;
-
-    @Getter
     private final DiffusionLimitedAggregationContext appCtx;
-
-
-    @Getter private final StartStopButtonsPanel startStopButtonsPanel;
-
-    @Getter private final PanelSubtitle panelSubtitle;
+    private final StartStopButtonsPanel startStopButtonsPanel;
+    private final PanelSubtitle panelSubtitle;
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;

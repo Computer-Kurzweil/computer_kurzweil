@@ -89,6 +89,8 @@ public class SimulatedEvolutionContext implements AppContext {
     @Override
     public void update() {
         this.world.update();
+        this.canvas.update();
+        this.canvas.repaint();
     }
 
     @Override
