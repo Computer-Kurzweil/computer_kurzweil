@@ -1,8 +1,7 @@
 package org.woehlke.computer.kurzweil.apps.evolution.model;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionPopulationCensus;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 

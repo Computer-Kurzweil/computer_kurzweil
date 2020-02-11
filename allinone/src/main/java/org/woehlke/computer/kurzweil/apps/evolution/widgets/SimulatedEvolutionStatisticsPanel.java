@@ -2,8 +2,8 @@ package org.woehlke.computer.kurzweil.apps.evolution.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionStatistics;
 

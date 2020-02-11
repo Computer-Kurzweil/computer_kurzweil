@@ -2,88 +2,63 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot;
 
 
 import lombok.Getter;
-import org.woehlke.computer.kurzweil.apps.AppType;
+import org.woehlke.computer.kurzweil.apps.TabType;
 import org.woehlke.computer.kurzweil.apps.dla.DiffusionLimitedAggregationCanvas;
-import org.woehlke.computer.kurzweil.commons.AppContext;
-import org.woehlke.computer.kurzweil.commons.ControllerThread;
-import org.woehlke.computer.kurzweil.commons.Stepper;
-import org.woehlke.computer.kurzweil.tabs.MandelbrotTab;
-import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
+import org.woehlke.computer.kurzweil.apps.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.computer.kurzweil.apps.AppType.MANDELBROT_SET;
+import static org.woehlke.computer.kurzweil.apps.TabType.MANDELBROT_SET;
 
 @Getter
-public class MandelbrotContext implements AppContext, ActionListener {
+public class MandelbrotContext implements TabContext, ActionListener {
 
-    private final AppType appType = MANDELBROT_SET;
+    private final TabType tabType = MANDELBROT_SET;
 
-    private MandelbrotControllerThread mandelbrotControllerThread;
+    //TODO:
+    private MandelbrotTabController controller;
 
-    private final MandelbrotTab tab;
-    private final ApplicationStateMachine world;
+    private final MandelbrotTabPanel tab;
+    private final Mandelbrot stateMachine;
+    private final DiffusionLimitedAggregation stepper;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final PanelSubtitle panelSubtitle;
 
-    public MandelbrotContext(MandelbrotTab tab) {
+    public MandelbrotContext(MandelbrotTabPanel tab) {
         this.tab = tab;
         this.canvas = new DiffusionLimitedAggregationCanvas(this.tab.getCtx());
-        this.world = new ApplicationStateMachine(this.tab.getCtx());
+        this.stepper = this.canvas.getStepper();
         this.startStopButtonsPanel = new StartStopButtonsPanel( tab );
         this.panelSubtitle = new PanelSubtitle(this.tab.getSubTitle());
         this.tab.add(this.panelSubtitle);
         this.tab.add(this.canvas);
         this.tab.add(this.startStopButtonsPanel);
-    }
-
-    @Override
-    public ControllerThread getControllerThread() {
-        return mandelbrotControllerThread;
-    }
-
-    @Override
-    public TabPanel getTabPanel() {
-        return tab;
-    }
-
-    @Override
-    public Stepper getStepper() {
-        return world;
+        this.stateMachine = new Mandelbrot(this.tab.getCtx());
     }
 
     @Override
     public void startController() {
-
+//TODO:
     }
 
     @Override
     public void stopController() {
-
-    }
-
-    @Override
-    public void step() {
-        this.world.step();
-    }
-
-    @Override
-    public void update() {
-        this.canvas.update();
+//TODO:
     }
 
     @Override
     public void start() {
-        this.world.start();
+        this.stateMachine.start();
     }
 
     @Override
     public void stop() {
-        this.world.stop();
+        this.stateMachine.stop();
     }
 
     @Override

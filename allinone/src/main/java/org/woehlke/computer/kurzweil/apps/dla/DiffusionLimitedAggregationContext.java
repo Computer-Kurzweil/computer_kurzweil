@@ -2,29 +2,25 @@ package org.woehlke.computer.kurzweil.apps.dla;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.woehlke.computer.kurzweil.apps.AppType;
-import org.woehlke.computer.kurzweil.commons.AppContext;
-import org.woehlke.computer.kurzweil.commons.ControllerThread;
+import org.woehlke.computer.kurzweil.apps.TabType;
+import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.commons.Stepper;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.tabs.DiffusionLimitedAggregationTab;
-import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.computer.kurzweil.apps.AppType.DIFFUSION_LIMITED_AGGREGATION;
+import static org.woehlke.computer.kurzweil.apps.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 @Getter
-public class DiffusionLimitedAggregationContext implements AppContext, Startable, ActionListener {
+public class DiffusionLimitedAggregationContext implements TabContext, Startable, ActionListener {
 
-    private final AppType appType = DIFFUSION_LIMITED_AGGREGATION;
+    private final TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
 
-    @Setter private DiffusionLimitedAggregationControllerThread controller;
+    @Setter private DiffusionLimitedAggregationController controller;
 
+    private final DiffusionLimitedAggregation stepper;
     private final DiffusionLimitedAggregationCanvas canvas;
-    private final DiffusionLimitedAggregationWorld world;
     private final DiffusionLimitedAggregationTab tab;
     private final ComputerKurzweilApplicationContext ctx;
 
@@ -33,34 +29,19 @@ public class DiffusionLimitedAggregationContext implements AppContext, Startable
     ) {
         this.tab = tab;
         this.ctx = this.tab.getCtx();
-        this.world = new DiffusionLimitedAggregationWorld(this.ctx);
         this.canvas = new DiffusionLimitedAggregationCanvas(this.ctx);
+        this.stepper = this.canvas.getStepper();
         startController();
-    }
-
-    @Override
-    public ControllerThread getControllerThread() {
-        return controller;
-    }
-
-    @Override
-    public TabPanel getTabPanel() {
-        return tab;
-    }
-
-    @Override
-    public Stepper getStepper() {
-        return world;
     }
 
     public void stopController() {
         this.controller.exit();
-        this.controller = new DiffusionLimitedAggregationControllerThread(this);
+        this.controller = new DiffusionLimitedAggregationController(this);
     }
 
     public void startController() {
         if(this.controller == null){
-            this.controller = new DiffusionLimitedAggregationControllerThread(this);
+            this.controller = new DiffusionLimitedAggregationController(this);
         } else {
             Thread.State controllerState = this.controller.getState();
             switch (controllerState){
@@ -89,16 +70,6 @@ public class DiffusionLimitedAggregationContext implements AppContext, Startable
     }
 
     @Override
-    public void step() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
     public void start() {
 
     }
@@ -107,4 +78,5 @@ public class DiffusionLimitedAggregationContext implements AppContext, Startable
     public void stop() {
 
     }
+
 }

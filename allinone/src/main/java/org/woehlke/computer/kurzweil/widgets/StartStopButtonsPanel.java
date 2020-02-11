@@ -2,100 +2,52 @@ package org.woehlke.computer.kurzweil.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.cca.CyclicCellularAutomatonCanvas;
-import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
+import org.woehlke.computer.kurzweil.apps.cca.CyclicCellularAutomatonTab;
+import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.borders.PanelBorder;
-import org.woehlke.computer.kurzweil.layouts.StartStopButtonsPanelLayout;
-import org.woehlke.computer.kurzweil.tabs.DiffusionLimitedAggregationTab;
-import org.woehlke.computer.kurzweil.tabs.MandelbrotTab;
-import org.woehlke.computer.kurzweil.tabs.SimulatedEvolutionTab;
+import org.woehlke.computer.kurzweil.commons.tabs.Tab;
+import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
+import org.woehlke.computer.kurzweil.widgets.layouts.StartStopButtonsPanelLayout;
 
 import javax.swing.*;
 
 @Log
-public class StartStopButtonsPanel extends JPanel implements Startable, AppGuiComponent {
+@Getter
+public class StartStopButtonsPanel extends JPanel implements Startable, GuiComponentTab {
 
-    @Getter private final JButton startButton;
-    @Getter private final JButton stopButton;
+    private final JButton startButton;
+    private final JButton stopButton;
 
-    public StartStopButtonsPanel(SimulatedEvolutionTab tab){
-        String getStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();
-        String getStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
-        String getStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
+    public StartStopButtonsPanel(Tab tab){
+        String labelStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();
+        String labelStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
+        String labelStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
         this.setLayout(new StartStopButtonsPanelLayout());
-        this.setBorder(PanelBorder.getBorder(getStartStopp));
-        this.startButton = new JButton(getStart);
-        this.stopButton = new JButton(getStop);
+        this.setBorder(PanelBorder.getBorder(labelStartStopp));
+        this.startButton = new JButton(labelStart);
+        this.stopButton = new JButton(labelStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        this.startButton.addActionListener(tab.getAppCtx());
-        this.stopButton.addActionListener(tab.getAppCtx());
-        this.startButton.setEnabled(true);
-        this.stopButton.setEnabled(false);
-    }
-
-    public StartStopButtonsPanel(MandelbrotTab tab){
-        String getStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();
-        String getStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
-        String getStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
-        this.setLayout(new StartStopButtonsPanelLayout());
-        this.setBorder(PanelBorder.getBorder(getStartStopp));
-        this.startButton = new JButton(getStart);
-        this.stopButton = new JButton(getStop);
-        this.add(this.startButton);
-        this.add(this.stopButton);
-        this.startButton.addActionListener(tab.getAppCtx());
-        this.stopButton.addActionListener(tab.getAppCtx());
-        this.startButton.setEnabled(true);
-        this.stopButton.setEnabled(false);
-    }
-
-    public StartStopButtonsPanel(DiffusionLimitedAggregationTab tab){
-        String getStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();
-        String getStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
-        String getStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
-        this.setLayout(new StartStopButtonsPanelLayout());
-        this.setBorder(PanelBorder.getBorder(getStartStopp));
-        this.startButton = new JButton(getStart);
-        this.stopButton = new JButton(getStop);
-        this.add(this.startButton);
-        this.add(this.stopButton);
-        this.startButton.addActionListener(tab.getAppCtx());
-        this.stopButton.addActionListener(tab.getAppCtx());
-        this.startButton.setEnabled(true);
-        this.stopButton.setEnabled(false);
-    }
-
-    public StartStopButtonsPanel(CyclicCellularAutomatonCanvas canvas) {
-        String getStartStopp = canvas.getCtx().getProperties().getAllinone().getView().getStartStopp();
-        String getStart = canvas.getCtx().getProperties().getAllinone().getView().getStart();
-        String getStop = canvas.getCtx().getProperties().getAllinone().getView().getStop();
-        this.setLayout(new StartStopButtonsPanelLayout());
-        this.setBorder(PanelBorder.getBorder(getStartStopp));
-        this.startButton = new JButton(getStart);
-        this.stopButton = new JButton(getStop);
-        this.add(this.startButton);
-        this.add(this.stopButton);
-        this.startButton.addActionListener(canvas);
-        this.stopButton.addActionListener(canvas);
-        this.startButton.setEnabled(true);
-        this.stopButton.setEnabled(false);
+        this.startButton.addActionListener(tab.getTabCtx());
+        this.stopButton.addActionListener(tab.getTabCtx());
+        if(tab instanceof CyclicCellularAutomatonTab){
+            start();
+        }else {
+            stop();
+        }
     }
 
     @Override
     public void start() {
+        this.startButton.setEnabled(false);
+        this.stopButton.setEnabled(true);
         showMe();
     }
 
-    public void stop() {
-        hideMe();
-    }
-
     @Override
-    public void update() {
-        this.repaint();
+    public void stop() {
+        this.startButton.setEnabled(true);
+        this.stopButton.setEnabled(false);
     }
 
     @Override
@@ -103,13 +55,4 @@ public class StartStopButtonsPanel extends JPanel implements Startable, AppGuiCo
         this.setVisible(true);
     }
 
-    @Override
-    public void hideMe() {
-        this.setVisible(false);
-    }
-
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
-        log.info("handleUserSignal: "+userSignal.name());
-    }
 }

@@ -4,16 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.commons.AppCanvas;
-import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
+import org.woehlke.computer.kurzweil.commons.tabs.HasModel;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.Startable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 
@@ -32,9 +30,9 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable,Startable, AppCanvas {
+    Serializable, Startable, TabCanvas, HasModel {
 
-    private final DiffusionLimitedAggregationWorld world;
+    private final DiffusionLimitedAggregation stepper;
     private final LatticePoint worldDimensions;
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
@@ -48,7 +46,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.worldDimensions = ctx.getWorldDimensions();
         this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
-        this.world = new DiffusionLimitedAggregationWorld(this.ctx);
+        this.stepper = new DiffusionLimitedAggregation(this.ctx);
     }
 
     public void paint(Graphics g) {
@@ -59,12 +57,12 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
         g.setColor(PARTICLES);
-        for(LatticePoint pixel : world.getParticles()){
+        for(LatticePoint pixel : stepper.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0;y<worldDimensions.getY();y++){
             for(int x=0;x<worldDimensions.getX();x++){
-                int age = world.getDendriteColor(x,y);
+                int age = stepper.getDendriteColor(x,y);
                 if(age>0){
                     age /= 25;
                     int blue = (age / 256) % (256*256);
@@ -94,25 +92,12 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     @Override
-    public void update() {
-        log.info("update");
-        repaint();
-    }
-
-    @Override
     public void showMe() {
         log.info("showMe");
     }
 
     @Override
-    public void hideMe() {
-        log.info("hideMe");
+    public void update() {
+        repaint();
     }
-
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
-        log.info("handleUserSignal "+userSignal.name());
-    }
-
-
 }

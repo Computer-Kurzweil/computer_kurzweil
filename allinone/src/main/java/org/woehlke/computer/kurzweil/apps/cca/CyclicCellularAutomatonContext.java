@@ -1,60 +1,47 @@
 package org.woehlke.computer.kurzweil.apps.cca;
 
 import lombok.Getter;
-import org.woehlke.computer.kurzweil.apps.AppType;
-import org.woehlke.computer.kurzweil.commons.ControllerThread;
-import org.woehlke.computer.kurzweil.commons.Stepper;
-import org.woehlke.computer.kurzweil.commons.AppContext;
-import org.woehlke.computer.kurzweil.tabs.CyclicCellularAutomatonTab;
-import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.apps.TabType;
+import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 
-import static org.woehlke.computer.kurzweil.apps.AppType.CYCLIC_CELLULAR_AUTOMATON;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static org.woehlke.computer.kurzweil.apps.TabType.CYCLIC_CELLULAR_AUTOMATON;
 
 @Getter
-public class CyclicCellularAutomatonContext implements AppContext {
+public class CyclicCellularAutomatonContext implements TabContext, ActionListener {
 
-    private final AppType appType = CYCLIC_CELLULAR_AUTOMATON;
+    private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
+    private final ComputerKurzweilApplicationContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonTab tab;
-
-    private CyclicCellularAutomatonControllerThread controller;
+    private CyclicCellularAutomatonController controller;
 
     public CyclicCellularAutomatonContext(
-        CyclicCellularAutomatonTab tab,
-        CyclicCellularAutomatonControllerThread controllerThread,
-        CyclicCellularAutomatonCanvas canvas
+        CyclicCellularAutomatonTab tab
     ) {
         this.tab = tab;
-        this.controller = controllerThread;
-        this.canvas = canvas;
+        this.ctx = tab.getCtx();
+        this.canvas = new CyclicCellularAutomatonCanvas( this);
+        this.controller = new CyclicCellularAutomatonController(this);
     }
 
     @Override
-    public ControllerThread getControllerThread() {
-        return controller;
-    }
-
-    @Override
-    public TabPanel getTabPanel() {
-        return tab;
-    }
-
-    @Override
-    public Stepper getStepper() {
-        return canvas;
+    public CyclicCellularAutomatonCanvas getStepper() {
+        return this.canvas;
     }
 
     public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonControllerThread(this.getTab().getCtx());
-        this.controller.setAppCtx(this);
+        this.controller = new CyclicCellularAutomatonController(this);
     }
 
     public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonControllerThread(this.getTab().getCtx());
-            this.controller.setAppCtx(this);
+            this.controller = new CyclicCellularAutomatonController(this);
         } else {
             Thread.State controllerState = this.controller.getState();
             switch (controllerState){
@@ -66,24 +53,34 @@ public class CyclicCellularAutomatonContext implements AppContext {
                     break;
             }
         }
+        this.controller.start();
     }
 
     @Override
-    public void step() {
-        this.canvas.step();
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonVonNeumann()) {
+            this.canvas.startWithNeighbourhoodVonNeumann();
+            this.start();
+        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonMoore()) {
+            this.canvas.startWithNeighbourhoodMoore();
+            this.start();
+        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonWoehlke()) {
+            this.canvas.startWithNeighbourhoodWoehlke();
+            this.start();
+        }
+        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStartButton()){
+            this.start();
+        }
+        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStopButton()){
+            this.stop();
+        }
     }
 
-    @Override
-    public void update() {
-        this.canvas.update();
-        this.canvas.repaint();
-    }
 
     @Override
     public void start() {
-        this.startController();
         this.canvas.start();
-        this.controller.start();
+        this.startController();
     }
 
     @Override

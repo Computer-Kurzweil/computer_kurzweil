@@ -1,18 +1,15 @@
 package org.woehlke.computer.kurzweil.apps.evolution;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.evolution.model.Cell;
 import org.woehlke.computer.kurzweil.apps.evolution.widgets.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.apps.evolution.widgets.SimulatedEvolutionStatisticsPanel;
-import org.woehlke.computer.kurzweil.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.commons.Stepper;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionWorld;
-import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
-import org.woehlke.computer.kurzweil.layouts.CanvasLayout;
+import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
@@ -41,7 +38,7 @@ import static org.woehlke.computer.kurzweil.apps.evolution.widgets.SimulatedEvol
  */
 @Log
 public class SimulatedEvolutionCanvas extends JComponent implements
-    Serializable, Stepper, AppGuiComponent, ActionListener {
+    Serializable, TabCanvas, ActionListener {
 
     private static final long serialVersionUID = -27002509360079509L;
 
@@ -49,13 +46,13 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final static int startY = 0;
 
     @Getter
-    private final SimulatedEvolutionWorld world;
+    private final SimulatedEvolutionModel world;
 
     @Getter
     private final ComputerKurzweilApplicationContext ctx;
 
-    @Getter @Setter
-    private SimulatedEvolutionContext appCtx;
+    @Getter
+    private SimulatedEvolutionContext tabCtx;
 
     @Getter
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
@@ -64,11 +61,12 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final SimulatedEvolutionButtonRowPanel panelButtons;
 
     public SimulatedEvolutionCanvas(
-        ComputerKurzweilApplicationContext ctx
+        SimulatedEvolutionContext tabCtx
     ) {
-        this.ctx = ctx;
+        this.tabCtx = tabCtx;
+        this.ctx =  this.tabCtx.getCtx();
         this.setLayout(new CanvasLayout(this));
-        this.world = new SimulatedEvolutionWorld(ctx);
+        this.world = new SimulatedEvolutionModel(ctx);
         this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.ctx);
         this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.ctx);
         this.setBackground(COLOR_WATER.getColor());
@@ -157,56 +155,32 @@ public class SimulatedEvolutionCanvas extends JComponent implements
 
     @Override
     public void showMe() {
-
+        this.repaint();
     }
 
-    @Override
-    public void hideMe() {
-
-    }
-
-    @Override
-    public void step() {
-
-    }
 
     @Override
     public void update() {
-
+        repaint();
     }
 
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
-
-    }
-
-    //TODO: move to View Object.
+    //TODO: move to TabCtx Object.
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == this.panelButtons.getFoodPanel().getButtonFoodPerDayIncrease()) {
-            appCtx.increaseFoodPerDay();
+            tabCtx.increaseFoodPerDay();
             this.panelButtons.getFoodPanel().getFoodPerDayField().setText(
-                appCtx.getSimulatedEvolutionState().getFoodPerDay()+""
+                tabCtx.getSimulatedEvolution().getFoodPerDay()+""
             );
         } else if (ae.getSource() == this.panelButtons.getFoodPanel().getButtonFoodPerDayDecrease()) {
-            appCtx.decreaseFoodPerDay();
+            tabCtx.decreaseFoodPerDay();
             this.panelButtons.getFoodPanel().getFoodPerDayField().setText(
-                appCtx.getSimulatedEvolutionState().getFoodPerDay()+""
+                tabCtx.getSimulatedEvolution().getFoodPerDay()+""
             );
         } else if (ae.getSource() == this.panelButtons.getGardenOfEdenPanel().getButtonToggleGardenOfEden()) {
-            appCtx.toggleGardenOfEden();
+            tabCtx.toggleGardenOfEden();
             this.world.toggleGardenOfEden();
-            boolean selected = appCtx.getSimulatedEvolutionState().isGardenOfEdenEnabled();
+            boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
             this.panelButtons.getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
         }
     }

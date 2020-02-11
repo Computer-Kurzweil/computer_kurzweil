@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.widgets.PanelButtonsGroup;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.widgets.PanelZoomButtons;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 import javax.swing.*;
 import java.awt.*;

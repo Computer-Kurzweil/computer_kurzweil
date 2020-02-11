@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.apps.evolution.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 import javax.swing.*;
 

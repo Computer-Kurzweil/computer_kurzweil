@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.apps.mandelbrot.model.turing;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.TuringDirection;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -97,10 +97,5 @@ public class TuringPositionsStateMachine implements Startable {
     public boolean isFinishedWalkAround() {
         return (this.turingPosition.equals(this.firstSetPosition)) && (this.steps>100);
     }
-/*
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
 
-    }
-    */
 }

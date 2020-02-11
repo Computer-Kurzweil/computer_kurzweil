@@ -3,11 +3,9 @@ package org.woehlke.computer.kurzweil.widgets;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
-import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.layouts.PanelSubtitleLayout;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
+import org.woehlke.computer.kurzweil.widgets.layouts.PanelSubtitleLayout;
 
 import javax.swing.*;
 
@@ -15,14 +13,19 @@ import javax.swing.*;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class PanelSubtitle extends JPanel implements Startable, AppGuiComponent {
+public class PanelSubtitle extends JPanel implements GuiComponentTab {
 
     public PanelSubtitle(String text) {
         this.setLayout(new PanelSubtitleLayout());
         this.add(new JLabel(text));
     }
 
-    public static PanelSubtitle getPanelSubtitleForAllinone(ComputerKurzweilApplicationContext ctx) {
+    @Override
+    public void showMe() {
+        this.setVisible(true);
+    }
+
+    public static PanelSubtitle getPanelSubtitleForApplication(ComputerKurzweilApplicationContext ctx) {
         String text = ctx.getProperties().getAllinone().getView().getSubtitle();
         return new PanelSubtitle(text);
     }
@@ -42,38 +45,39 @@ public class PanelSubtitle extends JPanel implements Startable, AppGuiComponent 
         return new PanelSubtitle(text);
     }
 
+    public static PanelSubtitle getPanelSubtitleForSimulatedKochSnowflake(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getKochsnowflake().getView().getSubtitle();
+        return new PanelSubtitle(text);
+    }
+
     public static PanelSubtitle getPanelSubtitleForMandelbrot(ComputerKurzweilApplicationContext ctx) {
         String text = ctx.getProperties().getMandelbrot().getView().getSubtitle();
         return new PanelSubtitle(text);
     }
 
-    @Override
-    public void start() {
-        this.setVisible(true);
-        this.repaint();
+
+    public static PanelSubtitle getPanelSubtitleForSameGame(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getSamegame().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    public void stop() {
-        this.setVisible(false);
+    public static PanelSubtitle getPanelSubtitleForSierpinskiTriangle(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getSierpinskitriangle().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    @Override
-    public void update() {
-        this.repaint();
+    public static PanelSubtitle getPanelSubtitleForSierpinskiTetris(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getTetris().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    @Override
-    public void showMe() {
-
+    public static PanelSubtitle getPanelSubtitleForSierpinskiTurmite(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getTurmite().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 
-    @Override
-    public void hideMe() {
-
-    }
-
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
-
+    public static PanelSubtitle getPanelSubtitleForSierpinskiWaTor(ComputerKurzweilApplicationContext ctx) {
+        String text = ctx.getProperties().getWator().getView().getSubtitle();
+        return new PanelSubtitle(text);
     }
 }

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.apps.evolution.model;
 
 import lombok.*;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 
 /**
  * State of the Cell which monitors age and getting enough food.

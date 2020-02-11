@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.model;
 
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 public class LatticeNeighbourhood {
 

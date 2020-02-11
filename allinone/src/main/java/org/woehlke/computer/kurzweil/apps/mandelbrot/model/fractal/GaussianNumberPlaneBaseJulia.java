@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal;
 
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.FractalSetType;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.numbers.*;
@@ -178,11 +178,4 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
     public String getZoomLevel() {
         return this.zoomLevel.getZoomLevel() + "";
     }
-
-    /*
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
-
-    }
-    */
 }

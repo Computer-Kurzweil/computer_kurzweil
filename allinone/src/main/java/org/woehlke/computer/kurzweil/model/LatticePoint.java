@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.model;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 /**
  * A Point is used to define the Position of Cell or as a Vector for defining Dimensions.

@@ -2,46 +2,40 @@ package org.woehlke.computer.kurzweil.apps.evolution;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.AppType;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionState;
-import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionWorld;
-import org.woehlke.computer.kurzweil.commons.AppContext;
-import org.woehlke.computer.kurzweil.commons.ControllerThread;
-import org.woehlke.computer.kurzweil.commons.Stepper;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.trashcan.signals.SignalSlotDispatcher;
-import org.woehlke.computer.kurzweil.trashcan.signals.SignalSlotDispatcherImpl;
-import org.woehlke.computer.kurzweil.tabs.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.tabs.common.TabPanel;
+import org.woehlke.computer.kurzweil.apps.TabType;
+import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.apps.evolution.model.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.computer.kurzweil.apps.AppType.SIMULATED_EVOLUTION;
+import static org.woehlke.computer.kurzweil.apps.TabType.SIMULATED_EVOLUTION;
 
 @Log
 @Getter
-public class SimulatedEvolutionContext implements AppContext, ActionListener {
+public class SimulatedEvolutionContext implements TabContext, ActionListener {
 
-    private final AppType appType = SIMULATED_EVOLUTION;
+    private final TabType tabType = SIMULATED_EVOLUTION;
 
-    private SimulatedEvolutionControllerThread controller;
-    private final SimulatedEvolutionState simulatedEvolutionState;
+    private SimulatedEvolutionController controller;
+
+    private final SimulatedEvolution simulatedEvolution;
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionTab tab;
-    private final SimulatedEvolutionWorld world;
     private final SimulatedEvolutionCanvas canvas;
+    private final SimulatedEvolutionModel stepper;
 
     public SimulatedEvolutionContext(
-        SimulatedEvolutionTab tab,
-        SimulatedEvolutionCanvas canvas
+        SimulatedEvolutionTab tab
     ) {
         this.tab = tab;
-        this.canvas = canvas;
+        this.canvas = new SimulatedEvolutionCanvas(this);
+        this.stepper = this.canvas.getWorld();
         this.ctx = this.canvas.getCtx();
-        this.controller = new SimulatedEvolutionControllerThread(this);
-        this.simulatedEvolutionState = new SimulatedEvolutionState();
-        this.world = new SimulatedEvolutionWorld(this.ctx);
+        this.controller = new SimulatedEvolutionController(this);
+        this.simulatedEvolution = new SimulatedEvolution();
         createNewState();
     }
 
@@ -49,72 +43,42 @@ public class SimulatedEvolutionContext implements AppContext, ActionListener {
         int foodPerDay = this.ctx.getProperties().getEvolution().getFood().getFoodPerDay();
         int foodPerDayGardenOfEden = this.ctx.getProperties().getEvolution().getGardenOfEden().getFoodPerDay();
         boolean gardenOfEdenEnabled = this.ctx.getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled();
-        this.simulatedEvolutionState.setFoodPerDay(foodPerDay);
-        this.simulatedEvolutionState.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
-        this.simulatedEvolutionState.setGardenOfEdenEnabled(gardenOfEdenEnabled);
+        this.simulatedEvolution.setFoodPerDay(foodPerDay);
+        this.simulatedEvolution.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
+        this.simulatedEvolution.setGardenOfEdenEnabled(gardenOfEdenEnabled);
     }
 
     public void increaseFoodPerDay() {
-        simulatedEvolutionState.increaseFoodPerDay();
+        simulatedEvolution.increaseFoodPerDay();
     }
 
     public void decreaseFoodPerDay(){
-        simulatedEvolutionState.decreaseFoodPerDay();
+        simulatedEvolution.decreaseFoodPerDay();
     }
 
     public void toggleGardenOfEden() {
-        simulatedEvolutionState.toggleGardenOfEden();
-    }
-
-    @Override
-    public ControllerThread getControllerThread() {
-        return controller;
-    }
-
-    @Override
-    public TabPanel getTabPanel() {
-        return tab;
-    }
-
-
-    @Override
-    public Stepper getStepper() {
-        return world;
-    }
-
-    @Override
-    public void step() {
-        this.world.step();
-    }
-
-    @Override
-    public void update() {
-        this.world.update();
-        this.canvas.update();
-        this.canvas.repaint();
+        simulatedEvolution.toggleGardenOfEden();
     }
 
     @Override
     public void start() {
-        this.world.start();
         this.startController();
     }
 
     @Override
     public void stop() {
         this.stopController();
-        this.world.stop();
     }
 
     public void stopController() {
         this.controller.exit();
         this.controller = null;
-        this.controller = new SimulatedEvolutionControllerThread(this);
+        this.controller = new SimulatedEvolutionController(this);
     }
 
     public void startController() {
         if(this.controller == null){
-            this.controller = new SimulatedEvolutionControllerThread(this);
+            this.controller = new SimulatedEvolutionController(this);
         }
         switch (this.controller.getState()){
                 case NEW:
@@ -139,4 +103,5 @@ public class SimulatedEvolutionContext implements AppContext, ActionListener {
             this.stop();
         }
     }
+
 }

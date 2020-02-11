@@ -3,10 +3,9 @@ package org.woehlke.computer.kurzweil.widgets;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.trashcan.signals.UserSignal;
-import org.woehlke.computer.kurzweil.commons.AppGuiComponent;
-import org.woehlke.computer.kurzweil.layouts.PanelCopyrightLayout;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
+import org.woehlke.computer.kurzweil.widgets.layouts.PanelCopyrightLayout;
 
 import javax.swing.*;
 
@@ -14,7 +13,7 @@ import javax.swing.*;
 @Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class PanelCopyright extends JPanel implements AppGuiComponent {
+public class PanelCopyright extends JPanel implements GuiComponentTab {
 
     public PanelCopyright(ComputerKurzweilApplicationContext ctx) {
         this.setLayout(new PanelCopyrightLayout());
@@ -23,22 +22,8 @@ public class PanelCopyright extends JPanel implements AppGuiComponent {
     }
 
     @Override
-    public void update() {
-        repaint();
-    }
-
-    @Override
     public void showMe() {
-
+        this.setVisible(true);
     }
 
-    @Override
-    public void hideMe() {
-
-    }
-
-    @Override
-    public void handleUserSignal(UserSignal userSignal) {
-
-    }
 }

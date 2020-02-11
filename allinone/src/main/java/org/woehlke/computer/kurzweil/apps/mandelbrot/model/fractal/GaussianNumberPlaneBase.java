@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.apps.mandelbrot.model.fractal;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.ApplicationState;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.computer.kurzweil.apps.mandelbrot.model.state.FractalSetType;

@@ -1,7 +1,8 @@
 package org.woehlke.computer.kurzweil;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.ctx.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationFrame;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 
 
 /**
