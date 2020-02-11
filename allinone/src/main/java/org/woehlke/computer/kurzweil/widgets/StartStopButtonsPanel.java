@@ -32,7 +32,7 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
         this.stopButton.addActionListener(tab.getTabCtx());
         if(tab instanceof CyclicCellularAutomatonTab){
             start();
-        }else {
+        } else {
             stop();
         }
     }

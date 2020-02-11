@@ -2,10 +2,8 @@ package org.woehlke.computer.kurzweil.tabs.evolution.model;
 
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -39,25 +37,22 @@ public class SimulatedEvolutionModel implements Startable, TabModel {
     */
     private List<Cell> cells;
 
-    @Setter
-    private SimulatedEvolutionContext appCtx;
-
-    private final ComputerKurzweilApplicationContext ctx;
+    private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionModelLattice worldLattice;
     private final SimulatedEvolutionStatistics statisticsContainer;
 
   public SimulatedEvolutionModel(
-      ComputerKurzweilApplicationContext ctx
+      SimulatedEvolutionContext appCtx
   ) {
-      this.ctx = ctx;
-      this.worldLattice = new SimulatedEvolutionModelLattice( this.ctx);
-      this.statisticsContainer = new SimulatedEvolutionStatistics( this.ctx);
+      this.appCtx = appCtx;
+      this.worldLattice = new SimulatedEvolutionModelLattice(  this.appCtx);
+      this.statisticsContainer = new SimulatedEvolutionStatistics( this.appCtx);
       /**
        * Create the initial Population of Bacteria Cells and give them their position in the World.
        */
       cells = new ArrayList<>();
-      for (int i = 0; i < this.ctx.getProperties().getEvolution().getPopulation().getInitialPopulation(); i++) {
-          Cell cell = new Cell(this.ctx);
+      for (int i = 0; i <  this.appCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation(); i++) {
+          Cell cell = new Cell(this.appCtx);
           cells.add(cell);
       }
       SimulatedEvolutionPopulationCensus populationCensus = new SimulatedEvolutionPopulationCensus();

@@ -1,9 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.evolution.model;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -30,30 +28,27 @@ public class SimulatedEvolutionModelLattice implements Startable {
    */
   private int[][] worldMapFoodLattice;
 
-    @Getter @Setter
-    private SimulatedEvolutionContext appCtx;
-
-  @Getter private final ComputerKurzweilApplicationContext ctx;
+  @Getter private SimulatedEvolutionContext appCtx;
 
   public SimulatedEvolutionModelLattice(
-      ComputerKurzweilApplicationContext ctx
+      SimulatedEvolutionContext appCtx
   ) {
-      this.ctx = ctx;
-      int x =  this.ctx.getWorldDimensions().getX();
-      int y =  this.ctx.getWorldDimensions().getY();
+      this.appCtx = appCtx;
+      int x =  this.appCtx.getCtx().getWorldDimensions().getX();
+      int y =  this.appCtx.getCtx().getWorldDimensions().getY();
       worldMapFoodLattice = new int[x][y];
   }
 
     private void letFoodGrowGardenOfEden() {
-        if (this.ctx.getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled()) {
+        if (this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled()) {
             int food = 0;
             int gardenOfEdenParts = 3;
-            int startX = ( this.ctx.getWorldDimensions().getX() / gardenOfEdenParts );
-            int startY = ( this.ctx.getWorldDimensions().getY() / gardenOfEdenParts );
-            while (food < this.ctx.getProperties().getEvolution().getGardenOfEden().getFoodPerDay()) {
+            int startX = ( this.appCtx.getCtx().getWorldDimensions().getX() / gardenOfEdenParts );
+            int startY = ( this.appCtx.getCtx().getWorldDimensions().getY() / gardenOfEdenParts );
+            while (food < this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getFoodPerDay()) {
                 food++;
-                int posX = this.ctx.getRandom().nextInt(startX);
-                int posY = this.ctx.getRandom().nextInt(startY);
+                int posX = this.appCtx.getCtx().getRandom().nextInt(startX);
+                int posY = this.appCtx.getCtx().getRandom().nextInt(startY);
                 posX *= Integer.signum(posX);
                 posY *= Integer.signum(posY);
                 worldMapFoodLattice[posX + startX][posY + startY]++;
@@ -63,14 +58,14 @@ public class SimulatedEvolutionModelLattice implements Startable {
 
     private void letFoodGrowWorld() {
         int food = 0;
-        final int foodPerDay = this.ctx.getProperties().getEvolution().getFood().getFoodPerDay();
+        final int foodPerDay = this.appCtx.getCtx().getProperties().getEvolution().getFood().getFoodPerDay();
         while (food < foodPerDay) {
             food++;
-            int newFoodPosX = this.ctx.getRandom().nextInt(
-                this.ctx.getWorldDimensions().getX()
+            int newFoodPosX = this.appCtx.getCtx().getRandom().nextInt(
+                this.appCtx.getCtx().getWorldDimensions().getX()
             );
-            int newFoodPosY = this.ctx.getRandom().nextInt(
-                this.ctx.getWorldDimensions().getY()
+            int newFoodPosY = this.appCtx.getCtx().getRandom().nextInt(
+                this.appCtx.getCtx().getWorldDimensions().getY()
             );
             newFoodPosX *= Integer.signum(newFoodPosX);
             newFoodPosY *= Integer.signum(newFoodPosY);
@@ -102,7 +97,7 @@ public class SimulatedEvolutionModelLattice implements Startable {
    */
   public int eat(LatticePoint position) {
     LatticePoint[] neighbourhood = position.getNeighbourhood(
-        this.ctx.getWorldDimensions()
+        this.appCtx.getCtx().getWorldDimensions()
     );
     int food = 0;
     for (LatticePoint neighbourhoodPosition : neighbourhood) {

@@ -46,14 +46,13 @@ public class CyclicCellularAutomatonContext implements TabContext, ActionListene
             Thread.State controllerState = this.controller.getState();
             switch (controllerState){
                 case NEW:
-                case RUNNABLE:
+                //case RUNNABLE:
                     break;
                 default:
                     this.stopController();
                     break;
             }
         }
-        this.controller.start();
     }
 
     @Override
@@ -81,6 +80,7 @@ public class CyclicCellularAutomatonContext implements TabContext, ActionListene
     public void start() {
         this.canvas.start();
         this.startController();
+        this.controller.start();
     }
 
     @Override

@@ -22,9 +22,9 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
+        this.ctx = ctx;
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.ctx = tabCtx.getCtx();
         this.setBorder( PanelBorder.getBorder() );
         this.setLayout(new TabLayout(this));
         this.setBounds(ctx.getFrameBounds());

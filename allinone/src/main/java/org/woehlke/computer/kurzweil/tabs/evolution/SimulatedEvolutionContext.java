@@ -31,9 +31,9 @@ public class SimulatedEvolutionContext implements TabContext, ActionListener {
         SimulatedEvolutionTab tab
     ) {
         this.tab = tab;
+        this.ctx = this.tab.getCtx();
         this.canvas = new SimulatedEvolutionCanvas(this);
         this.stepper = this.canvas.getWorld();
-        this.ctx = this.canvas.getCtx();
         this.controller = new SimulatedEvolutionController(this);
         this.simulatedEvolution = new SimulatedEvolution();
         createNewState();

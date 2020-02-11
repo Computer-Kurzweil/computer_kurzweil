@@ -3,8 +3,8 @@ package org.woehlke.computer.kurzweil.tabs.evolution.model;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 
 import java.io.Serializable;
 
@@ -53,20 +53,20 @@ public class Cell implements Serializable {
    */
   private CellLifeCycle lifeCycle;
 
-  private final ComputerKurzweilApplicationContext ctx;
+  private final SimulatedEvolutionContext appCtx;
 
   public Cell(
-      ComputerKurzweilApplicationContext ctx
+      SimulatedEvolutionContext appCtx
   ) {
-    this.ctx = ctx;
-    this.position = ctx.getNextRandomLatticePoint();
-    this.lifeCycle = ctx.getNewCellLifeCycle();
-    this.cellCore = ctx.getNewCellCore();
+    this.appCtx = appCtx;
+    this.position = this.appCtx.getCtx().getNextRandomLatticePoint();
+    this.lifeCycle =  this.appCtx.getCtx().getNewCellLifeCycle();
+    this.cellCore = this.appCtx.getCtx().getNewCellCore();
     this.orientation = getRandomOrientation();
   }
 
     private Cell(Cell other) {
-        this.ctx = other.ctx;
+        this.appCtx = other.appCtx;
         this.position = other.position;
         this.lifeCycle = other.lifeCycle.reproduction();
         this.cellCore = other.cellCore.reproductionMitosis();
@@ -74,7 +74,7 @@ public class Cell implements Serializable {
     }
 
   private CellOrientation getRandomOrientation() {
-    int dnaBase = this.ctx.getRandom().nextInt(CellOrientation.values().length);
+    int dnaBase = this.appCtx.getCtx().getRandom().nextInt(CellOrientation.values().length);
     return CellOrientation.values()[(dnaBase < 0)?(dnaBase * -1):dnaBase];
   }
 
@@ -93,8 +93,8 @@ public class Cell implements Serializable {
     if (lifeCycle.move()) {
       getNextOrientation();
       position.add(orientation.getMove());
-      position.add(ctx.getWorldDimensions());
-      position.normalize(ctx.getWorldDimensions());
+      position.add(this.appCtx.getCtx().getWorldDimensions());
+      position.normalize(this.appCtx.getCtx().getWorldDimensions());
     }
   }
 

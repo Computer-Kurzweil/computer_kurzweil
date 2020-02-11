@@ -37,42 +37,30 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvol
  * Time: 00:51:51
  */
 @Log
+@Getter
 public class SimulatedEvolutionCanvas extends JComponent implements
     Serializable, TabCanvas, ActionListener {
 
     private static final long serialVersionUID = -27002509360079509L;
-
     private final static int startX = 0;
     private final static int startY = 0;
-
-    @Getter
     private final SimulatedEvolutionModel world;
-
-    @Getter
-    private final ComputerKurzweilApplicationContext ctx;
-
-    @Getter
-    private SimulatedEvolutionContext tabCtx;
-
-    @Getter
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
-
-    @Getter
     private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private final SimulatedEvolutionContext tabCtx;
 
     public SimulatedEvolutionCanvas(
         SimulatedEvolutionContext tabCtx
     ) {
         this.tabCtx = tabCtx;
-        this.ctx =  this.tabCtx.getCtx();
+        this.world = new SimulatedEvolutionModel(this.tabCtx);
+        this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
+        this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
         this.setLayout(new CanvasLayout(this));
-        this.world = new SimulatedEvolutionModel(ctx);
-        this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.ctx);
-        this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.ctx);
         this.setBackground(COLOR_WATER.getColor());
         Dimension preferredSize = new Dimension(
-            this.ctx.getWorldDimensions().getWidth(),
-            this.ctx.getWorldDimensions().getHeight()
+            this.tabCtx.getCtx().getWorldDimensions().getWidth(),
+            this.tabCtx.getCtx().getWorldDimensions().getHeight()
         );
         this.setPreferredSize(preferredSize);
         this.panelButtons.getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
@@ -90,13 +78,13 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     //paintBackground(graphics);
       graphics.setColor(COLOR_WATER.getColor());
       graphics.fillRect(startX, startY,
-          this.ctx.getWorldDimensions().getWidth(),
-          this.ctx.getWorldDimensions().getHeight()
+          this.tabCtx.getCtx().getWorldDimensions().getWidth(),
+          this.tabCtx.getCtx().getWorldDimensions().getHeight()
       );
     //paintFood(graphics);
       graphics.setColor(COLOR_FOOD.getColor());
-      for (int posY = 0; posY <  this.ctx.getWorldDimensions().getHeight(); posY++) {
-          for (int posX = 0; posX <  this.ctx.getWorldDimensions().getWidth(); posX++) {
+      for (int posY = 0; posY <  this.tabCtx.getCtx().getWorldDimensions().getHeight(); posY++) {
+          for (int posX = 0; posX <  this.tabCtx.getCtx().getWorldDimensions().getWidth(); posX++) {
               if (world.hasFood(posX, posY)) {
                   graphics.drawLine(posX, posY, posX, posY);
               }
@@ -104,8 +92,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
       }
     //paintPopulation(graphics);
       graphics.setColor(COLOR_FOOD.getColor());
-      for (int posY = 0; posY <  this.ctx.getWorldDimensions().getHeight(); posY++) {
-          for (int posX = 0; posX < this.ctx.getWorldDimensions().getWidth(); posX++) {
+      for (int posY = 0; posY <  this.tabCtx.getCtx().getWorldDimensions().getHeight(); posY++) {
+          for (int posX = 0; posX < this.tabCtx.getCtx().getWorldDimensions().getWidth(); posX++) {
               if (world.hasFood(posX, posY)) {
                   graphics.drawLine(posX, posY, posX, posY);
               }
@@ -116,7 +104,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private void paintPopulation(Graphics graphics){
         List<Cell> population = world.getAllCells();
         for (Cell cell : population) {
-            LatticePoint[] square = cell.getPosition().getNeighbourhood(this.ctx.getWorldDimensions());
+            LatticePoint[] square = cell.getPosition().getNeighbourhood(this.tabCtx.getCtx().getWorldDimensions());
             graphics.setColor(cell.getLifeCycleStatus().getColor());
             for (LatticePoint pixel : square) {
                 graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
@@ -126,8 +114,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
 
     private void paintFood(Graphics graphics){
         graphics.setColor(COLOR_FOOD.getColor());
-        for (int posY = 0; posY < this.ctx.getWorldDimensions().getHeight(); posY++) {
-            for (int posX = 0; posX < this.ctx.getWorldDimensions().getWidth(); posX++) {
+        for (int posY = 0; posY < this.tabCtx.getCtx().getWorldDimensions().getHeight(); posY++) {
+            for (int posX = 0; posX < this.tabCtx.getCtx().getWorldDimensions().getWidth(); posX++) {
                 if (world.hasFood(posX, posY)) {
                     graphics.drawLine(posX, posY, posX, posY);
                 }
@@ -139,15 +127,15 @@ public class SimulatedEvolutionCanvas extends JComponent implements
       graphics.setColor(COLOR_WATER.getColor());
       graphics.fillRect(
           startX, startY,
-          this.ctx.getWorldDimensions().getWidth(),
-          this.ctx.getWorldDimensions().getHeight()
+          this.tabCtx.getCtx().getWorldDimensions().getWidth(),
+          this.tabCtx.getCtx().getWorldDimensions().getHeight()
       );
   }
 
   public void update(Graphics graphics) {
     Dimension preferredSize = new Dimension(
-        this.ctx.getWorldDimensions().getWidth(),
-        this.ctx.getWorldDimensions().getHeight()
+        this.tabCtx.getCtx().getWorldDimensions().getWidth(),
+        this.tabCtx.getCtx().getWorldDimensions().getHeight()
     );
     this.setPreferredSize(preferredSize);
     paint(graphics);

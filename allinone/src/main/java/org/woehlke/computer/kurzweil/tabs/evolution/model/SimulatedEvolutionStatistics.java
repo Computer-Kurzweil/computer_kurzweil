@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.evolution.model;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -12,12 +12,12 @@ public class SimulatedEvolutionStatistics {
 
   private long worldIteration;
 
-  private final ComputerKurzweilApplicationContext ctx;
+  private final SimulatedEvolutionContext appCtx;
 
   public SimulatedEvolutionStatistics(
-      ComputerKurzweilApplicationContext ctx
+      SimulatedEvolutionContext appCtx
   ) {
-      this.ctx = ctx;
+      this.appCtx = appCtx;
       worldIteration = 0L;
   }
 
@@ -25,7 +25,7 @@ public class SimulatedEvolutionStatistics {
     worldIteration++;
     populationCensus.setWorldIteration(worldIteration);
     statistics.add(populationCensus);
-    if (statistics.size() > this.ctx.getProperties().getEvolution().getControl().getQueueMaxLength()) {
+    if (statistics.size() >  this.appCtx.getCtx().getProperties().getEvolution().getControl().getQueueMaxLength()) {
         statistics.poll();
     }
     log.info(worldIteration + " : " + populationCensus);

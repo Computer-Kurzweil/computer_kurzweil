@@ -132,7 +132,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             doIt = running.booleanValue();
         }
         if(doIt){
-            log.info("step");
+           // log.info("step");
             int maxState = colorScheme.getMaxState();
             int xx;
             int yy;
@@ -154,7 +154,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             }
             this.source = (this.source + 1) % 2;
             this.target = (this.target + 1) % 2;
-            log.info("stepped");
+           // log.info("stepped");
         }
     }
 

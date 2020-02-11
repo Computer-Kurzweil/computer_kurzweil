@@ -2,8 +2,8 @@ package org.woehlke.computer.kurzweil.tabs.evolution.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionStatistics;
 
@@ -13,41 +13,55 @@ import java.awt.*;
 import static org.woehlke.computer.kurzweil.tabs.evolution.model.CellLifeCycleStatus.*;
 
 @Log
+@Getter
 public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
-    private JTextField youngCellsStatistics;
-    private JTextField youngAndFatCellsStatistics;
-    private JTextField fullAgeCellsStatistics;
-    private JTextField hungryCellsStatistics;
-    private JTextField oldCellsStatistics;
-    private JTextField populationStatistics;
+    private final JTextField youngCellsStatistics;
+    private final JTextField youngAndFatCellsStatistics;
+    private final JTextField fullAgeCellsStatistics;
+    private final JTextField hungryCellsStatistics;
+    private final JTextField oldCellsStatistics;
+    private final JTextField populationStatistics;
 
-    private JLabel youngCellsLabel;
-    private JLabel youngAndFatCellsLabel;
-    private JLabel fullAgeCellsLabel;
-    private JLabel hungryCellsLabel;
-    private JLabel oldCellsLabel;
-    private JLabel populationLabel;
+    private final JLabel youngCellsLabel;
+    private final JLabel youngAndFatCellsLabel;
+    private final JLabel fullAgeCellsLabel;
+    private final JLabel hungryCellsLabel;
+    private final JLabel oldCellsLabel;
+    private final JLabel populationLabel;
 
-    @Getter
-    private final ComputerKurzweilApplicationContext ctx;
-
-    @Getter
     private final SimulatedEvolutionStatistics statistics;
 
+    private final SimulatedEvolutionContext tabCtx;
+
   public SimulatedEvolutionStatisticsPanel(
-      ComputerKurzweilApplicationContext ctx
+      SimulatedEvolutionContext tabCtx
   ) {
-      this.ctx = ctx;
-    setLabels();
-    setTextFields(this.ctx.getProperties().getEvolution().getPopulation().getInitialPopulation());
-    setColors();
+      this.tabCtx = tabCtx;
+      int initialPopulation = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation();
+      //setLabels();
+      ComputerKurzweilProperties.Evolution cfg = this.tabCtx.getCtx().getProperties().getEvolution();
+      youngCellsLabel = new JLabel(cfg.getPopulation().getYoungCellsLabel());
+      youngAndFatCellsLabel = new JLabel(cfg.getPopulation().getYoungAndFatCellsLabel());
+      fullAgeCellsLabel = new JLabel(cfg.getPopulation().getFullAgeCellsLabel());
+      hungryCellsLabel = new JLabel(cfg.getPopulation().getHungryCellsLabel());
+      oldCellsLabel = new JLabel(cfg.getPopulation().getOldCellsLabel());
+      populationLabel = new JLabel(cfg.getPopulation().getPopulationLabel());
+      //setTextFields(initialPopulation);
+      int cols = 3;
+      youngCellsStatistics = new JTextField("0",cols);
+      youngAndFatCellsStatistics = new JTextField("0",cols);
+      fullAgeCellsStatistics = new JTextField("0",cols);
+      hungryCellsStatistics = new JTextField("0",cols);
+      oldCellsStatistics = new JTextField("0",cols);
+      populationStatistics = new JTextField(""+ initialPopulation, cols);
+      setColors();
     FlowLayout layout = new FlowLayout();
     this.setLayout(layout);
     SimulatedEvolutionStatisticsPanelLayout layoutSubPanel = new SimulatedEvolutionStatisticsPanelLayout();
     JPanel subPanel = new JPanel(layoutSubPanel);
-    String borderLabel = this.ctx.getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
-    subPanel.setBorder( this.ctx.getBorder(borderLabel));
+    String borderLabel = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
+    subPanel.setBorder( this.tabCtx.getCtx().getBorder(borderLabel));
       subPanel.add(youngCellsLabel);
       subPanel.add(youngCellsStatistics);
       subPanel.add(youngAndFatCellsLabel);
@@ -61,28 +75,8 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
       subPanel.add(populationLabel);
       subPanel.add(populationStatistics);
       this.add(subPanel);
-      this.statistics = new SimulatedEvolutionStatistics(  this.ctx );
+      this.statistics = new SimulatedEvolutionStatistics(  this.tabCtx );
   }
-
-    private void setLabels(){
-        ComputerKurzweilProperties.Evolution cfg = this.ctx.getProperties().getEvolution();
-        youngCellsLabel = new JLabel(cfg.getPopulation().getYoungCellsLabel());
-        youngAndFatCellsLabel = new JLabel(cfg.getPopulation().getYoungAndFatCellsLabel());
-        fullAgeCellsLabel = new JLabel(cfg.getPopulation().getFullAgeCellsLabel());
-        hungryCellsLabel = new JLabel(cfg.getPopulation().getHungryCellsLabel());
-        oldCellsLabel = new JLabel(cfg.getPopulation().getOldCellsLabel());
-        populationLabel = new JLabel(cfg.getPopulation().getPopulationLabel());
-    }
-
-    private void setTextFields(int initialPopulation){
-        int cols = 3;
-        youngCellsStatistics = new JTextField("0",cols);
-        youngAndFatCellsStatistics = new JTextField("0",cols);
-        fullAgeCellsStatistics = new JTextField("0",cols);
-        hungryCellsStatistics = new JTextField("0",cols);
-        oldCellsStatistics = new JTextField("0",cols);
-        populationStatistics = new JTextField(""+ initialPopulation, cols);
-    }
 
     public void update() {
         SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = statistics.peek();;
@@ -96,15 +90,10 @@ public class SimulatedEvolutionStatisticsPanel extends JPanel {
 
   private void setColors(){
       youngCellsStatistics.setBackground(YOUNG.getColorBackground());
-      youngCellsStatistics.setForeground(YOUNG.getColorForeground());
       youngAndFatCellsStatistics.setBackground(YOUNG_AND_FAT.getColorBackground());
-      youngAndFatCellsStatistics.setForeground(YOUNG_AND_FAT.getColorForeground());
       fullAgeCellsStatistics.setBackground(FULL_AGE.getColorBackground());
-      fullAgeCellsStatistics.setForeground(FULL_AGE.getColorForeground());
       hungryCellsStatistics.setBackground(HUNGRY.getColorBackground());
-      hungryCellsStatistics.setForeground(HUNGRY.getColorForeground());
       oldCellsStatistics.setBackground(OLD.getColorBackground());
-      oldCellsStatistics.setForeground(OLD.getColorForeground());
   }
 
 }

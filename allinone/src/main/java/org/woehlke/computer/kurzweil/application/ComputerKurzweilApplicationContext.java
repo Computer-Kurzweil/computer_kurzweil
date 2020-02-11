@@ -83,6 +83,7 @@ public class ComputerKurzweilApplicationContext {
         );
     }
 
+    /*
     @Transient
     public Rectangle getCanvasBounds(){
         int start=0;
@@ -92,6 +93,7 @@ public class ComputerKurzweilApplicationContext {
             this.getWorldDimensions().getY()
         );
     }
+
 
     @Transient
     public Dimension getLatticeDimension(){
@@ -108,6 +110,7 @@ public class ComputerKurzweilApplicationContext {
             this.getWorldDimensions().getY()
         );
     }
+    */
 
     @Transient
     public LatticePoint getWorldDimensions(){
