@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.commons.tabs;
 
-import org.woehlke.computer.kurzweil.apps.TabType;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 
 public interface HasTab {
 

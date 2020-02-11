@@ -7,10 +7,10 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
-import org.woehlke.computer.kurzweil.apps.cca.CyclicCellularAutomatonTab;
-import org.woehlke.computer.kurzweil.apps.dla.DiffusionLimitedAggregationTab;
-import org.woehlke.computer.kurzweil.apps.mandelbrot.MandelbrotTabPanel;
-import org.woehlke.computer.kurzweil.apps.evolution.SimulatedEvolutionTab;
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
+import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTabPanel;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.cca.CyclicCellularAutomatonTab;
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;

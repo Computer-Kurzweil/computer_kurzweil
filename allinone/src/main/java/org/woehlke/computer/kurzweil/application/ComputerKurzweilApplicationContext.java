@@ -1,13 +1,11 @@
 package org.woehlke.computer.kurzweil.application;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.apps.cca.CyclicCellularAutomatonController;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.apps.evolution.model.CellCore;
-import org.woehlke.computer.kurzweil.apps.evolution.model.CellLifeCycle;
+import org.woehlke.computer.kurzweil.tabs.evolution.model.CellCore;
+import org.woehlke.computer.kurzweil.tabs.evolution.model.CellLifeCycle;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
