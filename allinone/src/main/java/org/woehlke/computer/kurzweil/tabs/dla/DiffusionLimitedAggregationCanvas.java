@@ -33,35 +33,36 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, Startable, TabCanvas, HasModel {
 
     private final DiffusionLimitedAggregation stepper;
-    private final LatticePoint worldDimensions;
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
 
     private final ComputerKurzweilApplicationContext ctx;
 
+    private final int width;
+    private final int height;
+
     public DiffusionLimitedAggregationCanvas(
         ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
-        this.worldDimensions = ctx.getWorldDimensions();
+        width = ctx.getWorldDimensions().getX();
+        height = ctx.getWorldDimensions().getY();
         this.setBackground(MEDIUM);
-        this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
+        this.setSize(width, height);
         this.stepper = new DiffusionLimitedAggregation(this.ctx);
     }
 
     public void paint(Graphics g) {
         log.info("paint");
         super.paintComponent(g);
-        int width = worldDimensions.getX();
-        int height = worldDimensions.getY();
         g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
         g.setColor(PARTICLES);
         for(LatticePoint pixel : stepper.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
-        for(int y=0;y<worldDimensions.getY();y++){
-            for(int x=0;x<worldDimensions.getX();x++){
+        for(int y=0;y<height;y++){
+            for(int x=0;x<width;x++){
                 int age = stepper.getDendriteColor(x,y);
                 if(age>0){
                     age /= 25;

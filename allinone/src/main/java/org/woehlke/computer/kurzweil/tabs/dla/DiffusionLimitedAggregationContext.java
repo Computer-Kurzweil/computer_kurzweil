@@ -4,16 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
-import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 @Getter
-public class DiffusionLimitedAggregationContext implements TabContext, Startable, ActionListener {
+public class DiffusionLimitedAggregationContext implements TabContext {
 
     private final TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
 
@@ -53,30 +49,6 @@ public class DiffusionLimitedAggregationContext implements TabContext, Startable
                     break;
             }
         }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.getTab().getStartStopButtonsPanel().getStartButton()){
-            this.getTab().getStartStopButtonsPanel().getStartButton().setEnabled(false);
-            this.getTab().getStartStopButtonsPanel().setEnabled(true);
-            this.start();
-        }
-        if(ae.getSource() == this.getTab().getStartStopButtonsPanel().getStopButton()){
-            this.getTab().getStartStopButtonsPanel().getStartButton().setEnabled(true);
-            this.getTab().getStartStopButtonsPanel().getStopButton().setEnabled(false);
-            this.stop();
-        }
-    }
-
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void stop() {
-
     }
 
 }

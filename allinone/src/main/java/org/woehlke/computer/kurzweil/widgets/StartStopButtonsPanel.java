@@ -2,7 +2,6 @@ package org.woehlke.computer.kurzweil.widgets;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
@@ -28,8 +27,8 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
         this.stopButton = new JButton(labelStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        this.startButton.addActionListener(tab.getTabCtx());
-        this.stopButton.addActionListener(tab.getTabCtx());
+        //this.startButton.addActionListener(tab.getTabCtx());
+        //this.stopButton.addActionListener(tab.getTabCtx());
         /*
         if(tab instanceof CyclicCellularAutomatonTab){
             start();

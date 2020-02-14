@@ -30,21 +30,32 @@ public class SimulatedEvolutionModelLattice implements Startable {
 
   @Getter private SimulatedEvolutionContext appCtx;
 
+  private final  int x;
+    private final  int y;
+
   public SimulatedEvolutionModelLattice(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;
-      int x =  this.appCtx.getCtx().getWorldDimensions().getX();
-      int y =  this.appCtx.getCtx().getWorldDimensions().getY();
+      x =  this.appCtx.getCtx().getWorldDimensions().getX();
+      y =  this.appCtx.getCtx().getWorldDimensions().getY();
       worldMapFoodLattice = new int[x][y];
+  }
+
+  private void resetLattice(){
+    for(int i = 0; i < y; i++){
+        for(int j = 0; j < x; j++){
+            worldMapFoodLattice[j][i]=0;
+        }
+    }
   }
 
     private void letFoodGrowGardenOfEden() {
         if (this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled()) {
             int food = 0;
             int gardenOfEdenParts = 3;
-            int startX = ( this.appCtx.getCtx().getWorldDimensions().getX() / gardenOfEdenParts );
-            int startY = ( this.appCtx.getCtx().getWorldDimensions().getY() / gardenOfEdenParts );
+            int startX = ( x / gardenOfEdenParts );
+            int startY = ( y / gardenOfEdenParts );
             while (food < this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getFoodPerDay()) {
                 food++;
                 int posX = this.appCtx.getCtx().getRandom().nextInt(startX);
@@ -61,12 +72,8 @@ public class SimulatedEvolutionModelLattice implements Startable {
         final int foodPerDay = this.appCtx.getCtx().getProperties().getEvolution().getFood().getFoodPerDay();
         while (food < foodPerDay) {
             food++;
-            int newFoodPosX = this.appCtx.getCtx().getRandom().nextInt(
-                this.appCtx.getCtx().getWorldDimensions().getX()
-            );
-            int newFoodPosY = this.appCtx.getCtx().getRandom().nextInt(
-                this.appCtx.getCtx().getWorldDimensions().getY()
-            );
+            int newFoodPosX = this.appCtx.getCtx().getRandom().nextInt(x);
+            int newFoodPosY = this.appCtx.getCtx().getRandom().nextInt(y);
             newFoodPosX *= Integer.signum(newFoodPosX);
             newFoodPosY *= Integer.signum(newFoodPosY);
             worldMapFoodLattice[newFoodPosX][newFoodPosY]++;
@@ -114,7 +121,7 @@ public class SimulatedEvolutionModelLattice implements Startable {
 
     @Override
     public void start() {
-
+        resetLattice();
     }
 
     @Override

@@ -32,7 +32,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;
     private final MandelbrotTabPanel mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
-    private final List<TabContext> apps = new ArrayList<>();
+    private final List<TabPanel> apps = new ArrayList<>();
 
     public ComputerKurzweilApplicationTabbedPane(
         ComputerKurzweilApplicationContext ctx
@@ -59,7 +59,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         int i = 0;
         ImageIcon icon = null;
         for(TabPanel tabPanelAbstract : tabPanelAbstractPanels){
-            this.apps.add(tabPanelAbstract.getTabCtx());
+            this.apps.add(tabPanelAbstract);
             this.addTab(tabPanelAbstract.getTitle(), icon, tabPanelAbstract, tabPanelAbstract.getSubTitle());
             this.setMnemonicAt(i,events[i]);
         }
@@ -76,9 +76,19 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         }
     }
 
+    public void switchTab(){
+        Tab tabPanelActive = getActiveTab();
+        for(TabPanel tabPanel:apps){
+            if(!tabPanelActive.equals(tabPanel)){
+                tabPanel.stop();
+            }
+        }
+    }
+
     @Override
     public void start(){
         log.info("start");
+        switchTab();
         getActiveTab().start();
         log.info("started");
     }

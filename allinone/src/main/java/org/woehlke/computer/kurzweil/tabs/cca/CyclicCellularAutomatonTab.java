@@ -10,6 +10,8 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
+import java.awt.event.ActionEvent;
+
 @Log
 @Getter
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
@@ -26,25 +28,34 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.setLayout(new TabLayout(this));
         this.setBounds(ctx.getFrameBounds());
         this.tabCtx = new CyclicCellularAutomatonContext(this);
-        this.canvas=this.tabCtx.getCanvas();
+        this.canvas = this.tabCtx.getCanvas();
         this.add(this.canvas.getPanelSubtitle());
         this.add(this.canvas);
         this.add(this.canvas.getNeighbourhoodButtonsPanel());
         this.add(this.canvas.getStartStopButtonsPanel());
+        this.canvas.getStartStopButtonsPanel().getStartButton().addActionListener(this);
+        this.canvas.getStartStopButtonsPanel().getStopButton().addActionListener(this);
+        this.canvas.getNeighbourhoodButtonsPanel().getButtonVonNeumann().addActionListener(this);
+        this.canvas.getNeighbourhoodButtonsPanel().getButtonMoore().addActionListener(this);
+        this.canvas.getNeighbourhoodButtonsPanel().getButtonWoehlke().addActionListener(this);
+        showMe();
     }
 
     @Override
     public void start() {
         log.info("start");
         this.showMe();
-        this.getTabCtx().start();
+        this.canvas.start();
+        this.getTabCtx().startController();
+        this.getTabCtx().getController().start();
         log.info("started");
     }
 
     @Override
     public void stop() {
         log.info("stop");
-        this.getTabCtx().stop();
+        this.canvas.stop();
+        this.getTabCtx().stopController();
         log.info("stopped");
     }
 
@@ -66,5 +77,25 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     @Override
     public String getSubTitle() {
         return ctx.getProperties().getCca().getView().getSubtitle();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonVonNeumann()) {
+            this.canvas.startWithNeighbourhoodVonNeumann();
+            this.start();
+        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonMoore()) {
+            this.canvas.startWithNeighbourhoodMoore();
+            this.start();
+        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonWoehlke()) {
+            this.canvas.startWithNeighbourhoodWoehlke();
+            this.start();
+        }
+        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStartButton()){
+            this.start();
+        }
+        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStopButton()){
+            this.stop();
+        }
     }
 }

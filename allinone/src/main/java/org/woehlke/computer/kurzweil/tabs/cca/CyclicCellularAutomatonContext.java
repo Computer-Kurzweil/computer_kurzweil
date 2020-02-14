@@ -6,14 +6,11 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
 
 @Log
 @Getter
-public class CyclicCellularAutomatonContext implements TabContext, ActionListener {
+public class CyclicCellularAutomatonContext implements TabContext {
 
     private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
@@ -57,37 +54,4 @@ public class CyclicCellularAutomatonContext implements TabContext, ActionListene
         }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonVonNeumann()) {
-            this.canvas.startWithNeighbourhoodVonNeumann();
-            this.start();
-        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonMoore()) {
-            this.canvas.startWithNeighbourhoodMoore();
-            this.start();
-        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonWoehlke()) {
-            this.canvas.startWithNeighbourhoodWoehlke();
-            this.start();
-        }
-        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStartButton()){
-            this.start();
-        }
-        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStopButton()){
-            this.stop();
-        }
-    }
-
-
-    @Override
-    public void start() {
-        this.canvas.start();
-        this.startController();
-        this.controller.start();
-    }
-
-    @Override
-    public void stop() {
-        this.canvas.stop();
-        this.stopController();
-    }
 }

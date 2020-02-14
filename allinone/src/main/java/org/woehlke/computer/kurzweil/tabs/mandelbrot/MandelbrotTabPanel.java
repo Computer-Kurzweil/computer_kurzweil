@@ -6,6 +6,8 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
+import java.awt.event.ActionEvent;
+
 @Log
 @Getter
 public class MandelbrotTabPanel extends TabPanel implements Tab {
@@ -21,20 +23,30 @@ public class MandelbrotTabPanel extends TabPanel implements Tab {
         this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
         this.subTitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
         this.tabCtx = new MandelbrotContext(this);
+        this.tabCtx.getStartStopButtonsPanel().getStartButton().addActionListener(this);
+        this.tabCtx.getStartStopButtonsPanel().getStopButton().addActionListener(this);
+        this.tabCtx.getStartStopButtonsPanel().getStartButton().setEnabled(false);
+        this.tabCtx.getStartStopButtonsPanel().getStopButton().setEnabled(true);
+        showMe();
     }
 
     @Override
     public void start() {
         log.info("start");
         this.showMe();
-        this.getTabCtx().start();
+        this.tabCtx.getCanvas().start();
+        this.tabCtx.getStartStopButtonsPanel().start();
+        this.tabCtx.startController();
+        this.tabCtx.getController().start();
         log.info("started");
     }
 
     @Override
     public void stop() {
         log.info("stop");
-        this.getTabCtx().stop();
+        this.tabCtx.getStartStopButtonsPanel().stop();
+        this.tabCtx.stopController();
+        this.tabCtx.getCanvas().stop();
         log.info("stopped");
     }
 
@@ -44,4 +56,13 @@ public class MandelbrotTabPanel extends TabPanel implements Tab {
         this.setVisible(true);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() ==  this.tabCtx.getStartStopButtonsPanel().getStartButton()){
+            start();
+        }
+        if(ae.getSource() ==  this.tabCtx.getStartStopButtonsPanel().getStopButton()){
+            stop();
+        }
+    }
 }

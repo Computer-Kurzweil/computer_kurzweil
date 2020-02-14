@@ -34,9 +34,6 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
     this.add(this.buttonVonNeumann);
     this.add(this.buttonMoore);
     this.add(this.buttonWoehlke);
-    this.buttonVonNeumann.addActionListener(this.canvas.getTabCtx());
-    this.buttonMoore.addActionListener(this.canvas.getTabCtx());
-    this.buttonWoehlke.addActionListener(this.canvas.getTabCtx());
     showMe();
   }
 

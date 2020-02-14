@@ -9,13 +9,11 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static org.woehlke.computer.kurzweil.tabs.TabType.MANDELBROT_SET;
 
 @Getter
-public class MandelbrotContext implements TabContext, ActionListener {
+public class MandelbrotContext implements TabContext {
 
     private final TabType tabType = MANDELBROT_SET;
 
@@ -43,35 +41,14 @@ public class MandelbrotContext implements TabContext, ActionListener {
 
     @Override
     public void startController() {
-//TODO:
+        this.stateMachine.start();
+        //TODO:
     }
 
     @Override
     public void stopController() {
-//TODO:
-    }
-
-    @Override
-    public void start() {
-        this.stateMachine.start();
-    }
-
-    @Override
-    public void stop() {
         this.stateMachine.stop();
+        //TODO:
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.getStartStopButtonsPanel().getStartButton()){
-            this.getStartStopButtonsPanel().getStartButton().setEnabled(false);
-            this.getStartStopButtonsPanel().getStopButton().setEnabled(true);
-            this.start();
-        }
-        if(ae.getSource() == this.getStartStopButtonsPanel().getStopButton()){
-            this.getStartStopButtonsPanel().getStartButton().setEnabled(true);
-            this.getStartStopButtonsPanel().getStopButton().setEnabled(false);
-            this.stop();
-        }
-    }
 }

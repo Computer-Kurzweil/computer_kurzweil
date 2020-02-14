@@ -8,6 +8,8 @@ import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
+import java.awt.event.ActionEvent;
+
 @Log
 @Getter
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
@@ -29,20 +31,25 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.startStopButtonsPanel);
+        showMe();
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.tabCtx.start();
-        showMe();
+        this.canvas.start();
+        this.getStartStopButtonsPanel().start();
+        this.tabCtx.startController();
+        this.tabCtx.getController().start();
+        this.showMe();
         log.info("started");
     }
 
     @Override
     public void stop() {
         log.info("stop");
-        this.tabCtx.stop();
+        this.tabCtx.stopController();
+        this.getStartStopButtonsPanel().stop();
         log.info("stopped");
     }
 
@@ -59,5 +66,16 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     @Override
     public String getSubTitle() {
         return ctx.getProperties().getDla().getView().getSubtitle();
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == this.getStartStopButtonsPanel().getStartButton()){
+            this.start();
+        }
+        if(ae.getSource() == this.getStartStopButtonsPanel().getStopButton()){
+            this.stop();
+        }
     }
 }
