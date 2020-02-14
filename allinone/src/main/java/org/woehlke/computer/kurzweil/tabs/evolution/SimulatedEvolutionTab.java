@@ -25,11 +25,9 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
+        this.setLayout(new TabLayout(this));
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.setBorder( PanelBorder.getBorder() );
-        this.setLayout(new TabLayout(this));
-        this.setBounds(ctx.getFrameBounds());
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         String subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
         this.panelSubtitle = new PanelSubtitle(subtitle);
@@ -39,9 +37,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
         this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
         this.canvas.getPanelButtons().getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
-        this.startStopButtonsPanel.getStartButton().addActionListener(this);
-        this.startStopButtonsPanel.getStopButton().addActionListener(this);
-        this.setVisibleMe(true);
+        this.startStopButtonsPanel.stop();
+       // this.setVisibleMe(true);
     }
 
     @Override

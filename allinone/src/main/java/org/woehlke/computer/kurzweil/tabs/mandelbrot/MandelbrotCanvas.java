@@ -33,22 +33,18 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final Mandelbrot mandelbrot;
-    private final MandelbrotPanelButtons panelButtons;
     private final MandelbrotController mandelbrotControllerThread;
     private final Dimension preferredSize;
 
     public MandelbrotCanvas(
-        ComputerKurzweilApplicationContext ctx,
-        MandelbrotPanelButtons panelButtons
+        ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
-        this.panelButtons = panelButtons;
-        this.panelButtons.setCanvas(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.ctx );
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.ctx );
         this.mandelbrot = new Mandelbrot( this.ctx );
         this.mandelbrotControllerThread = new MandelbrotController(
-            this.ctx, this.panelButtons,this
+            this.ctx,this
         );
         int width = this.ctx.getWorldDimensions().getWidth();
         int height = this.ctx.getWorldDimensions().getHeight();

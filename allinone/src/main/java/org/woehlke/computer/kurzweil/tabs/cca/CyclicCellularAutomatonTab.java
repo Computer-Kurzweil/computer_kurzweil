@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
+import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
@@ -20,24 +21,30 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final CyclicCellularAutomatonContext tabCtx;
     private final ComputerKurzweilApplicationContext ctx;
 
+    private final StartStopButtonsPanel startStopButtonsPanel;
+    private final PanelSubtitle panelSubtitle;
+    private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
+
     private final static TabType TAB_TYPE = TabType.CYCLIC_CELLULAR_AUTOMATON;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
-        this.setBorder(PanelBorder.getBorder());
         this.setLayout(new TabLayout(this));
-        this.setBounds(ctx.getFrameBounds());
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.add(this.canvas.getPanelSubtitle());
+        this.startStopButtonsPanel = new StartStopButtonsPanel( this );
+        this.panelSubtitle = new PanelSubtitle(this.tabCtx.getCtx().getProperties().getCca().getView().getSubtitle());
+        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
+        this.add(this.panelSubtitle);
         this.add(this.canvas);
-        this.add(this.canvas.getNeighbourhoodButtonsPanel());
-        this.add(this.canvas.getStartStopButtonsPanel());
-        this.canvas.getStartStopButtonsPanel().getStartButton().addActionListener(this);
-        this.canvas.getStartStopButtonsPanel().getStopButton().addActionListener(this);
-        this.canvas.getNeighbourhoodButtonsPanel().getButtonVonNeumann().addActionListener(this);
-        this.canvas.getNeighbourhoodButtonsPanel().getButtonMoore().addActionListener(this);
-        this.canvas.getNeighbourhoodButtonsPanel().getButtonWoehlke().addActionListener(this);
+        this.add(this.neighbourhoodButtonsPanel);
+        this.add(this.startStopButtonsPanel);
+        this.neighbourhoodButtonsPanel.getButtonVonNeumann().addActionListener(this);
+        this.neighbourhoodButtonsPanel.getButtonMoore().addActionListener(this);
+        this.neighbourhoodButtonsPanel.getButtonWoehlke().addActionListener(this);
+        this.startStopButtonsPanel.getStartButton().addActionListener(this);
+        this.startStopButtonsPanel.getStopButton().addActionListener(this);
+        this.startStopButtonsPanel.stop();
         showMe();
     }
 
@@ -62,11 +69,13 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     @Override
     public void showMe() {
         log.info("showMe");
+        /*
         this.canvas.getStartStopButtonsPanel().setVisible(true);
         this.canvas.getNeighbourhoodButtonsPanel().setVisible(true);
         this.canvas.getPanelSubtitle().setVisible(true);
         this.canvas.setVisible(true);
         this.setVisible(true);
+        */
     }
 
     @Override
@@ -81,20 +90,20 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonVonNeumann()) {
+        if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonVonNeumann()) {
             this.canvas.startWithNeighbourhoodVonNeumann();
             this.start();
-        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonMoore()) {
+        } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonMoore()) {
             this.canvas.startWithNeighbourhoodMoore();
             this.start();
-        } else if (ae.getSource() == this.canvas.getNeighbourhoodButtonsPanel().getButtonWoehlke()) {
+        } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonWoehlke()) {
             this.canvas.startWithNeighbourhoodWoehlke();
             this.start();
         }
-        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStartButton()){
+        if(ae.getSource() == this.startStopButtonsPanel.getStartButton()){
             this.start();
         }
-        if(ae.getSource() == this.canvas.getStartStopButtonsPanel().getStopButton()){
+        if(ae.getSource() == this.startStopButtonsPanel.getStopButton()){
             this.stop();
         }
     }

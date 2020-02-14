@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 public class MandelbrotController extends Thread implements Runnable, TabController {
 
     @Getter private final ComputerKurzweilApplicationContext ctx;
-    @Getter private final MandelbrotPanelButtons panelButtons;
+    //@Getter private final MandelbrotPanelButtons panelButtons;
     @Getter private final MandelbrotCanvas canvas;
 
     private Boolean goOn;
@@ -18,12 +18,12 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
 
     public MandelbrotController(
         ComputerKurzweilApplicationContext ctx,
-        MandelbrotPanelButtons panelButtons,
+       // MandelbrotPanelButtons panelButtons,
         MandelbrotCanvas canvas
     ) {
         super("Mandelbrot-Controller");
         this.ctx = ctx;
-        this.panelButtons = panelButtons;
+       // this.panelButtons = panelButtons;
         this.canvas = canvas;
         this.time2wait=1;
     }

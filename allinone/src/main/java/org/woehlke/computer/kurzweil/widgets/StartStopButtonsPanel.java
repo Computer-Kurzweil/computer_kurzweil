@@ -53,8 +53,8 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
 
     @Override
     public void showMe() {
-        this.setVisible(true);
-        repaint();
+        //this.setVisible(true);
+        //repaint();
     }
 
 }

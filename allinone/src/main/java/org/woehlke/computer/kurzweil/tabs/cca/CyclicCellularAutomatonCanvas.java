@@ -51,12 +51,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     @Getter private final CyclicCellularAutomatonColorScheme colorScheme;
 
-    @Getter private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
-
-    @Getter private final StartStopButtonsPanel startStopButtonsPanel;
-
-    @Getter private final PanelSubtitle panelSubtitle;
-
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
         this.versions = 2;
@@ -64,12 +58,9 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.latticeY = this.tabCtx.getCtx().getWorldDimensions().getY();
         this.setLayout(new CanvasLayout(this));
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
-        this.panelSubtitle = new PanelSubtitle(this.tabCtx.getCtx().getProperties().getCca().getView().getSubtitle());
-        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this);
         Dimension preferredSize = new Dimension( this.latticeX, this.latticeY);
         this.setPreferredSize(preferredSize);
         this.setVisible(true);
-        this.startStopButtonsPanel = new StartStopButtonsPanel( this.tabCtx.getTab() );
         startWithNeighbourhoodVonNeumann();
         this.resetLattice();
         running = Boolean.FALSE;
@@ -96,13 +87,12 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     @Override
     public void showMe() {
-        this.setVisible(true);
-        repaint();
+        //this.setVisible(true);
+        //repaint();
     }
 
     public void start() {
         log.info("start");
-        this.startStopButtonsPanel.start();
         showMe();
         synchronized (running) {
             running = Boolean.TRUE;
@@ -112,7 +102,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public void stop() {
         log.info("stop");
-        this.startStopButtonsPanel.stop();
         synchronized (running) {
             running = Boolean.FALSE;
         }

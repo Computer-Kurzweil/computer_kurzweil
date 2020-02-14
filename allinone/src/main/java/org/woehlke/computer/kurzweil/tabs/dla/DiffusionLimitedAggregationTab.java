@@ -7,6 +7,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
+import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 
 import java.awt.event.ActionEvent;
 
@@ -23,6 +24,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
+        this.setLayout(new TabLayout(this));
         String subtitle = ctx.getProperties().getDla().getView().getSubtitle();
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
@@ -31,14 +33,16 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.startStopButtonsPanel);
+        this.startStopButtonsPanel.getStartButton().addActionListener(this);
+        this.startStopButtonsPanel.getStopButton().addActionListener(this);
+        this.startStopButtonsPanel.stop();
         showMe();
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.canvas.start();
-        this.getStartStopButtonsPanel().start();
+        this.startStopButtonsPanel.start();
         this.tabCtx.startController();
         this.tabCtx.getController().start();
         this.showMe();
@@ -71,10 +75,10 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.getStartStopButtonsPanel().getStartButton()){
+        if(ae.getSource() == this.startStopButtonsPanel.getStartButton()){
             this.start();
         }
-        if(ae.getSource() == this.getStartStopButtonsPanel().getStopButton()){
+        if(ae.getSource() == this.startStopButtonsPanel.getStopButton()){
             this.stop();
         }
     }

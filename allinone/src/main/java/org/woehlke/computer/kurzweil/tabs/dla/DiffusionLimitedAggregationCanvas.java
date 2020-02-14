@@ -30,7 +30,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable, Startable, TabCanvas, HasModel {
+    Serializable, TabCanvas, HasModel {
 
     private final DiffusionLimitedAggregation stepper;
     private final Color MEDIUM = Color.BLACK;
@@ -78,18 +78,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     public void update(Graphics g) {
-        log.info("update");
+        log.info("update(Graphics g)");
         paint(g);
-    }
-
-    @Override
-    public void start() {
-        log.info("start");
-    }
-
-    @Override
-    public void stop() {
-        log.info("stop");
     }
 
     @Override
@@ -99,6 +89,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
 
     @Override
     public void update() {
-        repaint();
+        log.info("update");
+        //repaint();
     }
 }
