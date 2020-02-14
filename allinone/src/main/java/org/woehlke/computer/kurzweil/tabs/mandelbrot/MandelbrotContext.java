@@ -18,16 +18,16 @@ public class MandelbrotContext implements TabContext {
     private final TabType tabType = MANDELBROT_SET;
 
     //TODO:
-    private MandelbrotTabController controller;
+    private MandelbrotController controller;
 
-    private final MandelbrotTabPanel tab;
+    private final MandelbrotTab tab;
     private final Mandelbrot stateMachine;
     private final DiffusionLimitedAggregation stepper;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final PanelSubtitle panelSubtitle;
 
-    public MandelbrotContext(MandelbrotTabPanel tab) {
+    public MandelbrotContext(MandelbrotTab tab) {
         this.tab = tab;
         this.canvas = new DiffusionLimitedAggregationCanvas(this.tab.getCtx());
         this.stepper = this.canvas.getStepper();

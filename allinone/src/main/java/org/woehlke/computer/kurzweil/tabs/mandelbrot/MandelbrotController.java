@@ -6,7 +6,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
 @Log
-public class MandelbrotTabController extends Thread implements Runnable, TabController {
+public class MandelbrotController extends Thread implements Runnable, TabController {
 
     @Getter private final ComputerKurzweilApplicationContext ctx;
     @Getter private final MandelbrotPanelButtons panelButtons;
@@ -16,7 +16,7 @@ public class MandelbrotTabController extends Thread implements Runnable, TabCont
 
     private final int time2wait;
 
-    public MandelbrotTabController(
+    public MandelbrotController(
         ComputerKurzweilApplicationContext ctx,
         MandelbrotPanelButtons panelButtons,
         MandelbrotCanvas canvas

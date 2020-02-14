@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-public class MandelbrotTabPanel extends TabPanel implements Tab {
+public class MandelbrotTab extends TabPanel implements Tab {
 
     private final MandelbrotContext tabCtx;
     private final ComputerKurzweilApplicationContext ctx;
@@ -18,7 +18,7 @@ public class MandelbrotTabPanel extends TabPanel implements Tab {
     private final String title;
     private final String subTitle;
 
-    public MandelbrotTabPanel(ComputerKurzweilApplicationContext ctx ) {
+    public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
         this.ctx = ctx;
         this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
         this.subTitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
