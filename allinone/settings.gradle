@@ -1,0 +1,8 @@
+pluginManagement {
+    plugins {
+        id 'com.github.johnrengelman.shadow' version "${shadowPluginVersion}"
+    }
+}
+
+
+rootProject.name = 'computer_kurzweil'

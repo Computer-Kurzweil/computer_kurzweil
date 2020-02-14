@@ -5,9 +5,9 @@
 ## Abstract
 
 Green food appears in a world with red moving cells. These cells eat the food if it is on their position.
-Movement of the cells depends on random and their DNA. A fit cell moves around and eats enough to reproduce.
-Reproduction is done by splitting the cell and randomly changing the DNA of the two new Cells.
-If a cell doesn't eat enough, it will first stand still and after a while it dies.
+Movement of the cells depends on random and their DNA. A fit cellConf moves around and eats enough to reproduce.
+Reproduction is done by splitting the cellConf and randomly changing the DNA of the two new Cells.
+If a cellConf doesn't eat enough, it will first stand still and after a while it dies.
 
 ## Blog Article 
 * [http://thomas-woehlke.blogspot.de/2016/01/simulated-evolution-artificial-life-and.html](http://thomas-woehlke.blogspot.de/2016/01/simulated-evolution-artificial-life-and.html)
@@ -28,12 +28,12 @@ If a cell doesn't eat enough, it will first stand still and after a while it die
 |-------|-------------|
 | ![](src/main/resources/img/black.png) | water           |
 | ![](src/main/resources/img/green.png) | food            |
-| ![](src/main/resources/img/blue.png) | cell is young   |
-| ![](src/main/resources/img/yellow.png)  | cell is fat enough to reproduce*   |
-| ![](src/main/resources/img/red.png)  | cell is old enough to reproduce*   |
-| ![](src/main/resources/img/light_gray.png)  | cell is hungry and waiting for food or death   |
-| ![](src/main/resources/img/dark_gray.png)  | cell is old and waiting for death   |
-| &nbsp; | * (if cell is fat and old enough for reproduction it splits and changes the childrens DNA)   |
+| ![](src/main/resources/img/blue.png) | cellConf is young   |
+| ![](src/main/resources/img/yellow.png)  | cellConf is fat enough to reproduce*   |
+| ![](src/main/resources/img/red.png)  | cellConf is old enough to reproduce*   |
+| ![](src/main/resources/img/light_gray.png)  | cellConf is hungry and waiting for food or death   |
+| ![](src/main/resources/img/dark_gray.png)  | cellConf is old and waiting for death   |
+| &nbsp; | * (if cellConf is fat and old enough for reproduction it splits and changes the childrens DNA)   |
 
 
 ## UML Class Model
