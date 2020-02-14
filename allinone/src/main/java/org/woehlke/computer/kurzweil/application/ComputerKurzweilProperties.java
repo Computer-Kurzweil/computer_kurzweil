@@ -36,18 +36,21 @@ public class ComputerKurzweilProperties {
     @Valid @Getter @Setter public Wator wator = new Wator();
 
     ////@Validated
+    @ToString
     public static class Allinone {
 
         @Valid @Getter @Setter public Lattice lattice = new Lattice();
         @Valid @Getter @Setter public View view = new View();
 
         ////@Validated
+        @ToString
         public static class Lattice {
             @NotNull  @Getter @Setter private Integer width;
             @NotNull  @Getter @Setter private Integer height;
         }
 
         ////@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
@@ -70,6 +73,7 @@ public class ComputerKurzweilProperties {
         public View view = new View();
 
         ////@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
@@ -82,6 +86,7 @@ public class ComputerKurzweilProperties {
     }
 
     ////@Validated
+    @ToString
     public static class Evolution {
 
         @Valid @Getter @Setter public View view = new View();
@@ -92,12 +97,14 @@ public class ComputerKurzweilProperties {
         @Valid @Getter @Setter public GardenOfEden gardenOfEden = new GardenOfEden();
 
         ////@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         ////@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer time2wait;
             @NotNull  @Getter @Setter private Integer exitStatus;
@@ -105,6 +112,7 @@ public class ComputerKurzweilProperties {
         }
 
         ////@Validated
+        @ToString
         public static class CellConf {
             @NotNull  @Getter @Setter private Integer fatMax;
             @NotNull  @Getter @Setter private Integer fatHungerMax;
@@ -117,6 +125,7 @@ public class ComputerKurzweilProperties {
         }
 
         ////@Validated
+        @ToString
         public static class Population {
             @NotNull  @Getter @Setter private Integer initialPopulation;
             @NotBlank @Getter @Setter private String panelPopulationStatistics;
@@ -131,6 +140,7 @@ public class ComputerKurzweilProperties {
         }
 
         ////@Validated
+        @ToString
         public static class Food {
             @NotNull  @Getter @Setter private Integer foodPerDay;
             @NotNull  @Getter @Setter private Integer foodPerDayFieldColumns;
@@ -141,6 +151,7 @@ public class ComputerKurzweilProperties {
         }
 
         ////@Validated
+        @ToString
         public static class GardenOfEden {
             @NotBlank @Getter @Setter private String panelGardenOfEden;
             @NotNull  @Getter @Setter private Boolean gardenOfEdenEnabled;
@@ -153,11 +164,13 @@ public class ComputerKurzweilProperties {
     }
 
     ////@Validated
+    @ToString
     public static class Cca {
 
         @Valid @Getter @Setter public View view = new View();
 
         //@Validated
+        @ToString
         public static class View {
 
             @NotBlank @Getter @Setter private String title;
@@ -166,6 +179,7 @@ public class ComputerKurzweilProperties {
             @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
 
             //@Validated
+            @ToString
             public static class Neighborhood {
                 @NotBlank @Getter @Setter private String title;
                 @NotBlank @Getter @Setter private String typeVonNeumann;
@@ -176,126 +190,147 @@ public class ComputerKurzweilProperties {
     }
 
     //@Validated
+    @ToString
     public static class Dla {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         //@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
         }
     }
 
+    @ToString
     public static class Kochsnowflake {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         //@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
         }
     }
 
+    @ToString
     public static class Samegame {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         //@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
         }
     }
 
+    @ToString
     public static class Sierpinskitriangle {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         //@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
         }
     }
 
+    @ToString
     public static class Tetris {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         //@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
         }
     }
 
+    @ToString
     public static class Turmite {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         //@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
         }
     }
 
+    @ToString
     public static class Wator {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
+        @ToString
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
         }
 
         //@Validated
+        @ToString
         public static class Control {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
@@ -303,6 +338,9 @@ public class ComputerKurzweilProperties {
     }
 
     public static ComputerKurzweilProperties propertiesFactory(String conf, String jar){
+        log.info("propertiesFactory");
+        log.info("propertiesFactory conf"+conf);
+        log.info("propertiesFactory jar"+jar);
         ComputerKurzweilProperties properties;
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
@@ -310,11 +348,12 @@ public class ComputerKurzweilProperties {
             JarEntry entry = jarFile.getJarEntry(conf);
             InputStream input = jarFile.getInputStream(entry);
             properties = mapper.readValue(input, ComputerKurzweilProperties.class);
-            System.out.println(ReflectionToStringBuilder.toString(properties, ToStringStyle.MULTI_LINE_STYLE));
+            log.info(ReflectionToStringBuilder.toString(properties, ToStringStyle.MULTI_LINE_STYLE));
         } catch (Exception e) {
             e.printStackTrace();
             properties = new ComputerKurzweilProperties();
         }
+        log.info("propertiesFactory done");
         return properties;
     }
 }

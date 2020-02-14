@@ -44,6 +44,7 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
     public void showMe() {
         log.info("showMe");
         this.setVisible(true);
+        repaint();
     }
 
 }

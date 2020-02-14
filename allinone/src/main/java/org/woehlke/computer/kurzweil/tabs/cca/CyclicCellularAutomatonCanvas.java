@@ -14,8 +14,6 @@ import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
@@ -99,12 +97,12 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Override
     public void showMe() {
         this.setVisible(true);
+        repaint();
     }
 
     public void start() {
         log.info("start");
-        this.startStopButtonsPanel.getStartButton().setEnabled(false);
-        this.startStopButtonsPanel.getStopButton().setEnabled(true);
+        this.startStopButtonsPanel.start();
         showMe();
         synchronized (running) {
             running = Boolean.TRUE;
@@ -114,8 +112,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public void stop() {
         log.info("stop");
-        this.startStopButtonsPanel.getStartButton().setEnabled(true);
-        this.startStopButtonsPanel.getStopButton().setEnabled(false);
+        this.startStopButtonsPanel.stop();
         synchronized (running) {
             running = Boolean.FALSE;
         }
@@ -123,9 +120,10 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void update(){
+        showMe();
     }
 
-    public synchronized void step(){
+    public void step(){
         boolean doIt = false;
         synchronized (running) {
             doIt = running.booleanValue();
@@ -183,56 +181,29 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void startWithNeighbourhoodVonNeumann() {
+        if( this.neighbourhoodType == null) {
+            log.info("startWithNeighbourhoodVonNeumann");
+        } else {
+            log.info("startWithNeighbourhoodVonNeumann: " + neighbourhoodType.name());
+        }
         this.neighbourhoodType=VON_NEUMANN_NEIGHBORHOOD;
         resetLattice();
+        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
     }
 
     public void startWithNeighbourhoodMoore() {
+        log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
         this.neighbourhoodType=MOORE_NEIGHBORHOOD;
         resetLattice();
+        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
     }
 
     public void startWithNeighbourhoodWoehlke() {
+        log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
         this.neighbourhoodType=WOEHLKE_NEIGHBORHOOD;
         resetLattice();
+        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
     }
 
 
-
-    public class CyclicCellularAutomatonColorScheme {
-
-        private Color[] stateColor;
-
-        public CyclicCellularAutomatonColorScheme(){
-            List<Color> stateColorList = new ArrayList<>();
-            stateColorList.add(Color.BLACK);
-            stateColorList.add(Color.DARK_GRAY);
-            stateColorList.add(Color.GRAY);
-            stateColorList.add(Color.LIGHT_GRAY);
-            stateColorList.add(Color.WHITE);
-            stateColorList.add(Color.MAGENTA);
-            stateColorList.add(Color.RED);
-            stateColorList.add(Color.ORANGE);
-            stateColorList.add(Color.YELLOW);
-            stateColorList.add(Color.PINK);
-            stateColorList.add(Color.BLUE);
-            stateColorList.add(Color.CYAN);
-            stateColorList.add(Color.GREEN);
-            stateColorList.add(new Color(54,12,88));
-            stateColorList.add(new Color(154,112,38));
-            stateColorList.add(new Color(234,123,254));
-            stateColor = new Color[stateColorList.toArray().length];
-            for(int i=0; i < stateColorList.toArray().length; i++){
-                stateColor[i] = (Color) stateColorList.get(i);
-            }
-        }
-
-        public int getMaxState(){
-            return stateColor.length;
-        }
-
-        public Color getColorForState(int state){
-            return stateColor[state];
-        }
-    }
 }

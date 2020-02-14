@@ -46,7 +46,7 @@ public class CyclicCellularAutomatonController extends Thread
                 doIt = goOn.booleanValue();
             }
             synchronized (this.appCtx) {
-                log.info("running");
+                //log.info("running");
                 this.appCtx.getStepper().step();
                 this.appCtx.getCanvas().update();
                 this.appCtx.getCanvas().repaint();
