@@ -94,6 +94,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     @Override
     public void showMe() {
         this.setVisible(true);
+        getActiveTab().showMe();
         repaint();
     }
 }
