@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.cca;
 
 import lombok.Getter;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 
 import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
 
+@Log
 @Getter
 public class CyclicCellularAutomatonContext implements TabContext, ActionListener {
 

@@ -46,10 +46,10 @@ public class CyclicCellularAutomatonController extends Thread
                 doIt = goOn.booleanValue();
             }
             synchronized (this.appCtx) {
+                log.info("running");
                 this.appCtx.getStepper().step();
-            }
-            synchronized (this.appCtx) {
                 this.appCtx.getCanvas().update();
+                this.appCtx.getCanvas().repaint();
             }
             try { super.sleep( this.time2wait ); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
@@ -64,7 +64,9 @@ public class CyclicCellularAutomatonController extends Thread
             synchronized (goOn) {
                 goOn = Boolean.FALSE;
             }
+            log.info("join");
             join();
+            log.info("joined");
         } catch (InterruptedException e){
             log.info(e.getMessage());
         }

@@ -123,7 +123,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void update(){
-        repaint();
     }
 
     public synchronized void step(){
