@@ -1,3 +1,3 @@
-gradlew clean allinone:clean allinone:shadowJar
+cmd /c gradlew clean allinone:clean allinone:shadowJar
 
-java -cp allinone/build/libs/allinone-all.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication
+cmd /c java -cp allinone/build/libs/allinone-all.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication
