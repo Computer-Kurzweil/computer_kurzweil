@@ -40,9 +40,11 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
 
     @Override
     public void start() {
+        log.info("start");
         this.startButton.setEnabled(false);
         this.stopButton.setEnabled(true);
         showMe();
+        log.info("started");
     }
 
     @Override
