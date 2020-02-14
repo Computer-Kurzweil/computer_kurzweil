@@ -56,13 +56,13 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         SimulatedEvolutionContext tabCtx
     ) {
         this.tabCtx = tabCtx;
+        this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
+        this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
         this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
         this.setLayout(new CanvasLayout(this));
         this.setBackground(COLOR_WATER.getColor());
-        this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
-        this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         Dimension preferredSize = new Dimension(worldX,worldY);
         this.setPreferredSize(preferredSize);
     }

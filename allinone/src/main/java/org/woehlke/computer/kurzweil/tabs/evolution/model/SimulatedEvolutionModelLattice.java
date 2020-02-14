@@ -43,9 +43,9 @@ public class SimulatedEvolutionModelLattice implements Startable {
   }
 
   private void resetLattice(){
-    for(int i = 0; i < y; i++){
-        for(int j = 0; j < x; j++){
-            worldMapFoodLattice[j][i]=0;
+    for(int iY = 0; iY < y; iY++){
+        for(int iX = 0; iX < x; iX++){
+            worldMapFoodLattice[iX][iY]=0;
         }
     }
   }
