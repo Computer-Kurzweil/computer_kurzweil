@@ -36,6 +36,11 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     private final MandelbrotController mandelbrotControllerThread;
     private final Dimension preferredSize;
 
+    private final static int startX = 0;
+    private final static int startY = 0;
+    private final int worldX;
+    private final int worldY;
+
     public MandelbrotCanvas(
         ComputerKurzweilApplicationContext ctx
     ) {
@@ -46,9 +51,9 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.mandelbrotControllerThread = new MandelbrotController(
             this.ctx,this
         );
-        int width = this.ctx.getWorldDimensions().getWidth();
-        int height = this.ctx.getWorldDimensions().getHeight();
-        this.preferredSize = new Dimension(width, height);
+        worldX = this.ctx.getWorldDimensions().getWidth();
+        worldY = this.ctx.getWorldDimensions().getHeight();
+        this.preferredSize = new Dimension(worldX, worldY);
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
     }

@@ -42,9 +42,12 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private volatile int target;
 
     private final int versions;
-    private final int latticeX;
-    private final int latticeY;
     private Boolean running;
+
+    private final static int startX = 0;
+    private final static int startY = 0;
+    private final int worldX;
+    private final int worldY;
 
     @Getter
     private CyclicCellularAutomatonContext tabCtx;
@@ -54,11 +57,11 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
         this.versions = 2;
-        this.latticeX = this.tabCtx.getCtx().getWorldDimensions().getX();
-        this.latticeY = this.tabCtx.getCtx().getWorldDimensions().getY();
+        this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
+        this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         this.setLayout(new CanvasLayout(this));
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
-        Dimension preferredSize = new Dimension( this.latticeX, this.latticeY);
+        Dimension preferredSize = new Dimension( this.worldX, this.worldY);
         this.setPreferredSize(preferredSize);
         this.setVisible(true);
         startWithNeighbourhoodVonNeumann();
@@ -69,8 +72,8 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public void paint(Graphics g) {
         if (lattice != null) {
-            for (int y = 0; y < latticeY; y++) {
-                for (int x = 0; x < latticeX; x++) {
+            for (int y = 0; y < worldY; y++) {
+                for (int x = 0; x < worldX; x++) {
                     int state = this.lattice[source][x][y];
                     Color stateColor = this.colorScheme.getColorForState(state);
                     g.setColor(stateColor);
@@ -123,14 +126,14 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             int xx;
             int yy;
             int nextState;
-            for (int y = 0; y < latticeY; y++) {
-                for (int x = 0; x < latticeX; x++) {
+            for (int y = 0; y < worldY; y++) {
+                for (int x = 0; x < worldX; x++) {
                     lattice[target][x][y] = lattice[source][x][y];
                     nextState = (lattice[source][x][y] + 1) % maxState;
                     LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getForfNeighbourhood(neighbourhoodType);
                     for (int i = 0; i < pos.length; i++) {
-                        xx = ((x + pos[i].getX() + latticeX) % latticeX);
-                        yy = ((y + pos[i].getY() + latticeY) % latticeY);
+                        xx = ((x + pos[i].getX() + worldX) % worldX);
+                        yy = ((y + pos[i].getY() + worldY) % worldY);
                         if (nextState == lattice[source][xx][yy]) {
                             lattice[target][x][y] = nextState;
                             i = pos.length;
@@ -146,7 +149,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     private void initCreateLattice(){
         log.info("initCreateLattice start: "+neighbourhoodType.name());
-        lattice = new int[versions][latticeX][latticeY];
+        lattice = new int[versions][worldX][worldY];
         source = 0;
         target = 1;
         log.info("initCreateLattice finished: "+neighbourhoodType.name());
@@ -156,8 +159,8 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         log.info("initCreateLattice start: "+neighbourhoodType.name());
         Random random = this.tabCtx.getCtx().getRandom();
         int maxState = this.colorScheme.getMaxState();
-        for (int y = 0; y < latticeY; y++) {
-            for (int x = 0; x < latticeX; x++) {
+        for (int y = 0; y < worldY; y++) {
+            for (int x = 0; x < worldX; x++) {
                 lattice[source][x][y] = random.nextInt(maxState);
             }
         }

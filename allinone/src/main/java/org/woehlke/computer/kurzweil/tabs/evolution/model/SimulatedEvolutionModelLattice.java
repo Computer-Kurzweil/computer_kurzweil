@@ -30,22 +30,24 @@ public class SimulatedEvolutionModelLattice implements Startable {
 
   @Getter private SimulatedEvolutionContext appCtx;
 
-  private final  int x;
-    private final  int y;
+    private final static int startX = 0;
+    private final static int startY = 0;
+    private final int worldX;
+    private final int worldY;
 
   public SimulatedEvolutionModelLattice(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;
-      x =  this.appCtx.getCtx().getWorldDimensions().getX();
-      y =  this.appCtx.getCtx().getWorldDimensions().getY();
-      worldMapFoodLattice = new int[x][y];
+      worldX =  this.appCtx.getCtx().getWorldDimensions().getX();
+      worldY =  this.appCtx.getCtx().getWorldDimensions().getY();
+      worldMapFoodLattice = new int[worldX][worldY];
   }
 
   private void resetLattice(){
-    for(int iY = 0; iY < y; iY++){
-        for(int iX = 0; iX < x; iX++){
-            worldMapFoodLattice[iX][iY]=0;
+    for(int y = 0; y < worldY; y++){
+        for(int x = 0; x < worldX; x++){
+            worldMapFoodLattice[x][y]=0;
         }
     }
   }
@@ -54,8 +56,8 @@ public class SimulatedEvolutionModelLattice implements Startable {
         if (this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled()) {
             int food = 0;
             int gardenOfEdenParts = 3;
-            int startX = ( x / gardenOfEdenParts );
-            int startY = ( y / gardenOfEdenParts );
+            int startX = ( worldX / gardenOfEdenParts );
+            int startY = ( worldY / gardenOfEdenParts );
             while (food < this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getFoodPerDay()) {
                 food++;
                 int posX = this.appCtx.getCtx().getRandom().nextInt(startX);
@@ -72,8 +74,8 @@ public class SimulatedEvolutionModelLattice implements Startable {
         final int foodPerDay = this.appCtx.getCtx().getProperties().getEvolution().getFood().getFoodPerDay();
         while (food < foodPerDay) {
             food++;
-            int newFoodPosX = this.appCtx.getCtx().getRandom().nextInt(x);
-            int newFoodPosY = this.appCtx.getCtx().getRandom().nextInt(y);
+            int newFoodPosX = this.appCtx.getCtx().getRandom().nextInt(worldX);
+            int newFoodPosY = this.appCtx.getCtx().getRandom().nextInt(worldY);
             newFoodPosX *= Integer.signum(newFoodPosX);
             newFoodPosY *= Integer.signum(newFoodPosY);
             worldMapFoodLattice[newFoodPosX][newFoodPosY]++;
