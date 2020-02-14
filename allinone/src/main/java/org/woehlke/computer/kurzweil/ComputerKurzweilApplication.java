@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.commons.Startable;
 
 
 /**
@@ -26,7 +27,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
  * &copy; 2006 - 2008 Thomas Woehlke.
  */
 @Log
-public class ComputerKurzweilApplication {
+public class ComputerKurzweilApplication implements Startable {
 
     private final ComputerKurzweilApplicationFrame frame;
 
@@ -45,6 +46,11 @@ public class ComputerKurzweilApplication {
         } catch (IllegalThreadStateException e){
             log.info(e.getLocalizedMessage());
         }
+    }
+
+    @Override
+    public void stop() {
+
     }
 
     /**

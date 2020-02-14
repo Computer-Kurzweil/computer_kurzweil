@@ -74,7 +74,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
             bounds.getMywidth(),
             bounds.getMyheight()
         );;
-        tabbedPane.setVisible(true);
+        tabbedPane.showMe();
         this.setVisible(true);
         toFront();
         repaint();
@@ -100,11 +100,11 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
 
     public void windowActivated(WindowEvent e) {
         toFront();
-        tabbedPane.getActiveTab().start();
+        //tabbedPane.getActiveTab().start();
     }
 
     public void windowDeactivated(WindowEvent e) {
-        tabbedPane.getActiveTab().stop();
+        //tabbedPane.getActiveTab().stop();
     }
 
     @Override
