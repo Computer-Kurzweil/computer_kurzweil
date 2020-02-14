@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.dla;
 
 import lombok.Getter;
-import lombok.Setter;
+import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
@@ -13,9 +13,8 @@ public class DiffusionLimitedAggregationContext implements TabContext {
 
     private final TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
 
-    @Setter private DiffusionLimitedAggregationController controller;
+    private DiffusionLimitedAggregationController controller;
 
-    private final DiffusionLimitedAggregation stepper;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final DiffusionLimitedAggregationTab tab;
     private final ComputerKurzweilApplicationContext ctx;
@@ -26,7 +25,6 @@ public class DiffusionLimitedAggregationContext implements TabContext {
         this.tab = tab;
         this.ctx = this.tab.getCtx();
         this.canvas = new DiffusionLimitedAggregationCanvas(this.ctx);
-        this.stepper = this.canvas.getStepper();
         startController();
     }
 
@@ -51,4 +49,8 @@ public class DiffusionLimitedAggregationContext implements TabContext {
         }
     }
 
+    @Override
+    public TabModel getStepper() {
+        return canvas;
+    }
 }

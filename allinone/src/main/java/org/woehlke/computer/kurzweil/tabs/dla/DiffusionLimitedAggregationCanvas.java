@@ -7,11 +7,14 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.HasModel;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
+import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,9 +32,8 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable, TabCanvas, HasModel {
+    Serializable, TabCanvas,TabModel {
 
-    private final DiffusionLimitedAggregation stepper;
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
     private final Dimension preferredSize;
@@ -43,18 +45,34 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
+    private List<LatticePoint> particles = new ArrayList<>();
+    private int worldMap[][];
+    private int age=1;
+
+    private final int initialNumberOfParticles;
+
     public DiffusionLimitedAggregationCanvas(
         ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
         worldX = ctx.getWorldDimensions().getX();
         worldY = ctx.getWorldDimensions().getY();
-        this.stepper = new DiffusionLimitedAggregation(this.ctx);
         this.setBackground(MEDIUM);
         this.setSize(worldX, worldY);
         this.preferredSize = new Dimension(worldX,worldY);
         this.setPreferredSize(preferredSize);
         this.setSize(this.preferredSize);
+        this.initialNumberOfParticles = ctx.getProperties().getDla().getControl().getNumberOfParticles();
+        for(int i=0; i< this.initialNumberOfParticles; i++){
+            int x = ctx.getRandom().nextInt(this.worldX);
+            int y = ctx.getRandom().nextInt(this.worldY);
+            particles.add(new LatticePoint(x>=0?x:-x,y>=0?y:-y));
+        }
+        this.worldMap = new int[this.worldX][this.worldY];
+        int x = this.worldY / 2;
+        int y = this.worldY / 2;
+        worldMap[x][y]=age;
+        age++;
     }
 
     public void paint(Graphics g) {
@@ -63,22 +81,69 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         g.setColor(MEDIUM);
         g.fillRect(startX,startY,worldX,worldY);
         g.setColor(PARTICLES);
-        for(LatticePoint pixel : stepper.getParticles()){
+        for(LatticePoint pixel : this.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0; y<startY; y++){
             for(int x=0; x<worldX; x++){
-                int age = stepper.getDendriteColor(x,y);
-                if(age>0){
-                    age /= 25;
-                    int blue = (age / 256) % (256*256);
-                    int green = (age % 256);
-                    int red = 255;
-                    Color ageColor = new Color(red,green,blue);
-                    g.setColor(ageColor);
-                    g.drawLine(x,y,x,y);
+                Color ageColor = this.getDendriteColor(x,y);
+                g.setColor(ageColor);
+                g.drawLine(x,y,x,y);
+            }
+        }
+    }
+
+    public boolean hasDendriteNeighbour(LatticePoint pixel){
+        if(worldMap[pixel.getX()][pixel.getY()]==0){
+            LatticePoint[] neighbours = pixel.getNeighbourhood(this.ctx);
+            for(LatticePoint neighbour:neighbours){
+                if(worldMap[neighbour.getX()][neighbour.getY()]>0){
+                    worldMap[pixel.getX()][pixel.getY()]=age;
+                    age++;
+                    return true;
                 }
             }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void step() {
+        log.info("stop");
+        List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
+        for(LatticePoint particle:particles){
+            int x = particle.getX()+this.worldX;
+            int y = particle.getY()+this.worldY;
+            //Todo: make Enum
+            int direction = ctx.getRandom().nextInt(4);
+            switch (direction>=0?direction:-direction){
+                case 0: y--; break;
+                case 1: x++; break;
+                case 2: y++; break;
+                case 3: x--; break;
+            }
+            x %= this.worldX;
+            y %= this.worldY;
+            particle.setX(x);
+            particle.setY(y);
+            if(!this.hasDendriteNeighbour(particle)){
+                newParticles.add(particle);
+            }
+        }
+        particles=newParticles;
+    }
+
+    public Color getDendriteColor(int x, int y) {
+        int myAge = worldMap[x][y];
+        if(myAge>0) {
+            myAge /= 25;
+            int blue = (myAge / 256) % (256 * 256);
+            int green = (myAge % 256);
+            int red = 255;
+            return new Color(red, green, blue);
+        } else {
+            return MEDIUM;
         }
     }
 
