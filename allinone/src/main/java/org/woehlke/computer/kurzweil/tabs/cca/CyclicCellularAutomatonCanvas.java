@@ -71,6 +71,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void paint(Graphics g) {
+        log.info("paint(Graphics g)");
         if (lattice != null) {
             for (int y = 0; y < worldY; y++) {
                 for (int x = 0; x < worldX; x++) {
@@ -85,11 +86,13 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void update(Graphics g) {
+        log.info("update(Graphics g)");
         paint(g);
     }
 
     @Override
     public void showMe() {
+        log.info("showMe");
         //this.setVisible(true);
         //repaint();
     }
@@ -112,6 +115,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void update(){
+        log.info("update");
         showMe();
     }
 
@@ -121,7 +125,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             doIt = running.booleanValue();
         }
         if(doIt){
-           // log.info("step");
+            log.info("step");
             int maxState = colorScheme.getMaxState();
             int xx;
             int yy;
@@ -143,7 +147,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             }
             this.source = (this.source + 1) % 2;
             this.target = (this.target + 1) % 2;
-           // log.info("stepped");
+            log.info("stepped");
         }
     }
 
