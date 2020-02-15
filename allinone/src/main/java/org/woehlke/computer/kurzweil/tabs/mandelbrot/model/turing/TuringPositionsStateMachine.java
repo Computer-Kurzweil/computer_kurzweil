@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
@@ -16,18 +17,19 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  * Created by tw on 16.12.2019.
  */
 @Log
+@Getter
 public class TuringPositionsStateMachine implements Startable {
+    private final MandelbrotContext tabCtx;
+    private final LatticePoint wWorldDimensions;
 
+    private int steps;
     private LatticePoint turingPosition;
     private LatticePoint firstSetPosition;
     private TuringDirection turingDirection;
-    private int steps;
-    private final MandelbrotContext ctx;
-    private final LatticePoint wWorldDimensions;
 
-    public TuringPositionsStateMachine(MandelbrotContext ctx) {
-        this.ctx=ctx;
-        this.wWorldDimensions = ctx.getCtx().getWorldDimensions();
+    public TuringPositionsStateMachine(MandelbrotContext tabCtx) {
+        this.tabCtx=tabCtx;
+        this.wWorldDimensions = this.tabCtx.getCtx().getWorldDimensions();
         start();
     }
 

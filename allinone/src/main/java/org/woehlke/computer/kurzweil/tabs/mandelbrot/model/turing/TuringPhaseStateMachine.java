@@ -15,9 +15,9 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  * Created by tw on 16.12.2019.
  */
 @Log
+@Getter
 public class TuringPhaseStateMachine implements Startable {
 
-    @Getter
     private TuringPhase turingTuringPhase;
 
     public TuringPhaseStateMachine() {
@@ -31,7 +31,7 @@ public class TuringPhaseStateMachine implements Startable {
 
     @Override
     public void stop() {
-        turingTuringPhase = TuringPhase.FINISHED;
+        turingTuringPhase = TuringPhase.stop();
     }
 
     public void finishSearchTheSet(){

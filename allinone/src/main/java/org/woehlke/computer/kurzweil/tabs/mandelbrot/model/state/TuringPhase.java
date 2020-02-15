@@ -19,4 +19,8 @@ public enum TuringPhase {
     public static TuringPhase start(){
         return SEARCH_THE_SET;
     }
+
+    public static TuringPhase stop(){
+        return FINISHED;
+    }
 }
