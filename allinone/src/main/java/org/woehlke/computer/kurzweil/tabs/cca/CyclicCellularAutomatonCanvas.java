@@ -116,7 +116,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public void update(){
         log.info("update");
-        showMe();
+       // showMe();
     }
 
     public void step(){
@@ -130,12 +130,15 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             int xx;
             int yy;
             int nextState;
-            for (int y = 0; y < worldY; y++) {
-                for (int x = 0; x < worldX; x++) {
+            int y;
+            int x;
+            int i;
+            for (y = 0; y < worldY; y++) {
+                for (x = 0; x < worldX; x++) {
                     lattice[target][x][y] = lattice[source][x][y];
                     nextState = (lattice[source][x][y] + 1) % maxState;
                     LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getForfNeighbourhood(neighbourhoodType);
-                    for (int i = 0; i < pos.length; i++) {
+                    for (i = 0; i < pos.length; i++) {
                         xx = ((x + pos[i].getX() + worldX) % worldX);
                         yy = ((y + pos[i].getY() + worldY) % worldY);
                         if (nextState == lattice[source][xx][yy]) {
