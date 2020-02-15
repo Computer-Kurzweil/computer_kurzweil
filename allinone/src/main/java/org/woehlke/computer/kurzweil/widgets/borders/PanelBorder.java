@@ -3,9 +3,10 @@ package org.woehlke.computer.kurzweil.widgets.borders;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 
+
 public class PanelBorder {
 
-    private static int BORDER_PADDING = 5;
+    public static int BORDER_PADDING = 5;
 
     public static CompoundBorder getBorder(String label){
         int top = BORDER_PADDING;

@@ -42,13 +42,15 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
     private final Dimension preferredSize;
+    private final int canvasX;
+    private final int canvasY;
 
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
 
-    private int worldMap[][];
+    private int[][] worldMap;
     private int age=1;
 
     private long steps;
@@ -63,10 +65,12 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         worldX = ctx.getWorldDimensions().getX();
         worldY = ctx.getWorldDimensions().getY();
         border = PanelBorder.getBorder();
+        canvasX = worldX+ 2 * PanelBorder.BORDER_PADDING;
+        canvasY = worldY+ 2 * PanelBorder.BORDER_PADDING;
         this.setBorder(border);
         this.setBackground(MEDIUM);
-        this.setSize(worldX, worldY);
-        this.preferredSize = new Dimension(worldX,worldY);
+        this.setSize(canvasX,canvasY);
+        this.preferredSize = new Dimension(canvasX,canvasY);
         this.setPreferredSize(preferredSize);
         this.setSize(this.preferredSize);
         this.initialNumberOfParticles = ctx.getProperties().getDla().getControl().getNumberOfParticles();
@@ -91,7 +95,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         for(LatticePoint pixel : particles){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
-        for(int y=0; y<startY; y++){
+        for(int y=0; y<worldY; y++){
             for(int x=0; x<worldX; x++){
                 Color ageColor = MEDIUM;
                 int myAge = worldMap[x][y];
@@ -101,9 +105,10 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
                     int green = (myAge % 256);
                     int red = 255;
                     ageColor =  new Color(red, green, blue);
-                    log.info("paint with color: red="+red+", green="+green+", blue="+blue+" ");
+                    log.info("paint: age "+myAge+" x="+x+",y="+y+" with color: red="+red+", green="+green+", blue="+blue+" ");
+                } else {
+                    log.info("paint: age "+myAge+" x="+x+",y="+y+" color="+ageColor.toString());
                 }
-                log.info("paint: age "+myAge+" x="+x+",y="+y+" color="+ageColor.toString());
                 g.setColor(ageColor);
                 g.drawLine(x,y,x,y);
             }
