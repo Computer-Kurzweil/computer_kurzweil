@@ -6,24 +6,21 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
 @Log
+@Getter
 public class MandelbrotController extends Thread implements Runnable, TabController {
 
-    @Getter private final ComputerKurzweilApplicationContext ctx;
-    //@Getter private final MandelbrotPanelButtons panelButtons;
-    @Getter private final MandelbrotCanvas canvas;
+    private final ComputerKurzweilApplicationContext ctx;
+    private final MandelbrotCanvas canvas;
+    private final int time2wait;
 
     private Boolean goOn;
 
-    private final int time2wait;
-
     public MandelbrotController(
         ComputerKurzweilApplicationContext ctx,
-       // MandelbrotPanelButtons panelButtons,
         MandelbrotCanvas canvas
     ) {
         super("Mandelbrot-Controller");
         this.ctx = ctx;
-       // this.panelButtons = panelButtons;
         this.canvas = canvas;
         this.time2wait=1;
     }
@@ -41,8 +38,6 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
             synchronized (this.canvas) {
                 log.info(".");
                 canvas.getMandelbrot().step();
-            }
-            synchronized (this.canvas) {
                 log.info("[");
                 this.canvas.repaint();
                 log.info("]");

@@ -7,11 +7,13 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.model.LatticePointNeighbourhoodPosition;
+import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Random;
@@ -52,6 +54,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonColorScheme colorScheme;
+    private final CompoundBorder border;
     private final CanvasLayout layout;
     private final Dimension preferredSize;
 
@@ -63,6 +66,8 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
         this.preferredSize = new Dimension( this.worldX, this.worldY);
         this.layout = new CanvasLayout(this);
+        this.border = PanelBorder.getBorder();
+        this.setBorder(border);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setSize(preferredSize);

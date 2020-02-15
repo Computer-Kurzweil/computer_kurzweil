@@ -49,7 +49,7 @@ public class CyclicCellularAutomatonController extends Thread
                 //log.info("running");
                 this.appCtx.getStepper().step();
                 this.appCtx.getCanvas().update();
-                this.appCtx.getCanvas().repaint();
+                this.appCtx.getTab().repaint();
             }
             try { super.sleep( this.time2wait ); }
             catch (InterruptedException e) { log.info(e.getMessage()); }

@@ -3,7 +3,6 @@ package org.woehlke.computer.kurzweil.tabs.evolution;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
@@ -20,17 +19,19 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionContext tabCtx;
     private final StartStopButtonsPanel startStopButtonsPanel;
+    private final String subtitle;
     private final PanelSubtitle panelSubtitle;
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.setLayout(new TabLayout(this));
-        this.tabCtx = new SimulatedEvolutionContext(this);
-        this.canvas = this.tabCtx.getCanvas();
+        this.canvas = new SimulatedEvolutionCanvas(this);
+        this.tabCtx = new SimulatedEvolutionContext(this.canvas);
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
-        String subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
+        this.subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
         this.panelSubtitle = new PanelSubtitle(subtitle);
+        //TODO: the other panels/buttons
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.startStopButtonsPanel);
@@ -38,16 +39,14 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
         this.canvas.getPanelButtons().getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
         this.startStopButtonsPanel.stop();
-       // this.setVisibleMe(true);
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.getTabCtx().startController();
         this.canvas.getWorld().start();
+        this.getTabCtx().startController();
         this.getTabCtx().getController().start();
-        this.setVisibleMe(true);
         log.info("started");
     }
 
@@ -62,14 +61,6 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     @Override
     public void showMe() {
         log.info("showMe");
-        this.setVisibleMe(true);
-    }
-
-    private void setVisibleMe(boolean visible){
-        this.canvas.getPanelButtons().setVisible(visible);
-        this.canvas.getStatisticsPanel().setVisible(visible);
-        this.canvas.setVisible(visible);
-        this.setVisible(visible);
     }
 
     @Override
@@ -85,26 +76,27 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() ==  this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayIncrease()) {
+            log.info("actionPerformed: increaseFoodPerDay");
             tabCtx.increaseFoodPerDay();
-            this.canvas.getPanelButtons().getFoodPanel().getFoodPerDayField().setText(
-                tabCtx.getSimulatedEvolution().getFoodPerDay()+""
-            );
+            this.canvas.update();
         } else if (ae.getSource() == this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayDecrease()) {
+            log.info("actionPerformed: decreaseFoodPerDay");
             tabCtx.decreaseFoodPerDay();
-            this.canvas.getPanelButtons().getFoodPanel().getFoodPerDayField().setText(
-                tabCtx.getSimulatedEvolution().getFoodPerDay()+""
-            );
+            this.canvas.update();
         } else if (ae.getSource() == this.canvas.getPanelButtons().getGardenOfEdenPanel().getButtonToggleGardenOfEden()) {
+            log.info("actionPerformed: toggleGardenOfEden");
             tabCtx.toggleGardenOfEden();
-            tabCtx.getStepper().toggleGardenOfEden();
-            boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
-            this.canvas.getPanelButtons().getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
+            this.canvas.update();
         }
         if(ae.getSource() ==  this.startStopButtonsPanel.getStartButton()){
+            log.info("actionPerformed: start");
             this.start();
+            this.canvas.update();
         }
         if(ae.getSource() ==  this.startStopButtonsPanel.getStopButton()){
+            log.info("actionPerformed: stop");
             this.stop();
+            this.canvas.update();
         }
     }
 }

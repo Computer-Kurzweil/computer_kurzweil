@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
+import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -35,30 +36,26 @@ import java.util.List;
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
-
-    private final CompoundBorder border;
     private final ComputerKurzweilApplicationContext ctx;
-
+    private final CompoundBorder border;
+    private final Dimension preferredSize;
+    private final CanvasLayout layout;
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
-    private final Dimension preferredSize;
-    private final int canvasX;
-    private final int canvasY;
 
+    private final int initialNumberOfParticles;
+    private final int directions = 4;
+    private final int directionsFirst = 0;
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
+    private final int canvasX;
+    private final int canvasY;
 
     private int[][] worldMap;
     private int age=1;
-
     private long steps;
-
-    private final int initialNumberOfParticles;
-
-    private final int directions = 4;
-    private final int directionsFirst = 0;
 
     private List<LatticePoint> particles = new ArrayList<>();
 
@@ -68,12 +65,14 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.ctx = ctx;
         worldX = ctx.getWorldDimensions().getX();
         worldY = ctx.getWorldDimensions().getY();
-        border = PanelBorder.getBorder();
         canvasX = worldX+ 2 * PanelBorder.BORDER_PADDING;
         canvasY = worldY+ 2 * PanelBorder.BORDER_PADDING;
+        border = PanelBorder.getBorder();
         this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setSize(canvasX,canvasY);
+        this.layout = new CanvasLayout(this);
+        this.setLayout(layout);
         this.preferredSize = new Dimension(canvasX,canvasY);
         this.setPreferredSize(preferredSize);
         this.setSize(this.preferredSize);

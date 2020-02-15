@@ -20,7 +20,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
     private final String title;
     private final String subTitle;
 
-    private final MandelbrotPanelButtons panelButtons;
+    private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final PanelSubtitle panelSubtitle;
@@ -33,7 +33,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
         this.canvas = this.tabCtx.getCanvas();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         this.panelSubtitle = new PanelSubtitle(  this.subTitle);
-        this.panelButtons = new MandelbrotPanelButtons(  this.ctx);
+        this.panelButtons = new MandelbrotButtons(  this.ctx);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.panelButtons);

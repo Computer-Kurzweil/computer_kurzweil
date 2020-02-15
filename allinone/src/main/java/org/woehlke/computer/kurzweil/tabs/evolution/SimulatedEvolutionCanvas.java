@@ -44,23 +44,29 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
+    private final SimulatedEvolutionTab tab;
     private final SimulatedEvolutionModel world;
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
     private final SimulatedEvolutionButtonRowPanel panelButtons;
     private final SimulatedEvolutionContext tabCtx;
+    private final Dimension preferredSize;
+    private final CanvasLayout layout;
 
     public SimulatedEvolutionCanvas(
-        SimulatedEvolutionContext tabCtx
+        SimulatedEvolutionTab tab
     ) {
-        this.tabCtx = tabCtx;
+        this.tab = tab;
+        this.tabCtx = tab.getTabCtx();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
         this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
-        this.setLayout(new CanvasLayout(this));
+        this.preferredSize = new Dimension(worldX,worldY);
+        this.layout = new CanvasLayout(this);
+        this.setLayout(layout);
         this.setBackground(COLOR_WATER.getColor());
-        Dimension preferredSize = new Dimension(worldX,worldY);
+        this.setSize(preferredSize);
         this.setPreferredSize(preferredSize);
     }
 
@@ -71,80 +77,72 @@ public class SimulatedEvolutionCanvas extends JComponent implements
    */
   public void paint(Graphics graphics) {
     super.paintComponent(graphics);
-       // paintBackground(graphics);
+      log.info("paint START (Graphics graphics)");
+      log.info("paint Background (Graphics graphics)");
+      // paint Background
       graphics.setColor(COLOR_WATER.getColor());
       graphics.fillRect(startX, startY, worldX, worldY);
-    //paintFood(graphics);
+      // paint Food
+      log.info("paint Food (Graphics graphics)");
       graphics.setColor(COLOR_FOOD.getColor());
-      for (int posY = 0; posY < worldY; posY++) {
-          for (int posX = 0; posX < worldX; posX++) {
+      int posX;
+      int posY;
+      for (posY = 0; posY < worldY; posY++) {
+          for (posX = 0; posX < worldX; posX++) {
               if (world.hasFood(posX, posY)) {
                   graphics.drawLine(posX, posY, posX, posY);
               }
           }
       }
-    //paintPopulation(graphics);
-      graphics.setColor(COLOR_FOOD.getColor());
-      for (int posY = 0; posY <  worldY; posY++) {
-          for (int posX = 0; posX < worldX; posX++) {
-              if (world.hasFood(posX, posY)) {
-                  graphics.drawLine(posX, posY, posX, posY);
-              }
+      // paint Population
+      log.info("paint Population (Graphics graphics)");
+      List<Cell> population = world.getAllCells();
+      for (Cell cell : population) {
+          posX = cell.getPosition().getX();
+          posY = cell.getPosition().getY();
+          LatticePoint[] square = LatticePoint.getNeighbourhood(worldX,worldY,posX,posY);
+          graphics.setColor(cell.getLifeCycleStatus().getColor());
+          for (LatticePoint pixel : square) {
+              graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
           }
       }
-  }
-
-    private void paintPopulation(Graphics graphics){
-        List<Cell> population = world.getAllCells();
-        for (Cell cell : population) {
-            LatticePoint[] square = LatticePoint.getNeighbourhood(worldX,worldY,cell.getPosition().getX(),cell.getPosition().getY());
-            graphics.setColor(cell.getLifeCycleStatus().getColor());
-            for (LatticePoint pixel : square) {
-                graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
-            }
-        }
-    }
-
-    private void paintFood(Graphics graphics){
-        graphics.setColor(COLOR_FOOD.getColor());
-        for (int posY = 0; posY < worldY; posY++) {
-            for (int posX = 0; posX < worldX; posX++) {
-                if (world.hasFood(posX, posY)) {
-                    graphics.drawLine(posX, posY, posX, posY);
-                }
-            }
-        }
-    }
-
-  private void paintBackground(Graphics graphics){
-      graphics.setColor(COLOR_WATER.getColor());
-      graphics.fillRect(startX, startY, worldX, worldY);
+      log.info("paint DONE (Graphics graphics)");
   }
 
   public void update(Graphics graphics) {
-    Dimension preferredSize = new Dimension(worldX, worldY);
-    this.setPreferredSize(preferredSize);
-    paint(graphics);
+      log.info("update (Graphics graphics)");
+      this.setSize(preferredSize);
+      paint(graphics);
+      log.info("updated (Graphics graphics)");
   }
 
     @Override
     public void showMe() {
-        this.repaint();
+        log.info("showMe");
     }
-
 
     @Override
     public void update() {
-        repaint();
+        log.info("update");
+        this.panelButtons.getFoodPanel().getFoodPerDayField().setText(
+            tabCtx.getSimulatedEvolution().getFoodPerDay()+""
+        );
+        boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
+        this.panelButtons.getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
+        log.info("updated");
     }
 
     @Override
     public void start() {
+        log.info("start");
         this.world.start();
+        log.info("started");
     }
 
     @Override
     public void stop() {
+        log.info("stop");
         this.world.stop();
+        log.info("stopped");
     }
 }

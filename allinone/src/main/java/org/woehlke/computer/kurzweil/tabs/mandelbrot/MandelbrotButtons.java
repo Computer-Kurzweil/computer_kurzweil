@@ -22,7 +22,7 @@ import java.awt.*;
  */
 @Log
 @Getter
-public class MandelbrotPanelButtons extends JPanel {
+public class MandelbrotButtons extends JPanel {
 
     private final PanelButtonsGroup panelButtonsGroup;
     private final PanelZoomButtons panelZoomButtons;
@@ -31,7 +31,7 @@ public class MandelbrotPanelButtons extends JPanel {
     @Setter
     private MandelbrotCanvas canvas;
 
-    public MandelbrotPanelButtons(ComputerKurzweilApplicationContext ctx) {
+    public MandelbrotButtons(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
         this.panelButtonsGroup = new PanelButtonsGroup(ctx);

@@ -75,7 +75,6 @@ public class SimulatedEvolutionModel implements Startable, TabModel {
 
     public void toggleGardenOfEden() {
         log.info("toggleGardenOfEden");
-        appCtx.toggleGardenOfEden();
         worldLattice.toggleGardenOfEden();
     }
 

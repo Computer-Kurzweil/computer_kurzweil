@@ -21,6 +21,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  * Time: 12:37
  */
 @Log
+@Getter
 public class SimulatedEvolutionModelLattice implements Startable {
 
   /**
@@ -28,12 +29,16 @@ public class SimulatedEvolutionModelLattice implements Startable {
    */
   private int[][] worldMapFoodLattice;
 
-  @Getter private SimulatedEvolutionContext appCtx;
+  private SimulatedEvolutionContext appCtx;
 
+    private final int gardenOfEdenParts = 3;
+    private final int noFood = 0;
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
+
+    private boolean gardenOfEdenEnabled;
 
   public SimulatedEvolutionModelLattice(
       SimulatedEvolutionContext appCtx
@@ -42,20 +47,24 @@ public class SimulatedEvolutionModelLattice implements Startable {
       worldX =  this.appCtx.getCtx().getWorldDimensions().getX();
       worldY =  this.appCtx.getCtx().getWorldDimensions().getY();
       worldMapFoodLattice = new int[worldX][worldY];
+      gardenOfEdenEnabled = this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled();
   }
 
   private void resetLattice(){
-    for(int y = 0; y < worldY; y++){
-        for(int x = 0; x < worldX; x++){
+      int x;
+      int y;
+      for(y = 0; y < worldY; y++){
+        for(x = 0; x < worldX; x++){
             worldMapFoodLattice[x][y]=0;
         }
     }
   }
 
     private void letFoodGrowGardenOfEden() {
-        if (this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled()) {
+        log.info("letFoodGrowGardenOfEden");
+        if (gardenOfEdenEnabled) {
             int food = 0;
-            int gardenOfEdenParts = 3;
+
             int startX = ( worldX / gardenOfEdenParts );
             int startY = ( worldY / gardenOfEdenParts );
             while (food < this.appCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getFoodPerDay()) {
@@ -70,6 +79,7 @@ public class SimulatedEvolutionModelLattice implements Startable {
     }
 
     private void letFoodGrowWorld() {
+        log.info("letFoodGrowWorld");
         int food = 0;
         final int foodPerDay = this.appCtx.getCtx().getProperties().getEvolution().getFood().getFoodPerDay();
         while (food < foodPerDay) {
@@ -116,21 +126,23 @@ public class SimulatedEvolutionModelLattice implements Startable {
     return food;
   }
 
-  private final int noFood = 0;
-
   public void toggleGardenOfEden() {
-      this.appCtx.toggleGardenOfEden();
+      log.info("toggleGardenOfEden");
+      this.gardenOfEdenEnabled = ! gardenOfEdenEnabled;
       this.letFoodGrowGardenOfEden();
+      log.info("toggleGardenOfEden done");
   }
 
     @Override
     public void start() {
+        log.info("start");
         resetLattice();
+        log.info("started");
     }
 
     @Override
     public void stop() {
-
+        log.info("stop");
     }
 
 }
