@@ -30,12 +30,13 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.WOEHL
  * Time: 00:51:51
  */
 @Log
+@Getter
 public class CyclicCellularAutomatonCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    @Getter private volatile LatticeNeighbourhoodType neighbourhoodType;
+    private volatile LatticeNeighbourhoodType neighbourhoodType;
 
     private volatile int[][][] lattice;
     private volatile int source;
@@ -49,22 +50,23 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-    @Getter
-    private CyclicCellularAutomatonContext tabCtx;
-
-    @Getter private final CyclicCellularAutomatonColorScheme colorScheme;
+    private final CyclicCellularAutomatonContext tabCtx;
+    private final CyclicCellularAutomatonColorScheme colorScheme;
+    private final CanvasLayout layout;
+    private final Dimension preferredSize;
 
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
         this.versions = 2;
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
-        this.setLayout(new CanvasLayout(this));
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
-        Dimension preferredSize = new Dimension( this.worldX, this.worldY);
+        this.preferredSize = new Dimension( this.worldX, this.worldY);
+        this.layout = new CanvasLayout(this);
+        this.setLayout(layout);
         this.setPreferredSize(preferredSize);
-        this.setVisible(true);
-        startWithNeighbourhoodVonNeumann();
+        this.setSize(preferredSize);
+        this.startWithNeighbourhoodVonNeumann();
         this.resetLattice();
         running = Boolean.FALSE;
         showMe();
@@ -72,11 +74,15 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public void paint(Graphics g) {
         log.info("paint(Graphics g)");
+        int x;
+        int y;
+        int state;
+        Color stateColor;
         if (lattice != null) {
-            for (int y = 0; y < worldY; y++) {
-                for (int x = 0; x < worldX; x++) {
-                    int state = this.lattice[source][x][y];
-                    Color stateColor = this.colorScheme.getColorForState(state);
+            for (y = 0; y < worldY; y++) {
+                for (x = 0; x < worldX; x++) {
+                    state = this.lattice[source][x][y];
+                    stateColor = this.colorScheme.getColorForState(state);
                     g.setColor(stateColor);
                     g.drawLine(x, y, x, y);
                 }
@@ -166,8 +172,10 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         log.info("initCreateLattice start: "+neighbourhoodType.name());
         Random random = this.tabCtx.getCtx().getRandom();
         int maxState = this.colorScheme.getMaxState();
-        for (int y = 0; y < worldY; y++) {
-            for (int x = 0; x < worldX; x++) {
+        int y;
+        int x;
+        for (y = 0; y < worldY; y++) {
+            for (x = 0; x < worldX; x++) {
                 lattice[source][x][y] = random.nextInt(maxState);
             }
         }
