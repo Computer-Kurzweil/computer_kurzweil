@@ -7,6 +7,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
+import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 
 import java.awt.event.ActionEvent;
 
@@ -27,6 +28,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
 
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
         this.ctx = ctx;
+        this.setLayout(new TabLayout(this));
         this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
         this.subTitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
         this.tabCtx = new MandelbrotContext(this, ctx);
