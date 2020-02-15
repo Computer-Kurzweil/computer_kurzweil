@@ -4,8 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
@@ -26,7 +24,7 @@ import java.util.List;
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implements Startable, GuiComponentTab {
+public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implements Startable {
 
     private final ComputerKurzweilApplicationContext ctx;
     private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
@@ -89,6 +87,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     @Override
     public void start(){
         log.info("start");
+        switchTab();
         getActiveTab().start();
         log.info("started");
     }
