@@ -1,17 +1,16 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers;
 
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.awt.*;
 import java.io.Serializable;
 
-
+@Getter
 @ToString
 @EqualsAndHashCode
-@AllArgsConstructor
 public class CellStatus implements Serializable {
 
     public final static int YET_UNCOMPUTED = -1;
@@ -21,11 +20,9 @@ public class CellStatus implements Serializable {
 
     private final int latticeValue;
 
-    /*
     public CellStatus(int latticeValue) {
         this.latticeValue = latticeValue;
     }
-    */
 
     public Color canvasColor() {
         int mylatticeValue = (this.latticeValue==YET_UNCOMPUTED)?0:this.latticeValue;

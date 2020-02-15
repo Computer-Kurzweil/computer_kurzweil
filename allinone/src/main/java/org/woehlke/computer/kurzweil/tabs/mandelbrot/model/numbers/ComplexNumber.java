@@ -13,15 +13,13 @@ import java.io.Serializable;
  *
  * Created by tw on 18.08.15.
  */
+@Getter
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
 public class ComplexNumber implements Serializable {
 
-    @Getter
     private final double real;
-
-    @Getter
     private final double img;
 
     public ComplexNumber() {

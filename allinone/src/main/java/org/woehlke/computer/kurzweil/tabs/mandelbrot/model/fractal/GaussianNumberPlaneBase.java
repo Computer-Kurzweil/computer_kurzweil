@@ -21,21 +21,18 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  *
  * Created by tw on 16.12.2019.
  */
+@Getter
+@Setter
 public abstract class GaussianNumberPlaneBase implements Startable {
 
-    private int[][] lattice;
-
-    @Getter @Setter
-    private ComplexNumber zoomCenter;
-
-    @Getter @Setter
-    private ClickBehaviour clickBehaviour;
-
-    @Getter
     private final FractalSetType fractalSetType;
-
-    @Getter
     protected final MandelbrotContext tabCtx;
+    private final int worldX;
+    private final int worldY;
+
+    private int[][] lattice;
+    private ComplexNumber zoomCenter;
+    private ClickBehaviour clickBehaviour;
 
     protected GaussianNumberPlaneBase(
         MandelbrotContext tabCtx,
@@ -44,12 +41,16 @@ public abstract class GaussianNumberPlaneBase implements Startable {
         this.tabCtx = tabCtx;
         this.fractalSetType = fractalSetType;
         clickBehaviour = ClickBehaviour.start();
+        worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
+        worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
+        this.lattice = new int[worldX][worldY];
     }
 
     public void start(){
-        this.lattice = new int[this.tabCtx .getCtx().getWorldDimensions().getWidth()][this.tabCtx .getCtx().getWorldDimensions().getHeight()];
-        for(int y = 0;y < this.tabCtx .getCtx().getWorldDimensions().getY(); y++){
-            for(int x=0; x < this.tabCtx .getCtx().getWorldDimensions().getX(); x++){
+        int y;
+        int x;
+        for(y = 0; y < worldY; y++){
+            for(x = 0; x < worldX; x++){
                 lattice[x][y] = CellStatus.YET_UNCOMPUTED;
             }
         }
@@ -72,26 +73,27 @@ public abstract class GaussianNumberPlaneBase implements Startable {
     }
 
     public CellStatus getCellStatusFor(int x, int y){
-        x %= this.tabCtx .getCtx().getWorldDimensions().getX();
-        y %= this.tabCtx .getCtx().getWorldDimensions().getY();
-        return new CellStatus(lattice[x][y]);
+        x %= worldX;
+        y %= worldY;
+        int cellStatus = lattice[x][y];
+        return new CellStatus(cellStatus);
     }
 
     public CellStatus getCellStatusFor(final LatticePoint turingPosition){
-        int x = turingPosition.getX() % this.tabCtx .getCtx().getWorldDimensions().getX();
-        int y = turingPosition.getY() % this.tabCtx .getCtx().getWorldDimensions().getY();
+        int x = turingPosition.getX() % worldX;
+        int y = turingPosition.getY() % worldY;
         return new CellStatus(lattice[x][y]);
     }
 
     public void setCellStatusFor(final LatticePoint turingPosition, final int state){
-        int x = turingPosition.getX() % this.tabCtx .getCtx().getWorldDimensions().getX();
-        int y = turingPosition.getY() % this.tabCtx .getCtx().getWorldDimensions().getY();
+        int x = turingPosition.getX() % worldX;
+        int y = turingPosition.getY() % worldY;
         lattice[x][y]=state;
     }
 
     public void setCellStatusFor(int x, int y, final int state){
-        x %= this.tabCtx .getCtx().getWorldDimensions().getX();
-        y %= this.tabCtx .getCtx().getWorldDimensions().getY();
+        x %= worldX;
+        y %= worldY;
         lattice[x][y]=state;
     }
 
