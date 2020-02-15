@@ -50,7 +50,7 @@ public class ComputerKurzweilApplicationContext implements Startable {
         int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
         return BorderFactory.createCompoundBorder(
-            BorderFactory.createEmptyBorder(),
+            BorderFactory.createEmptyBorder(top,left,bottom,right),
             BorderFactory.createEmptyBorder(top,left,bottom,right)
         );
     }

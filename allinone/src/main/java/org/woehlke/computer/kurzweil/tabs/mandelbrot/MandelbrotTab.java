@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 
+import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 
 @Log
@@ -17,6 +18,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
 
     private final ComputerKurzweilApplicationContext ctx;
     private final MandelbrotContext tabCtx;
+    private final CompoundBorder border;
 
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
@@ -29,6 +31,8 @@ public class MandelbrotTab extends TabPanel implements Tab {
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
         this.ctx = ctx;
         this.setLayout(new TabLayout(this));
+        this.border = this.ctx.getBorder();
+        this.setBorder(border);
         this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
         this.subTitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
         this.tabCtx = new MandelbrotContext(this, ctx);
@@ -46,6 +50,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
         this.startStopButtonsPanel.getStartButton().addActionListener(this);
         this.startStopButtonsPanel.getStopButton().addActionListener(this);
         this.startStopButtonsPanel.stop();
+        this.ctx.getFrame().pack();
         showMe();
     }
 
@@ -56,6 +61,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
         this.startStopButtonsPanel.start();
         this.tabCtx.startController();
         this.tabCtx.getController().start();
+        this.ctx.getFrame().pack();
         log.info("started");
     }
 

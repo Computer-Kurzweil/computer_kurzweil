@@ -11,6 +11,7 @@ import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
+import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 
 
@@ -20,6 +21,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionContext tabCtx;
+    private final CompoundBorder border;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
     private final SimulatedEvolutionButtonRowPanel panelButtons;
@@ -29,6 +31,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
+        this.border = this.ctx.getBorder();
+        this.setBorder(border);
         this.setLayout(new TabLayout(this));
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
@@ -47,6 +51,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
         this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
         this.canvas.getPanelButtons().getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
+        this.ctx.getFrame().pack();
         this.startStopButtonsPanel.stop();
     }
 
@@ -56,6 +61,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.canvas.getWorld().start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
+        this.ctx.getFrame().pack();
         log.info("started");
     }
 

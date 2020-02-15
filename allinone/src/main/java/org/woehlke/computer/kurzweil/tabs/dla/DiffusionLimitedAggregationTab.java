@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 
+import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 
 @Log
@@ -18,6 +19,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     private final ComputerKurzweilApplicationContext ctx;
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
+    private final CompoundBorder border;
 
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final PanelSubtitle panelSubtitle;
@@ -25,6 +27,8 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.setLayout(new TabLayout(this));
+        this.border = this.ctx.getBorder();
+        this.setBorder(border);
         String subtitle = ctx.getProperties().getDla().getView().getSubtitle();
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
@@ -36,6 +40,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         this.startStopButtonsPanel.getStartButton().addActionListener(this);
         this.startStopButtonsPanel.getStopButton().addActionListener(this);
         this.startStopButtonsPanel.stop();
+        this.ctx.getFrame().pack();
         showMe();
     }
 
@@ -46,6 +51,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         this.tabCtx.startController();
         this.tabCtx.getController().start();
         this.showMe();
+        this.ctx.getFrame().pack();
         log.info("started");
     }
 

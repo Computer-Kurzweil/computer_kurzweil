@@ -11,6 +11,7 @@ import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
+import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 
 @Log
@@ -20,6 +21,8 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonContext tabCtx;
     private final ComputerKurzweilApplicationContext ctx;
+    private final CompoundBorder border;
+    private final TabLayout layout;
 
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final String labelSubtitle;
@@ -30,8 +33,11 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
-        this.setLayout(new TabLayout(this));
+        this.layout = new TabLayout(this);
+        this.setLayout(layout);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
+        this.border = this.tabCtx.getCtx().getBorder();
+        this.setBorder(border);
         this.canvas = this.tabCtx.getCanvas();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         this.labelSubtitle = this.tabCtx.getCtx().getProperties().getCca().getView().getSubtitle();
@@ -47,6 +53,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.startStopButtonsPanel.getStartButton().addActionListener(this);
         this.startStopButtonsPanel.getStopButton().addActionListener(this);
         this.startStopButtonsPanel.stop();
+        this.ctx.getFrame().pack();
         showMe();
     }
 
@@ -58,6 +65,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.startStopButtonsPanel.start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
+        this.ctx.getFrame().pack();
         log.info("started");
     }
 
