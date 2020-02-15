@@ -33,26 +33,27 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final Mandelbrot mandelbrot;
-    private final MandelbrotPanelButtons panelButtons;
-    private final MandelbrotTabController mandelbrotControllerThread;
+    private final MandelbrotController mandelbrotControllerThread;
     private final Dimension preferredSize;
 
+    private final static int startX = 0;
+    private final static int startY = 0;
+    private final int worldX;
+    private final int worldY;
+
     public MandelbrotCanvas(
-        ComputerKurzweilApplicationContext ctx,
-        MandelbrotPanelButtons panelButtons
+        ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
-        this.panelButtons = panelButtons;
-        this.panelButtons.setCanvas(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.ctx );
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.ctx );
         this.mandelbrot = new Mandelbrot( this.ctx );
-        this.mandelbrotControllerThread = new MandelbrotTabController(
-            this.ctx, this.panelButtons,this
+        this.mandelbrotControllerThread = new MandelbrotController(
+            this.ctx,this
         );
-        int width = this.ctx.getWorldDimensions().getWidth();
-        int height = this.ctx.getWorldDimensions().getHeight();
-        this.preferredSize = new Dimension(width, height);
+        worldX = this.ctx.getWorldDimensions().getWidth();
+        worldY = this.ctx.getWorldDimensions().getHeight();
+        this.preferredSize = new Dimension(worldX, worldY);
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
     }

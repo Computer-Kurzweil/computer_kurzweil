@@ -10,7 +10,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTabPanel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
@@ -31,9 +31,9 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     private final ComputerKurzweilApplicationContext ctx;
     private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
     private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;
-    private final MandelbrotTabPanel mandelbrotTab;
+    private final MandelbrotTab mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
-    private final List<TabContext> apps = new ArrayList<>();
+    private final List<TabPanel> apps = new ArrayList<>();
 
     public ComputerKurzweilApplicationTabbedPane(
         ComputerKurzweilApplicationContext ctx
@@ -43,7 +43,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         this.setBorder(border);
         this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this.ctx);
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this.ctx);
-        this.mandelbrotTab = new MandelbrotTabPanel(this.ctx);
+        this.mandelbrotTab = new MandelbrotTab(this.ctx);
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this.ctx);
         TabPanel[] tabPanelAbstractPanels = {
             this.cyclicCellularAutomatonTab,
@@ -60,7 +60,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         int i = 0;
         ImageIcon icon = null;
         for(TabPanel tabPanelAbstract : tabPanelAbstractPanels){
-            this.apps.add(tabPanelAbstract.getTabCtx());
+            this.apps.add(tabPanelAbstract);
             this.addTab(tabPanelAbstract.getTitle(), icon, tabPanelAbstract, tabPanelAbstract.getSubTitle());
             this.setMnemonicAt(i,events[i]);
         }
@@ -74,6 +74,15 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
             return (Tab)c;
         } else {
             return null;
+        }
+    }
+
+    public void switchTab(){
+        Tab tabPanelActive = getActiveTab();
+        for(TabPanel tabPanel:apps){
+            if(!tabPanelActive.equals(tabPanel)){
+                tabPanel.stop();
+            }
         }
     }
 
@@ -91,10 +100,4 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         log.info("stopped");
     }
 
-    @Override
-    public void showMe() {
-        this.setVisible(true);
-        getActiveTab().showMe();
-        repaint();
-    }
 }

@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.application;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
+import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.ComputerKurzweilApplicationFrameLayout;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
@@ -54,7 +55,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         showMe();
     }
 
-    public List<TabContext> getApps(){
+    public List<TabPanel> getApps(){
         return tabbedPane.getApps();
     }
 
@@ -125,14 +126,14 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     public void start(){
         log.info("start");
         showMe();
-        tabbedPane.getActiveTab().start();
+        tabbedPane.start();
         log.info("started");
     }
 
     @Override
     public void stop() {
         log.info("stop");
-        tabbedPane.getActiveTab().stop();
+        tabbedPane.stop();
         log.info("stopped");
     }
 }

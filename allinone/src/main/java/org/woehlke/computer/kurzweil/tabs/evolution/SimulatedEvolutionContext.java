@@ -8,14 +8,12 @@ import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionMode
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 
 @Log
 @Getter
-public class SimulatedEvolutionContext implements TabContext, ActionListener {
+public class SimulatedEvolutionContext implements TabContext {
 
     private final TabType tabType = SIMULATED_EVOLUTION;
 
@@ -60,16 +58,6 @@ public class SimulatedEvolutionContext implements TabContext, ActionListener {
         simulatedEvolution.toggleGardenOfEden();
     }
 
-    @Override
-    public void start() {
-        this.startController();
-    }
-
-    @Override
-    public void stop() {
-        this.stopController();
-    }
-
     public void stopController() {
         this.controller.exit();
         this.controller = null;
@@ -87,20 +75,6 @@ public class SimulatedEvolutionContext implements TabContext, ActionListener {
                 default:
                     this.stopController();
                     break;
-        }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.tab.getStartStopButtonsPanel().getStartButton()){
-            this.tab.getStartStopButtonsPanel().getStartButton().setEnabled(false);
-            this.tab.getStartStopButtonsPanel().getStopButton().setEnabled(true);
-            this.start();
-        }
-        if(ae.getSource() == this.tab.getStartStopButtonsPanel().getStopButton()){
-            this.tab.getStartStopButtonsPanel().getStartButton().setEnabled(true);
-            this.tab.getStartStopButtonsPanel().getStopButton().setEnabled(false);
-            this.stop();
         }
     }
 

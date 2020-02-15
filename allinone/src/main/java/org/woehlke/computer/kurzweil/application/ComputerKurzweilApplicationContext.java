@@ -2,7 +2,8 @@ package org.woehlke.computer.kurzweil.application;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
+import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.CellCore;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.CellLifeCycle;
@@ -17,7 +18,7 @@ import java.util.Random;
 
 @Log
 @Getter
-public class ComputerKurzweilApplicationContext {
+public class ComputerKurzweilApplicationContext implements Startable {
 
     private final ComputerKurzweilProperties properties;
     private final Random random;
@@ -33,7 +34,7 @@ public class ComputerKurzweilApplicationContext {
         this.random = new Random(seed);
     }
 
-    public List<TabContext> getApps(){
+    public List<TabPanel> getApps(){
         return frame.getApps();
     }
 
@@ -140,4 +141,13 @@ public class ComputerKurzweilApplicationContext {
         return new CellCore(this);
     }
 
+    @Override
+    public void start() {
+        frame.start();
+    }
+
+    @Override
+    public void stop() {
+        frame.stop();
+    }
 }

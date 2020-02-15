@@ -47,10 +47,12 @@ public class SimulatedEvolutionModel implements Startable, TabModel {
       this.appCtx = appCtx;
       this.worldLattice = new SimulatedEvolutionModelLattice(  this.appCtx);
       this.statisticsContainer = new SimulatedEvolutionStatistics( this.appCtx);
-      /**
-       * Create the initial Population of Bacteria Cells and give them their position in the World.
-       */
       cells = new ArrayList<>();
+      createInitialPopulation();
+  }
+
+  private void createInitialPopulation(){
+      cells.clear();
       for (int i = 0; i <  this.appCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation(); i++) {
           Cell cell = new Cell(this.appCtx);
           cells.add(cell);
@@ -80,6 +82,7 @@ public class SimulatedEvolutionModel implements Startable, TabModel {
     @Override
     public void start() {
         log.info("start");
+        createInitialPopulation();
     }
 
     @Override
