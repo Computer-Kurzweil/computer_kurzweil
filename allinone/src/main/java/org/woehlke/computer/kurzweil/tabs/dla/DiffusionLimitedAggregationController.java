@@ -41,9 +41,8 @@ public class DiffusionLimitedAggregationController extends Thread
             }
             synchronized ( this.appCtx){
                 this.appCtx.getStepper().step();
-            }
-            synchronized ( this.appCtx){
                 this.appCtx.getCanvas().update();
+                this.appCtx.getCanvas().repaint();
             }
             try { sleep( this.sleepTime ); }
             catch (InterruptedException e) { e.printStackTrace(); }
