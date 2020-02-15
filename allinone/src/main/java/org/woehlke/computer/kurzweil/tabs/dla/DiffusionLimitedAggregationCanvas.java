@@ -56,6 +56,10 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private long steps;
 
     private final int initialNumberOfParticles;
+
+    private final int directions = 4;
+    private final int directionsFirst = 0;
+
     private List<LatticePoint> particles = new ArrayList<>();
 
     public DiffusionLimitedAggregationCanvas(
@@ -74,14 +78,20 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.setPreferredSize(preferredSize);
         this.setSize(this.preferredSize);
         this.initialNumberOfParticles = ctx.getProperties().getDla().getControl().getNumberOfParticles();
-        for(int i=0; i< this.initialNumberOfParticles; i++){
-            int x = ctx.getRandom().nextInt(this.worldX);
-            int y = ctx.getRandom().nextInt(this.worldY);
-            particles.add(new LatticePoint(x>=0?x:-x,y>=0?y:-y));
+        int x;
+        int y;
+        //create moving Particles
+        for(int i=0; i < this.initialNumberOfParticles; i++){
+            x = ctx.getRandom().nextInt(this.worldX);
+            y = ctx.getRandom().nextInt(this.worldY);
+            x = x >= 0 ? x : -x;
+            y = y >= 0 ? y : -y;
+            particles.add(new LatticePoint(x , y));
         }
         this.worldMap = new int[this.worldX][this.worldY];
-        int x = this.worldY / 2;
-        int y = this.worldY / 2;
+        //place first dendrite Particle
+        x = this.worldY / 2;
+        y = this.worldY / 2;
         worldMap[x][y]=age;
         age++;
     }
@@ -90,27 +100,33 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         log.info("paint");
         super.paintComponent(g);
         g.setColor(MEDIUM);
-        g.fillRect(startX,startY,worldX,worldY);
+        g.fillRect(startX, startY, worldX, worldY);
         g.setColor(PARTICLES);
-        for(LatticePoint pixel : particles){
-            g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
+        Color ageColor;
+        int x;
+        int y;
+        //paint moving Particles
+        for(LatticePoint particle : particles){
+            x = particle.getX();
+            y = particle.getY();
+            g.drawLine(x,y,x,y);
         }
-        for(int y=0; y<worldY; y++){
-            for(int x=0; x<worldX; x++){
-                Color ageColor = MEDIUM;
+        //paint dendrite Particles
+        for(y=0; y < worldY; y++){
+            for(x=0; x < worldX; x++){
                 int myAge = worldMap[x][y];
-                if(myAge>0) {
+                //if is part of dendrite
+                if(myAge > 0) {
+                    // color from age
                     myAge /= 25;
                     int blue = (myAge / 256) % (256 * 256);
                     int green = (myAge % 256);
                     int red = 255;
                     ageColor =  new Color(red, green, blue);
+                    g.setColor(ageColor);
+                    g.drawLine(x,y,x,y);
                     log.info("paint: age "+myAge+" x="+x+",y="+y+" with color: red="+red+", green="+green+", blue="+blue+" ");
-                } else {
-                    //log.info("paint: age "+myAge+" x="+x+",y="+y+" color="+ageColor.toString());
                 }
-                g.setColor(ageColor);
-                g.drawLine(x,y,x,y);
             }
         }
     }
@@ -136,12 +152,14 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         steps++;
         log.info("step "+steps);
         List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
+        int x;
+        int y;
         for(LatticePoint particle:particles){
-            int x = particle.getX()+this.worldX;
-            int y = particle.getY()+this.worldY;
+            x = particle.getX() + this.worldX;
+            y = particle.getY() + this.worldY;
             //Todo: make Enum
-            int direction = ctx.getRandom().nextInt(4);
-            switch (direction>=0?direction:-direction){
+            int newDirection = ctx.getRandom().nextInt(directions);
+            switch (newDirection >= directionsFirst ? newDirection : - newDirection){
                 case 0: y--; break;
                 case 1: x++; break;
                 case 2: y++; break;
