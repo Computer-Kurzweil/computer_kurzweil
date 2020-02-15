@@ -7,7 +7,6 @@ import org.woehlke.computer.kurzweil.tabs.evolution.model.Cell;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionStatisticsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionModel;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
@@ -15,8 +14,6 @@ import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 import javax.swing.JComponent;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.List;
 
@@ -100,7 +97,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private void paintPopulation(Graphics graphics){
         List<Cell> population = world.getAllCells();
         for (Cell cell : population) {
-            LatticePoint[] square = cell.getPosition().getNeighbourhood(this.tabCtx.getCtx().getWorldDimensions());
+            LatticePoint[] square = LatticePoint.getNeighbourhood(worldX,worldY,cell.getPosition().getX(),cell.getPosition().getY());
             graphics.setColor(cell.getLifeCycleStatus().getColor());
             for (LatticePoint pixel : square) {
                 graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
