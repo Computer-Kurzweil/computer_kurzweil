@@ -1,9 +1,10 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal;
 
 
+import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.*;
 
@@ -13,7 +14,9 @@ import java.util.Deque;
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.ComputingPlan.startCenterForJulia;
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
+
 @Log
+@Getter
 public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     private Deque<ComputingPlan> complexCenterForZoomedJulia = new ArrayDeque<>();
@@ -21,8 +24,8 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
     private final ZoomLevel zoomLevel;
     private ComplexNumber complexNumberForJuliaSetC;
 
-    public GaussianNumberPlaneBaseJulia(ComputerKurzweilApplicationContext ctx) {
-        super(ctx, FractalSetType.JULIA_SET);
+    public GaussianNumberPlaneBaseJulia(MandelbrotContext tabCtx) {
+        super(tabCtx, FractalSetType.JULIA_SET);
         this.zoomLevel = new ZoomLevel();
     }
 
@@ -54,25 +57,25 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     private ComplexNumber getComplexNumberFromLatticeCoordsForJulia(LatticePoint turingPosition) {
         double realX =startCenterForJulia.getReal()
-            + (startWorldDimension.getReal()*turingPosition.getX())/this.ctx.getWorldDimensions().getX();
+            + (startWorldDimension.getReal()*turingPosition.getX())/this.tabCtx.getCtx().getWorldDimensions().getX();
         double imgY = startCenterForJulia.getImg()
-            + (startWorldDimension.getImg()*turingPosition.getY())/this.ctx.getWorldDimensions().getY();
+            + (startWorldDimension.getImg()*turingPosition.getY())/this.tabCtx.getCtx().getWorldDimensions().getY();
         return new ComplexNumber(realX,imgY);
     }
 
     //TODO:
     private ComplexNumber getComplexNumberFromLatticeCoordsForZoomedJulia(LatticePoint turingPosition) {
         double realX = ( startCenterForJulia.getReal() / this.zoomLevel.getZoomLevel() )
-            + ( startWorldDimension.getReal()*turingPosition.getX())/(this.ctx.getWorldDimensions().getX() * this.zoomLevel.getZoomLevel());
+            + ( startWorldDimension.getReal()*turingPosition.getX())/(this.tabCtx.getCtx().getWorldDimensions().getX() * this.zoomLevel.getZoomLevel());
         double imgY = ( startCenterForJulia.getImg() / this.zoomLevel.getZoomLevel() )
-            + (startWorldDimension.getImg()*turingPosition.getY())/(this.ctx.getWorldDimensions().getY() * this.zoomLevel.getZoomLevel());
+            + (startWorldDimension.getImg()*turingPosition.getY())/(this.tabCtx.getCtx().getWorldDimensions().getY() * this.zoomLevel.getZoomLevel());
         return new ComplexNumber(realX,imgY);
     }
 
     private void computeTheJuliaSetForC(ComplexNumber c) {
         this.complexNumberForJuliaSetC = c;
-        for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++) {
-            for (int x = 0; x < this.ctx.getWorldDimensions().getX(); x++) {
+        for(int y = 0; y < this.tabCtx.getCtx().getWorldDimensions().getY(); y++) {
+            for (int x = 0; x < this.tabCtx.getCtx().getWorldDimensions().getX(); x++) {
                 LatticePoint zLatticePoint = new LatticePoint(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForJulia(zLatticePoint);
                 ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
@@ -83,8 +86,8 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
     private void computeTheZoomedJuliaSetForC(ComplexNumber c) {
         this.complexNumberForJuliaSetC = c;
-        for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++) {
-            for (int x = 0; x < this.ctx.getWorldDimensions().getX(); x++) {
+        for(int y = 0; y < this.tabCtx.getCtx().getWorldDimensions().getY(); y++) {
+            for (int x = 0; x < this.tabCtx.getCtx().getWorldDimensions().getX(); x++) {
                 LatticePoint zLatticePoint = new LatticePoint(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForZoomedJulia(zLatticePoint);
                 ComplexNumberFractal result  = ComplexNumberFractal.iterateJuliaSetFunction(z,c);
@@ -122,8 +125,8 @@ public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
     }
 
     private void computeWZoomedWorld(ComplexNumber c){
-        for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
+        for(int y = 0; y < tabCtx.getCtx().getWorldDimensions().getY(); y++){
+            for(int x = 0; x < tabCtx.getCtx().getWorldDimensions().getX(); x++){
                 LatticePoint p = new LatticePoint(x, y);
                 ComplexNumber z = this.getComplexNumberFromLatticeCoordsForZoomedJulia(p);
                 ComplexNumberFractal f = ComplexNumberFractal.iterateJuliaSetFunction(z,c);

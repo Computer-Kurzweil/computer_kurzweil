@@ -1,8 +1,9 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal;
 
+import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.*;
 
@@ -13,13 +14,14 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.Comput
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
 @Log
+@Getter
 public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
 
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
     private final ZoomLevel zoomLevel;
 
-    public GaussianNumberPlaneMandelbrot(ComputerKurzweilApplicationContext ctx) {
-        super(ctx,FractalSetType.MANDELBROT_SET);
+    public GaussianNumberPlaneMandelbrot(MandelbrotContext tabCtx) {
+        super(tabCtx,FractalSetType.MANDELBROT_SET);
         zoomLevel = new ZoomLevel();
         this.setZoomCenter(startCenterForMandelbrot);
     }
@@ -49,12 +51,12 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
         double realX = (
             startCenterForMandelbrot.getReal()
                 + ( startWorldDimension.getReal() * turingPosition.getX() )
-                / this.ctx.getWorldDimensions().getX()
+                / this.tabCtx.getCtx().getWorldDimensions().getX()
         );
         double imgY = (
             startCenterForMandelbrot.getImg()
                 + ( startWorldDimension.getImg() * turingPosition.getY() )
-                / this.ctx.getWorldDimensions().getY()
+                / this.tabCtx.getCtx().getWorldDimensions().getY()
         );
         return new ComplexNumber(realX,imgY);
     }
@@ -64,20 +66,20 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
             ( startCenterForMandelbrot.getReal() / this.zoomLevel.getZoomLevel() )
                 + getZoomCenter().getReal()
                 + ( startWorldDimension.getReal() * turingPosition.getX() )
-                / ( this.ctx.getWorldDimensions().getX() * this.zoomLevel.getZoomLevel() )
+                / ( this.tabCtx.getCtx().getWorldDimensions().getX() * this.zoomLevel.getZoomLevel() )
         );
         double imgY = (
             ( startCenterForMandelbrot.getImg() / this.zoomLevel.getZoomLevel() )
                 + getZoomCenter().getImg()
                 + ( startWorldDimension.getImg() * turingPosition.getY() )
-                / ( this.ctx.getWorldDimensions().getY() * this.zoomLevel.getZoomLevel() )
+                / ( this.tabCtx.getCtx().getWorldDimensions().getY() * this.zoomLevel.getZoomLevel() )
         );
         return new ComplexNumber(realX,imgY);
     }
 
     private void computeWZoomedWorld(){
-        for(int y = 0; y < ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < ctx.getWorldDimensions().getX(); x++){
+        for(int y = 0; y < tabCtx.getCtx().getWorldDimensions().getY(); y++){
+            for(int x = 0; x < tabCtx.getCtx().getWorldDimensions().getX(); x++){
                 LatticePoint p = new LatticePoint(x, y);
                 ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(p);
                 ComplexNumberFractal f = ComplexNumberFractal.iterateMandelbrotSetFunction(position);
@@ -122,8 +124,8 @@ public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
     }
 
     public void fillTheOutsideWithColors(){
-        for(int y=0;y < ctx.getWorldDimensions().getY();y++){
-            for(int x=0;x < ctx.getWorldDimensions().getX();x++){
+        for(int y=0;y < tabCtx.getCtx().getWorldDimensions().getY();y++){
+            for(int x=0;x < tabCtx.getCtx().getWorldDimensions().getX();x++){
                 CellStatus cellStatus  = super.getCellStatusFor(x,y);
                 if(cellStatus.isCellStatusForYetUncomputed()){
                     LatticePoint p = new LatticePoint(x, y);

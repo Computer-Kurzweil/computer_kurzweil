@@ -2,13 +2,11 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
@@ -32,14 +30,13 @@ import java.awt.event.MouseListener;
 @Getter
 public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseListener {
 
-    private final ComputerKurzweilApplicationContext ctx;
+    private final MandelbrotContext tabCtx;
     private final CompoundBorder border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final Mandelbrot mandelbrot;
-    private final MandelbrotController mandelbrotControllerThread;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -47,19 +44,16 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     private final int worldY;
 
     public MandelbrotCanvas(
-        ComputerKurzweilApplicationContext ctx
+        MandelbrotContext tabCtx
     ) {
-        this.ctx = ctx;
-        border = PanelBorder.getBorder();
+        this.tabCtx = tabCtx;
+        this.border = this.tabCtx.getCtx().getBorder();
+        this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
+        this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.layout = new CanvasLayout(this);
-        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.ctx );
-        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.ctx );
-        this.mandelbrot = new Mandelbrot( this.ctx );
-        this.mandelbrotControllerThread = new MandelbrotController(
-            this.ctx,this
-        );
-        worldX = this.ctx.getWorldDimensions().getWidth();
-        worldY = this.ctx.getWorldDimensions().getHeight();
+        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.tabCtx);
+        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.tabCtx);
+        this.mandelbrot = new Mandelbrot(this.tabCtx.getCtx() );
         this.preferredSize = new Dimension(worldX, worldY);
         this.setBorder(border);
         this.setLayout(layout);
@@ -78,7 +72,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     public LatticePoint getWorldDimensions() {
-        return this.ctx.getWorldDimensions();
+        return this.tabCtx.getCtx().getWorldDimensions();
     }
 
     public void start() {
@@ -107,9 +101,11 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
         super.paintComponent(g);
-        for(int y = 0; y < this.ctx.getWorldDimensions().getY(); y++){
-            for(int x = 0; x < this.ctx.getWorldDimensions().getX(); x++){
-                g.setColor( this.getCellStatusFor(x,y).canvasColor());
+        int y;
+        int x;
+        for(y = 0; y < worldY; y++){
+            for(x = 0; x < worldX; x++){
+                g.setColor( this.getCellStatusFor(x,y).canvasColor() );
                 g.drawLine(x,y,x,y);
             }
         }
@@ -143,7 +139,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     private void computeTheMandelbrotSet() {
-        mandelbrotControllerThread.start();
+        tabCtx.getController().start();
     }
 
     @Override
@@ -152,7 +148,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         mandelbrot.click();
         switch (mandelbrot.getState()) {
             case MANDELBROT_SWITCH:
-                this.computeTheMandelbrotSet();
+                computeTheMandelbrotSet();
                 break;
             case JULIA_SET_SWITCH:
                 this.gaussianNumberPlaneBaseJulia.computeTheSet(latticePoint);
@@ -170,12 +166,12 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
 
     @Override
     public void update() {
-        repaint();
+        //repaint();
     }
 
     @Override
     public void showMe() {
-        this.setVisible(true);
+        //this.setVisible(true);
     }
 
     @Override

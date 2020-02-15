@@ -6,7 +6,8 @@ allinone:
     title: 'Computer Kurzweil'
     subtitle: 'Scientific Imfotainment'
     copyright: '(c) 2020 Thomas Woehlke'
-    borderPadding: 5
+    borderPaddingX: 5
+    borderPaddingY: 5
     titleHeight: 30
     startStopp: 'Start / Stop'
     start: 'Start'

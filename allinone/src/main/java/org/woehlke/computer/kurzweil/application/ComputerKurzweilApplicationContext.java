@@ -45,10 +45,10 @@ public class ComputerKurzweilApplicationContext implements Startable {
 
     @Transient
     public CompoundBorder getBorder(){
-        int top = this.getProperties().getAllinone().getView().getBorderPadding();
-        int left = top;
-        int bottom = top;
-        int right = top;
+        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
         return BorderFactory.createCompoundBorder(
             BorderFactory.createEmptyBorder(),
             BorderFactory.createEmptyBorder(top,left,bottom,right)
@@ -57,10 +57,10 @@ public class ComputerKurzweilApplicationContext implements Startable {
 
     @Transient
     public CompoundBorder getBorder(String label){
-        int top = this.getProperties().getAllinone().getView().getBorderPadding();
-        int left = top;
-        int bottom = top;
-        int right = top;
+        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
         return BorderFactory.createCompoundBorder(
             BorderFactory.createTitledBorder(label),
             BorderFactory.createEmptyBorder(top,left,bottom,right)

@@ -2,44 +2,38 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
 @Log
 @Getter
 public class MandelbrotController extends Thread implements Runnable, TabController {
 
-    private final ComputerKurzweilApplicationContext ctx;
-    private final MandelbrotCanvas canvas;
+    private final MandelbrotContext tabCtx;
     private final int time2wait;
 
     private Boolean goOn;
 
     public MandelbrotController(
-        ComputerKurzweilApplicationContext ctx,
-        MandelbrotCanvas canvas
+        MandelbrotContext tabCtx
     ) {
         super("Mandelbrot-Controller");
-        this.ctx = ctx;
-        this.canvas = canvas;
+        this.tabCtx = tabCtx;
         this.time2wait=1;
     }
 
     public void run() {
         log.info("run() - begin");
         boolean doMyJob;
-        synchronized (this.canvas) {
-            canvas.start();
-        }
         do {
             synchronized (goOn) {
                 doMyJob = goOn.booleanValue();
             }
-            synchronized (this.canvas) {
+            synchronized (this.tabCtx) {
                 log.info(".");
-                canvas.getMandelbrot().step();
+                this.tabCtx.getCanvas().getMandelbrot().step();
                 log.info("[");
-                this.canvas.repaint();
+                this.tabCtx.getCanvas().update();
+                this.tabCtx.getCanvas().repaint();
                 log.info("]");
             }
             try {
@@ -47,7 +41,7 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
-        } while( doMyJob && (! canvas.getMandelbrot().isFinished()));
+        } while( doMyJob && (! this.tabCtx.getCanvas().getMandelbrot().isFinished()));
         log.info("run() - finished");
     }
 

@@ -31,7 +31,7 @@ public class DiffusionLimitedAggregationContext implements TabContext {
     ) {
         this.tab = tab;
         this.ctx = this.tab.getCtx();
-        this.canvas = new DiffusionLimitedAggregationCanvas(this.ctx);
+        this.canvas = new DiffusionLimitedAggregationCanvas(this);
         startController();
     }
 

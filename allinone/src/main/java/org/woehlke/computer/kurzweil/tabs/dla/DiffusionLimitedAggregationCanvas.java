@@ -4,11 +4,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
@@ -36,7 +34,7 @@ import java.util.List;
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
-    private final ComputerKurzweilApplicationContext ctx;
+    private final DiffusionLimitedAggregationContext tabCtx;
     private final CompoundBorder border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
@@ -50,8 +48,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
-   // private final int canvasX;
-   // private final int canvasY;
 
     private List<LatticePoint> particles = new ArrayList<>();
     private int[][] worldMap;
@@ -59,17 +55,15 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private long steps;
 
     public DiffusionLimitedAggregationCanvas(
-        ComputerKurzweilApplicationContext ctx
+        DiffusionLimitedAggregationContext tabCtx
     ) {
-        this.ctx = ctx;
-        worldX = ctx.getWorldDimensions().getX();
-        worldY = ctx.getWorldDimensions().getY();
-        //canvasX = worldX + (2 * PanelBorder.BORDER_PADDING);
-        //canvasY = worldY + (2 * PanelBorder.BORDER_PADDING);
-        border = PanelBorder.getBorder();
+        this.tabCtx = tabCtx;
+        worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
+        worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
+        border = this.tabCtx.getCtx().getBorder();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
-        this.initialNumberOfParticles = ctx.getProperties().getDla().getControl().getNumberOfParticles();
+        this.initialNumberOfParticles = this.tabCtx.getCtx().getProperties().getDla().getControl().getNumberOfParticles();
         this.worldMap = new int[this.worldX][this.worldY];
         this.setBorder(border);
         this.setBackground(MEDIUM);
@@ -80,8 +74,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         int y;
         //create moving Particles
         for(int i=0; i < this.initialNumberOfParticles; i++){
-            x = ctx.getRandom().nextInt(this.worldX);
-            y = ctx.getRandom().nextInt(this.worldY);
+            x = this.tabCtx.getCtx().getRandom().nextInt(this.worldX);
+            y = this.tabCtx.getCtx().getRandom().nextInt(this.worldY);
             x = x >= 0 ? x : -x;
             y = y >= 0 ? y : -y;
             particles.add(new LatticePoint(x , y));
@@ -155,7 +149,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
             x = particle.getX() + this.worldX;
             y = particle.getY() + this.worldY;
             //Todo: make Enum
-            int newDirection = ctx.getRandom().nextInt(directions);
+            int newDirection = this.tabCtx.getCtx().getRandom().nextInt(directions);
             switch (newDirection >= directionsFirst ? newDirection : - newDirection){
                 case 0: y--; break;
                 case 1: x++; break;

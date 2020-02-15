@@ -55,7 +55,8 @@ public class ComputerKurzweilProperties {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
             @NotBlank @Getter @Setter private String copyright;
-            @NotNull  @Getter @Setter private Integer borderPadding;
+            @NotNull  @Getter @Setter private Integer borderPaddingX;
+            @NotNull  @Getter @Setter private Integer borderPaddingY;
             @NotNull  @Getter @Setter private Integer titleHeight;
             @NotBlank @Getter @Setter private String startStopp;
             @NotBlank @Getter @Setter private String start;

@@ -9,7 +9,6 @@ import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionSt
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionModel;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.JComponent;
@@ -62,7 +61,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.tabCtx = tab.getTabCtx();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        border = PanelBorder.getBorder();
+        border = this.tabCtx.getCtx().getBorder();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
         this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
