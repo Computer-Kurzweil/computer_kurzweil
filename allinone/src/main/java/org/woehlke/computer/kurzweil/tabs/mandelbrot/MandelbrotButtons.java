@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets.PanelButtonsGroup;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets.PanelZoomButtons;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,16 +25,16 @@ public class MandelbrotButtons extends JPanel {
 
     private final PanelButtonsGroup panelButtonsGroup;
     private final PanelZoomButtons panelZoomButtons;
-    private final ComputerKurzweilApplicationContext ctx;
+    private final MandelbrotContext tabCtx;
 
     @Setter
     private MandelbrotCanvas canvas;
 
-    public MandelbrotButtons(ComputerKurzweilApplicationContext ctx) {
-        this.ctx = ctx;
+    public MandelbrotButtons(MandelbrotContext tabCtx) {
+        this.tabCtx = tabCtx;
         FlowLayout layout = new FlowLayout();
-        this.panelButtonsGroup = new PanelButtonsGroup(ctx);
-        this.panelZoomButtons = new PanelZoomButtons(ctx);
+        this.panelButtonsGroup = new PanelButtonsGroup(  this.tabCtx);
+        this.panelZoomButtons = new PanelZoomButtons(  this.tabCtx);
         this.setLayout(layout);
         this.add(panelButtonsGroup);
         this.add(panelZoomButtons);

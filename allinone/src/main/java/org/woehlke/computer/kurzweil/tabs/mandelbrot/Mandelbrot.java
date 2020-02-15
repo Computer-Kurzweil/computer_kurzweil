@@ -30,14 +30,14 @@ public class Mandelbrot implements Startable, TabModel {
     @Setter
     private ApplicationState state;
     private ApplicationState nextApplicationState;
-    private final ComputerKurzweilApplicationContext ctx;
+    private final MandelbrotContext ctx;
     private final TuringPositionsStateMachine turingPositionsStateMachine;
     private final TuringPhaseStateMachine turingPhaseStateMachine;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
 
     public Mandelbrot(
-        ComputerKurzweilApplicationContext ctx
+        MandelbrotContext ctx
     ) {
         this.state = ApplicationState.start();
         this.ctx = ctx;

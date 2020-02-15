@@ -123,7 +123,10 @@ public class LatticePoint {
     }
 
     public static LatticePoint start(LatticePoint worldDimensions){
-        return new LatticePoint((worldDimensions.getX()-2),(worldDimensions.getY()/2+11));
+        return new LatticePoint(
+            (worldDimensions.getX()-2),
+            ((worldDimensions.getY()/2)+11)
+        );
     }
 
   /**

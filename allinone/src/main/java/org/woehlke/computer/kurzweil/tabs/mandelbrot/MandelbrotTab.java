@@ -14,26 +14,26 @@ import java.awt.event.ActionEvent;
 @Getter
 public class MandelbrotTab extends TabPanel implements Tab {
 
-    private final MandelbrotContext tabCtx;
     private final ComputerKurzweilApplicationContext ctx;
-
-    private final String title;
-    private final String subTitle;
+    private final MandelbrotContext tabCtx;
 
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final PanelSubtitle panelSubtitle;
 
+    private final String title;
+    private final String subTitle;
+
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
         this.ctx = ctx;
         this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
         this.subTitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
-        this.tabCtx = new MandelbrotContext(this);
+        this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         this.panelSubtitle = new PanelSubtitle(  this.subTitle);
-        this.panelButtons = new MandelbrotButtons(  this.ctx);
+        this.panelButtons = new MandelbrotButtons( this.tabCtx);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.panelButtons);

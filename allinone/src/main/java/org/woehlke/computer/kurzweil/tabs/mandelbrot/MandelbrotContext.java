@@ -23,11 +23,11 @@ public class MandelbrotContext implements TabContext {
     //TODO:
     private MandelbrotController controller;
 
-    public MandelbrotContext(MandelbrotTab tab) {
+    public MandelbrotContext(MandelbrotTab tab, ComputerKurzweilApplicationContext ctx) {
         this.tab = tab;
-        this.ctx =  this.tab.getCtx();
+        this.ctx = ctx;
         this.canvas = new MandelbrotCanvas( this );
-        this.stepper = new Mandelbrot(this.tab.getCtx());
+        this.stepper = new Mandelbrot(this.tab.getTabCtx());
         this.controller = new MandelbrotController(this);
     }
 
