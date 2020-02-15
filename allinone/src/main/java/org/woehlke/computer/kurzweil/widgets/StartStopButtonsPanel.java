@@ -5,7 +5,6 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.widgets.layouts.StartStopButtonsPanelLayout;
 
 import javax.swing.*;
@@ -25,7 +24,7 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
         String labelStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
         String labelStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
         layout = new StartStopButtonsPanelLayout();
-        border = PanelBorder.getBorder(labelStartStopp);
+        border = tab.getCtx().getBorder(labelStartStopp);
         this.setLayout(layout);
         this.setBorder(border);
         this.startButton = new JButton(labelStart);

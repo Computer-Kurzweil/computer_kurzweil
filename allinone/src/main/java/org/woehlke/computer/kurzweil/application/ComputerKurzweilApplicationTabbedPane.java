@@ -6,7 +6,6 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
@@ -39,7 +38,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
-        CompoundBorder border = PanelBorder.getBorder();
+        CompoundBorder border = ctx.getBorder();
         this.setBorder(border);
         this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this.ctx);
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this.ctx);
