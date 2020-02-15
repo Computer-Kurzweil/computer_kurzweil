@@ -19,6 +19,7 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
         super("Mandelbrot-Controller");
         this.tabCtx = tabCtx;
         this.time2wait=1;
+        goOn = Boolean.TRUE;
     }
 
     public void run() {
