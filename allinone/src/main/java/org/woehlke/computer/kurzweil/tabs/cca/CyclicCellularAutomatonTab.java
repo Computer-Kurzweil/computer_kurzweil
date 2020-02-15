@@ -22,6 +22,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final ComputerKurzweilApplicationContext ctx;
 
     private final StartStopButtonsPanel startStopButtonsPanel;
+    private final String labelSubtitle;
     private final PanelSubtitle panelSubtitle;
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
 
@@ -33,7 +34,8 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
-        this.panelSubtitle = new PanelSubtitle(this.tabCtx.getCtx().getProperties().getCca().getView().getSubtitle());
+        this.labelSubtitle = this.tabCtx.getCtx().getProperties().getCca().getView().getSubtitle();
+        this.panelSubtitle = new PanelSubtitle(labelSubtitle);
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
@@ -53,6 +55,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         log.info("start");
         this.showMe();
         this.canvas.start();
+        this.startStopButtonsPanel.start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         log.info("started");
@@ -62,6 +65,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     public void stop() {
         log.info("stop");
         this.canvas.stop();
+        this.startStopButtonsPanel.stop();
         this.getTabCtx().stopController();
         log.info("stopped");
     }
