@@ -107,7 +107,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
                     ageColor =  new Color(red, green, blue);
                     log.info("paint: age "+myAge+" x="+x+",y="+y+" with color: red="+red+", green="+green+", blue="+blue+" ");
                 } else {
-                    log.info("paint: age "+myAge+" x="+x+",y="+y+" color="+ageColor.toString());
+                    //log.info("paint: age "+myAge+" x="+x+",y="+y+" color="+ageColor.toString());
                 }
                 g.setColor(ageColor);
                 g.drawLine(x,y,x,y);
@@ -115,13 +115,13 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         }
     }
 
-    public boolean hasDendriteNeighbour(LatticePoint pixel){
+    public boolean hasDendriteNeighbour( int myX , int myY){
         //log.info("hasDendriteNeighbour. age="+age);
-        if(worldMap[pixel.getX()][pixel.getY()]==0){
-            LatticePoint[] neighbours = pixel.getNeighbourhood(this.ctx);
+        if(worldMap[myX][myY]==0){
+            LatticePoint[] neighbours = LatticePoint.getNeighbourhood(worldX,worldY, myX, myY);
             for(LatticePoint neighbour:neighbours){
                 if(worldMap[neighbour.getX()][neighbour.getY()]>0){
-                    worldMap[pixel.getX()][pixel.getY()]=age;
+                    worldMap[myX][myY]=age;
                     age++;
                     return true;
                 }
@@ -151,7 +151,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
             y %= this.worldY;
             particle.setX(x);
             particle.setY(y);
-            if(!this.hasDendriteNeighbour(particle)){
+            if(!this.hasDendriteNeighbour(x,y)){
                 newParticles.add(particle);
             }
         }

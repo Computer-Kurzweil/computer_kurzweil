@@ -129,26 +129,37 @@ public class LatticePoint {
   /**
    * Get Neighbourhood.
    *
-   * @param max - limit the dimensions of the world around.
+   * @param maxX - limit the dimensions of the world around.x
+   * @param maxY - limit the dimensions of the world around.y
+   * @param x - point.x
+   * @param y - point.y
    * @return The Set of Points belonging to the Neighbourhood of the position given by this Point Object.
    */
-  public LatticePoint[] getNeighbourhood(LatticePoint max) {
+  public static LatticePoint[] getNeighbourhood(int maxX,int maxY, int x, int y) {
     LatticePoint neighbourhood[] = new LatticePoint[9];
-    int maxX = max.getX();
-    int maxY = max.getY();
-    neighbourhood[0] = new LatticePoint((this.x + maxX - 1) % maxX, (this.y + maxY - 1) % maxY);
-    neighbourhood[1] = new LatticePoint((this.x + maxX - 1) % maxX, this.y);
-    neighbourhood[2] = new LatticePoint((this.x + maxX - 1) % maxX, (this.y + maxY + 1) % maxY);
-    neighbourhood[3] = new LatticePoint(this.x, (this.y + maxY - 1) % maxY);
-    neighbourhood[4] = new LatticePoint(this.x, this.y);
-    neighbourhood[5] = new LatticePoint(this.x, (this.y + maxY + 1) % maxY);
-    neighbourhood[6] = new LatticePoint((this.x + maxX + 1) % maxX, (this.y + maxY - 1) % maxY);
-    neighbourhood[7] = new LatticePoint((this.x + maxX + 1) % maxX, this.y);
-    neighbourhood[8] = new LatticePoint((this.x + maxX + 1) % maxX, (this.y + maxY + 1) % maxY);
+    neighbourhood[0] = new LatticePoint((x + maxX - 1) % maxX, (y + maxY - 1) % maxY);
+    neighbourhood[1] = new LatticePoint((x + maxX - 1) % maxX, y);
+    neighbourhood[2] = new LatticePoint((x + maxX - 1) % maxX, (y + maxY + 1) % maxY);
+    neighbourhood[3] = new LatticePoint(x, (y + maxY - 1) % maxY);
+    neighbourhood[4] = new LatticePoint(x, y);
+    neighbourhood[5] = new LatticePoint(x, (y + maxY + 1) % maxY);
+    neighbourhood[6] = new LatticePoint((x + maxX + 1) % maxX, (y + maxY - 1) % maxY);
+    neighbourhood[7] = new LatticePoint((x + maxX + 1) % maxX, y);
+    neighbourhood[8] = new LatticePoint((x + maxX + 1) % maxX, (y + maxY + 1) % maxY);
     return neighbourhood;
   }
 
-    public LatticePoint[] getNeighbourhood(ComputerKurzweilApplicationContext ctx) {
-        return this.getNeighbourhood(ctx.getWorldDimensions());
+    public static LatticePoint[] getNeighbourhood(ComputerKurzweilApplicationContext ctx, int x, int y) {
+        int maxX= ctx.getWorldDimensions().getX();
+        int maxY= ctx.getWorldDimensions().getY();
+        return LatticePoint.getNeighbourhood(maxX,maxY,x,y);
+    }
+
+    public static LatticePoint[] getNeighbourhood(ComputerKurzweilApplicationContext ctx, LatticePoint pixel) {
+        int x=pixel.getX();
+        int y=pixel.getY();
+        int maxX= ctx.getWorldDimensions().getX();
+        int maxY= ctx.getWorldDimensions().getY();
+        return LatticePoint.getNeighbourhood(maxX,maxY,x,y);
     }
 }
