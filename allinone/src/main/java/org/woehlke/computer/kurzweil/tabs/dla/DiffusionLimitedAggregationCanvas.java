@@ -90,7 +90,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         }
         this.worldMap = new int[this.worldX][this.worldY];
         //place first dendrite Particle
-        x = this.worldY / 2;
+        x = this.worldX / 2;
         y = this.worldY / 2;
         worldMap[x][y]=age;
         age++;
