@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.commons.tabs.HasModel;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
@@ -81,12 +80,22 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         g.setColor(MEDIUM);
         g.fillRect(startX,startY,worldX,worldY);
         g.setColor(PARTICLES);
-        for(LatticePoint pixel : this.getParticles()){
+        for(LatticePoint pixel : particles){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0; y<startY; y++){
             for(int x=0; x<worldX; x++){
-                Color ageColor = this.getDendriteColor(x,y);
+                Color ageColor;
+                int myAge = worldMap[x][y];
+                if(myAge>0) {
+                    myAge /= 25;
+                    int blue = (myAge / 256) % (256 * 256);
+                    int green = (myAge % 256);
+                    int red = 255;
+                    ageColor =  new Color(red, green, blue);
+                } else {
+                    ageColor = MEDIUM;
+                }
                 g.setColor(ageColor);
                 g.drawLine(x,y,x,y);
             }
@@ -132,19 +141,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
             }
         }
         particles=newParticles;
-    }
-
-    public Color getDendriteColor(int x, int y) {
-        int myAge = worldMap[x][y];
-        if(myAge>0) {
-            myAge /= 25;
-            int blue = (myAge / 256) % (256 * 256);
-            int green = (myAge % 256);
-            int red = 255;
-            return new Color(red, green, blue);
-        } else {
-            return MEDIUM;
-        }
     }
 
     public void update(Graphics g) {
