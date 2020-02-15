@@ -33,22 +33,22 @@ import java.util.List;
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
+    private final ComputerKurzweilApplicationContext ctx;
+
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
     private final Dimension preferredSize;
-
-    private final ComputerKurzweilApplicationContext ctx;
 
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
 
-    private List<LatticePoint> particles = new ArrayList<>();
     private int worldMap[][];
     private int age=1;
 
     private final int initialNumberOfParticles;
+    private List<LatticePoint> particles = new ArrayList<>();
 
     public DiffusionLimitedAggregationCanvas(
         ComputerKurzweilApplicationContext ctx
@@ -85,7 +85,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         }
         for(int y=0; y<startY; y++){
             for(int x=0; x<worldX; x++){
-                Color ageColor;
+                Color ageColor = MEDIUM;
                 int myAge = worldMap[x][y];
                 if(myAge>0) {
                     myAge /= 25;
@@ -93,9 +93,9 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
                     int green = (myAge % 256);
                     int red = 255;
                     ageColor =  new Color(red, green, blue);
-                } else {
-                    ageColor = MEDIUM;
+                    log.info("paint with color: red="+red+", green="+green+", blue="+blue+" ");
                 }
+                log.info("paint: age "+myAge+" x="+x+",y="+y+" color="+ageColor.toString());
                 g.setColor(ageColor);
                 g.drawLine(x,y,x,y);
             }
@@ -103,6 +103,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     public boolean hasDendriteNeighbour(LatticePoint pixel){
+        log.info("hasDendriteNeighbour. age="+age);
         if(worldMap[pixel.getX()][pixel.getY()]==0){
             LatticePoint[] neighbours = pixel.getNeighbourhood(this.ctx);
             for(LatticePoint neighbour:neighbours){
@@ -119,7 +120,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     public void step() {
-        log.info("stop");
+        log.info("step");
         List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
         for(LatticePoint particle:particles){
             int x = particle.getX()+this.worldX;
@@ -141,6 +142,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
             }
         }
         particles=newParticles;
+        log.info("stepped");
     }
 
     public void update(Graphics g) {

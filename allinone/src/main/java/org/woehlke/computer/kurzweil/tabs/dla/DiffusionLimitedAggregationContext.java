@@ -1,6 +1,9 @@
 package org.woehlke.computer.kurzweil.tabs.dla;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
@@ -8,7 +11,11 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 
 import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
+
+@Log
 @Getter
+@ToString
+@EqualsAndHashCode
 public class DiffusionLimitedAggregationContext implements TabContext {
 
     private final TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
