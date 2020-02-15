@@ -56,7 +56,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonColorScheme colorScheme;
-   // private final CompoundBorder border;
+    private final CompoundBorder border;
     private final CanvasLayout layout;
     private final Dimension preferredSize;
 
@@ -66,12 +66,12 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         //canvasX = worldX + (2 * PanelBorder.BORDER_PADDING);
         //canvasY = worldY + (2 * PanelBorder.BORDER_PADDING);
-        //border = PanelBorder.getBorder();
+        border = PanelBorder.getBorder();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.versions = 2;
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
-        //this.setBorder(border);
+        this.setBorder(border);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setSize(preferredSize);

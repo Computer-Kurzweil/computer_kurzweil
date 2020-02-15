@@ -9,9 +9,11 @@ import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionSt
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.JComponent;
+import javax.swing.border.CompoundBorder;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.io.Serializable;
@@ -49,6 +51,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
     private final SimulatedEvolutionButtonRowPanel panelButtons;
     private final SimulatedEvolutionContext tabCtx;
+    private final CompoundBorder border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
 
@@ -59,11 +62,13 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.tabCtx = tab.getTabCtx();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
+        border = PanelBorder.getBorder();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
         this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
+        this.setBorder(border);
         this.setLayout(layout);
         this.setBackground(COLOR_WATER.getColor());
         this.setSize(preferredSize);

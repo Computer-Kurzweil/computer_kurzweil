@@ -8,8 +8,11 @@ import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;
+import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
+import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -30,11 +33,13 @@ import java.awt.event.MouseListener;
 public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseListener {
 
     private final ComputerKurzweilApplicationContext ctx;
+    private final CompoundBorder border;
+    private final Dimension preferredSize;
+    private final CanvasLayout layout;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final Mandelbrot mandelbrot;
     private final MandelbrotController mandelbrotControllerThread;
-    private final Dimension preferredSize;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -45,6 +50,8 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
+        border = PanelBorder.getBorder();
+        this.layout = new CanvasLayout(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.ctx );
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.ctx );
         this.mandelbrot = new Mandelbrot( this.ctx );
@@ -54,6 +61,8 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         worldX = this.ctx.getWorldDimensions().getWidth();
         worldY = this.ctx.getWorldDimensions().getHeight();
         this.preferredSize = new Dimension(worldX, worldY);
+        this.setBorder(border);
+        this.setLayout(layout);
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
     }

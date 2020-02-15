@@ -37,7 +37,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
     private final ComputerKurzweilApplicationContext ctx;
-    //private final CompoundBorder border;
+    private final CompoundBorder border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
     private final Color MEDIUM = Color.BLACK;
@@ -66,12 +66,12 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         worldY = ctx.getWorldDimensions().getY();
         //canvasX = worldX + (2 * PanelBorder.BORDER_PADDING);
         //canvasY = worldY + (2 * PanelBorder.BORDER_PADDING);
-        //border = PanelBorder.getBorder();
+        border = PanelBorder.getBorder();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = ctx.getProperties().getDla().getControl().getNumberOfParticles();
         this.worldMap = new int[this.worldX][this.worldY];
-        //this.setBorder(border);
+        this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
