@@ -105,16 +105,18 @@ public class SimulatedEvolutionModelLattice implements Startable {
    * @see CellLifeCycle
    */
   public int eat(LatticePoint position) {
-    LatticePoint[] neighbourhood = position.getNeighbourhood(
-        this.appCtx.getCtx().getWorldDimensions()
+    LatticePoint[] neighbourhood = LatticePoint.getNeighbourhood(
+        worldX,worldY,position.getX(),position.getY()
     );
     int food = 0;
     for (LatticePoint neighbourhoodPosition : neighbourhood) {
       food += worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
-      worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()] = 0;
+      worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()] = noFood;
     }
     return food;
   }
+
+  private final int noFood = 0;
 
   public void toggleGardenOfEden() {
       this.appCtx.toggleGardenOfEden();
