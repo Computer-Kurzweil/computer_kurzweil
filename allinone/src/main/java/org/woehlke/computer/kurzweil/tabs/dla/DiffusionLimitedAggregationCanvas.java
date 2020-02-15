@@ -8,8 +8,10 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ import java.util.List;
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
+
+    private final CompoundBorder border;
     private final ComputerKurzweilApplicationContext ctx;
 
     private final Color MEDIUM = Color.BLACK;
@@ -58,6 +62,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.ctx = ctx;
         worldX = ctx.getWorldDimensions().getX();
         worldY = ctx.getWorldDimensions().getY();
+        border = PanelBorder.getBorder();
+        this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setSize(worldX, worldY);
         this.preferredSize = new Dimension(worldX,worldY);
