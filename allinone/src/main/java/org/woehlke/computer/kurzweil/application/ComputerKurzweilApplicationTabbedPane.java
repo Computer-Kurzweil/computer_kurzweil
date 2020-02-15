@@ -46,8 +46,8 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         this.mandelbrotTab = new MandelbrotTab(this.ctx);
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this.ctx);
         TabPanel[] tabPanelAbstractPanels = {
-            this.cyclicCellularAutomatonTab,
             this.diffusionLimitedAggregationTab,
+            this.cyclicCellularAutomatonTab,
             this.mandelbrotTab,
             this.simulatedEvolutionTab
         };
