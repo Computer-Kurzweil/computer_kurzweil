@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolution;
@@ -16,22 +17,24 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 public class SimulatedEvolutionContext implements TabContext {
 
     private final TabType tabType = SIMULATED_EVOLUTION;
-
-    private SimulatedEvolutionController controller;
-
     private final SimulatedEvolution simulatedEvolution;
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionTab tab;
-    private final SimulatedEvolutionCanvas canvas;
-    private final SimulatedEvolutionModel stepper;
+
+    @Setter
+    private SimulatedEvolutionCanvas canvas;
+
+    @Setter
+    private SimulatedEvolutionModel stepper;
+
+    private SimulatedEvolutionController controller;
 
     public SimulatedEvolutionContext(
-        SimulatedEvolutionCanvas canvas
+        SimulatedEvolutionTab tab
     ) {
-       this.canvas = canvas;
-       this.tab = canvas.getTab();
+       this.tab = tab;
        this.ctx = this.tab.getCtx();
-        this.stepper = this.canvas.getWorld();
+        //this.stepper = this.canvas.getWorld();
         this.controller = new SimulatedEvolutionController(this);
         this.simulatedEvolution = new SimulatedEvolution();
         createNewState();

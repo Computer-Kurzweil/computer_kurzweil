@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionButtonRowPanel;
+import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionStatisticsPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
@@ -19,6 +21,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionContext tabCtx;
     private final StartStopButtonsPanel startStopButtonsPanel;
+    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
+    private final SimulatedEvolutionButtonRowPanel panelButtons;
     private final String subtitle;
     private final PanelSubtitle panelSubtitle;
     private final SimulatedEvolutionCanvas canvas;
@@ -26,14 +30,19 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.setLayout(new TabLayout(this));
-        this.canvas = new SimulatedEvolutionCanvas(this);
-        this.tabCtx = new SimulatedEvolutionContext(this.canvas);
+        this.tabCtx = new SimulatedEvolutionContext(this);
+        this.canvas = new SimulatedEvolutionCanvas( this);
+        this.tabCtx.setCanvas(this.canvas);
+        this.tabCtx.setStepper(this.canvas.getWorld());
+        this.statisticsPanel = this.canvas.getStatisticsPanel();
+        this.panelButtons =  this.canvas.getPanelButtons();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         this.subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
         this.panelSubtitle = new PanelSubtitle(subtitle);
-        //TODO: the other panels/buttons
         this.add(this.panelSubtitle);
         this.add(this.canvas);
+        this.add(this.statisticsPanel);
+        this.add(this.panelButtons);
         this.add(this.startStopButtonsPanel);
         this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
         this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
