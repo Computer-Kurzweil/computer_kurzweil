@@ -37,7 +37,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
     private final ComputerKurzweilApplicationContext ctx;
-    private final CompoundBorder border;
+    //private final CompoundBorder border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
     private final Color MEDIUM = Color.BLACK;
@@ -50,14 +50,13 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
-    private final int canvasX;
-    private final int canvasY;
+   // private final int canvasX;
+   // private final int canvasY;
 
+    private List<LatticePoint> particles = new ArrayList<>();
     private int[][] worldMap;
     private int age=1;
     private long steps;
-
-    private List<LatticePoint> particles = new ArrayList<>();
 
     public DiffusionLimitedAggregationCanvas(
         ComputerKurzweilApplicationContext ctx
@@ -65,18 +64,18 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.ctx = ctx;
         worldX = ctx.getWorldDimensions().getX();
         worldY = ctx.getWorldDimensions().getY();
-        canvasX = worldX+ 2 * PanelBorder.BORDER_PADDING;
-        canvasY = worldY+ 2 * PanelBorder.BORDER_PADDING;
-        border = PanelBorder.getBorder();
-        this.setBorder(border);
-        this.setBackground(MEDIUM);
-        this.setSize(canvasX,canvasY);
+        //canvasX = worldX + (2 * PanelBorder.BORDER_PADDING);
+        //canvasY = worldY + (2 * PanelBorder.BORDER_PADDING);
+        //border = PanelBorder.getBorder();
         this.layout = new CanvasLayout(this);
-        this.setLayout(layout);
-        this.preferredSize = new Dimension(canvasX,canvasY);
-        this.setPreferredSize(preferredSize);
-        this.setSize(this.preferredSize);
+        this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = ctx.getProperties().getDla().getControl().getNumberOfParticles();
+        this.worldMap = new int[this.worldX][this.worldY];
+        //this.setBorder(border);
+        this.setBackground(MEDIUM);
+        this.setLayout(layout);
+        this.setPreferredSize(preferredSize);
+        this.setSize(preferredSize);
         int x;
         int y;
         //create moving Particles
@@ -87,7 +86,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
             y = y >= 0 ? y : -y;
             particles.add(new LatticePoint(x , y));
         }
-        this.worldMap = new int[this.worldX][this.worldY];
         //place first dendrite Particle
         x = this.worldX / 2;
         y = this.worldY / 2;

@@ -51,23 +51,27 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
+    //private final int canvasX;
+    //private final int canvasY;
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonColorScheme colorScheme;
-    private final CompoundBorder border;
+   // private final CompoundBorder border;
     private final CanvasLayout layout;
     private final Dimension preferredSize;
 
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
-        this.versions = 2;
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
-        this.colorScheme = new CyclicCellularAutomatonColorScheme();
-        this.preferredSize = new Dimension( this.worldX, this.worldY);
+        //canvasX = worldX + (2 * PanelBorder.BORDER_PADDING);
+        //canvasY = worldY + (2 * PanelBorder.BORDER_PADDING);
+        //border = PanelBorder.getBorder();
         this.layout = new CanvasLayout(this);
-        this.border = PanelBorder.getBorder();
-        this.setBorder(border);
+        this.preferredSize = new Dimension(worldX,worldY);
+        this.versions = 2;
+        this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        //this.setBorder(border);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setSize(preferredSize);
@@ -78,7 +82,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void paint(Graphics g) {
-        log.info("paint(Graphics g)");
+        log.info("paint START (Graphics g)");
         int x;
         int y;
         int state;
@@ -94,6 +98,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             }
         }
         super.paintComponent(g);
+        log.info("paint DONE (Graphics g)");
     }
 
     public void update(Graphics g) {
