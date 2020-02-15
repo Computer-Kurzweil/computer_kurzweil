@@ -47,6 +47,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private int worldMap[][];
     private int age=1;
 
+    private long steps;
+
     private final int initialNumberOfParticles;
     private List<LatticePoint> particles = new ArrayList<>();
 
@@ -103,7 +105,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     public boolean hasDendriteNeighbour(LatticePoint pixel){
-        log.info("hasDendriteNeighbour. age="+age);
+        //log.info("hasDendriteNeighbour. age="+age);
         if(worldMap[pixel.getX()][pixel.getY()]==0){
             LatticePoint[] neighbours = pixel.getNeighbourhood(this.ctx);
             for(LatticePoint neighbour:neighbours){
@@ -120,7 +122,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     public void step() {
-        log.info("step");
+        steps++;
+        log.info("step "+steps);
         List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
         for(LatticePoint particle:particles){
             int x = particle.getX()+this.worldX;
