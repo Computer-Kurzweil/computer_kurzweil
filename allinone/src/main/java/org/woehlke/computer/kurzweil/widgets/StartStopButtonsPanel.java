@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 import org.woehlke.computer.kurzweil.widgets.layouts.StartStopButtonsPanelLayout;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 
 @Log
 @Getter
@@ -16,25 +17,21 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
 
     private final JButton startButton;
     private final JButton stopButton;
+    private final StartStopButtonsPanelLayout layout;
+    private final CompoundBorder border;
 
     public StartStopButtonsPanel(Tab tab){
         String labelStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();
         String labelStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
         String labelStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
-        this.setLayout(new StartStopButtonsPanelLayout());
-        this.setBorder(PanelBorder.getBorder(labelStartStopp));
+        layout = new StartStopButtonsPanelLayout();
+        border = PanelBorder.getBorder(labelStartStopp);
+        this.setLayout(layout);
+        this.setBorder(border);
         this.startButton = new JButton(labelStart);
         this.stopButton = new JButton(labelStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        //this.startButton.addActionListener(tab.getTabCtx());
-        //this.stopButton.addActionListener(tab.getTabCtx());
-        /*
-        if(tab instanceof CyclicCellularAutomatonTab){
-            start();
-        } else {
-            stop();
-        }*/
     }
 
     @Override

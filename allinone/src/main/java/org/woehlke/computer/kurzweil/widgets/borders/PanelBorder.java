@@ -13,8 +13,8 @@ public class PanelBorder {
         int bottom = BORDER_PADDING;
         int right = BORDER_PADDING;
         return BorderFactory.createCompoundBorder(
-            BorderFactory.createTitledBorder(label),
-            BorderFactory.createEmptyBorder(top,left,bottom,right)
+            BorderFactory.createEmptyBorder(top,left,bottom,right),
+            BorderFactory.createTitledBorder(label)
         );
     }
 
