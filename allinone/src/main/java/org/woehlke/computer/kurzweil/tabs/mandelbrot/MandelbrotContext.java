@@ -20,15 +20,14 @@ public class MandelbrotContext implements TabContext {
     private final Mandelbrot stepper;
     private final MandelbrotCanvas canvas;
 
-    //TODO:
     private MandelbrotController controller;
 
     public MandelbrotContext(MandelbrotTab tab, ComputerKurzweilApplicationContext ctx) {
         this.tab = tab;
         this.ctx = ctx;
         this.canvas = new MandelbrotCanvas( this );
-        this.stepper = new Mandelbrot(this.tab.getTabCtx());
         this.controller = new MandelbrotController(this);
+        this.stepper = new Mandelbrot( this );
     }
 
 
