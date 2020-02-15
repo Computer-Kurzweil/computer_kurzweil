@@ -2,7 +2,6 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -19,7 +18,7 @@ public class PanelZoomButtons extends JPanel {
     public PanelZoomButtons(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         FlowLayout layout = new FlowLayout();
-        CompoundBorder borderPanelPushButtons = PanelBorder.getBorder(this.ctx.getProperties().getMandelbrot().getView().getButtonsZoomLabel());
+        CompoundBorder borderPanelPushButtons = ctx.getBorder(this.ctx.getProperties().getMandelbrot().getView().getButtonsZoomLabel());
         this.zoomLevelFieldLabel = new JLabel("Zoom Level");
         this.zoomLevelField = new TextField("1",3);
         this.zoomOutButton = new JButton(this.ctx.getProperties().getMandelbrot().getView().getButtonsZoomOut());

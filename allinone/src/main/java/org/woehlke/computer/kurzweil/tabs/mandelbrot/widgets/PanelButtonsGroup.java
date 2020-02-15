@@ -2,7 +2,6 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.widgets.borders.PanelBorder;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -18,7 +17,7 @@ public class PanelButtonsGroup extends JPanel {
     public PanelButtonsGroup(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.radioButtonsGroup = new RadioButtonsGroup(ctx);
-        CompoundBorder borderPanelRadioButtons = PanelBorder.getBorder(
+        CompoundBorder borderPanelRadioButtons = ctx.getBorder(
             this.ctx.getProperties().getMandelbrot().getView().getButtonsLabel()
         );
         FlowLayout layout = new FlowLayout();
