@@ -7,6 +7,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionPopulationCensus;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionStatistics;
+import org.woehlke.computer.kurzweil.tabs.evolution.widgets.layouts.SimulatedEvolutionStatisticsPanelLayout;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

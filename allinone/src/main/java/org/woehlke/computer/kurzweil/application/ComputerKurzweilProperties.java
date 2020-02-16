@@ -144,6 +144,7 @@ public class ComputerKurzweilProperties {
             @NotNull  @Getter @Setter private Integer foodPerDay;
             @NotNull  @Getter @Setter private Integer foodPerDayFieldColumns;
             @NotBlank @Getter @Setter private String foodPerDayLabel;
+            @NotBlank @Getter @Setter private String foodPerDayBorderLabel;
             @NotBlank @Getter @Setter private String buttonFoodPerDayIncrease;
             @NotBlank @Getter @Setter private String buttonFoodPerDayDecrease;
             @NotBlank @Getter @Setter private String panelFood;

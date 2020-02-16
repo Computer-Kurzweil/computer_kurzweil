@@ -53,7 +53,8 @@ evolution:
   food:
     foodPerDay: 20
     foodPerDayFieldColumns: 3
-    foodPerDayLabel: 'per Day:'
+    foodPerDayLabel: 'Food per Day:'
+    foodPerDayBorderLabel: 'Food per Day:'
     buttonFoodPerDayIncrease: 'More'
     buttonFoodPerDayDecrease: 'Less'
     panelFood: 'Food'

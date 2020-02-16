@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.widgets;
+package org.woehlke.computer.kurzweil.tabs.evolution.widgets.layouts;
 
 import java.awt.*;
 
