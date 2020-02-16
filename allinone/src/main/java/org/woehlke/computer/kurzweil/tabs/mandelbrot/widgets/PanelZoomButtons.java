@@ -20,13 +20,13 @@ public class PanelZoomButtons extends JPanel {
         FlowLayout layout = new FlowLayout();
         String buttonsZoomOut = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomOut();
         String buttonsZoomLabel = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomLabel();
-        CompoundBorder borderPanelPushButtons = this.tabCtx.getCtx().getBorder();
+        CompoundBorder borderPanelPushButtons = this.tabCtx.getCtx().getBorder(buttonsZoomLabel);
         this.zoomLevelFieldLabel = new JLabel(buttonsZoomLabel);
         this.zoomLevelField = new TextField("1",3);
         this.zoomOutButton = new JButton(buttonsZoomOut);
         this.setLayout(layout);
         this.setBorder(borderPanelPushButtons);
-        this.add(this.zoomLevelFieldLabel);
+        //this.add(this.zoomLevelFieldLabel);
         this.add(this.zoomLevelField);
         this.add(this.zoomOutButton);
     }
