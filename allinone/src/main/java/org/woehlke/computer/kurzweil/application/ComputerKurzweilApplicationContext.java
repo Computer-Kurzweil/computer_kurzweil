@@ -45,12 +45,13 @@ public class ComputerKurzweilApplicationContext implements Startable {
 
     @Transient
     public CompoundBorder getBorder(){
-        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
-        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
         return BorderFactory.createCompoundBorder(
-            BorderFactory.createEmptyBorder(top,left,bottom,right),
+            BorderFactory.createEmptyBorder(),
+            //BorderFactory.createEmptyBorder(top,left,bottom,right),
             BorderFactory.createEmptyBorder(top,left,bottom,right)
         );
     }
@@ -69,19 +70,18 @@ public class ComputerKurzweilApplicationContext implements Startable {
 
     @Transient
     public Rectangle getFrameBounds(){
+        int x = this.properties.getAllinone().getLattice().getWidth();
+        int y = this.properties.getAllinone().getLattice().getHeight();
+        int titleHeight = this.properties.getAllinone().getView().getTitleHeight();
         double twoOfFiveParts = 2d;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double startX = (screenSize.getWidth() -  this.properties.getAllinone().getLattice().getWidth()) / twoOfFiveParts;
-        double startY = (screenSize.getHeight() - this.properties.getAllinone().getLattice().getWidth()) / twoOfFiveParts;
-        int myheight = Double.valueOf( this.properties.getAllinone().getLattice().getHeight() ).intValue()
-            + this.properties.getAllinone().getView().getTitleHeight();
-        int mywidth = Double.valueOf( this.properties.getAllinone().getLattice().getWidth() ).intValue();
+        double startX = (screenSize.getWidth() - x ) / twoOfFiveParts;
+        double startY = (screenSize.getHeight() - y) / twoOfFiveParts;
+        int myheight = Double.valueOf( y ).intValue() + titleHeight;
+        int mywidth = Double.valueOf( x ).intValue();
         int mystartX = Double.valueOf( startX ).intValue();
         int mystartY = Double.valueOf( startY ).intValue();
-        return new Rectangle(
-            mystartX, mystartY,
-            mywidth, myheight
-        );
+        return new Rectangle( mystartX, mystartY, mywidth, myheight );
     }
 
     /*
@@ -115,17 +115,18 @@ public class ComputerKurzweilApplicationContext implements Startable {
 
     @Transient
     public LatticePoint getWorldDimensions(){
-        return new LatticePoint(
-            this.properties.getAllinone().getLattice().getWidth(),
-            this.properties.getAllinone().getLattice().getHeight()
-        );
+        int x = this.properties.getAllinone().getLattice().getWidth();
+        int y = this.properties.getAllinone().getLattice().getHeight();
+        return new LatticePoint(x,y);
     }
 
     @Transient
     public LatticePoint getNextRandomLatticePoint() {
-        int x = this.getRandom().nextInt(this.getWorldDimensions().getWidth());
-        int y = this.getRandom().nextInt(this.getWorldDimensions().getHeight());
-        LatticePoint p = new LatticePoint(x,y);
+        int x = this.properties.getAllinone().getLattice().getWidth();
+        int y = this.properties.getAllinone().getLattice().getHeight();
+        int nextX = this.getRandom().nextInt(x);
+        int nextY = this.getRandom().nextInt(y);
+        LatticePoint p = new LatticePoint(nextX,nextY);
         p.normalize(this.getWorldDimensions());
         p.absoluteValue();
         return p;
