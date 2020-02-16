@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.application;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.ComputerKurzweilApplicationFrameLayout;
@@ -23,6 +24,7 @@ import java.util.List;
 
 @Log
 @Getter
+@ToString(exclude={"ctx"})
 public class ComputerKurzweilApplicationFrame extends JFrame implements Serializable,
     MenuContainer,
     ImageObserver,

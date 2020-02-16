@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.application;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
@@ -18,6 +19,7 @@ import java.util.Random;
 
 @Log
 @Getter
+@ToString(exclude={"random"})
 public class ComputerKurzweilApplicationContext implements Startable {
 
     private final ComputerKurzweilProperties properties;

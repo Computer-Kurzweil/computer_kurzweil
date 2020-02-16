@@ -62,6 +62,9 @@ public class MandelbrotTab extends TabPanel implements Tab {
         this.tabCtx.startController();
         this.tabCtx.getController().start();
         this.ctx.getFrame().pack();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("start with canvas x="+x+" y="+y);
         log.info("started");
     }
 
@@ -70,12 +73,18 @@ public class MandelbrotTab extends TabPanel implements Tab {
         log.info("stop");
         this.startStopButtonsPanel.stop();
         this.tabCtx.stopController();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("stop with canvas x="+x+" y="+y);
         log.info("stopped");
     }
 
     @Override
     public void showMe() {
         log.info("showMe");
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("showMe with canvas x="+x+" y="+y);
         //this.setVisible(true);
     }
 

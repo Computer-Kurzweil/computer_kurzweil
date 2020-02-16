@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.cca;
 
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
+@ToString(exclude={"ctx","tabCtx","border","layout"})
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
     private final CyclicCellularAutomatonCanvas canvas;
@@ -66,6 +68,9 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("start with canvas x="+x+" y="+y);
         log.info("started");
     }
 
@@ -75,12 +80,18 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.canvas.stop();
         this.startStopButtonsPanel.stop();
         this.getTabCtx().stopController();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("stop with canvas x="+x+" y="+y);
         log.info("stopped");
     }
 
     @Override
     public void showMe() {
         log.info("showMe");
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("showMe with canvas x="+x+" y="+y);
         /*
         this.canvas.getStartStopButtonsPanel().setVisible(true);
         this.canvas.getNeighbourhoodButtonsPanel().setVisible(true);

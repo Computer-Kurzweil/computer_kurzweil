@@ -25,7 +25,7 @@ public enum LatticePointNeighbourhoodPosition {
         this.y = y;
     }
 
-    public static LatticePointNeighbourhoodPosition[] getForfNeighbourhood(
+    public static LatticePointNeighbourhoodPosition[] getNeighbourhoodFor(
         LatticeNeighbourhoodType neighbourhoodType
     ){
         LatticePointNeighbourhoodPosition[] result;

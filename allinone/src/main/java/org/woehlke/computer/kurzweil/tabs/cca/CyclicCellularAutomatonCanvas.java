@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.cca;
 
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
@@ -30,6 +31,7 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.WOEHL
  */
 @Log
 @Getter
+@ToString(exclude={"lattice","colorScheme","tabCtx","border","layout","preferredSize"})
 public class CyclicCellularAutomatonCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
 
@@ -148,7 +150,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
                 for (x = 0; x < worldX; x++) {
                     lattice[target][x][y] = lattice[source][x][y];
                     nextState = (lattice[source][x][y] + 1) % maxState;
-                    LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getForfNeighbourhood(neighbourhoodType);
+                    LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getNeighbourhoodFor(neighbourhoodType);
                     for (i = 0; i < pos.length; i++) {
                         xx = ((x + pos[i].getX() + worldX) % worldX);
                         yy = ((y + pos[i].getY() + worldY) % worldY);

@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.dla;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
+@ToString(exclude={"border"})
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
     private final ComputerKurzweilApplicationContext ctx;
@@ -52,6 +54,9 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         this.tabCtx.getController().start();
         this.showMe();
         this.ctx.getFrame().pack();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("start with canvas x="+x+" y="+y);
         log.info("started");
     }
 
@@ -60,12 +65,17 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         log.info("stop");
         this.tabCtx.stopController();
         this.getStartStopButtonsPanel().stop();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("stop with canvas x="+x+" y="+y);
         log.info("stopped");
     }
 
     @Override
     public void showMe() {
-        log.info("showMe");
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("showMe with canvas x="+x+" y="+y);
     }
 
     @Override

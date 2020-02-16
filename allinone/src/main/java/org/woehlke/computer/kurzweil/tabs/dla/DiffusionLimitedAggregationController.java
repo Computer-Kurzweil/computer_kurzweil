@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.dla;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
@@ -16,6 +17,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 @Log
 @Getter
+@ToString(exclude={"appCtx"})
 public class DiffusionLimitedAggregationController extends Thread
         implements TabController {
 

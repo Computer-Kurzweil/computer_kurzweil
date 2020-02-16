@@ -64,6 +64,9 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("start with canvas x="+x+" y="+y);
         log.info("started");
     }
 
@@ -72,12 +75,18 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         log.info("stop");
         this.canvas.stop();
         this.getTabCtx().stopController();
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("stop with canvas x="+x+" y="+y);
         log.info("stopped");
     }
 
     @Override
     public void showMe() {
         log.info("showMe");
+        int x = this.canvas.getWidth();
+        int y = this.canvas.getHeight();
+        log.info("showMe with canvas x="+x+" y="+y);
     }
 
     @Override
