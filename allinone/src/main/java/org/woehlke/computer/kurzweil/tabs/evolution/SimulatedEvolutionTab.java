@@ -8,12 +8,8 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionStatisticsPanel;
-import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
-import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
-
-import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 
 
@@ -26,7 +22,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final SimulatedEvolutionContext tabCtx;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
-    private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private final SimulatedEvolutionButtonRowPanel buttonRowPanel;
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
@@ -36,16 +32,16 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.tabCtx.setCanvas(this.canvas);
         this.tabCtx.setStepper(this.canvas.getWorld());
         this.statisticsPanel = this.canvas.getStatisticsPanel();
-        this.panelButtons =  this.canvas.getPanelButtons();
+        this.buttonRowPanel = this.canvas.getButtonRowPanel();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.statisticsPanel);
-        this.add(this.panelButtons);
+        this.add(this.buttonRowPanel);
         this.add(this.startStopButtonsPanel);
-        this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
-        this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
-        this.canvas.getPanelButtons().getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
+        this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
+        this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
+        this.buttonRowPanel.getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
         this.ctx.getFrame().pack();
         this.startStopButtonsPanel.stop();
     }
@@ -95,15 +91,15 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==  this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayIncrease()) {
+        if (ae.getSource() == this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayIncrease()) {
             log.info("actionPerformed: increaseFoodPerDay");
             tabCtx.increaseFoodPerDay();
             this.canvas.update();
-        } else if (ae.getSource() == this.canvas.getPanelButtons().getFoodPanel().getButtonFoodPerDayDecrease()) {
+        } else if (ae.getSource() == this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayDecrease()) {
             log.info("actionPerformed: decreaseFoodPerDay");
             tabCtx.decreaseFoodPerDay();
             this.canvas.update();
-        } else if (ae.getSource() == this.canvas.getPanelButtons().getGardenOfEdenPanel().getButtonToggleGardenOfEden()) {
+        } else if (ae.getSource() == this.buttonRowPanel.getGardenOfEdenPanel().getButtonToggleGardenOfEden()) {
             log.info("actionPerformed: toggleGardenOfEden");
             tabCtx.toggleGardenOfEden();
             this.canvas.update();
