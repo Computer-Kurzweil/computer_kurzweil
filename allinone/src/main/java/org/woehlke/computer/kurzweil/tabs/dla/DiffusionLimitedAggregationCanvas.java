@@ -116,7 +116,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
                     ageColor =  new Color(red, green, blue);
                     g.setColor(ageColor);
                     g.drawLine(x,y,x,y);
-                    log.info("paint: age "+myAge+" x="+x+",y="+y+" with color: red="+red+", green="+green+", blue="+blue+" ");
+                    //log.info("paint: age "+myAge+" x="+x+",y="+y+" with color: red="+red+", green="+green+", blue="+blue+" ");
                 }
             }
         }
