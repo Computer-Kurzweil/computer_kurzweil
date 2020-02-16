@@ -5,36 +5,24 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
-import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
-
-import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"border"})
+@ToString(exclude={"ctx","tabCtx","border","layout"})
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
-    private final ComputerKurzweilApplicationContext ctx;
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
-    private final CompoundBorder border;
-
     private final StartStopButtonsPanel startStopButtonsPanel;
-    private final PanelSubtitle panelSubtitle;
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationContext ctx) {
-        this.ctx = ctx;
-        this.setLayout(new TabLayout(this));
-        this.border = this.ctx.getBorder();
-        this.setBorder(border);
-        String subtitle = ctx.getProperties().getDla().getView().getSubtitle();
+        super(ctx, TabType.DIFFUSION_LIMITED_AGGREGATION,ctx.getProperties().getDla().getView().getSubtitle());
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
-        this.panelSubtitle = new PanelSubtitle(subtitle);
         this.canvas = this.tabCtx.getCanvas();
         this.add(this.panelSubtitle);
         this.add(this.canvas);

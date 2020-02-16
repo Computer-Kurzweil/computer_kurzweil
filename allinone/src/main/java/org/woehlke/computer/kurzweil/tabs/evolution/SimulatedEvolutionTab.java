@@ -1,9 +1,11 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionStatisticsPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
@@ -17,25 +19,18 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
+@ToString(exclude={"ctx","tabCtx","border","layout"})
 public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
-    private final ComputerKurzweilApplicationContext ctx;
+
     private final SimulatedEvolutionContext tabCtx;
-    private final CompoundBorder border;
-    private final TabLayout layout;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
     private final SimulatedEvolutionButtonRowPanel panelButtons;
-    private final String subtitle;
-    private final PanelSubtitle panelSubtitle;
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
-        this.ctx = ctx;
-        this.border = this.ctx.getBorder();
-        this.layout = new TabLayout(this);
-        this.setBorder(border);
-        this.setLayout(layout);
+        super(ctx, TabType.SIMULATED_EVOLUTION, ctx.getProperties().getEvolution().getView().getSubtitle());
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
         this.tabCtx.setCanvas(this.canvas);
@@ -43,8 +38,6 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.statisticsPanel = this.canvas.getStatisticsPanel();
         this.panelButtons =  this.canvas.getPanelButtons();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
-        this.subtitle = ctx.getProperties().getEvolution().getView().getSubtitle();
-        this.panelSubtitle = new PanelSubtitle(subtitle);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.statisticsPanel);

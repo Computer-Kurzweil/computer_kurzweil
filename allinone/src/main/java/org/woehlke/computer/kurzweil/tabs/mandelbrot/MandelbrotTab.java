@@ -1,44 +1,35 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
-import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.widgets.layouts.TabLayout;
 
-import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 
 @Log
 @Getter
+@ToString(exclude={"ctx","tabCtx","border","layout"})
 public class MandelbrotTab extends TabPanel implements Tab {
 
-    private final ComputerKurzweilApplicationContext ctx;
     private final MandelbrotContext tabCtx;
-    private final CompoundBorder border;
-
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
-    private final PanelSubtitle panelSubtitle;
-
     private final String title;
-    private final String subTitle;
 
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
-        this.ctx = ctx;
+        super(ctx, TabType.MANDELBROT_SET, ctx.getProperties().getMandelbrot().getView().getSubtitle());
         this.setLayout(new TabLayout(this));
-        this.border = this.ctx.getBorder();
-        this.setBorder(border);
         this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
-        this.subTitle = ctx.getProperties().getMandelbrot().getView().getSubtitle();
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
-        this.panelSubtitle = new PanelSubtitle(  this.subTitle);
         this.panelButtons = new MandelbrotButtons( this.tabCtx);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
