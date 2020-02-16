@@ -24,7 +24,7 @@ import java.util.List;
 
 @Log
 @Getter
-@ToString(exclude={"ctx"})
+@ToString(callSuper=true)
 public class ComputerKurzweilApplicationFrame extends JFrame implements Serializable,
     MenuContainer,
     ImageObserver,

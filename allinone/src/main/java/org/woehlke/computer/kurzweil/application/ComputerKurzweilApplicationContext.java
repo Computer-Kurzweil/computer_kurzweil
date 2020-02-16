@@ -19,7 +19,7 @@ import java.util.Random;
 
 @Log
 @Getter
-@ToString(exclude={"random"})
+@ToString(exclude={"random","frame"},callSuper=true)
 public class ComputerKurzweilApplicationContext implements Startable {
 
     private final ComputerKurzweilProperties properties;

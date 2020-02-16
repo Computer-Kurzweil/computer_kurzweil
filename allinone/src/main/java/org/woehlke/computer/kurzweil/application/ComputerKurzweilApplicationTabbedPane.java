@@ -22,7 +22,7 @@ import java.util.List;
 
 @Log
 @Getter
-@ToString(exclude={"ctx","apps"})
+@ToString(exclude={"ctx","apps"},callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implements Startable,
     GuiComponentTab {
