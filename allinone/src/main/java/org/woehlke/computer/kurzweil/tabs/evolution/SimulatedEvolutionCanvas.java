@@ -6,10 +6,10 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.Cell;
+import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatistics;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.JComponent;
@@ -19,8 +19,8 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_FOOD;
-import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_WATER;
+import static org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**
@@ -56,7 +56,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @ToString.Exclude
     private final SimulatedEvolutionTab tab;
     private final PopulationStatistics statisticsPanel;
-    private final FoodButtonRow buttonRowPanel;
+    private final SimulatedEvolutionButtons buttonRowPanel;
     private final SimulatedEvolutionModel world;
 
     private final static int startX = 0;
@@ -74,7 +74,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.border = this.tabCtx.getCtx().getBorder();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new PopulationStatistics(this.tabCtx);
-        this.buttonRowPanel = new FoodButtonRow(this.tabCtx);
+        this.buttonRowPanel = new SimulatedEvolutionButtons(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
         this.setBorder(border);

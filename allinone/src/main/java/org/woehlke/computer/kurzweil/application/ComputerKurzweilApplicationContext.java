@@ -6,8 +6,8 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.CellCore;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.CellLifeCycle;
+import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellCore;
+import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

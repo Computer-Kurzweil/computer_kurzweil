@@ -1,31 +1,30 @@
-package org.woehlke.computer.kurzweil.tabs.evolution;
+package org.woehlke.computer.kurzweil.tabs.evolution.population;
 
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionPopulationCensus;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionStatistics;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.PopulationStatisticsElemenr;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionStatistics;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 
 import java.awt.*;
 
-import static org.woehlke.computer.kurzweil.tabs.evolution.model.CellLifeCycleStatus.*;
+import static org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleStatus.*;
 
 @Log
 @Getter
 @ToString(callSuper = true)
 public class PopulationStatistics extends JPanel {
 
-    private final PopulationStatisticsElemenr youngCellsStatistics;
-    private final PopulationStatisticsElemenr youngAndFatCellsStatistics;
-    private final PopulationStatisticsElemenr fullAgeCellsStatistics;
-    private final PopulationStatisticsElemenr hungryCellsStatistics;
-    private final PopulationStatisticsElemenr oldCellsStatistics;
-    private final PopulationStatisticsElemenr populationStatistics;
+    private final PopulationStatisticsElement youngCellsStatistics;
+    private final PopulationStatisticsElement youngAndFatCellsStatistics;
+    private final PopulationStatisticsElement fullAgeCellsStatistics;
+    private final PopulationStatisticsElement hungryCellsStatistics;
+    private final PopulationStatisticsElement oldCellsStatistics;
+    private final PopulationStatisticsElement populationStatistics;
 
     private final SimulatedEvolutionStatistics statistics;
     private final String borderLabel;
@@ -52,14 +51,14 @@ public class PopulationStatistics extends JPanel {
         subPanel.setBorder(border);
         initialPopulation = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation();
         ComputerKurzweilProperties.Evolution.Population cfg = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation();
-        youngCellsStatistics = new PopulationStatisticsElemenr(cfg.getYoungCellsLabel(),YOUNG);
-        youngAndFatCellsStatistics = new PopulationStatisticsElemenr(cfg.getYoungAndFatCellsLabel(),YOUNG_AND_FAT);
-        fullAgeCellsStatistics = new PopulationStatisticsElemenr(cfg.getFullAgeCellsLabel(),FULL_AGE);
-        hungryCellsStatistics = new PopulationStatisticsElemenr(cfg.getHungryCellsLabel(),HUNGRY);
-        oldCellsStatistics = new PopulationStatisticsElemenr(cfg.getOldCellsLabel(),OLD);
-        populationStatistics = new PopulationStatisticsElemenr(cfg.getPopulationLabel(),POPULATION);
+        youngCellsStatistics = new PopulationStatisticsElement(cfg.getYoungCellsLabel(),YOUNG);
+        youngAndFatCellsStatistics = new PopulationStatisticsElement(cfg.getYoungAndFatCellsLabel(),YOUNG_AND_FAT);
+        fullAgeCellsStatistics = new PopulationStatisticsElement(cfg.getFullAgeCellsLabel(),FULL_AGE);
+        hungryCellsStatistics = new PopulationStatisticsElement(cfg.getHungryCellsLabel(),HUNGRY);
+        oldCellsStatistics = new PopulationStatisticsElement(cfg.getOldCellsLabel(),OLD);
+        populationStatistics = new PopulationStatisticsElement(cfg.getPopulationLabel(),POPULATION);
         populationStatistics.setText(initialPopulation);
-        PopulationStatisticsElemenr[] statistics = {
+        PopulationStatisticsElement[] statistics = {
             youngCellsStatistics,
             youngAndFatCellsStatistics,
             fullAgeCellsStatistics,
@@ -67,7 +66,7 @@ public class PopulationStatistics extends JPanel {
             oldCellsStatistics,
             populationStatistics
         };
-        for(PopulationStatisticsElemenr ps :statistics){
+        for(PopulationStatisticsElement ps :statistics){
             subPanel.add(ps);
         }
         this.add(subPanel);

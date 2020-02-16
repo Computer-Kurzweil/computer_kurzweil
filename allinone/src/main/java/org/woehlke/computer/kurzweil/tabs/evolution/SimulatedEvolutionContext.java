@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionModel;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 

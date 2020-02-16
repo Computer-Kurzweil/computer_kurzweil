@@ -1,16 +1,16 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.widgets;
+package org.woehlke.computer.kurzweil.tabs.evolution.population;
 
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.CellLifeCycleStatus;
+import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleStatus;
 
 import javax.swing.*;
 
 @Log
 @Getter
 @ToString(callSuper = true)
-public class PopulationStatisticsElemenr extends JPanel {
+public class PopulationStatisticsElement extends JPanel {
 
     private final JLabel label;
     private final JTextField statistics;
@@ -18,7 +18,7 @@ public class PopulationStatisticsElemenr extends JPanel {
     private final int cols = 3;
     private final String defaultTextField = "0";
 
-    public PopulationStatisticsElemenr(String label, CellLifeCycleStatus lifeCycleStatus) {
+    public PopulationStatisticsElement(String label, CellLifeCycleStatus lifeCycleStatus) {
         this.lifeCycleStatus = lifeCycleStatus;
         this.label = new JLabel(label);
         this.statistics = new JTextField(defaultTextField,cols);

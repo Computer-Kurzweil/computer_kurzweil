@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.widgets;
+package org.woehlke.computer.kurzweil.tabs.evolution.food;
 
 import lombok.Getter;
 import lombok.ToString;

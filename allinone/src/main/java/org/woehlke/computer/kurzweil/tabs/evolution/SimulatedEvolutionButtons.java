@@ -3,8 +3,8 @@ package org.woehlke.computer.kurzweil.tabs.evolution;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.FoodPerDayPanel;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.GardenOfEdenPanelRow;
+import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
+import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.awt.*;
 @Log
 @Getter
 @ToString(callSuper = true)
-public class FoodButtonRow extends JPanel {
+public class SimulatedEvolutionButtons extends JPanel {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
@@ -20,7 +20,7 @@ public class FoodButtonRow extends JPanel {
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
     private final FlowLayout layout;
 
-    public FoodButtonRow(
+    public SimulatedEvolutionButtons(
         SimulatedEvolutionContext tabCtx
     ) {
         this.tabCtx = tabCtx;

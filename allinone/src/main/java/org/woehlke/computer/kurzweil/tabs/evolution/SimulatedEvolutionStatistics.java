@@ -1,7 +1,7 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.model;
+package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutionPopulationCensus;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 

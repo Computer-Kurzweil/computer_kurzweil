@@ -6,6 +6,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
+import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatistics;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import java.awt.event.ActionEvent;
@@ -20,7 +21,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final SimulatedEvolutionContext tabCtx;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final PopulationStatistics statisticsPanel;
-    private final FoodButtonRow buttonRowPanel;
+    private final SimulatedEvolutionButtons buttonRowPanel;
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {

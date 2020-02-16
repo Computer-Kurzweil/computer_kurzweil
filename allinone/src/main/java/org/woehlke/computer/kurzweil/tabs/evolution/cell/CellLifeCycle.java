@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.model;
+package org.woehlke.computer.kurzweil.tabs.evolution.cell;
 
 import lombok.*;
 import lombok.extern.java.Log;

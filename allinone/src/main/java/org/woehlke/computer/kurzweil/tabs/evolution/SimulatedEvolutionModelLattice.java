@@ -1,11 +1,11 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.model;
+package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 
 
 /**

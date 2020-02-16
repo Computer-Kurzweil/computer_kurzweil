@@ -1,7 +1,8 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.model;
+package org.woehlke.computer.kurzweil.tabs.evolution.population;
 
 import lombok.*;
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleStatus;
 
 @Log
 @ToString
