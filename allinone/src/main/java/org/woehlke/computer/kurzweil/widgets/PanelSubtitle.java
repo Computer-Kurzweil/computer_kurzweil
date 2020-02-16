@@ -5,7 +5,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.widgets.layouts.PanelSubtitleLayout;
+import org.woehlke.computer.kurzweil.widgets.layouts.CenterFlowLayout;
 
 import javax.swing.*;
 
@@ -16,7 +16,7 @@ import javax.swing.*;
 public class PanelSubtitle extends JPanel implements GuiComponentTab {
 
     public PanelSubtitle(String text) {
-        this.setLayout(new PanelSubtitleLayout());
+        this.setLayout(new CenterFlowLayout());
         this.add(new JLabel(text));
     }
 

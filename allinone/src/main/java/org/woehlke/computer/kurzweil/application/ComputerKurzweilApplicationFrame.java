@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.widgets.layouts.ComputerKurzweilApplicationFrameLayout;
+import org.woehlke.computer.kurzweil.widgets.layouts.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.model.Bounds;
@@ -44,7 +44,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         super(properties.getAllinone().getView().getTitle());
         this.ctx = new ComputerKurzweilApplicationContext(properties,this);
         tabbedPane = new ComputerKurzweilApplicationTabbedPane(this.ctx);
-        rootPane.setLayout(new ComputerKurzweilApplicationFrameLayout( rootPane ));
+        rootPane.setLayout(new BoxLayoutVertical( rootPane ));
         rootPane.setBorder( this.ctx.getBorder());
         rootPane.add(PanelSubtitle.getPanelSubtitleForApplication(this.ctx));
         rootPane.add(tabbedPane);

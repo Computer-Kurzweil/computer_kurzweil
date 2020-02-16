@@ -5,7 +5,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.widgets.layouts.PanelCopyrightLayout;
+import org.woehlke.computer.kurzweil.widgets.layouts.CenterFlowLayout;
 
 import javax.swing.*;
 
@@ -16,7 +16,7 @@ import javax.swing.*;
 public class PanelCopyright extends JPanel implements GuiComponentTab {
 
     public PanelCopyright(ComputerKurzweilApplicationContext ctx) {
-        this.setLayout(new PanelCopyrightLayout());
+        this.setLayout(new CenterFlowLayout());
         String copyright = ctx.getProperties().getAllinone().getView().getCopyright();
         this.add(new JLabel(copyright));
     }
