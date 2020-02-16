@@ -159,10 +159,10 @@ public class LatticePoint {
     }
 
     public static LatticePoint[] getNeighbourhood(ComputerKurzweilApplicationContext ctx, LatticePoint pixel) {
-        int x=pixel.getX();
-        int y=pixel.getY();
-        int maxX= ctx.getWorldDimensions().getX();
-        int maxY= ctx.getWorldDimensions().getY();
+        int maxX = ctx.getWorldDimensions().getX();
+        int maxY = ctx.getWorldDimensions().getY();
+        int x = pixel.getX();
+        int y = pixel.getY();
         return LatticePoint.getNeighbourhood(maxX,maxY,x,y);
     }
 }

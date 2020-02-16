@@ -22,6 +22,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final ComputerKurzweilApplicationContext ctx;
     private final SimulatedEvolutionContext tabCtx;
     private final CompoundBorder border;
+    private final TabLayout layout;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
     private final SimulatedEvolutionButtonRowPanel panelButtons;
@@ -32,8 +33,9 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
         this.ctx = ctx;
         this.border = this.ctx.getBorder();
+        this.layout = new TabLayout(this);
         this.setBorder(border);
-        this.setLayout(new TabLayout(this));
+        this.setLayout(layout);
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
         this.tabCtx.setCanvas(this.canvas);

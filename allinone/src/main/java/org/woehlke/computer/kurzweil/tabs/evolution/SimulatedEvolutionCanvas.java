@@ -61,7 +61,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.tabCtx = tab.getTabCtx();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        border = this.tabCtx.getCtx().getBorder();
+        this.border = this.tabCtx.getCtx().getBorder();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
         this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
@@ -128,10 +128,9 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @Override
     public void update() {
         log.info("update");
-        this.panelButtons.getFoodPanel().getFoodPerDayField().setText(
-            tabCtx.getSimulatedEvolution().getFoodPerDay()+""
-        );
+        String getFoodPerDay = tabCtx.getSimulatedEvolution().getFoodPerDay()+"";
         boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
+        this.panelButtons.getFoodPanel().getFoodPerDayField().setText(getFoodPerDay);
         this.panelButtons.getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
         log.info("updated");
     }
