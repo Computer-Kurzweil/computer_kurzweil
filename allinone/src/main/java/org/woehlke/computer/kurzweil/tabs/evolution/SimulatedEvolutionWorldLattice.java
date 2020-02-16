@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
@@ -28,8 +29,10 @@ public class SimulatedEvolutionWorldLattice implements Startable {
   /**
    * Grid of World where every Place can have food.
    */
+  @ToString.Exclude
   private int[][] worldMapFoodLattice;
 
+    @ToString.Exclude
   private SimulatedEvolutionContext appCtx;
 
     private final int gardenOfEdenParts = 3;

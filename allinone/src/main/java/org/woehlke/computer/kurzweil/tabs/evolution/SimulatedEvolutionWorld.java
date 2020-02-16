@@ -41,6 +41,7 @@ public class SimulatedEvolutionWorld implements Startable, TabModel {
     @ToString.Exclude
     private List<Cell> cells;
 
+    @ToString.Exclude
     private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionWorldLattice worldLattice;
     private final SimulatedEvolutionCanvasStatistics statisticsContainer;

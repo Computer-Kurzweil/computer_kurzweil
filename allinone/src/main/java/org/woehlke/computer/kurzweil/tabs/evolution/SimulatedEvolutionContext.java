@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -22,7 +23,9 @@ public class SimulatedEvolutionContext implements TabContext {
     @ToString.Exclude
     private final SimulatedEvolutionTab tab;
     private final SimulatedEvolution simulatedEvolution;
+    @Setter
     private SimulatedEvolutionCanvas canvas;
+    @Setter
     private SimulatedEvolutionWorld stepper;
 
     public SimulatedEvolutionContext(
