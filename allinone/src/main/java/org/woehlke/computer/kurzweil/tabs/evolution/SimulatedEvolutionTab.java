@@ -30,7 +30,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx, TabType.SIMULATED_EVOLUTION, ctx.getProperties().getEvolution().getView().getSubtitle());
+        super(ctx, TabType.SIMULATED_EVOLUTION, ctx.getProperties().getEvolution().getView().getSubtitle(), ctx.getProperties().getEvolution().getView().getTitle());
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
         this.tabCtx.setCanvas(this.canvas);

@@ -7,7 +7,6 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
@@ -21,18 +20,13 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
-
     protected final StartStopButtonsPanel startStopButtonsPanel;
-    protected final String labelSubtitle;
-    protected final PanelSubtitle panelSubtitle;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON);
+        super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON,ctx.getProperties().getCca().getView().getSubtitle(),ctx.getProperties().getCca().getView().getTitle());
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
-        this.labelSubtitle = this.tabCtx.getCtx().getProperties().getCca().getView().getSubtitle();
-        this.panelSubtitle = new PanelSubtitle(labelSubtitle);
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
         this.add(this.panelSubtitle);
         this.add(this.canvas);

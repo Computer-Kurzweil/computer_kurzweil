@@ -19,17 +19,20 @@ public abstract class TabPanel extends JPanel implements Tab {
     protected final ComputerKurzweilApplicationContext ctx;
     protected final CompoundBorder border;
     protected final TabLayout layout;
+    protected final String title;
     protected final String subTitle;
     protected final PanelSubtitle panelSubtitle;
 
     protected final TabType tabType;
 
-    protected TabPanel(ComputerKurzweilApplicationContext ctx, TabType tabType, String subTitle) {
+    protected TabPanel(ComputerKurzweilApplicationContext ctx, TabType tabType, String subTitle, String title) {
+        this.setName(title);
         this.ctx = ctx;
         this.tabType = tabType;
         this.layout = new TabLayout(this);
         this.border =  this.ctx.getBorder();
         this.subTitle = subTitle;
+        this.title = title;
         this.panelSubtitle = new PanelSubtitle(subTitle);
         this.setLayout(layout);
         this.setBorder(border);

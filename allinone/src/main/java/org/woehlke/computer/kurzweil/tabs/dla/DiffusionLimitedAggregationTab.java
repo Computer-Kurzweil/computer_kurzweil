@@ -20,7 +20,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     private final StartStopButtonsPanel startStopButtonsPanel;
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx, TabType.DIFFUSION_LIMITED_AGGREGATION,ctx.getProperties().getDla().getView().getSubtitle());
+        super(ctx, TabType.DIFFUSION_LIMITED_AGGREGATION,ctx.getProperties().getDla().getView().getSubtitle(),ctx.getProperties().getDla().getView().getTitle());
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         this.canvas = this.tabCtx.getCanvas();

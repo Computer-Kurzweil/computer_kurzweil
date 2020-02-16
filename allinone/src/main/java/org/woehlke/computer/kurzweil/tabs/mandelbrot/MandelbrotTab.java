@@ -21,12 +21,9 @@ public class MandelbrotTab extends TabPanel implements Tab {
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
-    private final String title;
-
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
-        super(ctx, TabType.MANDELBROT_SET, ctx.getProperties().getMandelbrot().getView().getSubtitle());
+        super(ctx, TabType.MANDELBROT_SET, ctx.getProperties().getMandelbrot().getView().getSubtitle(),ctx.getProperties().getMandelbrot().getView().getTitle());
         this.setLayout(new TabLayout(this));
-        this.title = ctx.getProperties().getMandelbrot().getView().getTitle();
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
         this.startStopButtonsPanel = new StartStopButtonsPanel( this );
