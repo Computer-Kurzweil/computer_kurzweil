@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
+import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
@@ -88,7 +89,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     public void paint(Graphics g) {
-        log.info("paint");
+        //log.info("paint");
         super.paintComponent(g);
         g.setColor(MEDIUM);
         g.fillRect(startX, startY, worldX, worldY);
@@ -125,7 +126,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     public boolean hasDendriteNeighbour( int myX , int myY){
         //log.info("hasDendriteNeighbour. age="+age);
         if(worldMap[myX][myY]==0){
-            LatticePoint[] neighbours = LatticePoint.getNeighbourhood(worldX,worldY, myX, myY);
+            LatticePoint[] neighbours = LatticeNeighbourhood.get(worldX,worldY, myX, myY);
             for(LatticePoint neighbour:neighbours){
                 if(worldMap[neighbour.getX()][neighbour.getY()]>0){
                     worldMap[myX][myY]=age;
@@ -141,7 +142,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
 
     public void step() {
         steps++;
-        log.info("step "+steps);
+        //log.info("step "+steps);
         List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
         int x;
         int y;
@@ -165,11 +166,11 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
             }
         }
         particles=newParticles;
-        log.info("stepped");
+        //log.info("stepped");
     }
 
     public void update(Graphics g) {
-        log.info("update(Graphics g)");
+        //log.info("update(Graphics g)");
         paint(g);
     }
 
@@ -180,7 +181,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
 
     @Override
     public void update() {
-        log.info("update");
-        //repaint();
+        //log.info("update");
     }
 }

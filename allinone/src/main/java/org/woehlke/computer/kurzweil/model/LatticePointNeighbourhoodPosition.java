@@ -2,8 +2,10 @@ package org.woehlke.computer.kurzweil.model;
 
 import lombok.Getter;
 
+@Getter
 public enum LatticePointNeighbourhoodPosition {
 
+    CENTER(0,0),
     NORTH(0,-1),
     EAST(1,0),
     SOUTH(0,1),
@@ -11,13 +13,9 @@ public enum LatticePointNeighbourhoodPosition {
     NORTH_EAST(1,-1),
     SOUTH_EAST(1,1),
     SOUTH_WEST(-1,1),
-    NORTH_WEST(-1,-1),
-    CENTER(0,0);
+    NORTH_WEST(-1,-1);
 
-    @Getter
     private final int x;
-
-    @Getter
     private final int y;
 
     LatticePointNeighbourhoodPosition(int x, int y){
@@ -58,7 +56,8 @@ public enum LatticePointNeighbourhoodPosition {
                 result[5]=WEST;
                 break;
             default:
-                result = new LatticePointNeighbourhoodPosition[0];
+                result = new LatticePointNeighbourhoodPosition[1];
+                result[0]=CENTER;
                 break;
         }
         return result;

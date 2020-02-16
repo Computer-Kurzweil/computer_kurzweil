@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.evolution;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.Cell;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionButtonRowPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionStatisticsPanel;
@@ -104,7 +105,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
       for (Cell cell : population) {
           posX = cell.getPosition().getX();
           posY = cell.getPosition().getY();
-          LatticePoint[] square = LatticePoint.getNeighbourhood(worldX,worldY,posX,posY);
+          LatticePoint[] square = LatticeNeighbourhood.get(worldX,worldY,posX,posY);
           graphics.setColor(cell.getLifeCycleStatus().getColor());
           for (LatticePoint pixel : square) {
               graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());

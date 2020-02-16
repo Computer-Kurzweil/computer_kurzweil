@@ -1,26 +1,34 @@
 package org.woehlke.computer.kurzweil.model;
 
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.extern.java.Log;
 
+@Log
+@Getter
+@ToString
+@EqualsAndHashCode
 public class LatticeNeighbourhood {
 
-    private LatticePoint latticePoint;
+    private final LatticeNeighbourhoodType neighbourhoodType;
+    private final int maxX;
+    private final int maxY;
+    private final int x;
+    private final int y;
 
     private LatticePoint[] neighbourhood;
 
-    private LatticeNeighbourhoodType neighbourhoodType;
-
-    private final LatticePoint max;
-
     public LatticeNeighbourhood(
-        LatticePoint latticePoint,
-        LatticeNeighbourhoodType neighbourhoodType,
-        ComputerKurzweilApplicationContext ctx
+        int maxX,  int maxY, int x,  int y,
+        LatticeNeighbourhoodType neighbourhoodType
     ) {
-        this.latticePoint = latticePoint;
         this.neighbourhoodType = neighbourhoodType;
-        this.max = ctx.getWorldDimensions();
-        this.neighbourhood = getNeighbourhood();
+        this.maxX = maxX;
+        this.maxY = maxY;
+        this.x = x;
+        this.y = y;
+        this.neighbourhood = getNeighbourhoodPoints();
     }
 
     /**
@@ -28,21 +36,40 @@ public class LatticeNeighbourhood {
      *
      * @return The Set of Points belonging to the Neighbourhood of the position given by this Point Object.
      */
-    private LatticePoint[] getNeighbourhood() {
-        LatticePoint[] neighbourhood = new LatticePoint[9];
-        int maxX = max.getX();
-        int maxY = max.getY();
-        int x = latticePoint.getX();
-        int y = latticePoint.getY();
-        neighbourhood[0] = new LatticePoint((x + maxX - 1) % maxX, (y + maxY - 1) % maxY);
-        neighbourhood[1] = new LatticePoint((x + maxX - 1) % maxX, y);
-        neighbourhood[2] = new LatticePoint((x + maxX - 1) % maxX, (y + maxY + 1) % maxY);
-        neighbourhood[3] = new LatticePoint(x, (y + maxY - 1) % maxY);
-        neighbourhood[4] = new LatticePoint(x, y);
-        neighbourhood[5] = new LatticePoint(x, (y + maxY + 1) % maxY);
-        neighbourhood[6] = new LatticePoint((x + maxX + 1) % maxX, (y + maxY - 1) % maxY);
-        neighbourhood[7] = new LatticePoint((x + maxX + 1) % maxX, y);
-        neighbourhood[8] = new LatticePoint((x + maxX + 1) % maxX, (y + maxY + 1) % maxY);
-        return neighbourhood;
+    private LatticePoint[] getNeighbourhoodPoints() {
+        LatticePointNeighbourhoodPosition[] positions = LatticePointNeighbourhoodPosition.getNeighbourhoodFor(neighbourhoodType);
+        this.neighbourhood = new LatticePoint[positions.length];
+        for(int i = 0; i < positions.length; i++){
+            this.neighbourhood[i] = new LatticePoint(
+                (x + maxX + positions[i].getX()) % maxX,
+                (y + maxY + positions[i].getY()) % maxY
+            );
+        }
+        return this.neighbourhood;
     }
+
+    public static LatticePoint[] get(int worldX, int worldY, int myX, int myY) {
+        LatticeNeighbourhoodType neighbourhoodType = LatticeNeighbourhoodType.MOORE_NEIGHBORHOOD;
+        LatticeNeighbourhood n = new LatticeNeighbourhood(worldX, worldY, myX, myY, neighbourhoodType);
+        return n.getNeighbourhoodPoints();
+    }
+
+    public static LatticePoint[] getMoore(int worldX, int worldY, int myX, int myY) {
+        LatticeNeighbourhoodType neighbourhoodType = LatticeNeighbourhoodType.MOORE_NEIGHBORHOOD;
+        LatticeNeighbourhood n = new LatticeNeighbourhood(worldX, worldY, myX, myY, neighbourhoodType);
+        return n.getNeighbourhoodPoints();
+    }
+
+    public static LatticePoint[] getVonNeumann(int worldX, int worldY, int myX, int myY) {
+        LatticeNeighbourhoodType neighbourhoodType = LatticeNeighbourhoodType.VON_NEUMANN_NEIGHBORHOOD;
+        LatticeNeighbourhood n = new LatticeNeighbourhood(worldX, worldY, myX, myY, neighbourhoodType);
+        return n.getNeighbourhoodPoints();
+    }
+
+    public static LatticePoint[] getWoehlke(int worldX, int worldY, int myX, int myY) {
+        LatticeNeighbourhoodType neighbourhoodType = LatticeNeighbourhoodType.WOEHLKE_NEIGHBORHOOD;
+        LatticeNeighbourhood n = new LatticeNeighbourhood(worldX, worldY, myX, myY, neighbourhoodType);
+        return n.getNeighbourhoodPoints();
+    }
+
 }

@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.widgets;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -12,12 +13,15 @@ import javax.swing.border.CompoundBorder;
 
 @Log
 @Getter
+@ToString(exclude={"border","layout","startButton","stopButton"})
 public class StartStopButtonsPanel extends JPanel implements Startable, GuiComponentTab {
 
     private final JButton startButton;
     private final JButton stopButton;
     private final StartStopButtonsPanelLayout layout;
     private final CompoundBorder border;
+    private boolean startButtonEnabled;
+    private boolean stopButtonEnabled;
 
     public StartStopButtonsPanel(Tab tab){
         String labelStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();

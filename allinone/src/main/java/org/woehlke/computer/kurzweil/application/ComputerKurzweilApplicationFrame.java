@@ -59,21 +59,14 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
         return tabbedPane.getApps();
     }
 
-    private Bounds getMyBounds(){
-        double height = rootPane.getHeight();
-        double width = rootPane.getWidth();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        return new Bounds(height,width,screenSize);
-    }
-
     public void showMe() {
         pack();
-        Bounds bounds = getMyBounds();
+        Bounds frameBounds = Bounds.getFrameBounds(rootPane);
         this.setBounds(
-            bounds.getMystartX(),
-            bounds.getMystartY(),
-            bounds.getMywidth(),
-            bounds.getMyheight()
+            frameBounds.getMyStartX(),
+            frameBounds.getMyStartY(),
+            frameBounds.getMyWidth(),
+            frameBounds.getMyHeight()
         );;
         tabbedPane.showMe();
         this.setVisible(true);

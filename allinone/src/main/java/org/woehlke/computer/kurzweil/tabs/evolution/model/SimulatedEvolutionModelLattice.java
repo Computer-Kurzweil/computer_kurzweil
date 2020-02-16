@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.evolution.model;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -115,7 +116,7 @@ public class SimulatedEvolutionModelLattice implements Startable {
    * @see CellLifeCycle
    */
   public int eat(LatticePoint position) {
-    LatticePoint[] neighbourhood = LatticePoint.getNeighbourhood(
+    LatticePoint[] neighbourhood = LatticeNeighbourhood.get(
         worldX,worldY,position.getX(),position.getY()
     );
     int food = 0;
