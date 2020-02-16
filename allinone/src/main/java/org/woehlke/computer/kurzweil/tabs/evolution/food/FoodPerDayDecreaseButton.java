@@ -17,6 +17,7 @@ public class FoodPerDayDecreaseButton extends JButton {
     private final String labelFoodPerDayDecrease;
 
     public FoodPerDayDecreaseButton(SimulatedEvolutionContext tabCtx) {
+        super(tabCtx.getCtx().getProperties().getEvolution().getFood().getButtonFoodPerDayDecrease());
         this.tabCtx = tabCtx;
         this.labelFoodPerDayDecrease = this.tabCtx.getCtx().getProperties().getEvolution().getFood().getButtonFoodPerDayDecrease();
     }
