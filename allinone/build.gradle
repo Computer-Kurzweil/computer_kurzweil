@@ -25,6 +25,9 @@ shadowJar {
     manifest {
         attributes "Main-Class": "org.woehlke.computer.kurzweil.ComputerKurzweilApplication"
     }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 jar {
