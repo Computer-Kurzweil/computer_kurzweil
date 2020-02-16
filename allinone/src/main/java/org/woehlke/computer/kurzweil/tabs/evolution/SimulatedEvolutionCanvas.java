@@ -21,8 +21,8 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionWorldColor.COLOR_FOOD;
-import static org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionWorldColor.COLOR_WATER;
+import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**
@@ -58,7 +58,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @ToString.Exclude
     private final SimulatedEvolutionTab tab;
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
-    private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private final SimulatedEvolutionButtonRowPanel buttonRowPanel;
     private final SimulatedEvolutionModel world;
 
     private final static int startX = 0;
@@ -76,7 +76,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.border = this.tabCtx.getCtx().getBorder();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
-        this.panelButtons = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
+        this.buttonRowPanel = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
         this.setBorder(border);
@@ -143,8 +143,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         log.info("update");
         String getFoodPerDay = tabCtx.getSimulatedEvolution().getFoodPerDay()+"";
         boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
-        this.panelButtons.getFoodPanel().getFoodPerDayField().setText(getFoodPerDay);
-        this.panelButtons.getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
+        this.buttonRowPanel.getFoodPanel().getFoodPerDayField().setText(getFoodPerDay);
+        this.buttonRowPanel.getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
         log.info("updated");
     }
 

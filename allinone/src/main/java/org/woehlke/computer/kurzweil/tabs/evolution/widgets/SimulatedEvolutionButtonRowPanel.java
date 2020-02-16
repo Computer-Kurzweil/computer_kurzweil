@@ -1,16 +1,18 @@
 package org.woehlke.computer.kurzweil.tabs.evolution.widgets;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 
 import javax.swing.*;
 
 @Log
 @Getter
+@ToString(callSuper = true)
 public class SimulatedEvolutionButtonRowPanel extends JPanel {
 
+    @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final FoodPanel foodPanel;
     private final GardenOfEdenPanel gardenOfEdenPanel;
