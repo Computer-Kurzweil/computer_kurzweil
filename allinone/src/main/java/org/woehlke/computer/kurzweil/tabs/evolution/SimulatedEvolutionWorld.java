@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.evolution;
 
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
@@ -31,11 +32,13 @@ import java.util.List;
  */
 @Log
 @Getter
+@ToString
 public class SimulatedEvolutionWorld implements Startable, TabModel {
 
     /**
     * List of the Simulated Bacteria Cells.
     */
+    @ToString.Exclude
     private List<Cell> cells;
 
     private final SimulatedEvolutionContext appCtx;

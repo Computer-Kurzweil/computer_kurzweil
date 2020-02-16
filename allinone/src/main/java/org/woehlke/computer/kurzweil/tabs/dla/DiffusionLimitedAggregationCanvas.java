@@ -31,7 +31,6 @@ import java.util.List;
 @Log
 @Getter
 @ToString(callSuper = true)
-//@ToString(exclude={"border","preferredSize","layout","particles","worldMap"})
 @EqualsAndHashCode(callSuper=true)
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {

@@ -1,31 +1,29 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 
-
 import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 
 @Log
 @Getter
+@ToString
 public class SimulatedEvolutionContext implements TabContext {
 
     private final TabType tabType = SIMULATED_EVOLUTION;
-    private final SimulatedEvolution simulatedEvolution;
+    @ToString.Exclude
     private final ComputerKurzweilApplicationContext ctx;
-    private final SimulatedEvolutionTab tab;
-
-    @Setter
-    private SimulatedEvolutionCanvas canvas;
-
-    @Setter
-    private SimulatedEvolutionWorld stepper;
-
+    @ToString.Exclude
     private SimulatedEvolutionController controller;
+    @ToString.Exclude
+    private final SimulatedEvolutionTab tab;
+    private final SimulatedEvolution simulatedEvolution;
+    private SimulatedEvolutionCanvas canvas;
+    private SimulatedEvolutionWorld stepper;
 
     public SimulatedEvolutionContext(
         SimulatedEvolutionTab tab
