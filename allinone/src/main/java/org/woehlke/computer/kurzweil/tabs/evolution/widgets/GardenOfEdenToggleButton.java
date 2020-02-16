@@ -10,7 +10,7 @@ import javax.swing.*;
 @Log
 @Getter
 @ToString(callSuper = true)
-public class GardenOfEdenToggleButton extends JButton {
+public class GardenOfEdenToggleButton extends JToggleButton {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;

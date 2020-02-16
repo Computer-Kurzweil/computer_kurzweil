@@ -32,4 +32,7 @@ public class FoodButtonRow extends JPanel {
         this.add(gardenOfEdenPanel);
     }
 
+    public void toggleGardenOfEden() {
+        this.gardenOfEdenPanel.toggleGardenOfEden();
+    }
 }

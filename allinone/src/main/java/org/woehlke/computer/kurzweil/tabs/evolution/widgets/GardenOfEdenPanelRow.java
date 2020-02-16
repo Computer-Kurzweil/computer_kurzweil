@@ -31,6 +31,10 @@ public class GardenOfEdenPanelRow extends JPanel {
 
     public void setSelected(boolean selected) {
         this.gardenOfEdenEnabled.setSelected(selected);
-        this.buttonToggleGardenOfEden.doClick();
+    }
+
+    public void toggleGardenOfEden() {
+        boolean selected = buttonToggleGardenOfEden.isSelected();
+        this.buttonToggleGardenOfEden.setSelected(!selected);
     }
 }

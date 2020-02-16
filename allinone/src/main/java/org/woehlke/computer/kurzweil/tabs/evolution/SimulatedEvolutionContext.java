@@ -59,6 +59,7 @@ public class SimulatedEvolutionContext implements TabContext {
     public void toggleGardenOfEden() {
         this.simulatedEvolution.toggleGardenOfEden();
         this.stepper.toggleGardenOfEden();
+        this.canvas.toggleGardenOfEden();
     }
 
     public void stopController() {

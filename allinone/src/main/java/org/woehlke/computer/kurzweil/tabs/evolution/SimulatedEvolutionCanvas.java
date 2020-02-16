@@ -84,6 +84,10 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.setPreferredSize(preferredSize);
     }
 
+    public void toggleGardenOfEden() {
+        this.buttonRowPanel.toggleGardenOfEden();
+    }
+
   /**
    * Paint the World on the Canvas and show Food and Bacteria Cells.
    *
