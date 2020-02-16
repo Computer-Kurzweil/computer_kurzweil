@@ -19,13 +19,13 @@ public class PopulationStatisticsElement extends JPanel {
     private final String defaultTextField = "0";
 
     public PopulationStatisticsElement(String label, CellLifeCycleStatus lifeCycleStatus) {
-        this.lifeCycleStatus = lifeCycleStatus;
         this.label = new JLabel(label);
+        this.lifeCycleStatus = lifeCycleStatus;
         this.statistics = new JTextField(defaultTextField,cols);
         this.add(this.label);
         this.add(this.statistics);
-        this.setBackground(this.lifeCycleStatus.getColorBackground());
-        this.setForeground(this.lifeCycleStatus.getColorForeground());
+        statistics.setBackground(this.lifeCycleStatus.getColorBackground());
+        statistics.setForeground(this.lifeCycleStatus.getColorForeground());
     }
 
     public void setText(int value){

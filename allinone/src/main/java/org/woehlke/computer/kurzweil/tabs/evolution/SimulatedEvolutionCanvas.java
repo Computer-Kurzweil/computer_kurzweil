@@ -56,8 +56,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @ToString.Exclude
     private final SimulatedEvolutionTab tab;
     private final PopulationStatistics statisticsPanel;
-    private final SimulatedEvolutionButtons buttonRowPanel;
-    private final SimulatedEvolutionModel world;
+    private final SimulatedEvolutionCanvasButtons buttonRowPanel;
+    private final SimulatedEvolutionWorld world;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -72,9 +72,9 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.border = this.tabCtx.getCtx().getBorder();
-        this.world = new SimulatedEvolutionModel(this.tabCtx);
+        this.world = new SimulatedEvolutionWorld(this.tabCtx);
         this.statisticsPanel = new PopulationStatistics(this.tabCtx);
-        this.buttonRowPanel = new SimulatedEvolutionButtons(this.tabCtx);
+        this.buttonRowPanel = new SimulatedEvolutionCanvasButtons(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
         this.setBorder(border);

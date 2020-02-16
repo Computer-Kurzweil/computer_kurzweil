@@ -21,7 +21,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final SimulatedEvolutionContext tabCtx;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final PopulationStatistics statisticsPanel;
-    private final SimulatedEvolutionButtons buttonRowPanel;
+    private final SimulatedEvolutionCanvasButtons buttonRowPanel;
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {

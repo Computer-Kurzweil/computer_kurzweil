@@ -23,7 +23,7 @@ import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
  */
 @Log
 @Getter
-public class SimulatedEvolutionModelLattice implements Startable {
+public class SimulatedEvolutionWorldLattice implements Startable {
 
   /**
    * Grid of World where every Place can have food.
@@ -41,7 +41,7 @@ public class SimulatedEvolutionModelLattice implements Startable {
 
     private boolean gardenOfEdenEnabled;
 
-  public SimulatedEvolutionModelLattice(
+  public SimulatedEvolutionWorldLattice(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;

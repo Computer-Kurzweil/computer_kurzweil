@@ -23,7 +23,7 @@ public class SimulatedEvolutionContext implements TabContext {
     private SimulatedEvolutionCanvas canvas;
 
     @Setter
-    private SimulatedEvolutionModel stepper;
+    private SimulatedEvolutionWorld stepper;
 
     private SimulatedEvolutionController controller;
 

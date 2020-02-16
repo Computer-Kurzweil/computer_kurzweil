@@ -5,7 +5,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionStatistics;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionCanvasStatistics;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -26,7 +26,7 @@ public class PopulationStatistics extends JPanel {
     private final PopulationStatisticsElement oldCellsStatistics;
     private final PopulationStatisticsElement populationStatistics;
 
-    private final SimulatedEvolutionStatistics statistics;
+    private final SimulatedEvolutionCanvasStatistics statistics;
     private final String borderLabel;
     private final int initialPopulation;
 
@@ -36,8 +36,6 @@ public class PopulationStatistics extends JPanel {
     private final CompoundBorder border;
     @ToString.Exclude
     private final FlowLayout layoutSubPanel;
-    @ToString.Exclude
-    private final JPanel subPanel;
 
     public PopulationStatistics(
       SimulatedEvolutionContext tabCtx
@@ -47,8 +45,7 @@ public class PopulationStatistics extends JPanel {
         this.setLayout(layoutSubPanel);
         borderLabel = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
         border = this.tabCtx.getCtx().getBorder(borderLabel);
-        subPanel = new JPanel(layoutSubPanel);
-        subPanel.setBorder(border);
+        this.setBorder(border);
         initialPopulation = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation();
         ComputerKurzweilProperties.Evolution.Population cfg = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation();
         youngCellsStatistics = new PopulationStatisticsElement(cfg.getYoungCellsLabel(),YOUNG);
@@ -67,10 +64,9 @@ public class PopulationStatistics extends JPanel {
             populationStatistics
         };
         for(PopulationStatisticsElement ps :statistics){
-            subPanel.add(ps);
+            this.add(ps);
         }
-        this.add(subPanel);
-        this.statistics = new SimulatedEvolutionStatistics(  this.tabCtx );
+        this.statistics = new SimulatedEvolutionCanvasStatistics(  this.tabCtx );
     }
 
     public void update() {

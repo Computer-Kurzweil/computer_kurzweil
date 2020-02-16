@@ -12,7 +12,7 @@ import java.awt.*;
 @Log
 @Getter
 @ToString(callSuper = true)
-public class SimulatedEvolutionButtons extends JPanel {
+public class SimulatedEvolutionCanvasButtons extends JPanel {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
@@ -20,7 +20,7 @@ public class SimulatedEvolutionButtons extends JPanel {
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
     private final FlowLayout layout;
 
-    public SimulatedEvolutionButtons(
+    public SimulatedEvolutionCanvasButtons(
         SimulatedEvolutionContext tabCtx
     ) {
         this.tabCtx = tabCtx;

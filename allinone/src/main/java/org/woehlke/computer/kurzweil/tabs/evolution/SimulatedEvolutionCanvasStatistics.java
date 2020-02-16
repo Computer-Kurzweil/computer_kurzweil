@@ -6,7 +6,7 @@ import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutio
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Log
-public class SimulatedEvolutionStatistics {
+public class SimulatedEvolutionCanvasStatistics {
 
   private final ConcurrentLinkedQueue<SimulatedEvolutionPopulationCensus> statistics = new ConcurrentLinkedQueue<>();
 
@@ -14,7 +14,7 @@ public class SimulatedEvolutionStatistics {
 
   private final SimulatedEvolutionContext appCtx;
 
-  public SimulatedEvolutionStatistics(
+  public SimulatedEvolutionCanvasStatistics(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;

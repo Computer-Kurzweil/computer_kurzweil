@@ -21,7 +21,7 @@ import java.util.List;
  * Date: 04.02.2006
  * Time: 19:06:20
  * @see Cell
- * @see SimulatedEvolutionModelLattice
+ * @see SimulatedEvolutionWorldLattice
  * <p>
  * Simulated Evolution.
  * Artificial Life Simulation of Bacteria Motion depending on DNA.
@@ -31,7 +31,7 @@ import java.util.List;
  */
 @Log
 @Getter
-public class SimulatedEvolutionModel implements Startable, TabModel {
+public class SimulatedEvolutionWorld implements Startable, TabModel {
 
     /**
     * List of the Simulated Bacteria Cells.
@@ -39,15 +39,15 @@ public class SimulatedEvolutionModel implements Startable, TabModel {
     private List<Cell> cells;
 
     private final SimulatedEvolutionContext appCtx;
-    private final SimulatedEvolutionModelLattice worldLattice;
-    private final SimulatedEvolutionStatistics statisticsContainer;
+    private final SimulatedEvolutionWorldLattice worldLattice;
+    private final SimulatedEvolutionCanvasStatistics statisticsContainer;
 
-  public SimulatedEvolutionModel(
+  public SimulatedEvolutionWorld(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;
-      this.worldLattice = new SimulatedEvolutionModelLattice(  this.appCtx);
-      this.statisticsContainer = new SimulatedEvolutionStatistics( this.appCtx);
+      this.worldLattice = new SimulatedEvolutionWorldLattice(  this.appCtx);
+      this.statisticsContainer = new SimulatedEvolutionCanvasStatistics( this.appCtx);
       cells = new ArrayList<>();
       createInitialPopulation();
   }
