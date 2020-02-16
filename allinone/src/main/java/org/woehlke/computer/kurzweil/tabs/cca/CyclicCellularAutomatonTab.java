@@ -14,11 +14,12 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"tabCtx"})
+@ToString(callSuper = true)
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
-    private final CyclicCellularAutomatonCanvas canvas;
+    @ToString.Exclude
     private final CyclicCellularAutomatonContext tabCtx;
+    private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
     protected final StartStopButtonsPanel startStopButtonsPanel;
 
@@ -74,6 +75,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         log.info("showMe");
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
+        log.info("this: "+this.toString());
         log.info("showMe with canvas x="+x+" y="+y);
     }
 

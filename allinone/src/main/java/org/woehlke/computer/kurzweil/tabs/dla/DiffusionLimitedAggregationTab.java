@@ -12,9 +12,10 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"tabCtx"})
+@ToString(callSuper = true)
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
+    @ToString.Exclude
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
@@ -61,8 +62,10 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
     @Override
     public void showMe() {
+        log.info("showMe" );
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
+        log.info("this: "+this.toString());
         log.info("showMe with canvas x="+x+" y="+y);
     }
 

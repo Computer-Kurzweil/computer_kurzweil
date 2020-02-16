@@ -14,13 +14,15 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"tabCtx"})
+@ToString(callSuper = true)
 public class MandelbrotTab extends TabPanel implements Tab {
 
+    @ToString.Exclude
     private final MandelbrotContext tabCtx;
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
     private final StartStopButtonsPanel startStopButtonsPanel;
+
     public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
         super(ctx, TabType.MANDELBROT_SET, ctx.getProperties().getMandelbrot().getView().getSubtitle(),ctx.getProperties().getMandelbrot().getView().getTitle());
         this.setLayout(new TabLayout(this));
@@ -72,6 +74,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
         log.info("showMe");
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
+        log.info("this: "+this.toString());
         log.info("showMe with canvas x="+x+" y="+y);
         //this.setVisible(true);
     }

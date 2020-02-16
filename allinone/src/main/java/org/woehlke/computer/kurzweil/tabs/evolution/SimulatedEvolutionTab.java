@@ -19,10 +19,10 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"tabCtx"})
+@ToString(callSuper = true)
 public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
-
+    @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final StartStopButtonsPanel startStopButtonsPanel;
     private final SimulatedEvolutionStatisticsPanel statisticsPanel;
@@ -79,6 +79,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         log.info("showMe");
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
+        log.info("this: "+this.toString());
         log.info("showMe with canvas x="+x+" y="+y);
     }
 

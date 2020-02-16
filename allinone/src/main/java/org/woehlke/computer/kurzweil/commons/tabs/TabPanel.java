@@ -13,15 +13,20 @@ import javax.swing.border.CompoundBorder;
 
 @Log
 @Getter
-@ToString(exclude={"ctx","border","layout","panelSubtitle"})
+@ToString
 public abstract class TabPanel extends JPanel implements Tab {
 
+    @ToString.Exclude
     protected final ComputerKurzweilApplicationContext ctx;
+    @ToString.Exclude
     protected final CompoundBorder border;
+    @ToString.Exclude
     protected final TabLayout layout;
+    @ToString.Exclude
+    protected final PanelSubtitle panelSubtitle;
+
     protected final String title;
     protected final String subTitle;
-    protected final PanelSubtitle panelSubtitle;
 
     protected final TabType tabType;
 

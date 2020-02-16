@@ -4,9 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.*;
 import lombok.extern.java.Log;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -66,6 +63,7 @@ public class ComputerKurzweilProperties {
     }
 
     ////@Validated
+    @ToString
     public static class Mandelbrot {
 
         @Valid
@@ -340,8 +338,8 @@ public class ComputerKurzweilProperties {
 
     public static ComputerKurzweilProperties propertiesFactory(String conf, String jar){
         log.info("propertiesFactory");
-        log.info("propertiesFactory conf"+conf);
-        log.info("propertiesFactory jar"+jar);
+        log.info("propertiesFactory conf: "+conf);
+        log.info("propertiesFactory jar:  "+jar);
         ComputerKurzweilProperties properties;
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
@@ -349,7 +347,7 @@ public class ComputerKurzweilProperties {
             JarEntry entry = jarFile.getJarEntry(conf);
             InputStream input = jarFile.getInputStream(entry);
             properties = mapper.readValue(input, ComputerKurzweilProperties.class);
-            log.info(ReflectionToStringBuilder.toString(properties, ToStringStyle.MULTI_LINE_STYLE));
+            log.info(properties.toString());
         } catch (Exception e) {
             e.printStackTrace();
             properties = new ComputerKurzweilProperties();
