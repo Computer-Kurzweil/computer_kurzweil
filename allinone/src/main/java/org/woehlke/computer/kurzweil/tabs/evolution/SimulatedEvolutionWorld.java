@@ -32,7 +32,7 @@ import java.util.List;
  */
 @Log
 @Getter
-@ToString
+@ToString(exclude={"cells","appCtx"})
 public class SimulatedEvolutionWorld implements Startable, TabModel {
 
     /**
