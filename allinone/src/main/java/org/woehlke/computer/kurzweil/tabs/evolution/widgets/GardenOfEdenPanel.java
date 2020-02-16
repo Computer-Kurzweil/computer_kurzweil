@@ -4,10 +4,10 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.layouts.GardenOfEdenPanelLayout;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
+import java.awt.*;
 
 @Log
 @Getter
@@ -20,7 +20,7 @@ public class GardenOfEdenPanel extends JPanel {
     private final CompoundBorder gardenOfEdenPanelBorder;
 
     public GardenOfEdenPanel(SimulatedEvolutionContext tabCtx) {
-        super(new GardenOfEdenPanelLayout());
+        super(new FlowLayout());
         this.tabCtx=tabCtx;
         this.gardenOfEdenPanelBorderLabel = tabCtx.getCtx().getProperties().getEvolution().getGardenOfEden().getPanelGardenOfEden();
         this.gardenOfEdenPanelBorder = this.tabCtx.getCtx().getBorder(gardenOfEdenPanelBorderLabel);

@@ -26,7 +26,10 @@ public enum CellLifeCycleStatus {
   FULL_AGE(RED, BLACK),
   HUNGRY(LIGHT_GRAY, BLACK),
   OLD(DARK_GRAY, WHITE),
-  DEAD(BLACK, BLACK);
+  DEAD(BLACK, BLACK),
+  POPULATION(WHITE,BLACK);
+
+
 
   private Color color;
   private Color colorFont;

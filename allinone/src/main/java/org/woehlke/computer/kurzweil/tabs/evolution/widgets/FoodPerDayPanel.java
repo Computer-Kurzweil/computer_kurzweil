@@ -4,10 +4,10 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.layouts.FoodPanelLayout;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
+import java.awt.*;
 
 @Log
 @Getter
@@ -25,7 +25,7 @@ public class FoodPerDayPanel extends JPanel {
     private final FoodPerDayDecreaseButton foodPerDayDecreaseButton;
 
     public FoodPerDayPanel(SimulatedEvolutionContext tabCtx) {
-        super(new FoodPanelLayout());
+        super(new FlowLayout());
         this.tabCtx = tabCtx;
         this.foodPerDayLabel = new FoodPerDayLabel(this.tabCtx);
         this.foodPerDayTextField = new FoodPerDayTextField(this.tabCtx);
@@ -38,5 +38,9 @@ public class FoodPerDayPanel extends JPanel {
         this.add(this.foodPerDayTextField);
         this.add(this.foodPerDayIncreaseButton);
         this.add(this.foodPerDayDecreaseButton);
+    }
+
+    public void setFoodPerDay(int foodPerDay){
+        this.foodPerDayTextField.setFoodPerDay(foodPerDay);
     }
 }

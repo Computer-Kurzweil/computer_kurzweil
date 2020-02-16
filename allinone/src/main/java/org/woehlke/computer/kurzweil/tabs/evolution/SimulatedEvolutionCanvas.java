@@ -7,8 +7,6 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.Cell;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionButtonRowPanel;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionStatisticsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionModel;
@@ -57,8 +55,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final Dimension preferredSize;
     @ToString.Exclude
     private final SimulatedEvolutionTab tab;
-    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
-    private final SimulatedEvolutionButtonRowPanel buttonRowPanel;
+    private final PopulationStatistics statisticsPanel;
+    private final FoodButtonRow buttonRowPanel;
     private final SimulatedEvolutionModel world;
 
     private final static int startX = 0;
@@ -75,8 +73,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.border = this.tabCtx.getCtx().getBorder();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
-        this.statisticsPanel = new SimulatedEvolutionStatisticsPanel(this.tabCtx);
-        this.buttonRowPanel = new SimulatedEvolutionButtonRowPanel(this.tabCtx);
+        this.statisticsPanel = new PopulationStatistics(this.tabCtx);
+        this.buttonRowPanel = new FoodButtonRow(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
         this.setBorder(border);
@@ -141,10 +139,10 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @Override
     public void update() {
         log.info("update");
-        String getFoodPerDay = tabCtx.getSimulatedEvolution().getFoodPerDay()+"";
+        int getFoodPerDay = tabCtx.getSimulatedEvolution().getFoodPerDay();
         boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
-        this.buttonRowPanel.getFoodPanel().getFoodPerDayField().setText(getFoodPerDay);
-        this.buttonRowPanel.getGardenOfEdenPanel().getGardenOfEdenEnabled().setSelected(selected);
+        this.buttonRowPanel.getFoodPerDayPanel().setFoodPerDay(getFoodPerDay);
+        this.buttonRowPanel.getGardenOfEdenPanel().setSelected(selected);
         log.info("updated");
     }
 

@@ -26,4 +26,8 @@ public class FoodPerDayTextField extends JTextField {
         this.foodPerDayTextFieldString = this.tabCtx.getCtx().getProperties().getEvolution().getFood().getFoodPerDay()+"";
         this.foodPerDayTextFieldCols = this.tabCtx.getCtx().getProperties().getEvolution().getFood().getFoodPerDayFieldColumns();
     }
+
+    public void setFoodPerDay(int foodPerDay){
+        this.setText(""+foodPerDay);
+    }
 }

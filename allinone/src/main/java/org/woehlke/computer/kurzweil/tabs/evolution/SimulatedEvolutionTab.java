@@ -6,8 +6,6 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionButtonRowPanel;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvolutionStatisticsPanel;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import java.awt.event.ActionEvent;
@@ -21,8 +19,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final StartStopButtonsPanel startStopButtonsPanel;
-    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
-    private final SimulatedEvolutionButtonRowPanel buttonRowPanel;
+    private final PopulationStatistics statisticsPanel;
+    private final FoodButtonRow buttonRowPanel;
     private final SimulatedEvolutionCanvas canvas;
 
     public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
@@ -39,8 +37,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.add(this.statisticsPanel);
         this.add(this.buttonRowPanel);
         this.add(this.startStopButtonsPanel);
-        this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayIncrease().addActionListener(this);
-        this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayDecrease().addActionListener(this);
+        this.buttonRowPanel.getFoodPerDayPanel().getFoodPerDayIncreaseButton().addActionListener(this);
+        this.buttonRowPanel.getFoodPerDayPanel().getFoodPerDayDecreaseButton().addActionListener(this);
         this.buttonRowPanel.getGardenOfEdenPanel().getButtonToggleGardenOfEden().addActionListener(this);
         this.ctx.getFrame().pack();
         this.startStopButtonsPanel.stop();
@@ -91,11 +89,11 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayIncrease()) {
+        if (ae.getSource() == this.buttonRowPanel.getFoodPerDayPanel().getFoodPerDayIncreaseButton()) {
             log.info("actionPerformed: increaseFoodPerDay");
             tabCtx.increaseFoodPerDay();
             this.canvas.update();
-        } else if (ae.getSource() == this.buttonRowPanel.getFoodPanel().getButtonFoodPerDayDecrease()) {
+        } else if (ae.getSource() == this.buttonRowPanel.getFoodPerDayPanel().getFoodPerDayDecreaseButton()) {
             log.info("actionPerformed: decreaseFoodPerDay");
             tabCtx.decreaseFoodPerDay();
             this.canvas.update();

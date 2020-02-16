@@ -4,10 +4,8 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.widgets.layouts.GardenOfEdenPanelLayout;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 
 @Log
 @Getter
@@ -29,5 +27,10 @@ public class GardenOfEdenPanelRow extends JPanel {
         this.gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
         this.gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
         this.add( this.gardenOfEdenPanel);
+    }
+
+    public void setSelected(boolean selected) {
+        this.gardenOfEdenEnabled.setSelected(selected);
+        this.buttonToggleGardenOfEden.doClick();
     }
 }
