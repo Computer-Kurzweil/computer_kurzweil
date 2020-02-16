@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"ctx","tabCtx","border","layout"})
+@ToString(exclude={"tabCtx"})
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
     private final CyclicCellularAutomatonCanvas canvas;

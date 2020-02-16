@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"ctx","tabCtx","border","layout"})
+@ToString(exclude={"tabCtx"})
 public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
 

@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(exclude={"ctx","tabCtx","border","layout"})
+@ToString(exclude={"tabCtx"})
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
     private final DiffusionLimitedAggregationContext tabCtx;
