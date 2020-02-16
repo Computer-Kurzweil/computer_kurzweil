@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.TuringPhase;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -16,6 +17,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  */
 @Log
 @Getter
+@ToString(callSuper = true)
 public class TuringPhaseStateMachine implements Startable {
 
     private TuringPhase turingTuringPhase;

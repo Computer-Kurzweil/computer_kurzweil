@@ -9,8 +9,8 @@ import java.awt.*;
 import java.io.Serializable;
 
 @Getter
-@ToString
 @EqualsAndHashCode
+@ToString(callSuper = true)
 public class CellStatus implements Serializable {
 
     public final static int YET_UNCOMPUTED = -1;

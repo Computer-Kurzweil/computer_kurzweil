@@ -14,7 +14,7 @@ import java.io.Serializable;
  * Created by tw on 18.08.15.
  */
 @Getter
-@ToString
+@ToString(callSuper = true)
 @EqualsAndHashCode
 @AllArgsConstructor
 public class ComplexNumber implements Serializable {

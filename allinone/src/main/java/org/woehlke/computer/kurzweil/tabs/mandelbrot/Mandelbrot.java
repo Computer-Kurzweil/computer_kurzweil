@@ -1,7 +1,9 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
@@ -25,16 +27,23 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.Applicat
  */
 @Log
 @Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode
 public class Mandelbrot implements Startable, TabModel {
 
     @Setter
-    private ApplicationState state;
-    private ApplicationState nextApplicationState;
+    private volatile ApplicationState state;
+    private volatile ApplicationState nextApplicationState;
+
+    @ToString.Exclude
     private final MandelbrotContext tabCtx;
+
+    @ToString.Exclude
+    private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
+    @ToString.Exclude
+    private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final TuringPositionsStateMachine turingPositionsStateMachine;
     private final TuringPhaseStateMachine turingPhaseStateMachine;
-    private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-    private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
 
     public Mandelbrot(
         MandelbrotContext tabCtx

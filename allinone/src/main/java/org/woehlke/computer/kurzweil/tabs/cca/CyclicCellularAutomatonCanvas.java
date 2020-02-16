@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.cca;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -31,33 +32,38 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.WOEHL
  */
 @Log
 @Getter
-@ToString(exclude={"lattice","colorScheme","tabCtx","border","layout","preferredSize"})
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper=true)
 public class CyclicCellularAutomatonCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private volatile LatticeNeighbourhoodType neighbourhoodType;
+    @ToString.Exclude
+    private final CyclicCellularAutomatonContext tabCtx;
+    @ToString.Exclude
+    private final CyclicCellularAutomatonColorScheme colorScheme;
+    @ToString.Exclude
+    private final CompoundBorder border;
+    @ToString.Exclude
+    private final CanvasLayout layout;
+    @ToString.Exclude
+    private final Dimension preferredSize;
 
+    @ToString.Exclude
     private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
-
-    private final int versions;
+    private volatile LatticeNeighbourhoodType neighbourhoodType;
     private Boolean running;
 
+    private final int versions;
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
-    //private final int canvasX;
-    //private final int canvasY;
 
-    private final CyclicCellularAutomatonContext tabCtx;
-    private final CyclicCellularAutomatonColorScheme colorScheme;
-    private final CompoundBorder border;
-    private final CanvasLayout layout;
-    private final Dimension preferredSize;
+
 
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
@@ -106,8 +112,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Override
     public void showMe() {
         log.info("showMe");
-        //this.setVisible(true);
-        //repaint();
+        log.info("this: "+this.toString());
     }
 
     public void start() {
@@ -116,6 +121,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         synchronized (running) {
             running = Boolean.TRUE;
         }
+        log.info("this: "+this.toString());
         log.info("started");
     }
 
@@ -124,6 +130,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         synchronized (running) {
             running = Boolean.FALSE;
         }
+        log.info("this: "+this.toString());
         log.info("stopped");
     }
 

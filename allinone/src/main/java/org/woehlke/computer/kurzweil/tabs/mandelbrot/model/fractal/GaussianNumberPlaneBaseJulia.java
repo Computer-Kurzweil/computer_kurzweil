@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal;
 
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
@@ -17,11 +18,14 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.Comput
 
 @Log
 @Getter
+@ToString(callSuper = true)
 public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase {
 
+    private final ZoomLevel zoomLevel;
+
+    @ToString.Exclude
     private Deque<ComputingPlan> complexCenterForZoomedJulia = new ArrayDeque<>();
 
-    private final ZoomLevel zoomLevel;
     private ComplexNumber complexNumberForJuliaSetC;
 
     public GaussianNumberPlaneBaseJulia(MandelbrotContext tabCtx) {

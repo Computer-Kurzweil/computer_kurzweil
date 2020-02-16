@@ -1,6 +1,8 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
@@ -38,22 +40,31 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.widgets.SimulatedEvol
  */
 @Log
 @Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper=true)
 public class SimulatedEvolutionCanvas extends JComponent implements
     Serializable, TabCanvas, Startable {
 
     private static final long serialVersionUID = -27002509360079509L;
+
+    @ToString.Exclude
+    private final SimulatedEvolutionContext tabCtx;
+    @ToString.Exclude
+    private final CompoundBorder border;
+    @ToString.Exclude
+    private final CanvasLayout layout;
+    @ToString.Exclude
+    private final Dimension preferredSize;
+    @ToString.Exclude
+    private final SimulatedEvolutionTab tab;
+    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
+    private final SimulatedEvolutionButtonRowPanel panelButtons;
+    private final SimulatedEvolutionModel world;
+
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
-    private final SimulatedEvolutionTab tab;
-    private final SimulatedEvolutionModel world;
-    private final SimulatedEvolutionStatisticsPanel statisticsPanel;
-    private final SimulatedEvolutionButtonRowPanel panelButtons;
-    private final SimulatedEvolutionContext tabCtx;
-    private final CompoundBorder border;
-    private final Dimension preferredSize;
-    private final CanvasLayout layout;
 
     public SimulatedEvolutionCanvas(
         SimulatedEvolutionTab tab
@@ -124,6 +135,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @Override
     public void showMe() {
         log.info("showMe");
+        log.info("this: "+this.toString());
     }
 
     @Override
@@ -140,6 +152,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     public void start() {
         log.info("start");
         this.world.start();
+        log.info("this: "+this.toString());
         log.info("started");
     }
 
@@ -147,6 +160,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     public void stop() {
         log.info("stop");
         this.world.stop();
+        log.info("this: "+this.toString());
         log.info("stopped");
     }
 }

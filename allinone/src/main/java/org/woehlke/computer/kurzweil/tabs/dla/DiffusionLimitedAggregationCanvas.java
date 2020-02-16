@@ -30,18 +30,30 @@ import java.util.List;
  */
 @Log
 @Getter
-@ToString(exclude={"border","preferredSize","layout","particles","worldMap"})
+@ToString(callSuper = true)
+//@ToString(exclude={"border","preferredSize","layout","particles","worldMap"})
 @EqualsAndHashCode(callSuper=true)
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
+    @ToString.Exclude
     private final DiffusionLimitedAggregationContext tabCtx;
+    @ToString.Exclude
     private final CompoundBorder border;
+    @ToString.Exclude
     private final Dimension preferredSize;
+    @ToString.Exclude
     private final CanvasLayout layout;
+
+    @ToString.Exclude
+    private volatile List<LatticePoint> particles = new ArrayList<>();
+    @ToString.Exclude
+    private volatile int[][] worldMap;
+    private volatile int age=1;
+    private volatile long steps;
+
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
-
     private final int initialNumberOfParticles;
     private final int directions = 4;
     private final int directionsFirst = 0;
@@ -49,11 +61,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
-
-    private List<LatticePoint> particles = new ArrayList<>();
-    private int[][] worldMap;
-    private int age=1;
-    private long steps;
 
     public DiffusionLimitedAggregationCanvas(
         DiffusionLimitedAggregationContext tabCtx
@@ -177,6 +184,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     @Override
     public void showMe() {
         log.info("showMe");
+        log.info("this: "+this.toString());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
@@ -28,13 +30,21 @@ import java.awt.event.MouseListener;
  */
 @Log
 @Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper=true)
 public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseListener {
 
+    @ToString.Exclude
     private final MandelbrotContext tabCtx;
+    @ToString.Exclude
     private final CompoundBorder border;
+    @ToString.Exclude
     private final Dimension preferredSize;
+    @ToString.Exclude
     private final CanvasLayout layout;
+    @ToString.Exclude
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
+    @ToString.Exclude
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final Mandelbrot mandelbrot;
 
@@ -166,12 +176,13 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
 
     @Override
     public void update() {
-        //repaint();
+        log.info("update");
     }
 
     @Override
     public void showMe() {
-        //this.setVisible(true);
+        log.info("showMe");
+        log.info("this: "+this.toString());
     }
 
     @Override

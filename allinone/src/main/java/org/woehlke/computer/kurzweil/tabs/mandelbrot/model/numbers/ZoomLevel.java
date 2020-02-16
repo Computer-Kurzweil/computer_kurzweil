@@ -1,12 +1,16 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
+@Getter
+@ToString
+@EqualsAndHashCode
 public class ZoomLevel implements Serializable {
 
-    @Getter
     private int zoomLevel;
 
     public ZoomLevel(){

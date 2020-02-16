@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
@@ -18,14 +19,18 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  */
 @Log
 @Getter
+@ToString(callSuper = true)
 public class TuringPositionsStateMachine implements Startable {
+
+    @ToString.Exclude
     private final MandelbrotContext tabCtx;
-    private final LatticePoint wWorldDimensions;
 
     private int steps;
     private LatticePoint turingPosition;
     private LatticePoint firstSetPosition;
     private TuringDirection turingDirection;
+
+    private final LatticePoint wWorldDimensions;
 
     public TuringPositionsStateMachine(MandelbrotContext tabCtx) {
         this.tabCtx=tabCtx;

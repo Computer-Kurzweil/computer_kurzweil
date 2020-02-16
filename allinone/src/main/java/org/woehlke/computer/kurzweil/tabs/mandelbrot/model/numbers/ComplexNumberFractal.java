@@ -7,7 +7,7 @@ import java.io.Serializable;
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus.MAX_ITERATIONS;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 @EqualsAndHashCode
 @AllArgsConstructor
 public class ComplexNumberFractal implements Serializable {

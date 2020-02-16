@@ -22,9 +22,9 @@ import java.util.Random;
 @ToString(exclude={"random","frame"},callSuper=true)
 public class ComputerKurzweilApplicationContext implements Startable {
 
-    private final ComputerKurzweilProperties properties;
     private final Random random;
-    private ComputerKurzweilApplicationFrame frame;
+    private final ComputerKurzweilProperties properties;
+    private final ComputerKurzweilApplicationFrame frame;
 
     public ComputerKurzweilApplicationContext(
         ComputerKurzweilProperties computerKurzweilProperties,

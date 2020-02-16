@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ClickBehaviour;
@@ -23,16 +24,19 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  */
 @Getter
 @Setter
+@ToString(callSuper = true)
 public abstract class GaussianNumberPlaneBase implements Startable {
 
-    private final FractalSetType fractalSetType;
+    @ToString.Exclude
     protected final MandelbrotContext tabCtx;
+    private final FractalSetType fractalSetType;
+
+    private volatile int[][] lattice;
+    private volatile ComplexNumber zoomCenter;
+    private volatile ClickBehaviour clickBehaviour;
+
     private final int worldX;
     private final int worldY;
-
-    private int[][] lattice;
-    private ComplexNumber zoomCenter;
-    private ClickBehaviour clickBehaviour;
 
     protected GaussianNumberPlaneBase(
         MandelbrotContext tabCtx,

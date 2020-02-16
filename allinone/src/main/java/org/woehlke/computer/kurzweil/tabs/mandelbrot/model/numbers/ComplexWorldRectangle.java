@@ -8,7 +8,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 @EqualsAndHashCode
 @AllArgsConstructor
 public class ComplexWorldRectangle implements Serializable {
