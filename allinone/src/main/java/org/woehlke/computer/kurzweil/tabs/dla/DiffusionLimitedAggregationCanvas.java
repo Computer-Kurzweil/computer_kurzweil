@@ -70,8 +70,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setLayout(layout);
-        //this.setPreferredSize(preferredSize);
-        //this.setSize(worldX,worldY);
+        this.setPreferredSize(preferredSize);
+        this.setSize(worldX,worldY);
         this.setBounds(r);
         int x;
         int y;
