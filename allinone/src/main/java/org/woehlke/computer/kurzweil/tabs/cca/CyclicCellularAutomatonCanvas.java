@@ -45,7 +45,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @ToString.Exclude
     private final CyclicCellularAutomatonColorScheme colorScheme;
     @ToString.Exclude
-    private final Border border;
+    private final CompoundBorder border;
     @ToString.Exclude
     private final CanvasLayout layout;
     @ToString.Exclude

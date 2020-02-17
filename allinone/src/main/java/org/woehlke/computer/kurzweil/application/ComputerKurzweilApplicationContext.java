@@ -4,18 +4,15 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellCore;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.beans.Transient;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 @Log
@@ -43,20 +40,17 @@ public class ComputerKurzweilApplicationContext implements Startable {
     }
 
     @Transient
-    public Border getBorder(){
-        return BorderFactory.createEmptyBorder();
-        /*
+    public CompoundBorder getBorder(){
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
         return BorderFactory.createCompoundBorder(
-            BorderFactory.createEmptyBorder(),
-            BorderFactory.createEmptyBorder()
-            //BorderFactory.createEmptyBorder(top,left,bottom,right),
-            //BorderFactory.createEmptyBorder(top,left,bottom,right)
+            //BorderFactory.createEmptyBorder(),
+            //BorderFactory.createEmptyBorder()
+            BorderFactory.createEmptyBorder(top,left,bottom,right),
+            BorderFactory.createEmptyBorder(top,left,bottom,right)
         );
-        */
     }
 
     @Transient
@@ -87,7 +81,7 @@ public class ComputerKurzweilApplicationContext implements Startable {
         return new Rectangle( mystartX, mystartY, mywidth, myheight );
     }
 
-    /*
+
     @Transient
     public Rectangle getCanvasBounds(){
         int start=0;
@@ -98,7 +92,7 @@ public class ComputerKurzweilApplicationContext implements Startable {
         );
     }
 
-
+    /*
     @Transient
     public Dimension getLatticeDimension(){
         return new Dimension(

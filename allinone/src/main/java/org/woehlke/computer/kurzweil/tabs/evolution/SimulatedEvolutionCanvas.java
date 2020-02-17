@@ -49,7 +49,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     @ToString.Exclude
-    private final Border border;
+    private final CompoundBorder border;
     @ToString.Exclude
     private final CanvasLayout layout;
     @ToString.Exclude

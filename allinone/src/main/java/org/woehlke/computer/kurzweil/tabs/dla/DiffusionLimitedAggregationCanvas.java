@@ -37,7 +37,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
     private final DiffusionLimitedAggregationContext tabCtx;
-    private final Border border;
+    private final CompoundBorder border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
     private volatile List<LatticePoint> particles = new ArrayList<>();
@@ -66,7 +66,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = this.tabCtx.getCtx().getProperties().getDla().getControl().getNumberOfParticles();
         this.worldMap = new int[this.worldX][this.worldY];
-       // this.setBorder(border);
+        this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);

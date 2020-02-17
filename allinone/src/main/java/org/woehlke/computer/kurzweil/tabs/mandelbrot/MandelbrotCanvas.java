@@ -38,7 +38,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     @ToString.Exclude
     private final MandelbrotContext tabCtx;
     @ToString.Exclude
-    private final Border border;
+    private final CompoundBorder border;
     @ToString.Exclude
     private final Dimension preferredSize;
     @ToString.Exclude
