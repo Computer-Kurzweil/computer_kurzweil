@@ -12,6 +12,7 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -37,7 +38,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     @ToString.Exclude
     private final MandelbrotContext tabCtx;
     @ToString.Exclude
-    private final CompoundBorder border;
+    private final Border border;
     @ToString.Exclude
     private final Dimension preferredSize;
     @ToString.Exclude
@@ -182,7 +183,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     @Override
     public void showMe() {
         log.info("showMe");
-        log.info("this: "+this.toString());
+        //log.info("this: "+this.toString());
     }
 
     @Override

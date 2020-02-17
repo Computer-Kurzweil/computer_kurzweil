@@ -38,10 +38,7 @@ public class SimulatedEvolutionWorld implements Startable, TabModel {
     /**
     * List of the Simulated Bacteria Cells.
     */
-    @ToString.Exclude
     private List<Cell> cells;
-
-    @ToString.Exclude
     private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionWorldLattice worldLattice;
     private final SimulatedEvolutionCanvasStatistics statisticsContainer;

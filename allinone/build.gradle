@@ -1,8 +1,8 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
     id 'base'        // https://docs.gradle.org/current/userguide/base_plugin.html
     id 'java'        // https://docs.gradle.org/current/userguide/java_plugin.html
     id 'application' // https://docs.gradle.org/current/userguide/application_plugin.html
-    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 applicationName = 'kurzweil'
@@ -23,10 +23,7 @@ application {
 
 shadowJar {
     manifest {
-        attributes "Main-Class": "org.woehlke.computer.kurzweil.ComputerKurzweilApplication"
-    }
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        inheritFrom project.tasks.jar.manifest
     }
 }
 

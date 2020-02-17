@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.layouts.BoxLayoutVertical;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
+import javax.swing.border.Border;
 
 @Log
 @Getter
@@ -19,7 +19,7 @@ public abstract class TabPanel extends JPanel implements Tab {
     @ToString.Exclude
     protected final ComputerKurzweilApplicationContext ctx;
     @ToString.Exclude
-    protected final CompoundBorder border;
+    protected final Border border;
     @ToString.Exclude
     protected final BoxLayoutVertical layout;
     @ToString.Exclude
@@ -40,6 +40,6 @@ public abstract class TabPanel extends JPanel implements Tab {
         this.title = title;
         this.panelSubtitle = new PanelSubtitle(subTitle);
         this.setLayout(layout);
-        this.setBorder(border);
+        //this.setBorder(border);
     }
 }

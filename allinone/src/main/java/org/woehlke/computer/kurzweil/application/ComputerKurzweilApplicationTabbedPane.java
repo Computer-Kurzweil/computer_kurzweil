@@ -14,7 +14,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.List;
 
 @Log
 @Getter
-@ToString(exclude={"ctx","apps"},callSuper=true)
+@ToString(exclude={"ctx","apps","border"},callSuper=true)
 @EqualsAndHashCode(callSuper=true)
 public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implements Startable,
     GuiComponentTab {
@@ -33,12 +33,13 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     private final MandelbrotTab mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
     private final List<TabPanel> apps = new ArrayList<>();
+    private final Border border;
 
     public ComputerKurzweilApplicationTabbedPane(
         ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
-        CompoundBorder border = ctx.getBorder();
+        this.border = ctx.getBorder();
         this.setBorder(border);
         this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this.ctx);
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this.ctx);

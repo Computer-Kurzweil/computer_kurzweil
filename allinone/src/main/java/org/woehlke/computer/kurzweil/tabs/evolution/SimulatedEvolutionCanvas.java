@@ -13,6 +13,7 @@ import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatist
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.JComponent;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -48,7 +49,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     @ToString.Exclude
-    private final CompoundBorder border;
+    private final Border border;
     @ToString.Exclude
     private final CanvasLayout layout;
     @ToString.Exclude
@@ -137,7 +138,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @Override
     public void showMe() {
         log.info("showMe");
-        log.info("this: "+this.toString());
+        //log.info("this: "+this.toString());
     }
 
     @Override
@@ -154,7 +155,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     public void start() {
         log.info("start");
         this.world.start();
-        log.info("this: "+this.toString());
+        //log.info("this: "+this.toString());
         log.info("started");
     }
 
@@ -162,7 +163,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     public void stop() {
         log.info("stop");
         this.world.stop();
-        log.info("this: "+this.toString());
+        //log.info("this: "+this.toString());
         log.info("stopped");
     }
 }

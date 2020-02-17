@@ -12,6 +12,7 @@ import org.woehlke.computer.kurzweil.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.io.Serializable;
@@ -44,7 +45,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @ToString.Exclude
     private final CyclicCellularAutomatonColorScheme colorScheme;
     @ToString.Exclude
-    private final CompoundBorder border;
+    private final Border border;
     @ToString.Exclude
     private final CanvasLayout layout;
     @ToString.Exclude
@@ -63,8 +64,6 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-
-
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
@@ -77,7 +76,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.setBorder(border);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
-        this.setSize(preferredSize);
+        this.setSize(this.worldX,this.worldY);
         this.startWithNeighbourhoodVonNeumann();
         this.resetLattice();
         this.running = Boolean.FALSE;
@@ -112,7 +111,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     @Override
     public void showMe() {
         log.info("showMe");
-        log.info("this: "+this.toString());
+        //log.info("this: "+this.toString());
     }
 
     public void start() {
@@ -121,7 +120,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         synchronized (running) {
             running = Boolean.TRUE;
         }
-        log.info("this: "+this.toString());
+        //log.info("this: "+this.toString());
         log.info("started");
     }
 

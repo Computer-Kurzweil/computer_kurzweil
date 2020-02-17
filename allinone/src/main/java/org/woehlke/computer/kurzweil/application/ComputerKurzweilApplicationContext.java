@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellCore;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.beans.Transient;
@@ -36,26 +37,26 @@ public class ComputerKurzweilApplicationContext implements Startable {
         this.random = new Random(seed);
     }
 
-    public List<TabPanel> getApps(){
-        return frame.getApps();
-    }
-
     @Transient
     public void exit() {
         System.exit(0);
     }
 
     @Transient
-    public CompoundBorder getBorder(){
+    public Border getBorder(){
+        return BorderFactory.createEmptyBorder();
+        /*
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
         return BorderFactory.createCompoundBorder(
             BorderFactory.createEmptyBorder(),
+            BorderFactory.createEmptyBorder()
             //BorderFactory.createEmptyBorder(top,left,bottom,right),
-            BorderFactory.createEmptyBorder(top,left,bottom,right)
+            //BorderFactory.createEmptyBorder(top,left,bottom,right)
         );
+        */
     }
 
     @Transient

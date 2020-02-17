@@ -50,3 +50,4 @@ gradle-app.setting
 /.idea/workspace.xml
 
 out
+log.txt

@@ -11,6 +11,7 @@ import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.io.Serializable;
@@ -30,23 +31,16 @@ import java.util.List;
  */
 @Log
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 @EqualsAndHashCode(callSuper=true)
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas,TabModel {
 
-    @ToString.Exclude
     private final DiffusionLimitedAggregationContext tabCtx;
-    @ToString.Exclude
-    private final CompoundBorder border;
-    @ToString.Exclude
+    private final Border border;
     private final Dimension preferredSize;
-    @ToString.Exclude
     private final CanvasLayout layout;
-
-    @ToString.Exclude
     private volatile List<LatticePoint> particles = new ArrayList<>();
-    @ToString.Exclude
     private volatile int[][] worldMap;
     private volatile int age=1;
     private volatile long steps;
@@ -72,11 +66,12 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = this.tabCtx.getCtx().getProperties().getDla().getControl().getNumberOfParticles();
         this.worldMap = new int[this.worldX][this.worldY];
-        this.setBorder(border);
+       // this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
-        this.setSize(preferredSize);
+        this.setSize(worldX,worldY);
+        this.setBounds(startX,startY,worldX,worldY);
         int x;
         int y;
         //create moving Particles
@@ -183,7 +178,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     @Override
     public void showMe() {
         log.info("showMe");
-        log.info("this: "+this.toString());
+        //log.info("this: "+this.toString());
     }
 
     @Override

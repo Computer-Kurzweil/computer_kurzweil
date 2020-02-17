@@ -18,6 +18,7 @@ public class SimulatedEvolutionCanvasButtons extends JPanel {
     private final SimulatedEvolutionContext tabCtx;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
+    @ToString.Exclude
     private final FlowLayout layout;
 
     public SimulatedEvolutionCanvasButtons(
