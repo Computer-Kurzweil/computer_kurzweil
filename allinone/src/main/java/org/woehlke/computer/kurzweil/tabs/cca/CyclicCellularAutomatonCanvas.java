@@ -69,6 +69,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         this.border = this.tabCtx.getCtx().getBorder();
+        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.versions = 2;
@@ -77,6 +78,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setSize(this.worldX,this.worldY);
+        this.setBounds(r);
         this.startWithNeighbourhoodVonNeumann();
         this.resetLattice();
         this.running = Boolean.FALSE;

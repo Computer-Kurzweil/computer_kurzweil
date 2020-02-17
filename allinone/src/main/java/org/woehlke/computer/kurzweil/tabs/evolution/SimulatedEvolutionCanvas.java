@@ -15,8 +15,7 @@ import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -73,6 +72,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.border = this.tabCtx.getCtx().getBorder();
+        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.world = new SimulatedEvolutionWorld(this.tabCtx);
         this.statisticsPanel = new PopulationStatistics(this.tabCtx);
         this.buttonRowPanel = new SimulatedEvolutionCanvasButtons(this.tabCtx);
@@ -83,6 +83,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.setBackground(COLOR_WATER.getColor());
         this.setSize(preferredSize);
         this.setPreferredSize(preferredSize);
+        this.setBounds(r);
     }
 
     public void toggleGardenOfEden() {

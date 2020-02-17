@@ -62,6 +62,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.layout = new CanvasLayout(this);
+        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.tabCtx);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.tabCtx);
         this.mandelbrot = new Mandelbrot(this.tabCtx);
@@ -70,6 +71,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.setLayout(layout);
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
+        this.setBounds(r);
     }
 
     public CellStatus getCellStatusFor(int x, int y) {

@@ -62,6 +62,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         border = this.tabCtx.getCtx().getBorder();
+        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = this.tabCtx.getCtx().getProperties().getDla().getControl().getNumberOfParticles();
@@ -69,9 +70,9 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setLayout(layout);
-        this.setPreferredSize(preferredSize);
-        this.setSize(worldX,worldY);
-        this.setBounds(startX,startY,worldX,worldY);
+        //this.setPreferredSize(preferredSize);
+        //this.setSize(worldX,worldY);
+        this.setBounds(r);
         int x;
         int y;
         //create moving Particles

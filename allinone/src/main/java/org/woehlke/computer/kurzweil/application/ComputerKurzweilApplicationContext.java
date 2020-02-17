@@ -48,8 +48,8 @@ public class ComputerKurzweilApplicationContext implements Startable {
         return BorderFactory.createCompoundBorder(
             //BorderFactory.createEmptyBorder(),
             //BorderFactory.createEmptyBorder()
-            BorderFactory.createEmptyBorder(top,left,bottom,right),
-            BorderFactory.createEmptyBorder(top,left,bottom,right)
+            BorderFactory.createEmptyBorder(5,5,5,5),
+            BorderFactory.createEmptyBorder(5,5,5,5)
         );
     }
 
