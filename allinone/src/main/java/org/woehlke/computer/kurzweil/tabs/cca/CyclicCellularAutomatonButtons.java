@@ -32,7 +32,7 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
     this.buttonVonNeumann = new JButton(this.buttonLabelVonNeumann);
     this.buttonMoore = new JButton(this.buttonLabelMoore );
     this.buttonWoehlke = new JButton(this.buttonLabelWoehlke);
-    CompoundBorder border = this.canvas.getTabCtx().getCtx().getBorder(  this.title);
+    CompoundBorder border = this.canvas.getTabCtx().getCtx().getBottomButtonsPanelBorder(  this.title);
     this.setBorder(border);
     this.setLayout(new FlowLayout());
     this.add(this.buttonVonNeumann);

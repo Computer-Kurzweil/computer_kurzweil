@@ -27,7 +27,7 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
         String labelStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
         String labelStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
         layout = new CenterFlowLayout();
-        border = tab.getCtx().getBorder(labelStartStopp);
+        border = tab.getCtx().getBottomButtonsPanelBorder(labelStartStopp);
         this.setLayout(layout);
         this.setBorder(border);
         this.startButton = new JButton(labelStart);

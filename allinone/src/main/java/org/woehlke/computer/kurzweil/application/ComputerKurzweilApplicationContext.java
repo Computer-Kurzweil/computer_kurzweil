@@ -47,10 +47,8 @@ public class ComputerKurzweilApplicationContext implements Startable {
         int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
         return BorderFactory.createCompoundBorder(
-            //BorderFactory.createEmptyBorder(),
-            //BorderFactory.createEmptyBorder()
-            BorderFactory.createEmptyBorder(5,5,5,5),
-            BorderFactory.createEmptyBorder(5,5,5,5)
+            BorderFactory.createEmptyBorder(),
+            BorderFactory.createEmptyBorder(left,right,top,bottom)
         );
     }
 
@@ -79,10 +77,34 @@ public class ComputerKurzweilApplicationContext implements Startable {
     }
 
     @Transient
+    public CompoundBorder getBottomButtonsPanelBorder(){
+        int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createEmptyBorder(left,right,top,bottom),
+            BorderFactory.createEmptyBorder(left,right,top,bottom)
+        );
+    }
+
+    @Transient
+    public CompoundBorder getBottomButtonsPanelBorder(String label){
+        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(label),
+            BorderFactory.createEmptyBorder(top,left,bottom,right)
+        );
+    }
+
+    @Transient
     public Border getCanvasBorder() {
-        int top = 24;
+        int top = 0;
         int left = 0;
-        int bottom = 24;
+        int bottom = 0;
         int right = 0;
         return BorderFactory.createEmptyBorder(top,left,bottom,right);
     }

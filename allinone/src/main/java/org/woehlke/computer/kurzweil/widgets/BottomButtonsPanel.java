@@ -22,7 +22,7 @@ public class BottomButtonsPanel extends JPanel implements Startable, GuiComponen
 
     public BottomButtonsPanel(Tab tab) {
         this.layoutBottomButtonsPanel = new FlowLayoutLeft();
-        this.borderBottomButtonsPanel = tab.getCtx().getBorder();
+        this.borderBottomButtonsPanel = tab.getCtx().getBottomButtonsPanelBorder();
         this.startStopButtonsPanel = new StartStopButtonsPanel( tab );
         this.add(this.startStopButtonsPanel);
     }

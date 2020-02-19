@@ -9,6 +9,8 @@ import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
+import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatistics;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
@@ -51,7 +53,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final Dimension preferredSize;
     private final SimulatedEvolutionTab tab;
     private final PopulationStatistics statisticsPanel;
-    private final SimulatedEvolutionCanvasButtons buttonRowPanel;
+    private final FoodPerDayPanel foodPerDayPanel;
+    private final GardenOfEdenPanelRow gardenOfEdenPanel;
     private final SimulatedEvolutionWorld world;
 
     private final static int startX = 0;
@@ -69,7 +72,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.world = new SimulatedEvolutionWorld(this.tabCtx);
         this.statisticsPanel = new PopulationStatistics(this.tabCtx);
-        this.buttonRowPanel = new SimulatedEvolutionCanvasButtons(this.tabCtx);
+        this.foodPerDayPanel =  this.tab.getFoodPerDayPanel();
+        this.gardenOfEdenPanel = this.tab.getGardenOfEdenPanel();
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
         this.setLayout(layout);
@@ -81,7 +85,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     }
 
     public void toggleGardenOfEden() {
-        this.buttonRowPanel.toggleGardenOfEden();
+        this.gardenOfEdenPanel.toggleGardenOfEden();
     }
 
   /**
@@ -141,8 +145,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         log.info("update");
         int getFoodPerDay = tabCtx.getSimulatedEvolution().getFoodPerDay();
         boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
-        this.buttonRowPanel.getFoodPerDayPanel().setFoodPerDay(getFoodPerDay);
-        this.buttonRowPanel.getGardenOfEdenPanel().setSelected(selected);
+        this.foodPerDayPanel.setFoodPerDay(getFoodPerDay);
+        this.gardenOfEdenPanel.setSelected(selected);
         log.info("updated");
     }
 
