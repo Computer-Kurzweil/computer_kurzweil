@@ -39,10 +39,10 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private final Border border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
-    private volatile List<LatticePoint> particles = new ArrayList<>();
-    private volatile int[][] worldMap;
-    private volatile int age=1;
-    private volatile long steps;
+    private List<LatticePoint> particles = new ArrayList<>();
+    private int[][] worldMap;
+    private int age = 1;
+    private long steps;
 
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;

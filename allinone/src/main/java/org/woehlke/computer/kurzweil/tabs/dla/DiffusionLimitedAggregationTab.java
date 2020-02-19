@@ -13,8 +13,8 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(callSuper = true, exclude = {"tabCtx"})
-@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
+@ToString(callSuper = true, exclude = {"tabCtx","canvas"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","canvas"})
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
     private final DiffusionLimitedAggregationContext tabCtx;
