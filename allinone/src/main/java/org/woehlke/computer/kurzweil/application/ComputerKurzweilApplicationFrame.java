@@ -71,7 +71,6 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     public void showMe() {
         pack();
         Rectangle r = this.getFrameBounds();
-        //Bounds frameBounds = Bounds.getFrameBounds(rootPane);
         this.setBounds(r);
         tabbedPane.showMe();
         this.setVisible(true);
