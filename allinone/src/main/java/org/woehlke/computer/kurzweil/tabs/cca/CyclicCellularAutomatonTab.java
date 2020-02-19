@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.widgets.BottomButtonsPanel;
 import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
@@ -21,24 +22,24 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
-    protected final StartStopButtonsPanel startStopButtonsPanel;
+    private final BottomButtonsPanel bottomButtonsPanel;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
         super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON,ctx.getProperties().getCca().getView().getSubtitle(),ctx.getProperties().getCca().getView().getTitle());
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.startStopButtonsPanel = new StartStopButtonsPanel( this );
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
+        this.bottomButtonsPanel = new BottomButtonsPanel( this );
+        this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
-        this.add(this.neighbourhoodButtonsPanel);
-        this.add(this.startStopButtonsPanel);
+        this.add(this.bottomButtonsPanel);
         this.neighbourhoodButtonsPanel.getButtonVonNeumann().addActionListener(this);
         this.neighbourhoodButtonsPanel.getButtonMoore().addActionListener(this);
         this.neighbourhoodButtonsPanel.getButtonWoehlke().addActionListener(this);
-        this.startStopButtonsPanel.getStartButton().addActionListener(this);
-        this.startStopButtonsPanel.getStopButton().addActionListener(this);
-        this.startStopButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartButton().addActionListener(this);
+        this.bottomButtonsPanel.getStopButton().addActionListener(this);
+        this.bottomButtonsPanel.stop();
         this.ctx.getFrame().pack();
         showMe();
     }
@@ -48,7 +49,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         log.info("start");
         this.showMe();
         this.canvas.start();
-        this.startStopButtonsPanel.start();
+        this.bottomButtonsPanel.start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
@@ -62,7 +63,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     public void stop() {
         log.info("stop");
         this.canvas.stop();
-        this.startStopButtonsPanel.stop();
+        this.bottomButtonsPanel.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
@@ -101,10 +102,10 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
             this.canvas.startWithNeighbourhoodWoehlke();
             this.start();
         }
-        if(ae.getSource() == this.startStopButtonsPanel.getStartButton()){
+        if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
             this.start();
         }
-        if(ae.getSource() == this.startStopButtonsPanel.getStopButton()){
+        if(ae.getSource() == this.bottomButtonsPanel.getStopButton()){
             this.stop();
         }
     }
