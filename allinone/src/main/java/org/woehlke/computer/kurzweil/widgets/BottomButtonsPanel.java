@@ -13,7 +13,7 @@ import javax.swing.border.CompoundBorder;
 
 @Log
 @Getter
-@ToString(exclude={"borderBottomButtonsPanel","layoutBottomButtonsPanel","startStopButtonsPanel"})
+@ToString(exclude={"borderBottomButtonsPanel","layoutBottomButtonsPanel"})
 public class BottomButtonsPanel extends JPanel implements Startable, GuiComponentTab {
 
     private final FlowLayoutLeft layoutBottomButtonsPanel;

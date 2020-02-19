@@ -46,8 +46,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.foodPerDayPanel.getFoodPerDayIncreaseButton().addActionListener(this);
         this.foodPerDayPanel.getFoodPerDayDecreaseButton().addActionListener(this);
         this.gardenOfEdenPanel.getButtonToggleGardenOfEden().addActionListener(this);
-        this.ctx.getFrame().pack();
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
+        this.ctx.getFrame().pack();
     }
 
     @Override

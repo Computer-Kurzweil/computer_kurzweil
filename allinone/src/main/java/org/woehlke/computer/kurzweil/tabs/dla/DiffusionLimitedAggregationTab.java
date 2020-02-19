@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.dla;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -12,10 +13,10 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"tabCtx"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
-    @ToString.Exclude
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final BottomButtonsPanel bottomButtonsPanel;
@@ -38,9 +39,8 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     @Override
     public void start() {
         log.info("start");
-        this.bottomButtonsPanel.start();
-        this.tabCtx.startController();
         this.bottomButtonsPanel.getStartStopButtonsPanel().start();
+        this.tabCtx.startController();
         this.showMe();
         this.ctx.getFrame().pack();
         int x = this.canvas.getWidth();

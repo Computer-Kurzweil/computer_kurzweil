@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.commons.tabs;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -13,16 +14,13 @@ import javax.swing.border.Border;
 
 @Log
 @Getter
-@ToString
+@ToString(callSuper = true, exclude = {"ctx","border","layout","panelSubtitle"})
+@EqualsAndHashCode(callSuper=true, exclude = {"ctx","border","layout","panelSubtitle"})
 public abstract class TabPanel extends JPanel implements Tab {
 
-    @ToString.Exclude
     protected final ComputerKurzweilApplicationContext ctx;
-    @ToString.Exclude
     protected final Border border;
-    @ToString.Exclude
     protected final BoxLayoutVertical layout;
-    @ToString.Exclude
     protected final PanelSubtitle panelSubtitle;
 
     protected final String title;
@@ -35,7 +33,7 @@ public abstract class TabPanel extends JPanel implements Tab {
         this.ctx = ctx;
         this.tabType = tabType;
         this.layout = new BoxLayoutVertical(this);
-        this.border = this.ctx.getBorder();
+        this.border = this.ctx.getTabBorder();
         this.subTitle = subTitle;
         this.title = title;
         this.panelSubtitle = new PanelSubtitle(subTitle);

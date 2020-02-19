@@ -101,6 +101,15 @@ public class ComputerKurzweilApplicationContext implements Startable {
     }
 
     @Transient
+    public Border getTabBorder() {
+        int top = 0;
+        int left = 0;
+        int bottom = 0;
+        int right = 0;
+        return BorderFactory.createEmptyBorder(top,left,bottom,right);
+    }
+
+    @Transient
     public Border getCanvasBorder() {
         int top = 0;
         int left = 0;
@@ -147,4 +156,5 @@ public class ComputerKurzweilApplicationContext implements Startable {
     public void stop() {
         frame.stop();
     }
+
 }
