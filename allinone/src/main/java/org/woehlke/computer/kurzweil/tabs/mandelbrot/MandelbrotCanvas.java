@@ -31,21 +31,15 @@ import java.awt.event.MouseListener;
  */
 @Log
 @Getter
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper=true)
+@ToString(callSuper = true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})
+@EqualsAndHashCode(callSuper=true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})
 public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseListener {
 
-    @ToString.Exclude
     private final MandelbrotContext tabCtx;
-    @ToString.Exclude
-    private final CompoundBorder border;
-    @ToString.Exclude
+    private final Border border;
     private final Dimension preferredSize;
-    @ToString.Exclude
     private final CanvasLayout layout;
-    @ToString.Exclude
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
-    @ToString.Exclude
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final Mandelbrot mandelbrot;
 
@@ -58,11 +52,10 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         MandelbrotContext tabCtx
     ) {
         this.tabCtx = tabCtx;
-        this.border = this.tabCtx.getCtx().getBorder();
+        this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.layout = new CanvasLayout(this);
-        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.tabCtx);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.tabCtx);
         this.mandelbrot = new Mandelbrot(this.tabCtx);
@@ -71,7 +64,8 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.setLayout(layout);
         this.setSize(this.preferredSize);
         this.setPreferredSize(this.preferredSize);
-        this.setBounds(r);
+        this.setMinimumSize(preferredSize);
+        this.setMaximumSize(preferredSize);
     }
 
     public CellStatus getCellStatusFor(int x, int y) {

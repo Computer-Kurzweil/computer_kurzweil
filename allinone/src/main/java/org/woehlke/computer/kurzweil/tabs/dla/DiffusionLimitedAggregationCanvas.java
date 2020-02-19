@@ -32,12 +32,12 @@ import java.util.List;
 @Log
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable, TabCanvas,TabModel {
+    Serializable, TabCanvas, TabModel {
 
     private final DiffusionLimitedAggregationContext tabCtx;
-    private final CompoundBorder border;
+    private final Border border;
     private final Dimension preferredSize;
     private final CanvasLayout layout;
     private volatile List<LatticePoint> particles = new ArrayList<>();
@@ -59,20 +59,19 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         DiffusionLimitedAggregationContext tabCtx
     ) {
         this.tabCtx = tabCtx;
+        this.border = this.tabCtx.getCtx().getCanvasBorder();
         worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
-        border = this.tabCtx.getCtx().getBorder();
-        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = this.tabCtx.getCtx().getProperties().getDla().getControl().getNumberOfParticles();
         this.worldMap = new int[this.worldX][this.worldY];
-        this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
+        this.setMinimumSize(preferredSize);
+        this.setMaximumSize(preferredSize);
         this.setSize(worldX,worldY);
-        this.setBounds(r);
         int x;
         int y;
         //create moving Particles
@@ -184,6 +183,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
 
     @Override
     public void update() {
-        //log.info("update");
+        log.info("update");
     }
 }

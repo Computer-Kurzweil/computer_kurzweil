@@ -38,22 +38,17 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionWor
  */
 @Log
 @Getter
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper=true)
+@ToString(callSuper = true, exclude={"tabCtx","border","preferredSize","layout","tab"})
+@EqualsAndHashCode(callSuper=true, exclude={"tabCtx","border","preferredSize","layout","tab"})
 public class SimulatedEvolutionCanvas extends JComponent implements
     Serializable, TabCanvas, Startable {
 
     private static final long serialVersionUID = -27002509360079509L;
 
-    @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
-    @ToString.Exclude
-    private final CompoundBorder border;
-    @ToString.Exclude
+    private final Border border;
     private final CanvasLayout layout;
-    @ToString.Exclude
     private final Dimension preferredSize;
-    @ToString.Exclude
     private final SimulatedEvolutionTab tab;
     private final PopulationStatistics statisticsPanel;
     private final SimulatedEvolutionCanvasButtons buttonRowPanel;
@@ -69,21 +64,20 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     ) {
         this.tab = tab;
         this.tabCtx = tab.getTabCtx();
+        this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        this.border = this.tabCtx.getCtx().getBorder();
-        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.world = new SimulatedEvolutionWorld(this.tabCtx);
         this.statisticsPanel = new PopulationStatistics(this.tabCtx);
         this.buttonRowPanel = new SimulatedEvolutionCanvasButtons(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
-        this.setBorder(border);
         this.setLayout(layout);
         this.setBackground(COLOR_WATER.getColor());
         this.setSize(preferredSize);
         this.setPreferredSize(preferredSize);
-        this.setBounds(r);
+        this.setMinimumSize(preferredSize);
+        this.setMaximumSize(preferredSize);
     }
 
     public void toggleGardenOfEden() {

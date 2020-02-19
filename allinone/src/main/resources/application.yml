@@ -8,7 +8,7 @@ allinone:
     copyright: '(c) 2020 Thomas Woehlke'
     borderPaddingX: 5
     borderPaddingY: 5
-    titleHeight: 30
+    titleHeight: 60
     startStopp: 'Start / Stop'
     start: 'Start'
     stop: 'Stop'

@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellCore;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.beans.Transient;
@@ -63,6 +64,14 @@ public class ComputerKurzweilApplicationContext implements Startable {
             BorderFactory.createTitledBorder(label),
             BorderFactory.createEmptyBorder(top,left,bottom,right)
         );
+    }
+
+    public Border getCanvasBorder() {
+        int top = 24;
+        int left = 0;
+        int bottom = 24;
+        int right = 0;
+        return BorderFactory.createEmptyBorder(top,left,bottom,right);
     }
 
     @Transient
