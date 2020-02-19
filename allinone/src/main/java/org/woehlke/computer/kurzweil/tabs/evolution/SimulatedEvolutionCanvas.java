@@ -72,18 +72,20 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.border = this.tabCtx.getCtx().getBorder();
-        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
+        //Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.world = new SimulatedEvolutionWorld(this.tabCtx);
         this.statisticsPanel = new PopulationStatistics(this.tabCtx);
         this.buttonRowPanel = new SimulatedEvolutionCanvasButtons(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new CanvasLayout(this);
-        this.setBorder(border);
+        //this.setBorder(border);
         this.setLayout(layout);
         this.setBackground(COLOR_WATER.getColor());
         this.setSize(preferredSize);
         this.setPreferredSize(preferredSize);
-        this.setBounds(r);
+        this.setMinimumSize(preferredSize);
+        this.setMaximumSize(preferredSize);
+        //this.setBounds(r);
     }
 
     public void toggleGardenOfEden() {

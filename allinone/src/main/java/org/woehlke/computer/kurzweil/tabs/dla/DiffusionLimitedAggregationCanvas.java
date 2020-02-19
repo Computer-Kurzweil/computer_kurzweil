@@ -34,7 +34,7 @@ import java.util.List;
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 @EqualsAndHashCode(callSuper=true)
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable, TabCanvas,TabModel {
+    Serializable, TabCanvas, TabModel {
 
     private final DiffusionLimitedAggregationContext tabCtx;
     private final CompoundBorder border;
@@ -62,17 +62,19 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         border = this.tabCtx.getCtx().getBorder();
-        Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
+        //Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = this.tabCtx.getCtx().getProperties().getDla().getControl().getNumberOfParticles();
         this.worldMap = new int[this.worldX][this.worldY];
-        this.setBorder(border);
+        //this.setBorder(border);
         this.setBackground(MEDIUM);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
+        this.setMinimumSize(preferredSize);
+        this.setMaximumSize(preferredSize);
         this.setSize(worldX,worldY);
-        this.setBounds(r);
+        //this.setBounds(r);
         int x;
         int y;
         //create moving Particles
@@ -184,6 +186,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
 
     @Override
     public void update() {
-        //log.info("update");
+        log.info("update");
     }
 }
