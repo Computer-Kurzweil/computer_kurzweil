@@ -34,15 +34,13 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
         this.stopButton = new JButton(labelStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        startButtonEnabled=false;
+        stop();
     }
 
     @Override
     public void start() {
         log.info("start");
         startButtonEnabled=true;
-        this.startButton.setEnabled(startButtonEnabled);
-        this.stopButton.setEnabled(!startButtonEnabled);
         showMe();
         log.info("started");
     }
@@ -51,16 +49,14 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
     public void stop() {
         log.info("stop");
         startButtonEnabled=false;
-        this.startButton.setEnabled(startButtonEnabled);
-        this.stopButton.setEnabled(!startButtonEnabled);
         showMe();
         log.info("stopped");
     }
 
     @Override
     public void showMe() {
-        //this.setVisible(true);
-        //repaint();
+        this.startButton.setEnabled(startButtonEnabled);
+        this.stopButton.setEnabled(!startButtonEnabled);
     }
 
 }
