@@ -1,6 +1,8 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
@@ -19,22 +21,22 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  * Time: 00:36:20
  */
 @Log
+@Getter
+@ToString(callSuper = true, exclude={"tabCtx"})
+@EqualsAndHashCode(callSuper = true, exclude={"tabCtx"})
 public class SimulatedEvolutionController extends Thread implements TabController {
 
-    @Getter
-    private final SimulatedEvolutionContext appCtx;
-
+    private final SimulatedEvolutionContext tabCtx;
     private Boolean goOn;
-
     private final int time2wait;
 
   public SimulatedEvolutionController(
-      SimulatedEvolutionContext appCtx
+      SimulatedEvolutionContext tabCtx
   ) {
       super("DNA-Controller");
-      this.appCtx = appCtx;
+      this.tabCtx = tabCtx;
       this.goOn = Boolean.TRUE;
-      this.time2wait = this.appCtx.getCtx().getProperties().getEvolution().getControl().getTime2wait();
+      this.time2wait = this.tabCtx.getCtx().getProperties().getEvolution().getControl().getTime2wait();
   }
 
   public void run() {
@@ -43,11 +45,11 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
       synchronized (goOn) {
         doMyJob = goOn.booleanValue();
       }
-      if( this.appCtx != null){
-        synchronized (this.appCtx) {
-            this.appCtx.getStepper().step();
-            this.appCtx.getCanvas().update();
-            this.appCtx.getTab().repaint();
+      if( this.tabCtx != null){
+        synchronized (this.tabCtx) {
+            this.tabCtx.getStepper().step();
+            this.tabCtx.getCanvas().update();
+            this.tabCtx.getTab().repaint();
         }
       }
       try {

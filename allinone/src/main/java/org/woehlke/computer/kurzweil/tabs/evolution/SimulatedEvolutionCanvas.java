@@ -16,7 +16,6 @@ import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.JComponent;
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.List;

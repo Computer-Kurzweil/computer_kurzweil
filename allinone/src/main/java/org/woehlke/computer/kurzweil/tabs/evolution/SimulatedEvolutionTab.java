@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -16,10 +17,10 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"tabCtx"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
-    @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final BottomButtonsPanel bottomButtonsPanel;
     private final PopulationStatistics statisticsPanel;

@@ -11,7 +11,6 @@ import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
-import java.awt.*;
 import java.beans.Transient;
 import java.util.Date;
 import java.util.Random;

@@ -1,6 +1,8 @@
 package org.woehlke.computer.kurzweil.tabs.cca;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -10,6 +12,8 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 
 @Log
 @Getter
+@ToString(callSuper = true, exclude = {"tab"})
+@EqualsAndHashCode(exclude = {"tab"})
 public class CyclicCellularAutomatonContext implements TabContext {
 
     private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;

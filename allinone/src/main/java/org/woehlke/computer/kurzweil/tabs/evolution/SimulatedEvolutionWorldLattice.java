@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -24,25 +25,23 @@ import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
  */
 @Log
 @Getter
+@ToString(exclude={"appCtx","worldMapFoodLattice"})
+@EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"})
 public class SimulatedEvolutionWorldLattice implements Startable {
 
-  /**
-   * Grid of World where every Place can have food.
-   */
-  @ToString.Exclude
-  private int[][] worldMapFoodLattice;
+      /**
+       * Grid of World where every Place can have food.
+       */
+    private int[][] worldMapFoodLattice;
+    private boolean gardenOfEdenEnabled;
 
-    @ToString.Exclude
-  private SimulatedEvolutionContext appCtx;
-
+    private final SimulatedEvolutionContext appCtx;
     private final int gardenOfEdenParts = 3;
     private final int noFood = 0;
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
-
-    private boolean gardenOfEdenEnabled;
 
   public SimulatedEvolutionWorldLattice(
       SimulatedEvolutionContext appCtx

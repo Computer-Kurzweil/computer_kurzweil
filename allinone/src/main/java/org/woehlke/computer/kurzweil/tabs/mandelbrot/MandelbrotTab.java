@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -13,10 +14,10 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"tabCtx"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class MandelbrotTab extends TabPanel implements Tab {
 
-    @ToString.Exclude
     private final MandelbrotContext tabCtx;
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;

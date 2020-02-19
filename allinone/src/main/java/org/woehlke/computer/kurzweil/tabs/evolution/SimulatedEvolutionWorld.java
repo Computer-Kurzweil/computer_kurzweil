@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -33,6 +34,7 @@ import java.util.List;
 @Log
 @Getter
 @ToString(exclude={"cells","appCtx"})
+@EqualsAndHashCode(exclude={"cells","appCtx"})
 public class SimulatedEvolutionWorld implements Startable, TabModel {
 
     /**

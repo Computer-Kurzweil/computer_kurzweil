@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -9,21 +10,19 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Log
 @Getter
-@ToString
+@ToString(callSuper = true, exclude={"tabCtx","statistics"})
+@EqualsAndHashCode(exclude={"tabCtx","statistics"})
 public class SimulatedEvolutionCanvasStatistics {
 
-    @ToString.Exclude
-    private final SimulatedEvolutionContext appCtx;
 
-    @ToString.Exclude
+    private final SimulatedEvolutionContext tabCtx;
     private final ConcurrentLinkedQueue<SimulatedEvolutionPopulationCensus> statistics = new ConcurrentLinkedQueue<>();
-
     private long worldIteration;
 
     public SimulatedEvolutionCanvasStatistics(
-        SimulatedEvolutionContext appCtx
+        SimulatedEvolutionContext tabCtx
     ) {
-        this.appCtx = appCtx;
+        this.tabCtx = tabCtx;
         worldIteration = 0L;
     }
 
@@ -31,7 +30,7 @@ public class SimulatedEvolutionCanvasStatistics {
         worldIteration++;
         populationCensus.setWorldIteration(worldIteration);
         statistics.add(populationCensus);
-        if (statistics.size() > this.appCtx.getCtx().getProperties().getEvolution().getControl().getQueueMaxLength()) {
+        if (statistics.size() > this.tabCtx.getCtx().getProperties().getEvolution().getControl().getQueueMaxLength()) {
             statistics.poll();
         }
         log.info(worldIteration + " : " + populationCensus);

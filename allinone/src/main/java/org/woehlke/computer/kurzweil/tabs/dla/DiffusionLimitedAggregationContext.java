@@ -15,7 +15,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGRE
 @Log
 @Getter
 @ToString(exclude={"canvas","controller","tab","ctx"})
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"})
 public class DiffusionLimitedAggregationContext implements TabContext {
 
     private final TabType tabType = DIFFUSION_LIMITED_AGGREGATION;

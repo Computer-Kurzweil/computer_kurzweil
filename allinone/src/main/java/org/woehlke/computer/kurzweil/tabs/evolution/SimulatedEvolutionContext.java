@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.evolution;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,15 +13,13 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 
 @Log
 @Getter
-@ToString
+@ToString(callSuper = true, exclude={"ctx","controller","tab"})
+@EqualsAndHashCode(exclude={"ctx","controller","tab"})
 public class SimulatedEvolutionContext implements TabContext {
 
     private final TabType tabType = SIMULATED_EVOLUTION;
-    @ToString.Exclude
     private final ComputerKurzweilApplicationContext ctx;
-    @ToString.Exclude
     private SimulatedEvolutionController controller;
-    @ToString.Exclude
     private final SimulatedEvolutionTab tab;
     private final SimulatedEvolution simulatedEvolution;
     @Setter

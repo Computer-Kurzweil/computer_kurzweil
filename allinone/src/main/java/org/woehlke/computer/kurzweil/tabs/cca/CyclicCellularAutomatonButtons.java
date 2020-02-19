@@ -1,6 +1,8 @@
 package org.woehlke.computer.kurzweil.tabs.cca;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 
@@ -10,6 +12,8 @@ import java.awt.*;
 
 @Log
 @Getter
+@ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
+@EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
 public class CyclicCellularAutomatonButtons extends JPanel implements GuiComponentTab {
 
   private final JButton buttonVonNeumann;
@@ -20,6 +24,8 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
   private final String buttonLabelWoehlke;
   private final String title;
   private final CyclicCellularAutomatonCanvas canvas;
+  private final CompoundBorder border;
+  private final FlowLayout layout;
 
   public CyclicCellularAutomatonButtons(
       CyclicCellularAutomatonCanvas canvas
@@ -32,9 +38,10 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
     this.buttonVonNeumann = new JButton(this.buttonLabelVonNeumann);
     this.buttonMoore = new JButton(this.buttonLabelMoore );
     this.buttonWoehlke = new JButton(this.buttonLabelWoehlke);
-    CompoundBorder border = this.canvas.getTabCtx().getCtx().getBottomButtonsPanelBorder(  this.title);
+    this.border = this.canvas.getTabCtx().getCtx().getBottomButtonsPanelBorder(  this.title);
+    this.layout = new FlowLayout();
     this.setBorder(border);
-    this.setLayout(new FlowLayout());
+    this.setLayout(layout);
     this.add(this.buttonVonNeumann);
     this.add(this.buttonMoore);
     this.add(this.buttonWoehlke);

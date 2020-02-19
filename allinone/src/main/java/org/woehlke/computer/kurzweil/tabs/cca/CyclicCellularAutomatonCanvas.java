@@ -13,7 +13,6 @@ import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Random;
@@ -78,7 +77,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void paint(Graphics g) {
-        log.info("paint START (Graphics g)");
+        //log.info("paint START (Graphics g)");
         int x;
         int y;
         int state;
@@ -94,42 +93,38 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             }
         }
         super.paintComponent(g);
-        log.info("paint DONE (Graphics g)");
+        //log.info("paint DONE (Graphics g)");
     }
 
     public void update(Graphics g) {
-        log.info("update(Graphics g)");
+        //log.info("update(Graphics g)");
         paint(g);
     }
 
     @Override
     public void showMe() {
-        log.info("showMe");
-        //log.info("this: "+this.toString());
+        //log.info("showMe "+this.toString());
     }
 
     public void start() {
-        log.info("start");
+        //log.info("start");
         showMe();
         synchronized (running) {
             running = Boolean.TRUE;
         }
-        //log.info("this: "+this.toString());
-        log.info("started");
+        //log.info("started "+this.toString());
     }
 
     public void stop() {
-        log.info("stop");
+        //log.info("stop");
         synchronized (running) {
             running = Boolean.FALSE;
         }
-        log.info("this: "+this.toString());
-        log.info("stopped");
+        //log.info("stopped "+this.toString());
     }
 
     public void update(){
-        log.info("update");
-       // showMe();
+        //log.info("update");
     }
 
     public void step(){
@@ -138,7 +133,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             doIt = running.booleanValue();
         }
         if(doIt){
-            log.info("step");
+            //log.info("step");
             int maxState = colorScheme.getMaxState();
             int xx;
             int yy;
@@ -163,20 +158,20 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
             }
             this.source = (this.source + 1) % 2;
             this.target = (this.target + 1) % 2;
-            log.info("stepped");
+            //log.info("stepped");
         }
     }
 
     private void initCreateLattice(){
-        log.info("initCreateLattice start: "+neighbourhoodType.name());
+        //log.info("initCreateLattice start: "+neighbourhoodType.name());
         lattice = new int[versions][worldX][worldY];
         source = 0;
         target = 1;
-        log.info("initCreateLattice finished: "+neighbourhoodType.name());
+        //log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
     private void initFillLattice(){
-        log.info("initCreateLattice start: "+neighbourhoodType.name());
+        //log.info("initCreateLattice start: "+neighbourhoodType.name());
         Random random = this.tabCtx.getCtx().getRandom();
         int maxState = this.colorScheme.getMaxState();
         int y;
@@ -186,7 +181,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
                 lattice[source][x][y] = random.nextInt(maxState);
             }
         }
-        log.info("initCreateLattice finished: "+neighbourhoodType.name());
+        //log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
     public void resetLattice(){
@@ -195,25 +190,27 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void startWithNeighbourhoodVonNeumann() {
+        /*
         if( this.neighbourhoodType == null) {
             log.info("startWithNeighbourhoodVonNeumann");
         } else {
             log.info("startWithNeighbourhoodVonNeumann: " + neighbourhoodType.name());
         }
+        */
         this.neighbourhoodType=VON_NEUMANN_NEIGHBORHOOD;
         resetLattice();
         log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
     }
 
     public void startWithNeighbourhoodMoore() {
-        log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
+        //log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
         this.neighbourhoodType=MOORE_NEIGHBORHOOD;
         resetLattice();
         log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
     }
 
     public void startWithNeighbourhoodWoehlke() {
-        log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
+        //log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
         this.neighbourhoodType=WOEHLKE_NEIGHBORHOOD;
         resetLattice();
         log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());

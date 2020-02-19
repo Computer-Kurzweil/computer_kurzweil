@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.cca;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -14,10 +15,10 @@ import java.awt.event.ActionEvent;
 
 @Log
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"tabCtx"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
-    @ToString.Exclude
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
@@ -54,8 +55,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.ctx.getFrame().pack();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
-        log.info("start with canvas x="+x+" y="+y);
-        log.info("started");
+        log.info("started with canvas x="+x+" y="+y);
     }
 
     @Override
@@ -66,8 +66,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
-        log.info("stop with canvas x="+x+" y="+y);
-        log.info("stopped");
+        log.info("stopped with canvas x="+x+" y="+y);
     }
 
     @Override
@@ -75,8 +74,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         log.info("showMe");
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
-        log.info("this: "+this.toString());
-        log.info("showMe with canvas x="+x+" y="+y);
+        log.info("showMe with canvas x="+x+" y="+y+" this: "+this.toString());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.dla;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
@@ -17,21 +18,22 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 @Log
 @Getter
-@ToString(exclude={"appCtx"})
+@ToString(callSuper=true,exclude={"tabCtx"})
+@EqualsAndHashCode(callSuper=true,exclude={"tabCtx"})
 public class DiffusionLimitedAggregationController extends Thread
         implements TabController {
 
-    private final DiffusionLimitedAggregationContext appCtx;
+    private final DiffusionLimitedAggregationContext tabCtx;
     private final int sleepTime;
     private Boolean goOn;
 
     public DiffusionLimitedAggregationController(
-        DiffusionLimitedAggregationContext appCtx
+        DiffusionLimitedAggregationContext tabCtx
     ) {
         super("DLA-Controller");
-        this.appCtx = appCtx;
+        this.tabCtx = tabCtx;
         this.goOn = Boolean.TRUE;
-        this.sleepTime =  this.appCtx.getCtx().getProperties().getDla().getControl().getThreadSleepTime();
+        this.sleepTime =  this.tabCtx.getCtx().getProperties().getDla().getControl().getThreadSleepTime();
     }
 
     public void run() {
@@ -41,10 +43,10 @@ public class DiffusionLimitedAggregationController extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            synchronized ( this.appCtx){
-                this.appCtx.getStepper().step();
-                this.appCtx.getCanvas().update();
-                this.appCtx.getTab().repaint();
+            synchronized ( this.tabCtx){
+                this.tabCtx.getStepper().step();
+                this.tabCtx.getCanvas().update();
+                this.tabCtx.getTab().repaint();
             }
             try { sleep( this.sleepTime ); }
             catch (InterruptedException e) { e.printStackTrace(); }
