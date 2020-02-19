@@ -8,7 +8,6 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.widgets.BottomButtonsPanel;
-import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 
 import java.awt.event.ActionEvent;
 
@@ -38,7 +37,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
         this.panelButtons.getPanelButtonsGroup().getRadioButtonsGroup().getRadioButtonsZoom().addActionListener(this);
         this.bottomButtonsPanel.getStartButton().addActionListener(this);
         this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.ctx.getFrame().pack();
         showMe();
     }
@@ -47,7 +46,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
     public void start() {
         log.info("start");
         this.showMe();
-        this.bottomButtonsPanel.start();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.tabCtx.startController();
         this.tabCtx.getController().start();
         this.ctx.getFrame().pack();
@@ -60,7 +59,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
     @Override
     public void stop() {
         log.info("stop");
-        this.bottomButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.tabCtx.stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();

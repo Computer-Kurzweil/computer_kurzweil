@@ -20,7 +20,6 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
     private final JButton stopButton;
     private final CenterFlowLayout layout;
     private final CompoundBorder border;
-    private boolean startButtonEnabled;
 
     public StartStopButtonsPanel(Tab tab){
         String labelStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();
@@ -34,13 +33,15 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
         this.stopButton = new JButton(labelStop);
         this.add(this.startButton);
         this.add(this.stopButton);
-        stop();
+        this.startButton.setEnabled(false);
+        this.stopButton.setEnabled(true);
     }
 
     @Override
     public void start() {
         log.info("start");
-        startButtonEnabled=true;
+        this.startButton.setEnabled(true);
+        this.stopButton.setEnabled(false);
         showMe();
         log.info("started");
     }
@@ -48,15 +49,14 @@ public class StartStopButtonsPanel extends JPanel implements Startable, GuiCompo
     @Override
     public void stop() {
         log.info("stop");
-        startButtonEnabled=false;
+        this.startButton.setEnabled(false);
+        this.stopButton.setEnabled(true);
         showMe();
         log.info("stopped");
     }
 
     @Override
     public void showMe() {
-        this.startButton.setEnabled(startButtonEnabled);
-        this.stopButton.setEnabled(!startButtonEnabled);
     }
 
 }

@@ -47,12 +47,13 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.foodPerDayPanel.getFoodPerDayDecreaseButton().addActionListener(this);
         this.gardenOfEdenPanel.getButtonToggleGardenOfEden().addActionListener(this);
         this.ctx.getFrame().pack();
-        this.bottomButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
     }
 
     @Override
     public void start() {
         log.info("start");
+        this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.canvas.getWorld().start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
@@ -66,6 +67,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     @Override
     public void stop() {
         log.info("stop");
+        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.canvas.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();

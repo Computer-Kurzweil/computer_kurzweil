@@ -30,7 +30,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         this.add(this.bottomButtonsPanel);
         this.bottomButtonsPanel.getStartButton().addActionListener(this);
         this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.ctx.getFrame().pack();
         showMe();
     }
@@ -40,7 +40,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
         log.info("start");
         this.bottomButtonsPanel.start();
         this.tabCtx.startController();
-        this.tabCtx.getController().start();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.showMe();
         this.ctx.getFrame().pack();
         int x = this.canvas.getWidth();
@@ -53,7 +53,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     public void stop() {
         log.info("stop");
         this.tabCtx.stopController();
-        this.bottomButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
         log.info("stop with canvas x="+x+" y="+y);

@@ -8,7 +8,6 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.widgets.BottomButtonsPanel;
-import org.woehlke.computer.kurzweil.widgets.StartStopButtonsPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 
 import java.awt.event.ActionEvent;
@@ -39,7 +38,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         this.neighbourhoodButtonsPanel.getButtonWoehlke().addActionListener(this);
         this.bottomButtonsPanel.getStartButton().addActionListener(this);
         this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.ctx.getFrame().pack();
         showMe();
     }
@@ -49,7 +48,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
         log.info("start");
         this.showMe();
         this.canvas.start();
-        this.bottomButtonsPanel.start();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
@@ -63,7 +62,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     public void stop() {
         log.info("stop");
         this.canvas.stop();
-        this.bottomButtonsPanel.stop();
+        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
