@@ -33,25 +33,18 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.WOEHL
  */
 @Log
 @Getter
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper=true)
+@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class CyclicCellularAutomatonCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    @ToString.Exclude
     private final CyclicCellularAutomatonContext tabCtx;
-    @ToString.Exclude
-    private final CyclicCellularAutomatonColorScheme colorScheme;
-    @ToString.Exclude
-    private final CompoundBorder border;
-    @ToString.Exclude
-    private final CanvasLayout layout;
-    @ToString.Exclude
+    private final Border border;
     private final Dimension preferredSize;
-
-    @ToString.Exclude
+    private final CanvasLayout layout;
+    private final CyclicCellularAutomatonColorScheme colorScheme;
     private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
@@ -66,21 +59,18 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
+        this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
-        this.border = this.tabCtx.getCtx().getBorder();
-        //Rectangle r = this.tabCtx.getCtx().getCanvasBounds();
         this.layout = new CanvasLayout(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.versions = 2;
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
-        //this.setBorder(border);
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);
         this.setMaximumSize(preferredSize);
         this.setSize(this.worldX,this.worldY);
-        //this.setBounds(r);
         this.startWithNeighbourhoodVonNeumann();
         this.resetLattice();
         this.running = Boolean.FALSE;
