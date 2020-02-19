@@ -66,6 +66,19 @@ public class ComputerKurzweilApplicationContext implements Startable {
         );
     }
 
+    @Transient
+    public CompoundBorder getFrameBorder(){
+        int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
+        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createEmptyBorder(),
+            BorderFactory.createEmptyBorder(left,right,top,bottom)
+        );
+    }
+
+    @Transient
     public Border getCanvasBorder() {
         int top = 24;
         int left = 0;
@@ -73,51 +86,6 @@ public class ComputerKurzweilApplicationContext implements Startable {
         int right = 0;
         return BorderFactory.createEmptyBorder(top,left,bottom,right);
     }
-
-    @Transient
-    public Rectangle getFrameBounds(){
-        int x = this.properties.getAllinone().getLattice().getWidth();
-        int y = this.properties.getAllinone().getLattice().getHeight();
-        int titleHeight = this.properties.getAllinone().getView().getTitleHeight();
-        double twoOfFiveParts = 2d;
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double startX = (screenSize.getWidth() - x ) / twoOfFiveParts;
-        double startY = (screenSize.getHeight() - y) / twoOfFiveParts;
-        int myheight = Double.valueOf( y ).intValue() + titleHeight;
-        int mywidth = Double.valueOf( x ).intValue();
-        int mystartX = Double.valueOf( startX ).intValue();
-        int mystartY = Double.valueOf( startY ).intValue();
-        return new Rectangle( mystartX, mystartY, mywidth, myheight );
-    }
-
-
-    @Transient
-    public Rectangle getCanvasBounds(){
-        int start=0;
-        return new Rectangle(
-            start, start,
-            this.getWorldDimensions().getX(),
-            this.getWorldDimensions().getY()
-        );
-    }
-
-    /*
-    @Transient
-    public Dimension getLatticeDimension(){
-        return new Dimension(
-            this.getWorldDimensions().getX(),
-            this.getWorldDimensions().getY()
-        );
-    }
-
-    @Transient
-    public Point getLatticeDimensions(){
-        return new Point(
-            this.getWorldDimensions().getX(),
-            this.getWorldDimensions().getY()
-        );
-    }
-    */
 
     @Transient
     public LatticePoint getWorldDimensions(){
