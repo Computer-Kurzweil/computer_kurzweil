@@ -27,7 +27,7 @@ evolution:
     title: 'Simulated Evolution'
     subtitle: 'Artificial Life Simulation of Bacteria Motion depending on DNA'
   control:
-    time2wait: 100
+    threadSleepTime: 100
     exitStatus: 0
     queueMaxLength: 1000
   cellConf:
@@ -75,6 +75,17 @@ cca:
       typeVonNeumann: 'Von Neumann'
       typeMoore: 'Moore'
       typeWoehlke: 'Woehlke'
+randomwalk:
+  view:
+    title: 'Wiener process'
+    subtitle: 'Brownian motion'
+    neighborhood:
+      title: 'Neighborhood'
+      typeVonNeumann: 'Von Neumann'
+      typeMoore: 'Moore'
+      typeWoehlke: 'Woehlke'
+  control:
+    threadSleepTime: 50
 dla:
   view:
     title: 'Diffusion Limited Aggregation'

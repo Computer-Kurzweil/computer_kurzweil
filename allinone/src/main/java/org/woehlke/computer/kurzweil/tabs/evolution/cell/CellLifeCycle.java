@@ -32,9 +32,9 @@ public class CellLifeCycle {
     @Getter private int generation;
     @Getter private CellLifeCycleStatus status;
 
-    @Getter private final ComputerKurzweilProperties.Evolution.CellConf cellConf;
+    @Getter private final ComputerKurzweilProperties.SimulatedEvolution.CellConf cellConf;
 
-    public CellLifeCycle(ComputerKurzweilProperties.Evolution.CellConf cellConf) {
+    public CellLifeCycle(ComputerKurzweilProperties.SimulatedEvolution.CellConf cellConf) {
         this.cellConf = cellConf;
         this.fat = cellConf.getFatAtBirth();
         this.age = 0;

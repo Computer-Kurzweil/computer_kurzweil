@@ -28,7 +28,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
 
     private final SimulatedEvolutionContext tabCtx;
     private Boolean goOn;
-    private final int time2wait;
+    private final int threadSleepTime;
 
   public SimulatedEvolutionController(
       SimulatedEvolutionContext tabCtx
@@ -36,7 +36,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
       super("DNA-Controller");
       this.tabCtx = tabCtx;
       this.goOn = Boolean.TRUE;
-      this.time2wait = this.tabCtx.getCtx().getProperties().getEvolution().getControl().getTime2wait();
+      this.threadSleepTime = this.tabCtx.getCtx().getProperties().getEvolution().getControl().getThreadSleepTime();
   }
 
   public void run() {
@@ -53,7 +53,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
         }
       }
       try {
-        sleep( this.time2wait );
+        sleep( this.threadSleepTime );
       } catch (InterruptedException e) {
         System.out.println(e.getLocalizedMessage());
       }

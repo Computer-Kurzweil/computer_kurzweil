@@ -22,8 +22,9 @@ public class ComputerKurzweilProperties {
 
     @Valid @Getter @Setter public Allinone allinone = new Allinone();
     @Valid @Getter @Setter public Mandelbrot mandelbrot = new Mandelbrot();
-    @Valid @Getter @Setter public Evolution evolution = new Evolution();
+    @Valid @Getter @Setter public SimulatedEvolution evolution = new SimulatedEvolution();
     @Valid @Getter @Setter public Cca cca = new Cca();
+    @Valid @Getter @Setter public WienerProcess randomwalk = new WienerProcess();
     @Valid @Getter @Setter public Dla dla = new Dla();
     @Valid @Getter @Setter public Kochsnowflake kochsnowflake = new Kochsnowflake();
     @Valid @Getter @Setter public Samegame samegame = new Samegame();
@@ -86,7 +87,7 @@ public class ComputerKurzweilProperties {
 
     ////@Validated
     @ToString
-    public static class Evolution {
+    public static class SimulatedEvolution {
 
         @Valid @Getter @Setter public View view = new View();
         @Valid @Getter @Setter public Control control = new Control();
@@ -105,7 +106,7 @@ public class ComputerKurzweilProperties {
         ////@Validated
         @ToString
         public static class Control {
-            @NotNull  @Getter @Setter private Integer time2wait;
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer exitStatus;
             @NotNull  @Getter @Setter private Integer queueMaxLength;
         }
@@ -186,6 +187,39 @@ public class ComputerKurzweilProperties {
                 @NotBlank @Getter @Setter private String typeMoore;
                 @NotBlank @Getter @Setter private String typeWoehlke;
             }
+        }
+    }
+
+    ////@Validated
+    @ToString
+    public static class WienerProcess {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        @ToString
+        public static class View {
+
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+
+            @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
+
+            //@Validated
+            @ToString
+            public static class Neighborhood {
+                @NotBlank @Getter @Setter private String title;
+                @NotBlank @Getter @Setter private String typeVonNeumann;
+                @NotBlank @Getter @Setter private String typeMoore;
+                @NotBlank @Getter @Setter private String typeWoehlke;
+            }
+        }
+
+        ////@Validated
+        @ToString
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
         }
     }
 

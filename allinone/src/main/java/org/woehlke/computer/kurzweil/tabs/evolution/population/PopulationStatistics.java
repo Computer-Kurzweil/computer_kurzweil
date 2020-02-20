@@ -50,7 +50,7 @@ public class PopulationStatistics extends JPanel {
         this.setLayout(layout);
         this.setBorder(border);
         initialPopulation = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation();
-        ComputerKurzweilProperties.Evolution.Population cfg = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation();
+        ComputerKurzweilProperties.SimulatedEvolution.Population cfg = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation();
         youngCellsStatistics = new PopulationStatisticsElement(cfg.getYoungCellsLabel(),YOUNG);
         youngAndFatCellsStatistics = new PopulationStatisticsElement(cfg.getYoungAndFatCellsLabel(),YOUNG_AND_FAT);
         fullAgeCellsStatistics = new PopulationStatisticsElement(cfg.getFullAgeCellsLabel(),FULL_AGE);
