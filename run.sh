@@ -2,7 +2,7 @@
 
 function runJar() {
     ./gradlew -i clean shadowJar
-    java -cp allinone/build/libs/allinone-all.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication
+    java -cp build/libs/computer_kurzweil-all.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication
 }
 
 function runDefault() {
