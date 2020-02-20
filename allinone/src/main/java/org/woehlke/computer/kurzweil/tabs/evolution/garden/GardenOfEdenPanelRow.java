@@ -22,7 +22,6 @@ public class GardenOfEdenPanelRow extends JPanel {
         this.tabCtx = tabCtx;
         this.gardenOfEdenEnabled = new GardenOfEdenCheckBox(this.tabCtx);
         this.buttonToggleGardenOfEden = new GardenOfEdenToggleButton(this.tabCtx);
-
         this.gardenOfEdenPanel = new GardenOfEdenPanel(this.tabCtx);
         this.gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
         this.gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);

@@ -1,11 +1,13 @@
 package org.woehlke.computer.kurzweil.tabs.evolution.population;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionCanvasStatistics;
+import org.woehlke.computer.kurzweil.widgets.layouts.CenterFlowLayout;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -16,7 +18,8 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleSta
 
 @Log
 @Getter
-@ToString(callSuper = true)
+@ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
+@EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 public class PopulationStatistics extends JPanel {
 
     private final PopulationStatisticsElement youngCellsStatistics;
@@ -30,11 +33,9 @@ public class PopulationStatistics extends JPanel {
     private final String borderLabel;
     private final int initialPopulation;
 
-    @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
-    @ToString.Exclude
     private final CompoundBorder border;
-    @ToString.Exclude
+    private final CenterFlowLayout layout;
     private final FlowLayout layoutSubPanel;
 
     public PopulationStatistics(
@@ -44,7 +45,9 @@ public class PopulationStatistics extends JPanel {
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);
         borderLabel = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
-        border = this.tabCtx.getCtx().getBorder(borderLabel);
+        layout = new CenterFlowLayout();
+        border = tabCtx.getCtx().getBottomButtonsPanelBorder(borderLabel);
+        this.setLayout(layout);
         this.setBorder(border);
         initialPopulation = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation();
         ComputerKurzweilProperties.Evolution.Population cfg = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation();
