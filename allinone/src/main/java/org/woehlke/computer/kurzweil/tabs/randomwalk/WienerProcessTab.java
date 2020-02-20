@@ -25,7 +25,7 @@ public class WienerProcessTab extends TabPanel implements Tab {
     private final BottomButtonsPanel bottomButtonsPanel;
 
     public WienerProcessTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
-        super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
+        super(tabbedPane,TabType.RANDOM_WALK_WIENER_PROCESS);
         this.tabCtx = new WienerProcessContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new BottomButtonsPanel( this );
