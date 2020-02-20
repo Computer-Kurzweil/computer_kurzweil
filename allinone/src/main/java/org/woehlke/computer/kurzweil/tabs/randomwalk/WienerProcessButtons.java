@@ -14,8 +14,8 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROC
 
 @Log
 @Getter
-@ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
-@EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper=true)
 public class WienerProcessButtons extends JPanel implements GuiComponentTab {
 
   private final WienerProcessCanvas canvas;
