@@ -72,11 +72,12 @@ public class WienerProcessCanvas extends JComponent implements
         int x;
         int y;
         long age;
-        int red = 0;
-        int green = 0;
-        int blue = 0;
+        int red;
+        int green;
+        int blue;
         long myage;
         long mybyte;
+        long limit = 256 * 256 * 256;
         if (lattice == null) {
             this.resetLattice();
         }
@@ -88,8 +89,7 @@ public class WienerProcessCanvas extends JComponent implements
                     green = 0;
                     blue = 0;
                 } else {
-                    myage = (256 * 256 * 256) - age;
-                    //myage = age;
+                    myage = limit - (age % limit);
                     mybyte = myage % 256;
                     red = (int)(mybyte);
                     myage /= 256;
@@ -153,7 +153,7 @@ public class WienerProcessCanvas extends JComponent implements
             y = (y + move.getY() + worldY ) % worldY;
             particlePosition.setX(x);
             particlePosition.setY(y);
-            lattice[x][y] = (lattice[x][y] + 1) * 2;
+            lattice[x][y] = (lattice[x][y] + 10) * 2;
             //log.info("stepped ("+x+","+y+" = "+ lattice[x][y]+") "+ParticleOrientation.values()[randomOrientation].name());
         }
     }

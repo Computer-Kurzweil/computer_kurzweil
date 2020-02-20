@@ -103,7 +103,7 @@ kochsnowflake:
     subtitle: 'Fractal Koch Snowflake'
   control:
     threadSleepTime: 50
-    numberOfParticles: 30000
+      numberOfParticles: 30000
 samegame:
   view:
     title: 'Same Game'

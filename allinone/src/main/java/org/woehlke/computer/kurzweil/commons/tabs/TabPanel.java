@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.widgets.layouts.BoxLayoutVertical;
@@ -18,6 +19,7 @@ import javax.swing.border.Border;
 @EqualsAndHashCode(callSuper=true, exclude = {"ctx","border","layout","panelSubtitle"})
 public abstract class TabPanel extends JPanel implements Tab {
 
+    protected final ComputerKurzweilApplicationTabbedPane tabbedPane;
     protected final ComputerKurzweilApplicationContext ctx;
     protected final Border border;
     protected final BoxLayoutVertical layout;
@@ -28,14 +30,15 @@ public abstract class TabPanel extends JPanel implements Tab {
 
     protected final TabType tabType;
 
-    protected TabPanel(ComputerKurzweilApplicationContext ctx, TabType tabType, String subTitle, String title) {
-        this.setName(title);
-        this.ctx = ctx;
+    protected TabPanel(ComputerKurzweilApplicationTabbedPane tabbedPane, TabType tabType) {
+        this.tabbedPane=tabbedPane;
+        this.ctx = this.tabbedPane.getCtx();
         this.tabType = tabType;
         this.layout = new BoxLayoutVertical(this);
         this.border = this.ctx.getTabBorder();
-        this.subTitle = subTitle;
-        this.title = title;
+        this.title =  this.ctx.getProperties().getTitle(tabType);
+        this.subTitle = this.ctx.getProperties().getSubtitle(tabType);
+        this.setName(title);
         this.panelSubtitle = new PanelSubtitle(subTitle);
         this.setLayout(layout);
         //this.setBorder(border);

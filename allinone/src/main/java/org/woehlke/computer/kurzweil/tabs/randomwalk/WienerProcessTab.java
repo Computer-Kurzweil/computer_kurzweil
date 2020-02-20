@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -19,12 +20,15 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class WienerProcessTab extends TabPanel implements Tab {
 
+    private final ComputerKurzweilApplicationTabbedPane tabbedPane;
     private final WienerProcessContext tabCtx;
+
     private final WienerProcessCanvas canvas;
     private final BottomButtonsPanel bottomButtonsPanel;
 
-    public WienerProcessTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON,ctx.getProperties().getRandomwalk().getView().getSubtitle(),ctx.getProperties().getRandomwalk().getView().getTitle());
+    public WienerProcessTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+        super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
+        this.tabbedPane=tabbedPane;
         this.tabCtx = new WienerProcessContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new BottomButtonsPanel( this );
@@ -84,10 +88,10 @@ public class WienerProcessTab extends TabPanel implements Tab {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
-            this.start();
+            super.tabbedPane.start();
         }
         if(ae.getSource() == this.bottomButtonsPanel.getStopButton()){
-            this.stop();
+            super.tabbedPane.stop();
         }
     }
 }

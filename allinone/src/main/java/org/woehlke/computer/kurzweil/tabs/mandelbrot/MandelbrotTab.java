@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -23,8 +23,8 @@ public class MandelbrotTab extends TabPanel implements Tab {
     private final MandelbrotCanvas canvas;
     private final BottomButtonsPanel bottomButtonsPanel;
 
-    public MandelbrotTab(ComputerKurzweilApplicationContext ctx ) {
-        super(ctx, TabType.MANDELBROT_SET, ctx.getProperties().getMandelbrot().getView().getSubtitle(),ctx.getProperties().getMandelbrot().getView().getTitle());
+    public MandelbrotTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+        super(tabbedPane, TabType.MANDELBROT_SET);
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new BottomButtonsPanel( this );
@@ -86,10 +86,10 @@ public class MandelbrotTab extends TabPanel implements Tab {
             this.canvas.zoomOut();
         }
         if(ae.getSource() ==  this.bottomButtonsPanel.getStartButton()){
-            start();
+            super.tabbedPane.start();
         }
         if(ae.getSource() ==  this.bottomButtonsPanel.getStopButton()){
-            stop();
+            super.tabbedPane.stop();
         }
     }
 }

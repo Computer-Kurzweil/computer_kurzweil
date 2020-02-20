@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.widgets.BottomButtonsPanel;
@@ -21,8 +22,8 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     private final DiffusionLimitedAggregationCanvas canvas;
     private final BottomButtonsPanel bottomButtonsPanel;
 
-    public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx, TabType.DIFFUSION_LIMITED_AGGREGATION,ctx.getProperties().getDla().getView().getSubtitle(),ctx.getProperties().getDla().getView().getTitle());
+    public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+        super(tabbedPane, TabType.DIFFUSION_LIMITED_AGGREGATION);
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.bottomButtonsPanel = new BottomButtonsPanel( this );
         this.canvas = this.tabCtx.getCanvas();
@@ -83,10 +84,10 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
-            this.start();
+            super.tabbedPane.start();
         }
         if(ae.getSource() == this.bottomButtonsPanel.getStopButton()){
-            this.stop();
+            super.tabbedPane.stop();
         }
     }
 }

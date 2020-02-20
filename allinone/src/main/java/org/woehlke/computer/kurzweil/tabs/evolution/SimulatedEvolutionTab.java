@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
@@ -21,15 +21,15 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
+    private final SimulatedEvolutionCanvas canvas;
     private final SimulatedEvolutionContext tabCtx;
     private final BottomButtonsPanel bottomButtonsPanel;
     private final PopulationStatistics statisticsPanel;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
-    private final SimulatedEvolutionCanvas canvas;
 
-    public SimulatedEvolutionTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx, TabType.SIMULATED_EVOLUTION, ctx.getProperties().getEvolution().getView().getSubtitle(), ctx.getProperties().getEvolution().getView().getTitle());
+    public SimulatedEvolutionTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+        super(tabbedPane, TabType.SIMULATED_EVOLUTION);
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
         this.tabCtx.setCanvas(this.canvas);
@@ -112,14 +112,10 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
             this.canvas.update();
         }
         if(ae.getSource() ==  this.bottomButtonsPanel.getStartButton()){
-            log.info("actionPerformed: start");
-            this.start();
-            this.canvas.update();
+            super.tabbedPane.start();
         }
         if(ae.getSource() ==  this.bottomButtonsPanel.getStopButton()){
-            log.info("actionPerformed: stop");
-            this.stop();
-            this.canvas.update();
+            super.tabbedPane.stop();
         }
     }
 }

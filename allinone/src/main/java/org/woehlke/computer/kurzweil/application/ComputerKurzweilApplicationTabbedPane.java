@@ -49,11 +49,11 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         this.mandelbrotTab = new MandelbrotTab(this.ctx);
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this.ctx);
         TabPanel[] tabPanelAbstractPanels = {
-            this.diffusionLimitedAggregationTab,
             this.cyclicCellularAutomatonTab,
             this.wienerProcessTab,
-            this.mandelbrotTab,
-            this.simulatedEvolutionTab
+            this.diffusionLimitedAggregationTab,
+            this.simulatedEvolutionTab,
+            this.mandelbrotTab
         };
         int[] events = {
             KeyEvent.VK_1,
@@ -82,18 +82,12 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         }
     }
 
-    public void switchTab(){
-        Tab tabPanelActive = getActiveTab();
-        for(TabPanel tabPanel:apps){
-                tabPanel.stop();
-        }
-        tabPanelActive.start();
-    }
-
     @Override
     public void start(){
         log.info("start");
-        switchTab();
+        for(TabPanel tabPanel:apps){
+            tabPanel.stop();
+        }
         getActiveTab().start();
         log.info("started");
     }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.*;
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.tabs.TabType;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -400,5 +402,63 @@ public class ComputerKurzweilProperties {
         }
         log.info("propertiesFactory done");
         return properties;
+    }
+
+    public String getSubtitle(TabType tabType){
+        switch (tabType){
+            case CYCLIC_CELLULAR_AUTOMATON:
+                return this.getCca().getView().getSubtitle();
+            case DIFFUSION_LIMITED_AGGREGATION:
+                return this.getDla().getView().getSubtitle();
+            case SIMULATED_EVOLUTION:
+                return this.getEvolution().getView().getSubtitle();
+            case MANDELBROT_SET:
+                return this.getMandelbrot().getView().getSubtitle();
+            case RANDOM_WALK_WIENER_PROCESS:
+                return this.getRandomwalk().getView().getSubtitle();
+            case KOCH_SNOWFLAKE:
+                return this.getKochsnowflake().getView().getSubtitle();
+            case SAME_GAME:
+                return this.getSamegame().getView().getSubtitle();
+            case SIERPINSKI_TRIANGLE:
+                return this.getSierpinskitriangle().getView().getSubtitle();
+            case TETRIS:
+                return this.getTetris().getView().getSubtitle();
+            case TURMITE:
+                return this.getTurmite().getView().getSubtitle();
+            case WATOR:
+                return this.getWator().getView().getSubtitle();
+            default:
+                return "UNDEFINED";
+        }
+    }
+
+    public String getTitle(TabType tabType){
+        switch (tabType){
+            case CYCLIC_CELLULAR_AUTOMATON:
+                return this.getCca().getView().getTitle();
+            case DIFFUSION_LIMITED_AGGREGATION:
+                return this.getDla().getView().getTitle();
+            case SIMULATED_EVOLUTION:
+                return  this.getEvolution().getView().getTitle();
+            case MANDELBROT_SET:
+                return this.getMandelbrot().getView().getTitle();
+            case RANDOM_WALK_WIENER_PROCESS:
+                return this.getRandomwalk().getView().getTitle();
+            case KOCH_SNOWFLAKE:
+                return this.getKochsnowflake().getView().getTitle();
+            case SAME_GAME:
+                return this.getSamegame().getView().getTitle();
+            case SIERPINSKI_TRIANGLE:
+                return  this.getSierpinskitriangle().getView().getTitle();
+            case TETRIS:
+                return  this.getTetris().getView().getTitle();
+            case TURMITE:
+                return this.getTurmite().getView().getTitle();
+            case WATOR:
+                return this.getWator().getView().getTitle();
+            default:
+                return "UNDEFINED";
+        }
     }
 }

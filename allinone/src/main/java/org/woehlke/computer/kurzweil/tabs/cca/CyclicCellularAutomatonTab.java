@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.widgets.BottomButtonsPanel;
@@ -21,11 +21,12 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
+
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
     private final BottomButtonsPanel bottomButtonsPanel;
 
-    public CyclicCellularAutomatonTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON,ctx.getProperties().getCca().getView().getSubtitle(),ctx.getProperties().getCca().getView().getTitle());
+    public CyclicCellularAutomatonTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+        super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
@@ -100,10 +101,10 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
             this.start();
         }
         if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
-            this.start();
+            super.tabbedPane.start();
         }
         if(ae.getSource() == this.bottomButtonsPanel.getStopButton()){
-            this.stop();
+            super.tabbedPane.stop();
         }
     }
 }
