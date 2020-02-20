@@ -1,10 +1,10 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.Getter;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
-@Log
+@Log4j2
 @Getter
 public class MandelbrotController extends Thread implements Runnable, TabController {
 

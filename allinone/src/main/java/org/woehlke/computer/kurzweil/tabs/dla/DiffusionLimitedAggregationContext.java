@@ -3,18 +3,17 @@ package org.woehlke.computer.kurzweil.tabs.dla;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonController;
 
 import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 
-@Log
+@Log4j2
 @Getter
 @ToString(exclude={"canvas","controller","tab","ctx"})
 @EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"})

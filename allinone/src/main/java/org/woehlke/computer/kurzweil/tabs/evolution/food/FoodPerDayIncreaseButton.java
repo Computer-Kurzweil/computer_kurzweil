@@ -2,12 +2,12 @@ package org.woehlke.computer.kurzweil.tabs.evolution.food;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 
 import javax.swing.*;
 
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true)
 public class FoodPerDayIncreaseButton extends JButton {

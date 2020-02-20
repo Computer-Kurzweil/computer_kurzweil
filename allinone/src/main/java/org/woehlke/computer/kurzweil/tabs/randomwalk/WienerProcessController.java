@@ -1,8 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
 import lombok.Getter;
-import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
 /**
@@ -15,7 +14,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-@Log
+@Log4j2
 @Getter
 public class WienerProcessController extends Thread
         implements TabController {

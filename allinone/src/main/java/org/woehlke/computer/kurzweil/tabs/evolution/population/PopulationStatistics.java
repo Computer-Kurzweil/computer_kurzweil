@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.evolution.population;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionCanvasStatistics;
@@ -16,7 +16,7 @@ import java.awt.*;
 
 import static org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleStatus.*;
 
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})

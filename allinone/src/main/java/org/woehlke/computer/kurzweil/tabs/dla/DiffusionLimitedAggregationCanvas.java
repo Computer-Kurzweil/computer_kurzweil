@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.dla;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
@@ -28,7 +28,7 @@ import java.util.List;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","particles"})

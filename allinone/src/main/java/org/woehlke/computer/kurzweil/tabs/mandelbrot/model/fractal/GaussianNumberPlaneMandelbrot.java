@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
@@ -14,7 +14,7 @@ import java.util.Deque;
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.ComputingPlan.startCenterForMandelbrot;
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.ComputingPlan.startWorldDimension;
 
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true)
 public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {

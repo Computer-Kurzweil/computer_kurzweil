@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.application;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.*;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import javax.validation.Valid;
@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-@Log
+@Log4j2
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor

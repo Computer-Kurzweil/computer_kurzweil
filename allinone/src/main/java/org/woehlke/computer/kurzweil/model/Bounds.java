@@ -1,13 +1,13 @@
 package org.woehlke.computer.kurzweil.model;
 
 import lombok.*;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
 
-@Log
+@Log4j2
 @Getter
 @ToString
 @AllArgsConstructor

@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.randomwalk;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ import java.awt.*;
 
 import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROCESS;
 
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper=true)

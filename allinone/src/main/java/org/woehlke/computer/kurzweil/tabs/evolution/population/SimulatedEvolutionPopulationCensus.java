@@ -1,10 +1,10 @@
 package org.woehlke.computer.kurzweil.tabs.evolution.population;
 
 import lombok.*;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleStatus;
 
-@Log
+@Log4j2
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor

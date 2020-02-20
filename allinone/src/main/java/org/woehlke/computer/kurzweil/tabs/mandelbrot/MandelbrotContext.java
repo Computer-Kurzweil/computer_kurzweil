@@ -2,17 +2,16 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 
 import lombok.Getter;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionController;
 
 
 import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.MANDELBROT_SET;
 
-@Log
+@Log4j2
 @Getter
 public class MandelbrotContext implements TabContext {
 

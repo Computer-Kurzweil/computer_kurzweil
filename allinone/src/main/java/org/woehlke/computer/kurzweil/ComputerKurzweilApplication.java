@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil;
 
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -26,7 +26,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  * <p>
  * &copy; 2006 - 2008 Thomas Woehlke.
  */
-@Log
+@Log4j2
 public class ComputerKurzweilApplication implements Startable {
 
     private final ComputerKurzweilApplicationFrame frame;

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.TuringDirection;
@@ -17,7 +17,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  *
  * Created by tw on 16.12.2019.
  */
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true)
 public class TuringPositionsStateMachine implements Startable {

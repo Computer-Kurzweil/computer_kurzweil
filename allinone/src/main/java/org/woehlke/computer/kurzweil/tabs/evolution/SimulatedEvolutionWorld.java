@@ -4,7 +4,7 @@ package org.woehlke.computer.kurzweil.tabs.evolution;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -31,7 +31,7 @@ import java.util.List;
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
-@Log
+@Log4j2
 @Getter
 @ToString(exclude={"cells","appCtx"})
 @EqualsAndHashCode(exclude={"cells","appCtx"})

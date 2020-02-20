@@ -3,14 +3,14 @@ package org.woehlke.computer.kurzweil.tabs.cca;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
 @EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
@@ -50,9 +50,7 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
 
     @Override
     public void showMe() {
-        log.info("showMe");
-        this.setVisible(true);
-        repaint();
+        //log.info("showMe");
     }
 
 }

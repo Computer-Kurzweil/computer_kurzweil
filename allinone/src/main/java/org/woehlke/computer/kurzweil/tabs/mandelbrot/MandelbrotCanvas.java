@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
@@ -13,7 +13,6 @@ import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -29,7 +28,7 @@ import java.awt.event.MouseListener;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})
 @EqualsAndHashCode(callSuper=true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})

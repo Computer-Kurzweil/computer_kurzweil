@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets.PanelButtonsGroup;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets.PanelZoomButtons;
 
@@ -19,7 +19,7 @@ import java.awt.*;
  *
  * Created by tw on 16.12.2019.
  */
-@Log
+@Log4j2
 @Getter
 public class MandelbrotButtons extends JPanel {
 

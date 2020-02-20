@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.model;
 
 import lombok.*;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * A Point is used to define the Position of Cell or as a Vector for defining Dimensions.
@@ -16,7 +16,7 @@ import lombok.extern.java.Log;
  * Date: 04.02.2006
  * Time: 23:47:05
  */
-@Log
+@Log4j2
 @Getter
 @Setter
 @ToString

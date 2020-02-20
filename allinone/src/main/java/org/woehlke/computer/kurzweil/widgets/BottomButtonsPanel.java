@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.widgets;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
@@ -11,7 +11,7 @@ import org.woehlke.computer.kurzweil.widgets.layouts.FlowLayoutLeft;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 
-@Log
+@Log4j2
 @Getter
 @ToString(exclude={"borderBottomButtonsPanel","layoutBottomButtonsPanel"})
 public class BottomButtonsPanel extends JPanel implements Startable, GuiComponentTab {

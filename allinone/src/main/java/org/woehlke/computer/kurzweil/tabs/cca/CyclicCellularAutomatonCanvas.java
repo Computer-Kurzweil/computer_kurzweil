@@ -4,7 +4,7 @@ package org.woehlke.computer.kurzweil.tabs.cca;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
@@ -30,7 +30,7 @@ import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.WOEHL
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
@@ -103,24 +103,24 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     @Override
     public void showMe() {
-        //log.info("showMe "+this.toString());
+        log.info("showMe "+this.toString());
     }
 
     public void start() {
-        //log.info("start");
+        log.info("start");
         showMe();
         synchronized (running) {
             running = Boolean.TRUE;
         }
-        //log.info("started "+this.toString());
+        log.info("started "+this.toString());
     }
 
     public void stop() {
-        //log.info("stop");
+        log.info("stop");
         synchronized (running) {
             running = Boolean.FALSE;
         }
-        //log.info("stopped "+this.toString());
+        log.info("stopped "+this.toString());
     }
 
     public void update(){
@@ -163,15 +163,15 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     private void initCreateLattice(){
-        //log.info("initCreateLattice start: "+neighbourhoodType.name());
+        log.info("initCreateLattice start: "+neighbourhoodType.name());
         lattice = new int[versions][worldX][worldY];
         source = 0;
         target = 1;
-        //log.info("initCreateLattice finished: "+neighbourhoodType.name());
+        log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
     private void initFillLattice(){
-        //log.info("initCreateLattice start: "+neighbourhoodType.name());
+        log.info("initCreateLattice start: "+neighbourhoodType.name());
         Random random = this.tabCtx.getCtx().getRandom();
         int maxState = this.colorScheme.getMaxState();
         int y;
@@ -181,7 +181,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
                 lattice[source][x][y] = random.nextInt(maxState);
             }
         }
-        //log.info("initCreateLattice finished: "+neighbourhoodType.name());
+        log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
 
     public void resetLattice(){
@@ -190,20 +190,18 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     }
 
     public void startWithNeighbourhoodVonNeumann() {
-        /*
         if( this.neighbourhoodType == null) {
             log.info("startWithNeighbourhoodVonNeumann");
         } else {
             log.info("startWithNeighbourhoodVonNeumann: " + neighbourhoodType.name());
         }
-        */
         this.neighbourhoodType=VON_NEUMANN_NEIGHBORHOOD;
         resetLattice();
         log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
     }
 
     public void startWithNeighbourhoodMoore() {
-        //log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
+        log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
         this.neighbourhoodType=MOORE_NEIGHBORHOOD;
         resetLattice();
         log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());

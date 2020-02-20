@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.evolution;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -15,7 +15,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import java.awt.event.ActionEvent;
 
 
-@Log
+@Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})

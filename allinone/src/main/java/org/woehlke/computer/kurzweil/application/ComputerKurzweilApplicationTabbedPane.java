@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.application;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
@@ -15,14 +15,13 @@ import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.WienerProcessTab;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-@Log
+@Log4j2
 @Getter
 @ToString(exclude={"ctx","apps","border"},callSuper=true)
 @EqualsAndHashCode(callSuper=true)
