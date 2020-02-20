@@ -10,7 +10,7 @@ import java.awt.*;
 public class WienerProcessCanvasTest {
 
     @Test
-    public void colorForAgeTest() throws Exception {
+    public void colorForAgeTest() {
         log.info("colorForAgeTest");
         long age;
         int red = 0;
@@ -34,7 +34,7 @@ public class WienerProcessCanvasTest {
                 blue = (int)(blueL);
             }
             log.info("red: "+red+" green: "+green+" blue: "+blue);
-            Color colorForAge = new Color(red, green, blue);
+            //Color colorForAge = new Color(red, green, blue);
         }
         Assert.assertTrue(true);
         log.info("colorForAgeTest Done");

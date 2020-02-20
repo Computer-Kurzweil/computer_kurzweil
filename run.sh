@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function bootRunAllinone() {
-    ./gradlew clean allinone:clean allinone:shadowJar
+    ./gradlew -i clean allinone:clean allinone:shadowJar
     java -cp allinone/build/libs/allinone-all.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication
 
     #jar -tf libs/allinone.jar -C allinone/build
@@ -11,7 +11,7 @@ function bootRunAllinone() {
 }
 
 function bootRunDefault() {
-    ./gradlew clean allinone:run
+    ./gradlew -i clean allinone:run
 }
 
 

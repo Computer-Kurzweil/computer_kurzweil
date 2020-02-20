@@ -1,4 +1,4 @@
-cmd /c gradlew allinone:clean allinone:test
+cmd /c gradlew -i clean allinone:clean allinone:test
 
 rem cmd /c gradlew clean allinone:clean allinone:shadowJar
 
