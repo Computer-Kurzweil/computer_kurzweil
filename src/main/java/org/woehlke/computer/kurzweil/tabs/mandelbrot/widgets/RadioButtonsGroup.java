@@ -1,7 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets;
 
 import lombok.Getter;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 
 import javax.swing.*;
