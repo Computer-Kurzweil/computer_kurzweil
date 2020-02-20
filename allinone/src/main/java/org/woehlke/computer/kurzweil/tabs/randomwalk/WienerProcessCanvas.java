@@ -54,7 +54,6 @@ public class WienerProcessCanvas extends JComponent implements
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         this.layout = new CanvasLayout(this);
-        this.particlePosition = new LatticePoint(worldX/2,worldY/2);
         this.preferredSize = new Dimension(worldX,worldY);
         this.colorScheme = new WienerProcessColorScheme();
         this.setLayout(layout);
@@ -63,6 +62,7 @@ public class WienerProcessCanvas extends JComponent implements
         this.setMaximumSize(preferredSize);
         this.setSize(this.worldX,this.worldY);
         this.resetLattice();
+        this.particlePosition = new LatticePoint(worldX/2,worldY/2);
         this.running = Boolean.FALSE;
         showMe();
     }
@@ -77,7 +77,7 @@ public class WienerProcessCanvas extends JComponent implements
         int blue = 0;
         long myage;
         long mybyte;
-        if (lattice != null) {
+        if (lattice == null) {
             this.resetLattice();
         }
         for (y = 0; y < worldY; y++) {
@@ -88,21 +88,16 @@ public class WienerProcessCanvas extends JComponent implements
                     green = 0;
                     blue = 0;
                 } else {
-                    if(age == 0){
-                        red = 0;
-                        green = 0;
-                        blue = 0;
-                    } else {
-                        myage = (256 * 256 * 256) - age;
-                        mybyte = myage % 256;
-                        red = (int)(mybyte);
-                        myage /= 256;
-                        mybyte = myage % 256;
-                        green = (int)(mybyte);
-                        myage /= 256;
-                        mybyte = myage % 256;
-                        blue = (int)(mybyte);
-                    }
+                    myage = (256 * 256 * 256) - age;
+                    //myage = age;
+                    mybyte = myage % 256;
+                    red = (int)(mybyte);
+                    myage /= 256;
+                    mybyte = myage % 256;
+                    green = (int)(mybyte);
+                    myage /= 256;
+                    mybyte = myage % 256;
+                    blue = (int)(mybyte);
                 }
                 Color colorForAge = new Color(red, green, blue);
                 g.setColor(colorForAge);
@@ -157,6 +152,8 @@ public class WienerProcessCanvas extends JComponent implements
             x = (x + move.getX() + worldX ) % worldX;
             y = (y + move.getY() + worldY ) % worldY;
             lattice[x][y]++;
+            particlePosition.setX(x);
+            particlePosition.setY(y);
             log.info("stepped ("+x+","+y+" = "+ lattice[x][y]+") "+ParticleOrientation.values()[randomOrientation].name());
         }
     }
