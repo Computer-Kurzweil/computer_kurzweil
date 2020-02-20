@@ -33,7 +33,7 @@ public class ComputerKurzweilApplication implements Startable {
 
     public ComputerKurzweilApplication() {
         String conf = "application.yml";
-        String jar = "allinone/build/libs/allinone-all.jar";
+        String jar = "build/libs/computer_kurzweil-all.jar";
         ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(conf, jar);
         this.frame = new ComputerKurzweilApplicationFrame(properties);
         //start();
