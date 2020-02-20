@@ -151,9 +151,9 @@ public class WienerProcessCanvas extends JComponent implements
             LatticePoint move = ParticleOrientation.values()[randomOrientation].getMove();
             x = (x + move.getX() + worldX ) % worldX;
             y = (y + move.getY() + worldY ) % worldY;
-            lattice[x][y]++;
             particlePosition.setX(x);
             particlePosition.setY(y);
+            lattice[x][y] = (lattice[x][y] + 1) * 2;
             log.info("stepped ("+x+","+y+" = "+ lattice[x][y]+") "+ParticleOrientation.values()[randomOrientation].name());
         }
     }
