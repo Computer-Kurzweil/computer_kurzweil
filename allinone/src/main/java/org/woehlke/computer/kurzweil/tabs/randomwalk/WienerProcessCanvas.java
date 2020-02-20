@@ -7,17 +7,13 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
-import org.woehlke.computer.kurzweil.model.LatticePointNeighbourhoodPosition;
+import org.woehlke.computer.kurzweil.model.LatticePoint;
 import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.io.Serializable;
-import java.util.Random;
-
-import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
 
 /**
  * Cyclic Cellular Automaton.
@@ -43,13 +39,10 @@ public class WienerProcessCanvas extends JComponent implements
     private final Dimension preferredSize;
     private final CanvasLayout layout;
     private final WienerProcessColorScheme colorScheme;
-    private volatile int[][][] lattice;
-    private volatile int source;
-    private volatile int target;
-    private volatile LatticeNeighbourhoodType neighbourhoodType;
+    private volatile long[][] lattice;
     private Boolean running;
+    private LatticePoint particlePosition;
 
-    private final int versions;
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
@@ -61,15 +54,14 @@ public class WienerProcessCanvas extends JComponent implements
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         this.layout = new CanvasLayout(this);
+        this.particlePosition = new LatticePoint(worldX/2,worldY/2);
         this.preferredSize = new Dimension(worldX,worldY);
-        this.versions = 2;
         this.colorScheme = new WienerProcessColorScheme();
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);
         this.setMaximumSize(preferredSize);
         this.setSize(this.worldX,this.worldY);
-        this.startWithNeighbourhoodVonNeumann();
         this.resetLattice();
         this.running = Boolean.FALSE;
         showMe();
@@ -79,16 +71,32 @@ public class WienerProcessCanvas extends JComponent implements
         //log.info("paint START (Graphics g)");
         int x;
         int y;
-        int state;
-        Color stateColor;
+        long age;
+        int red = 0;
+        int green = 0;
+        int blue = 0;
         if (lattice != null) {
-            for (y = 0; y < worldY; y++) {
-                for (x = 0; x < worldX; x++) {
-                    state = this.lattice[source][x][y];
-                    stateColor = this.colorScheme.getColorForState(state);
-                    g.setColor(stateColor);
-                    g.drawLine(x, y, x, y);
+            this.resetLattice();
+        }
+        for (y = 0; y < worldY; y++) {
+            for (x = 0; x < worldX; x++) {
+                age = this.lattice[x][y];
+                if(age == 0){
+                    red = 0;
+                    green = 0;
+                    blue = 0;
+                } else {
+                    age = (255 * 255 * 255 +1) - (age % (255 * 255 * 255 + 1));
+                    long blueL = (age / (255 * 255 + 1)) % (255 * 255 * 255 + 1);
+                    long greenL = (age / 256) % (255 * 255 + 1);
+                    long redL = (age % 256);
+                    red = (int)(redL);
+                    green = (int)(greenL);
+                    blue = (int)(blueL);
                 }
+                Color colorForAge = new Color(red, green, blue);
+                g.setColor(colorForAge);
+                g.drawLine(x, y, x, y);
             }
         }
         super.paintComponent(g);
@@ -133,87 +141,26 @@ public class WienerProcessCanvas extends JComponent implements
         }
         if(doIt){
             //log.info("step");
-            int maxState = colorScheme.getMaxState();
-            int xx;
-            int yy;
-            int nextState;
-            int y;
-            int x;
-            int i;
-            for (y = 0; y < worldY; y++) {
-                for (x = 0; x < worldX; x++) {
-                    lattice[target][x][y] = lattice[source][x][y];
-                    nextState = (lattice[source][x][y] + 1) % maxState;
-                    LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getNeighbourhoodFor(neighbourhoodType);
-                    for (i = 0; i < pos.length; i++) {
-                        xx = ((x + pos[i].getX() + worldX) % worldX);
-                        yy = ((y + pos[i].getY() + worldY) % worldY);
-                        if (nextState == lattice[source][xx][yy]) {
-                            lattice[target][x][y] = nextState;
-                            i = pos.length;
-                        }
-                    }
-                }
-            }
-            this.source = (this.source + 1) % 2;
-            this.target = (this.target + 1) % 2;
+            int x = particlePosition.getX();
+            int y = particlePosition.getY();
+            int randomOrientation = this.tabCtx.getCtx().getRandom().nextInt(ParticleOrientation.values().length);
+            LatticePoint move = ParticleOrientation.values()[randomOrientation].getMove();
+            x = (x + move.getX() + worldX ) % worldX;
+            y = (y + move.getY() + worldY ) % worldY;
+            lattice[x][y]++;
             //log.info("stepped");
         }
     }
 
-    private void initCreateLattice(){
-        //log.info("initCreateLattice start: "+neighbourhoodType.name());
-        lattice = new int[versions][worldX][worldY];
-        source = 0;
-        target = 1;
-        //log.info("initCreateLattice finished: "+neighbourhoodType.name());
-    }
-
-    private void initFillLattice(){
-        //log.info("initCreateLattice start: "+neighbourhoodType.name());
-        Random random = this.tabCtx.getCtx().getRandom();
-        int maxState = this.colorScheme.getMaxState();
-        int y;
+    public void resetLattice(){
+        lattice = new long[worldX][worldY];
         int x;
-        for (y = 0; y < worldY; y++) {
-            for (x = 0; x < worldX; x++) {
-                lattice[source][x][y] = random.nextInt(maxState);
+        int y;
+        for(y = 0; y <worldY; y++){
+            for(x=0; x < worldX; x++){
+                lattice[x][y]=0;
             }
         }
-        //log.info("initCreateLattice finished: "+neighbourhoodType.name());
     }
-
-    public void resetLattice(){
-        initCreateLattice();
-        initFillLattice();
-    }
-
-    public void startWithNeighbourhoodVonNeumann() {
-        /*
-        if( this.neighbourhoodType == null) {
-            log.info("startWithNeighbourhoodVonNeumann");
-        } else {
-            log.info("startWithNeighbourhoodVonNeumann: " + neighbourhoodType.name());
-        }
-        */
-        this.neighbourhoodType=VON_NEUMANN_NEIGHBORHOOD;
-        resetLattice();
-        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
-    }
-
-    public void startWithNeighbourhoodMoore() {
-        //log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
-        this.neighbourhoodType=MOORE_NEIGHBORHOOD;
-        resetLattice();
-        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
-    }
-
-    public void startWithNeighbourhoodWoehlke() {
-        //log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
-        this.neighbourhoodType=WOEHLKE_NEIGHBORHOOD;
-        resetLattice();
-        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
-    }
-
 
 }

@@ -114,7 +114,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
                     int blue = (myAge / 256) % (256 * 256);
                     int green = (myAge % 256);
                     int red = 255;
-                    ageColor =  new Color(red, green, blue);
+                    ageColor = new Color(red, green, blue);
                     g.setColor(ageColor);
                     g.drawLine(x,y,x,y);
                     //log.info("paint: age "+myAge+" x="+x+",y="+y+" with color: red="+red+", green="+green+", blue="+blue+" ");

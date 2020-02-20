@@ -78,7 +78,7 @@ cca:
       typeMoore: 'Moore'
       typeWoehlke: 'Woehlke'
   control:
-    threadSleepTime: 50
+    threadSleepTime: 100
 randomwalk:
   view:
     title: 'Wiener process'
@@ -89,7 +89,7 @@ randomwalk:
       typeMoore: 'Moore'
       typeWoehlke: 'Woehlke'
   control:
-    threadSleepTime: 50
+    threadSleepTime: 100
 dla:
   view:
     title: 'Diffusion Limited Aggregation'

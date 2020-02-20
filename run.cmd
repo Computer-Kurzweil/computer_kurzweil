@@ -1,3 +1,5 @@
-cmd /c gradlew clean allinone:clean allinone:shadowJar
+cmd /c gradlew allinone:clean allinone:test
 
-cmd /c java -cp allinone/build/libs/allinone-all.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication > log.txt
+rem cmd /c gradlew clean allinone:clean allinone:shadowJar
+
+rem cmd /c java -cp allinone/build/libs/allinone-all.jar org.woehlke.computer.kurzweil.ComputerKurzweilApplication > log.txt

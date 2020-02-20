@@ -20,7 +20,6 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 public class CyclicCellularAutomatonController extends Thread
         implements TabController {
 
-    private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilApplicationContext ctx;
     private final CyclicCellularAutomatonContext tabCtx;
