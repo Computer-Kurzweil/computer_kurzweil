@@ -86,10 +86,10 @@ public class MandelbrotTab extends TabPanel implements Tab {
             this.canvas.zoomOut();
         }
         if(ae.getSource() ==  this.bottomButtonsPanel.getStartButton()){
-            super.tabbedPane.start();
+            super.ctx.getFrame().start();
         }
         if(ae.getSource() ==  this.bottomButtonsPanel.getStopButton()){
-            super.tabbedPane.stop();
+            super.ctx.getFrame().stop();
         }
     }
 }

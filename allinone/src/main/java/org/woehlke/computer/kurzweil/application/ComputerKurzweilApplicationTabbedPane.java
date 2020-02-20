@@ -16,6 +16,7 @@ import org.woehlke.computer.kurzweil.tabs.randomwalk.WienerProcessTab;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -35,19 +36,19 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     private final MandelbrotTab mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
     private final List<TabPanel> apps = new ArrayList<>();
-    private final Border border;
+    private final CompoundBorder border;
 
     public ComputerKurzweilApplicationTabbedPane(
         ComputerKurzweilApplicationContext ctx
     ) {
         this.ctx = ctx;
-        this.border = ctx.getBorder();
+        this.border = ctx.getTabbedPaneBorder();
         this.setBorder(border);
-        this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this.ctx);
-        this.wienerProcessTab = new WienerProcessTab(this.ctx);
-        this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this.ctx);
-        this.mandelbrotTab = new MandelbrotTab(this.ctx);
-        this.simulatedEvolutionTab = new SimulatedEvolutionTab(this.ctx);
+        this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this);
+        this.wienerProcessTab = new WienerProcessTab(this);
+        this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this);
+        this.mandelbrotTab = new MandelbrotTab(this);
+        this.simulatedEvolutionTab = new SimulatedEvolutionTab(this);
         TabPanel[] tabPanelAbstractPanels = {
             this.cyclicCellularAutomatonTab,
             this.wienerProcessTab,

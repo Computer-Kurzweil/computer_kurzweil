@@ -39,6 +39,17 @@ public class ComputerKurzweilApplicationContext implements Startable {
         System.exit(0);
     }
 
+
+    @Transient
+    public CompoundBorder getTabbedPaneBorder() {
+        return getBorder();
+    }
+
+    @Transient
+    public CompoundBorder getFrameBorder(){
+        return getBorder();
+    }
+
     @Transient
     public CompoundBorder getBorder(){
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
@@ -50,6 +61,7 @@ public class ComputerKurzweilApplicationContext implements Startable {
             BorderFactory.createEmptyBorder(left,right,top,bottom)
         );
     }
+
 
     @Transient
     public CompoundBorder getBorder(String label){
@@ -63,20 +75,18 @@ public class ComputerKurzweilApplicationContext implements Startable {
         );
     }
 
-    @Transient
-    public CompoundBorder getFrameBorder(){
+    private CompoundBorder getDoubleBorder(){
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
         return BorderFactory.createCompoundBorder(
-            BorderFactory.createEmptyBorder(),
+            BorderFactory.createEmptyBorder(left,right,top,bottom),
             BorderFactory.createEmptyBorder(left,right,top,bottom)
         );
     }
 
-    @Transient
-    public CompoundBorder getBottomButtonsPanelBorder(){
+    private CompoundBorder getDoubleBorder(String label){
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
@@ -88,33 +98,31 @@ public class ComputerKurzweilApplicationContext implements Startable {
     }
 
     @Transient
+    public CompoundBorder getBottomButtonsPanelBorder(){
+        return getDoubleBorder();
+    }
+
+    @Transient
     public CompoundBorder getBottomButtonsPanelBorder(String label){
-        int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
-        int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
-        int bottom = this.getProperties().getAllinone().getView().getBorderPaddingY();
-        int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
-        return BorderFactory.createCompoundBorder(
-            BorderFactory.createTitledBorder(label),
-            BorderFactory.createEmptyBorder(top,left,bottom,right)
-        );
+        return getDoubleBorder(label);
+    }
+
+    private Border getZeroBorder() {
+        int top = 0;
+        int left = 0;
+        int bottom = 0;
+        int right = 0;
+        return BorderFactory.createEmptyBorder(top,left,bottom,right);
     }
 
     @Transient
     public Border getTabBorder() {
-        int top = 0;
-        int left = 0;
-        int bottom = 0;
-        int right = 0;
-        return BorderFactory.createEmptyBorder(top,left,bottom,right);
+        return getZeroBorder();
     }
 
     @Transient
     public Border getCanvasBorder() {
-        int top = 0;
-        int left = 0;
-        int bottom = 0;
-        int right = 0;
-        return BorderFactory.createEmptyBorder(top,left,bottom,right);
+        return getZeroBorder();
     }
 
     @Transient
