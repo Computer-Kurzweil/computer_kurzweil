@@ -4,8 +4,42 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
+        <!-- Async Loggers will auto-flush in batches, so switch off immediateFlush. -->
+        <RandomAccessFile name="RandomAccessFile" fileName="asyncWithLocation.log"
+                          immediateFlush="false" append="false">
+            <PatternLayout>
+                <Pattern>%d %p %class{1.} [%t] %location %m %ex%n</Pattern>
+            </PatternLayout>
+        </RandomAccessFile>
     </Appenders>
     <Loggers>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.tabs.cca" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.tabs.dla" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.tabs.evolution" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.tabs.mandelbrot" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.tabs.randomwalk" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.application" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.commons" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.model" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.woehlke.computer.kurzweil.widgets" level="info" includeLocation="true">
+            <AppenderRef ref="RandomAccessFile"/>
+        </AsyncLogger>
         <Root level="error">
             <AppenderRef ref="Console"/>
         </Root>
