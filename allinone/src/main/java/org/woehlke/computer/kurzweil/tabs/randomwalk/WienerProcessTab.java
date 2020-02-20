@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
@@ -20,7 +19,6 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class WienerProcessTab extends TabPanel implements Tab {
 
-    private final ComputerKurzweilApplicationTabbedPane tabbedPane;
     private final WienerProcessContext tabCtx;
 
     private final WienerProcessCanvas canvas;
@@ -28,7 +26,6 @@ public class WienerProcessTab extends TabPanel implements Tab {
 
     public WienerProcessTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
         super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
-        this.tabbedPane=tabbedPane;
         this.tabCtx = new WienerProcessContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new BottomButtonsPanel( this );

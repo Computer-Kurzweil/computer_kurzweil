@@ -81,13 +81,8 @@ cca:
     threadSleepTime: 100
 randomwalk:
   view:
-    title: 'Wiener process'
-    subtitle: 'Brownian motion'
-    neighborhood:
-      title: 'Neighborhood'
-      typeVonNeumann: 'Von Neumann'
-      typeMoore: 'Moore'
-      typeWoehlke: 'Woehlke'
+    title: 'Random Walk'
+    subtitle: 'Brownian Motion by Fractal Random Walk'
   control:
     threadSleepTime: 100
 dla:
@@ -103,7 +98,7 @@ kochsnowflake:
     subtitle: 'Fractal Koch Snowflake'
   control:
     threadSleepTime: 50
-      numberOfParticles: 30000
+    numberOfParticles: 30000
 samegame:
   view:
     title: 'Same Game'

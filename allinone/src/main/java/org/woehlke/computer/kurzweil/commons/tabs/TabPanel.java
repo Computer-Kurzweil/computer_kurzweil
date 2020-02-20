@@ -15,8 +15,8 @@ import javax.swing.border.Border;
 
 @Log
 @Getter
-@ToString(callSuper = true, exclude = {"ctx","border","layout","panelSubtitle"})
-@EqualsAndHashCode(callSuper=true, exclude = {"ctx","border","layout","panelSubtitle"})
+@ToString(callSuper = true, exclude = {"ctx","tabbedPane","border","layout","panelSubtitle"})
+@EqualsAndHashCode(callSuper=true, exclude = {"ctx","tabbedPane","border","layout","panelSubtitle"})
 public abstract class TabPanel extends JPanel implements Tab {
 
     protected final ComputerKurzweilApplicationTabbedPane tabbedPane;
