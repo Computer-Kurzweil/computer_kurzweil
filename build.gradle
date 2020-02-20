@@ -12,7 +12,7 @@ plugins {
     id 'idea'
 }
 
-applicationName = 'kurzweil'
+applicationName = 'computer_kurzweil'
 
 repositories {
     mavenCentral()
@@ -24,7 +24,7 @@ repositories {
 }
 
 application {
-    applicationName = 'kurzweil'
+    applicationName = 'computer_kurzweil'
     mainClassName = 'org.woehlke.computer.kurzweil.ComputerKurzweilApplication'
 }
 
@@ -47,7 +47,6 @@ test {
     useJUnitPlatform {
         // includeEngines("junit-jupiter", "junit-vintage")
         // excludeEngines("custom-engine")
-
         // includeTags("fast")
         excludeTags("slow")
     }
@@ -57,20 +56,14 @@ test {
 }
 
 ext {
-    jacksonDatabindVersion = '2.9.8' //2.9.8,2.10.2
+    jacksonDatabindVersion = '2.9.8' //2.10.2
     lombokVersion = '1.18.12'
     log4j2Version = '2.13.0'
     log4j12Version = '1.2.17'
+    junitVersion = '5.6.0'
 }
 
 dependencies {
-
-    compileOnly 'org.projectlombok:lombok:'+lombokVersion
-    annotationProcessor 'org.projectlombok:lombok:'+lombokVersion
-    testCompileOnly 'org.projectlombok:lombok:'+lombokVersion
-    testAnnotationProcessor 'org.projectlombok:lombok:'+lombokVersion
-    compileOnly 'org.projectlombok:lombok-utils:'+lombokVersion
-    testCompileOnly  'org.projectlombok:lombok-utils:'+lombokVersion
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:'+jacksonDatabindVersion
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-properties:'+jacksonDatabindVersion
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:'+jacksonDatabindVersion
@@ -87,8 +80,14 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-slf4j-impl:'+log4j2Version
     implementation 'org.apache.logging.log4j:log4j-api:'+log4j2Version
     implementation 'org.apache.logging.log4j:log4j-jcl:'+log4j2Version
-    testImplementation("junit:junit:4.13")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.6.0")
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
+    compileOnly 'org.projectlombok:lombok-utils:'+lombokVersion
+    compileOnly 'org.projectlombok:lombok:'+lombokVersion
+    annotationProcessor 'org.projectlombok:lombok:'+lombokVersion
+    testAnnotationProcessor 'org.projectlombok:lombok:'+lombokVersion
+    testImplementation "junit:junit:4.13"
+    testImplementation 'org.junit.jupiter:junit-jupiter:'+junitVersion
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:"+junitVersion
+    testCompileOnly 'org.projectlombok:lombok:'+lombokVersion
+    testCompileOnly 'org.projectlombok:lombok-utils:'+lombokVersion
 }
 
