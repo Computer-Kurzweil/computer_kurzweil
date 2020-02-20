@@ -24,7 +24,7 @@ public class WienerProcessController extends Thread
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilApplicationContext ctx;
     private final WienerProcessContext appCtx;
-    private final int time2wait;
+    private final int threadSleepTime;
 
     private Boolean goOn;
 
@@ -35,7 +35,7 @@ public class WienerProcessController extends Thread
         this.appCtx = appCtx;
         this.ctx = appCtx.getCtx();
         this.goOn = Boolean.TRUE;
-        this.time2wait = THREAD_SLEEP_TIME;
+        this.threadSleepTime = THREAD_SLEEP_TIME;
     }
 
     public void run() {
@@ -51,7 +51,7 @@ public class WienerProcessController extends Thread
                 this.appCtx.getCanvas().update();
                 this.appCtx.getTab().repaint();
             }
-            try { super.sleep( this.time2wait ); }
+            try { super.sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);

@@ -25,7 +25,7 @@ public class WienerProcessTab extends TabPanel implements Tab {
     private final BottomButtonsPanel bottomButtonsPanel;
 
     public WienerProcessTab(ComputerKurzweilApplicationContext ctx) {
-        super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON,ctx.getProperties().getCca().getView().getSubtitle(),ctx.getProperties().getCca().getView().getTitle());
+        super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON,ctx.getProperties().getRandomwalk().getView().getSubtitle(),ctx.getProperties().getRandomwalk().getView().getTitle());
         this.tabCtx = new WienerProcessContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new WienerProcessButtons(this.canvas);
@@ -79,12 +79,12 @@ public class WienerProcessTab extends TabPanel implements Tab {
 
     @Override
     public String getTitle() {
-        return ctx.getProperties().getCca().getView().getTitle();
+        return ctx.getProperties().getRandomwalk().getView().getTitle();
     }
 
     @Override
     public String getSubTitle() {
-        return ctx.getProperties().getCca().getView().getSubtitle();
+        return ctx.getProperties().getRandomwalk().getView().getSubtitle();
     }
 
     @Override

@@ -23,19 +23,19 @@ public class CyclicCellularAutomatonController extends Thread
     private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilApplicationContext ctx;
-    private final CyclicCellularAutomatonContext appCtx;
-    private final int time2wait;
+    private final CyclicCellularAutomatonContext tabCtx;
+    private final int threadSleepTime;
 
     private Boolean goOn;
 
     public CyclicCellularAutomatonController(
-        CyclicCellularAutomatonContext appCtx
+        CyclicCellularAutomatonContext tabCtx
     ) {
         super("CCA-Controller");
-        this.appCtx = appCtx;
-        this.ctx = appCtx.getCtx();
+        this.tabCtx = tabCtx;
+        this.ctx = tabCtx.getCtx();
         this.goOn = Boolean.TRUE;
-        this.time2wait = THREAD_SLEEP_TIME;
+        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getCca().getControl().getThreadSleepTime();
     }
 
     public void run() {
@@ -45,13 +45,13 @@ public class CyclicCellularAutomatonController extends Thread
             synchronized (this.goOn) {
                 doIt = goOn.booleanValue();
             }
-            synchronized (this.appCtx) {
+            synchronized (this.tabCtx) {
                 //log.info("running");
-                this.appCtx.getStepper().step();
-                this.appCtx.getCanvas().update();
-                this.appCtx.getTab().repaint();
+                this.tabCtx.getStepper().step();
+                this.tabCtx.getCanvas().update();
+                this.tabCtx.getTab().repaint();
             }
-            try { super.sleep( this.time2wait ); }
+            try { super.sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { log.info(e.getMessage()); }
         }
         while (doIt);

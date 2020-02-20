@@ -67,10 +67,8 @@ public class ComputerKurzweilProperties {
     @ToString
     public static class Mandelbrot {
 
-        @Valid
-        @Getter
-        @Setter
-        public View view = new View();
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
 
         ////@Validated
         @ToString
@@ -82,6 +80,12 @@ public class ComputerKurzweilProperties {
             @NotBlank @Getter @Setter private String buttonsSwitch;
             @NotBlank @Getter @Setter private String buttonsZoomLabel;
             @NotBlank @Getter @Setter private String buttonsLabel;
+        }
+
+        ////@Validated
+        @ToString
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
         }
     }
 
@@ -169,6 +173,7 @@ public class ComputerKurzweilProperties {
     public static class Cca {
 
         @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
 
         //@Validated
         @ToString
@@ -187,6 +192,12 @@ public class ComputerKurzweilProperties {
                 @NotBlank @Getter @Setter private String typeMoore;
                 @NotBlank @Getter @Setter private String typeWoehlke;
             }
+        }
+
+        ////@Validated
+        @ToString
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
         }
     }
 

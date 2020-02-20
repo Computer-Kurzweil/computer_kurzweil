@@ -24,7 +24,7 @@ public class DiffusionLimitedAggregationController extends Thread
         implements TabController {
 
     private final DiffusionLimitedAggregationContext tabCtx;
-    private final int sleepTime;
+    private final int threadSleepTime;
     private Boolean goOn;
 
     public DiffusionLimitedAggregationController(
@@ -33,7 +33,7 @@ public class DiffusionLimitedAggregationController extends Thread
         super("DLA-Controller");
         this.tabCtx = tabCtx;
         this.goOn = Boolean.TRUE;
-        this.sleepTime =  this.tabCtx.getCtx().getProperties().getDla().getControl().getThreadSleepTime();
+        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getDla().getControl().getThreadSleepTime();
     }
 
     public void run() {
@@ -48,7 +48,7 @@ public class DiffusionLimitedAggregationController extends Thread
                 this.tabCtx.getCanvas().update();
                 this.tabCtx.getTab().repaint();
             }
-            try { sleep( this.sleepTime ); }
+            try { sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
         while (doIt);

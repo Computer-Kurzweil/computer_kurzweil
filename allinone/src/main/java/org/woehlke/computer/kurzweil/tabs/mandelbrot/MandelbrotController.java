@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 public class MandelbrotController extends Thread implements Runnable, TabController {
 
     private final MandelbrotContext tabCtx;
-    private final int time2wait;
+    private final int threadSleepTime;
 
     private Boolean goOn;
 
@@ -18,7 +18,7 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
     ) {
         super("Mandelbrot-Controller");
         this.tabCtx = tabCtx;
-        this.time2wait=1;
+        this.threadSleepTime=1;
         goOn = Boolean.TRUE;
     }
 
@@ -38,7 +38,7 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
                 log.info("]");
             }
             try {
-                Thread.sleep(this.time2wait);
+                Thread.sleep(this.threadSleepTime);
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }

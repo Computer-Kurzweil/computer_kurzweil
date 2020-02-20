@@ -31,10 +31,10 @@ public class WienerProcessButtons extends JPanel implements GuiComponentTab {
       WienerProcessCanvas canvas
   ) {
     this.canvas = canvas;
-    this.title = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle();
-    this.buttonLabelVonNeumann = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeVonNeumann();
-    this.buttonLabelMoore =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeMoore();
-    this.buttonLabelWoehlke =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeWoehlke();
+    this.title = this.canvas.getTabCtx().getCtx().getProperties().getRandomwalk().getView().getNeighborhood().getTitle();
+    this.buttonLabelVonNeumann = this.canvas.getTabCtx().getCtx().getProperties().getRandomwalk().getView().getNeighborhood().getTypeVonNeumann();
+    this.buttonLabelMoore =this.canvas.getTabCtx().getCtx().getProperties().getRandomwalk().getView().getNeighborhood().getTypeMoore();
+    this.buttonLabelWoehlke =this.canvas.getTabCtx().getCtx().getProperties().getRandomwalk().getView().getNeighborhood().getTypeWoehlke();
     this.buttonVonNeumann = new JButton(this.buttonLabelVonNeumann);
     this.buttonMoore = new JButton(this.buttonLabelMoore );
     this.buttonWoehlke = new JButton(this.buttonLabelWoehlke);
