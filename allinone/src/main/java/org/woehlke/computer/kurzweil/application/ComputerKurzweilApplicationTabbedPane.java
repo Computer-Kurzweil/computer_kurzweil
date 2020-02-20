@@ -12,6 +12,7 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.tabs.Tab;
+import org.woehlke.computer.kurzweil.tabs.randomwalk.WienerProcessTab;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -29,6 +30,7 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
 
     private final ComputerKurzweilApplicationContext ctx;
     private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
+    private final WienerProcessTab wienerProcessTab;
     private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;
     private final MandelbrotTab mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
@@ -42,12 +44,14 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
         this.border = ctx.getBorder();
         this.setBorder(border);
         this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this.ctx);
+        this.wienerProcessTab = new WienerProcessTab(this.ctx);
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this.ctx);
         this.mandelbrotTab = new MandelbrotTab(this.ctx);
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this.ctx);
         TabPanel[] tabPanelAbstractPanels = {
             this.diffusionLimitedAggregationTab,
             this.cyclicCellularAutomatonTab,
+            this.wienerProcessTab,
             this.mandelbrotTab,
             this.simulatedEvolutionTab
         };
@@ -55,7 +59,8 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
             KeyEvent.VK_1,
             KeyEvent.VK_2,
             KeyEvent.VK_3,
-            KeyEvent.VK_4
+            KeyEvent.VK_4,
+            KeyEvent.VK_5
         };
         int i = 0;
         ImageIcon icon = null;
@@ -80,10 +85,9 @@ public class ComputerKurzweilApplicationTabbedPane extends JTabbedPane implement
     public void switchTab(){
         Tab tabPanelActive = getActiveTab();
         for(TabPanel tabPanel:apps){
-            if(!tabPanelActive.equals(tabPanel)){
                 tabPanel.stop();
-            }
         }
+        tabPanelActive.start();
     }
 
     @Override
