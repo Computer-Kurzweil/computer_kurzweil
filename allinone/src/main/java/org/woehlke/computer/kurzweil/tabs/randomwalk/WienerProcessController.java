@@ -20,22 +20,19 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 public class WienerProcessController extends Thread
         implements TabController {
 
-    private static final int THREAD_SLEEP_TIME = 100;
     private static final long serialVersionUID = 3642865135701767557L;
-    private final ComputerKurzweilApplicationContext ctx;
-    private final WienerProcessContext appCtx;
+    private final WienerProcessContext tabCtx;
     private final int threadSleepTime;
 
     private Boolean goOn;
 
     public WienerProcessController(
-        WienerProcessContext appCtx
+        WienerProcessContext tabCtx
     ) {
-        super("CCA-Controller");
-        this.appCtx = appCtx;
-        this.ctx = appCtx.getCtx();
+        super("Random Walk-Controller");
+        this.tabCtx = tabCtx;
         this.goOn = Boolean.TRUE;
-        this.threadSleepTime = THREAD_SLEEP_TIME;
+        this.threadSleepTime = tabCtx.getCtx().getProperties().getRandomwalk().getControl().getThreadSleepTime();;
     }
 
     public void run() {
@@ -45,11 +42,11 @@ public class WienerProcessController extends Thread
             synchronized (this.goOn) {
                 doIt = goOn.booleanValue();
             }
-            synchronized (this.appCtx) {
+            synchronized (this.tabCtx) {
                 //log.info("running");
-                this.appCtx.getStepper().step();
-                this.appCtx.getCanvas().update();
-                this.appCtx.getTab().repaint();
+                this.tabCtx.getStepper().step();
+                this.tabCtx.getCanvas().update();
+                this.tabCtx.getTab().repaint();
             }
             try { super.sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { log.info(e.getMessage()); }

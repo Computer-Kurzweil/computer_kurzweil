@@ -75,6 +75,8 @@ public class WienerProcessCanvas extends JComponent implements
         int red = 0;
         int green = 0;
         int blue = 0;
+        long myage;
+        long mybyte;
         if (lattice != null) {
             this.resetLattice();
         }
@@ -86,13 +88,21 @@ public class WienerProcessCanvas extends JComponent implements
                     green = 0;
                     blue = 0;
                 } else {
-                    age = (255 * 255 * 255 +1) - (age % (255 * 255 * 255 + 1));
-                    long blueL = (age / (255 * 255 + 1)) % (255 * 255 * 255 + 1);
-                    long greenL = (age / 256) % (255 * 255 + 1);
-                    long redL = (age % 256);
-                    red = (int)(redL);
-                    green = (int)(greenL);
-                    blue = (int)(blueL);
+                    if(age == 0){
+                        red = 0;
+                        green = 0;
+                        blue = 0;
+                    } else {
+                        myage = (256 * 256 * 256) - age;
+                        mybyte = myage % 256;
+                        red = (int)(mybyte);
+                        myage /= 256;
+                        mybyte = myage % 256;
+                        green = (int)(mybyte);
+                        myage /= 256;
+                        mybyte = myage % 256;
+                        blue = (int)(mybyte);
+                    }
                 }
                 Color colorForAge = new Color(red, green, blue);
                 g.setColor(colorForAge);
@@ -100,21 +110,20 @@ public class WienerProcessCanvas extends JComponent implements
             }
         }
         super.paintComponent(g);
-        //log.info("paint DONE (Graphics g)");
+        log.info("paint DONE (Graphics g)");
     }
 
     public void update(Graphics g) {
-        //log.info("update(Graphics g)");
         paint(g);
     }
 
     @Override
     public void showMe() {
-        //log.info("showMe "+this.toString());
+        log.info("showMe "+this.toString());
     }
 
     public void start() {
-        //log.info("start");
+        log.info("start");
         showMe();
         synchronized (running) {
             running = Boolean.TRUE;
@@ -123,7 +132,7 @@ public class WienerProcessCanvas extends JComponent implements
     }
 
     public void stop() {
-        //log.info("stop");
+        log.info("stop");
         synchronized (running) {
             running = Boolean.FALSE;
         }
@@ -131,7 +140,7 @@ public class WienerProcessCanvas extends JComponent implements
     }
 
     public void update(){
-        //log.info("update");
+        log.info("update");
     }
 
     public void step(){
@@ -148,7 +157,7 @@ public class WienerProcessCanvas extends JComponent implements
             x = (x + move.getX() + worldX ) % worldX;
             y = (y + move.getY() + worldY ) % worldY;
             lattice[x][y]++;
-            //log.info("stepped");
+            log.info("stepped ("+x+","+y+" = "+ lattice[x][y]+") "+ParticleOrientation.values()[randomOrientation].name());
         }
     }
 
