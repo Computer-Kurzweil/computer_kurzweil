@@ -105,7 +105,7 @@ public class WienerProcessCanvas extends JComponent implements
             }
         }
         super.paintComponent(g);
-        log.info("paint DONE (Graphics g)");
+        //log.info("paint DONE (Graphics g)");
     }
 
     public void update(Graphics g) {
@@ -135,7 +135,7 @@ public class WienerProcessCanvas extends JComponent implements
     }
 
     public void update(){
-        log.info("update");
+        //log.info("update");
     }
 
     public void step(){
@@ -154,7 +154,7 @@ public class WienerProcessCanvas extends JComponent implements
             particlePosition.setX(x);
             particlePosition.setY(y);
             lattice[x][y] = (lattice[x][y] + 1) * 2;
-            log.info("stepped ("+x+","+y+" = "+ lattice[x][y]+") "+ParticleOrientation.values()[randomOrientation].name());
+            //log.info("stepped ("+x+","+y+" = "+ lattice[x][y]+") "+ParticleOrientation.values()[randomOrientation].name());
         }
     }
 
