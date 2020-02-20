@@ -216,17 +216,6 @@ public class ComputerKurzweilProperties {
 
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
-
-            @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
-
-            //@Validated
-            @ToString
-            public static class Neighborhood {
-                @NotBlank @Getter @Setter private String title;
-                @NotBlank @Getter @Setter private String typeVonNeumann;
-                @NotBlank @Getter @Setter private String typeMoore;
-                @NotBlank @Getter @Setter private String typeWoehlke;
-            }
         }
 
         ////@Validated
