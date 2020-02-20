@@ -21,22 +21,16 @@ public class WienerProcessTab extends TabPanel implements Tab {
 
     private final WienerProcessContext tabCtx;
     private final WienerProcessCanvas canvas;
-    private final WienerProcessButtons neighbourhoodButtonsPanel;
     private final BottomButtonsPanel bottomButtonsPanel;
 
     public WienerProcessTab(ComputerKurzweilApplicationContext ctx) {
         super(ctx,TabType.CYCLIC_CELLULAR_AUTOMATON,ctx.getProperties().getRandomwalk().getView().getSubtitle(),ctx.getProperties().getRandomwalk().getView().getTitle());
         this.tabCtx = new WienerProcessContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.neighbourhoodButtonsPanel = new WienerProcessButtons(this.canvas);
         this.bottomButtonsPanel = new BottomButtonsPanel( this );
-        this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.bottomButtonsPanel);
-        this.neighbourhoodButtonsPanel.getButtonVonNeumann().addActionListener(this);
-        this.neighbourhoodButtonsPanel.getButtonMoore().addActionListener(this);
-        this.neighbourhoodButtonsPanel.getButtonWoehlke().addActionListener(this);
         this.bottomButtonsPanel.getStartButton().addActionListener(this);
         this.bottomButtonsPanel.getStopButton().addActionListener(this);
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
@@ -89,16 +83,6 @@ public class WienerProcessTab extends TabPanel implements Tab {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonVonNeumann()) {
-            this.canvas.startWithNeighbourhoodVonNeumann();
-            this.start();
-        } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonMoore()) {
-            this.canvas.startWithNeighbourhoodMoore();
-            this.start();
-        } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonWoehlke()) {
-            this.canvas.startWithNeighbourhoodWoehlke();
-            this.start();
-        }
         if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
             this.start();
         }
