@@ -8,7 +8,9 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonController;
 
+import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 
@@ -35,23 +37,19 @@ public class DiffusionLimitedAggregationContext implements TabContext {
         startController();
     }
 
+    @Override
     public void stopController() {
         this.controller.exit();
         this.controller = new DiffusionLimitedAggregationController(this);
     }
 
+    @Override
     public void startController() {
         if(this.controller == null){
             this.controller = new DiffusionLimitedAggregationController(this);
         } else {
-            Thread.State controllerState = this.controller.getState();
-            switch (controllerState){
-                case NEW:
-                case RUNNABLE:
-                    break;
-                default:
-                    this.stopController();
-                    break;
+            if(this.controller.getState() != NEW){
+                this.stopController();
             }
         }
     }

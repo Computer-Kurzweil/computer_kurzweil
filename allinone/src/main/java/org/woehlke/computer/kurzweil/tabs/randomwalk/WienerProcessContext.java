@@ -8,7 +8,9 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 
+import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
+import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROCESS;
 
 @Log
 @Getter
@@ -16,7 +18,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @EqualsAndHashCode(exclude = {"tab"})
 public class WienerProcessContext implements TabContext {
 
-    private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+    private final TabType tabType = RANDOM_WALK_WIENER_PROCESS;
 
     private final ComputerKurzweilApplicationContext ctx;
     private final WienerProcessCanvas canvas;
@@ -37,23 +39,19 @@ public class WienerProcessContext implements TabContext {
         return this.canvas;
     }
 
+    @Override
     public void stopController() {
         this.controller.exit();
         this.controller = new WienerProcessController(this);
     }
 
+    @Override
     public void startController() {
         if(this.controller == null){
             this.controller = new WienerProcessController(this);
         } else {
-            Thread.State controllerState = this.controller.getState();
-            switch (controllerState){
-                case NEW:
-                //case RUNNABLE:
-                    break;
-                default:
-                    this.stopController();
-                    break;
+            if(this.controller.getState() != NEW){
+                this.stopController();
             }
         }
     }

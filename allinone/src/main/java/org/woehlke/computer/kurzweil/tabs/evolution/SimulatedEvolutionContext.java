@@ -8,7 +8,9 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationController;
 
+import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 
 @Log
@@ -60,24 +62,21 @@ public class SimulatedEvolutionContext implements TabContext {
         this.canvas.toggleGardenOfEden();
     }
 
+    @Override
     public void stopController() {
         this.controller.exit();
         this.controller = null;
         this.controller = new SimulatedEvolutionController(this);
     }
 
+    @Override
     public void startController() {
         if(this.controller == null){
             this.controller = new SimulatedEvolutionController(this);
-        }
-        switch (this.controller.getState()){
-                case NEW:
-                case RUNNABLE:
-                    break;
-                default:
-                    this.stopController();
-                    break;
+        } else {
+            if(this.controller.getState() != NEW){
+                this.stopController();
+            }
         }
     }
-
 }

@@ -8,6 +8,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationCont
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 
+import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
 
 @Log
@@ -37,25 +38,20 @@ public class CyclicCellularAutomatonContext implements TabContext {
         return this.canvas;
     }
 
+    @Override
     public void stopController() {
         this.controller.exit();
         this.controller = new CyclicCellularAutomatonController(this);
     }
 
+    @Override
     public void startController() {
         if(this.controller == null){
             this.controller = new CyclicCellularAutomatonController(this);
         } else {
-            Thread.State controllerState = this.controller.getState();
-            switch (controllerState){
-                case NEW:
-                //case RUNNABLE:
-                    break;
-                default:
-                    this.stopController();
-                    break;
+            if(this.controller.getState() != NEW){
+                this.stopController();
             }
         }
     }
-
 }
