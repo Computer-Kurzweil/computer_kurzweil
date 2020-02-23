@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.widgets;
+package org.woehlke.computer.kurzweil.commons.widgets;
 
 
 import lombok.EqualsAndHashCode;
@@ -6,7 +6,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.widgets.layouts.CenterFlowLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.CenterFlowLayout;
 
 import javax.swing.*;
 

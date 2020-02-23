@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.widgets.layouts;
+package org.woehlke.computer.kurzweil.commons.layouts;
 
 import java.awt.*;
 

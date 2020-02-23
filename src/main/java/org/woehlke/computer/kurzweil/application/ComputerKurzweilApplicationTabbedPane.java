@@ -10,8 +10,8 @@ import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.commons.tabs.Tab;
+import org.woehlke.computer.kurzweil.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.WienerProcessTab;
 
 import javax.swing.*;

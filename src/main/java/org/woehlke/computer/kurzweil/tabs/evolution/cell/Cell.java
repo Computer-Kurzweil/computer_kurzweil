@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.evolution.cell;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 
 import java.io.Serializable;

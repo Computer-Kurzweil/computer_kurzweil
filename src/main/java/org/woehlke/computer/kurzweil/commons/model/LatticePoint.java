@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.model;
+package org.woehlke.computer.kurzweil.commons.model;
 
 import lombok.*;
 import lombok.extern.log4j.Log4j2;

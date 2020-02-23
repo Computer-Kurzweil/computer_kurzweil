@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
-import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 
 public enum ParticleOrientation {
 

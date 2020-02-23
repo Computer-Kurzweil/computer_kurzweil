@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;

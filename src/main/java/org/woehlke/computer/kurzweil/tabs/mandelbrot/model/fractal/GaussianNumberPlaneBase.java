@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.ComplexNumber;
-import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.Startable;
 
 

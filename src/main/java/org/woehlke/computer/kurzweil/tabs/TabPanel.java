@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.commons.tabs;
+package org.woehlke.computer.kurzweil.tabs;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -6,9 +6,8 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
-import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
-import org.woehlke.computer.kurzweil.widgets.layouts.BoxLayoutVertical;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelSubtitle;
+import org.woehlke.computer.kurzweil.commons.layouts.BoxLayoutVertical;
 
 import javax.swing.*;
 import javax.swing.border.Border;

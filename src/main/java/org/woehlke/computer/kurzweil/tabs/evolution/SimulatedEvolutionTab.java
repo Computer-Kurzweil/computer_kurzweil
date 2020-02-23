@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
-import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatistics;
-import org.woehlke.computer.kurzweil.widgets.BottomButtonsPanel;
-import org.woehlke.computer.kurzweil.commons.tabs.Tab;
+import org.woehlke.computer.kurzweil.commons.widgets.BottomButtonsPanel;
+import org.woehlke.computer.kurzweil.tabs.Tab;
 import java.awt.event.ActionEvent;
 
 

@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.model.LatticeNeighbourhood;
+import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatistics;
-import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.CanvasLayout;
 
 import javax.swing.JComponent;
 import javax.swing.border.Border;

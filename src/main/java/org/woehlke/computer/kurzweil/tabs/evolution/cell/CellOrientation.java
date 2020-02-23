@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.evolution.cell;
 
-import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 
 /**
  * Orientation defines the new position after next move.

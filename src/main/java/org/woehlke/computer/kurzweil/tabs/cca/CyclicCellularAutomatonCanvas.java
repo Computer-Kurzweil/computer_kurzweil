@@ -7,9 +7,9 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType;
-import org.woehlke.computer.kurzweil.model.LatticePointNeighbourhoodPosition;
-import org.woehlke.computer.kurzweil.widgets.layouts.CanvasLayout;
+import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
+import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
+import org.woehlke.computer.kurzweil.commons.layouts.CanvasLayout;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -17,8 +17,8 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.Random;
 
-import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.*;
-import static org.woehlke.computer.kurzweil.model.LatticeNeighbourhoodType.WOEHLKE_NEIGHBORHOOD;
+import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
+import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.WOEHLKE_NEIGHBORHOOD;
 
 /**
  * Cyclic Cellular Automaton.

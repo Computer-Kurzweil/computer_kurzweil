@@ -3,12 +3,12 @@ package org.woehlke.computer.kurzweil.application;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.widgets.layouts.BoxLayoutVertical;
+import org.woehlke.computer.kurzweil.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.commons.layouts.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.widgets.PanelCopyright;
-import org.woehlke.computer.kurzweil.widgets.PanelSubtitle;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelCopyright;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelSubtitle;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;

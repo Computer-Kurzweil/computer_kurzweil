@@ -32,10 +32,10 @@
         <Logger name="org.woehlke.computer.kurzweil.commons" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.model" level="info" includeLocation="true">
+        <Logger name="org.woehlke.computer.kurzweil.commons.model" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.widgets" level="info" includeLocation="true">
+        <Logger name="org.woehlke.computer.kurzweil.commons.widgets" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
         <Root level="info">

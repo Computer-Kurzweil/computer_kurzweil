@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.TuringDirection;
 import org.woehlke.computer.kurzweil.commons.Startable;
