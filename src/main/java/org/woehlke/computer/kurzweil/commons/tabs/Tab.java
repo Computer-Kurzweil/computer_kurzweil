@@ -12,7 +12,7 @@ public interface Tab extends ImageObserver, Serializable, Accessible,
     GuiComponentTab,
     Startable,
     HasApplicationContext,
-    HasContext,
+    HasTabContext,
     HasTitle {
 
 }
