@@ -16,17 +16,17 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 @Log4j2
 @Getter
-public class WienerProcessController extends Thread
+public class RandomWalkController extends Thread
         implements TabController {
 
     private static final long serialVersionUID = 3642865135701767557L;
-    private final WienerProcessContext tabCtx;
+    private final RandomWalkContext tabCtx;
     private final int threadSleepTime;
 
     private Boolean goOn;
 
-    public WienerProcessController(
-        WienerProcessContext tabCtx
+    public RandomWalkController(
+        RandomWalkContext tabCtx
     ) {
         super("Random Walk-Controller");
         this.tabCtx = tabCtx;

@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
+import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvas;
@@ -29,7 +29,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
 
-    public SimulatedEvolutionTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+    public SimulatedEvolutionTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TabType.SIMULATED_EVOLUTION);
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);

@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil;
 
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationFrame;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilFrame;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.Startable;
 
@@ -12,7 +12,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  * @author Thomas Woehlke
  * <p>
  * http://thomas-woehlke.de/p/simulated-evolution/
- * @see ComputerKurzweilApplicationFrame
+ * @see ComputerKurzweilFrame
  * @see ComputerKurzweilProperties
  * <p>
  * Simulated Evolution. Artificial Life Simulation of Bacteria Motion depending on DNA.
@@ -29,13 +29,13 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 @Log4j2
 public class ComputerKurzweilApplication implements Startable {
 
-    private final ComputerKurzweilApplicationFrame frame;
+    private final ComputerKurzweilFrame frame;
 
     public ComputerKurzweilApplication() {
         String conf = "application.yml";
         String jar = "build/libs/computer_kurzweil-all.jar";
         ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(conf, jar);
-        this.frame = new ComputerKurzweilApplicationFrame(properties);
+        this.frame = new ComputerKurzweilFrame(properties);
         //start();
     }
 

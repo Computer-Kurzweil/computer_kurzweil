@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.Mandelbrot;
@@ -17,14 +17,14 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.MANDELBROT_SET;
 public class MandelbrotContext implements TabContext {
 
     private final TabType tabType = MANDELBROT_SET;
-    private final ComputerKurzweilApplicationContext ctx;
+    private final ComputerKurzweilContext ctx;
     private final MandelbrotTab tab;
     private final Mandelbrot stepper;
     private final MandelbrotCanvas canvas;
 
     private MandelbrotController controller;
 
-    public MandelbrotContext(MandelbrotTab tab, ComputerKurzweilApplicationContext ctx) {
+    public MandelbrotContext(MandelbrotTab tab, ComputerKurzweilContext ctx) {
         this.tab = tab;
         this.ctx = ctx;
         this.canvas = new MandelbrotCanvas( this );

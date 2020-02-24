@@ -29,16 +29,16 @@ import java.io.Serializable;
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-public class WienerProcessCanvas extends JComponent implements
+public class RandomWalkCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private final WienerProcessContext tabCtx;
+    private final RandomWalkContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
-    private final WienerProcessColorScheme colorScheme;
+    private final RandomWalkColorScheme colorScheme;
     private volatile long[][] lattice;
     private Boolean running;
     private LatticePoint particlePosition;
@@ -48,14 +48,14 @@ public class WienerProcessCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-    public WienerProcessCanvas(WienerProcessContext tabCtx) {
+    public RandomWalkCanvas(RandomWalkContext tabCtx) {
         this.tabCtx = tabCtx;
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
-        this.colorScheme = new WienerProcessColorScheme();
+        this.colorScheme = new RandomWalkColorScheme();
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);

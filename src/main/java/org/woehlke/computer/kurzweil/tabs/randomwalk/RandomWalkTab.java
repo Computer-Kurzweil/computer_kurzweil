@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
+import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -17,16 +17,16 @@ import java.awt.event.ActionEvent;
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class WienerProcessTab extends TabPanel implements Tab {
+public class RandomWalkTab extends TabPanel implements Tab {
 
-    private final WienerProcessContext tabCtx;
+    private final RandomWalkContext tabCtx;
 
-    private final WienerProcessCanvas canvas;
+    private final RandomWalkCanvas canvas;
     private final PanelBottomButtons bottomButtonsPanel;
 
-    public WienerProcessTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+    public RandomWalkTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane,TabType.RANDOM_WALK_WIENER_PROCESS);
-        this.tabCtx = new WienerProcessContext(this);
+        this.tabCtx = new RandomWalkContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.add(this.panelSubtitle);

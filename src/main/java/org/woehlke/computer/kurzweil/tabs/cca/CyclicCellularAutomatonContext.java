@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 
@@ -19,7 +19,7 @@ public class CyclicCellularAutomatonContext implements TabContext {
 
     private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
-    private final ComputerKurzweilApplicationContext ctx;
+    private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonTab tab;
     private CyclicCellularAutomatonController controller;

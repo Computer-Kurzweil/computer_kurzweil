@@ -4,8 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.commons.layouts.BoxLayoutVertical;
 
@@ -18,8 +17,8 @@ import javax.swing.border.Border;
 @EqualsAndHashCode(callSuper=true, exclude = {"ctx","tabbedPane","border","layout","panelSubtitle"})
 public abstract class TabPanel extends JPanel implements Tab {
 
-    protected final ComputerKurzweilApplicationTabbedPane tabbedPane;
-    protected final ComputerKurzweilApplicationContext ctx;
+    protected final ComputerKurzweilTabbedPane tabbedPane;
+    protected final ComputerKurzweilContext ctx;
     protected final Border border;
     protected final BoxLayoutVertical layout;
     protected final PanelSubtitle panelSubtitle;
@@ -29,7 +28,7 @@ public abstract class TabPanel extends JPanel implements Tab {
 
     protected final TabType tabType;
 
-    protected TabPanel(ComputerKurzweilApplicationTabbedPane tabbedPane, TabType tabType) {
+    protected TabPanel(ComputerKurzweilTabbedPane tabbedPane, TabType tabType) {
         this.tabbedPane=tabbedPane;
         this.ctx = this.tabbedPane.getCtx();
         this.tabType = tabType;

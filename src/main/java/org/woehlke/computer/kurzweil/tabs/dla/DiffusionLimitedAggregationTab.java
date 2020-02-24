@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
+import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
@@ -21,7 +21,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     private final DiffusionLimitedAggregationCanvas canvas;
     private final PanelBottomButtons bottomButtonsPanel;
 
-    public DiffusionLimitedAggregationTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+    public DiffusionLimitedAggregationTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TabType.DIFFUSION_LIMITED_AGGREGATION);
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.bottomButtonsPanel = new PanelBottomButtons( this );

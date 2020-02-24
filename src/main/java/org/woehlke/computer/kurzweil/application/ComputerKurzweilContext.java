@@ -18,15 +18,15 @@ import java.util.Random;
 @Log4j2
 @Getter
 @ToString(exclude={"random","frame"},callSuper=true)
-public class ComputerKurzweilApplicationContext implements Startable {
+public class ComputerKurzweilContext implements Startable {
 
     private final Random random;
     private final ComputerKurzweilProperties properties;
-    private final ComputerKurzweilApplicationFrame frame;
+    private final ComputerKurzweilFrame frame;
 
-    public ComputerKurzweilApplicationContext(
+    public ComputerKurzweilContext(
         ComputerKurzweilProperties computerKurzweilProperties,
-        ComputerKurzweilApplicationFrame frame
+        ComputerKurzweilFrame frame
     ) {
         this.frame = frame;
         this.properties = computerKurzweilProperties;

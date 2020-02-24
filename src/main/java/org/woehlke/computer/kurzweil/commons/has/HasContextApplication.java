@@ -1,8 +1,8 @@
 package org.woehlke.computer.kurzweil.commons.has;
 
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 
 public interface HasContextApplication {
 
-    ComputerKurzweilApplicationContext getCtx();
+    ComputerKurzweilContext getCtx();
 }

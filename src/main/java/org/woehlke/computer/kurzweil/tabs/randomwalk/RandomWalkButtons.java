@@ -16,14 +16,14 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROC
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper=true)
-public class WienerProcessButtons extends JPanel implements GuiComponent {
+public class RandomWalkButtons extends JPanel implements GuiComponent {
 
-  private final WienerProcessCanvas canvas;
+  private final RandomWalkCanvas canvas;
   private final CompoundBorder border;
   private final FlowLayout layout;
 
-  public WienerProcessButtons(
-      WienerProcessCanvas canvas
+  public RandomWalkButtons(
+      RandomWalkCanvas canvas
   ) {
       this.canvas=canvas;
     this.border = this.canvas.getTabCtx().getCtx().getBottomButtonsPanelBorder(

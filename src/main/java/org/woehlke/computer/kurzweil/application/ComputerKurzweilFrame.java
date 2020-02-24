@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.has.HasPanelSubtitle;
+import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.layouts.BoxLayoutVertical;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -27,7 +28,7 @@ import java.util.List;
 @Log4j2
 @Getter
 @ToString(callSuper=true)
-public class ComputerKurzweilApplicationFrame extends JFrame implements Serializable,
+public class ComputerKurzweilFrame extends JFrame implements Serializable,
     MenuContainer,
     ImageObserver,
     Accessible,
@@ -37,20 +38,20 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     Startable,
     GuiComponent, HasPanelSubtitle {
 
-    private final ComputerKurzweilApplicationContext ctx;
-    private final ComputerKurzweilApplicationTabbedPane tabbedPane;
+    private final ComputerKurzweilContext ctx;
+    private final ComputerKurzweilTabbedPane tabbedPane;
     private final PanelCopyright panelCopyright;
     private final PanelSubtitle panelSubtitle;
     private final BoxLayoutVertical layout;
     private final CompoundBorder border;
 
-    public ComputerKurzweilApplicationFrame(
+    public ComputerKurzweilFrame(
         ComputerKurzweilProperties properties
     ) throws HeadlessException {
         super(properties.getAllinone().getView().getTitle());
-        this.ctx = new ComputerKurzweilApplicationContext(properties,this);
+        this.ctx = new ComputerKurzweilContext(properties,this);
         panelSubtitle =  PanelSubtitle.getPanelSubtitleForApplication(this.ctx);
-        tabbedPane = new ComputerKurzweilApplicationTabbedPane(this.ctx);
+        tabbedPane = new ComputerKurzweilTabbedPane(this.ctx);
         panelCopyright = new PanelCopyright(this.ctx);
         layout = new BoxLayoutVertical( rootPane );
         border = this.ctx.getFrameBorder();

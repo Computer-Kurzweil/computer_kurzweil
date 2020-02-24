@@ -4,7 +4,7 @@ package org.woehlke.computer.kurzweil.commons.widgets;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
@@ -25,58 +25,58 @@ public class PanelTitle extends JPanel implements GuiComponent {
         this.setVisible(true);
     }
 
-    public static PanelTitle getPanelTitleForApplication(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForApplication(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getAllinone().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForCca(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForCca(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getCca().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForDla(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForDla(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getDla().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForSimulatedEvolution(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForSimulatedEvolution(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getEvolution().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForSimulatedKochSnowflake(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForSimulatedKochSnowflake(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getKochsnowflake().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForMandelbrot(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForMandelbrot(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getMandelbrot().getView().getTitle();
         return new PanelTitle(text);
     }
 
 
-    public static PanelTitle getPanelTitleForSameGame(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForSameGame(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getSamegame().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForSierpinskiTriangle(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForSierpinskiTriangle(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getSierpinskitriangle().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForSierpinskiTetris(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForSierpinskiTetris(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getTetris().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForSierpinskiTurmite(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForSierpinskiTurmite(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getTurmite().getView().getTitle();
         return new PanelTitle(text);
     }
 
-    public static PanelTitle getPanelTitleForSierpinskiWaTor(ComputerKurzweilApplicationContext ctx) {
+    public static PanelTitle getPanelTitleForSierpinskiWaTor(ComputerKurzweilContext ctx) {
         String text = ctx.getProperties().getWator().getView().getTitle();
         return new PanelTitle(text);
     }

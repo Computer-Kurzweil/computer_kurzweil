@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
+import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
@@ -25,7 +25,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
 
-    public CyclicCellularAutomatonTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+    public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();

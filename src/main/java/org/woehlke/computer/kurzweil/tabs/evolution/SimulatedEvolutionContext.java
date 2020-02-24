@@ -7,7 +7,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvas;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorld;
@@ -22,7 +22,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 public class SimulatedEvolutionContext implements TabContext {
 
     private final TabType tabType = SIMULATED_EVOLUTION;
-    private final ComputerKurzweilApplicationContext ctx;
+    private final ComputerKurzweilContext ctx;
     private SimulatedEvolutionController controller;
     private final SimulatedEvolutionTab tab;
     private final SimulatedEvolution simulatedEvolution;

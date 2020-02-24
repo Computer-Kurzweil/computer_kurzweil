@@ -4,11 +4,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WienerProcessColorScheme {
+public class RandomWalkColorScheme {
 
     private Color[] stateColor;
 
-    public WienerProcessColorScheme(){
+    public RandomWalkColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);

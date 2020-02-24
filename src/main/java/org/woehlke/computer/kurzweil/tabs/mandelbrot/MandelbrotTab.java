@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
+import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
@@ -24,7 +24,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
     private final MandelbrotCanvas canvas;
     private final PanelBottomButtons bottomButtonsPanel;
 
-    public MandelbrotTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
+    public MandelbrotTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TabType.MANDELBROT_SET);
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
