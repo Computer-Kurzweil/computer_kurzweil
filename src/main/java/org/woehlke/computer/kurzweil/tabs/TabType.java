@@ -12,5 +12,6 @@ public enum TabType {
     SIERPINSKI_TRIANGLE,
     TETRIS,
     TURMITE,
-    WATOR
+    WATOR,
+    CONWAYS_GAME_OF_LIFE
 }
