@@ -20,7 +20,7 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleSta
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatistics extends JPanel {
+public class PopulationStatisticsPanel extends JPanel {
 
     private final PopulationStatisticsElement youngCellsStatistics;
     private final PopulationStatisticsElement youngAndFatCellsStatistics;
@@ -38,7 +38,7 @@ public class PopulationStatistics extends JPanel {
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
 
-    public PopulationStatistics(
+    public PopulationStatisticsPanel(
       SimulatedEvolutionContext tabCtx
     ) {
         this.tabCtx = tabCtx;
