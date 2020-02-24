@@ -1,10 +1,11 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPhaseStateMachine;

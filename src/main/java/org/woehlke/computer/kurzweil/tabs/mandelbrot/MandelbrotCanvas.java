@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;

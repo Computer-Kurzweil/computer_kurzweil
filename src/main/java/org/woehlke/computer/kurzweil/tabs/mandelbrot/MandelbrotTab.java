@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.MandelbrotButtons;
 
 import java.awt.event.ActionEvent;
 

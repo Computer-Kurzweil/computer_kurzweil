@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.widgets;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
