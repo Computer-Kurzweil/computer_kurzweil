@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationFrame;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.commons.application.Startable;
+import org.woehlke.computer.kurzweil.commons.Startable;
 
 
 /**

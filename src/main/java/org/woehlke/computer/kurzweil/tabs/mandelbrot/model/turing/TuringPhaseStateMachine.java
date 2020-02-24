@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.TuringPhase;
-import org.woehlke.computer.kurzweil.commons.application.Startable;
+import org.woehlke.computer.kurzweil.commons.Startable;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

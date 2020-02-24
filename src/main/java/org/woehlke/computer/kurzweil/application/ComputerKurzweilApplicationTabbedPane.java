@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
-import org.woehlke.computer.kurzweil.commons.application.Startable;
+import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;

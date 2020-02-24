@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.commons.application;
+package org.woehlke.computer.kurzweil.commons.has;
 
 public interface HasTitle {
 

@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.commons.tabs;
 
-import org.woehlke.computer.kurzweil.commons.application.Updateable;
+import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 
 import java.awt.*;

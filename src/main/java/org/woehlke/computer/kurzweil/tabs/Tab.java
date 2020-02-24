@@ -2,9 +2,9 @@ package org.woehlke.computer.kurzweil.tabs;
 
 import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.has.HasContextApplication;
-import org.woehlke.computer.kurzweil.commons.application.Startable;
+import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.has.HasTabContext;
-import org.woehlke.computer.kurzweil.commons.application.HasTitle;
+import org.woehlke.computer.kurzweil.commons.has.HasTitle;
 
 import javax.accessibility.Accessible;
 import java.awt.event.ActionListener;

@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.application.Startable;
+import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
