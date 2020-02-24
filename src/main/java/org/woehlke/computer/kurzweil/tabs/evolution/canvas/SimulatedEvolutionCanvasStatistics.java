@@ -1,9 +1,10 @@
-package org.woehlke.computer.kurzweil.tabs.evolution;
+package org.woehlke.computer.kurzweil.tabs.evolution.canvas;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutionPopulationCensus;
 
 import java.util.concurrent.ConcurrentLinkedQueue;

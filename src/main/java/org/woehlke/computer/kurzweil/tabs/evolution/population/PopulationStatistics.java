@@ -6,7 +6,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionCanvasStatistics;
+import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvasStatistics;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;

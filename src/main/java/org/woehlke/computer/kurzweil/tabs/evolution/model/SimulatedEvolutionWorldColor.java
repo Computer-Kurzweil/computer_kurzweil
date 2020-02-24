@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.evolution;
+package org.woehlke.computer.kurzweil.tabs.evolution.model;
 
 import java.awt.*;
 

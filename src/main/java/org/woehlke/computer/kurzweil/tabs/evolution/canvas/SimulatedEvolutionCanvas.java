@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.evolution;
+package org.woehlke.computer.kurzweil.tabs.evolution.canvas;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -6,6 +6,9 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
+import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorld;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
@@ -20,8 +23,8 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionWorldColor.COLOR_FOOD;
-import static org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionWorldColor.COLOR_WATER;
+import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**
