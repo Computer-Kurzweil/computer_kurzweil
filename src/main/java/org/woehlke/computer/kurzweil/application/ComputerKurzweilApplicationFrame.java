@@ -3,10 +3,11 @@ package org.woehlke.computer.kurzweil.application;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.commons.has.HasPanelSubtitle;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.layouts.BoxLayoutVertical;
-import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
+import org.woehlke.computer.kurzweil.commons.application.Startable;
+import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelCopyright;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelSubtitle;
 
@@ -34,7 +35,7 @@ public class ComputerKurzweilApplicationFrame extends JFrame implements Serializ
     WindowFocusListener,
     WindowStateListener,
     Startable,
-    GuiComponentTab {
+    GuiComponent, HasPanelSubtitle {
 
     private final ComputerKurzweilApplicationContext ctx;
     private final ComputerKurzweilApplicationTabbedPane tabbedPane;

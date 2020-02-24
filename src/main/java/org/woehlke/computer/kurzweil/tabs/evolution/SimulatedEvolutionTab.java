@@ -10,7 +10,7 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatistics;
-import org.woehlke.computer.kurzweil.commons.widgets.BottomButtonsPanel;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import java.awt.event.ActionEvent;
 
@@ -23,7 +23,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
 
     private final SimulatedEvolutionCanvas canvas;
     private final SimulatedEvolutionContext tabCtx;
-    private final BottomButtonsPanel bottomButtonsPanel;
+    private final PanelBottomButtons bottomButtonsPanel;
     private final PopulationStatistics statisticsPanel;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
@@ -37,7 +37,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.statisticsPanel = this.canvas.getStatisticsPanel();
         this.foodPerDayPanel = new FoodPerDayPanel(this.tabCtx);
         this.gardenOfEdenPanel = new GardenOfEdenPanelRow(this.tabCtx);
-        this.bottomButtonsPanel = new BottomButtonsPanel( this );
+        this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.bottomButtonsPanel.add(foodPerDayPanel);
         this.bottomButtonsPanel.add(gardenOfEdenPanel);
         this.add(this.panelSubtitle);

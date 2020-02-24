@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabb
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.commons.widgets.BottomButtonsPanel;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 
 import java.awt.event.ActionEvent;
 
@@ -22,13 +22,13 @@ public class WienerProcessTab extends TabPanel implements Tab {
     private final WienerProcessContext tabCtx;
 
     private final WienerProcessCanvas canvas;
-    private final BottomButtonsPanel bottomButtonsPanel;
+    private final PanelBottomButtons bottomButtonsPanel;
 
     public WienerProcessTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
         super(tabbedPane,TabType.RANDOM_WALK_WIENER_PROCESS);
         this.tabCtx = new WienerProcessContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.bottomButtonsPanel = new BottomButtonsPanel( this );
+        this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.bottomButtonsPanel);

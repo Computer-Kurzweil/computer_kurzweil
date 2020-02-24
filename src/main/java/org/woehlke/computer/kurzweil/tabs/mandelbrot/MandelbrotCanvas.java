@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;
-import org.woehlke.computer.kurzweil.commons.layouts.CanvasLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -37,7 +37,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     private final MandelbrotContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
-    private final CanvasLayout layout;
+    private final LayoutCanvas layout;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
     private final Mandelbrot mandelbrot;
@@ -54,7 +54,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        this.layout = new CanvasLayout(this);
+        this.layout = new LayoutCanvas(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.tabCtx);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.tabCtx);
         this.mandelbrot = new Mandelbrot(this.tabCtx);

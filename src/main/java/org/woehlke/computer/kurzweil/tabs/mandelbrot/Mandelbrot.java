@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumbe
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPhaseStateMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPositionsStateMachine;
-import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.application.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState;
 

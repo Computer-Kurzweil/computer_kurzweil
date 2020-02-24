@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
+import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -14,7 +14,7 @@ import java.awt.*;
 @Getter
 @ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
 @EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
-public class CyclicCellularAutomatonButtons extends JPanel implements GuiComponentTab {
+public class CyclicCellularAutomatonButtons extends JPanel implements GuiComponent {
 
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;

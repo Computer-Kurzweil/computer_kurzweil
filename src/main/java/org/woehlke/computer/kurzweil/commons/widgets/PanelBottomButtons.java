@@ -3,8 +3,8 @@ package org.woehlke.computer.kurzweil.commons.widgets;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
+import org.woehlke.computer.kurzweil.commons.application.Startable;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutLeft;
 
@@ -14,16 +14,16 @@ import javax.swing.border.CompoundBorder;
 @Log4j2
 @Getter
 @ToString(exclude={"borderBottomButtonsPanel","layoutBottomButtonsPanel"})
-public class BottomButtonsPanel extends JPanel implements Startable, GuiComponentTab {
+public class PanelBottomButtons extends JPanel implements Startable, GuiComponent {
 
     private final FlowLayoutLeft layoutBottomButtonsPanel;
     private final CompoundBorder borderBottomButtonsPanel;
-    private final StartStopButtonsPanel startStopButtonsPanel;
+    private final PanelStartStopButtons startStopButtonsPanel;
 
-    public BottomButtonsPanel(Tab tab) {
+    public PanelBottomButtons(Tab tab) {
         this.layoutBottomButtonsPanel = new FlowLayoutLeft();
         this.borderBottomButtonsPanel = tab.getCtx().getBottomButtonsPanelBorder();
-        this.startStopButtonsPanel = new StartStopButtonsPanel( tab );
+        this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         this.add(this.startStopButtonsPanel);
     }
 

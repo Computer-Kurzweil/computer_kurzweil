@@ -4,8 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationContext;
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.commons.layouts.CenterFlowLayout;
+import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
+import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
 
@@ -13,10 +13,10 @@ import javax.swing.*;
 @Log4j2
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class PanelSubtitle extends JPanel implements GuiComponentTab {
+public class PanelSubtitle extends JPanel implements GuiComponent {
 
     public PanelSubtitle(String text) {
-        this.setLayout(new CenterFlowLayout());
+        this.setLayout(new FlowLayoutCenter());
         this.add(new JLabel(text));
     }
 

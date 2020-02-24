@@ -1,11 +1,11 @@
 package org.woehlke.computer.kurzweil.commons.tabs;
 
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.commons.Updateable;
+import org.woehlke.computer.kurzweil.commons.application.Updateable;
+import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 
 import java.awt.*;
 
-public interface TabCanvas extends GuiComponentTab , Updateable {
+public interface TabCanvas extends GuiComponent, Updateable {
 
     void paint(Graphics g);
     void update(Graphics g);

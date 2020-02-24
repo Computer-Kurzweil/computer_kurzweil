@@ -8,7 +8,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabb
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.commons.widgets.BottomButtonsPanel;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 
 import java.awt.event.ActionEvent;
 
@@ -21,13 +21,13 @@ public class MandelbrotTab extends TabPanel implements Tab {
     private final MandelbrotContext tabCtx;
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
-    private final BottomButtonsPanel bottomButtonsPanel;
+    private final PanelBottomButtons bottomButtonsPanel;
 
     public MandelbrotTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
         super(tabbedPane, TabType.MANDELBROT_SET);
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
-        this.bottomButtonsPanel = new BottomButtonsPanel( this );
+        this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.panelButtons = new MandelbrotButtons( this.tabCtx);
         this.bottomButtonsPanel.add(this.panelButtons);
         this.add(this.panelSubtitle);

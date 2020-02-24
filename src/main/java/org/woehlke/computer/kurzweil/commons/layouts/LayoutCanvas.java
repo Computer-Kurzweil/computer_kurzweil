@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.commons.layouts;
 import javax.swing.*;
 import java.awt.*;
 
-public class CanvasLayout extends CenterFlowLayout {
+public class LayoutCanvas extends FlowLayoutCenter {
 
     /**
      * Creates a layout manager that will lay out components along the
@@ -11,7 +11,7 @@ public class CanvasLayout extends CenterFlowLayout {
      *
      * @throws AWTError if the value of {@code axis} is invalid
      */
-    public CanvasLayout(JComponent target) {
+    public LayoutCanvas(JComponent target) {
         //super(target);
     }
 }

@@ -3,10 +3,10 @@ package org.woehlke.computer.kurzweil.commons.widgets;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
-import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
+import org.woehlke.computer.kurzweil.commons.application.Startable;
 import org.woehlke.computer.kurzweil.tabs.Tab;
-import org.woehlke.computer.kurzweil.commons.layouts.CenterFlowLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -14,18 +14,18 @@ import javax.swing.border.CompoundBorder;
 @Log4j2
 @Getter
 @ToString(exclude={"border","layout","startButton","stopButton"})
-public class StartStopButtonsPanel extends JPanel implements Startable, GuiComponentTab {
+public class PanelStartStopButtons extends JPanel implements Startable, GuiComponent {
 
     private final JButton startButton;
     private final JButton stopButton;
-    private final CenterFlowLayout layout;
+    private final FlowLayoutCenter layout;
     private final CompoundBorder border;
 
-    public StartStopButtonsPanel(Tab tab){
+    public PanelStartStopButtons(Tab tab){
         String labelStartStopp = tab.getCtx().getProperties().getAllinone().getView().getStartStopp();
         String labelStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
         String labelStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
-        layout = new CenterFlowLayout();
+        layout = new FlowLayoutCenter();
         border = tab.getCtx().getBottomButtonsPanelBorder(labelStartStopp);
         this.setLayout(layout);
         this.setBorder(border);

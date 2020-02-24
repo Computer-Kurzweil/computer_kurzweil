@@ -2,8 +2,8 @@ package org.woehlke.computer.kurzweil.commons.layouts;
 
 import java.awt.*;
 
-public class CenterFlowLayout extends FlowLayout {
-    public CenterFlowLayout() {
+public class FlowLayoutCenter extends FlowLayout {
+    public FlowLayoutCenter() {
         setAlignment(FlowLayout.CENTER);
     }
 }

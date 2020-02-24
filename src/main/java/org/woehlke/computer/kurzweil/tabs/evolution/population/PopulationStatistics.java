@@ -7,7 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionCanvasStatistics;
-import org.woehlke.computer.kurzweil.commons.layouts.CenterFlowLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -35,7 +35,7 @@ public class PopulationStatistics extends JPanel {
 
     private final SimulatedEvolutionContext tabCtx;
     private final CompoundBorder border;
-    private final CenterFlowLayout layout;
+    private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
 
     public PopulationStatistics(
@@ -45,7 +45,7 @@ public class PopulationStatistics extends JPanel {
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);
         borderLabel = this.tabCtx.getCtx().getProperties().getEvolution().getPopulation().getPanelPopulationStatistics();
-        layout = new CenterFlowLayout();
+        layout = new FlowLayoutCenter();
         border = tabCtx.getCtx().getBottomButtonsPanelBorder(borderLabel);
         this.setLayout(layout);
         this.setBorder(border);

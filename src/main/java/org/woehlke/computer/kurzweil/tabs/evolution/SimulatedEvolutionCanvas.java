@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.application.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
@@ -12,7 +12,7 @@ import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatistics;
-import org.woehlke.computer.kurzweil.commons.layouts.CanvasLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.JComponent;
 import javax.swing.border.Border;
@@ -48,7 +48,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
 
     private final SimulatedEvolutionContext tabCtx;
     private final Border border;
-    private final CanvasLayout layout;
+    private final LayoutCanvas layout;
     private final Dimension preferredSize;
     private final SimulatedEvolutionTab tab;
     private final PopulationStatistics statisticsPanel;
@@ -74,7 +74,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.foodPerDayPanel =  this.tab.getFoodPerDayPanel();
         this.gardenOfEdenPanel = this.tab.getGardenOfEdenPanel();
         this.preferredSize = new Dimension(worldX,worldY);
-        this.layout = new CanvasLayout(this);
+        this.layout = new LayoutCanvas(this);
         this.setLayout(layout);
         this.setBackground(COLOR_WATER.getColor());
         this.setSize(preferredSize);

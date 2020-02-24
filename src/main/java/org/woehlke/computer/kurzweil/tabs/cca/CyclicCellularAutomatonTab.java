@@ -8,7 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilApplicationTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.commons.widgets.BottomButtonsPanel;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 
 import java.awt.event.ActionEvent;
@@ -23,14 +23,14 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final CyclicCellularAutomatonCanvas canvas;
 
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
-    private final BottomButtonsPanel bottomButtonsPanel;
+    private final PanelBottomButtons bottomButtonsPanel;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilApplicationTabbedPane tabbedPane) {
         super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
-        this.bottomButtonsPanel = new BottomButtonsPanel( this );
+        this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
         this.add(this.panelSubtitle);
         this.add(this.canvas);

@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.GuiComponentTab;
+import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -16,7 +16,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROC
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper=true)
-public class WienerProcessButtons extends JPanel implements GuiComponentTab {
+public class WienerProcessButtons extends JPanel implements GuiComponent {
 
   private final WienerProcessCanvas canvas;
   private final CompoundBorder border;

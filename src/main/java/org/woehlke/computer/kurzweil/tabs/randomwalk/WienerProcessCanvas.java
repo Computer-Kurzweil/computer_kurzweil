@@ -8,7 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.commons.layouts.CanvasLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -37,7 +37,7 @@ public class WienerProcessCanvas extends JComponent implements
     private final WienerProcessContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
-    private final CanvasLayout layout;
+    private final LayoutCanvas layout;
     private final WienerProcessColorScheme colorScheme;
     private volatile long[][] lattice;
     private Boolean running;
@@ -53,7 +53,7 @@ public class WienerProcessCanvas extends JComponent implements
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
-        this.layout = new CanvasLayout(this);
+        this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.colorScheme = new WienerProcessColorScheme();
         this.setLayout(layout);

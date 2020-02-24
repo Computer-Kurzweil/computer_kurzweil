@@ -8,7 +8,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.commons.layouts.CanvasLayout;
+import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -38,7 +38,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private final DiffusionLimitedAggregationContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
-    private final CanvasLayout layout;
+    private final LayoutCanvas layout;
     private List<LatticePoint> particles = new ArrayList<>();
     private int[][] worldMap;
     private int age = 1;
@@ -61,7 +61,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
-        this.layout = new CanvasLayout(this);
+        this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.initialNumberOfParticles = this.tabCtx.getCtx().getProperties().getDla().getControl().getNumberOfParticles();
         this.worldMap = new int[this.worldX][this.worldY];
