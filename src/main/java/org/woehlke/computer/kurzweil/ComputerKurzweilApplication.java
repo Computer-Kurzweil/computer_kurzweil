@@ -48,7 +48,12 @@ public class ComputerKurzweilApplication implements Startable {
 
     @Override
     public void stop() {
-
+        try {
+            this.frame.stop();
+            log.info("Stopped the Desktop Application");
+        } catch (IllegalThreadStateException e){
+            log.info(e.getLocalizedMessage());
+        }
     }
 
     /**
