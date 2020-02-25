@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.util.Random;
 
 @Log
 public class RandomWalkCanvasTest {
@@ -12,6 +13,7 @@ public class RandomWalkCanvasTest {
     @Test
     public void colorForAgeTest() {
         log.info("colorForAgeTest");
+        Random random = new Random();
         long age;
         int red = 0;
         int green = 0;
@@ -19,7 +21,7 @@ public class RandomWalkCanvasTest {
         long myage;
         long mybyte;
         long max = 20000000;
-        for(long n=0; n < max; n++){
+        for(long n=0; n < max; n+=random.nextInt(128)){
             age = n % (256 * 256 * 256);
             if(age == 0){
                 red = 0;
