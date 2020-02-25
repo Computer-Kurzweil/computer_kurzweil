@@ -31,8 +31,8 @@ public class ComputerKurzweilApplication implements Startable {
 
     private final ComputerKurzweilFrame frame;
 
-    public ComputerKurzweilApplication(String conf, String jar) {
-        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(conf, jar);
+    public ComputerKurzweilApplication(String configFileName, String jarFilePath) {
+        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFileName, jarFilePath);
         this.frame = new ComputerKurzweilFrame(properties);
         //start();
     }
@@ -62,9 +62,9 @@ public class ComputerKurzweilApplication implements Startable {
      * @param args CLI Parameter.
      */
     public static void main(String[] args) {
-        String conf = "application.yml";
-        String jar = "build/libs/computer_kurzweil-all.jar";
-        ComputerKurzweilApplication application = new ComputerKurzweilApplication(conf,jar);
+        String configFileName = "application.yml";
+        String jarFilePath = "build/libs/computer_kurzweil-all.jar";
+        ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName,jarFilePath);
         application.start();
     }
 

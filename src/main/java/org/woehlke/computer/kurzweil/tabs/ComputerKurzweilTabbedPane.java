@@ -29,7 +29,7 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
 
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
-    private final RandomWalkTab wienerProcessTab;
+    private final RandomWalkTab randomWalkTab;
     private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;
     private final MandelbrotTab mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
@@ -43,13 +43,13 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
         this.border = ctx.getTabbedPaneBorder();
         this.setBorder(border);
         this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this);
-        this.wienerProcessTab = new RandomWalkTab(this);
+        this.randomWalkTab = new RandomWalkTab(this);
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this);
         this.mandelbrotTab = new MandelbrotTab(this);
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this);
         TabPanel[] tabPanelAbstractPanels = {
             this.cyclicCellularAutomatonTab,
-            this.wienerProcessTab,
+            this.randomWalkTab,
             this.diffusionLimitedAggregationTab,
             this.simulatedEvolutionTab,
             this.mandelbrotTab
