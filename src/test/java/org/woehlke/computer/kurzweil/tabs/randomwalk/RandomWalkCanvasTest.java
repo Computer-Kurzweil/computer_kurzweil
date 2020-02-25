@@ -1,28 +1,26 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.util.Random;
 
-@Log
+@Log4j2
 public class RandomWalkCanvasTest {
 
-    @Test
-    public void colorForAgeTest() {
-        log.info("colorForAgeTest");
-        Random random = new Random();
+    private Random random = new Random();
+
+    private void colorForAge(long[] ageValues){
         long age;
         int red = 0;
         int green = 0;
         int blue = 0;
         long myage;
         long mybyte;
-        long max = 20000000;
-        for(long n=0; n < max; n+=random.nextInt(128)){
-            age = n % (256 * 256 * 256);
+        for(int n=0; n < ageValues.length; n++){
+            age = ageValues[n] % (256 * 256 * 256);
             if(age == 0){
                 red = 0;
                 green = 0;
@@ -38,7 +36,7 @@ public class RandomWalkCanvasTest {
                 mybyte = myage % 256;
                 blue = (int)(mybyte);
             }
-            log.info(" | age: "+age+" | n: "+n+" | RGB = ("+red+","+green+","+blue+") | ");
+            log.info(" | n: "+n+" |  age: "+age+" -> RGB( "+red+", "+green+", "+blue+" ) | ");
             Assertions.assertTrue(red<256);
             Assertions.assertTrue(green<256);
             Assertions.assertTrue(blue<256);
@@ -46,8 +44,19 @@ public class RandomWalkCanvasTest {
             Assertions.assertTrue(colorForAge.getRed()==red);
             Assertions.assertTrue(colorForAge.getGreen()==green);
             Assertions.assertTrue(colorForAge.getBlue()==blue);
-
         }
+    }
+
+    @Test
+    public void colorForAgeTest() {
+        log.info("colorForAgeTest");
+        int values = 1000;
+        int bound = 20000000;
+        long[] age = new long[values];
+        for(int i=0; i< values; i++){
+            age[i] = random.nextInt(bound);
+        }
+        this.colorForAge(age);
         Assertions.assertTrue(true);
         log.info("colorForAgeTest Done");
     }
