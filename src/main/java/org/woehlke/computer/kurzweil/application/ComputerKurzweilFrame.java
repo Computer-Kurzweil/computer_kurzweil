@@ -139,12 +139,6 @@ public class ComputerKurzweilFrame extends JFrame implements Serializable,
     @Transient
     public Rectangle getFrameBounds(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        /*
-        int paddingX = this.ctx.getProperties().getAllinone().getView().getBorderPaddingX();
-        int paddingY = this.ctx.getProperties().getAllinone().getView().getBorderPaddingY();
-        double x = tabbedPane.getWidth()+paddingX;
-        double y = tabbedPane.getHeight()+panelSubtitle.getHeight()+panelCopyright.getHeight()+paddingY;
-         */
         double x = this.getWidth();
         double y = this.getHeight();
         double startX = 0d;
