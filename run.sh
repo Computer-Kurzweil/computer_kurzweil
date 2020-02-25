@@ -10,9 +10,9 @@ function runDefault() {
 }
 
 function runTest() {
-    ./gradlew -i clean test
+    ./gradlew -i clean build test check
 }
 
-#runTest
+runTest
 #runJar
-runDefault
+#runDefault

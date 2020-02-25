@@ -1,19 +1,17 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
-import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.util.Random;
 
-@Log4j2
 public class RandomWalkCanvasTest {
 
     @Test
     public void colorForAgeTest() {
-        System.out.println("colorForAgeTest");
         String line = "-----------------------------------------------------------------------------------------";
+        System.out.println("RandomWalkCanvasTest.colorForAgeTest");
         System.out.println(line);
         Random random = new Random();
         int values = 20000;
