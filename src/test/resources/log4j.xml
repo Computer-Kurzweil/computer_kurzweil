@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.woehlke.computer.kurzweil.tabs.cca" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.tabs.dla" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.tabs.evolution" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.tabs.mandelbrot" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.tabs.randomwalk" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.application" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.commons" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.commons.model" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.woehlke.computer.kurzweil.commons.widgets" level="info" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -10,9 +10,21 @@ import java.util.Random;
 @Log4j2
 public class RandomWalkCanvasTest {
 
-    private Random random = new Random();
-
-    private void colorForAge(long[] ageValues){
+    @Test
+    public void colorForAgeTest() {
+        System.out.println("colorForAgeTest");
+        String line = "-----------------------------------------------------------------------------------------";
+        System.out.println(line);
+        Random random = new Random();
+        int values = 20000;
+        int bound = 20000000;
+        System.out.println("values: "+values);
+        System.out.println("bound:  "+bound);
+        System.out.println(line);
+        long[] ageValues = new long[values];
+        for(int i=0; i< values; i++){
+            ageValues[i] = random.nextInt(bound);
+        }
         long age;
         int red = 0;
         int green = 0;
@@ -36,7 +48,12 @@ public class RandomWalkCanvasTest {
                 mybyte = myage % 256;
                 blue = (int)(mybyte);
             }
-            log.info(" | n: "+n+" |  age: "+age+" -> RGB( "+red+", "+green+", "+blue+" ) | ");
+            String nLabel = " ".repeat((""+values).length()-(""+ n).length()) + n ;
+            String ageLabel =  " ".repeat((""+bound).length()-(""+ age).length()) + age ;
+            String redLabel =   ( red   >= 100 ) ? ""+red   : (( red   >= 10 ) ?" "+red   : "  "+red);
+            String greenLabel = ( green >= 100 ) ? ""+green : (( green >= 10 ) ?" "+green : "  "+green);
+            String blueLabel =  ( blue  >= 100 ) ? ""+blue  : (( blue  >= 10 ) ?" "+blue  : "  "+blue);
+            System.out.println(" | n: "+nLabel+" |  age: "+ageLabel+" -> RGB( "+redLabel+", "+greenLabel+", "+blueLabel+" )");
             Assertions.assertTrue(red<256);
             Assertions.assertTrue(green<256);
             Assertions.assertTrue(blue<256);
@@ -45,19 +62,8 @@ public class RandomWalkCanvasTest {
             Assertions.assertTrue(colorForAge.getGreen()==green);
             Assertions.assertTrue(colorForAge.getBlue()==blue);
         }
-    }
-
-    @Test
-    public void colorForAgeTest() {
-        log.info("colorForAgeTest");
-        int values = 1000;
-        int bound = 20000000;
-        long[] age = new long[values];
-        for(int i=0; i< values; i++){
-            age[i] = random.nextInt(bound);
-        }
-        this.colorForAge(age);
         Assertions.assertTrue(true);
-        log.info("colorForAgeTest Done");
+        System.out.println(line);
+        System.out.println("colorForAgeTest Done");
     }
 }
