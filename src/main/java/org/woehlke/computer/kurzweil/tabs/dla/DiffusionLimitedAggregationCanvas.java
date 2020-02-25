@@ -59,6 +59,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         DiffusionLimitedAggregationContext tabCtx
     ) {
         this.tabCtx = tabCtx;
+        running = Boolean.FALSE;
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
