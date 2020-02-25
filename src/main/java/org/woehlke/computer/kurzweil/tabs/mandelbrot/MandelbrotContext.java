@@ -6,7 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.Mandelbrot;
 
 
 import static java.lang.Thread.State.NEW;
@@ -19,7 +18,7 @@ public class MandelbrotContext implements TabContext {
     private final TabType tabType = MANDELBROT_SET;
     private final ComputerKurzweilContext ctx;
     private final MandelbrotTab tab;
-    private final Mandelbrot stepper;
+    private final MandelbrotModel tabModel;
     private final MandelbrotCanvas canvas;
 
     private MandelbrotController controller;
@@ -27,9 +26,9 @@ public class MandelbrotContext implements TabContext {
     public MandelbrotContext(MandelbrotTab tab, ComputerKurzweilContext ctx) {
         this.tab = tab;
         this.ctx = ctx;
-        this.canvas = new MandelbrotCanvas( this );
+        this.canvas = new MandelbrotCanvas(this);
         this.controller = new MandelbrotController(this);
-        this.stepper = new Mandelbrot( this );
+        this.tabModel = new MandelbrotModel(this);
     }
 
     @Override
@@ -41,12 +40,14 @@ public class MandelbrotContext implements TabContext {
 
     @Override
     public void startController() {
-        if(this.controller == null){
+        if (this.controller == null) {
             this.controller = new MandelbrotController(this);
         } else {
-            if(this.controller.getState() != NEW){
+            if (this.controller.getState() != NEW) {
                 this.stopController();
             }
         }
     }
 }
+
+

@@ -100,8 +100,6 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
 
     @Override
     public void showMe() {
-        for(TabPanel tabPanel:apps){
-            tabPanel.showMe();
-        }
+        getActiveTab().showMe();
     }
 }

@@ -47,7 +47,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
       }
       if( this.tabCtx != null){
         synchronized (this.tabCtx) {
-            this.tabCtx.getStepper().step();
+            this.tabCtx.getTabModel().step();
             this.tabCtx.getCanvas().update();
             this.tabCtx.getTab().repaint();
         }

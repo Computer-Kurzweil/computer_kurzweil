@@ -54,7 +54,7 @@ public class DiffusionLimitedAggregationContext implements TabContext {
     }
 
     @Override
-    public TabModel getStepper() {
+    public TabModel getTabModel() {
         return canvas;
     }
 }

@@ -6,7 +6,6 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;
@@ -41,7 +40,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     private final LayoutCanvas layout;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-    private final Mandelbrot mandelbrot;
+    private final MandelbrotModel mandelbrotModel;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -58,7 +57,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.layout = new LayoutCanvas(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.tabCtx);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.tabCtx);
-        this.mandelbrot = new Mandelbrot(this.tabCtx);
+        this.mandelbrotModel = new MandelbrotModel(this.tabCtx);
         this.preferredSize = new Dimension(worldX, worldY);
         this.setBorder(border);
         this.setLayout(layout);
@@ -69,7 +68,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     public CellStatus getCellStatusFor(int x, int y) {
-        switch (mandelbrot.getState().getFractalSetType()) {
+        switch (mandelbrotModel.getState().getFractalSetType()) {
             case JULIA_SET:
                 return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
             case MANDELBROT_SET:
@@ -85,7 +84,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     public void start() {
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneMandelbrot.start();
-        this.mandelbrot.start();
+        this.mandelbrotModel.start();
         this.setModeSwitch();
         this.computeTheMandelbrotSet();
     }
@@ -94,14 +93,14 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.gaussianNumberPlaneBaseJulia.setModeSwitch();
         this.gaussianNumberPlaneMandelbrot.setModeSwitch();
-        this.mandelbrot.setModeSwitch();
+        this.mandelbrotModel.setModeSwitch();
     }
 
     public void setModeZoom() {
         this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         this.gaussianNumberPlaneBaseJulia.setModeZoom();
         this.gaussianNumberPlaneMandelbrot.setModeZoom();
-        this.mandelbrot.setModeZoom();
+        this.mandelbrotModel.setModeZoom();
     }
 
     @Override public void paint(Graphics g) {
@@ -123,7 +122,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     public void zoomOut() {
-        switch (mandelbrot.getState().getFractalSetType()) {
+        switch (mandelbrotModel.getState().getFractalSetType()) {
             case JULIA_SET:
                 gaussianNumberPlaneBaseJulia.zoomOut();
                 break;
@@ -135,7 +134,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     public String getZoomLevel() {
-        switch (mandelbrot.getState().getFractalSetType()) {
+        switch (mandelbrotModel.getState().getFractalSetType()) {
             case MANDELBROT_SET:
                 return gaussianNumberPlaneMandelbrot.getZoomLevel();
             case JULIA_SET:
@@ -152,8 +151,8 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     @Override
     public void mouseClicked(MouseEvent e) {
         LatticePoint latticePoint = new LatticePoint(e.getX(), e.getY());
-        mandelbrot.click();
-        switch (mandelbrot.getState()) {
+        mandelbrotModel.click();
+        switch (mandelbrotModel.getState()) {
             case MANDELBROT_SWITCH:
                 computeTheMandelbrotSet();
                 break;

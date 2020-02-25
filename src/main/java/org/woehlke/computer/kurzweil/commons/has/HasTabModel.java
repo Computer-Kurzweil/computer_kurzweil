@@ -4,5 +4,5 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 
 public interface HasTabModel {
 
-    TabModel getStepper();
+    TabModel getTabModel();
 }

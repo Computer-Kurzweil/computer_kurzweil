@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.model;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,7 +29,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.Applicat
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode
-public class Mandelbrot implements Startable, TabModel {
+public class MandelbrotModel implements Startable, TabModel {
 
     @Setter
     private volatile ApplicationState state;
@@ -45,7 +45,7 @@ public class Mandelbrot implements Startable, TabModel {
     private final TuringPositionsStateMachine turingPositionsStateMachine;
     private final TuringPhaseStateMachine turingPhaseStateMachine;
 
-    public Mandelbrot(
+    public MandelbrotModel(
         MandelbrotContext tabCtx
     ) {
         this.tabCtx = tabCtx;

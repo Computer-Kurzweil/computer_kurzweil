@@ -34,7 +34,7 @@ public class CyclicCellularAutomatonContext implements TabContext {
     }
 
     @Override
-    public CyclicCellularAutomatonCanvas getStepper() {
+    public CyclicCellularAutomatonCanvas getTabModel() {
         return this.canvas;
     }
 

@@ -14,5 +14,5 @@ function runTest() {
 }
 
 #runTest
-runJar
-#runDefault
+#runJar
+runDefault

@@ -34,7 +34,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
         this.tabCtx.setCanvas(this.canvas);
-        this.tabCtx.setStepper(this.canvas.getWorld());
+        this.tabCtx.setTabModel(this.canvas.getWorld());
         this.statisticsPanel = this.canvas.getStatisticsPanel();
         this.foodPerDayPanel = new FoodPerDayPanel(this.tabCtx);
         this.gardenOfEdenPanel = new GardenOfEdenPanelRow(this.tabCtx);

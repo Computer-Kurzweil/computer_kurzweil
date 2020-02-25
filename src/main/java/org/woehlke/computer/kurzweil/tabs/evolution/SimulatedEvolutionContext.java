@@ -28,7 +28,7 @@ public class SimulatedEvolutionContext implements TabContext {
     @Setter
     private SimulatedEvolutionCanvas canvas;
     @Setter
-    private SimulatedEvolutionWorld stepper;
+    private SimulatedEvolutionWorld tabModel;
 
     public SimulatedEvolutionContext(
         SimulatedEvolutionTab tab
@@ -59,7 +59,7 @@ public class SimulatedEvolutionContext implements TabContext {
 
     public void toggleGardenOfEden() {
         this.simulatedEvolution.toggleGardenOfEden();
-        this.stepper.toggleGardenOfEden();
+        this.tabModel.toggleGardenOfEden();
         this.canvas.toggleGardenOfEden();
     }
 

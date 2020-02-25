@@ -31,7 +31,7 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
             }
             synchronized (this.tabCtx) {
                 log.info(".");
-                this.tabCtx.getCanvas().getMandelbrot().step();
+                this.tabCtx.getCanvas().getMandelbrotModel().step();
                 log.info("[");
                 this.tabCtx.getCanvas().update();
                 this.tabCtx.getCanvas().repaint();
@@ -42,7 +42,7 @@ public class MandelbrotController extends Thread implements Runnable, TabControl
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
-        } while( doMyJob && (! this.tabCtx.getCanvas().getMandelbrot().isFinished()));
+        } while( doMyJob && (! this.tabCtx.getCanvas().getMandelbrotModel().isFinished()));
         log.info("run() - finished");
     }
 

@@ -34,7 +34,7 @@ public class RandomWalkContext implements TabContext {
     }
 
     @Override
-    public RandomWalkCanvas getStepper() {
+    public RandomWalkCanvas getTabModel() {
         return this.canvas;
     }
 

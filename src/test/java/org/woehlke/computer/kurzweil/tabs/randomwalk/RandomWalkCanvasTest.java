@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 
 @Log
-public class WienerProcessCanvasTest {
+public class RandomWalkCanvasTest {
 
     @Test
     public void colorForAgeTest() {
@@ -18,7 +18,8 @@ public class WienerProcessCanvasTest {
         int blue = 0;
         long myage;
         long mybyte;
-        for(long n=0; n < Long.MAX_VALUE; n++){
+        long max = 20000000;
+        for(long n=0; n < max; n++){
             age = n % (256 * 256 * 256);
             if(age == 0){
                 red = 0;
@@ -35,7 +36,7 @@ public class WienerProcessCanvasTest {
                 mybyte = myage % 256;
                 blue = (int)(mybyte);
             }
-            log.info("age: "+age+" n: "+n+" RGB = ("+red+","+green+","+blue+")");
+            log.info(" | age: "+age+" | n: "+n+" | RGB = ("+red+","+green+","+blue+") | ");
             Assertions.assertTrue(red<256);
             Assertions.assertTrue(green<256);
             Assertions.assertTrue(blue<256);
