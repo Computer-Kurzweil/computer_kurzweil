@@ -39,6 +39,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     @Override
     public void start() {
         log.info("start");
+        this.canvas.start();
         this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.tabCtx.startController();
         this.showMe();
@@ -52,6 +53,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
     @Override
     public void stop() {
         log.info("stop");
+        this.canvas.stop();
         this.tabCtx.stopController();
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         int x = this.canvas.getWidth();

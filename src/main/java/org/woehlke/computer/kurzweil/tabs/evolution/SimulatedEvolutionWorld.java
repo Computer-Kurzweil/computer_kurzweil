@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.model;
+package org.woehlke.computer.kurzweil.tabs.evolution;
 
 
 import lombok.EqualsAndHashCode;
@@ -11,6 +11,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvasStatistics;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
+import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldLattice;
 import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutionPopulationCensus;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import java.util.List;
 @Getter
 @ToString(exclude={"cells","appCtx"})
 @EqualsAndHashCode(exclude={"cells","appCtx"})
-public class SimulatedEvolutionWorld implements Startable, TabModel {
+public class SimulatedEvolutionWorld implements TabModel {
 
     /**
     * List of the Simulated Bacteria Cells.

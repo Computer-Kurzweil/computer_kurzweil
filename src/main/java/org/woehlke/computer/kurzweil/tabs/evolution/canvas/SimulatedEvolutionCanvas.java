@@ -8,7 +8,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorld;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionWorld;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;

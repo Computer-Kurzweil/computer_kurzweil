@@ -43,6 +43,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     private int[][] worldMap;
     private int age = 1;
     private long steps;
+    private Boolean running;
 
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
@@ -86,6 +87,23 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         y = this.worldY / 2;
         worldMap[x][y]=age;
         age++;
+    }
+
+    public void start() {
+        log.info("start");
+        showMe();
+        synchronized (running) {
+            running = Boolean.TRUE;
+        }
+        log.info("started "+this.toString());
+    }
+
+    public void stop() {
+        log.info("stop");
+        synchronized (running) {
+            running = Boolean.FALSE;
+        }
+        log.info("stopped "+this.toString());
     }
 
     public void paint(Graphics g) {
@@ -141,31 +159,45 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     }
 
     public void step() {
-        steps++;
-        //log.info("step "+steps);
-        List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
-        int x;
-        int y;
-        for(LatticePoint particle:particles){
-            x = particle.getX() + this.worldX;
-            y = particle.getY() + this.worldY;
-            //Todo: make Enum
-            int newDirection = this.tabCtx.getCtx().getRandom().nextInt(directions);
-            switch (newDirection >= directionsFirst ? newDirection : - newDirection){
-                case 0: y--; break;
-                case 1: x++; break;
-                case 2: y++; break;
-                case 3: x--; break;
-            }
-            x %= this.worldX;
-            y %= this.worldY;
-            particle.setX(x);
-            particle.setY(y);
-            if(!this.hasDendriteNeighbour(x,y)){
-                newParticles.add(particle);
-            }
+        boolean doIt = false;
+        synchronized (running) {
+            doIt = running.booleanValue();
         }
-        particles=newParticles;
+        if(doIt) {
+            steps++;
+            //log.info("step "+steps);
+            List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
+            int x;
+            int y;
+            for (LatticePoint particle : particles) {
+                x = particle.getX() + this.worldX;
+                y = particle.getY() + this.worldY;
+                //Todo: make Enum
+                int newDirection = this.tabCtx.getCtx().getRandom().nextInt(directions);
+                switch (newDirection >= directionsFirst ? newDirection : -newDirection) {
+                    case 0:
+                        y--;
+                        break;
+                    case 1:
+                        x++;
+                        break;
+                    case 2:
+                        y++;
+                        break;
+                    case 3:
+                        x--;
+                        break;
+                }
+                x %= this.worldX;
+                y %= this.worldY;
+                particle.setX(x);
+                particle.setY(y);
+                if (!this.hasDendriteNeighbour(x, y)) {
+                    newParticles.add(particle);
+                }
+            }
+            particles = newParticles;
+        }
         //log.info("stepped");
     }
 
@@ -176,8 +208,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
 
     @Override
     public void showMe() {
-        log.info("showMe");
-        //log.info("this: "+this.toString());
+        //log.info("showMe");
+        log.info("showMe: "+this.toString());
     }
 
     @Override

@@ -10,7 +10,6 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvas;
 import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorld;
 
 import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
