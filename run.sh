@@ -6,11 +6,11 @@ function runJar() {
 }
 
 function runDefault() {
-    ./gradlew -i clean run
+    ./gradlew -i clean runShadow
 }
 
 function runTest() {
-    ./gradlew -i clean build test check
+    ./gradlew -i clean build test check run
 }
 
 runTest
