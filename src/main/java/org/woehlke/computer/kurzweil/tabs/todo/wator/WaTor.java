@@ -1,4 +1,4 @@
 package org.woehlke.computer.kurzweil.tabs.todo.wator;
 
-public class WaTorContext {
+public class WaTor {
 }

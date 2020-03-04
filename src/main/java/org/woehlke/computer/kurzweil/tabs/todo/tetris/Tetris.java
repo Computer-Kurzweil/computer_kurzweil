@@ -1,4 +1,4 @@
 package org.woehlke.computer.kurzweil.tabs.todo.tetris;
 
-public class TetrisController {
+public class Tetris {
 }
