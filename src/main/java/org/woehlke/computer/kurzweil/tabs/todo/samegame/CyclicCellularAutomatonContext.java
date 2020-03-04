@@ -20,7 +20,7 @@ public class CyclicCellularAutomatonContext implements TabContext {
     private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonCanvas canvas;
+    private final SameGameCanvas canvas;
     private final CyclicCellularAutomatonTab tab;
     private CyclicCellularAutomatonController controller;
 
@@ -29,12 +29,12 @@ public class CyclicCellularAutomatonContext implements TabContext {
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
-        this.canvas = new CyclicCellularAutomatonCanvas( this);
+        this.canvas = new SameGameCanvas( this);
         this.controller = new CyclicCellularAutomatonController(this);
     }
 
     @Override
-    public CyclicCellularAutomatonCanvas getTabModel() {
+    public SameGameCanvas getTabModel() {
         return this.canvas;
     }
 

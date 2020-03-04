@@ -23,12 +23,12 @@ public class SameGameButtons extends JPanel implements GuiComponent {
   private final String buttonLabelMoore;
   private final String buttonLabelWoehlke;
   private final String title;
-  private final CyclicCellularAutomatonCanvas canvas;
+  private final SameGameCanvas canvas;
   private final CompoundBorder border;
   private final FlowLayout layout;
 
   public SameGameButtons(
-      CyclicCellularAutomatonCanvas canvas
+      SameGameCanvas canvas
   ) {
     this.canvas = canvas;
     this.title = this.canvas.getTabCtx().getCtx().getProperties().getSamegame().getView().getNeighborhood().getTitle();

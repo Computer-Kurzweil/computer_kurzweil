@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
 
     private final CyclicCellularAutomatonContext tabCtx;
-    private final CyclicCellularAutomatonCanvas canvas;
+    private final SameGameCanvas canvas;
 
     private final SameGameButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
