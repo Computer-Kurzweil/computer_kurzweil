@@ -1,10 +1,12 @@
 package org.woehlke.computer.kurzweil.tabs.kochsnowflake.canvas;
 
+import org.woehlke.computer.kurzweil.tabs.kochsnowflake.KochSnowflake;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KochSnowflakeColorScheme {
+public class KochSnowflakeColorScheme implements KochSnowflake {
 
     private Color[] stateColor;
 

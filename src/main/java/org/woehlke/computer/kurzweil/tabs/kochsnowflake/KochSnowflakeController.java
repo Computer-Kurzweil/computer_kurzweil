@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
-import org.woehlke.computer.kurzweil.tabs.TabType;
-
-import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 
 /**
  * Cyclic Cellular Automaton.
@@ -20,12 +17,10 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
  */
 @Log4j2
 @Getter
-public class KochSnowflakeController extends Thread
-        implements TabController {
+public class KochSnowflakeController extends Thread implements TabController, KochSnowflake {
 
     private static final long serialVersionUID = 3642865135701767557L;
 
-    private final static TabType tabType = KOCH_SNOWFLAKE;
     private final ComputerKurzweilContext ctx;
     private final KochSnowflakeContext tabCtx;
     private final int threadSleepTime;
@@ -35,7 +30,7 @@ public class KochSnowflakeController extends Thread
     public KochSnowflakeController(
         KochSnowflakeContext tabCtx
     ) {
-        super(tabType.name()+"-Controller");
+        super(TAB_TYPE.name()+"-Controller");
         this.tabCtx = tabCtx;
         this.ctx = tabCtx.getCtx();
         this.goOn = Boolean.TRUE;

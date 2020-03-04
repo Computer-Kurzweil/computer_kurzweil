@@ -38,11 +38,9 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class KochSnowflakeCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel {
+    Serializable, TabCanvasWithModel,KochSnowflake {
 
     private static final long serialVersionUID = -3057254130516052936L;
-
-    private final TabType tabType = KOCH_SNOWFLAKE;
 
     private final KochSnowflakeContext tabCtx;
     private final Border border;

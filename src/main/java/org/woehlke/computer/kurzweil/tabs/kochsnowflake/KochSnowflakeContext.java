@@ -9,14 +9,13 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import static java.lang.Thread.State.NEW;
-import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
 import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class KochSnowflakeContext implements TabContext {
+public class KochSnowflakeContext implements TabContext, KochSnowflake {
 
     private final TabType tabType = KOCH_SNOWFLAKE;
 

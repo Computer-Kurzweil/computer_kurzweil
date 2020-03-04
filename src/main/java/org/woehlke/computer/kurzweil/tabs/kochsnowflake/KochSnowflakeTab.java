@@ -20,7 +20,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class KochSnowflakeTab extends TabPanel implements Tab {
+public class KochSnowflakeTab extends TabPanel implements Tab, KochSnowflake {
 
     private final static TabType tabType = KOCH_SNOWFLAKE;
 
