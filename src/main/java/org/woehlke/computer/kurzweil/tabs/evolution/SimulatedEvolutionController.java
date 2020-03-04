@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
+import org.woehlke.computer.kurzweil.tabs.TabType;
+
+import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 
 
 /**
@@ -26,6 +29,8 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 @EqualsAndHashCode(callSuper = true, exclude={"tabCtx"})
 public class SimulatedEvolutionController extends Thread implements TabController {
 
+    private final static TabType tabType = SIMULATED_EVOLUTION;
+
     private final SimulatedEvolutionContext tabCtx;
     private Boolean goOn;
     private final int threadSleepTime;
@@ -33,7 +38,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
   public SimulatedEvolutionController(
       SimulatedEvolutionContext tabCtx
   ) {
-      super("DNA-Controller");
+      super(tabType.name()+"-Controller");
       this.tabCtx = tabCtx;
       this.goOn = Boolean.TRUE;
       this.threadSleepTime = this.tabCtx.getCtx().getProperties().getEvolution().getControl().getThreadSleepTime();

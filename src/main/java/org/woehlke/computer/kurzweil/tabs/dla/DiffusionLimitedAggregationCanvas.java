@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -16,6 +17,8 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 
 /**
@@ -34,6 +37,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
+
+    private final static TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
 
     private final DiffusionLimitedAggregationContext tabCtx;
     private final Border border;

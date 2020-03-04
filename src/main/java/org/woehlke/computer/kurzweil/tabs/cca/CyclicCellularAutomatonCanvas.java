@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,6 +20,7 @@ import java.util.Random;
 
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.WOEHLKE_NEIGHBORHOOD;
+import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
 
 /**
  * Cyclic Cellular Automaton.
@@ -36,6 +38,8 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class CyclicCellularAutomatonCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
+
+    private final static TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
     private static final long serialVersionUID = -3057254130516052936L;
 

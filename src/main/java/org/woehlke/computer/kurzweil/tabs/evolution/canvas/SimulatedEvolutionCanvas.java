@@ -8,7 +8,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionWorld;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionModel;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
@@ -57,7 +57,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final PopulationStatisticsPanel statisticsPanel;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
-    private final SimulatedEvolutionWorld world;
+    private final SimulatedEvolutionModel world;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -72,7 +72,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        this.world = new SimulatedEvolutionWorld(this.tabCtx);
+        this.world = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new PopulationStatisticsPanel(this.tabCtx);
         this.foodPerDayPanel =  this.tab.getFoodPerDayPanel();
         this.gardenOfEdenPanel = this.tab.getGardenOfEdenPanel();

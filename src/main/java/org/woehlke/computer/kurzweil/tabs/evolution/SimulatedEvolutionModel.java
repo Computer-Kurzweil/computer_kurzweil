@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvasStatistics;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
@@ -16,6 +17,8 @@ import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutio
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 
 /**
  * The World contains Water, Cells and Food.
@@ -38,7 +41,9 @@ import java.util.List;
 @Getter
 @ToString(exclude={"cells","appCtx"})
 @EqualsAndHashCode(exclude={"cells","appCtx"})
-public class SimulatedEvolutionWorld implements TabModel {
+public class SimulatedEvolutionModel implements TabModel {
+
+    private final static TabType tabType = SIMULATED_EVOLUTION;
 
     /**
     * List of the Simulated Bacteria Cells.
@@ -48,7 +53,7 @@ public class SimulatedEvolutionWorld implements TabModel {
     private final SimulatedEvolutionWorldLattice worldLattice;
     private final SimulatedEvolutionCanvasStatistics statisticsContainer;
 
-  public SimulatedEvolutionWorld(
+  public SimulatedEvolutionModel(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;

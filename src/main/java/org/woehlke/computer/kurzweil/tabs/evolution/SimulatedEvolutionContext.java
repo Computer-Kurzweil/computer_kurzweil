@@ -20,7 +20,8 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 @EqualsAndHashCode(exclude={"ctx","controller","tab"})
 public class SimulatedEvolutionContext implements TabContext {
 
-    private final TabType tabType = SIMULATED_EVOLUTION;
+    private final static TabType tabType = SIMULATED_EVOLUTION;
+
     private final ComputerKurzweilContext ctx;
     private SimulatedEvolutionController controller;
     private final SimulatedEvolutionTab tab;
@@ -28,7 +29,7 @@ public class SimulatedEvolutionContext implements TabContext {
     @Setter
     private SimulatedEvolutionCanvas canvas;
     @Setter
-    private SimulatedEvolutionWorld tabModel;
+    private SimulatedEvolutionModel tabModel;
 
     public SimulatedEvolutionContext(
         SimulatedEvolutionTab tab

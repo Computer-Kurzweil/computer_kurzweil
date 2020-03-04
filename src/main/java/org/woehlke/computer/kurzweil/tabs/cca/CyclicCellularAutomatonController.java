@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
+import org.woehlke.computer.kurzweil.tabs.TabType;
+
+import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
 
 /**
  * Cyclic Cellular Automaton.
@@ -20,6 +23,8 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 public class CyclicCellularAutomatonController extends Thread
         implements TabController {
 
+    private final static TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonContext tabCtx;
@@ -30,7 +35,7 @@ public class CyclicCellularAutomatonController extends Thread
     public CyclicCellularAutomatonController(
         CyclicCellularAutomatonContext tabCtx
     ) {
-        super("CCA-Controller");
+        super(tabType.name()+"-Controller");
         this.tabCtx = tabCtx;
         this.ctx = tabCtx.getCtx();
         this.goOn = Boolean.TRUE;
