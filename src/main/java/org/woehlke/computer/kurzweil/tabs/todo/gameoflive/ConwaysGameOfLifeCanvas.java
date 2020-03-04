@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle;
+package org.woehlke.computer.kurzweil.tabs.todo.gameoflive;
 
 
 import lombok.EqualsAndHashCode;
@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
-import org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.canvas.CyclicCellularAutomatonColorScheme;
+import org.woehlke.computer.kurzweil.tabs.todo.gameoflive.canvas.ConwaysGameOfLifeColorScheme;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -33,16 +33,16 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel, SierpinskiTriangle {
+public class ConwaysGameOfLifeCanvas extends JComponent implements
+    Serializable, TabCanvasWithModel, ConwaysGameOfLife {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private final CyclicCellularAutomatonContext tabCtx;
+    private final ConwaysGameOfLifeContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
-    private final CyclicCellularAutomatonColorScheme colorScheme;
+    private final ConwaysGameOfLifeColorScheme colorScheme;
     private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
@@ -55,7 +55,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-    public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
+    public ConwaysGameOfLifeCanvas(ConwaysGameOfLifeContext tabCtx) {
         this.tabCtx = tabCtx;
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
@@ -63,7 +63,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.versions = 2;
-        this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        this.colorScheme = new ConwaysGameOfLifeColorScheme();
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);

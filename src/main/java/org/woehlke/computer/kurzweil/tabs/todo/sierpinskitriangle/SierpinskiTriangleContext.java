@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.gameoflive;
+package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,37 +13,37 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext, ConwaysGameOfLife {
+public class SierpinskiTriangleContext implements TabContext, SierpinskiTriangle {
 
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonCanvas canvas;
-    private final CyclicCellularAutomatonTab tab;
-    private CyclicCellularAutomatonController controller;
+    private final SierpinskiTriangleCanvas canvas;
+    private final SierpinskiTriangleTab tab;
+    private SierpinskiTriangleController controller;
 
-    public CyclicCellularAutomatonContext(
-        CyclicCellularAutomatonTab tab
+    public SierpinskiTriangleContext(
+        SierpinskiTriangleTab tab
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
-        this.canvas = new CyclicCellularAutomatonCanvas( this);
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.canvas = new SierpinskiTriangleCanvas( this);
+        this.controller = new SierpinskiTriangleController(this);
     }
 
     @Override
-    public CyclicCellularAutomatonCanvas getTabModel() {
+    public SierpinskiTriangleCanvas getTabModel() {
         return this.canvas;
     }
 
     @Override
     public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new SierpinskiTriangleController(this);
     }
 
     @Override
     public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonController(this);
+            this.controller = new SierpinskiTriangleController(this);
         } else {
             if(this.controller.getState() != NEW){
                 this.stopController();

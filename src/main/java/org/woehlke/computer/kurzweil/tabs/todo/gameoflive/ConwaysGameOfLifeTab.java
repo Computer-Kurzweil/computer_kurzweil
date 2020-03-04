@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle;
+package org.woehlke.computer.kurzweil.tabs.todo.gameoflive;
 
 
 import lombok.EqualsAndHashCode;
@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.canvas.CyclicCellularAutomatonButtons;
+import org.woehlke.computer.kurzweil.tabs.todo.gameoflive.canvas.ConwaysGameOfLifeButtons;
 
 import java.awt.event.ActionEvent;
 
@@ -17,19 +17,19 @@ import java.awt.event.ActionEvent;
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class CyclicCellularAutomatonTab extends TabPanel implements Tab, SierpinskiTriangle {
+public class ConwaysGameOfLifeTab extends TabPanel implements Tab, ConwaysGameOfLife {
 
-    private final CyclicCellularAutomatonContext tabCtx;
-    private final CyclicCellularAutomatonCanvas canvas;
+    private final ConwaysGameOfLifeContext tabCtx;
+    private final ConwaysGameOfLifeCanvas canvas;
 
-    private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
+    private final ConwaysGameOfLifeButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
 
-    public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
+    public ConwaysGameOfLifeTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
-        this.tabCtx = new CyclicCellularAutomatonContext(this);
+        this.tabCtx = new ConwaysGameOfLifeContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
+        this.neighbourhoodButtonsPanel = new ConwaysGameOfLifeButtons(this.canvas);
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
         this.add(this.panelSubtitle);

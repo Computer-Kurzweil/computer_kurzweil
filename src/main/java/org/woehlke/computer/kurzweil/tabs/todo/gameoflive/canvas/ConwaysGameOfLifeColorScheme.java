@@ -6,11 +6,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme implements ConwaysGameOfLife {
+public class ConwaysGameOfLifeColorScheme implements ConwaysGameOfLife {
 
     private Color[] stateColor;
 
-    public CyclicCellularAutomatonColorScheme(){
+    public ConwaysGameOfLifeColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);

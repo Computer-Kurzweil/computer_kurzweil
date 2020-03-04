@@ -6,11 +6,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme implements SierpinskiTriangle {
+public class SierpinskiTriangleColorScheme implements SierpinskiTriangle {
 
     private Color[] stateColor;
 
-    public CyclicCellularAutomatonColorScheme(){
+    public SierpinskiTriangleColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);
