@@ -21,11 +21,11 @@ public class CyclicCellularAutomatonContext implements TabContext {
 
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;
-    private final CyclicCellularAutomatonTab tab;
+    private final KochSnowflakeTab tab;
     private CyclicCellularAutomatonController controller;
 
     public CyclicCellularAutomatonContext(
-        CyclicCellularAutomatonTab tab
+        KochSnowflakeTab tab
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
