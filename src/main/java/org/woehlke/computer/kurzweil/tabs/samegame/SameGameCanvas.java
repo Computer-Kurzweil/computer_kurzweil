@@ -8,8 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
 import org.woehlke.computer.kurzweil.tabs.samegame.canvas.SameGameColorScheme;
 
 import javax.swing.*;
@@ -35,7 +34,7 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class SameGameCanvas extends JComponent implements
-    Serializable, TabCanvas, TabModel {
+    Serializable, TabCanvasWithModel {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
