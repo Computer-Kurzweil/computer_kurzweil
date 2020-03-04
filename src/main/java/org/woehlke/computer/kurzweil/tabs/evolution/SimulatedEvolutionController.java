@@ -27,7 +27,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx"})
 @EqualsAndHashCode(callSuper = true, exclude={"tabCtx"})
-public class SimulatedEvolutionController extends Thread implements TabController {
+public class SimulatedEvolutionController extends Thread implements TabController,SimulatedEvolution {
 
     private final static TabType tabType = SIMULATED_EVOLUTION;
 

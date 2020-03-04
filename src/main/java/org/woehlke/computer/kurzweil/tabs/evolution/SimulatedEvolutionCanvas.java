@@ -42,7 +42,7 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolut
 @ToString(callSuper = true, exclude={"tabCtx","border","preferredSize","layout","tab"})
 @EqualsAndHashCode(callSuper=true, exclude={"tabCtx","border","preferredSize","layout","tab"})
 public class SimulatedEvolutionCanvas extends JComponent implements
-    Serializable, TabCanvas, Startable {
+    Serializable, TabCanvas, Startable, SimulatedEvolution {
 
     private static final long serialVersionUID = -27002509360079509L;
 

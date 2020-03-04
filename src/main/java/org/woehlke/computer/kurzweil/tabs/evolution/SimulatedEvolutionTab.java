@@ -14,16 +14,12 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import java.awt.event.ActionEvent;
 
-import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
-
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class SimulatedEvolutionTab extends TabPanel implements Tab {
-
-    private final static TabType tabType = SIMULATED_EVOLUTION;
+public class SimulatedEvolutionTab extends TabPanel implements Tab,SimulatedEvolution {
 
     private final SimulatedEvolutionCanvas canvas;
     private final SimulatedEvolutionContext tabCtx;
@@ -33,7 +29,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
 
     public SimulatedEvolutionTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane, tabType);
+        super(tabbedPane, TAB_TYPE);
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
         this.tabCtx.setCanvas(this.canvas);

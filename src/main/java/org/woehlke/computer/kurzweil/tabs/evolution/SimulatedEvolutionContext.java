@@ -5,21 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolution;
 
 import static java.lang.Thread.State.NEW;
-import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude={"ctx","controller","tab"})
 @EqualsAndHashCode(exclude={"ctx","controller","tab"})
-public class SimulatedEvolutionContext implements TabContext {
-
-    private final static TabType tabType = SIMULATED_EVOLUTION;
+public class SimulatedEvolutionContext implements TabContext, org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolution {
 
     private final ComputerKurzweilContext ctx;
     private SimulatedEvolutionController controller;

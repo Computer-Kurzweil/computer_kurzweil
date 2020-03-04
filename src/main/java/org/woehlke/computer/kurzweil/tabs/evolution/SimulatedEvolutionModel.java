@@ -39,7 +39,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 @Getter
 @ToString(exclude={"cells","appCtx"})
 @EqualsAndHashCode(exclude={"cells","appCtx"})
-public class SimulatedEvolutionModel implements TabModel {
+public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
 
     private final static TabType tabType = SIMULATED_EVOLUTION;
 
