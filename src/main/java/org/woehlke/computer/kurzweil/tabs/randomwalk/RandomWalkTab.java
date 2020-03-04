@@ -13,11 +13,15 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 
 import java.awt.event.ActionEvent;
 
+import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROCESS;
+
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class RandomWalkTab extends TabPanel implements Tab {
+
+    private final static TabType tabType = RANDOM_WALK_WIENER_PROCESS;
 
     private final RandomWalkContext tabCtx;
 
@@ -25,7 +29,7 @@ public class RandomWalkTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public RandomWalkTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane,TabType.RANDOM_WALK_WIENER_PROCESS);
+        super(tabbedPane, tabType);
         this.tabCtx = new RandomWalkContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new PanelBottomButtons( this );

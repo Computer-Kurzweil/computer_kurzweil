@@ -13,11 +13,15 @@ import org.woehlke.computer.kurzweil.tabs.Tab;
 
 import java.awt.event.ActionEvent;
 
+import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
+
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
+
+    private final static TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
@@ -26,7 +30,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
+        super(tabbedPane, tabType);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);

@@ -13,11 +13,15 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.MandelbrotButtons;
 
 import java.awt.event.ActionEvent;
 
+import static org.woehlke.computer.kurzweil.tabs.TabType.MANDELBROT_SET;
+
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class MandelbrotTab extends TabPanel implements Tab {
+
+    private final static TabType tabType = MANDELBROT_SET;
 
     private final MandelbrotContext tabCtx;
     private final MandelbrotButtons panelButtons;
@@ -25,7 +29,7 @@ public class MandelbrotTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public MandelbrotTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane, TabType.MANDELBROT_SET);
+        super(tabbedPane, tabType);
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new PanelBottomButtons( this );

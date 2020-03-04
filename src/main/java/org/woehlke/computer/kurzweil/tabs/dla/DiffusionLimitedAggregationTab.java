@@ -11,18 +11,22 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import java.awt.event.ActionEvent;
 
+import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
+
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","canvas"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","canvas"})
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
 
+    private final static TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
+
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final PanelBottomButtons bottomButtonsPanel;
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane, TabType.DIFFUSION_LIMITED_AGGREGATION);
+        super(tabbedPane, tabType);
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.canvas = this.tabCtx.getCanvas();

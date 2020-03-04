@@ -13,11 +13,15 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import java.awt.event.ActionEvent;
 
+import static org.woehlke.computer.kurzweil.tabs.TabType.SAME_GAME;
+
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class SameGameTab extends TabPanel implements Tab {
+
+    private final static TabType tabType = SAME_GAME;
 
     private final SameGameContext tabCtx;
     private final SameGameCanvas canvas;
@@ -26,7 +30,7 @@ public class SameGameTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public SameGameTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane,TabType.SAME_GAME);
+        super(tabbedPane, tabType);
         this.tabCtx = new SameGameContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new SameGameButtons(this.canvas);
