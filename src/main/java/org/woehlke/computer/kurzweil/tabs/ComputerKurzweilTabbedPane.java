@@ -12,6 +12,7 @@ import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.RandomWalkTab;
+import org.woehlke.computer.kurzweil.tabs.todo.kochsnowflake.KochSnowflakeTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -32,6 +33,7 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
     private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;
     private final MandelbrotTab mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
+    private final KochSnowflakeTab kochSnowflakeTab;
 
     public ComputerKurzweilTabbedPane(
         ComputerKurzweilContext ctx
@@ -44,19 +46,22 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this);
         this.mandelbrotTab = new MandelbrotTab(this);
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this);
+        this.kochSnowflakeTab = new KochSnowflakeTab(this);
         TabPanel[] tabPanelAbstractPanels = {
             this.cyclicCellularAutomatonTab,
             this.randomWalkTab,
             this.diffusionLimitedAggregationTab,
             this.simulatedEvolutionTab,
-            this.mandelbrotTab
+            this.mandelbrotTab,
+            this.kochSnowflakeTab
         };
         int[] events = {
-            KeyEvent.VK_1,
-            KeyEvent.VK_2,
-            KeyEvent.VK_3,
-            KeyEvent.VK_4,
-            KeyEvent.VK_5
+            KeyEvent.VK_F1,
+            KeyEvent.VK_F2,
+            KeyEvent.VK_F3,
+            KeyEvent.VK_F4,
+            KeyEvent.VK_F5,
+            KeyEvent.VK_F6
         };
         int i = 0;
         ImageIcon icon = null;
