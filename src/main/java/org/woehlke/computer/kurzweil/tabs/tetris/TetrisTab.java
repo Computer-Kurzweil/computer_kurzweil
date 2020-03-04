@@ -80,12 +80,12 @@ public class TetrisTab extends TabPanel implements Tab, Tetris {
 
     @Override
     public String getTitle() {
-        return ctx.getProperties().getCca().getView().getTitle();
+        return ctx.getProperties().getTurmite().getView().getTitle();
     }
 
     @Override
     public String getSubTitle() {
-        return ctx.getProperties().getCca().getView().getSubtitle();
+        return ctx.getProperties().getTurmite().getView().getSubtitle();
     }
 
     @Override
