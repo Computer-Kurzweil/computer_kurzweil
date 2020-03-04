@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class KochSnowflakeTab extends TabPanel implements Tab {
 
-    private final CyclicCellularAutomatonContext tabCtx;
+    private final KochSnowflakeContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
 
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
@@ -27,7 +27,7 @@ public class KochSnowflakeTab extends TabPanel implements Tab {
 
     public KochSnowflakeTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
-        this.tabCtx = new CyclicCellularAutomatonContext(this);
+        this.tabCtx = new KochSnowflakeContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
         this.bottomButtonsPanel = new PanelBottomButtons( this );

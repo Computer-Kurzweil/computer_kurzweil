@@ -15,7 +15,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext {
+public class KochSnowflakeContext implements TabContext {
 
     private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
@@ -24,7 +24,7 @@ public class CyclicCellularAutomatonContext implements TabContext {
     private final KochSnowflakeTab tab;
     private CyclicCellularAutomatonController controller;
 
-    public CyclicCellularAutomatonContext(
+    public KochSnowflakeContext(
         KochSnowflakeTab tab
     ) {
         this.tab = tab;

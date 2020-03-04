@@ -22,13 +22,13 @@ public class CyclicCellularAutomatonController extends Thread
 
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonContext tabCtx;
+    private final KochSnowflakeContext tabCtx;
     private final int threadSleepTime;
 
     private Boolean goOn;
 
     public CyclicCellularAutomatonController(
-        CyclicCellularAutomatonContext tabCtx
+        KochSnowflakeContext tabCtx
     ) {
         super("CCA-Controller");
         this.tabCtx = tabCtx;

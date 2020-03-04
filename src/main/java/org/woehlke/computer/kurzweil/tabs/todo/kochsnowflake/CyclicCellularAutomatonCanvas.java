@@ -38,7 +38,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private final CyclicCellularAutomatonContext tabCtx;
+    private final KochSnowflakeContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
@@ -55,7 +55,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-    public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonContext tabCtx) {
+    public CyclicCellularAutomatonCanvas(KochSnowflakeContext tabCtx) {
         this.tabCtx = tabCtx;
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
