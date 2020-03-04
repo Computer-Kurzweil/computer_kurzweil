@@ -1,12 +1,14 @@
 # Computer Kurzweil
 
-## Mandelbrot
+## Tabs
 
-**[Computing the Edge of the Mandelbrot Set with a Turing Machine](mandelbrot/README.md)**
+### Mandelbrot
 
-![Computing the Area outside the Mandelbrot Set](mandelbrot/src/main/resources/img/screen03.png)
+**[Computing the Edge of the Mandelbrot Set with a Turing Machine](docs/tabs/mandelbrot/README.md)**
 
-### The Mandelbrot Set
+![Computing the Area outside the Mandelbrot Set](docs/tabs/mandelbrot/img/screen03.png)
+
+#### The Mandelbrot Set
 
 The Mandelbrot set is the set of values of c in the complex plane for which the orbit of 0 
 under iteration of the complex quadratic polynomial z_(n+1)=z_n^2+c remains bounded.
@@ -15,34 +17,32 @@ That is, a complex number c is part of the Mandelbrot set if, when starting with
 and applying the iteration repeatedly, the absolute value of zn remains bounded 
 however large n gets. 
 
-### The Turing Machine to Compute the Mandelbrot Set
+#### The Turing Machine to Compute the Mandelbrot Set
 The Complex Number Plane is divided into Cells for the two dimensional Tape of the Turing-Machine.
 Starting with Complex Number of a Cell right from the Mandelbrot Set the Turing Machine goes one Step to the left and computes, wether the Complex Number of the Cell is inside the Set. If not, it continues to go left.
 The Turing-Machine then goes around the Set by computing wether the Complex Number of the Cell is inside the Set. If not it turns left, else it turns right. After that it goes one step forward.
 After the Turing Machine finished to run around the Set, the Application paints the Inside of the Set Black und computes the Colors of the Outside.
 
-### The Julia Sets
+#### The Julia Sets
 The Mandelbrot Set is drawn into the Complex Number Plane and so clicking into it, it delivers the Complex Number to calculate a Julia Set for it.
 The most beautiful Julia Sets are drawn by clicking into the Border of the Mandelbrot Set.
 
+### Simulated Evolution
 
-## Simulated Evolution
+**[Artificial Life Simulation of Bacteria Motion depending on DNA](docs/tabs/simulated-evolution/README.md)**
 
-**[Artificial Life Simulation of Bacteria Motion depending on DNA](simulated-evolution/README.md)**
-
-![Early Screen](simulated-evolution/src/main/resources/img/screen1.png)
+![Early Screen](docs/tabs/simulated-evolution/img/screen1.png)
 
 Green food appears in a world with red moving cells. These cells eat the food if it is on their position.
 Movement of the cells depends on random and their DNA. A fit cellConf moves around and eats enough to reproduce.
 Reproduction is done by splitting the cellConf and randomly changing the DNA of the two new Cells.
 If a cellConf doesn't eat enough, it will first stand still and after a while it dies.
 
+### Diffusion-limited aggregation (DLA) 
 
-## Diffusion-limited aggregation (DLA) 
+**[Fractals and random walk due to Brownian motion cluster](docs/tabs/diffusion-limited-aggregation/README.md)**
 
-**[Fractals and random walk due to Brownian motion cluster](diffusion-limited-aggregation/README.md)**
-
-![The Dendrite after a while](diffusion-limited-aggregation/src/main/resources/img/screen2.png)
+![The Dendrite after a while](docs/tabs/diffusion-limited-aggregation/src/main/resources/img/screen2.png)
 
 Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to Brownian motion cluster together to form aggregates of such particles.
 
@@ -52,13 +52,11 @@ Hele-Shaw flow, mineral deposits, and dielectric breakdown.
 
 The clusters formed in DLA processes are referred to as Brownian trees. These clusters are an example of a fractal.
 
+### Cyclic Cellular Automaton (CCA)
 
+**[More Info...](docs/tabs/cyclic-cellular-automaton/README.md)**
 
-## Cyclic Cellular Automaton
-
-**[More Info...](cyclic-cellular-automaton/README.md)**
-
-![Later Screen](cyclic-cellular-automaton/src/main/resources/img/screen2.png)
+![Later Screen](docs/tabs/cyclic-cellular-automaton/src/main/resources/img/screen2.png)
 
 The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
 
@@ -66,24 +64,26 @@ In this system, each cellConf remains unchanged until some neighboring cellConf 
 
 One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior.
 
-## Koch Snowflake
-**[More Info...](koch-snowflake/README.md)**
+### Koch Snowflake
+**[More Info...](docs/tabs/koch-snowflake/README.md)**
 
-## Same Game
-**[More Info...](samegame/README.md)**
+### Same Game
+**[More Info...](docs/tabs/samegame/README.md)**
 
-## Sierpinski Triangle
-**[More Info...](sierpinski-triangle/README.md)**
+### Sierpinski Triangle
+**[More Info...](docs/tabs/sierpinski-triangle/README.md)**
 
-## Tetris
-**[More Info...](tetris/README.md)**
+### Tetris
+**[More Info...](docs/tabs/tetris/README.md)**
 
-## Turmite
-**[More Info...](turmite/README.md)**
+### Turmite
+**[More Info...](docs/tabs/turmite/README.md)**
 
-## Wa-Tor
-**[More Info...](wator/README.md)**
+### Wa-Tor
+**[More Info...](docs/tabs/wator/README.md)**
 
-## Documentation
-**[More Info...](docs/README.md)**
-
+## Work in Progress
+**[Projects](docs/PROJECTS.md)**
+**[Todo](docs/TODO.md)**
+**[Software Engineering](docs/ENGINEERING.md)**
+**[Work on Documentation](docs/documentation/README.md)**

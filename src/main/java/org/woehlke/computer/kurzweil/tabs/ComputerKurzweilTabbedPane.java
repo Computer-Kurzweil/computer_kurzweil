@@ -27,14 +27,11 @@ import java.util.List;
 public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable,
     GuiComponent {
 
-    private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
     private final RandomWalkTab randomWalkTab;
     private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;
     private final MandelbrotTab mandelbrotTab;
     private final SimulatedEvolutionTab simulatedEvolutionTab;
-    private final List<TabPanel> apps = new ArrayList<>();
-    private final CompoundBorder border;
 
     public ComputerKurzweilTabbedPane(
         ComputerKurzweilContext ctx
@@ -102,4 +99,8 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
     public void showMe() {
         getActiveTab().showMe();
     }
+
+    private final List<TabPanel> apps = new ArrayList<>();
+    private final CompoundBorder border;
+    private final ComputerKurzweilContext ctx;
 }

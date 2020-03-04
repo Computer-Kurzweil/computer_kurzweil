@@ -34,6 +34,7 @@ public class ComputerKurzweilProperties {
     @Valid @Getter @Setter public Tetris tetris = new Tetris();
     @Valid @Getter @Setter public Turmite turmite = new Turmite();
     @Valid @Getter @Setter public Wator wator = new Wator();
+    @Valid @Getter @Setter public Gameoflive gameoflive = new Gameoflive();
 
     ////@Validated
     @ToString
@@ -373,6 +374,27 @@ public class ComputerKurzweilProperties {
         }
     }
 
+    @ToString
+    public static class Gameoflive{
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        //@Validated
+        @ToString
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+        }
+
+        //@Validated
+        @ToString
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+            @NotNull  @Getter @Setter private Integer numberOfParticles;
+        }
+    }
+
     public static ComputerKurzweilProperties propertiesFactory(String conf, String jar){
         log.info("propertiesFactory");
         log.info("propertiesFactory conf: "+conf);
@@ -417,6 +439,8 @@ public class ComputerKurzweilProperties {
                 return this.getTurmite().getView().getSubtitle();
             case WATOR:
                 return this.getWator().getView().getSubtitle();
+            case CONWAYS_GAME_OF_LIFE:
+                return this.getGameoflive().getView().getSubtitle();
             default:
                 return "UNDEFINED";
         }
@@ -446,6 +470,8 @@ public class ComputerKurzweilProperties {
                 return this.getTurmite().getView().getTitle();
             case WATOR:
                 return this.getWator().getView().getTitle();
+            case CONWAYS_GAME_OF_LIFE:
+                return this.getGameoflive().getView().getTitle();
             default:
                 return "UNDEFINED";
         }
