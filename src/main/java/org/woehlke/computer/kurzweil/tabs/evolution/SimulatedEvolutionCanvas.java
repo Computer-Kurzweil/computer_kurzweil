@@ -41,9 +41,9 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolut
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx","border","preferredSize","layout","tab"})
 @EqualsAndHashCode(callSuper=true, exclude={"tabCtx","border","preferredSize","layout","tab"})
-public class SimulatedEvolutionCanvas extends JComponent implements
-    Serializable, TabCanvas, Startable, SimulatedEvolution {
+public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, Startable, SimulatedEvolution {
 
+    //TODO: new serialVersionUID
     private static final long serialVersionUID = -27002509360079509L;
 
     private final SimulatedEvolutionContext tabCtx;
@@ -142,8 +142,8 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     @Override
     public void update() {
         log.info("update");
-        int getFoodPerDay = tabCtx.getSimulatedEvolution().getFoodPerDay();
-        boolean selected = tabCtx.getSimulatedEvolution().isGardenOfEdenEnabled();
+        int getFoodPerDay = tabCtx.getSimulatedEvolutionParameter().getFoodPerDay();
+        boolean selected = tabCtx.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
         this.foodPerDayPanel.setFoodPerDay(getFoodPerDay);
         this.gardenOfEdenPanel.setSelected(selected);
         log.info("updated");

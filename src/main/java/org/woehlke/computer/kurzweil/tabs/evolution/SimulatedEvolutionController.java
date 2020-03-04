@@ -27,9 +27,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx"})
 @EqualsAndHashCode(callSuper = true, exclude={"tabCtx"})
-public class SimulatedEvolutionController extends Thread implements TabController,SimulatedEvolution {
-
-    private final static TabType tabType = SIMULATED_EVOLUTION;
+public class SimulatedEvolutionController extends Thread implements TabController, SimulatedEvolution {
 
     private final SimulatedEvolutionContext tabCtx;
     private Boolean goOn;
@@ -38,7 +36,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
   public SimulatedEvolutionController(
       SimulatedEvolutionContext tabCtx
   ) {
-      super(tabType.name()+"-Controller");
+      super(TAB_TYPE.name()+"-Controller");
       this.tabCtx = tabCtx;
       this.goOn = Boolean.TRUE;
       this.threadSleepTime = this.tabCtx.getCtx().getProperties().getEvolution().getControl().getThreadSleepTime();

@@ -29,8 +29,6 @@ public enum CellLifeCycleStatus {
   DEAD(BLACK, BLACK),
   POPULATION(WHITE,BLACK);
 
-
-
   private Color color;
   private Color colorFont;
 
@@ -43,10 +41,9 @@ public enum CellLifeCycleStatus {
     return color;
   }
 
-    public Color getColorForeground() {
+  public Color getColorForeground() {
         return colorFont;
     }
-
     public Color getColorBackground() {
         return color;
     }

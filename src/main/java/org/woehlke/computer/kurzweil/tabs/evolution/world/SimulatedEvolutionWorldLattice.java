@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 
@@ -28,7 +29,7 @@ import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
 @Getter
 @ToString(exclude={"appCtx","worldMapFoodLattice"})
 @EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"})
-public class SimulatedEvolutionWorldLattice implements Startable {
+public class SimulatedEvolutionWorldLattice implements Startable, SimulatedEvolution {
 
       /**
        * Grid of World where every Place can have food.

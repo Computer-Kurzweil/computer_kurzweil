@@ -7,7 +7,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolutionParameter;
 
 import static java.lang.Thread.State.NEW;
 
@@ -15,12 +15,12 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude={"ctx","controller","tab"})
 @EqualsAndHashCode(exclude={"ctx","controller","tab"})
-public class SimulatedEvolutionContext implements TabContext, org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolution {
+public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution {
 
     private final ComputerKurzweilContext ctx;
     private SimulatedEvolutionController controller;
     private final SimulatedEvolutionTab tab;
-    private final SimulatedEvolution simulatedEvolution;
+    private final SimulatedEvolutionParameter simulatedEvolutionParameter;
     @Setter
     private SimulatedEvolutionCanvas canvas;
     @Setter
@@ -32,7 +32,7 @@ public class SimulatedEvolutionContext implements TabContext, org.woehlke.comput
        this.tab = tab;
        this.ctx = this.tab.getCtx();
         this.controller = new SimulatedEvolutionController(this);
-        this.simulatedEvolution = new SimulatedEvolution();
+        this.simulatedEvolutionParameter = new SimulatedEvolutionParameter();
         createNewState();
     }
 
@@ -40,21 +40,21 @@ public class SimulatedEvolutionContext implements TabContext, org.woehlke.comput
         int foodPerDay = this.ctx.getProperties().getEvolution().getFood().getFoodPerDay();
         int foodPerDayGardenOfEden = this.ctx.getProperties().getEvolution().getGardenOfEden().getFoodPerDay();
         boolean gardenOfEdenEnabled = this.ctx.getProperties().getEvolution().getGardenOfEden().getGardenOfEdenEnabled();
-        this.simulatedEvolution.setFoodPerDay(foodPerDay);
-        this.simulatedEvolution.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
-        this.simulatedEvolution.setGardenOfEdenEnabled(gardenOfEdenEnabled);
+        this.simulatedEvolutionParameter.setFoodPerDay(foodPerDay);
+        this.simulatedEvolutionParameter.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
+        this.simulatedEvolutionParameter.setGardenOfEdenEnabled(gardenOfEdenEnabled);
     }
 
     public void increaseFoodPerDay() {
-        simulatedEvolution.increaseFoodPerDay();
+        simulatedEvolutionParameter.increaseFoodPerDay();
     }
 
     public void decreaseFoodPerDay(){
-        simulatedEvolution.decreaseFoodPerDay();
+        simulatedEvolutionParameter.decreaseFoodPerDay();
     }
 
     public void toggleGardenOfEden() {
-        this.simulatedEvolution.toggleGardenOfEden();
+        this.simulatedEvolutionParameter.toggleGardenOfEden();
         this.tabModel.toggleGardenOfEden();
         this.canvas.toggleGardenOfEden();
     }

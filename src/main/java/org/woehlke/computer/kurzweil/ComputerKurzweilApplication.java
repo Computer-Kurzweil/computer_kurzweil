@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilFrame;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
 
 
@@ -14,6 +15,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  * http://thomas-woehlke.de/p/simulated-evolution/
  * @see ComputerKurzweilFrame
  * @see ComputerKurzweilProperties
+ * @see ComputerKurzweilContext
  * <p>
  * Simulated Evolution. Artificial Life Simulation of Bacteria Motion depending on DNA.
  * <p>

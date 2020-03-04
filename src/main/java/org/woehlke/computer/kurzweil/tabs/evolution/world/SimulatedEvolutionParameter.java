@@ -1,8 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.evolution.world;
 
 import lombok.*;
-
-import java.io.Serializable;
+import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolution;
 
 @Getter
 @Setter
@@ -10,7 +9,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class SimulatedEvolution implements Serializable {
+public class SimulatedEvolutionParameter implements SimulatedEvolution {
 
     private int foodPerDay;
     private int foodPerDayGardenOfEden;

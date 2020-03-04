@@ -41,12 +41,10 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.SIMULATED_EVOLUTION;
 @EqualsAndHashCode(exclude={"cells","appCtx"})
 public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
 
-    private final static TabType tabType = SIMULATED_EVOLUTION;
-
     /**
     * List of the Simulated Bacteria Cells.
     */
-    private List<Cell> cells;
+    private List<Cell> cells; //TODO move Cells to population
     private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionWorldLattice worldLattice;
     private final SimulatedEvolutionPopulationContainer statisticsContainer;
