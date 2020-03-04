@@ -21,8 +21,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
  * Time: 19:55:23
  */
 @Log
-@ToString
-@EqualsAndHashCode
+@ToString(exclude = {"ctx"})
+@EqualsAndHashCode(exclude = {"ctx"})
 @AllArgsConstructor
 public class CellCore implements SimulatedEvolution {
 

@@ -22,9 +22,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
  * Time: 23:12:31
  */
 @Log
-@ToString
-@EqualsAndHashCode
-@AllArgsConstructor
+@ToString(exclude = {"cellConf"})
+@EqualsAndHashCode(exclude = {"cellConf"})
 public class CellLifeCycle implements SimulatedEvolution {
 
     @Getter private int fat;

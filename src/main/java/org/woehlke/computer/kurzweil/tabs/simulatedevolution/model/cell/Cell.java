@@ -25,8 +25,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionC
  * &copy; 2006 - 2008 Thomas Woehlke.
  * http://thomas-woehlke.de/p/simulated-evolution/
  */
-@ToString
-@EqualsAndHashCode
+@ToString(exclude = {"appCtx"})
+@EqualsAndHashCode(exclude = {"appCtx"})
 @AllArgsConstructor
 public class Cell implements SimulatedEvolution {
 
