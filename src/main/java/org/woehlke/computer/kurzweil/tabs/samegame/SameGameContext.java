@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import static java.lang.Thread.State.NEW;
-import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
+import static org.woehlke.computer.kurzweil.tabs.TabType.SAME_GAME;
 
 @Log4j2
 @Getter
@@ -17,7 +17,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @EqualsAndHashCode(exclude = {"tab"})
 public class SameGameContext implements TabContext {
 
-    private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+    private final TabType tabType = SAME_GAME;
 
     private final ComputerKurzweilContext ctx;
     private final SameGameCanvas canvas;

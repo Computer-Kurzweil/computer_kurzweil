@@ -26,7 +26,7 @@ public class SameGameTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public SameGameTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
+        super(tabbedPane,TabType.SAME_GAME);
         this.tabCtx = new SameGameContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new SameGameButtons(this.canvas);
@@ -80,12 +80,12 @@ public class SameGameTab extends TabPanel implements Tab {
 
     @Override
     public String getTitle() {
-        return ctx.getProperties().getCca().getView().getTitle();
+        return ctx.getProperties().getSamegame().getView().getTitle();
     }
 
     @Override
     public String getSubTitle() {
-        return ctx.getProperties().getCca().getView().getSubtitle();
+        return ctx.getProperties().getSamegame().getView().getSubtitle();
     }
 
     @Override
