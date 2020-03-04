@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ClickBehaviour;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
@@ -13,7 +14,7 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class ComputingPlan {
+public class ComputingPlan implements Mandelbrot {
 
     private final static double startWorldDimensionReal = 3.2d;
     private final static double startWorldDimensionImg = 2.34d;

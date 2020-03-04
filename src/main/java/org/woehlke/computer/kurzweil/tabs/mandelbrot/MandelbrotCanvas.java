@@ -32,7 +32,7 @@ import java.awt.event.MouseListener;
 @Getter
 @ToString(callSuper = true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})
 @EqualsAndHashCode(callSuper=true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})
-public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseListener {
+public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseListener, Mandelbrot {
 
     private final MandelbrotContext tabCtx;
     private final Border border;

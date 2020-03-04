@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers;
 
 import lombok.*;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellSt
 @ToString(callSuper = true)
 @EqualsAndHashCode
 @AllArgsConstructor
-public class ComplexNumberFractal implements Serializable {
+public class ComplexNumberFractal implements Mandelbrot {
 
     private final ComplexNumber z;
     private final ComplexNumber c;

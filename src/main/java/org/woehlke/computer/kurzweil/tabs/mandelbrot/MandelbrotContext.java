@@ -4,18 +4,15 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 
 
 import static java.lang.Thread.State.NEW;
-import static org.woehlke.computer.kurzweil.tabs.TabType.MANDELBROT_SET;
 
 @Log4j2
 @Getter
-public class MandelbrotContext implements TabContext {
+public class MandelbrotContext implements TabContext, Mandelbrot {
 
-    private final TabType tabType = MANDELBROT_SET;
     private final ComputerKurzweilContext ctx;
     private final MandelbrotTab tab;
     private final MandelbrotModel tabModel;

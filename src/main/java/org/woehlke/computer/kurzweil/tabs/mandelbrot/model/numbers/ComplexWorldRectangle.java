@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 
 import java.io.Serializable;
 
@@ -11,7 +12,7 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 @EqualsAndHashCode
 @AllArgsConstructor
-public class ComplexWorldRectangle implements Serializable {
+public class ComplexWorldRectangle implements Mandelbrot {
 
     private ComplexNumber northWest;
     private ComplexNumber southEast;

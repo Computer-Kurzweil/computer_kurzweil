@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers;
 
 import lombok.*;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 
 import java.io.Serializable;
 
@@ -17,7 +18,7 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 @EqualsAndHashCode
 @AllArgsConstructor
-public class ComplexNumber implements Serializable {
+public class ComplexNumber implements Mandelbrot {
 
     private final double real;
     private final double img;

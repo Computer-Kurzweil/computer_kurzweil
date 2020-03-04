@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPhaseStateMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPositionsStateMachine;
-import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState;
 
@@ -29,7 +27,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.Applicat
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode
-public class MandelbrotModel implements Startable, TabModel {
+public class MandelbrotModel implements TabModel, Mandelbrot {
 
     @Setter
     private volatile ApplicationState state;

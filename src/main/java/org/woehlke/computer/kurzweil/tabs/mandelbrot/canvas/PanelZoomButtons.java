@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 
 import lombok.Getter;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 @Getter
-public class PanelZoomButtons extends JPanel {
+public class PanelZoomButtons extends JPanel implements Mandelbrot {
 
     private final MandelbrotContext tabCtx;
 

@@ -6,7 +6,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
 @Log4j2
 @Getter
-public class MandelbrotController extends Thread implements Runnable, TabController {
+public class MandelbrotController extends Thread implements TabController, Mandelbrot {
 
     private final MandelbrotContext tabCtx;
     private final int threadSleepTime;

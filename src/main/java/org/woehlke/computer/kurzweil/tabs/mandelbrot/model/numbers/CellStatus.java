@@ -4,6 +4,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.io.Serializable;
 @Getter
 @EqualsAndHashCode
 @ToString(callSuper = true)
-public class CellStatus implements Serializable {
+public class CellStatus implements Serializable, Mandelbrot {
 
     public final static int YET_UNCOMPUTED = -1;
     public final static int MAX_ITERATIONS = 32;

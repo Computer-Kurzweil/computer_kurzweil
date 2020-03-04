@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-
-import java.io.Serializable;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 
 @Getter
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class WorldDimensionsComplex implements Serializable {
+public class WorldDimensionsComplex implements Mandelbrot {
 
     private ComplexNumber northWest;
     private ComplexNumber southEast;

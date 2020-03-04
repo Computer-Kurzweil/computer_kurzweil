@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 
 import lombok.Getter;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioBut
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_ZOOM;
 
 @Getter
-public class RadioButtonsGroup extends ButtonGroup {
+public class RadioButtonsGroup extends ButtonGroup implements Mandelbrot {
 
     private final JRadioButton radioButtonsSwitch;
     private final JRadioButton radioButtonsZoom;

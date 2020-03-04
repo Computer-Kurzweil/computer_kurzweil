@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.TuringPhase;
 import org.woehlke.computer.kurzweil.commons.Startable;
 
@@ -18,7 +19,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class TuringPhaseStateMachine implements Startable {
+public class TuringPhaseStateMachine implements Startable, Mandelbrot {
 
     private TuringPhase turingTuringPhase;
 

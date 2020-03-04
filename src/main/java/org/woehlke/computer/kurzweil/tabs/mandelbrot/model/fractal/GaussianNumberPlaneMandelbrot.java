@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.*;
@@ -17,7 +18,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.Comput
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase {
+public class GaussianNumberPlaneMandelbrot extends GaussianNumberPlaneBase implements Mandelbrot {
 
     private Deque<ComplexNumber> complexCenterForZoomedMandelbrot = new ArrayDeque<>();
     private final ZoomLevel zoomLevel;

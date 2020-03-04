@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.TuringDirection;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -20,7 +21,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class TuringPositionsStateMachine implements Startable {
+public class TuringPositionsStateMachine implements Mandelbrot, Startable {
 
     @ToString.Exclude
     private final MandelbrotContext tabCtx;
