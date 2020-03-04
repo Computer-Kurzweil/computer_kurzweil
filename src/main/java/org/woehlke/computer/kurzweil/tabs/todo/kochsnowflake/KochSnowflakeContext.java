@@ -20,7 +20,7 @@ public class KochSnowflakeContext implements TabContext {
     private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonCanvas canvas;
+    private final KochSnowflakeCanvas canvas;
     private final KochSnowflakeTab tab;
     private CyclicCellularAutomatonController controller;
 
@@ -29,12 +29,12 @@ public class KochSnowflakeContext implements TabContext {
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
-        this.canvas = new CyclicCellularAutomatonCanvas( this);
+        this.canvas = new KochSnowflakeCanvas( this);
         this.controller = new CyclicCellularAutomatonController(this);
     }
 
     @Override
-    public CyclicCellularAutomatonCanvas getTabModel() {
+    public KochSnowflakeCanvas getTabModel() {
         return this.canvas;
     }
 

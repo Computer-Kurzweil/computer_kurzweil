@@ -23,12 +23,12 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
   private final String buttonLabelMoore;
   private final String buttonLabelWoehlke;
   private final String title;
-  private final CyclicCellularAutomatonCanvas canvas;
+  private final KochSnowflakeCanvas canvas;
   private final CompoundBorder border;
   private final FlowLayout layout;
 
   public CyclicCellularAutomatonButtons(
-      CyclicCellularAutomatonCanvas canvas
+      KochSnowflakeCanvas canvas
   ) {
     this.canvas = canvas;
     this.title = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle();

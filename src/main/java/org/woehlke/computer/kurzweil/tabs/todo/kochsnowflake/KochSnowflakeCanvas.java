@@ -33,7 +33,7 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-public class CyclicCellularAutomatonCanvas extends JComponent implements
+public class KochSnowflakeCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
 
     private static final long serialVersionUID = -3057254130516052936L;
@@ -55,7 +55,7 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-    public CyclicCellularAutomatonCanvas(KochSnowflakeContext tabCtx) {
+    public KochSnowflakeCanvas(KochSnowflakeContext tabCtx) {
         this.tabCtx = tabCtx;
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();

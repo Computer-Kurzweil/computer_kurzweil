@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 public class KochSnowflakeTab extends TabPanel implements Tab {
 
     private final KochSnowflakeContext tabCtx;
-    private final CyclicCellularAutomatonCanvas canvas;
+    private final KochSnowflakeCanvas canvas;
 
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
