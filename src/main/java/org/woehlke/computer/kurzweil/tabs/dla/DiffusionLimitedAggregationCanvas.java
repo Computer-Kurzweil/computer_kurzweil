@@ -35,9 +35,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGRE
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel {
-
-    private final static TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
+    Serializable, TabCanvasWithModel, DiffusionLimitedAggregation {
 
     private final DiffusionLimitedAggregationContext tabCtx;
     private final Border border;

@@ -6,27 +6,22 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import java.awt.event.ActionEvent;
-
-import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","canvas"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","canvas"})
-public class DiffusionLimitedAggregationTab extends TabPanel implements Tab {
-
-    private final static TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
+public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, DiffusionLimitedAggregation {
 
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final PanelBottomButtons bottomButtonsPanel;
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane, tabType);
+        super(tabbedPane, TAB_TYPE );
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.canvas = this.tabCtx.getCanvas();

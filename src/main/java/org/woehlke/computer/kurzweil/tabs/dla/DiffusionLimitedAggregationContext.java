@@ -5,21 +5,17 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 
 import static java.lang.Thread.State.NEW;
-import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 
 @Log4j2
 @Getter
 @ToString(exclude={"canvas","controller","tab","ctx"})
 @EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"})
-public class DiffusionLimitedAggregationContext implements TabContext {
-
-    private final TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
+public class DiffusionLimitedAggregationContext implements TabContext, DiffusionLimitedAggregation {
 
     private DiffusionLimitedAggregationController controller;
 

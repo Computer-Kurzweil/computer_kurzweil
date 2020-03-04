@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
-import org.woehlke.computer.kurzweil.tabs.TabType;
-
-import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGREGATION;
 
 /**
  * Diffusion Limited Aggregation.
@@ -24,9 +21,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGRE
 @ToString(callSuper=true,exclude={"tabCtx"})
 @EqualsAndHashCode(callSuper=true,exclude={"tabCtx"})
 public class DiffusionLimitedAggregationController extends Thread
-        implements TabController {
-
-    private final static TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
+        implements TabController, DiffusionLimitedAggregation {
 
     private final DiffusionLimitedAggregationContext tabCtx;
     private final int threadSleepTime;
@@ -35,7 +30,7 @@ public class DiffusionLimitedAggregationController extends Thread
     public DiffusionLimitedAggregationController(
         DiffusionLimitedAggregationContext tabCtx
     ) {
-        super(tabType.name()+"-Controller");
+        super(TAB_TYPE.name()+"-Controller");
         this.tabCtx = tabCtx;
         this.goOn = Boolean.TRUE;
         this.threadSleepTime = this.tabCtx.getCtx().getProperties().getDla().getControl().getThreadSleepTime();
