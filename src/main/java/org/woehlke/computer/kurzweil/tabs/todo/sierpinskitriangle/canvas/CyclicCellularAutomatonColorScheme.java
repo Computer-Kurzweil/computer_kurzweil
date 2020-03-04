@@ -1,6 +1,5 @@
 package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.canvas;
 
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
 import org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.SierpinskiTriangle;
 
 import java.awt.*;

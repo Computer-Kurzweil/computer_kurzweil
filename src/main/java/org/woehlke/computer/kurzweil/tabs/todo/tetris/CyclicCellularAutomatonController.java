@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
 
 /**
  * Cyclic Cellular Automaton.
@@ -19,7 +18,7 @@ import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
 @Log4j2
 @Getter
 public class CyclicCellularAutomatonController extends Thread
-        implements TabController, CyclicCellularAutomaton {
+        implements TabController, Tetris {
 
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilContext ctx;

@@ -1,12 +1,12 @@
 package org.woehlke.computer.kurzweil.tabs.todo.tetris.canvas;
 
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.todo.tetris.Tetris;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme implements CyclicCellularAutomaton {
+public class CyclicCellularAutomatonColorScheme implements Tetris {
 
     private Color[] stateColor;
 
