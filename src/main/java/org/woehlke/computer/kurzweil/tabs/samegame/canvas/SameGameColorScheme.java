@@ -1,14 +1,14 @@
-package org.woehlke.computer.kurzweil.tabs.randomwalk;
+package org.woehlke.computer.kurzweil.tabs.samegame.canvas;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomWalkColorScheme {
+public class SameGameColorScheme {
 
     private Color[] stateColor;
 
-    public RandomWalkColorScheme(){
+    public SameGameColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);

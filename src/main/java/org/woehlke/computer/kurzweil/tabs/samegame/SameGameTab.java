@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
+import org.woehlke.computer.kurzweil.tabs.samegame.canvas.SameGameButtons;
 
 import java.awt.event.ActionEvent;
 

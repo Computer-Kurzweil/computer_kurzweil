@@ -1,14 +1,14 @@
-package org.woehlke.computer.kurzweil.tabs.cca;
+package org.woehlke.computer.kurzweil.tabs.kochsnowflake.canvas;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme {
+public class KochSnowflakeColorScheme {
 
     private Color[] stateColor;
 
-    public CyclicCellularAutomatonColorScheme(){
+    public KochSnowflakeColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);

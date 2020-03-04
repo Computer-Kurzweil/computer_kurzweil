@@ -1,14 +1,14 @@
-package org.woehlke.computer.kurzweil.tabs.kochsnowflake;
+package org.woehlke.computer.kurzweil.tabs.randomwalk.canvas;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KochSnowflakeColorScheme {
+public class RandomWalkColorScheme {
 
     private Color[] stateColor;
 
-    public KochSnowflakeColorScheme(){
+    public RandomWalkColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);

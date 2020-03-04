@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.tabs.TabType;
+import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonColorScheme;
 
 import javax.swing.*;
 import javax.swing.border.Border;

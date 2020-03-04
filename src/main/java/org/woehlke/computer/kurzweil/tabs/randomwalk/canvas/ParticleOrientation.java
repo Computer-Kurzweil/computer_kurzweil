@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.randomwalk;
+package org.woehlke.computer.kurzweil.tabs.randomwalk.canvas;
 
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 

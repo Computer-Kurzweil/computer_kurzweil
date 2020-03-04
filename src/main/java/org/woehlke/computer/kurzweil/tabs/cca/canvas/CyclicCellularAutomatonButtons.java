@@ -1,10 +1,11 @@
-package org.woehlke.computer.kurzweil.tabs.kochsnowflake;
+package org.woehlke.computer.kurzweil.tabs.cca.canvas;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonCanvas;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -14,7 +15,7 @@ import java.awt.*;
 @Getter
 @ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
 @EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
-public class KochSnowflakeButtons extends JPanel implements GuiComponent {
+public class CyclicCellularAutomatonButtons extends JPanel implements GuiComponent {
 
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;
@@ -23,18 +24,18 @@ public class KochSnowflakeButtons extends JPanel implements GuiComponent {
   private final String buttonLabelMoore;
   private final String buttonLabelWoehlke;
   private final String title;
-  private final KochSnowflakeCanvas canvas;
+  private final CyclicCellularAutomatonCanvas canvas;
   private final CompoundBorder border;
   private final FlowLayout layout;
 
-  public KochSnowflakeButtons(
-      KochSnowflakeCanvas canvas
+  public CyclicCellularAutomatonButtons(
+      CyclicCellularAutomatonCanvas canvas
   ) {
     this.canvas = canvas;
-    this.title = this.canvas.getTabCtx().getCtx().getProperties().getKochsnowflake().getView().getNeighborhood().getTitle();
-    this.buttonLabelVonNeumann = this.canvas.getTabCtx().getCtx().getProperties().getKochsnowflake().getView().getNeighborhood().getTypeVonNeumann();
-    this.buttonLabelMoore =this.canvas.getTabCtx().getCtx().getProperties().getKochsnowflake().getView().getNeighborhood().getTypeMoore();
-    this.buttonLabelWoehlke =this.canvas.getTabCtx().getCtx().getProperties().getKochsnowflake().getView().getNeighborhood().getTypeWoehlke();
+    this.title = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle();
+    this.buttonLabelVonNeumann = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeVonNeumann();
+    this.buttonLabelMoore =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeMoore();
+    this.buttonLabelWoehlke =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeWoehlke();
     this.buttonVonNeumann = new JButton(this.buttonLabelVonNeumann);
     this.buttonMoore = new JButton(this.buttonLabelMoore );
     this.buttonWoehlke = new JButton(this.buttonLabelWoehlke);

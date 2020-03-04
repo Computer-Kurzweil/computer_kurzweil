@@ -11,6 +11,7 @@ import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosi
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
+import org.woehlke.computer.kurzweil.tabs.kochsnowflake.canvas.KochSnowflakeColorScheme;
 
 import javax.swing.*;
 import javax.swing.border.Border;

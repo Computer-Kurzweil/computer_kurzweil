@@ -1,14 +1,14 @@
-package org.woehlke.computer.kurzweil.tabs.samegame;
+package org.woehlke.computer.kurzweil.tabs.cca.canvas;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SameGameColorScheme {
+public class CyclicCellularAutomatonColorScheme {
 
     private Color[] stateColor;
 
-    public SameGameColorScheme(){
+    public CyclicCellularAutomatonColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);
