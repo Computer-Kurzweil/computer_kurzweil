@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
@@ -15,8 +14,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Log4j2
 @Getter
-@ToString(callSuper = true, exclude={"tabCtx","statistics"})
-@EqualsAndHashCode(exclude={"tabCtx","statistics"})
+@ToString(callSuper = true, exclude={"tabCtx","statistics","cells"})
+@EqualsAndHashCode(exclude={"tabCtx","statistics","cells"})
 public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution {
 
     private final SimulatedEvolutionContext tabCtx;
