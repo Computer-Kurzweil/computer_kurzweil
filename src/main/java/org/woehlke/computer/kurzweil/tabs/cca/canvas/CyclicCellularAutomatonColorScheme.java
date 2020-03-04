@@ -1,10 +1,12 @@
 package org.woehlke.computer.kurzweil.tabs.cca.canvas;
 
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme {
+public class CyclicCellularAutomatonColorScheme implements CyclicCellularAutomaton {
 
     private Color[] stateColor;
 
