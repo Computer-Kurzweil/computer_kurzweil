@@ -1,12 +1,12 @@
 package org.woehlke.computer.kurzweil.tabs.todo.wator.canvas;
 
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.todo.wator.WaTor;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme implements CyclicCellularAutomaton {
+public class CyclicCellularAutomatonColorScheme implements WaTor {
 
     private Color[] stateColor;
 

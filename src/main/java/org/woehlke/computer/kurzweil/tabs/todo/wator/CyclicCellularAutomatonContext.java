@@ -6,7 +6,6 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
 
 import static java.lang.Thread.State.NEW;
 
@@ -14,7 +13,7 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext, CyclicCellularAutomaton {
+public class CyclicCellularAutomatonContext implements TabContext, WaTor {
 
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;
