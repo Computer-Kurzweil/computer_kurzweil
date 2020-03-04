@@ -14,7 +14,7 @@ import java.awt.*;
 @Getter
 @ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
 @EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
-public class CyclicCellularAutomatonButtons extends JPanel implements GuiComponent {
+public class SameGameButtons extends JPanel implements GuiComponent {
 
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;
@@ -27,7 +27,7 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
   private final CompoundBorder border;
   private final FlowLayout layout;
 
-  public CyclicCellularAutomatonButtons(
+  public SameGameButtons(
       CyclicCellularAutomatonCanvas canvas
   ) {
     this.canvas = canvas;

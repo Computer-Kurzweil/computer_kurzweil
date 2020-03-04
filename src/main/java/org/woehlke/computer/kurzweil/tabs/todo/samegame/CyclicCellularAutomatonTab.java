@@ -22,14 +22,14 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
 
-    private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
+    private final SameGameButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
+        this.neighbourhoodButtonsPanel = new SameGameButtons(this.canvas);
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
         this.add(this.panelSubtitle);
