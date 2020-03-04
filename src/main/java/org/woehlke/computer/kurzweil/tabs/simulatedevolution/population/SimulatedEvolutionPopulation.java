@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.population;
 
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellLifeCycleStatus;
 
 @Log4j2
@@ -9,7 +10,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellLifeCycleS
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class SimulatedEvolutionPopulation {
+public class SimulatedEvolutionPopulation implements SimulatedEvolution {
 
     @Getter @Setter private int youngCells;
     @Getter @Setter private int youngAndFatCells;

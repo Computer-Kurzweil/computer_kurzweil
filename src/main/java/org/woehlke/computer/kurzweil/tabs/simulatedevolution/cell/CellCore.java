@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 
 import java.io.Serializable;
 
@@ -25,7 +26,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class CellCore implements Serializable {
+public class CellCore implements SimulatedEvolution {
 
     /**
     * The DNA Values of the Genome.

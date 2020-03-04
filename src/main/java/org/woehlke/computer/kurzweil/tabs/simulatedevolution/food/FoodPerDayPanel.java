@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.food;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.awt.*;
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class FoodPerDayPanel extends JPanel {
+public class FoodPerDayPanel extends JPanel implements SimulatedEvolution {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
@@ -31,7 +32,7 @@ public class FoodPerDayPanel extends JPanel {
         this.foodPerDayTextField = new FoodPerDayTextField(this.tabCtx);
         this.foodPerDayIncreaseButton = new FoodPerDayIncreaseButton(this.tabCtx);
         this.foodPerDayDecreaseButton = new FoodPerDayDecreaseButton(this.tabCtx);
-        this.foodPerDayBorderLabel = this.tabCtx.getCtx().getProperties().getEvolution().getFood().getFoodPerDayLabel();
+        this.foodPerDayBorderLabel = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDayLabel();
         this.foodPerDayBorder = this.tabCtx.getCtx().getBorder(this.foodPerDayBorderLabel);
         this.setBorder(this.foodPerDayBorder);
         this.add(this.foodPerDayLabel);

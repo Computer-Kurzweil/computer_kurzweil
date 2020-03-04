@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell;
 import lombok.*;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 
 /**
  * State of the Cell which monitors age and getting enough food.
@@ -24,7 +25,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
-public class CellLifeCycle {
+public class CellLifeCycle implements SimulatedEvolution {
 
     @Getter private int fat;
     @Getter private int age;
