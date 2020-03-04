@@ -16,6 +16,9 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionT
 import org.woehlke.computer.kurzweil.tabs.randomwalk.RandomWalkTab;
 import org.woehlke.computer.kurzweil.tabs.kochsnowflake.KochSnowflakeTab;
 import org.woehlke.computer.kurzweil.tabs.samegame.SameGameTab;
+import org.woehlke.computer.kurzweil.tabs.tetris.TetrisTab;
+import org.woehlke.computer.kurzweil.tabs.turmite.TurmiteTab;
+import org.woehlke.computer.kurzweil.tabs.wator.WaTorTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -38,8 +41,11 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
     private final SimulatedEvolutionTab simulatedEvolutionTab;
     private final KochSnowflakeTab kochSnowflakeTab;
     private final SameGameTab sameGameTab;
-    ConwaysGameOfLifeTab conwaysGameOfLifeTab;
-    SierpinskiTriangleTab sierpinskiTriangleTab;
+    private final ConwaysGameOfLifeTab conwaysGameOfLifeTab;
+    private final SierpinskiTriangleTab sierpinskiTriangleTab;
+    private final TetrisTab tetrisTab;
+    private final TurmiteTab turmiteTab;
+    private final WaTorTab waTorTab;
 
     public ComputerKurzweilTabbedPane(
         ComputerKurzweilContext ctx
@@ -54,14 +60,24 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
         this.simulatedEvolutionTab = new SimulatedEvolutionTab(this);
         this.kochSnowflakeTab = new KochSnowflakeTab(this);
         this.sameGameTab = new SameGameTab(this);
+        this.conwaysGameOfLifeTab = new ConwaysGameOfLifeTab(this);
+        this.sierpinskiTriangleTab = new SierpinskiTriangleTab(this);
+        this.tetrisTab = new TetrisTab(this);
+        this.turmiteTab =new TurmiteTab(this );
+        this.waTorTab = new WaTorTab(this);
         TabPanel[] tabPanelAbstractPanels = {
             this.cyclicCellularAutomatonTab,
+            this.simulatedEvolutionTab,
             this.randomWalkTab,
             this.diffusionLimitedAggregationTab,
-            this.simulatedEvolutionTab,
             this.mandelbrotTab,
             this.kochSnowflakeTab,
-            this.sameGameTab
+            this.sameGameTab,
+            this.conwaysGameOfLifeTab,
+            this.sierpinskiTriangleTab,
+            this.tetrisTab,
+            this.turmiteTab,
+            this.waTorTab
         };
         int[] events = {
             KeyEvent.VK_F1,
@@ -70,7 +86,12 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
             KeyEvent.VK_F4,
             KeyEvent.VK_F5,
             KeyEvent.VK_F6,
-            KeyEvent.VK_F7
+            KeyEvent.VK_F7,
+            KeyEvent.VK_F8,
+            KeyEvent.VK_F9,
+            KeyEvent.VK_F10,
+            KeyEvent.VK_F11,
+            KeyEvent.VK_F12
         };
         int i = 0;
         ImageIcon icon = null;
