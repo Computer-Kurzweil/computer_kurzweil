@@ -12,7 +12,7 @@ import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.RandomWalkTab;
-import org.woehlke.computer.kurzweil.tabs.todo.kochsnowflake.KochSnowflakeTab;
+import org.woehlke.computer.kurzweil.tabs.kochsnowflake.KochSnowflakeTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

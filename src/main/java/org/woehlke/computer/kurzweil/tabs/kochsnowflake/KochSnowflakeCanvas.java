@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.kochsnowflake;
+package org.woehlke.computer.kurzweil.tabs.kochsnowflake;
 
 
 import lombok.EqualsAndHashCode;

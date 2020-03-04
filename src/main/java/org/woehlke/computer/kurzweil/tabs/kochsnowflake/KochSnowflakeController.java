@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.kochsnowflake;
+package org.woehlke.computer.kurzweil.tabs.kochsnowflake;
 
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
