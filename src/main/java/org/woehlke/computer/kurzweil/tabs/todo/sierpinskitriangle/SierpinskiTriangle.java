@@ -1,4 +1,4 @@
 package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle;
 
-public class SierpinskiTriangle {
+public interface SierpinskiTriangle {
 }
