@@ -13,37 +13,37 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext, Turmite {
+public class TurmiteContext implements TabContext, Turmite {
 
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonCanvas canvas;
-    private final CyclicCellularAutomatonTab tab;
-    private CyclicCellularAutomatonController controller;
+    private final TurmiteCanvas canvas;
+    private final TurmiteTab tab;
+    private TurmiteController controller;
 
-    public CyclicCellularAutomatonContext(
-        CyclicCellularAutomatonTab tab
+    public TurmiteContext(
+        TurmiteTab tab
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
-        this.canvas = new CyclicCellularAutomatonCanvas( this);
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.canvas = new TurmiteCanvas( this);
+        this.controller = new TurmiteController(this);
     }
 
     @Override
-    public CyclicCellularAutomatonCanvas getTabModel() {
+    public TurmiteCanvas getTabModel() {
         return this.canvas;
     }
 
     @Override
     public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new TurmiteController(this);
     }
 
     @Override
     public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonController(this);
+            this.controller = new TurmiteController(this);
         } else {
             if(this.controller.getState() != NEW){
                 this.stopController();

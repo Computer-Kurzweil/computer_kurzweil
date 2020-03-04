@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
-import org.woehlke.computer.kurzweil.tabs.todo.turmite.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.tabs.todo.turmite.TurmiteCanvas;
 import org.woehlke.computer.kurzweil.tabs.todo.turmite.Turmite;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ import java.awt.*;
 @Getter
 @ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
 @EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke"})
-public class CyclicCellularAutomatonButtons extends JPanel implements GuiComponent, Turmite {
+public class TurmiteButtons extends JPanel implements GuiComponent, Turmite {
 
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;
@@ -25,12 +25,12 @@ public class CyclicCellularAutomatonButtons extends JPanel implements GuiCompone
   private final String buttonLabelMoore;
   private final String buttonLabelWoehlke;
   private final String title;
-  private final CyclicCellularAutomatonCanvas canvas;
+  private final TurmiteCanvas canvas;
   private final CompoundBorder border;
   private final FlowLayout layout;
 
-  public CyclicCellularAutomatonButtons(
-      CyclicCellularAutomatonCanvas canvas
+  public TurmiteButtons(
+      TurmiteCanvas canvas
   ) {
     this.canvas = canvas;
     this.title = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle();
