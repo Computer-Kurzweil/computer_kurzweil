@@ -58,7 +58,7 @@ public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
 
   private void createInitialPopulation(){
       cells.clear();
-      for (int i = 0; i <  this.appCtx.getCtx().getProperties().getEvolution().getPopulation().getInitialPopulation(); i++) {
+      for (int i = 0; i <  this.appCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getInitialPopulation(); i++) {
           Cell cell = new Cell(this.appCtx);
           cells.add(cell);
       }
