@@ -291,6 +291,17 @@ public class ComputerKurzweilProperties {
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
+
+            @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
+
+            //@Validated
+            @ToString
+            public static class Neighborhood {
+                @NotBlank @Getter @Setter private String title;
+                @NotBlank @Getter @Setter private String typeVonNeumann;
+                @NotBlank @Getter @Setter private String typeMoore;
+                @NotBlank @Getter @Setter private String typeWoehlke;
+            }
         }
 
         //@Validated
@@ -312,6 +323,17 @@ public class ComputerKurzweilProperties {
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
+
+            @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
+
+            //@Validated
+            @ToString
+            public static class Neighborhood {
+                @NotBlank @Getter @Setter private String title;
+                @NotBlank @Getter @Setter private String typeVonNeumann;
+                @NotBlank @Getter @Setter private String typeMoore;
+                @NotBlank @Getter @Setter private String typeWoehlke;
+            }
         }
 
         //@Validated
@@ -333,6 +355,17 @@ public class ComputerKurzweilProperties {
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
+
+            @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
+
+            //@Validated
+            @ToString
+            public static class Neighborhood {
+                @NotBlank @Getter @Setter private String title;
+                @NotBlank @Getter @Setter private String typeVonNeumann;
+                @NotBlank @Getter @Setter private String typeMoore;
+                @NotBlank @Getter @Setter private String typeWoehlke;
+            }
         }
 
         //@Validated
@@ -354,6 +387,17 @@ public class ComputerKurzweilProperties {
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
+
+            @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
+
+            //@Validated
+            @ToString
+            public static class Neighborhood {
+                @NotBlank @Getter @Setter private String title;
+                @NotBlank @Getter @Setter private String typeVonNeumann;
+                @NotBlank @Getter @Setter private String typeMoore;
+                @NotBlank @Getter @Setter private String typeWoehlke;
+            }
         }
 
         //@Validated
@@ -375,6 +419,17 @@ public class ComputerKurzweilProperties {
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
+
+            @Valid @Getter @Setter public Neighborhood neighborhood = new Neighborhood();
+
+            //@Validated
+            @ToString
+            public static class Neighborhood {
+                @NotBlank @Getter @Setter private String title;
+                @NotBlank @Getter @Setter private String typeVonNeumann;
+                @NotBlank @Getter @Setter private String typeMoore;
+                @NotBlank @Getter @Setter private String typeWoehlke;
+            }
         }
 
         //@Validated
@@ -396,6 +451,17 @@ public class ComputerKurzweilProperties {
         public static class View {
             @NotBlank @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
+
+            @Valid @Getter @Setter public ComputerKurzweilProperties.Wator.View.Neighborhood neighborhood = new Wator.View.Neighborhood();
+
+            //@Validated
+            @ToString
+            public static class Neighborhood {
+                @NotBlank @Getter @Setter private String title;
+                @NotBlank @Getter @Setter private String typeVonNeumann;
+                @NotBlank @Getter @Setter private String typeMoore;
+                @NotBlank @Getter @Setter private String typeWoehlke;
+            }
         }
 
         //@Validated
