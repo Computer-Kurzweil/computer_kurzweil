@@ -38,11 +38,11 @@ public class SameGameCanvas extends JComponent implements
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private final CyclicCellularAutomatonContext tabCtx;
+    private final SameGameContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
-    private final CyclicCellularAutomatonColorScheme colorScheme;
+    private final SameGameColorScheme colorScheme;
     private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
@@ -55,7 +55,7 @@ public class SameGameCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-    public SameGameCanvas(CyclicCellularAutomatonContext tabCtx) {
+    public SameGameCanvas(SameGameContext tabCtx) {
         this.tabCtx = tabCtx;
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
@@ -63,7 +63,7 @@ public class SameGameCanvas extends JComponent implements
         this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.versions = 2;
-        this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        this.colorScheme = new SameGameColorScheme();
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);

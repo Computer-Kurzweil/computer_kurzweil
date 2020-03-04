@@ -17,18 +17,18 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 @Log4j2
 @Getter
-public class CyclicCellularAutomatonController extends Thread
+public class SameGameController extends Thread
         implements TabController {
 
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonContext tabCtx;
+    private final SameGameContext tabCtx;
     private final int threadSleepTime;
 
     private Boolean goOn;
 
-    public CyclicCellularAutomatonController(
-        CyclicCellularAutomatonContext tabCtx
+    public SameGameController(
+        SameGameContext tabCtx
     ) {
         super("CCA-Controller");
         this.tabCtx = tabCtx;

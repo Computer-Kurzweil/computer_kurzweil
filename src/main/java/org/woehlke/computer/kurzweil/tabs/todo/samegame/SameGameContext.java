@@ -15,22 +15,22 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext {
+public class SameGameContext implements TabContext {
 
     private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
     private final ComputerKurzweilContext ctx;
     private final SameGameCanvas canvas;
-    private final CyclicCellularAutomatonTab tab;
-    private CyclicCellularAutomatonController controller;
+    private final SameGameTab tab;
+    private SameGameController controller;
 
-    public CyclicCellularAutomatonContext(
-        CyclicCellularAutomatonTab tab
+    public SameGameContext(
+        SameGameTab tab
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
         this.canvas = new SameGameCanvas( this);
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new SameGameController(this);
     }
 
     @Override
@@ -41,13 +41,13 @@ public class CyclicCellularAutomatonContext implements TabContext {
     @Override
     public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new SameGameController(this);
     }
 
     @Override
     public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonController(this);
+            this.controller = new SameGameController(this);
         } else {
             if(this.controller.getState() != NEW){
                 this.stopController();

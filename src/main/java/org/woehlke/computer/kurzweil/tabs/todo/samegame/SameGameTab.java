@@ -17,17 +17,17 @@ import java.awt.event.ActionEvent;
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
+public class SameGameTab extends TabPanel implements Tab {
 
-    private final CyclicCellularAutomatonContext tabCtx;
+    private final SameGameContext tabCtx;
     private final SameGameCanvas canvas;
 
     private final SameGameButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
 
-    public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
+    public SameGameTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
-        this.tabCtx = new CyclicCellularAutomatonContext(this);
+        this.tabCtx = new SameGameContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new SameGameButtons(this.canvas);
         this.bottomButtonsPanel = new PanelBottomButtons( this );

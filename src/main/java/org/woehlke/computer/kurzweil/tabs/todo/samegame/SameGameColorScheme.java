@@ -4,11 +4,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme {
+public class SameGameColorScheme {
 
     private Color[] stateColor;
 
-    public CyclicCellularAutomatonColorScheme(){
+    public SameGameColorScheme(){
         List<Color> stateColorList = new ArrayList<>();
         stateColorList.add(Color.BLACK);
         stateColorList.add(Color.DARK_GRAY);
