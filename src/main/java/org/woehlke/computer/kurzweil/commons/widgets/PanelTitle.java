@@ -41,7 +41,7 @@ public class PanelTitle extends JPanel implements GuiComponent {
     }
 
     public static PanelTitle getPanelTitleForSimulatedEvolution(ComputerKurzweilContext ctx) {
-        String text = ctx.getProperties().getEvolution().getView().getTitle();
+        String text = ctx.getProperties().getSimulatedevolution().getView().getTitle();
         return new PanelTitle(text);
     }
 

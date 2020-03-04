@@ -41,7 +41,7 @@ public class PanelSubtitle extends JPanel implements GuiComponent {
     }
 
     public static PanelSubtitle getPanelSubtitleForSimulatedEvolution(ComputerKurzweilContext ctx) {
-        String text = ctx.getProperties().getEvolution().getView().getSubtitle();
+        String text = ctx.getProperties().getSimulatedevolution().getView().getSubtitle();
         return new PanelSubtitle(text);
     }
 
