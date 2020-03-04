@@ -7,6 +7,8 @@ import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutLeft;
+import org.woehlke.computer.kurzweil.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -48,5 +50,9 @@ public class PanelBottomButtons extends JPanel implements Startable, GuiComponen
     @Override
     public void stop() {
         this.startStopButtonsPanel.stop();
+    }
+
+    public void addActionListener(TabPanel myTabPanel) {
+        startStopButtonsPanel.addActionListener(myTabPanel);
     }
 }

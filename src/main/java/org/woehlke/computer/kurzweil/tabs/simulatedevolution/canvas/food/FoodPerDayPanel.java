@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 
@@ -43,5 +44,10 @@ public class FoodPerDayPanel extends JPanel implements SimulatedEvolution {
 
     public void setFoodPerDay(int foodPerDay){
         this.foodPerDayTextField.setFoodPerDay(foodPerDay);
+    }
+
+    public void addActionListener(TabPanel myTabPanel) {
+        this.foodPerDayIncreaseButton.addActionListener(myTabPanel);
+        this.foodPerDayDecreaseButton.addActionListener(myTabPanel);
     }
 }

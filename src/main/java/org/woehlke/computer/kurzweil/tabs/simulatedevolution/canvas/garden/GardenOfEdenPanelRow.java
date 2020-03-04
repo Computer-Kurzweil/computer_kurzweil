@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 
@@ -36,5 +37,9 @@ public class GardenOfEdenPanelRow extends JPanel implements SimulatedEvolution {
     public void toggleGardenOfEden() {
         boolean selected = buttonToggleGardenOfEden.isSelected();
         this.buttonToggleGardenOfEden.setSelected(!selected);
+    }
+
+    public void addActionListener(TabPanel myTabPanel) {
+        this.buttonToggleGardenOfEden.addActionListener(myTabPanel);
     }
 }

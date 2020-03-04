@@ -44,10 +44,9 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         this.add(this.canvas);
         this.add(this.statisticsPanel);
         this.add(this.bottomButtonsPanel);
-        this.foodPerDayPanel.getFoodPerDayIncreaseButton().addActionListener(this);
-        this.foodPerDayPanel.getFoodPerDayDecreaseButton().addActionListener(this);
-        this.gardenOfEdenPanel.getButtonToggleGardenOfEden().addActionListener(this);
-        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
+        this.foodPerDayPanel.addActionListener(this);
+        this.gardenOfEdenPanel.addActionListener(this);
+        this.bottomButtonsPanel.addActionListener(this);
         this.ctx.getFrame().pack();
     }
 
