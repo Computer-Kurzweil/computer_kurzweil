@@ -7,7 +7,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.world.SimulatedEvolutionParameter;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionParameter;
 
 import static java.lang.Thread.State.NEW;
 

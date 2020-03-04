@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.population;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

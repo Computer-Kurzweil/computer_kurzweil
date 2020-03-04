@@ -6,12 +6,11 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.Cell;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.garden.GardenOfEdenPanelRow;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.population.PopulationStatisticsElementsPanel;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.JComponent;
@@ -19,8 +18,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.util.List;
 
-import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.world.SimulatedEvolutionWorldColor.COLOR_FOOD;
-import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.world.SimulatedEvolutionWorldColor.COLOR_WATER;
+import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -6,8 +6,6 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-
-import java.io.Serializable;
 
 /**
  * The CellCore contains the DNA which has influence on orientation at moving.

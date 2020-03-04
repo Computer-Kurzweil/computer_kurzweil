@@ -1,9 +1,9 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.population;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population;
 
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellLifeCycleStatus;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycleStatus;
 
 @Log4j2
 @ToString

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -6,8 +6,6 @@ import lombok.ToString;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
-
-import java.io.Serializable;
 
 /**
  * The Cell of one Bacterium.

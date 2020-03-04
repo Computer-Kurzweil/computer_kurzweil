@@ -5,8 +5,8 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellCore;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellLifeCycle;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellCore;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycle;
 
 import javax.swing.*;
 import javax.swing.border.Border;

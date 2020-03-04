@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell;
 
 import lombok.*;
 import lombok.extern.java.Log;

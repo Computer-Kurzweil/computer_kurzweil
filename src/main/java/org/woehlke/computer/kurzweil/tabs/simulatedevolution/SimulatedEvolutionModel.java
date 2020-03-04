@@ -7,10 +7,10 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.population.SimulatedEvolutionPopulationContainer;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.Cell;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.world.SimulatedEvolutionWorldLattice;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.population.SimulatedEvolutionPopulation;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulationContainer;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionWorldLattice;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
 
 import java.util.ArrayList;
 import java.util.List;

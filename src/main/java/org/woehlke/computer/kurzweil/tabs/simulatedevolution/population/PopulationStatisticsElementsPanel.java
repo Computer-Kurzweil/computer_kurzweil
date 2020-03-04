@@ -5,16 +5,15 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
-
 import java.awt.*;
 
-import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellLifeCycleStatus.*;
+import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycleStatus.*;
 
 @Log4j2
 @Getter

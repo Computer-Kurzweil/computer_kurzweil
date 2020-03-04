@@ -8,7 +8,6 @@ import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.garden.GardenOfEdenPanelRow;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.population.PopulationStatisticsElementsPanel;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import java.awt.event.ActionEvent;
