@@ -34,7 +34,7 @@ public class ConwaysGameOfLifeController extends Thread
         this.tabCtx = tabCtx;
         this.ctx = tabCtx.getCtx();
         this.goOn = Boolean.TRUE;
-        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getCca().getControl().getThreadSleepTime();
+        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getGameoflive().getControl().getThreadSleepTime();
     }
 
     public void run() {

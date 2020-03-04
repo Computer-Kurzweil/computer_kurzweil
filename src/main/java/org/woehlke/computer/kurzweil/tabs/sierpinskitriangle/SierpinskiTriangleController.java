@@ -34,7 +34,7 @@ public class SierpinskiTriangleController extends Thread
         this.tabCtx = tabCtx;
         this.ctx = tabCtx.getCtx();
         this.goOn = Boolean.TRUE;
-        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getCca().getControl().getThreadSleepTime();
+        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getSierpinskitriangle().getControl().getThreadSleepTime();
     }
 
     public void run() {

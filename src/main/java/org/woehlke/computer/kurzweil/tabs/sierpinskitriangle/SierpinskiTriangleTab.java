@@ -80,12 +80,12 @@ public class SierpinskiTriangleTab extends TabPanel implements Tab, SierpinskiTr
 
     @Override
     public String getTitle() {
-        return ctx.getProperties().getCca().getView().getTitle();
+        return ctx.getProperties().getSierpinskitriangle().getView().getTitle();
     }
 
     @Override
     public String getSubTitle() {
-        return ctx.getProperties().getCca().getView().getSubtitle();
+        return ctx.getProperties().getSierpinskitriangle().getView().getSubtitle();
     }
 
     @Override

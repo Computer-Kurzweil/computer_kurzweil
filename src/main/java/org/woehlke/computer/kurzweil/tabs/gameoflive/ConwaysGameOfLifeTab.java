@@ -80,12 +80,12 @@ public class ConwaysGameOfLifeTab extends TabPanel implements Tab, ConwaysGameOf
 
     @Override
     public String getTitle() {
-        return ctx.getProperties().getCca().getView().getTitle();
+        return ctx.getProperties().getGameoflive().getView().getTitle();
     }
 
     @Override
     public String getSubTitle() {
-        return ctx.getProperties().getCca().getView().getSubtitle();
+        return ctx.getProperties().getGameoflive().getView().getSubtitle();
     }
 
     @Override

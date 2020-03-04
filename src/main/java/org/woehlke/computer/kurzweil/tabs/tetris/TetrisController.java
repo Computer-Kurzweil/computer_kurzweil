@@ -34,7 +34,7 @@ public class TetrisController extends Thread
         this.tabCtx = tabCtx;
         this.ctx = tabCtx.getCtx();
         this.goOn = Boolean.TRUE;
-        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getTurmite().getControl().getThreadSleepTime();
+        this.threadSleepTime = this.tabCtx.getCtx().getProperties().getTetris().getControl().getThreadSleepTime();
     }
 
     public void run() {
