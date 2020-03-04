@@ -9,7 +9,6 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonColorScheme;
 
 import javax.swing.*;
@@ -20,7 +19,7 @@ import java.util.Random;
 
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.WOEHLKE_NEIGHBORHOOD;
-import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
+
 
 /**
  * Cyclic Cellular Automaton.

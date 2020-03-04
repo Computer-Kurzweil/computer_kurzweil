@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
-import org.woehlke.computer.kurzweil.tabs.TabType;
-
-import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
 
 /**
  * Cyclic Cellular Automaton.
