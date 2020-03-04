@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.samegame;
+package org.woehlke.computer.kurzweil.tabs.samegame;
 
 
 import lombok.EqualsAndHashCode;
