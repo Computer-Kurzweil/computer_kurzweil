@@ -21,9 +21,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @Log4j2
 @Getter
 public class CyclicCellularAutomatonController extends Thread
-        implements TabController {
-
-    private final static TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+        implements TabController, CyclicCellularAutomaton {
 
     private static final long serialVersionUID = 3642865135701767557L;
     private final ComputerKurzweilContext ctx;
@@ -35,7 +33,7 @@ public class CyclicCellularAutomatonController extends Thread
     public CyclicCellularAutomatonController(
         CyclicCellularAutomatonContext tabCtx
     ) {
-        super(tabType.name()+"-Controller");
+        super(TAB_TYPE.name()+"-Controller");
         this.tabCtx = tabCtx;
         this.ctx = tabCtx.getCtx();
         this.goOn = Boolean.TRUE;

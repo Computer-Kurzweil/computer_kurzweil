@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
@@ -14,15 +13,11 @@ import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonButt
 
 import java.awt.event.ActionEvent;
 
-import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
-
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
-
-    private final static TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicCellularAutomaton {
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
@@ -31,7 +26,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane, tabType);
+        super(tabbedPane, TAB_TYPE);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);

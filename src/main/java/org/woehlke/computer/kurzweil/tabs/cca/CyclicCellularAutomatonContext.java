@@ -15,9 +15,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext {
-
-    private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+public class CyclicCellularAutomatonContext implements TabContext, CyclicCellularAutomaton {
 
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;

@@ -37,9 +37,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel {
-
-    private final static TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+    Serializable, TabCanvasWithModel, CyclicCellularAutomaton {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
