@@ -17,7 +17,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 @Log4j2
 @Getter
-public class CyclicCellularAutomatonController extends Thread
+public class KochSnowflakeController extends Thread
         implements TabController {
 
     private static final long serialVersionUID = 3642865135701767557L;
@@ -27,7 +27,7 @@ public class CyclicCellularAutomatonController extends Thread
 
     private Boolean goOn;
 
-    public CyclicCellularAutomatonController(
+    public KochSnowflakeController(
         KochSnowflakeContext tabCtx
     ) {
         super("CCA-Controller");

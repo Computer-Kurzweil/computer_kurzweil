@@ -22,14 +22,14 @@ public class KochSnowflakeTab extends TabPanel implements Tab {
     private final KochSnowflakeContext tabCtx;
     private final KochSnowflakeCanvas canvas;
 
-    private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
+    private final KochSnowflakeButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
 
     public KochSnowflakeTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
         this.tabCtx = new KochSnowflakeContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
+        this.neighbourhoodButtonsPanel = new KochSnowflakeButtons(this.canvas);
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
         this.add(this.panelSubtitle);

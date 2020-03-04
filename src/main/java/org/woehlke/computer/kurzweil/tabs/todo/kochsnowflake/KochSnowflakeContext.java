@@ -22,7 +22,7 @@ public class KochSnowflakeContext implements TabContext {
     private final ComputerKurzweilContext ctx;
     private final KochSnowflakeCanvas canvas;
     private final KochSnowflakeTab tab;
-    private CyclicCellularAutomatonController controller;
+    private KochSnowflakeController controller;
 
     public KochSnowflakeContext(
         KochSnowflakeTab tab
@@ -30,7 +30,7 @@ public class KochSnowflakeContext implements TabContext {
         this.tab = tab;
         this.ctx = tab.getCtx();
         this.canvas = new KochSnowflakeCanvas( this);
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new KochSnowflakeController(this);
     }
 
     @Override
@@ -41,13 +41,13 @@ public class KochSnowflakeContext implements TabContext {
     @Override
     public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new KochSnowflakeController(this);
     }
 
     @Override
     public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonController(this);
+            this.controller = new KochSnowflakeController(this);
         } else {
             if(this.controller.getState() != NEW){
                 this.stopController();
