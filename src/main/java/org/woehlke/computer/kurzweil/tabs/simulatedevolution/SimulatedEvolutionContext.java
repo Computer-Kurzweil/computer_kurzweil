@@ -33,19 +33,6 @@ public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution
        this.controller = new SimulatedEvolutionController(this);
     }
 
-    public void increaseFoodPerDay() {
-        tabModel.increaseFoodPerDay();
-    }
-
-    public void decreaseFoodPerDay(){
-        tabModel.decreaseFoodPerDay();
-    }
-
-    public void toggleGardenOfEden() {
-        this.tabModel.toggleGardenOfEden();
-        this.canvas.update();
-    }
-
     @Override
     public void stopController() {
         this.controller.exit();

@@ -8,7 +8,6 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

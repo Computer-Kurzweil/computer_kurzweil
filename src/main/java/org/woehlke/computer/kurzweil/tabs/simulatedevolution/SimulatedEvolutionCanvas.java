@@ -50,7 +50,6 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     private final LayoutCanvas layout;
     private final Dimension preferredSize;
     private final SimulatedEvolutionTab tab;
-    private final PopulationStatisticsElementsPanel statisticsPanel;
     private final SimulatedEvolutionModel tabModel;
 
     private final static int startX = 0;
@@ -67,7 +66,6 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.tabModel = new SimulatedEvolutionModel(this.tabCtx);
-        this.statisticsPanel = new PopulationStatisticsElementsPanel(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new LayoutCanvas(this);
         this.setLayout(layout);
@@ -132,8 +130,6 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
 
     @Override
     public void update() {
-        log.info("update");
-        this.statisticsPanel.update();
         log.info("updated");
     }
 

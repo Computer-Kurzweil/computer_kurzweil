@@ -35,7 +35,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         this.tabCtx = new SimulatedEvolutionContext(this,this.getCtx());
         this.canvas =  this.tabCtx.getCanvas();
         this.tabModel = this.canvas.getTabModel();
-        this.statisticsPanel = this.canvas.getStatisticsPanel();
+        this.statisticsPanel = new PopulationStatisticsElementsPanel(this.tabCtx);
         this.foodPerDayPanel = new FoodPerDayPanel(this.tabCtx);
         this.gardenOfEdenPanel = new GardenOfEdenPanelRow(this.tabCtx);
         this.bottomButtonsPanel = new PanelBottomButtons( this );
@@ -122,10 +122,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
 
     @Override
     public void update() {
-        this.canvas.update();
+        this.statisticsPanel.update();
         this.foodPerDayPanel.update();
         this.gardenOfEdenPanel.update();
-        //TODO:
-        //this.bottomButtonsPanel.update();
     }
 }
