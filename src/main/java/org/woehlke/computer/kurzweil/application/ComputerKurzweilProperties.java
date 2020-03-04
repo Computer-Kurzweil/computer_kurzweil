@@ -24,7 +24,7 @@ public class ComputerKurzweilProperties {
 
     @Valid @Getter @Setter public Allinone allinone = new Allinone();
     @Valid @Getter @Setter public Mandelbrot mandelbrot = new Mandelbrot();
-    @Valid @Getter @Setter public SimulatedEvolution evolution = new SimulatedEvolution();
+    @Valid @Getter @Setter public SimulatedEvolution simulatedevolution = new SimulatedEvolution();
     @Valid @Getter @Setter public Cca cca = new Cca();
     @Valid @Getter @Setter public WienerProcess randomwalk = new WienerProcess();
     @Valid @Getter @Setter public Dla dla = new Dla();
@@ -499,7 +499,7 @@ public class ComputerKurzweilProperties {
             case DIFFUSION_LIMITED_AGGREGATION:
                 return this.getDla().getView().getSubtitle();
             case SIMULATED_EVOLUTION:
-                return this.getEvolution().getView().getSubtitle();
+                return this.getSimulatedevolution().getView().getSubtitle();
             case MANDELBROT_SET:
                 return this.getMandelbrot().getView().getSubtitle();
             case RANDOM_WALK_WIENER_PROCESS:
@@ -530,7 +530,7 @@ public class ComputerKurzweilProperties {
             case DIFFUSION_LIMITED_AGGREGATION:
                 return this.getDla().getView().getTitle();
             case SIMULATED_EVOLUTION:
-                return  this.getEvolution().getView().getTitle();
+                return  this.getSimulatedevolution().getView().getTitle();
             case MANDELBROT_SET:
                 return this.getMandelbrot().getView().getTitle();
             case RANDOM_WALK_WIENER_PROCESS:

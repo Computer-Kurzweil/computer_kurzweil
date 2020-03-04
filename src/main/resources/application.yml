@@ -24,7 +24,7 @@ mandelbrot:
     buttonsLabel: 'Choose Mouse Click Mode'
   control:
     threadSleepTime: 50
-evolution:
+simulatedevolution:
   view:
     title: 'Simulated Evolution'
     subtitle: 'Artificial Life Simulation of Bacteria Motion depending on DNA'

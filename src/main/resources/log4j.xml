@@ -17,7 +17,7 @@
         <Logger name="org.woehlke.computer.kurzweil.tabs.dla" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.tabs.evolution" level="info" includeLocation="true">
+        <Logger name="org.woehlke.computer.kurzweil.tabs.simulatedevolution" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="org.woehlke.computer.kurzweil.tabs.mandelbrot" level="info" includeLocation="true">

@@ -5,8 +5,8 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellCore;
-import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycle;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellCore;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.cell.CellLifeCycle;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -146,7 +146,7 @@ public class ComputerKurzweilContext implements Startable {
 
     @Transient
     public CellLifeCycle getNewCellLifeCycle() {
-        return new CellLifeCycle(this.properties.getEvolution().getCellConf());
+        return new CellLifeCycle(this.properties.getSimulatedevolution().getCellConf());
     }
 
     @Transient
