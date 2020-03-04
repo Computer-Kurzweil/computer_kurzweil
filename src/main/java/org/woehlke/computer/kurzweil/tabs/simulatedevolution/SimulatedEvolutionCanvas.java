@@ -51,9 +51,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     private final Dimension preferredSize;
     private final SimulatedEvolutionTab tab;
     private final PopulationStatisticsElementsPanel statisticsPanel;
-    private final FoodPerDayPanel foodPerDayPanel;
-    private final GardenOfEdenPanelRow gardenOfEdenPanel;
-    private final SimulatedEvolutionModel model;
+    private final SimulatedEvolutionModel tabModel;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -61,17 +59,15 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     private final int worldY;
 
     public SimulatedEvolutionCanvas(
-        SimulatedEvolutionTab tab
+        SimulatedEvolutionContext tabCtx
     ) {
-        this.tab = tab;
-        this.tabCtx = tab.getTabCtx();
+        this.tabCtx = tabCtx;
+        this.tab = tabCtx.getTab();
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        this.model = new SimulatedEvolutionModel(this.tabCtx);
+        this.tabModel = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new PopulationStatisticsElementsPanel(this.tabCtx);
-        this.foodPerDayPanel =  this.tab.getFoodPerDayPanel();
-        this.gardenOfEdenPanel = this.tab.getGardenOfEdenPanel();
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new LayoutCanvas(this);
         this.setLayout(layout);
@@ -80,10 +76,6 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);
         this.setMaximumSize(preferredSize);
-    }
-
-    public void toggleGardenOfEden() {
-        this.gardenOfEdenPanel.toggleGardenOfEden();
     }
 
   /**
@@ -105,14 +97,14 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
       int posY;
       for (posY = 0; posY < worldY; posY++) {
           for (posX = 0; posX < worldX; posX++) {
-              if (model.hasFood(posX, posY)) {
+              if (tabModel.hasFood(posX, posY)) {
                   graphics.drawLine(posX, posY, posX, posY);
               }
           }
       }
       // paint Population
       log.info("paint Population (Graphics graphics)");
-      List<Cell> population = model.getAllCells();
+      List<Cell> population = tabModel.getAllCells();
       for (Cell cell : population) {
           posX = cell.getPosition().getX();
           posY = cell.getPosition().getY();
@@ -141,10 +133,6 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     @Override
     public void update() {
         log.info("update");
-        int foodPerDay = model.getSimulatedEvolutionParameter().getFoodPerDay();
-        boolean selected = model.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
-        this.foodPerDayPanel.setFoodPerDay(foodPerDay);
-        this.gardenOfEdenPanel.setSelected(selected);
         this.statisticsPanel.update();
         log.info("updated");
     }
@@ -152,7 +140,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     @Override
     public void start() {
         log.info("start");
-        this.model.start();
+        this.tabModel.start();
         //log.info("this: "+this.toString());
         log.info("started");
     }
@@ -160,7 +148,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     @Override
     public void stop() {
         log.info("stop");
-        this.model.stop();
+        this.tabModel.stop();
         //log.info("this: "+this.toString());
         log.info("stopped");
     }

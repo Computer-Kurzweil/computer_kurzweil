@@ -47,12 +47,15 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
     private final TurmiteTab turmiteTab;
     private final WaTorTab waTorTab;
 
+    private final List<TabPanel> apps = new ArrayList<>();
+    private final CompoundBorder border;
+    private final ComputerKurzweilContext ctx;
+
     public ComputerKurzweilTabbedPane(
         ComputerKurzweilContext ctx
     ) {
         this.ctx = ctx;
         this.border = ctx.getTabbedPaneBorder();
-        this.setBorder(border);
         this.cyclicCellularAutomatonTab = new CyclicCellularAutomatonTab(this);
         this.randomWalkTab = new RandomWalkTab(this);
         this.diffusionLimitedAggregationTab = new DiffusionLimitedAggregationTab(this);
@@ -100,6 +103,7 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
             this.addTab(tabPanelAbstract.getTitle(), icon, tabPanelAbstract, tabPanelAbstract.getSubTitle());
             this.setMnemonicAt(i,events[i]);
         }
+        this.setBorder(border);
         //TODO: change tab lister:
         //this.addAncestorListener(this);
     }
@@ -126,7 +130,9 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
     @Override
     public void stop() {
         log.info("stop");
-        getActiveTab().stop();
+        for(TabPanel tabPanel:apps){
+            tabPanel.stop();
+        }
         log.info("stopped");
     }
 
@@ -135,7 +141,4 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
         getActiveTab().showMe();
     }
 
-    private final List<TabPanel> apps = new ArrayList<>();
-    private final CompoundBorder border;
-    private final ComputerKurzweilContext ctx;
 }

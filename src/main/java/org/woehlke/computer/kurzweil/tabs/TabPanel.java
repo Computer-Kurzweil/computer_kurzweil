@@ -29,9 +29,9 @@ public abstract class TabPanel extends JPanel implements Tab {
     protected final TabType tabType;
 
     protected TabPanel(ComputerKurzweilTabbedPane tabbedPane, TabType tabType) {
-        this.tabbedPane=tabbedPane;
-        this.ctx = this.tabbedPane.getCtx();
+        this.tabbedPane = tabbedPane;
         this.tabType = tabType;
+        this.ctx = this.tabbedPane.getCtx();
         this.layout = new BoxLayoutVertical(this);
         this.border = this.ctx.getTabBorder();
         this.title =  this.ctx.getProperties().getTitle(tabType);

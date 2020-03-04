@@ -2,12 +2,10 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionParameter;
 
 import static java.lang.Thread.State.NEW;
 
@@ -18,19 +16,21 @@ import static java.lang.Thread.State.NEW;
 public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution {
 
     private final ComputerKurzweilContext ctx;
-    private SimulatedEvolutionController controller;
     private final SimulatedEvolutionTab tab;
-    @Setter
-    private SimulatedEvolutionCanvas canvas;
-    @Setter
-    private SimulatedEvolutionModel tabModel;
+    private final SimulatedEvolutionCanvas canvas;
+    private final SimulatedEvolutionModel tabModel;
+
+    private SimulatedEvolutionController controller;
 
     public SimulatedEvolutionContext(
-        SimulatedEvolutionTab tab
+        SimulatedEvolutionTab tab,
+        ComputerKurzweilContext ctx
     ) {
        this.tab = tab;
-       this.ctx = this.tab.getCtx();
-        this.controller = new SimulatedEvolutionController(this);
+       this.ctx = ctx;
+       this.canvas = new SimulatedEvolutionCanvas(   this );
+       this.tabModel = this.canvas.getTabModel();
+       this.controller = new SimulatedEvolutionController(this);
     }
 
     public void increaseFoodPerDay() {
@@ -63,4 +63,5 @@ public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution
             }
         }
     }
+
 }

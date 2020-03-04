@@ -62,7 +62,7 @@ public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
 
     public void toggleGardenOfEden() {
         log.info("toggleGardenOfEden");
-        worldLattice.toggleGardenOfEden();
+        this.worldLattice.toggleGardenOfEden();
         this.simulatedEvolutionParameter.toggleGardenOfEden();
     }
 

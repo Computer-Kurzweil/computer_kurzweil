@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
+import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellCore;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycle;
@@ -11,7 +12,6 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLife
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
-import java.beans.Transient;
 import java.util.Date;
 import java.util.Random;
 
@@ -34,23 +34,14 @@ public class ComputerKurzweilContext implements Startable {
         this.random = new Random(seed);
     }
 
-    @Transient
-    public void exit() {
-        System.exit(0);
-    }
-
-
-    @Transient
     public CompoundBorder getTabbedPaneBorder() {
         return getBorder();
     }
 
-    @Transient
     public CompoundBorder getFrameBorder(){
         return getBorder();
     }
 
-    @Transient
     public CompoundBorder getBorder(){
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
         int right = this.getProperties().getAllinone().getView().getBorderPaddingX();
@@ -62,8 +53,6 @@ public class ComputerKurzweilContext implements Startable {
         );
     }
 
-
-    @Transient
     public CompoundBorder getBorder(String label){
         int top = this.getProperties().getAllinone().getView().getBorderPaddingY();
         int left = this.getProperties().getAllinone().getView().getBorderPaddingX();
@@ -97,12 +86,10 @@ public class ComputerKurzweilContext implements Startable {
         );
     }
 
-    @Transient
     public CompoundBorder getBottomButtonsPanelBorder(){
         return getDoubleBorder();
     }
 
-    @Transient
     public CompoundBorder getBottomButtonsPanelBorder(String label){
         return getDoubleBorder(label);
     }
@@ -115,24 +102,20 @@ public class ComputerKurzweilContext implements Startable {
         return BorderFactory.createEmptyBorder(top,left,bottom,right);
     }
 
-    @Transient
     public Border getTabBorder() {
         return getZeroBorder();
     }
 
-    @Transient
     public Border getCanvasBorder() {
         return getZeroBorder();
     }
 
-    @Transient
     public LatticePoint getWorldDimensions(){
         int x = this.properties.getAllinone().getLattice().getWidth();
         int y = this.properties.getAllinone().getLattice().getHeight();
         return new LatticePoint(x,y);
     }
 
-    @Transient
     public LatticePoint getNextRandomLatticePoint() {
         int x = this.properties.getAllinone().getLattice().getWidth();
         int y = this.properties.getAllinone().getLattice().getHeight();
@@ -144,22 +127,18 @@ public class ComputerKurzweilContext implements Startable {
         return p;
     }
 
-    @Transient
     public CellLifeCycle getNewCellLifeCycle() {
         return new CellLifeCycle(this.properties.getSimulatedevolution().getCellConf());
     }
 
-    @Transient
     public CellCore getNewCellCore() {
         return new CellCore(this);
     }
 
-    @Override
     public void start() {
         frame.start();
     }
 
-    @Override
     public void stop() {
         frame.stop();
     }

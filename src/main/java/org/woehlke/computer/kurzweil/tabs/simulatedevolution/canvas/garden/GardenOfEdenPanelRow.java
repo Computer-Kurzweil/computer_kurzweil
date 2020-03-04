@@ -3,25 +3,30 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionModel;
 
 import javax.swing.*;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class GardenOfEdenPanelRow extends JPanel implements SimulatedEvolution {
+public class GardenOfEdenPanelRow extends JPanel implements SimulatedEvolution, Updateable {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
+    @ToString.Exclude
+    private final SimulatedEvolutionModel tabModel;
     private final GardenOfEdenCheckBox gardenOfEdenEnabled;
     private final GardenOfEdenToggleButton buttonToggleGardenOfEden;
     private final GardenOfEdenPanel gardenOfEdenPanel;
 
     public GardenOfEdenPanelRow(SimulatedEvolutionContext tabCtx) {
         this.tabCtx = tabCtx;
+        this.tabModel = this.tabCtx.getTabModel();
         this.gardenOfEdenEnabled = new GardenOfEdenCheckBox(this.tabCtx);
         this.buttonToggleGardenOfEden = new GardenOfEdenToggleButton(this.tabCtx);
         this.gardenOfEdenPanel = new GardenOfEdenPanel(this.tabCtx);
@@ -31,15 +36,23 @@ public class GardenOfEdenPanelRow extends JPanel implements SimulatedEvolution {
     }
 
     public void setSelected(boolean selected) {
-        this.gardenOfEdenEnabled.setSelected(selected);
+        tabModel.getSimulatedEvolutionParameter().setGardenOfEdenEnabled(selected);
+        update();
     }
 
     public void toggleGardenOfEden() {
-        boolean selected = buttonToggleGardenOfEden.isSelected();
-        this.buttonToggleGardenOfEden.setSelected(!selected);
+        this.tabModel.getSimulatedEvolutionParameter().toggleGardenOfEden();
+        update();
     }
 
     public void addActionListener(TabPanel myTabPanel) {
         this.buttonToggleGardenOfEden.addActionListener(myTabPanel);
+    }
+
+    @Override
+    public void update() {
+        boolean enabled = tabModel.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
+        this.buttonToggleGardenOfEden.setSelected(enabled);
+        this.gardenOfEdenEnabled.setSelected(enabled);
     }
 }
