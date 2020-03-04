@@ -42,7 +42,7 @@ public class KochSnowflakeCanvas extends JComponent implements
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
-    private final CyclicCellularAutomatonColorScheme colorScheme;
+    private final KochSnowflakeColorScheme colorScheme;
     private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
@@ -63,7 +63,7 @@ public class KochSnowflakeCanvas extends JComponent implements
         this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.versions = 2;
-        this.colorScheme = new CyclicCellularAutomatonColorScheme();
+        this.colorScheme = new KochSnowflakeColorScheme();
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);
