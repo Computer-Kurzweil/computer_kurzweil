@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.gameoflive;
+package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle;
 
 
 import lombok.EqualsAndHashCode;
@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
-import org.woehlke.computer.kurzweil.tabs.todo.gameoflive.canvas.CyclicCellularAutomatonColorScheme;
+import org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.canvas.CyclicCellularAutomatonColorScheme;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -34,7 +34,7 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel, ConwaysGameOfLife {
+    Serializable, TabCanvasWithModel, SierpinskiTriangle {
 
     private static final long serialVersionUID = -3057254130516052936L;
 

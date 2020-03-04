@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.gameoflive;
+package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle;
 
 
 import lombok.EqualsAndHashCode;
@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.todo.gameoflive.canvas.CyclicCellularAutomatonButtons;
+import org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.canvas.CyclicCellularAutomatonButtons;
 
 import java.awt.event.ActionEvent;
 
@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class CyclicCellularAutomatonTab extends TabPanel implements Tab, ConwaysGameOfLife {
+public class CyclicCellularAutomatonTab extends TabPanel implements Tab, SierpinskiTriangle {
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;

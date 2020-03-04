@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.todo.gameoflive;
+package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext, ConwaysGameOfLife {
+public class CyclicCellularAutomatonContext implements TabContext, SierpinskiTriangle {
 
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;

@@ -1,12 +1,13 @@
-package org.woehlke.computer.kurzweil.tabs.todo.gameoflive.canvas;
+package org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.canvas;
 
-import org.woehlke.computer.kurzweil.tabs.todo.gameoflive.ConwaysGameOfLife;
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.todo.sierpinskitriangle.SierpinskiTriangle;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme implements ConwaysGameOfLife {
+public class CyclicCellularAutomatonColorScheme implements SierpinskiTriangle {
 
     private Color[] stateColor;
 
