@@ -23,6 +23,7 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
     private final ConcurrentLinkedQueue<SimulatedEvolutionPopulation> statistics = new ConcurrentLinkedQueue<>();
     private final List<Cell> cells;
     private long worldIteration;
+    private final int queueMaxLength;
 
     public SimulatedEvolutionPopulationContainer(
         SimulatedEvolutionContext tabCtx
@@ -30,6 +31,7 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
         this.tabCtx = tabCtx;
         worldIteration = 0L;
         cells = new ArrayList<>();
+        queueMaxLength = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getControl().getQueueMaxLength();
         initialPopulation = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getInitialPopulation();
         createInitialPopulation();
     }
@@ -46,18 +48,18 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
         worldIteration++;
         populationCensus.setWorldIteration(worldIteration);
         statistics.add(populationCensus);
-        if (statistics.size() > this.tabCtx.getCtx().getProperties().getSimulatedevolution().getControl().getQueueMaxLength()) {
+        if (statistics.size() > queueMaxLength) {
             statistics.poll();
         }
         log.info(worldIteration + " : " + populationCensus);
     }
 
-    public SimulatedEvolutionPopulation peek() {
-        SimulatedEvolutionPopulation populationCensus = statistics.peek();
-        if(populationCensus == null){
-            populationCensus = new SimulatedEvolutionPopulation();
+    public SimulatedEvolutionPopulation getCurrentGeneration() {
+        SimulatedEvolutionPopulation currentGeneration = statistics.peek();
+        if(currentGeneration == null){
+            log.info(worldIteration + "statistics.peek() == null ");
+            currentGeneration = new SimulatedEvolutionPopulation();
         }
-        return populationCensus;
+        return currentGeneration;
     }
-
 }

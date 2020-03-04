@@ -77,7 +77,7 @@ public class Cell implements SimulatedEvolution {
     return CellOrientation.values()[(dnaBase < 0)?(dnaBase * -1):dnaBase];
   }
 
-  private void getNextOrientation() {
+  private void setNextOrientation() {
     CellOrientation randomOrientation = cellCore.getRandomOrientation();
     int iOrientation = orientation.ordinal();
     int iRandomOrientation = randomOrientation.ordinal();
@@ -88,13 +88,16 @@ public class Cell implements SimulatedEvolution {
   /**
    * The Cell moves on the Step in a Direction choosen by Random and DNA.
    */
-  public void move() {
-    if (lifeCycle.move()) {
-      getNextOrientation();
-      position.add(orientation.getMove());
-      position.add(this.appCtx.getCtx().getWorldDimensions());
-      position.normalize(this.appCtx.getCtx().getWorldDimensions());
+  public boolean move() {
+    boolean move = lifeCycle.move();
+    if (move) {
+        setNextOrientation();
+        position.moveBy(orientation.getMove());
+        position.plus(this.appCtx.getCtx().getWorldDimensions());
+        position.absoluteValue();
+        position.normalize(this.appCtx.getCtx().getWorldDimensions());
     }
+    return move;
   }
 
   /**

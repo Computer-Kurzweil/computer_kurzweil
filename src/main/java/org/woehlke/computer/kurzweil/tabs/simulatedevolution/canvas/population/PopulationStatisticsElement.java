@@ -32,4 +32,8 @@ public class PopulationStatisticsElement extends JPanel implements SimulatedEvol
     public void setText(int value){
         this.statistics.setText(""+value);
     }
+
+    public void setText(long value){
+        this.statistics.setText(""+value);
+    }
 }

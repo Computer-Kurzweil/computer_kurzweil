@@ -55,7 +55,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
       try {
         sleep( this.threadSleepTime );
       } catch (InterruptedException e) {
-        System.out.println(e.getLocalizedMessage());
+          log.info(e.getMessage());
       }
     }
     while (doMyJob);

@@ -57,11 +57,16 @@ public class LatticePoint {
         absoluteValue();
     }
 
-  public void add(LatticePoint p) {
+  public void plus(LatticePoint p) {
     this.x += p.getX();
     this.y += p.getY();
     absoluteValue();
   }
+
+    public void moveBy(LatticePoint p) {
+        this.x += p.getX();
+        this.y += p.getY();
+    }
 
   public void normalize(LatticePoint p) {
     this.x %= p.getX();

@@ -95,27 +95,28 @@ public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
         }
         if(step) {
             worldLattice.letFoodGrow();
+            List<Cell> nextPopulation = new ArrayList<>();
             LatticePoint pos;
-            List<Cell> children = new ArrayList<>();
-            List<Cell> died = new ArrayList<>();
+            int food;
             for (Cell cell : populationContainer.getCells()) {
-                cell.move();
-                if (cell.died()) {
-                    died.add(cell);
-                } else {
+                pos = cell.getPosition();
+                food = worldLattice.eat(pos);
+                cell.eat(food);
+                if (cell.move()) {
                     pos = cell.getPosition();
-                    int food = worldLattice.eat(pos);
+                    food = worldLattice.eat(pos);
                     cell.eat(food);
                     if (cell.isAbleForReproduction()) {
                         Cell child = cell.reproductionByCellDivision();
-                        children.add(child);
+                        nextPopulation.add(child);
                     }
                 }
+                if(!cell.died()){
+                    nextPopulation.add(cell);
+                }
             }
-            for (Cell dead : died) {
-                populationContainer.getCells().remove(dead);
-            }
-            populationContainer.getCells().addAll(children);
+            populationContainer.getCells().clear();
+            populationContainer.getCells().addAll(nextPopulation);
             SimulatedEvolutionPopulation onePopulation = new SimulatedEvolutionPopulation();
             for (Cell cell : populationContainer.getCells()) {
                 onePopulation.countStatusOfOneCell(cell.getLifeCycleStatus());

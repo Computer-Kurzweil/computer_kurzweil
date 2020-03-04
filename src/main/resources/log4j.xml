@@ -14,16 +14,16 @@
         <Logger name="org.woehlke.computer.kurzweil.tabs.cca" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.tabs.dla" level="info" includeLocation="true">
+        <Logger name="org.woehlke.computer.kurzweil.tabs.dla" level="warn" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="org.woehlke.computer.kurzweil.tabs.simulatedevolution" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.tabs.mandelbrot" level="info" includeLocation="true">
+        <Logger name="org.woehlke.computer.kurzweil.tabs.mandelbrot" level="warn" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.tabs.randomwalk" level="info" includeLocation="true">
+        <Logger name="org.woehlke.computer.kurzweil.tabs.randomwalk" level="warn" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="org.woehlke.computer.kurzweil.application" level="info" includeLocation="true">

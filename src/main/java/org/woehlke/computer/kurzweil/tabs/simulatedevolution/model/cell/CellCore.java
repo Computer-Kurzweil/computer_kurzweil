@@ -111,7 +111,7 @@ public class CellCore implements SimulatedEvolution {
     }
 
     private double getSumRandom(){
-        double sumRandom = ctx.getRandom().nextInt(MAX_VALUE) ^ 2;
+        double sumRandom = (ctx.getRandom().nextInt(MAX_VALUE)) ^ 2;
         return ((sumRandom < MIN_VALUE)?(sumRandom * -1):sumRandom) / (MAX_VALUE ^ 2);
     }
 

@@ -2,7 +2,6 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
@@ -30,6 +29,9 @@ public class PopulationStatisticsElementsPanel extends JPanel implements Simulat
     private final PopulationStatisticsElement hungryCellsElement;
     private final PopulationStatisticsElement oldCellsElement;
     private final PopulationStatisticsElement populationElement;
+
+    private final PopulationStatisticsElement generationOldestElement;
+    private final PopulationStatisticsElement generationYoungestElement;
 
     private final SimulatedEvolutionPopulationContainer populationContainer;
     private final String borderLabel;
@@ -78,13 +80,17 @@ public class PopulationStatisticsElementsPanel extends JPanel implements Simulat
         hungryCellsElement = new PopulationStatisticsElement(hungryCellsLabel,HUNGRY);
         oldCellsElement = new PopulationStatisticsElement(oldCellsLabel,OLD);
         populationElement = new PopulationStatisticsElement(populationLabel,POPULATION);
+        generationYoungestElement = new PopulationStatisticsElement(generationYoungestLabel,POPULATION);
+        generationOldestElement = new PopulationStatisticsElement(generationOldestLabel,POPULATION);
         PopulationStatisticsElement[] elements = {
             youngCellsElement,
             youngAndFatCellsElement,
             fullAgeCellsElement,
             hungryCellsElement,
             oldCellsElement,
-            populationElement
+            populationElement,
+            generationYoungestElement,
+            generationOldestElement
         };
         for(PopulationStatisticsElement ps : elements){
             this.add(ps);
@@ -94,13 +100,15 @@ public class PopulationStatisticsElementsPanel extends JPanel implements Simulat
     }
 
     public void update() {
-        population = populationContainer.peek();
+        population = populationContainer.getCurrentGeneration();
         youngCellsElement.setText(population.getYoungCells());
         youngAndFatCellsElement.setText(population.getYoungAndFatCells());
         fullAgeCellsElement.setText(population.getFullAgeCells());
         hungryCellsElement.setText(population.getHungryCells());
         oldCellsElement.setText(population.getOldCells());
         populationElement.setText(population.getPopulation());
+        generationYoungestElement.setText(population.getGenerationYoungest());
+        generationOldestElement.setText(population.getGenerationOldest());
     }
 
 }

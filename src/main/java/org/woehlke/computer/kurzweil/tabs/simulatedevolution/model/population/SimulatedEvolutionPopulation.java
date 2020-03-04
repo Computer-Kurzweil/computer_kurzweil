@@ -7,19 +7,23 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLife
 
 @Log4j2
 @ToString
+@Getter
+@Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 public class SimulatedEvolutionPopulation implements SimulatedEvolution {
 
-    @Getter @Setter private int youngCells;
-    @Getter @Setter private int youngAndFatCells;
-    @Getter @Setter private int fullAgeCells;
-    @Getter @Setter private int hungryCells;
-    @Getter @Setter private int oldCells;
-    @Getter @Setter private int deadCells;
-    @Getter @Setter private int population;
-    @Getter @Setter private long worldIteration;
+   private int youngCells;
+   private int youngAndFatCells;
+   private int fullAgeCells;
+   private int hungryCells;
+   private int oldCells;
+   private int deadCells;
+   private int population;
+   private long generationYoungest;
+   private long generationOldest;
+   private long worldIteration;
 
     /**
    * TODO write doc.
