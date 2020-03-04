@@ -7,10 +7,9 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvas;
 import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
-import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatisticsPanel;
+import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatisticsElementsPanel;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import java.awt.event.ActionEvent;
@@ -29,7 +28,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab {
     private final SimulatedEvolutionCanvas canvas;
     private final SimulatedEvolutionContext tabCtx;
     private final PanelBottomButtons bottomButtonsPanel;
-    private final PopulationStatisticsPanel statisticsPanel;
+    private final PopulationStatisticsElementsPanel statisticsPanel;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
 

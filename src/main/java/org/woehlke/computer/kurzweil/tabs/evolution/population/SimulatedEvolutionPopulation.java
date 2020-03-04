@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleStatus;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class SimulatedEvolutionPopulationCensus {
+public class SimulatedEvolutionPopulation {
 
     @Getter @Setter private int youngCells;
     @Getter @Setter private int youngAndFatCells;

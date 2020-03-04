@@ -4,8 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
@@ -36,7 +35,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.DIFFUSION_LIMITED_AGGRE
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable, TabCanvas, TabModel {
+    Serializable, TabCanvasWithModel {
 
     private final static TabType tabType = DIFFUSION_LIMITED_AGGREGATION;
 

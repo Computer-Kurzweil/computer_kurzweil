@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.evolution.canvas;
+package org.woehlke.computer.kurzweil.tabs.evolution;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -6,15 +6,12 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionModel;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.evolution.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.evolution.garden.GardenOfEdenPanelRow;
-import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatisticsPanel;
+import org.woehlke.computer.kurzweil.tabs.evolution.population.PopulationStatisticsElementsPanel;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.JComponent;
@@ -23,8 +20,8 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.List;
 
-import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_FOOD;
-import static org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldColor.COLOR_WATER;
+import static org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**
@@ -54,7 +51,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
     private final LayoutCanvas layout;
     private final Dimension preferredSize;
     private final SimulatedEvolutionTab tab;
-    private final PopulationStatisticsPanel statisticsPanel;
+    private final PopulationStatisticsElementsPanel statisticsPanel;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
     private final SimulatedEvolutionModel world;
@@ -73,7 +70,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.world = new SimulatedEvolutionModel(this.tabCtx);
-        this.statisticsPanel = new PopulationStatisticsPanel(this.tabCtx);
+        this.statisticsPanel = new PopulationStatisticsElementsPanel(this.tabCtx);
         this.foodPerDayPanel =  this.tab.getFoodPerDayPanel();
         this.gardenOfEdenPanel = this.tab.getGardenOfEdenPanel();
         this.preferredSize = new Dimension(worldX,worldY);

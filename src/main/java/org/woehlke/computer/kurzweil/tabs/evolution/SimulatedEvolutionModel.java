@@ -7,13 +7,11 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvasStatistics;
+import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutionPopulationContainer;
 import org.woehlke.computer.kurzweil.tabs.evolution.cell.Cell;
-import org.woehlke.computer.kurzweil.tabs.evolution.model.SimulatedEvolutionWorldLattice;
-import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutionPopulationCensus;
+import org.woehlke.computer.kurzweil.tabs.evolution.world.SimulatedEvolutionWorldLattice;
+import org.woehlke.computer.kurzweil.tabs.evolution.population.SimulatedEvolutionPopulation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +49,14 @@ public class SimulatedEvolutionModel implements TabModel {
     private List<Cell> cells;
     private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionWorldLattice worldLattice;
-    private final SimulatedEvolutionCanvasStatistics statisticsContainer;
+    private final SimulatedEvolutionPopulationContainer statisticsContainer;
 
   public SimulatedEvolutionModel(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;
       this.worldLattice = new SimulatedEvolutionWorldLattice(  this.appCtx);
-      this.statisticsContainer = new SimulatedEvolutionCanvasStatistics( this.appCtx);
+      this.statisticsContainer = new SimulatedEvolutionPopulationContainer( this.appCtx);
       cells = new ArrayList<>();
       createInitialPopulation();
   }
@@ -69,7 +67,7 @@ public class SimulatedEvolutionModel implements TabModel {
           Cell cell = new Cell(this.appCtx);
           cells.add(cell);
       }
-      SimulatedEvolutionPopulationCensus populationCensus = new SimulatedEvolutionPopulationCensus();
+      SimulatedEvolutionPopulation populationCensus = new SimulatedEvolutionPopulation();
       for (Cell cell : cells) {
           populationCensus.countStatusOfOneCell(cell.getLifeCycleStatus());
       }
@@ -130,7 +128,7 @@ public class SimulatedEvolutionModel implements TabModel {
             cells.remove(dead);
         }
         cells.addAll(children);
-        SimulatedEvolutionPopulationCensus oneStatisticsTimestamp = new SimulatedEvolutionPopulationCensus();
+        SimulatedEvolutionPopulation oneStatisticsTimestamp = new SimulatedEvolutionPopulation();
         for (Cell cell : cells) {
             oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
         }

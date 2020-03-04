@@ -6,7 +6,6 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.evolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.evolution.canvas.SimulatedEvolutionCanvasStatistics;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
@@ -20,7 +19,7 @@ import static org.woehlke.computer.kurzweil.tabs.evolution.cell.CellLifeCycleSta
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsPanel extends JPanel {
+public class PopulationStatisticsElementsPanel extends JPanel {
 
     private final PopulationStatisticsElement youngCellsStatistics;
     private final PopulationStatisticsElement youngAndFatCellsStatistics;
@@ -29,7 +28,7 @@ public class PopulationStatisticsPanel extends JPanel {
     private final PopulationStatisticsElement oldCellsStatistics;
     private final PopulationStatisticsElement populationStatistics;
 
-    private final SimulatedEvolutionCanvasStatistics statistics;
+    private final SimulatedEvolutionPopulationContainer statistics;
     private final String borderLabel;
     private final int initialPopulation;
 
@@ -38,7 +37,7 @@ public class PopulationStatisticsPanel extends JPanel {
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
 
-    public PopulationStatisticsPanel(
+    public PopulationStatisticsElementsPanel(
       SimulatedEvolutionContext tabCtx
     ) {
         this.tabCtx = tabCtx;
@@ -69,11 +68,11 @@ public class PopulationStatisticsPanel extends JPanel {
         for(PopulationStatisticsElement ps :statistics){
             this.add(ps);
         }
-        this.statistics = new SimulatedEvolutionCanvasStatistics(  this.tabCtx );
+        this.statistics = new SimulatedEvolutionPopulationContainer(  this.tabCtx );
     }
 
     public void update() {
-        SimulatedEvolutionPopulationCensus simulatedEvolutionWorldStatistics = statistics.peek();;
+        SimulatedEvolutionPopulation simulatedEvolutionWorldStatistics = statistics.peek();;
         youngCellsStatistics.setText(simulatedEvolutionWorldStatistics.getYoungCells());
         youngAndFatCellsStatistics.setText(simulatedEvolutionWorldStatistics.getYoungAndFatCells());
         fullAgeCellsStatistics.setText(simulatedEvolutionWorldStatistics.getFullAgeCells());

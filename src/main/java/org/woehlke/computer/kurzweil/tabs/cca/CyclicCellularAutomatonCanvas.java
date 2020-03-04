@@ -5,8 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
@@ -37,7 +36,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, TabCanvas, TabModel {
+    Serializable, TabCanvasWithModel {
 
     private final static TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
 
