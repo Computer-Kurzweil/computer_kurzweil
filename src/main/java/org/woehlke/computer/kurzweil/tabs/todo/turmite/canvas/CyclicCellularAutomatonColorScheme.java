@@ -1,12 +1,12 @@
 package org.woehlke.computer.kurzweil.tabs.todo.turmite.canvas;
 
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.todo.turmite.Turmite;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CyclicCellularAutomatonColorScheme implements CyclicCellularAutomaton {
+public class CyclicCellularAutomatonColorScheme implements Turmite {
 
     private Color[] stateColor;
 
