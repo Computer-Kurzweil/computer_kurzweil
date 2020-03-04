@@ -21,7 +21,7 @@ public class SimulatedEvolutionPopulation implements SimulatedEvolution {
     @Getter @Setter private int population;
     @Getter @Setter private long worldIteration;
 
-  /**
+    /**
    * TODO write doc.
    */
   public void countStatusOfOneCell(CellLifeCycleStatus status) {

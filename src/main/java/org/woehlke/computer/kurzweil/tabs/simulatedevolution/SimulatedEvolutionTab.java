@@ -6,10 +6,12 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.food.FoodPerDayPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.garden.GardenOfEdenPanelRow;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food.FoodPerDayPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population.PopulationStatisticsElementsPanel;
+
 import java.awt.event.ActionEvent;
 
 
@@ -31,7 +33,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         this.tabCtx = new SimulatedEvolutionContext(this);
         this.canvas = new SimulatedEvolutionCanvas( this);
         this.tabCtx.setCanvas(this.canvas);
-        this.tabCtx.setTabModel(this.canvas.getWorld());
+        this.tabCtx.setTabModel(this.canvas.getModel());
         this.statisticsPanel = this.canvas.getStatisticsPanel();
         this.foodPerDayPanel = new FoodPerDayPanel(this.tabCtx);
         this.gardenOfEdenPanel = new GardenOfEdenPanelRow(this.tabCtx);
@@ -53,7 +55,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     public void start() {
         log.info("start");
         this.bottomButtonsPanel.getStartStopButtonsPanel().start();
-        this.canvas.getWorld().start();
+        this.canvas.getModel().start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();

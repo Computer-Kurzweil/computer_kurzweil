@@ -4,9 +4,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Log4j2
@@ -15,9 +19,10 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @EqualsAndHashCode(exclude={"tabCtx","statistics"})
 public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution {
 
-
     private final SimulatedEvolutionContext tabCtx;
+    private final int initialPopulation;
     private final ConcurrentLinkedQueue<SimulatedEvolutionPopulation> statistics = new ConcurrentLinkedQueue<>();
+    private final List<Cell> cells;
     private long worldIteration;
 
     public SimulatedEvolutionPopulationContainer(
@@ -25,6 +30,17 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
     ) {
         this.tabCtx = tabCtx;
         worldIteration = 0L;
+        cells = new ArrayList<>();
+        initialPopulation = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getInitialPopulation();
+        createInitialPopulation();
+    }
+
+    public void createInitialPopulation() {
+        cells.clear();
+        for (int i = 0; i < initialPopulation ; i++) {
+            Cell cell = new Cell(this.tabCtx);
+            cells.add(cell);
+        }
     }
 
     public void push(SimulatedEvolutionPopulation populationCensus) {
@@ -44,4 +60,5 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
         }
         return populationCensus;
     }
+
 }

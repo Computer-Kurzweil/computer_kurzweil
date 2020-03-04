@@ -6,11 +6,12 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population.PopulationStatisticsElementsPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.food.FoodPerDayPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.garden.GardenOfEdenPanelRow;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food.FoodPerDayPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.JComponent;
@@ -18,8 +19,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.util.List;
 
-import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.SimulatedEvolutionWorldColor.COLOR_FOOD;
-import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.SimulatedEvolutionWorldColor.COLOR_WATER;
+import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.SimulatedEvolutionWorldColor.COLOR_FOOD;
+import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.SimulatedEvolutionWorldColor.COLOR_WATER;
 
 
 /**
@@ -52,7 +53,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     private final PopulationStatisticsElementsPanel statisticsPanel;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
-    private final SimulatedEvolutionModel world;
+    private final SimulatedEvolutionModel model;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -67,7 +68,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        this.world = new SimulatedEvolutionModel(this.tabCtx);
+        this.model = new SimulatedEvolutionModel(this.tabCtx);
         this.statisticsPanel = new PopulationStatisticsElementsPanel(this.tabCtx);
         this.foodPerDayPanel =  this.tab.getFoodPerDayPanel();
         this.gardenOfEdenPanel = this.tab.getGardenOfEdenPanel();
@@ -104,14 +105,14 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
       int posY;
       for (posY = 0; posY < worldY; posY++) {
           for (posX = 0; posX < worldX; posX++) {
-              if (world.hasFood(posX, posY)) {
+              if (model.hasFood(posX, posY)) {
                   graphics.drawLine(posX, posY, posX, posY);
               }
           }
       }
       // paint Population
       log.info("paint Population (Graphics graphics)");
-      List<Cell> population = world.getAllCells();
+      List<Cell> population = model.getAllCells();
       for (Cell cell : population) {
           posX = cell.getPosition().getX();
           posY = cell.getPosition().getY();
@@ -140,17 +141,18 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     @Override
     public void update() {
         log.info("update");
-        int getFoodPerDay = tabCtx.getSimulatedEvolutionParameter().getFoodPerDay();
-        boolean selected = tabCtx.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
+        int getFoodPerDay = model.getSimulatedEvolutionParameter().getFoodPerDay();
+        boolean selected = model.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
         this.foodPerDayPanel.setFoodPerDay(getFoodPerDay);
         this.gardenOfEdenPanel.setSelected(selected);
+        this.statisticsPanel.update();
         log.info("updated");
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.world.start();
+        this.model.start();
         //log.info("this: "+this.toString());
         log.info("started");
     }
@@ -158,7 +160,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     @Override
     public void stop() {
         log.info("stop");
-        this.world.stop();
+        this.model.stop();
         //log.info("this: "+this.toString());
         log.info("stopped");
     }

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.population;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -8,6 +8,8 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulationContainer;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -36,6 +38,8 @@ public class PopulationStatisticsElementsPanel extends JPanel implements Simulat
     private final CompoundBorder border;
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
+
+    private SimulatedEvolutionPopulation population;
 
     public PopulationStatisticsElementsPanel(
       SimulatedEvolutionContext tabCtx
@@ -72,12 +76,12 @@ public class PopulationStatisticsElementsPanel extends JPanel implements Simulat
     }
 
     public void update() {
-        SimulatedEvolutionPopulation simulatedEvolutionWorldStatistics = statistics.peek();;
-        youngCellsStatistics.setText(simulatedEvolutionWorldStatistics.getYoungCells());
-        youngAndFatCellsStatistics.setText(simulatedEvolutionWorldStatistics.getYoungAndFatCells());
-        fullAgeCellsStatistics.setText(simulatedEvolutionWorldStatistics.getFullAgeCells());
-        hungryCellsStatistics.setText(simulatedEvolutionWorldStatistics.getHungryCells());
-        oldCellsStatistics.setText(simulatedEvolutionWorldStatistics.getOldCells());
-        populationStatistics.setText(simulatedEvolutionWorldStatistics.getPopulation());
+        population = statistics.peek();;
+        youngCellsStatistics.setText(population.getYoungCells());
+        youngAndFatCellsStatistics.setText(population.getYoungAndFatCells());
+        fullAgeCellsStatistics.setText(population.getFullAgeCells());
+        hungryCellsStatistics.setText(population.getHungryCells());
+        oldCellsStatistics.setText(population.getOldCells());
+        populationStatistics.setText(population.getPopulation());
     }
 }

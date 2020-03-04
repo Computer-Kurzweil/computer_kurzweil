@@ -7,6 +7,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionParameter;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulationContainer;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionWorldLattice;
@@ -34,44 +35,25 @@ import java.util.List;
  */
 @Log4j2
 @Getter
-@ToString(exclude={"cells","appCtx"})
-@EqualsAndHashCode(exclude={"cells","appCtx"})
+@ToString(exclude={"appCtx"})
+@EqualsAndHashCode(exclude={"appCtx"})
 public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
 
-    /**
-    * List of the Simulated Bacteria Cells.
-    */
-    private List<Cell> cells; //TODO move Cells to population
     private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionWorldLattice worldLattice;
-    private final SimulatedEvolutionPopulationContainer statisticsContainer;
+    private final SimulatedEvolutionPopulationContainer populationContainer;
+    private final SimulatedEvolutionParameter simulatedEvolutionParameter;
+    private Boolean running;
 
   public SimulatedEvolutionModel(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;
       this.worldLattice = new SimulatedEvolutionWorldLattice(  this.appCtx);
-      this.statisticsContainer = new SimulatedEvolutionPopulationContainer( this.appCtx);
-      cells = new ArrayList<>();
-      createInitialPopulation();
-  }
-
-  private void createInitialPopulation(){
-      cells.clear();
-      for (int i = 0; i <  this.appCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getInitialPopulation(); i++) {
-          Cell cell = new Cell(this.appCtx);
-          cells.add(cell);
-      }
-      SimulatedEvolutionPopulation populationCensus = new SimulatedEvolutionPopulation();
-      for (Cell cell : cells) {
-          populationCensus.countStatusOfOneCell(cell.getLifeCycleStatus());
-      }
-      log.info(populationCensus.toString());
-      statisticsContainer.push(populationCensus);
-  }
-
-  public List<Cell> getAllCells() {
-    return cells;
+      this.populationContainer = new SimulatedEvolutionPopulationContainer( this.appCtx);
+      this.simulatedEvolutionParameter = new SimulatedEvolutionParameter();
+      this.running = Boolean.FALSE;
+      createNewState();
   }
 
   public boolean hasFood(int x, int y) {
@@ -81,17 +63,23 @@ public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
     public void toggleGardenOfEden() {
         log.info("toggleGardenOfEden");
         worldLattice.toggleGardenOfEden();
+        this.simulatedEvolutionParameter.toggleGardenOfEden();
     }
 
-    @Override
     public void start() {
         log.info("start");
-        createInitialPopulation();
+        synchronized (running) {
+            running = Boolean.TRUE;
+        }
+        log.info("started "+this.toString());
     }
 
-    @Override
     public void stop() {
         log.info("stop");
+        synchronized (running) {
+            running = Boolean.FALSE;
+        }
+        log.info("stopped "+this.toString());
     }
 
     /**
@@ -101,34 +89,63 @@ public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
     @Override
     public void step() {
       log.info("step");
-        worldLattice.letFoodGrow();
-        LatticePoint pos;
-        List<Cell> children = new ArrayList<>();
-        List<Cell> died = new ArrayList<>();
-        for (Cell cell : cells) {
-            cell.move();
-            if (cell.died()) {
-                died.add(cell);
-            } else {
-                pos = cell.getPosition();
-                int food = worldLattice.eat(pos);
-                cell.eat(food);
-                if (cell.isAbleForReproduction()) {
-                    Cell child = cell.reproductionByCellDivision();
-                    children.add(child);
+      boolean step;
+        synchronized (running) {
+            step = running;
+        }
+        if(step) {
+            worldLattice.letFoodGrow();
+            LatticePoint pos;
+            List<Cell> children = new ArrayList<>();
+            List<Cell> died = new ArrayList<>();
+            for (Cell cell : populationContainer.getCells()) {
+                cell.move();
+                if (cell.died()) {
+                    died.add(cell);
+                } else {
+                    pos = cell.getPosition();
+                    int food = worldLattice.eat(pos);
+                    cell.eat(food);
+                    if (cell.isAbleForReproduction()) {
+                        Cell child = cell.reproductionByCellDivision();
+                        children.add(child);
+                    }
                 }
             }
+            for (Cell dead : died) {
+                populationContainer.getCells().remove(dead);
+            }
+            populationContainer.getCells().addAll(children);
+            SimulatedEvolutionPopulation onePopulation = new SimulatedEvolutionPopulation();
+            for (Cell cell : populationContainer.getCells()) {
+                onePopulation.countStatusOfOneCell(cell.getLifeCycleStatus());
+            }
+            populationContainer.push(onePopulation);
+            log.info("stepped");
+        } else {
+            log.info("not stepped");
         }
-        for (Cell dead : died) {
-            cells.remove(dead);
-        }
-        cells.addAll(children);
-        SimulatedEvolutionPopulation oneStatisticsTimestamp = new SimulatedEvolutionPopulation();
-        for (Cell cell : cells) {
-            oneStatisticsTimestamp.countStatusOfOneCell(cell.getLifeCycleStatus());
-        }
-        statisticsContainer.push(oneStatisticsTimestamp);
-      log.info("stepped");
+    }
+
+    public List<Cell> getAllCells() {
+        return populationContainer.getCells();
+    }
+
+    private void createNewState(){
+        int foodPerDay = this.appCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDay();
+        int foodPerDayGardenOfEden = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getFoodPerDay();
+        boolean gardenOfEdenEnabled = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
+        this.simulatedEvolutionParameter.setFoodPerDay(foodPerDay);
+        this.simulatedEvolutionParameter.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
+        this.simulatedEvolutionParameter.setGardenOfEdenEnabled(gardenOfEdenEnabled);
+    }
+
+    public void increaseFoodPerDay() {
+        simulatedEvolutionParameter.increaseFoodPerDay();
+    }
+
+    public void decreaseFoodPerDay(){
+        simulatedEvolutionParameter.decreaseFoodPerDay();
     }
 
 }

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.garden;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden;
 
 import lombok.Getter;
 import lombok.ToString;

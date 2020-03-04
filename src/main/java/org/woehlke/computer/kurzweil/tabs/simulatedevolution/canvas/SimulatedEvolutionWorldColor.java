@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas;
 
 import java.awt.*;
 

@@ -20,7 +20,6 @@ public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution
     private final ComputerKurzweilContext ctx;
     private SimulatedEvolutionController controller;
     private final SimulatedEvolutionTab tab;
-    private final SimulatedEvolutionParameter simulatedEvolutionParameter;
     @Setter
     private SimulatedEvolutionCanvas canvas;
     @Setter
@@ -32,31 +31,19 @@ public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution
        this.tab = tab;
        this.ctx = this.tab.getCtx();
         this.controller = new SimulatedEvolutionController(this);
-        this.simulatedEvolutionParameter = new SimulatedEvolutionParameter();
-        createNewState();
-    }
-
-    private void createNewState(){
-        int foodPerDay = this.ctx.getProperties().getSimulatedevolution().getFood().getFoodPerDay();
-        int foodPerDayGardenOfEden = this.ctx.getProperties().getSimulatedevolution().getGardenOfEden().getFoodPerDay();
-        boolean gardenOfEdenEnabled = this.ctx.getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
-        this.simulatedEvolutionParameter.setFoodPerDay(foodPerDay);
-        this.simulatedEvolutionParameter.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
-        this.simulatedEvolutionParameter.setGardenOfEdenEnabled(gardenOfEdenEnabled);
     }
 
     public void increaseFoodPerDay() {
-        simulatedEvolutionParameter.increaseFoodPerDay();
+        tabModel.increaseFoodPerDay();
     }
 
     public void decreaseFoodPerDay(){
-        simulatedEvolutionParameter.decreaseFoodPerDay();
+        tabModel.decreaseFoodPerDay();
     }
 
     public void toggleGardenOfEden() {
-        this.simulatedEvolutionParameter.toggleGardenOfEden();
         this.tabModel.toggleGardenOfEden();
-        this.canvas.toggleGardenOfEden();
+        this.canvas.update();
     }
 
     @Override
