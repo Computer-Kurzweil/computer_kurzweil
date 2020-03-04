@@ -13,37 +13,37 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext, WaTor {
+public class WaTorContext implements TabContext, WaTor {
 
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonCanvas canvas;
-    private final CyclicCellularAutomatonTab tab;
-    private CyclicCellularAutomatonController controller;
+    private final WaTorCanvas canvas;
+    private final WaTorTab tab;
+    private WaTorController controller;
 
-    public CyclicCellularAutomatonContext(
-        CyclicCellularAutomatonTab tab
+    public WaTorContext(
+        WaTorTab tab
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
-        this.canvas = new CyclicCellularAutomatonCanvas( this);
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.canvas = new WaTorCanvas( this);
+        this.controller = new WaTorController(this);
     }
 
     @Override
-    public CyclicCellularAutomatonCanvas getTabModel() {
+    public WaTorCanvas getTabModel() {
         return this.canvas;
     }
 
     @Override
     public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new WaTorController(this);
     }
 
     @Override
     public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonController(this);
+            this.controller = new WaTorController(this);
         } else {
             if(this.controller.getState() != NEW){
                 this.stopController();

@@ -9,7 +9,7 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.todo.wator.canvas.CyclicCellularAutomatonButtons;
+import org.woehlke.computer.kurzweil.tabs.todo.wator.canvas.WaTorButtons;
 
 import java.awt.event.ActionEvent;
 
@@ -17,19 +17,19 @@ import java.awt.event.ActionEvent;
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class CyclicCellularAutomatonTab extends TabPanel implements Tab, WaTor {
+public class WaTorTab extends TabPanel implements Tab, WaTor {
 
-    private final CyclicCellularAutomatonContext tabCtx;
-    private final CyclicCellularAutomatonCanvas canvas;
+    private final WaTorContext tabCtx;
+    private final WaTorCanvas canvas;
 
-    private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
+    private final WaTorButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
 
-    public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
+    public WaTorTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
-        this.tabCtx = new CyclicCellularAutomatonContext(this);
+        this.tabCtx = new WaTorContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
+        this.neighbourhoodButtonsPanel = new WaTorButtons(this.canvas);
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
         this.add(this.panelSubtitle);
