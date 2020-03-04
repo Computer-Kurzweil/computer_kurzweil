@@ -16,8 +16,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 @Log4j2
 @Getter
-public class RandomWalkController extends Thread
-        implements TabController {
+public class RandomWalkController extends Thread implements TabController, RandomWalk {
 
     private static final long serialVersionUID = 3642865135701767557L;
     private final RandomWalkContext tabCtx;

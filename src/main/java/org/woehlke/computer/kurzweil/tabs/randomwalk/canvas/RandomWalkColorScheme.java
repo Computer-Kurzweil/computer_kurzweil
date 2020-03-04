@@ -1,10 +1,12 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk.canvas;
 
+import org.woehlke.computer.kurzweil.tabs.randomwalk.RandomWalk;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomWalkColorScheme {
+public class RandomWalkColorScheme implements RandomWalk {
 
     private Color[] stateColor;
 

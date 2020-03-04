@@ -8,20 +8,15 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 
 import java.awt.event.ActionEvent;
-
-import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROCESS;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
-public class RandomWalkTab extends TabPanel implements Tab {
-
-    private final static TabType tabType = RANDOM_WALK_WIENER_PROCESS;
+public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
 
     private final RandomWalkContext tabCtx;
 
@@ -29,7 +24,7 @@ public class RandomWalkTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public RandomWalkTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane, tabType);
+        super(tabbedPane, TAB_TYPE);
         this.tabCtx = new RandomWalkContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.bottomButtonsPanel = new PanelBottomButtons( this );

@@ -31,7 +31,7 @@ import java.io.Serializable;
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class RandomWalkCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel {
+    Serializable, TabCanvasWithModel, RandomWalk {
 
     private static final long serialVersionUID = -3057254130516052936L;
 

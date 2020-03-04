@@ -9,15 +9,12 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import static java.lang.Thread.State.NEW;
-import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROCESS;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class RandomWalkContext implements TabContext {
-
-    private final TabType tabType = RANDOM_WALK_WIENER_PROCESS;
+public class RandomWalkContext implements TabContext, RandomWalk {
 
     private final ComputerKurzweilContext ctx;
     private final RandomWalkCanvas canvas;
