@@ -9,7 +9,9 @@ import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
+import org.woehlke.computer.kurzweil.tabs.gameoflive.ConwaysGameOfLifeTab;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
+import org.woehlke.computer.kurzweil.tabs.sierpinskitriangle.SierpinskiTriangleTab;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.RandomWalkTab;
 import org.woehlke.computer.kurzweil.tabs.kochsnowflake.KochSnowflakeTab;
@@ -36,6 +38,8 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
     private final SimulatedEvolutionTab simulatedEvolutionTab;
     private final KochSnowflakeTab kochSnowflakeTab;
     private final SameGameTab sameGameTab;
+    ConwaysGameOfLifeTab conwaysGameOfLifeTab;
+    SierpinskiTriangleTab sierpinskiTriangleTab;
 
     public ComputerKurzweilTabbedPane(
         ComputerKurzweilContext ctx
