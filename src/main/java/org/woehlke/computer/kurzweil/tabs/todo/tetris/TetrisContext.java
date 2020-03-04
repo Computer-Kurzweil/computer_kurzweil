@@ -13,37 +13,37 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext, Tetris {
+public class TetrisContext implements TabContext, Tetris {
 
     private final ComputerKurzweilContext ctx;
-    private final CyclicCellularAutomatonCanvas canvas;
-    private final CyclicCellularAutomatonTab tab;
-    private CyclicCellularAutomatonController controller;
+    private final TetrisCanvas canvas;
+    private final TetrisTab tab;
+    private TetrisController controller;
 
-    public CyclicCellularAutomatonContext(
-        CyclicCellularAutomatonTab tab
+    public TetrisContext(
+        TetrisTab tab
     ) {
         this.tab = tab;
         this.ctx = tab.getCtx();
-        this.canvas = new CyclicCellularAutomatonCanvas( this);
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.canvas = new TetrisCanvas( this);
+        this.controller = new TetrisController(this);
     }
 
     @Override
-    public CyclicCellularAutomatonCanvas getTabModel() {
+    public TetrisCanvas getTabModel() {
         return this.canvas;
     }
 
     @Override
     public void stopController() {
         this.controller.exit();
-        this.controller = new CyclicCellularAutomatonController(this);
+        this.controller = new TetrisController(this);
     }
 
     @Override
     public void startController() {
         if(this.controller == null){
-            this.controller = new CyclicCellularAutomatonController(this);
+            this.controller = new TetrisController(this);
         } else {
             if(this.controller.getState() != NEW){
                 this.stopController();
