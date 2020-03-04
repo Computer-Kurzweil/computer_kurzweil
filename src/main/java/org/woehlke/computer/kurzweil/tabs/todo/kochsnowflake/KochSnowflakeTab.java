@@ -80,12 +80,12 @@ public class KochSnowflakeTab extends TabPanel implements Tab {
 
     @Override
     public String getTitle() {
-        return ctx.getProperties().getCca().getView().getTitle();
+        return ctx.getProperties().getKochsnowflake().getView().getTitle();
     }
 
     @Override
     public String getSubTitle() {
-        return ctx.getProperties().getCca().getView().getSubtitle();
+        return ctx.getProperties().getKochsnowflake().getView().getSubtitle();
     }
 
     @Override

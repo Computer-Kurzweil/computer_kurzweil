@@ -96,6 +96,11 @@ kochsnowflake:
   view:
     title: 'Koch Snowflake'
     subtitle: 'Fractal Koch Snowflake'
+    neighborhood:
+      title: 'Neighborhood'
+      typeVonNeumann: 'Von Neumann'
+      typeMoore: 'Moore'
+      typeWoehlke: 'Woehlke'
   control:
     threadSleepTime: 50
     numberOfParticles: 30000
