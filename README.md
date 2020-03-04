@@ -29,9 +29,9 @@ The most beautiful Julia Sets are drawn by clicking into the Border of the Mande
 
 ### Simulated Evolution
 
-**[Artificial Life Simulation of Bacteria Motion depending on DNA](docs/tabs/simulated-evolution/README.md)**
+**[Artificial Life Simulation of Bacteria Motion depending on DNA](docs/tabs/simulatedevolution/README.md)**
 
-![Early Screen](docs/tabs/simulated-evolution/img/screen1.png)
+![Early Screen](docs/tabs/simulatedevolution/img/screen1.png)
 
 Green food appears in a world with red moving cells. These cells eat the food if it is on their position.
 Movement of the cells depends on random and their DNA. A fit cellConf moves around and eats enough to reproduce.
@@ -40,9 +40,9 @@ If a cellConf doesn't eat enough, it will first stand still and after a while it
 
 ### Diffusion-limited aggregation (DLA) 
 
-**[Fractals and random walk due to Brownian motion cluster](docs/tabs/diffusion-limited-aggregation/README.md)**
+**[Fractals and random walk due to Brownian motion cluster](docs/tabs/dla/README.md)**
 
-![The Dendrite after a while](docs/tabs/diffusion-limited-aggregation/src/main/resources/img/screen2.png)
+![The Dendrite after a while](docs/tabs/dla/src/main/resources/img/screen2.png)
 
 Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to Brownian motion cluster together to form aggregates of such particles.
 
@@ -54,9 +54,9 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 
 ### Cyclic Cellular Automaton (CCA)
 
-**[More Info...](docs/tabs/cyclic-cellular-automaton/README.md)**
+**[More Info...](docs/tabs/cca/README.md)**
 
-![Later Screen](docs/tabs/cyclic-cellular-automaton/src/main/resources/img/screen2.png)
+![Later Screen](docs/tabs/cca/src/main/resources/img/screen2.png)
 
 The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
 
@@ -65,13 +65,13 @@ In this system, each cellConf remains unchanged until some neighboring cellConf 
 One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior.
 
 ### Koch Snowflake
-**[More Info...](docs/tabs/koch-snowflake/README.md)**
+**[More Info...](docs/tabs/kochsnowflake/README.md)**
 
 ### Same Game
 **[More Info...](docs/tabs/samegame/README.md)**
 
 ### Sierpinski Triangle
-**[More Info...](docs/tabs/sierpinski-triangle/README.md)**
+**[More Info...](docs/tabs/sierpinskitriangle/README.md)**
 
 ### Tetris
 **[More Info...](docs/tabs/tetris/README.md)**
