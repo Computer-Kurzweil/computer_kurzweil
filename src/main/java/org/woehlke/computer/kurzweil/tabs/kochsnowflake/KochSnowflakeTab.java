@@ -13,11 +13,15 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import java.awt.event.ActionEvent;
 
+import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
+
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class KochSnowflakeTab extends TabPanel implements Tab {
+
+    private final static TabType tabType = KOCH_SNOWFLAKE;
 
     private final KochSnowflakeContext tabCtx;
     private final KochSnowflakeCanvas canvas;
@@ -26,7 +30,7 @@ public class KochSnowflakeTab extends TabPanel implements Tab {
     private final PanelBottomButtons bottomButtonsPanel;
 
     public KochSnowflakeTab(ComputerKurzweilTabbedPane tabbedPane) {
-        super(tabbedPane,TabType.CYCLIC_CELLULAR_AUTOMATON);
+        super(tabbedPane,tabType);
         this.tabCtx = new KochSnowflakeContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.neighbourhoodButtonsPanel = new KochSnowflakeButtons(this.canvas);

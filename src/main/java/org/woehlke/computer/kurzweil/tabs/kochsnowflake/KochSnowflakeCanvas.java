@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,6 +19,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
+import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 
 /**
  * Cyclic Cellular Automaton.
@@ -37,6 +39,8 @@ public class KochSnowflakeCanvas extends JComponent implements
     Serializable, TabCanvas, TabModel {
 
     private static final long serialVersionUID = -3057254130516052936L;
+
+    private final TabType tabType = KOCH_SNOWFLAKE;
 
     private final KochSnowflakeContext tabCtx;
     private final Border border;

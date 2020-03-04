@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import static java.lang.Thread.State.NEW;
 import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMATON;
+import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 
 @Log4j2
 @Getter
@@ -17,7 +18,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.CYCLIC_CELLULAR_AUTOMAT
 @EqualsAndHashCode(exclude = {"tab"})
 public class KochSnowflakeContext implements TabContext {
 
-    private final TabType tabType = CYCLIC_CELLULAR_AUTOMATON;
+    private final TabType tabType = KOCH_SNOWFLAKE;
 
     private final ComputerKurzweilContext ctx;
     private final KochSnowflakeCanvas canvas;
