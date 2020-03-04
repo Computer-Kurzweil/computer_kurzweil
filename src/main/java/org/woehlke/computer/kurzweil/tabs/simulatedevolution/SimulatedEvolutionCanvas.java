@@ -141,9 +141,9 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     @Override
     public void update() {
         log.info("update");
-        int getFoodPerDay = model.getSimulatedEvolutionParameter().getFoodPerDay();
+        int foodPerDay = model.getSimulatedEvolutionParameter().getFoodPerDay();
         boolean selected = model.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
-        this.foodPerDayPanel.setFoodPerDay(getFoodPerDay);
+        this.foodPerDayPanel.setFoodPerDay(foodPerDay);
         this.gardenOfEdenPanel.setSelected(selected);
         this.statisticsPanel.update();
         log.info("updated");
