@@ -2,7 +2,7 @@
 
 Fractals and random walk due to Brownian motion cluster
 
-*[back...](../../../README.md)* 
+*[back...](../TABS.md)* 
 ## Screenshots
 
 ![The Dendrite](img/screen1.png)

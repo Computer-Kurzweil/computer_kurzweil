@@ -2,7 +2,7 @@
 
 **Cyclic cellular automaton**
 
-*[back...](../../../README.md)* 
+*[back...](../TABS.md)* 
 ## Screenshots
 
 ### Early Screen

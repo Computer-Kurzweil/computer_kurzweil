@@ -1,14 +1,13 @@
 # Random Walk
 
-*[back...](../../../README.md)* 
+*[back...](../TABS.md)* 
+
 ## Abstract
 lorem ipsum
+
 #### Todo
 * first
 * second
-
-
-
 
 ## Goto
 
