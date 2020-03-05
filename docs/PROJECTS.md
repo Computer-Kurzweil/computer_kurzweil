@@ -1,15 +1,15 @@
 # Projects
 
-## All Projects
-* [List of all Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects)
-* [List of all Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones)
-* [List of all Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues)
+| | | | | | |
+|-----------------------------|---------------------------------|-------------------------|-----------------------------|-----------------------------------|---------------------|
+| [Projects](PROJECTS.md) | [Milestones](MILESTONES.md) | [Issues](ISSUES.md) | [Releases](RELEASES.md) | [Engineering](ENGINEERING.md) | [Todo](TODO.md) |
+| [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |  |  |
 
 ## Projects for whole Application
 * [Application Framework](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/4)
 * [Gui Layout](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/5)
 
-## The Tab Projects
+## Projects for Tabs
 | Tab  | Status   |
 |------|----------|
 | [CyclicCellularAutomaton](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/2)| OK |
@@ -34,3 +34,6 @@
 | INACTIVE  | Tab is not in TabPlane         |
 | PLANNING  | Research and Preparation       |
 
+##
+
+&copy; 2020 Thomas W&ouml;hlke

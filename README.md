@@ -57,7 +57,18 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 **[More...](docs/tabs/wator/README.md)**
 
 ## Work in Progress
-* **[Projects](docs/PROJECTS.md)**
-* **[Todo](docs/TODO.md)**
-* **[Software Engineering](docs/ENGINEERING.md)**
-* **[Work on Documentation](docs/documentation/README.md)**
+
+| Work in Progress | Github                          |
+|------------------|---------------------------------|
+| [Projects](docs/PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](docs/MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](docs/ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](docs/RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](docs/ENGINEERING.md) | |
+| [Todo](docs/TODO.md) | |
+|  |  |
+| *[back...](README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
+
+##
+
+&copy; 2020 Thomas W&ouml;hlke
