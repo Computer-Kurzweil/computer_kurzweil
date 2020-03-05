@@ -21,3 +21,7 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 ## Wikipedia
 * [https://en.wikipedia.org/wiki/Diffusion-limited_aggregation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation)
 
+
+##
+[&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
+

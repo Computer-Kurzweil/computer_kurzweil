@@ -8,3 +8,10 @@
 * [About GitHub Pages and Jekyll](https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll)
 
 ## Computer Kurzweil More Information
+
+## Todo
+* Add JavaDoc to all 1stLevel Tab Classes
+* Use Copyright Profile
+
+##
+[&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)

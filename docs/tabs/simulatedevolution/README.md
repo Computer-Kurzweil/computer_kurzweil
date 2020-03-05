@@ -40,4 +40,8 @@ If a cell doesn't eat enough, it will first stand still and after a while it die
 * [Blog Article](http://thomas-woehlke.blogspot.de/2016/01/simulated-evolution-artificial-life-and.html)
 
 
+##
+[&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
+
+
 

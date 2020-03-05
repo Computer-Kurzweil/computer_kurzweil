@@ -9,5 +9,5 @@
 
 ##
 
-&copy; 2020 Thomas W&ouml;hlke
+[&copy; 2020 Thomas W&ouml;hlke](LICENSE.code.md)
 

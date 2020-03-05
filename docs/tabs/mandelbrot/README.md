@@ -41,6 +41,8 @@ The Mandelbrot Set is drawn into the Complex Number Plane and so clicking into i
 The most beautiful Julia Sets are drawn by clicking into the Border of the Mandelbrot Set.
 * More: [https://en.wikipedia.org/wiki/Julia_set](https://en.wikipedia.org/wiki/Julia_set)
 
+##
+[&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
 
 
 

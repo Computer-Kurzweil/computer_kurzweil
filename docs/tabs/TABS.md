@@ -52,3 +52,6 @@
 | Turmite                       | turmite | Turmite |  |  |  |  |
 | Wa-Tor                        | wator  | WaTor |  |  |  |  |
 | Conways Game of Life          | gameoflive  | ConwaysGameOfLife |  |  |  |  |
+
+##
+[&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)

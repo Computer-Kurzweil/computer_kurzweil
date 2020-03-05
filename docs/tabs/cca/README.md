@@ -18,3 +18,7 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 
 ## Wikipedia
 * [Cyclic_cellular_automaton](http://en.wikipedia.org/wiki/Cyclic_cellular_automaton)
+
+
+##
+[&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
