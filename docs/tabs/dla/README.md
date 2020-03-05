@@ -23,7 +23,7 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 * [https://en.wikipedia.org/wiki/Diffusion-limited_aggregation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation)
 
 
-##
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](../TABS.md)* | ||  |  |
@@ -36,6 +36,6 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 |  |  |
 | *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
-##
+## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
 

@@ -47,7 +47,7 @@ The most beautiful Julia Sets are drawn by clicking into the Border of the Mande
 * More: [https://en.wikipedia.org/wiki/Julia_set](https://en.wikipedia.org/wiki/Julia_set)
 
 
-##
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](../TABS.md)* | |
@@ -60,7 +60,7 @@ The most beautiful Julia Sets are drawn by clicking into the Border of the Mande
 |  |  |
 | *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
-##
+## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
 
 

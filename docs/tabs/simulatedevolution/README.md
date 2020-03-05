@@ -43,7 +43,7 @@ If a cell doesn't eat enough, it will first stand still and after a while it die
 
 
 
-##
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](../TABS.md)* | |
@@ -57,7 +57,7 @@ If a cell doesn't eat enough, it will first stand still and after a while it die
 |  |  |
 | *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
-##
+## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
 
 

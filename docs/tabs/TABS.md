@@ -15,7 +15,7 @@
 | [turmite](turmite/README.md)                       | Turmite | [Turmite](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/turmite/Turmite.java)  |  |  
 | [wator](wator/README.md)                           | Wa-Tor | [WaTor](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/wator/WaTor.java)  |  |  
 
-##
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](TABS.md)* | |
@@ -29,5 +29,5 @@
 |  |  |
 | *[back...](../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
-##
+## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)

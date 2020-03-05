@@ -21,7 +21,7 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 * [Cyclic_cellular_automaton](http://en.wikipedia.org/wiki/Cyclic_cellular_automaton)
 
 
-##
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](../TABS.md)* | |
@@ -34,6 +34,6 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 |  |  |
 | *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
-##
+## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
 

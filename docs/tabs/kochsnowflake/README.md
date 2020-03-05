@@ -1,13 +1,13 @@
 # Koch Snowflake
 *[back...](../../../README.md)* 
-##
+## Abstract
 lorem ipsum
 #### Todo
 * first
 * second
 
 
-##
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](../TABS.md)* | |
@@ -20,6 +20,6 @@ lorem ipsum
 |  |  |
 | *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
-##
+## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
 

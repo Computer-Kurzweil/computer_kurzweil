@@ -56,8 +56,7 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 ## Wa-Tor
 **[More...](docs/tabs/wator/README.md)**
 
-## Work in Progress
-
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](docs/tabs/TABS.md)* | |

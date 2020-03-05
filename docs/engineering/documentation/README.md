@@ -1,4 +1,9 @@
 # Work on Documentation
+## Abstract
+lorem ipsum
+#### Todo
+* first
+* second
 
 ## Github Pages and Jekyll
 * [Testing your GitHub Pages site locally with Jekyll](https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll)
@@ -13,7 +18,7 @@
 * Add JavaDoc to all 1stLevel Tab Classes
 * Use Copyright Profile
 
-##
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
 | *[Tabs](../../tabs/TABS.md)* | |
@@ -27,5 +32,5 @@
 |  |  |
 | *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
-##
+## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)
