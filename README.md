@@ -60,14 +60,14 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
-| *[Tabs](docs/tabs/TABS.md)* | |
-|  |  |
+| *[Tabs](docs/tabs/TABS.md)* | ... |
+| ... | ... |
 | [Projects](docs/PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
 | [Milestones](docs/MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
 | [Issues](docs/ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
 | [Releases](docs/RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
-| [Engineering](docs/ENGINEERING.md) | |
-|  |  |
+| [Engineering](docs/ENGINEERING.md) | ... |
+| ... | ... |
 | *[back...](README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ## Copyright
