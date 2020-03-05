@@ -2,6 +2,7 @@
 
 Fractals and random walk due to Brownian motion cluster
 
+*[back...](../../../README.md)* 
 ## Screenshots
 
 ![The Dendrite](img/screen1.png)
@@ -21,6 +22,18 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 ## Wikipedia
 * [https://en.wikipedia.org/wiki/Diffusion-limited_aggregation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation)
 
+
+##
+| Work in Progress | Github                          |
+|------------------|---------------------------------|
+| [Projects](../../PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](../../MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](../../ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](../../RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](../../ENGINEERING.md) | |
+| [Todo](../../TODO.md) | |
+|  |  |
+| *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ##
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)

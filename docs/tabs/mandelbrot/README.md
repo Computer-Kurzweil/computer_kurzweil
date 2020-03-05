@@ -1,12 +1,15 @@
 # Mandelbrot
+**Computing the Edge of the Mandelbrot Set with a Turing Machine**  
 
-**Computing the Edge of the Mandelbrot Set with a Turing Machine**
+*[back...](../../../README.md)* 
 
 ## Screenshots
 
 ### Running around the Edge of the Mandelbrot Set
 
 ![Running around the Edge of the Mandelbrot Set](img/screen01.png)
+
+### Running around the Edge of the Mandelbrot Set
 
 ![Running around the Edge of the Mandelbrot Set](img/screen02.png)
 
@@ -17,6 +20,8 @@
 ### Clicked somewhere on the Edge of Mandelbrot Set: The Julia Set
 
 ![Clicked somewhere on the Edge of Mandelbrot Set: The Julia Set](img/julia01.png)
+
+### Clicked somewhere on the Edge of Mandelbrot Set: The Julia Set
 
 ![Clicked on another Point on the Edge of Mandelbrot Set: The Julia Set](img/julia02.png)
 
@@ -40,6 +45,19 @@ After the Turing Machine finished to run around the Set, the Application paints 
 The Mandelbrot Set is drawn into the Complex Number Plane and so clicking into it, it delivers the Complex Number to calculate a Julia Set for it.
 The most beautiful Julia Sets are drawn by clicking into the Border of the Mandelbrot Set.
 * More: [https://en.wikipedia.org/wiki/Julia_set](https://en.wikipedia.org/wiki/Julia_set)
+
+
+##
+| Work in Progress | Github                          |
+|------------------|---------------------------------|
+| [Projects](../../PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](../../MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](../../ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](../../RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](../../ENGINEERING.md) | |
+| [Todo](../../TODO.md) | |
+|  |  |
+| *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ##
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)

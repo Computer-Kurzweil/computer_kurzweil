@@ -2,6 +2,8 @@
 
 **Artificial Life Simulation of Bacteria Motion depending on DNA**
 
+*[back...](../../../README.md)* 
+
 ## Abstract
 
 Green food appears in a world with red moving cells. These cells eat the food if it is on their position.
@@ -39,6 +41,19 @@ If a cell doesn't eat enough, it will first stand still and after a while it die
 ## Blog Article 
 * [Blog Article](http://thomas-woehlke.blogspot.de/2016/01/simulated-evolution-artificial-life-and.html)
 
+
+
+##
+| Work in Progress | Github                          |
+|------------------|---------------------------------|
+| [Projects](../../PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](../../MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](../../ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](../../RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](../../ENGINEERING.md) | |
+| [Todo](../../TODO.md) | |
+|  |  |
+| *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ##
 [&copy; 2020 Thomas W&ouml;hlke](../../LICENSE.code.md)

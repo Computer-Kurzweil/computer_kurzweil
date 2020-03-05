@@ -1,11 +1,23 @@
 # Milestones
 
-| | | | | | |
-|-----------------------------|---------------------------------|-------------------------|-----------------------------|-----------------------------------|---------------------|
-| [Projects](PROJECTS.md) | [Milestones](MILESTONES.md) | [Issues](ISSUES.md) | [Releases](RELEASES.md) | [Engineering](ENGINEERING.md) | [Todo](TODO.md) |
-| [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |  |  |
+*[back...](../README.md)* 
 
-## Milestones
+
+##
+
+lorem ipsum
+
+##
+| Work in Progress | Github                          |
+|------------------|---------------------------------|
+| [Projects](PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](ENGINEERING.md) | |
+| [Todo](TODO.md) | |
+|  |  |
+| *[back...](../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ##
 
