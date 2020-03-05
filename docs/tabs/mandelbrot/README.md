@@ -2,6 +2,24 @@
 
 **Computing the Edge of the Mandelbrot Set with a Turing Machine**
 
+## Screenshots
+
+### Running around the Edge of the Mandelbrot Set
+
+![Running around the Edge of the Mandelbrot Set](img/screen01.png)
+
+![Running around the Edge of the Mandelbrot Set](img/screen02.png)
+
+### Computing the Area outside the Mandelbrot Set
+
+![Computing the Area outside the Mandelbrot Set](img/screen03.png)
+
+### Clicked somewhere on the Edge of Mandelbrot Set: The Julia Set
+
+![Clicked somewhere on the Edge of Mandelbrot Set: The Julia Set](img/julia01.png)
+
+![Clicked on another Point on the Edge of Mandelbrot Set: The Julia Set](img/julia02.png)
+
 ## The Mandelbrot Set
 
 The Mandelbrot set is the set of values of c in the complex plane for which the orbit of 0 
@@ -23,23 +41,6 @@ The Mandelbrot Set is drawn into the Complex Number Plane and so clicking into i
 The most beautiful Julia Sets are drawn by clicking into the Border of the Mandelbrot Set.
 * More: [https://en.wikipedia.org/wiki/Julia_set](https://en.wikipedia.org/wiki/Julia_set)
 
-## Screenshots
-
-### Running around the Edge of the Mandelbrot Set
-
-![Running around the Edge of the Mandelbrot Set](img/screen01.png)
-
-![Running around the Edge of the Mandelbrot Set](img/screen02.png)
-
-### Computing the Area outside the Mandelbrot Set
-
-![Computing the Area outside the Mandelbrot Set](img/screen03.png)
-
-### Clicked somewhere on the Edge of Mandelbrot Set: The Julia Set
-
-![Clicked somewhere on the Edge of Mandelbrot Set: The Julia Set](img/julia01.png)
-
-![Clicked on another Point on the Edge of Mandelbrot Set: The Julia Set](img/julia02.png)
 
 
 
