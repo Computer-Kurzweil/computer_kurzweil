@@ -20,6 +20,13 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 @Getter
 @ToString(callSuper=true,exclude={"tabCtx"})
 @EqualsAndHashCode(callSuper=true,exclude={"tabCtx"})
+/**
+ * https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html
+ * https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/concurrent/Executor.html
+ * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/18
+ * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/19
+ * http://openbook.rheinwerk-verlag.de/javainsel9/javainsel_14_004.htm
+ */
 public class DiffusionLimitedAggregationController extends Thread
         implements TabController, DiffusionLimitedAggregation {
 

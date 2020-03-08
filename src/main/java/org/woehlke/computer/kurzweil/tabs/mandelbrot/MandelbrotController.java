@@ -4,6 +4,13 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
+/**
+ * https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html
+ * https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/concurrent/Executor.html
+ * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/18
+ * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/19
+ * http://openbook.rheinwerk-verlag.de/javainsel9/javainsel_14_004.htm
+ */
 @Log4j2
 @Getter
 public class MandelbrotController extends Thread implements TabController, Mandelbrot {
