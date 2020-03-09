@@ -4,16 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -28,10 +26,10 @@ import java.util.List;
  */
 @Log4j2
 @Getter
-@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
-@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","particles"})
+@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","tabModel"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","tabModel"})
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
-    Serializable, DiffusionLimitedAggregation {
+    Serializable, TabCanvas, DiffusionLimitedAggregation {
 
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationModel tabModel;
@@ -109,4 +107,8 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         paint(g);
     }
 
+    @Override
+    public void showMe() {
+
+    }
 }

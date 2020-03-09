@@ -7,6 +7,7 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.ParticleOrientation;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.RandomWalkColorScheme;
 
@@ -30,7 +31,7 @@ import java.io.Serializable;
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class RandomWalkCanvas extends JComponent implements
-    Serializable, RandomWalk {
+    Serializable, TabCanvas, RandomWalk {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
@@ -68,6 +69,7 @@ public class RandomWalkCanvas extends JComponent implements
         this.running = Boolean.FALSE;
     }
 
+    @Override
     public void paint(Graphics g) {
         //log.info("paint START (Graphics g)");
         int x;
@@ -109,10 +111,14 @@ public class RandomWalkCanvas extends JComponent implements
         //log.info("paint DONE (Graphics g)");
     }
 
+    @Override
     public void update(Graphics g) {
         paint(g);
     }
 
 
+    @Override
+    public void showMe() {
 
+    }
 }

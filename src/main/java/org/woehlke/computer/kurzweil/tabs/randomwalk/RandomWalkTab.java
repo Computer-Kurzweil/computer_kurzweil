@@ -21,12 +21,14 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
     private final RandomWalkContext tabCtx;
 
     private final RandomWalkCanvas canvas;
+    private final RandomWalkModel tabModel;
     private final PanelBottomButtons bottomButtonsPanel;
 
     public RandomWalkTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
         this.tabCtx = new RandomWalkContext(this);
         this.canvas = this.tabCtx.getCanvas();
+        this.tabModel = this.canvas.getTabModel();
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.add(this.panelSubtitle);
         this.add(this.canvas);
@@ -42,7 +44,7 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
     public void start() {
         log.info("start");
         this.showMe();
-        this.canvas.start();
+        this.tabModel.start();
         this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
@@ -55,7 +57,7 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
     @Override
     public void stop() {
         log.info("stop");
-        this.canvas.stop();
+        this.tabModel.stop();
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();

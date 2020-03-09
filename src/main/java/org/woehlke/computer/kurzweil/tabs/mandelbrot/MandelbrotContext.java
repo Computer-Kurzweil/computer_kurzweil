@@ -26,8 +26,8 @@ public class MandelbrotContext extends ForkJoinTask<Void> implements TabContext,
         this.tab = tab;
         this.ctx = ctx;
         this.canvas = new MandelbrotCanvas(this);
+        this.tabModel = this.canvas.getTabModel();
         this.controller = new MandelbrotController(this);
-        this.tabModel = new MandelbrotModel(this);
     }
 
     @Override
