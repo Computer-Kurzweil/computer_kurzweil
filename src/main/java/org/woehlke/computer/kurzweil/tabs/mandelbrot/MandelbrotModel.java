@@ -27,8 +27,8 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.Applicat
  */
 @Log4j2
 @Getter
-@ToString(callSuper = true)
-@EqualsAndHashCode
+@ToString
+@EqualsAndHashCode(callSuper=false)
 public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel, Mandelbrot {
 
     @Setter

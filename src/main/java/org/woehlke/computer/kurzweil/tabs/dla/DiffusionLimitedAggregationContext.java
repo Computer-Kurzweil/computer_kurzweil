@@ -16,7 +16,7 @@ import static java.lang.Thread.State.NEW;
 @Log4j2
 @Getter
 @ToString(exclude={"canvas","controller","tab","ctx"})
-@EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"})
+@EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"},callSuper = false)
 public class DiffusionLimitedAggregationContext extends ForkJoinTask<Void> implements TabContext, DiffusionLimitedAggregation {
 
     private DiffusionLimitedAggregationController controller;

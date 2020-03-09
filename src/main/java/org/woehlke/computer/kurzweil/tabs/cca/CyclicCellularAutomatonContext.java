@@ -14,7 +14,7 @@ import static java.lang.Thread.State.NEW;
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
-@EqualsAndHashCode(exclude = {"tab"})
+@EqualsAndHashCode(exclude = {"tab"},callSuper = false)
 public class CyclicCellularAutomatonContext extends ForkJoinTask<Void> implements TabContext, CyclicCellularAutomaton {
 
     private final ComputerKurzweilContext ctx;

@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
@@ -12,6 +13,7 @@ import java.util.concurrent.ForkJoinTask;
 
 @Log4j2
 @Getter
+@EqualsAndHashCode(callSuper=false,exclude = {"tabCtx"})
 public class RandomWalkModel extends ForkJoinTask<Void> implements TabModel, RandomWalk {
 
     private final RandomWalkContext tabCtx;

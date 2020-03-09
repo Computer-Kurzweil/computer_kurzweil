@@ -28,8 +28,8 @@ import java.io.Serializable;
  */
 @Log4j2
 @Getter
-@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
+@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","tabModel"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","tabModel"})
 public class RandomWalkCanvas extends JComponent implements
     Serializable, TabCanvas, RandomWalk {
 

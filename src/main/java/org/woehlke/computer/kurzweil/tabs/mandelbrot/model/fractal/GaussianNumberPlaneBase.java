@@ -25,7 +25,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
  */
 @Getter
 @Setter
-@ToString(callSuper = true)
+@ToString
 public abstract class GaussianNumberPlaneBase implements Startable, Mandelbrot {
 
     @ToString.Exclude

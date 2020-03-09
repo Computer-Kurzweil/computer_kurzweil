@@ -37,7 +37,7 @@ import java.util.concurrent.ForkJoinTask;
 @Log4j2
 @Getter
 @ToString(exclude={"appCtx"})
-@EqualsAndHashCode(exclude={"appCtx"})
+@EqualsAndHashCode(exclude={"appCtx"},callSuper = false)
 public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabModel, SimulatedEvolution {
 
     private final SimulatedEvolutionContext appCtx;

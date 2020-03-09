@@ -19,7 +19,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.Comput
 
 @Log4j2
 @Getter
-@ToString(callSuper = true)
+@ToString
 public class GaussianNumberPlaneBaseJulia extends GaussianNumberPlaneBase implements Mandelbrot {
 
     private final ZoomLevel zoomLevel;
