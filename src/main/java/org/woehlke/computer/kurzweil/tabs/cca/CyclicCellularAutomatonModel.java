@@ -1,131 +1,49 @@
-package org.woehlke.computer.kurzweil.tabs.turmite;
+package org.woehlke.computer.kurzweil.tabs.cca;
 
-
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
-import org.woehlke.computer.kurzweil.tabs.turmite.canvas.TurmiteColorScheme;
+import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
+import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonColorScheme;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
-import java.io.Serializable;
 import java.util.Random;
+import java.util.concurrent.ForkJoinTask;
 
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
 
-/**
- * Cyclic Cellular Automaton.
- *
- * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/cyclic-cellular-automaton/
- * @author Thomas Woehlke
- *
- * Date: 05.02.2006
- * Time: 00:51:51
- */
 @Log4j2
 @Getter
-@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-public class TurmiteCanvas extends JComponent implements
-    Serializable, Turmite {
+public class CyclicCellularAutomatonModel extends ForkJoinTask<Void> implements TabModel {
 
-    private static final long serialVersionUID = -3057254130516052936L;
+    private final CyclicCellularAutomatonContext tabCtx;
 
-    private final TurmiteContext tabCtx;
-    private final Border border;
-    private final Dimension preferredSize;
-    private final LayoutCanvas layout;
-    private final TurmiteColorScheme colorScheme;
     private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
     private volatile LatticeNeighbourhoodType neighbourhoodType;
     private Boolean running;
 
+    private final CyclicCellularAutomatonColorScheme colorScheme;
     private final int versions;
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
 
-    public TurmiteCanvas(TurmiteContext tabCtx) {
+    public CyclicCellularAutomatonModel(CyclicCellularAutomatonContext tabCtx) {
         this.tabCtx = tabCtx;
-        this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
-        this.layout = new LayoutCanvas(this);
-        this.preferredSize = new Dimension(worldX,worldY);
+        this.colorScheme = new CyclicCellularAutomatonColorScheme();
         this.versions = 2;
-        this.colorScheme = new TurmiteColorScheme();
-        this.setLayout(layout);
-        this.setPreferredSize(preferredSize);
-        this.setMinimumSize(preferredSize);
-        this.setMaximumSize(preferredSize);
-        this.setSize(this.worldX,this.worldY);
         this.startWithNeighbourhoodVonNeumann();
         this.resetLattice();
         this.running = Boolean.FALSE;
-        showMe();
-    }
-
-    public void paint(Graphics g) {
-        //log.info("paint START (Graphics g)");
-        int x;
-        int y;
-        int state;
-        Color stateColor;
-        if (lattice != null) {
-            for (y = 0; y < worldY; y++) {
-                for (x = 0; x < worldX; x++) {
-                    state = this.lattice[source][x][y];
-                    stateColor = this.colorScheme.getColorForState(state);
-                    g.setColor(stateColor);
-                    g.drawLine(x, y, x, y);
-                }
-            }
-        }
-        super.paintComponent(g);
-        //log.info("paint DONE (Graphics g)");
-    }
-
-    public void update(Graphics g) {
-        //log.info("update(Graphics g)");
-        paint(g);
     }
 
     @Override
-    public void showMe() {
-        log.info("showMe "+this.toString());
-    }
-
-    public void start() {
-        log.info("start");
-        showMe();
-        synchronized (running) {
-            running = Boolean.TRUE;
-        }
-        log.info("started "+this.toString());
-    }
-
-    public void stop() {
-        log.info("stop");
-        synchronized (running) {
-            running = Boolean.FALSE;
-        }
-        log.info("stopped "+this.toString());
-    }
-
-    public void update(){
-        //log.info("update");
-    }
-
-    public void step(){
+    protected boolean exec() {
         boolean doIt = false;
         synchronized (running) {
             doIt = running.booleanValue();
@@ -158,7 +76,9 @@ public class TurmiteCanvas extends JComponent implements
             this.target = (this.target + 1) % 2;
             //log.info("stepped");
         }
+        return true;
     }
+
 
     private void initCreateLattice(){
         log.info("initCreateLattice start: "+neighbourhoodType.name());
@@ -213,4 +133,32 @@ public class TurmiteCanvas extends JComponent implements
     }
 
 
+    @Override
+    public Void getRawResult() {
+        return null;
+    }
+
+    @Override
+    protected void setRawResult(Void value) {}
+
+
+    public void start() {
+        log.info("start");
+        synchronized (running) {
+            running = Boolean.TRUE;
+        }
+        log.info("started "+this.toString());
+    }
+
+    public void stop() {
+        log.info("stop");
+        synchronized (running) {
+            running = Boolean.FALSE;
+        }
+        log.info("stopped "+this.toString());
+    }
+
+    public int getState(int x, int y) {
+        return lattice[source][x][y];
+    }
 }

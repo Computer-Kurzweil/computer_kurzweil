@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.turmite;
+package org.woehlke.computer.kurzweil.tabs.kochsnowflake;
 
 
 import lombok.EqualsAndHashCode;
@@ -8,7 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
-import org.woehlke.computer.kurzweil.tabs.turmite.canvas.TurmiteColorScheme;
+import org.woehlke.computer.kurzweil.tabs.kochsnowflake.canvas.KochSnowflakeColorScheme;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -32,16 +32,16 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-public class TurmiteCanvas extends JComponent implements
-    Serializable, Turmite {
+public class KochSnowflakeModel extends JComponent implements
+    Serializable, KochSnowflake {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
-    private final TurmiteContext tabCtx;
+    private final KochSnowflakeContext tabCtx;
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
-    private final TurmiteColorScheme colorScheme;
+    private final KochSnowflakeColorScheme colorScheme;
     private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
@@ -54,7 +54,7 @@ public class TurmiteCanvas extends JComponent implements
     private final int worldX;
     private final int worldY;
 
-    public TurmiteCanvas(TurmiteContext tabCtx) {
+    public KochSnowflakeModel(KochSnowflakeContext tabCtx) {
         this.tabCtx = tabCtx;
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
@@ -62,7 +62,7 @@ public class TurmiteCanvas extends JComponent implements
         this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
         this.versions = 2;
-        this.colorScheme = new TurmiteColorScheme();
+        this.colorScheme = new KochSnowflakeColorScheme();
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);

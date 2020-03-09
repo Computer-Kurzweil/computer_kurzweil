@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.commons;
 
-public interface Updateable {
-    void update();
+import java.util.concurrent.Future;
+
+public interface Updateable extends Future<Void> {
+    //void update();
 }

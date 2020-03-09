@@ -8,10 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
-import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.kochsnowflake.canvas.KochSnowflakeColorScheme;
 
 import javax.swing.*;
@@ -21,7 +17,6 @@ import java.io.Serializable;
 import java.util.Random;
 
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
-import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 
 /**
  * Cyclic Cellular Automaton.
@@ -38,7 +33,7 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.KOCH_SNOWFLAKE;
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class KochSnowflakeCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel,KochSnowflake {
+    Serializable, KochSnowflake {
 
     private static final long serialVersionUID = -3057254130516052936L;
 

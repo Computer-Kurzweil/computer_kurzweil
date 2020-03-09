@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.ParticleOrientation;
@@ -31,7 +30,7 @@ import java.io.Serializable;
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
 public class RandomWalkCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel, RandomWalk {
+    Serializable, RandomWalk {
 
     private static final long serialVersionUID = -3057254130516052936L;
 

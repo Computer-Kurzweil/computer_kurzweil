@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.commons.tabs;
 
 import org.woehlke.computer.kurzweil.commons.Startable;
 
-public interface TabModel extends Startable {
+import java.util.concurrent.Future;
 
-    void step();
+public interface TabModel extends Startable, Future<Void> {
 }
