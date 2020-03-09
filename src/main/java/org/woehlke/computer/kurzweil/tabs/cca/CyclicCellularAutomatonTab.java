@@ -21,6 +21,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
+    private final CyclicCellularAutomatonModel model;
 
     private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
     private final PanelBottomButtons bottomButtonsPanel;
@@ -29,6 +30,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
         super(tabbedPane, TAB_TYPE);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
+        this.model = this.canvas.getCyclicCellularAutomatonModel();
         this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
@@ -49,7 +51,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     public void start() {
         log.info("start");
         this.showMe();
-        this.canvas.start();
+        this.model.start();
         this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
@@ -62,7 +64,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     @Override
     public void stop() {
         log.info("stop");
-        this.canvas.stop();
+        this.model.stop();
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
@@ -91,13 +93,13 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonVonNeumann()) {
-            this.canvas.startWithNeighbourhoodVonNeumann();
+            this.model.startWithNeighbourhoodVonNeumann();
             this.start();
         } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonMoore()) {
-            this.canvas.startWithNeighbourhoodMoore();
+            this.model.startWithNeighbourhoodMoore();
             this.start();
         } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonWoehlke()) {
-            this.canvas.startWithNeighbourhoodWoehlke();
+            this.model.startWithNeighbourhoodWoehlke();
             this.start();
         }
         if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){

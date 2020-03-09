@@ -7,17 +7,20 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 
+import java.util.concurrent.ForkJoinTask;
+
 import static java.lang.Thread.State.NEW;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class CyclicCellularAutomatonContext implements TabContext, CyclicCellularAutomaton {
+public class CyclicCellularAutomatonContext extends ForkJoinTask<Void> implements TabContext, CyclicCellularAutomaton {
 
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonTab tab;
+    private final CyclicCellularAutomatonModel tabModel;
     private CyclicCellularAutomatonController controller;
 
     public CyclicCellularAutomatonContext(
@@ -26,12 +29,8 @@ public class CyclicCellularAutomatonContext implements TabContext, CyclicCellula
         this.tab = tab;
         this.ctx = tab.getCtx();
         this.canvas = new CyclicCellularAutomatonCanvas( this);
+        this.tabModel = this.canvas.getCyclicCellularAutomatonModel();
         this.controller = new CyclicCellularAutomatonController(this);
-    }
-
-    @Override
-    public CyclicCellularAutomatonCanvas getTabModel() {
-        return this.canvas;
     }
 
     @Override
@@ -49,5 +48,21 @@ public class CyclicCellularAutomatonContext implements TabContext, CyclicCellula
                 this.stopController();
             }
         }
+    }
+
+    @Override
+    public Void getRawResult() {
+        return null;
+    }
+
+    @Override
+    protected void setRawResult(Void value) {
+
+    }
+
+    @Override
+    protected boolean exec() {
+        this.tab.repaint();
+        return true;
     }
 }

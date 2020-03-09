@@ -38,10 +38,9 @@ public class MandelbrotController extends Thread implements TabController, Mande
             }
             synchronized (this.tabCtx) {
                 log.info(".");
-                this.tabCtx.getCanvas().getMandelbrotModel().step();
+                this.tabCtx.getCanvas().getTabModel().exec();
                 log.info("[");
-                this.tabCtx.getCanvas().update();
-                this.tabCtx.getCanvas().repaint();
+                this.tabCtx.exec();
                 log.info("]");
             }
             try {
@@ -49,7 +48,7 @@ public class MandelbrotController extends Thread implements TabController, Mande
             } catch (InterruptedException e) {
                 log.info(e.getLocalizedMessage());
             }
-        } while( doMyJob && (! this.tabCtx.getCanvas().getMandelbrotModel().isFinished()));
+        } while( doMyJob && (! this.tabCtx.getCanvas().getTabModel().isFinished()));
         log.info("run() - finished");
     }
 

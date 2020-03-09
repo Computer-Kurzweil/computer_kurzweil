@@ -8,6 +8,8 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 
+import java.util.concurrent.ForkJoinTask;
+
 import static java.lang.Thread.State.NEW;
 
 
@@ -15,11 +17,12 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(exclude={"canvas","controller","tab","ctx"})
 @EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"})
-public class DiffusionLimitedAggregationContext implements TabContext, DiffusionLimitedAggregation {
+public class DiffusionLimitedAggregationContext extends ForkJoinTask<Void> implements TabContext, DiffusionLimitedAggregation {
 
     private DiffusionLimitedAggregationController controller;
 
     private final DiffusionLimitedAggregationCanvas canvas;
+    private final DiffusionLimitedAggregationModel tabModel;
     private final DiffusionLimitedAggregationTab tab;
     private final ComputerKurzweilContext ctx;
 
@@ -29,6 +32,7 @@ public class DiffusionLimitedAggregationContext implements TabContext, Diffusion
         this.tab = tab;
         this.ctx = this.tab.getCtx();
         this.canvas = new DiffusionLimitedAggregationCanvas(this);
+        this.tabModel = this.canvas.getTabModel();
         startController();
     }
 
@@ -50,7 +54,18 @@ public class DiffusionLimitedAggregationContext implements TabContext, Diffusion
     }
 
     @Override
-    public TabModel getTabModel() {
-        return canvas;
+    public Void getRawResult() {
+        return null;
+    }
+
+    @Override
+    protected void setRawResult(Void value) {
+
+    }
+
+    @Override
+    protected boolean exec() {
+        this.tab.repaint();
+        return true;
     }
 }

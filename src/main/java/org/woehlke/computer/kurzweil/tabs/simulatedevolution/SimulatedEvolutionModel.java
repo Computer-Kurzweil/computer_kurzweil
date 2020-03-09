@@ -15,10 +15,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.Si
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * The World contains Water, Cells and Food.

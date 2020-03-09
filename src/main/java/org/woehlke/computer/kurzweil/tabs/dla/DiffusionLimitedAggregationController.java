@@ -51,9 +51,9 @@ public class DiffusionLimitedAggregationController extends Thread
                 doIt = goOn.booleanValue();
             }
             synchronized ( this.tabCtx){
-                this.tabCtx.getTabModel().step();
-                this.tabCtx.getCanvas().update();
-                this.tabCtx.getTab().repaint();
+                if(this.tabCtx.getTabModel().exec()){
+                    this.tabCtx.exec();
+                }
             }
             try { sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { e.printStackTrace(); }

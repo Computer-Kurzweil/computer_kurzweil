@@ -74,6 +74,10 @@ public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> impleme
 
     public void step() { }
 
+    public int getAgeFor(int x, int y) {
+        return this.worldMap[x][y];
+    }
+
     @Override
     protected boolean exec() {
         boolean doIt = false;
@@ -116,7 +120,7 @@ public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> impleme
             particles = newParticles;
         }
         //log.info("stepped");
-        return true;
+        return doIt;
     }
 
     public boolean hasDendriteNeighbour( int myX , int myY){
@@ -146,19 +150,5 @@ public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> impleme
     protected void setRawResult(Void value) {
 
     }
-    public void start() {
-        log.info("start");
-        synchronized (running) {
-            running = Boolean.TRUE;
-        }
-        log.info("started "+this.toString());
-    }
 
-    public void stop() {
-        log.info("stop");
-        synchronized (running) {
-            running = Boolean.FALSE;
-        }
-        log.info("stopped "+this.toString());
-    }
 }

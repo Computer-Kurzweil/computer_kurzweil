@@ -53,9 +53,8 @@ public class CyclicCellularAutomatonController extends Thread
             }
             synchronized (this.tabCtx) {
                 //log.info("running");
-                this.tabCtx.getTabModel().step();
-                this.tabCtx.getCanvas().update();
-                this.tabCtx.getTab().repaint();
+                this.tabCtx.getTabModel().exec();
+                this.tabCtx.exec();
             }
             try { super.sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { log.info(e.getMessage()); }

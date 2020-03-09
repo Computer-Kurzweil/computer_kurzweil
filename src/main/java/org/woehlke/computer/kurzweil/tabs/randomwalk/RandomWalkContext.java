@@ -6,7 +6,8 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
-import org.woehlke.computer.kurzweil.tabs.TabType;
+
+import java.util.concurrent.ForkJoinTask;
 
 import static java.lang.Thread.State.NEW;
 
@@ -14,10 +15,11 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = true, exclude = {"tab"})
 @EqualsAndHashCode(exclude = {"tab"})
-public class RandomWalkContext implements TabContext, RandomWalk {
+public class RandomWalkContext extends ForkJoinTask<Void> implements TabContext, RandomWalk {
 
     private final ComputerKurzweilContext ctx;
     private final RandomWalkCanvas canvas;
+    private final RandomWalkModel tabModel;
     private final RandomWalkTab tab;
     private RandomWalkController controller;
 
@@ -27,12 +29,8 @@ public class RandomWalkContext implements TabContext, RandomWalk {
         this.tab = tab;
         this.ctx = tab.getCtx();
         this.canvas = new RandomWalkCanvas( this);
+        this.tabModel = this.canvas.getTabModel();
         this.controller = new RandomWalkController(this);
-    }
-
-    @Override
-    public RandomWalkCanvas getTabModel() {
-        return this.canvas;
     }
 
     @Override
@@ -50,6 +48,22 @@ public class RandomWalkContext implements TabContext, RandomWalk {
                 this.stopController();
             }
         }
+    }
+
+    @Override
+    public Void getRawResult() {
+        return null;
+    }
+
+    @Override
+    protected void setRawResult(Void value) {
+
+    }
+
+    @Override
+    protected boolean exec() {
+        this.tab.repaint();
+        return true;
     }
 
 }

@@ -34,6 +34,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, DiffusionLimitedAggregation {
 
     private final DiffusionLimitedAggregationContext tabCtx;
+    private final DiffusionLimitedAggregationModel tabModel;
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
@@ -50,6 +51,7 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         DiffusionLimitedAggregationContext tabCtx
     ) {
         this.tabCtx = tabCtx;
+        this.tabModel = new DiffusionLimitedAggregationModel( this.tabCtx );
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
@@ -63,24 +65,6 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         this.setMaximumSize(preferredSize);
         this.setSize(worldX,worldY);
 
-
-
-    }
-
-    public void start() {
-        log.info("start");
-        synchronized (running) {
-            running = Boolean.TRUE;
-        }
-        log.info("started "+this.toString());
-    }
-
-    public void stop() {
-        log.info("stop");
-        synchronized (running) {
-            running = Boolean.FALSE;
-        }
-        log.info("stopped "+this.toString());
     }
 
     public void paint(Graphics g) {
@@ -93,15 +77,17 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         int x;
         int y;
         //paint moving Particles
-        for(LatticePoint particle : particles){
+        for(LatticePoint particle :  this.tabModel.getParticles()){
             x = particle.getX();
             y = particle.getY();
             g.drawLine(x,y,x,y);
         }
+        int myAge = 0;
         //paint dendrite Particles
         for(y=0; y < worldY; y++){
             for(x=0; x < worldX; x++){
-                int myAge = worldMap[x][y];
+                myAge =   this.tabModel.getAgeFor(x,y);
+                //myAge = worldMap[x][y];
                 //if is part of dendrite
                 if(myAge > 0) {
                     // color from age

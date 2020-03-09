@@ -12,6 +12,8 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPosition
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState;
 
+import java.util.concurrent.ForkJoinTask;
+
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState.*;
 
 /**
@@ -27,7 +29,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.Applicat
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode
-public class MandelbrotModel implements TabModel, Mandelbrot {
+public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel, Mandelbrot {
 
     @Setter
     private volatile ApplicationState state;
@@ -123,7 +125,7 @@ public class MandelbrotModel implements TabModel, Mandelbrot {
     }
 
     @Override
-    public void step() {
+    protected boolean exec() {
         switch( this.getTuringPhaseStateMachine().getTuringTuringPhase()){
             case SEARCH_THE_SET:
                 stepGoToSet();
@@ -137,6 +139,7 @@ public class MandelbrotModel implements TabModel, Mandelbrot {
             case FINISHED:
                 break;
         }
+        return true;
     }
 
     private void stepGoToSet(){
@@ -169,4 +172,13 @@ public class MandelbrotModel implements TabModel, Mandelbrot {
         this.getTuringPhaseStateMachine().finishFillTheOutsideWithColors();
     }
 
+    @Override
+    protected void setRawResult(Void value) {
+
+    }
+
+    @Override
+    public Void getRawResult() {
+        return null;
+    }
 }
