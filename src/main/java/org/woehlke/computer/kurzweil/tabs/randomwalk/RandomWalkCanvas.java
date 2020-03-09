@@ -41,7 +41,6 @@ public class RandomWalkCanvas extends JComponent implements
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
     private final RandomWalkColorScheme colorScheme;
-    private volatile long[][] lattice;
     private Boolean running;
     private LatticePoint particlePosition;
 
@@ -81,12 +80,12 @@ public class RandomWalkCanvas extends JComponent implements
         long myage;
         long mybyte;
         long limit = 256 * 256 * 256;
-        if (lattice == null) {
+        if ( this.tabModel.getLattice() == null) {
             this.tabModel.resetLattice();
         }
         for (y = 0; y < worldY; y++) {
             for (x = 0; x < worldX; x++) {
-                age = this.lattice[x][y];
+                age = this.tabModel.getLattice() [x][y];
                 if(age == 0){
                     red = 0;
                     green = 0;
