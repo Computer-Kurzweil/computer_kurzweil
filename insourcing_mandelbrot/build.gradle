@@ -13,8 +13,8 @@ plugins {
 }
 
 def group = 'org.woehlke.computer.kurzweil'
-def applicationNameConfig = 'insourcing_simulated_evolution'
-def mainClassNameConfig = 'org.woehlke.computer.kurzweil.simulation.evolution.SimulatedEvolutionApplication'
+def applicationNameConfig = 'insourcing_mandelbrot'
+def mainClassNameConfig = 'org.woehlke.computer.kurzweil.mandelbrot.MandelbrotSetApplication'
 def applicationName = "${applicationNameConfig}"
 ////version = '1.9'
 //version = '1.9-SNAPSHOT'
