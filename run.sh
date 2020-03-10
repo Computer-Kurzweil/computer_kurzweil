@@ -12,7 +12,7 @@ function runDefault() {
 }
 
 function runTest() {
-    ./gradlew -i  --warning-mode all clean build test check runShadow
+    ./gradlew -i  --warning-mode all computer_kurzweil_app:clean computer_kurzweil_app:build computer_kurzweil_app:test computer_kurzweil_app:check computer_kurzweil_app:runShadow
 }
 
 runTest

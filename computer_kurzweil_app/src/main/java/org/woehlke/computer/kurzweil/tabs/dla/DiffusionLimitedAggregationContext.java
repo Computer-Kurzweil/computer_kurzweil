@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 

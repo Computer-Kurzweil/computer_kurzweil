@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.ToString;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 
-import java.io.Serializable;
-
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode

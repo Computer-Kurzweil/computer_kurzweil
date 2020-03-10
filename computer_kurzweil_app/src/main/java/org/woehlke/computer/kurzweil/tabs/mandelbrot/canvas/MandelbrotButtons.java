@@ -6,8 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotCanvas;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelButtonsGroup;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelZoomButtons;
 
 import javax.swing.*;
 import java.awt.*;

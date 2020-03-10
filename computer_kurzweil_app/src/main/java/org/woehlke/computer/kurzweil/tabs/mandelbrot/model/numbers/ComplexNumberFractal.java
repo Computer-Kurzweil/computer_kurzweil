@@ -4,7 +4,6 @@ import lombok.*;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.FractalSetType;
 
-import java.io.Serializable;
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus.MAX_ITERATIONS;
 
 @Getter

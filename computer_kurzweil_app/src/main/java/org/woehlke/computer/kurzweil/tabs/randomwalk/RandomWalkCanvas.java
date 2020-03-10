@@ -8,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.ParticleOrientation;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.RandomWalkColorScheme;
 
 import javax.swing.*;

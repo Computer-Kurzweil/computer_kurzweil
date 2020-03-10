@@ -3,8 +3,6 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers;
 import lombok.*;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 
-import java.io.Serializable;
-
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
