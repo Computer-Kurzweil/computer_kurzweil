@@ -16,6 +16,14 @@ def mainClassNameConfig = 'org.woehlke.computer.kurzweil.ComputerKurzweilApplica
 
 applicationName = "${applicationNameConfig}"
 
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    jcenter()
+}
 
 application {
     applicationName = "${applicationNameConfig}"
