@@ -13,7 +13,7 @@ plugins {
 }
 
 def group = 'org.woehlke.computer.kurzweil'
-def applicationNameConfig = 'cyclic-cellular-automaton'
+def applicationNameConfig = 'insourcing_cyclic_cellular_automaton/'
 def mainClassNameConfig = 'org.woehlke.simulation.cyclic.cellular.automaton.CyclicCellularAutomatonApplication'
 def applicationName = "${applicationNameConfig}"
 ////version = '1.9'
@@ -21,7 +21,7 @@ def applicationName = "${applicationNameConfig}"
 def sourceCompatibility = '13'
 
 def jacksonDatabindVersion = '2.9.8' //2.10.2
-def lombokVersion = '1.18.12'   
+def lombokVersion = '1.18.12'
 def log4j2Version = '2.13.0'
 def log4j12Version = '1.2.17'
 def junit5Version = '5.6.0'
