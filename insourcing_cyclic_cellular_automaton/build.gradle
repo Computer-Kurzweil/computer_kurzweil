@@ -4,32 +4,17 @@
  * https://docs.gradle.org/current/userguide/application_plugin.html
  */
 plugins {
-    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'com.github.johnrengelman.shadow'
     id 'base'
     id 'java'
     id 'application'
-    id 'eclipse'
-    id 'idea'
 }
 
-def group = 'org.woehlke.computer.kurzweil'
 def applicationNameConfig = 'insourcing_cyclic_cellular_automaton'
 def mainClassNameConfig = 'org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication'
-def applicationName = "${applicationNameConfig}"
-////version = '1.9'
-//version = '1.9-SNAPSHOT'
-def sourceCompatibility = '13'
 
-def jacksonDatabindVersion = '2.9.8' //2.10.2
-def lombokVersion = '1.18.12'
-def log4j2Version = '2.13.0'
-def log4j12Version = '1.2.17'
-def junit5Version = '5.6.0'
-def junit4Version = '4.13'
-def comGoogleGuavaVersion='28.0-jre'
-def orgYamlSnakeyamlVersion='1.17'
-def javaxValidationApiVersion='2.0.1.Final'
-def orgApacheCommonsLang3VersionVersion='3.9'
+applicationName = "${applicationNameConfig}"
+sourceCompatibility = '13'
 
 repositories {
     mavenCentral()

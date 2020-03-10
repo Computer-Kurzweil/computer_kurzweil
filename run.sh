@@ -53,9 +53,9 @@ function runAlllTests() {
 function main() {
     #runJar
     #runDefault
-    #runAlllTests
+    runAlllTests
     #runSubmoduleCca
-    runSubmoduleDla
+    #runSubmoduleDla
     #runSubmoduleMandelbrot
     #runSubmoduleSimulatedEvolution
     #runSubmoduleMain
