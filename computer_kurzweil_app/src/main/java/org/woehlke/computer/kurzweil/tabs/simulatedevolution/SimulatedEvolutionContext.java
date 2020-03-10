@@ -13,8 +13,8 @@ import static java.lang.Thread.State.NEW;
 
 @Log4j2
 @Getter
-@ToString(callSuper = true, exclude={"ctx","controller","tab"})
-@EqualsAndHashCode(exclude={"ctx","controller","tab"})
+@ToString(callSuper = false, exclude={"ctx","controller","tab"})
+@EqualsAndHashCode(callSuper = false, exclude={"ctx","controller","tab"})
 public class SimulatedEvolutionContext  extends ForkJoinTask<Void> implements TabContext, SimulatedEvolution {
 
     private final ComputerKurzweilContext ctx;
