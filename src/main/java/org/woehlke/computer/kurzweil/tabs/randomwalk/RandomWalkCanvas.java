@@ -5,9 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.ParticleOrientation;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.RandomWalkColorScheme;
 
@@ -28,19 +28,19 @@ import java.io.Serializable;
  */
 @Log4j2
 @Getter
-@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
+@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","tabModel"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","tabModel"})
 public class RandomWalkCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel, RandomWalk {
+    Serializable, TabCanvas, RandomWalk {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
     private final RandomWalkContext tabCtx;
+    private final RandomWalkModel tabModel;
     private final Border border;
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
     private final RandomWalkColorScheme colorScheme;
-    private volatile long[][] lattice;
     private Boolean running;
     private LatticePoint particlePosition;
 
@@ -51,6 +51,7 @@ public class RandomWalkCanvas extends JComponent implements
 
     public RandomWalkCanvas(RandomWalkContext tabCtx) {
         this.tabCtx = tabCtx;
+        this.tabModel = new RandomWalkModel( this.tabCtx );
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getX();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
@@ -62,12 +63,12 @@ public class RandomWalkCanvas extends JComponent implements
         this.setMinimumSize(preferredSize);
         this.setMaximumSize(preferredSize);
         this.setSize(this.worldX,this.worldY);
-        this.resetLattice();
+        this.tabModel.resetLattice();
         this.particlePosition = new LatticePoint(worldX/2,worldY/2);
         this.running = Boolean.FALSE;
-        showMe();
     }
 
+    @Override
     public void paint(Graphics g) {
         //log.info("paint START (Graphics g)");
         int x;
@@ -79,12 +80,12 @@ public class RandomWalkCanvas extends JComponent implements
         long myage;
         long mybyte;
         long limit = 256 * 256 * 256;
-        if (lattice == null) {
-            this.resetLattice();
+        if ( this.tabModel.getLattice() == null) {
+            this.tabModel.resetLattice();
         }
         for (y = 0; y < worldY; y++) {
             for (x = 0; x < worldX; x++) {
-                age = this.lattice[x][y];
+                age = this.tabModel.getLattice() [x][y];
                 if(age == 0){
                     red = 0;
                     green = 0;
@@ -109,65 +110,14 @@ public class RandomWalkCanvas extends JComponent implements
         //log.info("paint DONE (Graphics g)");
     }
 
+    @Override
     public void update(Graphics g) {
         paint(g);
     }
 
+
     @Override
     public void showMe() {
-        log.info("showMe "+this.toString());
-    }
 
-    public void start() {
-        log.info("start");
-        showMe();
-        synchronized (running) {
-            running = Boolean.TRUE;
-        }
-        //log.info("started "+this.toString());
     }
-
-    public void stop() {
-        log.info("stop");
-        synchronized (running) {
-            running = Boolean.FALSE;
-        }
-        //log.info("stopped "+this.toString());
-    }
-
-    public void update(){
-        //log.info("update");
-    }
-
-    public void step(){
-        boolean doIt = false;
-        synchronized (running) {
-            doIt = running.booleanValue();
-        }
-        if(doIt){
-            //log.info("step");
-            int x = particlePosition.getX();
-            int y = particlePosition.getY();
-            int randomOrientation = this.tabCtx.getCtx().getRandom().nextInt(ParticleOrientation.values().length);
-            LatticePoint move = ParticleOrientation.values()[randomOrientation].getMove();
-            x = (x + move.getX() + worldX ) % worldX;
-            y = (y + move.getY() + worldY ) % worldY;
-            particlePosition.setX(x);
-            particlePosition.setY(y);
-            lattice[x][y] = (lattice[x][y] + 10) * 2;
-            //log.info("stepped ("+x+","+y+" = "+ lattice[x][y]+") "+ParticleOrientation.values()[randomOrientation].name());
-        }
-    }
-
-    public void resetLattice(){
-        lattice = new long[worldX][worldY];
-        int x;
-        int y;
-        for(y = 0; y <worldY; y++){
-            for(x=0; x < worldX; x++){
-                lattice[x][y]=0;
-            }
-        }
-    }
-
 }

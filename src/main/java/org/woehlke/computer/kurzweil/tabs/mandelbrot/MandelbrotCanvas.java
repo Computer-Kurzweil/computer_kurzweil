@@ -40,7 +40,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     private final LayoutCanvas layout;
     private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
     private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-    private final MandelbrotModel mandelbrotModel;
+    private final MandelbrotModel tabModel;
 
     private final static int startX = 0;
     private final static int startY = 0;
@@ -57,7 +57,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.layout = new LayoutCanvas(this);
         this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.tabCtx);
         this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.tabCtx);
-        this.mandelbrotModel = new MandelbrotModel(this.tabCtx);
+        this.tabModel = new MandelbrotModel(this.tabCtx);
         this.preferredSize = new Dimension(worldX, worldY);
         this.setBorder(border);
         this.setLayout(layout);
@@ -68,7 +68,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     public CellStatus getCellStatusFor(int x, int y) {
-        switch (mandelbrotModel.getState().getFractalSetType()) {
+        switch (tabModel.getState().getFractalSetType()) {
             case JULIA_SET:
                 return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
             case MANDELBROT_SET:
@@ -84,7 +84,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     public void start() {
         this.gaussianNumberPlaneBaseJulia.start();
         this.gaussianNumberPlaneMandelbrot.start();
-        this.mandelbrotModel.start();
+        this.tabModel.start();
         this.setModeSwitch();
         this.computeTheMandelbrotSet();
     }
@@ -93,14 +93,14 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.gaussianNumberPlaneBaseJulia.setModeSwitch();
         this.gaussianNumberPlaneMandelbrot.setModeSwitch();
-        this.mandelbrotModel.setModeSwitch();
+        this.tabModel.setModeSwitch();
     }
 
     public void setModeZoom() {
         this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         this.gaussianNumberPlaneBaseJulia.setModeZoom();
         this.gaussianNumberPlaneMandelbrot.setModeZoom();
-        this.mandelbrotModel.setModeZoom();
+        this.tabModel.setModeZoom();
     }
 
     @Override public void paint(Graphics g) {
@@ -122,7 +122,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     public void zoomOut() {
-        switch (mandelbrotModel.getState().getFractalSetType()) {
+        switch (tabModel.getState().getFractalSetType()) {
             case JULIA_SET:
                 gaussianNumberPlaneBaseJulia.zoomOut();
                 break;
@@ -134,7 +134,7 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     }
 
     public String getZoomLevel() {
-        switch (mandelbrotModel.getState().getFractalSetType()) {
+        switch (tabModel.getState().getFractalSetType()) {
             case MANDELBROT_SET:
                 return gaussianNumberPlaneMandelbrot.getZoomLevel();
             case JULIA_SET:
@@ -151,8 +151,8 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
     @Override
     public void mouseClicked(MouseEvent e) {
         LatticePoint latticePoint = new LatticePoint(e.getX(), e.getY());
-        mandelbrotModel.click();
-        switch (mandelbrotModel.getState()) {
+        tabModel.click();
+        switch (tabModel.getState()) {
             case MANDELBROT_SWITCH:
                 computeTheMandelbrotSet();
                 break;
@@ -168,11 +168,6 @@ public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseList
         }
         e.consume();
         this.showMe();
-    }
-
-    @Override
-    public void update() {
-        log.info("update");
     }
 
     @Override

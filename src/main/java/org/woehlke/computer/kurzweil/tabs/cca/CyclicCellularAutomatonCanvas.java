@@ -5,9 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvasWithModel;
-import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
-import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonColorScheme;
 
@@ -15,10 +13,10 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.io.Serializable;
-import java.util.Random;
-
-import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
-import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.WOEHLKE_NEIGHBORHOOD;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 
 /**
@@ -33,10 +31,10 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
  */
 @Log4j2
 @Getter
-@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
-@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","lattice"})
+@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","cyclicCellularAutomatonModel"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","cyclicCellularAutomatonModel"})
 public class CyclicCellularAutomatonCanvas extends JComponent implements
-    Serializable, TabCanvasWithModel, CyclicCellularAutomaton {
+    Serializable, TabCanvas, CyclicCellularAutomaton, Future<Void> {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
@@ -45,13 +43,8 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
     private final Dimension preferredSize;
     private final LayoutCanvas layout;
     private final CyclicCellularAutomatonColorScheme colorScheme;
-    private volatile int[][][] lattice;
-    private volatile int source;
-    private volatile int target;
-    private volatile LatticeNeighbourhoodType neighbourhoodType;
-    private Boolean running;
+    private final CyclicCellularAutomatonModel cyclicCellularAutomatonModel;
 
-    private final int versions;
     private final static int startX = 0;
     private final static int startY = 0;
     private final int worldX;
@@ -64,16 +57,13 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getY();
         this.layout = new LayoutCanvas(this);
         this.preferredSize = new Dimension(worldX,worldY);
-        this.versions = 2;
         this.colorScheme = new CyclicCellularAutomatonColorScheme();
         this.setLayout(layout);
         this.setPreferredSize(preferredSize);
         this.setMinimumSize(preferredSize);
         this.setMaximumSize(preferredSize);
         this.setSize(this.worldX,this.worldY);
-        this.startWithNeighbourhoodVonNeumann();
-        this.resetLattice();
-        this.running = Boolean.FALSE;
+        this.cyclicCellularAutomatonModel = new CyclicCellularAutomatonModel(this.tabCtx);
         showMe();
     }
 
@@ -83,10 +73,10 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         int y;
         int state;
         Color stateColor;
-        if (lattice != null) {
+        if (this.cyclicCellularAutomatonModel.getLattice() != null) {
             for (y = 0; y < worldY; y++) {
                 for (x = 0; x < worldX; x++) {
-                    state = this.lattice[source][x][y];
+                    state = this.cyclicCellularAutomatonModel.getState(x,y);
                     stateColor = this.colorScheme.getColorForState(state);
                     g.setColor(stateColor);
                     g.drawLine(x, y, x, y);
@@ -107,113 +97,28 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         log.info("showMe "+this.toString());
     }
 
-    public void start() {
-        log.info("start");
-        showMe();
-        synchronized (running) {
-            running = Boolean.TRUE;
-        }
-        log.info("started "+this.toString());
+    @Override
+    public boolean cancel(boolean mayInterruptIfRunning) {
+        return false;
     }
 
-    public void stop() {
-        log.info("stop");
-        synchronized (running) {
-            running = Boolean.FALSE;
-        }
-        log.info("stopped "+this.toString());
+    @Override
+    public boolean isCancelled() {
+        return false;
     }
 
-    public void update(){
-        //log.info("update");
+    @Override
+    public boolean isDone() {
+        return false;
     }
 
-    public void step(){
-        boolean doIt = false;
-        synchronized (running) {
-            doIt = running.booleanValue();
-        }
-        if(doIt){
-            //log.info("step");
-            int maxState = colorScheme.getMaxState();
-            int xx;
-            int yy;
-            int nextState;
-            int y;
-            int x;
-            int i;
-            for (y = 0; y < worldY; y++) {
-                for (x = 0; x < worldX; x++) {
-                    lattice[target][x][y] = lattice[source][x][y];
-                    nextState = (lattice[source][x][y] + 1) % maxState;
-                    LatticePointNeighbourhoodPosition[] pos = LatticePointNeighbourhoodPosition.getNeighbourhoodFor(neighbourhoodType);
-                    for (i = 0; i < pos.length; i++) {
-                        xx = ((x + pos[i].getX() + worldX) % worldX);
-                        yy = ((y + pos[i].getY() + worldY) % worldY);
-                        if (nextState == lattice[source][xx][yy]) {
-                            lattice[target][x][y] = nextState;
-                            i = pos.length;
-                        }
-                    }
-                }
-            }
-            this.source = (this.source + 1) % 2;
-            this.target = (this.target + 1) % 2;
-            //log.info("stepped");
-        }
+    @Override
+    public Void get() throws InterruptedException, ExecutionException {
+        return null;
     }
 
-    private void initCreateLattice(){
-        log.info("initCreateLattice start: "+neighbourhoodType.name());
-        lattice = new int[versions][worldX][worldY];
-        source = 0;
-        target = 1;
-        log.info("initCreateLattice finished: "+neighbourhoodType.name());
+    @Override
+    public Void get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+        return null;
     }
-
-    private void initFillLattice(){
-        log.info("initCreateLattice start: "+neighbourhoodType.name());
-        Random random = this.tabCtx.getCtx().getRandom();
-        int maxState = this.colorScheme.getMaxState();
-        int y;
-        int x;
-        for (y = 0; y < worldY; y++) {
-            for (x = 0; x < worldX; x++) {
-                lattice[source][x][y] = random.nextInt(maxState);
-            }
-        }
-        log.info("initCreateLattice finished: "+neighbourhoodType.name());
-    }
-
-    public void resetLattice(){
-        initCreateLattice();
-        initFillLattice();
-    }
-
-    public void startWithNeighbourhoodVonNeumann() {
-        if( this.neighbourhoodType == null) {
-            log.info("startWithNeighbourhoodVonNeumann");
-        } else {
-            log.info("startWithNeighbourhoodVonNeumann: " + neighbourhoodType.name());
-        }
-        this.neighbourhoodType=VON_NEUMANN_NEIGHBORHOOD;
-        resetLattice();
-        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
-    }
-
-    public void startWithNeighbourhoodMoore() {
-        log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
-        this.neighbourhoodType=MOORE_NEIGHBORHOOD;
-        resetLattice();
-        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
-    }
-
-    public void startWithNeighbourhoodWoehlke() {
-        //log.info("startWithNeighbourhoodVonNeumann: "+neighbourhoodType.name());
-        this.neighbourhoodType=WOEHLKE_NEIGHBORHOOD;
-        resetLattice();
-        log.info("startWithNeighbourhoodVonNeumann started: "+neighbourhoodType.name());
-    }
-
-
 }

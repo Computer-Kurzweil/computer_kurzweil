@@ -69,7 +69,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     public void stop() {
         log.info("stop");
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
-        this.canvas.stop();
+        this.tabModel.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
@@ -120,7 +120,6 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         }
     }
 
-    @Override
     public void update() {
         this.statisticsPanel.update();
         this.foodPerDayPanel.update();

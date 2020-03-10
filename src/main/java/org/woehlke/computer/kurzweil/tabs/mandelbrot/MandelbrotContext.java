@@ -7,11 +7,13 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 
 
+import java.util.concurrent.ForkJoinTask;
+
 import static java.lang.Thread.State.NEW;
 
 @Log4j2
 @Getter
-public class MandelbrotContext implements TabContext, Mandelbrot {
+public class MandelbrotContext extends ForkJoinTask<Void> implements TabContext, Mandelbrot {
 
     private final ComputerKurzweilContext ctx;
     private final MandelbrotTab tab;
@@ -24,8 +26,8 @@ public class MandelbrotContext implements TabContext, Mandelbrot {
         this.tab = tab;
         this.ctx = ctx;
         this.canvas = new MandelbrotCanvas(this);
+        this.tabModel = this.canvas.getTabModel();
         this.controller = new MandelbrotController(this);
-        this.tabModel = new MandelbrotModel(this);
     }
 
     @Override
@@ -44,6 +46,22 @@ public class MandelbrotContext implements TabContext, Mandelbrot {
                 this.stopController();
             }
         }
+    }
+
+    @Override
+    public Void getRawResult() {
+        return null;
+    }
+
+    @Override
+    protected void setRawResult(Void value) {
+
+    }
+
+    @Override
+    protected boolean exec() {
+        this.tab.repaint();
+        return true;
     }
 }
 

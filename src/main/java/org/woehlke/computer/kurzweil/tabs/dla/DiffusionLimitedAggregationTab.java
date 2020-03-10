@@ -18,6 +18,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
 
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
+    private final DiffusionLimitedAggregationModel tabModel;
     private final PanelBottomButtons bottomButtonsPanel;
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilTabbedPane tabbedPane) {
@@ -25,6 +26,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
         this.bottomButtonsPanel = new PanelBottomButtons( this );
         this.canvas = this.tabCtx.getCanvas();
+        this.tabModel = this.canvas.getTabModel();
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.bottomButtonsPanel);
@@ -37,7 +39,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
     @Override
     public void start() {
         log.info("start");
-        this.canvas.start();
+        this.tabModel.start();
         this.bottomButtonsPanel.getStartStopButtonsPanel().start();
         this.tabCtx.startController();
         this.ctx.getFrame().pack();
@@ -50,7 +52,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
     @Override
     public void stop() {
         log.info("stop");
-        this.canvas.stop();
+        this.tabModel.stop();
         this.tabCtx.stopController();
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         int x = this.canvas.getWidth();

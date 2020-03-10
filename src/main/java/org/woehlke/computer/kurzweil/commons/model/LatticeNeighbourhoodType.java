@@ -1,8 +1,5 @@
 package org.woehlke.computer.kurzweil.commons.model;
 
-import lombok.Getter;
-
-@Getter
 public enum LatticeNeighbourhoodType {
 
     /**

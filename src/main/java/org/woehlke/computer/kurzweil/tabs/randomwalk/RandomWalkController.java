@@ -16,6 +16,13 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 @Log4j2
 @Getter
+/**
+ * https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html
+ * https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/concurrent/Executor.html
+ * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/18
+ * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/19
+ * http://openbook.rheinwerk-verlag.de/javainsel9/javainsel_14_004.htm
+ */
 public class RandomWalkController extends Thread implements TabController, RandomWalk {
 
     private static final long serialVersionUID = 3642865135701767557L;
@@ -42,9 +49,8 @@ public class RandomWalkController extends Thread implements TabController, Rando
             }
             synchronized (this.tabCtx) {
                 //log.info("running");
-                this.tabCtx.getTabModel().step();
-                this.tabCtx.getCanvas().update();
-                this.tabCtx.getTab().repaint();
+                this.tabCtx.getTabModel().exec();
+                this.tabCtx.exec();
             }
             try { super.sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { log.info(e.getMessage()); }

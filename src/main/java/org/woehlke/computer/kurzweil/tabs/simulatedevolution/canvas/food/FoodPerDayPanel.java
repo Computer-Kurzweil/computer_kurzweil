@@ -45,13 +45,12 @@ public class FoodPerDayPanel extends JPanel implements SimulatedEvolution, Updat
         this.add(this.foodPerDayIncreaseButton);
         this.add(this.foodPerDayDecreaseButton);
     }
-    
+
     public void addActionListener(TabPanel myTabPanel) {
         this.foodPerDayIncreaseButton.addActionListener(myTabPanel);
         this.foodPerDayDecreaseButton.addActionListener(myTabPanel);
     }
 
-    @Override
     public void update() {
         int foodPerDay = tabModel.getSimulatedEvolutionParameter().getFoodPerDay();
         this.foodPerDayTextField.setFoodPerDay(foodPerDay);
