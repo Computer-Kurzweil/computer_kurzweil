@@ -58,8 +58,8 @@ function main() {
     #runDefault
     #runAlllTests
     #runSubmoduleCca
-    #runSubmoduleDla
-    runSubmoduleMandelbrot
+    runSubmoduleDla
+    #runSubmoduleMandelbrot
     #runSubmoduleSimulatedEvolution
     #runSubmoduleMain
 }
