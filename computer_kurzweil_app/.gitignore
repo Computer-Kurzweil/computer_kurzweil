@@ -1,0 +1,54 @@
+.gradle
+/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+#
+
+
+*.iml
+
+/allinone/build/
+/cyclic-cellular-automaton/build/
+/diffusion-limited-aggregation/build/
+/koch-snowflake/build/
+/mandelbrot/build/
+/samegame/build/
+/sierpinski-triangle/build/
+/simulated-evolution/build/
+/tetris/build/
+/turmite/build/
+/wator/build
+/swingtutorial/build
+/dir.txt
+/.idea/uiDesigner.xml
+/.idea/compiler.xml
+/.idea/workspace.xml
+.idea/modules/swingtutorial/
+/.idea/
+/.idea/libraries/
+/.idea/modules/
+/.idea/.gitignore
+/.idea/checkstyle-idea.xml
+/.idea/compiler.xml
+/.idea/encodings.xml
+/.idea/gradle.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+
+out
+log.txt
+/allinone/console.log
