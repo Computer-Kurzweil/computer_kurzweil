@@ -87,10 +87,10 @@ public class PopulationStatisticsElementsPanel extends JPanel implements Simulat
             youngAndFatCellsElement,
             fullAgeCellsElement,
             hungryCellsElement,
-            oldCellsElement,
+            oldCellsElement/*,
             populationElement,
             generationYoungestElement,
-            generationOldestElement
+            generationOldestElement*/
         };
         for(PopulationStatisticsElement ps : elements){
             this.add(ps);

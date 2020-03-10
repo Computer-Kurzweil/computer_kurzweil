@@ -57,8 +57,8 @@ simulatedevolution:
     foodPerDayFieldColumns: 3
     foodPerDayLabel: 'Food per Day:'
     foodPerDayBorderLabel: 'Food per Day:'
-    buttonFoodPerDayIncrease: 'More'
-    buttonFoodPerDayDecrease: 'Less'
+    buttonFoodPerDayIncrease: '+'
+    buttonFoodPerDayDecrease: '-'
     panelFood: 'Food'
   gardenOfEden:
     panelGardenOfEden: 'Garden of Eden'
