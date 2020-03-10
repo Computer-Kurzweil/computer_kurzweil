@@ -50,9 +50,6 @@ function runAlllTests() {
     done
 }
 
-
-
-
 function main() {
     #runJar
     #runDefault
