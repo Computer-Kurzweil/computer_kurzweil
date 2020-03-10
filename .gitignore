@@ -18,6 +18,7 @@ gradle-app.setting
 .idea
 
 /.idea
+/computer_kurzweil_app/build
 /insourcing_cyclic_cellular_automaton/build
 /insourcing_cyclic_cellular_automaton/build
 /insourcing_diffusion_limited_aggregation/build
