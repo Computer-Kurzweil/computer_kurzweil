@@ -7,13 +7,15 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 
+import java.util.concurrent.ForkJoinTask;
+
 import static java.lang.Thread.State.NEW;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true, exclude={"ctx","controller","tab"})
 @EqualsAndHashCode(exclude={"ctx","controller","tab"})
-public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution {
+public class SimulatedEvolutionContext  extends ForkJoinTask<Void> implements TabContext, SimulatedEvolution {
 
     private final ComputerKurzweilContext ctx;
     private final SimulatedEvolutionTab tab;
@@ -51,4 +53,19 @@ public class SimulatedEvolutionContext implements TabContext, SimulatedEvolution
         }
     }
 
+    @Override
+    public Void getRawResult() {
+        return null;
+    }
+
+    @Override
+    protected void setRawResult(Void value) {
+
+    }
+
+    @Override
+    protected boolean exec() {
+        this.tab.repaint();
+        return true;
+    }
 }

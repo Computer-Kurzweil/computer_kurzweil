@@ -28,7 +28,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLife
 @Log4j2
 @Getter
 @ToString(exclude={"appCtx","worldMapFoodLattice"})
-@EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"})
+@EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"},callSuper = false)
 public class SimulatedEvolutionWorldLattice implements Startable, SimulatedEvolution {
 
       /**

@@ -15,6 +15,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.Si
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ForkJoinTask;
 
 /**
  * The World contains Water, Cells and Food.
@@ -36,8 +37,8 @@ import java.util.List;
 @Log4j2
 @Getter
 @ToString(exclude={"appCtx"})
-@EqualsAndHashCode(exclude={"appCtx"})
-public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
+@EqualsAndHashCode(exclude={"appCtx"},callSuper = false)
+public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabModel, SimulatedEvolution {
 
     private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionWorldLattice worldLattice;
@@ -82,14 +83,50 @@ public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
         log.info("stopped "+this.toString());
     }
 
+    public List<Cell> getAllCells() {
+        return populationContainer.getCells();
+    }
+
+    private void createNewState(){
+        int foodPerDay = this.appCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDay();
+        int foodPerDayGardenOfEden = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getFoodPerDay();
+        boolean gardenOfEdenEnabled = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
+        this.simulatedEvolutionParameter.setFoodPerDay(foodPerDay);
+        this.simulatedEvolutionParameter.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
+        this.simulatedEvolutionParameter.setGardenOfEdenEnabled(gardenOfEdenEnabled);
+    }
+
+    public void increaseFoodPerDay() {
+        simulatedEvolutionParameter.increaseFoodPerDay();
+    }
+
+    public void decreaseFoodPerDay(){
+        simulatedEvolutionParameter.decreaseFoodPerDay();
+    }
+
+    @Override
+    public boolean cancel(boolean mayInterruptIfRunning) {
+        return false;
+    }
+
+    @Override
+    public Void getRawResult() {
+        return null;
+    }
+
+    @Override
+    protected void setRawResult(Void value) {
+
+    }
+
     /**
      * One Step of Time in the World in which the Population of Bacteria Cell perform Life.
      * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
      */
     @Override
-    public void step() {
-      log.info("step");
-      boolean step;
+    protected boolean exec() {
+        log.info("step");
+        boolean step;
         synchronized (running) {
             step = running;
         }
@@ -126,27 +163,6 @@ public class SimulatedEvolutionModel implements TabModel,SimulatedEvolution {
         } else {
             log.info("not stepped");
         }
+        return true;
     }
-
-    public List<Cell> getAllCells() {
-        return populationContainer.getCells();
-    }
-
-    private void createNewState(){
-        int foodPerDay = this.appCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDay();
-        int foodPerDayGardenOfEden = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getFoodPerDay();
-        boolean gardenOfEdenEnabled = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
-        this.simulatedEvolutionParameter.setFoodPerDay(foodPerDay);
-        this.simulatedEvolutionParameter.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
-        this.simulatedEvolutionParameter.setGardenOfEdenEnabled(gardenOfEdenEnabled);
-    }
-
-    public void increaseFoodPerDay() {
-        simulatedEvolutionParameter.increaseFoodPerDay();
-    }
-
-    public void decreaseFoodPerDay(){
-        simulatedEvolutionParameter.decreaseFoodPerDay();
-    }
-
 }

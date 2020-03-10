@@ -49,7 +49,6 @@ public class GardenOfEdenPanelRow extends JPanel implements SimulatedEvolution, 
         this.buttonToggleGardenOfEden.addActionListener(myTabPanel);
     }
 
-    @Override
     public void update() {
         boolean enabled = tabModel.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
         this.buttonToggleGardenOfEden.setSelected(enabled);

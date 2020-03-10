@@ -49,6 +49,7 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
         log.info("start");
         this.showMe();
         this.bottomButtonsPanel.getStartStopButtonsPanel().start();
+        this.tabCtx.getTabModel().start();
         this.tabCtx.startController();
         this.tabCtx.getController().start();
         this.ctx.getFrame().pack();
@@ -60,6 +61,7 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
     @Override
     public void stop() {
         log.info("stop");
+        this.tabCtx.getTabModel().stop();
         this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
         this.tabCtx.stopController();
         int x = this.canvas.getWidth();

@@ -6,12 +6,9 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population.PopulationStatisticsElementsPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food.FoodPerDayPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 
 import javax.swing.JComponent;
@@ -40,7 +37,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.Simul
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx","border","preferredSize","layout","tab"})
 @EqualsAndHashCode(callSuper=true, exclude={"tabCtx","border","preferredSize","layout","tab"})
-public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, Startable, SimulatedEvolution {
+public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, SimulatedEvolution {
 
     //TODO: new serialVersionUID
     private static final long serialVersionUID = -27002509360079509L;
@@ -62,10 +59,10 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
     ) {
         this.tabCtx = tabCtx;
         this.tab = tabCtx.getTab();
+        this.tabModel = new SimulatedEvolutionModel(this.tabCtx);
         this.border = this.tabCtx.getCtx().getCanvasBorder();
         this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
         this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
-        this.tabModel = new SimulatedEvolutionModel(this.tabCtx);
         this.preferredSize = new Dimension(worldX,worldY);
         this.layout = new LayoutCanvas(this);
         this.setLayout(layout);
@@ -128,24 +125,4 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
         //log.info("this: "+this.toString());
     }
 
-    @Override
-    public void update() {
-        log.info("updated");
-    }
-
-    @Override
-    public void start() {
-        log.info("start");
-        this.tabModel.start();
-        //log.info("this: "+this.toString());
-        log.info("started");
-    }
-
-    @Override
-    public void stop() {
-        log.info("stop");
-        this.tabModel.stop();
-        //log.info("this: "+this.toString());
-        log.info("stopped");
-    }
 }
