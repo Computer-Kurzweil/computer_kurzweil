@@ -12,7 +12,15 @@ plugins {
     id 'idea'
 }
 
-applicationName = 'computer_kurzweil'
+
+def group = 'org.woehlke.computer.kurzweil'
+def applicationNameConfig = 'computer_kurzweil'
+def mainClassNameConfig = 'org.woehlke.computer.kurzweil.ComputerKurzweilApplication'
+def applicationName = "${applicationNameConfig}"
+
+//version = '1.9'
+//version = '1.9-SNAPSHOT'
+sourceCompatibility = '13'
 
 repositories {
     mavenCentral()
@@ -24,8 +32,8 @@ repositories {
 }
 
 application {
-    applicationName = 'computer_kurzweil'
-    mainClassName = 'org.woehlke.computer.kurzweil.ComputerKurzweilApplication'
+    applicationName = "${applicationNameConfig}"
+    mainClassName = "${mainClassNameConfig}"
 }
 
 shadowJar {
@@ -36,7 +44,7 @@ shadowJar {
 
 jar {
     manifest {
-        attributes "Main-Class": "org.woehlke.computer.kurzweil.ComputerKurzweilApplication"
+        attributes "Main-Class": "${mainClassNameConfig}"
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
