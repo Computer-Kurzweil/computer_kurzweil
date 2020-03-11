@@ -167,7 +167,7 @@ wator:
 gameoflive:
   view:
     title: 'Conways Game of Life'
-    subtitle: 'TODO Subtitle for Conways Game of Life'
+    subtitle: 'Conways Game of Life Cellular Automaton'
     neighborhood:
       title: 'Neighborhood'
       typeVonNeumann: 'Von Neumann'

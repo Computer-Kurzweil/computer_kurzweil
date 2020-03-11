@@ -8,6 +8,7 @@ import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
+
 import java.awt.event.ActionEvent;
 
 @Log4j2

@@ -62,19 +62,14 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
             this.diffusionLimitedAggregationTab,
             this.mandelbrotTab
         };
-        int[] events = {
-            KeyEvent.VK_F1,
-            KeyEvent.VK_F2,
-            KeyEvent.VK_F3,
-            KeyEvent.VK_F4,
-            KeyEvent.VK_F5
-        };
-        int i = 0;
-        ImageIcon icon = null;
-        for(TabPanel tabPanelAbstract : tabPanelAbstractPanels){
-            this.apps.add(tabPanelAbstract);
-            this.addTab(tabPanelAbstract.getTitle(), icon, tabPanelAbstract, tabPanelAbstract.getSubTitle());
-            this.setMnemonicAt(i,events[i]);
+        for(int i = 0; i<tabPanelAbstractPanels.length; i++){
+            this.apps.add(tabPanelAbstractPanels[i]);
+            this.addTab(
+                tabPanelAbstractPanels[i].getTitle(),
+                tabPanelAbstractPanels[i].getIcon(),
+                tabPanelAbstractPanels[i],
+                tabPanelAbstractPanels[i].getToolTipText());
+            this.setMnemonicAt(i,tabPanelAbstractPanels[i].getKeyEvent());
         }
         this.setBorder(border);
         //TODO: change tab lister:

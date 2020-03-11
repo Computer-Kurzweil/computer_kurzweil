@@ -40,6 +40,7 @@ public class ComputerKurzweilFrame extends JFrame implements Serializable,
 
     private final ComputerKurzweilContext ctx;
     private final ComputerKurzweilTabbedPane tabbedPane;
+    private final ComputerKurzweilMenuBar computerKurzweilMenuBar;
     private final PanelCopyright panelCopyright;
     private final PanelSubtitle panelSubtitle;
     private final BoxLayoutVertical layout;
@@ -50,6 +51,8 @@ public class ComputerKurzweilFrame extends JFrame implements Serializable,
     ) throws HeadlessException {
         super(properties.getAllinone().getView().getTitle());
         this.ctx = new ComputerKurzweilContext(properties,this);
+        computerKurzweilMenuBar = new ComputerKurzweilMenuBar(this.ctx);
+        setJMenuBar(computerKurzweilMenuBar);
         panelSubtitle =  PanelSubtitle.getPanelSubtitleForApplication(this.ctx);
         tabbedPane = new ComputerKurzweilTabbedPane(this.ctx);
         panelCopyright = new PanelCopyright(this.ctx);

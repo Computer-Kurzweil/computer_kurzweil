@@ -41,4 +41,25 @@ public abstract class TabPanel extends JPanel implements Tab {
         this.setLayout(layout);
         //this.setBorder(border);
     }
+
+    @Override
+    public String getTitle() {
+        return tabType.getTitle();
+    }
+
+    @Override
+    public String getSubTitle() {
+        return tabType.getSubTitle();
+    }
+
+    @Override
+    public Icon getIcon() {
+        return null;
+    }
+
+    @Override
+    public int getKeyEvent() {
+        return tabType.getKeyEvent();
+    }
+
 }

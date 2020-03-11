@@ -73,15 +73,6 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
         log.info("showMe with canvas x="+x+" y="+y+" this: "+this.toString());
     }
 
-    @Override
-    public String getTitle() {
-        return ctx.getProperties().getRandomwalk().getView().getTitle();
-    }
-
-    @Override
-    public String getSubTitle() {
-        return ctx.getProperties().getRandomwalk().getView().getSubtitle();
-    }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -92,4 +83,5 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
             super.ctx.getFrame().stop();
         }
     }
+
 }

@@ -10,6 +10,7 @@ import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.SimulatedEvolutionTabPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 
@@ -79,6 +80,16 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     @Override
     public String getSubTitle() {
         return this.tabCtx.getCtx().getProperties().getSimulatedevolution().getView().getSubtitle();
+    }
+
+    @Override
+    public Icon getIcon() {
+        return null;
+    }
+
+    @Override
+    public int getKeyEvent() {
+        return tabType.getKeyEvent();
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
+import org.woehlke.computer.kurzweil.tabs.TabType;
 import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonButtons;
 
 import java.awt.event.ActionEvent;
@@ -19,6 +20,7 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicCellularAutomaton {
 
+    private final TabType tabType = TabType.CYCLIC_CELLULAR_AUTOMATON;
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonModel model;
@@ -78,16 +80,6 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
         log.info("showMe with canvas x="+x+" y="+y+" this: "+this.toString());
-    }
-
-    @Override
-    public String getTitle() {
-        return ctx.getProperties().getCca().getView().getTitle();
-    }
-
-    @Override
-    public String getSubTitle() {
-        return ctx.getProperties().getCca().getView().getSubtitle();
     }
 
     @Override
