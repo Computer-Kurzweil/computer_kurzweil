@@ -16,7 +16,6 @@ import org.woehlke.computer.kurzweil.tabs.randomwalk.RandomWalkTab;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
