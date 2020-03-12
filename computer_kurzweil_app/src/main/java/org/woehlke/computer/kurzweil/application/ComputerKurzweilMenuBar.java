@@ -66,6 +66,7 @@ public class ComputerKurzweilMenuBar extends JMenuBar {
 
         initFileMenu();
         initStartMenu();
+        this.setVisible(true);
     }
 
     private void initFileMenu(){

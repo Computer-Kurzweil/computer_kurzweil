@@ -73,26 +73,6 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     }
 
     @Override
-    public String getTitle() {
-        return this.tabCtx.getCtx().getProperties().getSimulatedevolution().getView().getTitle();
-    }
-
-    @Override
-    public String getSubTitle() {
-        return this.tabCtx.getCtx().getProperties().getSimulatedevolution().getView().getSubtitle();
-    }
-
-    @Override
-    public Icon getIcon() {
-        return null;
-    }
-
-    @Override
-    public int getKeyEvent() {
-        return tabType.getKeyEvent();
-    }
-
-    @Override
     public void actionPerformed(ActionEvent ae) {
         boolean updateUi = false;
         if (ae.getSource() == this.tabPane.getFoodPerDayPanel().getFoodPerDayIncreaseButton()) {

@@ -73,17 +73,6 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
     }
 
     @Override
-    public String getTitle() {
-        return ctx.getProperties().getDla().getView().getTitle();
-    }
-
-    @Override
-    public String getSubTitle() {
-        return ctx.getProperties().getDla().getView().getSubtitle();
-    }
-
-
-    @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
             super.ctx.getFrame().start();
