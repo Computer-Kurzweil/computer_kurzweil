@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
@@ -20,20 +19,19 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final DiffusionLimitedAggregationModel tabModel;
-    private final PanelStartStopButtons bottomButtonsPanel;
+    private final DiffusionLimitedAggregationTabPane diffusionLimitedAggregationTabPane;
 
     public DiffusionLimitedAggregationTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE );
         this.tabCtx = new DiffusionLimitedAggregationContext(this );
-        this.bottomButtonsPanel = new PanelStartStopButtons( this );
+        this.diffusionLimitedAggregationTabPane = new DiffusionLimitedAggregationTabPane( this );
         this.canvas = this.tabCtx.getCanvas();
         this.tabModel = this.canvas.getTabModel();
         this.add(this.panelSubtitle);
         this.add(this.canvas);
-        this.add(this.bottomButtonsPanel);
-        this.bottomButtonsPanel.getStartButton().addActionListener(this);
-        this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.start();
+        this.add(this.diffusionLimitedAggregationTabPane);
+        this.diffusionLimitedAggregationTabPane.addActionListener(this);
+        this.diffusionLimitedAggregationTabPane.start();
         showMe();
     }
 
@@ -41,7 +39,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
     public void start() {
         log.info("start");
         this.tabModel.start();
-        this.bottomButtonsPanel.start();
+        this.diffusionLimitedAggregationTabPane.start();
         this.tabCtx.startController();
         this.ctx.getFrame().pack();
         int x = this.canvas.getWidth();
@@ -55,7 +53,7 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
         log.info("stop");
         this.tabModel.stop();
         this.tabCtx.stopController();
-        this.bottomButtonsPanel.stop();
+        this.diffusionLimitedAggregationTabPane.stop();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
         super.ctx.getFrame().showMe();
@@ -74,10 +72,10 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
+        if(ae.getSource() == this.diffusionLimitedAggregationTabPane.getStartButton()){
             super.ctx.getFrame().start();
         }
-        if(ae.getSource() == this.bottomButtonsPanel.getStopButton()){
+        if(ae.getSource() == this.diffusionLimitedAggregationTabPane.getStopButton()){
             super.ctx.getFrame().stop();
         }
     }

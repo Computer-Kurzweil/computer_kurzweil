@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
@@ -22,20 +21,20 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
 
     private final RandomWalkCanvas canvas;
     private final RandomWalkModel tabModel;
-    private final PanelStartStopButtons bottomButtonsPanel;
+    private final RandomWalkTabPane randomWalkTabPane;
 
     public RandomWalkTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
         this.tabCtx = new RandomWalkContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.tabModel = this.canvas.getTabModel();
-        this.bottomButtonsPanel = new PanelStartStopButtons( this );
+        this.randomWalkTabPane = new RandomWalkTabPane( this );
         this.add(this.panelSubtitle);
         this.add(this.canvas);
-        this.add(this.bottomButtonsPanel);
-        this.bottomButtonsPanel.getStartButton().addActionListener(this);
-        this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.stop();
+        this.add(this.randomWalkTabPane);
+        this.randomWalkTabPane.getStartButton().addActionListener(this);
+        this.randomWalkTabPane.getStopButton().addActionListener(this);
+        this.randomWalkTabPane.stop();
         this.ctx.getFrame().pack();
         showMe();
     }
@@ -45,7 +44,7 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
         log.info("start");
         this.showMe();
         this.tabModel.start();
-        this.bottomButtonsPanel.start();
+        this.randomWalkTabPane.start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
@@ -58,7 +57,7 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
     public void stop() {
         log.info("stop");
         this.tabModel.stop();
-        this.bottomButtonsPanel.stop();
+        this.randomWalkTabPane.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
@@ -76,10 +75,10 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
+        if(ae.getSource() == this.randomWalkTabPane.getStartButton()){
             super.ctx.getFrame().start();
         }
-        if(ae.getSource() == this.bottomButtonsPanel.getStopButton()){
+        if(ae.getSource() == this.randomWalkTabPane.getStopButton()){
             super.ctx.getFrame().stop();
         }
     }
