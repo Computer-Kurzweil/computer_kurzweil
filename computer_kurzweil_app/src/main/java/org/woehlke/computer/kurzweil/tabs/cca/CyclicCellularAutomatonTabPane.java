@@ -7,7 +7,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonButtons;
+import org.woehlke.computer.kurzweil.tabs.cca.canvas.PanelNeighbourhoodButtons;
 
 import javax.swing.*;
 
@@ -16,7 +16,7 @@ import javax.swing.*;
 public class CyclicCellularAutomatonTabPane extends JTabbedPane implements Startable {
 
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
-    private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
+    private final PanelNeighbourhoodButtons panelNeighbourhoodButtons;
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PanelStartStopButtons startStopButtonsPanel;
 
@@ -24,13 +24,13 @@ public class CyclicCellularAutomatonTabPane extends JTabbedPane implements Start
 
     public CyclicCellularAutomatonTabPane(CyclicCellularAutomatonTab tab) {
         this.tab = tab;
-        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(tab.getCanvas());
+        this.panelNeighbourhoodButtons = new PanelNeighbourhoodButtons(tab.getCanvas());
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         this.addTab(this.startStopButtonsPanel.getTitle(), this.startStopButtonsPanel);
-        this.addTab(this.neighbourhoodButtonsPanel.getTitle(), this.neighbourhoodButtonsPanel);
-        this.neighbourhoodButtonsPanel.getButtonVonNeumann().addActionListener( tab);
-        this.neighbourhoodButtonsPanel.getButtonMoore().addActionListener( tab);
-        this.neighbourhoodButtonsPanel.getButtonWoehlke().addActionListener(tab);
+        this.addTab(this.panelNeighbourhoodButtons.getTitle(), this.panelNeighbourhoodButtons);
+        this.panelNeighbourhoodButtons.getButtonVonNeumann().addActionListener( tab);
+        this.panelNeighbourhoodButtons.getButtonMoore().addActionListener( tab);
+        this.panelNeighbourhoodButtons.getButtonWoehlke().addActionListener(tab);
         this.startStopButtonsPanel.stop();
     }
 

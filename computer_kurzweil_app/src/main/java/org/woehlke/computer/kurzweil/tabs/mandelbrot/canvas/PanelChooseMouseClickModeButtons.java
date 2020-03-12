@@ -14,7 +14,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioBut
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_ZOOM;
 
 @Getter
-public class PanelButtonsGroup extends SubTabImpl implements Mandelbrot, SubTab, Updateable {
+public class PanelChooseMouseClickModeButtons extends SubTabImpl implements Mandelbrot, SubTab, Updateable {
 
     private final MandelbrotContext tabCtx;
     private final String buttonsSwitch;
@@ -24,7 +24,7 @@ public class PanelButtonsGroup extends SubTabImpl implements Mandelbrot, SubTab,
     private final ButtonGroup radioButtonsGroup;
     private final MandelbrotModel mandelbrotModel;
 
-    public PanelButtonsGroup(MandelbrotContext tabCtx) {
+    public PanelChooseMouseClickModeButtons(MandelbrotContext tabCtx) {
         super(tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsLabel(),tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
         this.mandelbrotModel = tabCtx.getTabModel();

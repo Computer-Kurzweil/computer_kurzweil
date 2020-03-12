@@ -16,7 +16,7 @@ import java.awt.*;
 @Getter
 @ToString(callSuper = true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke","canvas"})
 @EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke","canvas"})
-public class CyclicCellularAutomatonButtons extends SubTabImpl implements CyclicCellularAutomaton {
+public class PanelNeighbourhoodButtons extends SubTabImpl implements CyclicCellularAutomaton {
 
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;
@@ -28,7 +28,7 @@ public class CyclicCellularAutomatonButtons extends SubTabImpl implements Cyclic
   private final CompoundBorder cyclicCellularAutomatonButtonsBorder;
   private final FlowLayout cyclicCellularAutomatonButtonsLayout;
 
-  public CyclicCellularAutomatonButtons(
+  public PanelNeighbourhoodButtons(
       CyclicCellularAutomatonCanvas canvas
   ) {
     super(canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle(),canvas.getTabCtx().getCtx().getProperties());

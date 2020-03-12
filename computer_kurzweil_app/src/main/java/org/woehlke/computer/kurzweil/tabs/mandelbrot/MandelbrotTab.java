@@ -57,10 +57,10 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.mandelbrotTabPane.getPanelButtonsGroup().getRadioButtonsSwitch()){
+        if(ae.getSource() == this.mandelbrotTabPane.getPanelChooseMouseClickModeButtons().getRadioButtonsSwitch()){
             this.canvas.setModeSwitch();
         }
-        if(ae.getSource() == this.mandelbrotTabPane.getPanelButtonsGroup().getRadioButtonsZoom()){
+        if(ae.getSource() == this.mandelbrotTabPane.getPanelChooseMouseClickModeButtons().getRadioButtonsZoom()){
             this.canvas.setModeZoom();
         }
         if(ae.getSource() == this.mandelbrotTabPane.getPanelZoomButtons().getZoomOutButton()){

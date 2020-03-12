@@ -7,7 +7,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelButtonsGroup;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelChooseMouseClickModeButtons;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelZoomButtons;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class MandelbrotTabPane  extends JTabbedPane implements Startable {
 
     @Delegate(excludes={SubTabImpl.class,JPanel.class, Updateable.class})
     private final PanelStartStopButtons startStopButtonsPanel;
-    private final PanelButtonsGroup panelButtonsGroup;
+    private final PanelChooseMouseClickModeButtons panelChooseMouseClickModeButtons;
     private final PanelZoomButtons panelZoomButtons;
 
     private final MandelbrotTab tab;
@@ -27,9 +27,9 @@ public class MandelbrotTabPane  extends JTabbedPane implements Startable {
         this.tab = tab;
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         this.addTab(this.startStopButtonsPanel.getTitle(), this.startStopButtonsPanel);
-        this.panelButtonsGroup = new PanelButtonsGroup(this.tab.getTabCtx());
+        this.panelChooseMouseClickModeButtons = new PanelChooseMouseClickModeButtons(this.tab.getTabCtx());
         this.panelZoomButtons = new PanelZoomButtons(this.tab.getTabCtx());
-        this.add(panelButtonsGroup);
+        this.add(panelChooseMouseClickModeButtons);
         this.add(panelZoomButtons);
         this.startStopButtonsPanel.stop();
         this.disableZoomButton();
@@ -45,11 +45,11 @@ public class MandelbrotTabPane  extends JTabbedPane implements Startable {
     }
 
     public JRadioButton getRadioButtonsSwitch() {
-        return this.panelButtonsGroup.getRadioButtonsSwitch();
+        return this.panelChooseMouseClickModeButtons.getRadioButtonsSwitch();
     }
 
     public JRadioButton getRadioButtonsZoom() {
-        return this.panelButtonsGroup.getRadioButtonsZoom();
+        return this.panelChooseMouseClickModeButtons.getRadioButtonsZoom();
     }
 
     public AbstractButton getZoomOutButton() {
