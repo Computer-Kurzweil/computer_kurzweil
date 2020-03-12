@@ -7,10 +7,8 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
-import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonButtons;
 
 import java.awt.event.ActionEvent;
 
@@ -25,26 +23,17 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonModel model;
 
-    private final CyclicCellularAutomatonButtons neighbourhoodButtonsPanel;
-    private final PanelBottomButtons bottomButtonsPanel;
+    private final CyclicCellularAutomatonTabPane cyclicCellularAutomatonTabPane;
 
     public CyclicCellularAutomatonTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.model = this.canvas.getCyclicCellularAutomatonModel();
-        this.neighbourhoodButtonsPanel = new CyclicCellularAutomatonButtons(this.canvas);
-        this.bottomButtonsPanel = new PanelBottomButtons( this );
-        this.bottomButtonsPanel.add(this.neighbourhoodButtonsPanel);
+        this.cyclicCellularAutomatonTabPane = new CyclicCellularAutomatonTabPane(this);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
-        this.add(this.bottomButtonsPanel);
-        this.neighbourhoodButtonsPanel.getButtonVonNeumann().addActionListener(this);
-        this.neighbourhoodButtonsPanel.getButtonMoore().addActionListener(this);
-        this.neighbourhoodButtonsPanel.getButtonWoehlke().addActionListener(this);
-        this.bottomButtonsPanel.getStartButton().addActionListener(this);
-        this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
+        this.add(this.cyclicCellularAutomatonTabPane);
         this.ctx.getFrame().pack();
         showMe();
     }
@@ -54,7 +43,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
         log.info("start");
         this.showMe();
         this.model.start();
-        this.bottomButtonsPanel.getStartStopButtonsPanel().start();
+        this.cyclicCellularAutomatonTabPane.start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
@@ -67,7 +56,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     public void stop() {
         log.info("stop");
         this.model.stop();
-        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
+        this.cyclicCellularAutomatonTabPane.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
@@ -84,20 +73,20 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonVonNeumann()) {
+        if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonVonNeumann()) {
             this.model.startWithNeighbourhoodVonNeumann();
             this.start();
-        } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonMoore()) {
+        } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonMoore()) {
             this.model.startWithNeighbourhoodMoore();
             this.start();
-        } else if (ae.getSource() ==  this.neighbourhoodButtonsPanel.getButtonWoehlke()) {
+        } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonWoehlke()) {
             this.model.startWithNeighbourhoodWoehlke();
             this.start();
         }
-        if(ae.getSource() == this.bottomButtonsPanel.getStartButton()){
+        if(ae.getSource() == this.cyclicCellularAutomatonTabPane.getStartButton()){
             super.ctx.getFrame().start();
         }
-        if(ae.getSource() == this.bottomButtonsPanel.getStopButton()){
+        if(ae.getSource() == this.cyclicCellularAutomatonTabPane.getStopButton()){
             super.ctx.getFrame().stop();
         }
     }

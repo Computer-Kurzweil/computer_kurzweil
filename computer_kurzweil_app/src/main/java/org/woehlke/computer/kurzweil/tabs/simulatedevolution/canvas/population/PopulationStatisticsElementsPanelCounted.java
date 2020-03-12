@@ -7,12 +7,12 @@ import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulationContainer;
 
-import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
@@ -22,7 +22,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsElementsPanel2 extends JPanel implements SimulatedEvolution {
+public class PopulationStatisticsElementsPanelCounted extends SubTabImpl implements SimulatedEvolution {
 
     private final PopulationStatisticsElement populationElement;
     private final PopulationStatisticsElement generationOldestElement;
@@ -43,9 +43,10 @@ public class PopulationStatisticsElementsPanel2 extends JPanel implements Simula
 
     private SimulatedEvolutionPopulation population;
 
-    public PopulationStatisticsElementsPanel2(
+    public PopulationStatisticsElementsPanelCounted(
         SimulatedEvolutionContext tabCtx
     ) {
+        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics());
         this.tabCtx = tabCtx;
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);

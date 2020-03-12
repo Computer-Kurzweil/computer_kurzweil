@@ -4,17 +4,16 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Updateable;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionModel;
 
-import javax.swing.*;
-
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class GardenOfEdenPanelRow extends JPanel implements SimulatedEvolution, Updateable {
+public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvolution, Updateable {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
@@ -25,6 +24,7 @@ public class GardenOfEdenPanelRow extends JPanel implements SimulatedEvolution, 
     private final GardenOfEdenPanel gardenOfEdenPanel;
 
     public GardenOfEdenPanelRow(SimulatedEvolutionContext tabCtx) {
+        super("Garden of Eden");
         this.tabCtx = tabCtx;
         this.tabModel = this.tabCtx.getTabModel();
         this.gardenOfEdenEnabled = new GardenOfEdenCheckBox(this.tabCtx);

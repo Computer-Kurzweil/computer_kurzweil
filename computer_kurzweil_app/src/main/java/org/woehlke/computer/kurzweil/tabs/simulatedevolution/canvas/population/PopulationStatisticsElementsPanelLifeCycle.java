@@ -3,15 +3,16 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.experimental.Delegate;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulationContainer;
 
-import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
@@ -21,7 +22,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsElementsPanel extends JPanel implements SimulatedEvolution {
+public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl implements SimulatedEvolution {
 
     private final PopulationStatisticsElement youngCellsElement;
     private final PopulationStatisticsElement youngAndFatCellsElement;
@@ -46,9 +47,10 @@ public class PopulationStatisticsElementsPanel extends JPanel implements Simulat
 
     private SimulatedEvolutionPopulation population;
 
-    public PopulationStatisticsElementsPanel(
+    public PopulationStatisticsElementsPanelLifeCycle(
       SimulatedEvolutionContext tabCtx
     ) {
+        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics());
         this.tabCtx = tabCtx;
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);

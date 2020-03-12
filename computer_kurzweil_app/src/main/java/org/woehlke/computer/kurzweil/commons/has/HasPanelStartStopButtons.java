@@ -4,5 +4,5 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 
 public interface HasPanelStartStopButtons {
 
-    PanelStartStopButtons getPanelStartStopButtons();
+    PanelStartStopButtons getPanelStartStopButtonsSubTab();
 }

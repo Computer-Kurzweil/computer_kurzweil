@@ -2,21 +2,21 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food;
 
 import lombok.Getter;
 import lombok.ToString;
+import lombok.experimental.Delegate;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Updateable;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionModel;
 
-import javax.swing.*;
 import javax.swing.border.CompoundBorder;
-import java.awt.*;
 
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class FoodPerDayPanel extends JPanel implements SimulatedEvolution, Updateable {
+public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, Updateable {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
@@ -30,7 +30,7 @@ public class FoodPerDayPanel extends JPanel implements SimulatedEvolution, Updat
     private final SimulatedEvolutionModel tabModel;
 
     public FoodPerDayPanel(SimulatedEvolutionContext tabCtx) {
-        super(new FlowLayout());
+        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDayLabel());
         this.tabCtx = tabCtx;
         this.tabModel = this.tabCtx.getTabModel();
         this.foodPerDayLabel = new FoodPerDayLabel(this.tabCtx);

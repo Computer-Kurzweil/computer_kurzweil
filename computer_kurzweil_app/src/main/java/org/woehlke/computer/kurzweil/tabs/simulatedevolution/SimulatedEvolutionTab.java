@@ -7,10 +7,8 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.SimulatedEvolutionTabPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 
@@ -31,6 +29,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         this.canvas =  this.tabCtx.getCanvas();
         this.tabModel = this.canvas.getTabModel();
         this.tabPane = new SimulatedEvolutionTabPane(this);
+        this.tabPane.addActionListener(this);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.tabPane);
@@ -40,7 +39,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     @Override
     public void start() {
         log.info("start");
-        this.tabPane.getBottomButtonsPanel().getStartStopButtonsPanel().start();
+        this.tabPane.getStartStopButtonsPanel().start();
         this.canvas.getTabModel().start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
@@ -54,7 +53,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     @Override
     public void stop() {
         log.info("stop");
-        this.tabPane.getBottomButtonsPanel().getStartStopButtonsPanel().stop();
+        this.tabPane.getStartStopButtonsPanel().stop();
         this.tabModel.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
@@ -88,10 +87,10 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
             this.tabModel.toggleGardenOfEden();
             this.update();
         }
-        if(ae.getSource() == this.tabPane.getBottomButtonsPanel().getStartStopButtonsPanel().getStartButton()){
+        if(ae.getSource() == this.tabPane.getStartStopButtonsPanel().getStartButton()){
             super.ctx.getFrame().start();
         }
-        if(ae.getSource() == this.tabPane.getBottomButtonsPanel().getStartStopButtonsPanel().getStopButton()){
+        if(ae.getSource() == this.tabPane.getStartStopButtonsPanel().getStopButton()){
             super.ctx.getFrame().stop();
         }
     }
