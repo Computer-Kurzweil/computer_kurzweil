@@ -81,7 +81,6 @@ public class ComputerKurzweilFrame extends JFrame implements Serializable,
         pack();
         Rectangle r = this.getFrameBounds();
         this.setBounds(r);
-        tabbedPane.showMe();
         this.setVisible(true);
         toFront();
         repaint();
