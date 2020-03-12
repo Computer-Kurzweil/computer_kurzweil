@@ -14,7 +14,7 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioBut
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_ZOOM;
 
 @Getter
-public class PanelChooseMouseClickModeButtons extends SubTabImpl implements Mandelbrot, SubTab, Updateable {
+public class PanelChooseMouseClickMode extends SubTabImpl implements Mandelbrot, SubTab, Updateable {
 
     private final MandelbrotContext tabCtx;
     private final String buttonsSwitch;
@@ -24,12 +24,17 @@ public class PanelChooseMouseClickModeButtons extends SubTabImpl implements Mand
     private final ButtonGroup radioButtonsGroup;
     private final MandelbrotModel mandelbrotModel;
 
-    public PanelChooseMouseClickModeButtons(MandelbrotContext tabCtx) {
-        super(tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsLabel(),tabCtx.getCtx().getProperties());
+    public PanelChooseMouseClickMode(MandelbrotContext tabCtx) {
+        super(
+            tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsLabel(),
+            tabCtx.getCtx().getProperties()
+        );
         this.tabCtx = tabCtx;
         this.mandelbrotModel = tabCtx.getTabModel();
+
         this.buttonsSwitch = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsSwitch();
         this.buttonsZoom = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoom();
+
         this.radioButtonsSwitch = new JRadioButton(buttonsSwitch);
         this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
         this.radioButtonsZoom = new JRadioButton(buttonsZoom);

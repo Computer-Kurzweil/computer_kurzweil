@@ -6,11 +6,10 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 @Getter
-public class PanelZoomButtons extends SubTabImpl implements Mandelbrot {
+public class PanelZoom extends SubTabImpl implements Mandelbrot {
 
     private final MandelbrotContext tabCtx;
 
@@ -18,8 +17,11 @@ public class PanelZoomButtons extends SubTabImpl implements Mandelbrot {
     private final TextField zoomLevelField;
     private final JButton zoomOutButton;
 
-    public PanelZoomButtons(MandelbrotContext tabCtx) {
-        super(tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomLabel(),tabCtx.getCtx().getProperties());
+    public PanelZoom(MandelbrotContext tabCtx) {
+        super(
+            tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomLabel(),
+            tabCtx.getCtx().getProperties()
+        );
         this.tabCtx = tabCtx;
         String buttonsZoomOut = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomOut();
         this.zoomLevelFieldLabel = new JLabel(super.getTitle());
