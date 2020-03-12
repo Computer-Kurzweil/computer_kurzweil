@@ -8,6 +8,14 @@ lorem ipsum
 * first
 * second
 
+## Changes
+
+### 2.2 Release 13.03.2020
+* fixed #11 BUG: Animation is not starting and not running
+* fixed #10 BUG: Food is not rendered
+* fixed #20 Branch
+* fixed #21 pull branch to master
+
 ## Goto
 
 | Work in Progress | Github                          |
