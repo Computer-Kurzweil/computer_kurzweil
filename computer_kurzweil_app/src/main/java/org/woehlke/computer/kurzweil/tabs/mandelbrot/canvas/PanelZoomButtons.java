@@ -1,16 +1,16 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 
 import lombok.Getter;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 @Getter
-public class PanelZoomButtons extends JPanel implements Mandelbrot {
+public class PanelZoomButtons extends SubTabImpl implements Mandelbrot {
 
     private final MandelbrotContext tabCtx;
 
@@ -19,17 +19,13 @@ public class PanelZoomButtons extends JPanel implements Mandelbrot {
     private final JButton zoomOutButton;
 
     public PanelZoomButtons(MandelbrotContext tabCtx) {
+        super(tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomLabel(),tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
-        FlowLayout layout = new FlowLayout();
         String buttonsZoomOut = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomOut();
-        String buttonsZoomLabel = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoomLabel();
-        CompoundBorder borderPanelPushButtons = this.tabCtx.getCtx().getBorder(buttonsZoomLabel);
-        this.zoomLevelFieldLabel = new JLabel(buttonsZoomLabel);
+        this.zoomLevelFieldLabel = new JLabel(super.getTitle());
         this.zoomLevelField = new TextField("1",3);
         this.zoomOutButton = new JButton(buttonsZoomOut);
-        this.setLayout(layout);
-        this.setBorder(borderPanelPushButtons);
-        //this.add(this.zoomLevelFieldLabel);
+        this.add(this.zoomLevelFieldLabel);
         this.add(this.zoomLevelField);
         this.add(this.zoomOutButton);
         this.zoomOutButton.addActionListener(tabCtx.getTab());
