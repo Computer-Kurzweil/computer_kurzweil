@@ -17,16 +17,14 @@ import javax.swing.*;
 @Getter
 public class SimulatedEvolutionTabPane extends JTabbedPane implements Updateable {
 
-    //@Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PopulationStatisticsElementsPanelLifeCycle statisticsPanelPanelLifeCycle;
-    //@Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PopulationStatisticsElementsPanelCounted statisticsPanelCounted;
-    //@Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final FoodPerDayPanel foodPerDayPanel;
-    //@Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PanelStartStopButtons startStopButtonsPanel;
+
+    private final Updateable[] tabPanelsUpdateable;
 
     public SimulatedEvolutionTabPane(SimulatedEvolutionTab tab) {
         this.statisticsPanelPanelLifeCycle = new PopulationStatisticsElementsPanelLifeCycle(tab.getTabCtx());
@@ -34,20 +32,30 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Updateable
         this.foodPerDayPanel = new FoodPerDayPanel(tab.getTabCtx());
         this.gardenOfEdenPanel = new GardenOfEdenPanelRow(tab.getTabCtx());
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
-        this.addTab( this.startStopButtonsPanel.getTitle(),this.startStopButtonsPanel);
-        this.addTab( this.statisticsPanelPanelLifeCycle.getTitle(),this.statisticsPanelPanelLifeCycle);
-        this.addTab( this.statisticsPanelCounted.getTitle(),this.statisticsPanelCounted);
-        this.addTab( this.foodPerDayPanel.getTitle(),this.foodPerDayPanel);
-        this.addTab( this.gardenOfEdenPanel.getTitle(),this.gardenOfEdenPanel);
+        tabPanelsUpdateable =new Updateable[]{
+            this.statisticsPanelPanelLifeCycle,
+            this.statisticsPanelCounted,
+            this.foodPerDayPanel,
+            this.gardenOfEdenPanel
+        };
+        SubTabImpl[] allSubTabPanels = {
+            this.startStopButtonsPanel,
+            this.foodPerDayPanel,
+            this.gardenOfEdenPanel,
+            this.statisticsPanelPanelLifeCycle,
+            this.statisticsPanelCounted
+        };
+        for(SubTabImpl t:allSubTabPanels){
+            this.addTab( t.getTitle(),t);
+        }
         this.foodPerDayPanel.addActionListener(tab);
         this.gardenOfEdenPanel.addActionListener(tab);
         this.startStopButtonsPanel.addActionListener(tab);
     }
 
     public void update() {
-        this.statisticsPanelPanelLifeCycle.update();
-        this.statisticsPanelCounted.update();
-        this.foodPerDayPanel.update();
-        this.gardenOfEdenPanel.update();
+        for(Updateable t:tabPanelsUpdateable){
+           t.update();
+        }
     }
 }

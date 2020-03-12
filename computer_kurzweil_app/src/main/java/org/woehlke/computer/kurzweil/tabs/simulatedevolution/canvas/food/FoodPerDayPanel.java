@@ -5,6 +5,7 @@ import lombok.ToString;
 import lombok.experimental.Delegate;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Updateable;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
@@ -16,7 +17,7 @@ import javax.swing.border.CompoundBorder;
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, Updateable {
+public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, Updateable, SubTab {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;

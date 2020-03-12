@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Updateable;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
@@ -13,7 +14,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionM
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvolution, Updateable {
+public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvolution, Updateable, SubTab {
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;

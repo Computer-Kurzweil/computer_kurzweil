@@ -65,6 +65,7 @@ public class SimulatedEvolutionContext  extends ForkJoinTask<Void> implements Ta
 
     @Override
     protected boolean exec() {
+        this.tab.update();
         this.tab.repaint();
         return true;
     }

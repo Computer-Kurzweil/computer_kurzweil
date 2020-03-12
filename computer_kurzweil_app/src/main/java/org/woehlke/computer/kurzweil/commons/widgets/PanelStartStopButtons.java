@@ -22,16 +22,18 @@ public class PanelStartStopButtons extends SubTabImpl implements Startable, SubT
 
     public PanelStartStopButtons(Tab tab){
         super(tab.getCtx().getProperties().getAllinone().getView().getStartStopp());
-        PanelWithTitleBorder panelWithTitleBorder = new PanelWithTitleBorder(super.getTitle(),tab.getCtx().getProperties());
+       // PanelWithTitleBorder panelWithTitleBorder = new PanelWithTitleBorder(super.getTitle(),tab.getCtx().getProperties());
         labelStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
         labelStop = tab.getCtx().getProperties().getAllinone().getView().getStop();
         this.startButton = new JButton(labelStart);
         this.stopButton = new JButton(labelStop);
         this.startButton.setEnabled(true);
         this.stopButton.setEnabled(false);
-        panelWithTitleBorder.add(this.startButton);
-        panelWithTitleBorder.add(this.stopButton);
-        this.add(panelWithTitleBorder);
+        //panelWithTitleBorder.add(this.startButton);
+        //panelWithTitleBorder.add(this.stopButton);
+        this.add(this.startButton);
+        this.add(this.stopButton);
+        //this.add(panelWithTitleBorder);
     }
 
     @Override

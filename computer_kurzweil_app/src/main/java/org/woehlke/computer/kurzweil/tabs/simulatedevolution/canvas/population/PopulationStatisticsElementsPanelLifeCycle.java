@@ -6,7 +6,9 @@ import lombok.ToString;
 import lombok.experimental.Delegate;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
@@ -22,7 +24,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl implements SimulatedEvolution {
+public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl implements SimulatedEvolution, SubTab, Updateable {
 
     private final PopulationStatisticsElement youngCellsElement;
     private final PopulationStatisticsElement youngAndFatCellsElement;
@@ -30,7 +32,6 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl imple
     private final PopulationStatisticsElement hungryCellsElement;
     private final PopulationStatisticsElement oldCellsElement;
 
-    private final SimulatedEvolutionPopulationContainer populationContainer;
     private final String borderLabel;
 
     private final int initialPopulation;
@@ -71,22 +72,16 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl imple
         fullAgeCellsElement = new PopulationStatisticsElement(fullAgeCellsLabel,FULL_AGE);
         hungryCellsElement = new PopulationStatisticsElement(hungryCellsLabel,HUNGRY);
         oldCellsElement = new PopulationStatisticsElement(oldCellsLabel,OLD);
-        PopulationStatisticsElement[] elements = {
-            youngCellsElement,
-            youngAndFatCellsElement,
-            fullAgeCellsElement,
-            hungryCellsElement,
-            oldCellsElement
-        };
-        for(PopulationStatisticsElement ps : elements){
-            this.add(ps);
-        }
-        this.populationContainer = new SimulatedEvolutionPopulationContainer(  this.tabCtx );
+        this.add(youngCellsElement);
+        this.add(youngAndFatCellsElement);
+        this.add(fullAgeCellsElement);
+        this.add(hungryCellsElement);
+        this.add(oldCellsElement);
         update();
     }
 
     public void update() {
-        population = populationContainer.getCurrentGeneration();
+        population = this.tabCtx.getTabModel().getPopulationContainer().getCurrentGeneration();
         youngCellsElement.setText(population.getYoungCells());
         youngAndFatCellsElement.setText(population.getYoungAndFatCells());
         fullAgeCellsElement.setText(population.getFullAgeCells());
