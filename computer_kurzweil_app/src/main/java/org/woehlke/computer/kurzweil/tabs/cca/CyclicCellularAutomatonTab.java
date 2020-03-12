@@ -66,15 +66,12 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonVonNeumann()) {
-            this.stop();
             this.tabModel.startWithNeighbourhoodVonNeumann();
             this.start();
         } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonMoore()) {
-            this.stop();
             this.tabModel.startWithNeighbourhoodMoore();
             this.start();
         } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonWoehlke()) {
-            this.stop();
             this.tabModel.startWithNeighbourhoodWoehlke();
             this.start();
         }
