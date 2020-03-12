@@ -29,18 +29,19 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         this.canvas =  this.tabCtx.getCanvas();
         this.tabModel = this.canvas.getTabModel();
         this.tabPane = new SimulatedEvolutionTabPane(this);
-        this.tabPane.addActionListener(this);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.tabPane);
+        this.tabModel.stop();
+        this.tabPane.stop();
         this.ctx.getFrame().pack();
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.tabPane.getStartStopButtonsPanel().start();
-        this.canvas.getTabModel().start();
+        this.tabPane.start();
+        this.tabModel.start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
@@ -53,22 +54,13 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     @Override
     public void stop() {
         log.info("stop");
-        this.tabPane.getStartStopButtonsPanel().stop();
         this.tabModel.stop();
+        this.tabPane.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
         log.info("stop with canvas x="+x+" y="+y);
         log.info("stopped");
-    }
-
-    @Override
-    public void showMe() {
-        log.info("showMe");
-        int x = this.canvas.getWidth();
-        int y = this.canvas.getHeight();
-        log.info("this: "+this.toString());
-        log.info("showMe with canvas x="+x+" y="+y);
     }
 
     @Override

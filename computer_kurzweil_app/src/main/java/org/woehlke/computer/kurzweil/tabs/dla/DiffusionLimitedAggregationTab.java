@@ -30,9 +30,8 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.diffusionLimitedAggregationTabPane);
-        this.diffusionLimitedAggregationTabPane.addActionListener(this);
-        this.diffusionLimitedAggregationTabPane.start();
-        showMe();
+        this.tabModel.stop();
+        this.diffusionLimitedAggregationTabPane.stop();
     }
 
     @Override
@@ -58,16 +57,6 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
         int y = this.canvas.getHeight();
         super.ctx.getFrame().showMe();
         log.info("stopped with canvas x="+x+" y="+y);
-    }
-
-    @Override
-    public void showMe() {
-        log.info("showMe" );
-        this.ctx.getFrame().pack();
-        int x = this.canvas.getWidth();
-        int y = this.canvas.getHeight();
-        log.info("this: "+this.toString());
-        log.info("showMe with canvas x="+x+" y="+y);
     }
 
     @Override

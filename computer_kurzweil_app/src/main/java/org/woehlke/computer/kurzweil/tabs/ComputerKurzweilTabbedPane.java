@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
-import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
@@ -31,8 +30,7 @@ import java.util.List;
 @Getter
 @ToString(exclude={"ctx","apps","border"},callSuper=true)
 @EqualsAndHashCode(callSuper=true)
-public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable,
-    GuiComponent {
+public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable {
 
     private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
     private final RandomWalkTab randomWalkTab;
@@ -101,11 +99,6 @@ public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable
             tabPanel.stop();
         }
         log.info("stopped");
-    }
-
-    @Override
-    public void showMe() {
-        getActiveTab().showMe();
     }
 
 }

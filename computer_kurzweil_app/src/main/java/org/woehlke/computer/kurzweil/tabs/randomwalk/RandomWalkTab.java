@@ -1,6 +1,5 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -34,18 +33,17 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
         this.add(this.randomWalkTabPane);
         this.randomWalkTabPane.getStartButton().addActionListener(this);
         this.randomWalkTabPane.getStopButton().addActionListener(this);
+        this.tabModel.stop();
         this.randomWalkTabPane.stop();
         this.ctx.getFrame().pack();
-        showMe();
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.showMe();
         this.tabModel.start();
         this.randomWalkTabPane.start();
-        this.getTabCtx().startController();
+        this.getTabCtx().stopController();
         this.getTabCtx().getController().start();
         this.ctx.getFrame().pack();
         int x = this.canvas.getWidth();
@@ -63,15 +61,6 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
         int y = this.canvas.getHeight();
         log.info("stopped with canvas x="+x+" y="+y);
     }
-
-    @Override
-    public void showMe() {
-        log.info("showMe");
-        int x = this.canvas.getWidth();
-        int y = this.canvas.getHeight();
-        log.info("showMe with canvas x="+x+" y="+y+" this: "+this.toString());
-    }
-
 
     @Override
     public void actionPerformed(ActionEvent ae) {

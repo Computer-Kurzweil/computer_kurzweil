@@ -21,7 +21,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     private final TabType tabType = TabType.CYCLIC_CELLULAR_AUTOMATON;
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;
-    private final CyclicCellularAutomatonModel model;
+    private final CyclicCellularAutomatonModel tabModel;
 
     private final CyclicCellularAutomatonTabPane cyclicCellularAutomatonTabPane;
 
@@ -29,20 +29,20 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
         super(tabbedPane, TAB_TYPE);
         this.tabCtx = new CyclicCellularAutomatonContext(this);
         this.canvas = this.tabCtx.getCanvas();
-        this.model = this.canvas.getCyclicCellularAutomatonModel();
+        this.tabModel = this.canvas.getCyclicCellularAutomatonModel();
         this.cyclicCellularAutomatonTabPane = new CyclicCellularAutomatonTabPane(this);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.cyclicCellularAutomatonTabPane);
         this.ctx.getFrame().pack();
-        showMe();
+        this.tabModel.stop();
+        this.cyclicCellularAutomatonTabPane.stop();
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.showMe();
-        this.model.start();
+        this.tabModel.start();
         this.cyclicCellularAutomatonTabPane.start();
         this.getTabCtx().startController();
         this.getTabCtx().getController().start();
@@ -55,7 +55,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     @Override
     public void stop() {
         log.info("stop");
-        this.model.stop();
+        this.tabModel.stop();
         this.cyclicCellularAutomatonTabPane.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
@@ -64,23 +64,18 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
     }
 
     @Override
-    public void showMe() {
-        log.info("showMe");
-        int x = this.canvas.getWidth();
-        int y = this.canvas.getHeight();
-        log.info("showMe with canvas x="+x+" y="+y+" this: "+this.toString());
-    }
-
-    @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonVonNeumann()) {
-            this.model.startWithNeighbourhoodVonNeumann();
+            this.stop();
+            this.tabModel.startWithNeighbourhoodVonNeumann();
             this.start();
         } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonMoore()) {
-            this.model.startWithNeighbourhoodMoore();
+            this.stop();
+            this.tabModel.startWithNeighbourhoodMoore();
             this.start();
         } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonWoehlke()) {
-            this.model.startWithNeighbourhoodWoehlke();
+            this.stop();
+            this.tabModel.startWithNeighbourhoodWoehlke();
             this.start();
         }
         if(ae.getSource() == this.cyclicCellularAutomatonTabPane.getStartButton()){

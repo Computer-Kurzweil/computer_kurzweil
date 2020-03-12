@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
@@ -30,14 +29,11 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
         this.add(this.canvas);
         this.add(this.mandelbrotTabPane);
         this.mandelbrotTabPane.stop();
-        this.ctx.getFrame().pack();
-        showMe();
     }
 
     @Override
     public void start() {
         log.info("start");
-        this.showMe();
         this.mandelbrotTabPane.start();
         this.tabCtx.getTabModel().start();
         this.tabCtx.startController();
@@ -60,19 +56,11 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
     }
 
     @Override
-    public void showMe() {
-        log.info("showMe");
-        int x = this.canvas.getWidth();
-        int y = this.canvas.getHeight();
-        log.info("showedMe with canvas x="+x+" y="+y+" this: "+this.toString());
-    }
-
-    @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.mandelbrotTabPane.getPanelButtonsGroup().getRadioButtonsGroup().getRadioButtonsSwitch()){
+        if(ae.getSource() == this.mandelbrotTabPane.getPanelButtonsGroup().getRadioButtonsSwitch()){
             this.canvas.setModeSwitch();
         }
-        if(ae.getSource() == this.mandelbrotTabPane.getPanelButtonsGroup().getRadioButtonsGroup().getRadioButtonsZoom()){
+        if(ae.getSource() == this.mandelbrotTabPane.getPanelButtonsGroup().getRadioButtonsZoom()){
             this.canvas.setModeZoom();
         }
         if(ae.getSource() == this.mandelbrotTabPane.getPanelZoomButtons().getZoomOutButton()){

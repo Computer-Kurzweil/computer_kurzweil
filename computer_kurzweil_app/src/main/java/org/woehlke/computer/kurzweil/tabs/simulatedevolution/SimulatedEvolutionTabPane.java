@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 import lombok.Getter;
 import lombok.experimental.Delegate;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
@@ -15,7 +16,7 @@ import javax.swing.*;
 
 @Log4j2
 @Getter
-public class SimulatedEvolutionTabPane extends JTabbedPane implements Updateable {
+public class SimulatedEvolutionTabPane extends JTabbedPane implements Updateable, Startable {
 
     private final PopulationStatisticsElementsPanelLifeCycle statisticsPanelPanelLifeCycle;
     private final PopulationStatisticsElementsPanelCounted statisticsPanelCounted;
@@ -50,6 +51,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Updateable
         }
         this.foodPerDayPanel.addActionListener(tab);
         this.gardenOfEdenPanel.addActionListener(tab);
+        this.getStartStopButtonsPanel().stop();
     }
 
     public void update() {
@@ -57,4 +59,5 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Updateable
            t.update();
         }
     }
+
 }
