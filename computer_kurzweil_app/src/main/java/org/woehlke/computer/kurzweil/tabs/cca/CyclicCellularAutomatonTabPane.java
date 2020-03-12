@@ -35,7 +35,6 @@ public class CyclicCellularAutomatonTabPane extends JTabbedPane implements Start
         this.neighbourhoodButtonsPanel.getButtonVonNeumann().addActionListener( tab);
         this.neighbourhoodButtonsPanel.getButtonMoore().addActionListener( tab);
         this.neighbourhoodButtonsPanel.getButtonWoehlke().addActionListener(tab);
-        this.startStopButtonsPanel.addActionListener(tab);
     }
 
 }
