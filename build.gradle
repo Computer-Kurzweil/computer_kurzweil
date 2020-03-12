@@ -14,8 +14,8 @@ plugins {
 
 group = 'org.woehlke.computer.kurzweil'
 sourceCompatibility = '13'
-////version = '1.9'
-//version = '1.9-SNAPSHOT'
+version = '2.2'
+//version = '2.3-SNAPSHOT'
 
 repositories {
     mavenCentral()
