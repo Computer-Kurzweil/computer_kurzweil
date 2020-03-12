@@ -4,10 +4,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
+import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
-import org.woehlke.computer.kurzweil.commons.widgets.PanelBottomButtons;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.MandelbrotButtons;
 
 import java.awt.event.ActionEvent;
@@ -21,13 +21,13 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
     private final MandelbrotContext tabCtx;
     private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
-    private final PanelBottomButtons bottomButtonsPanel;
+    private final PanelStartStopButtons bottomButtonsPanel;
 
     public MandelbrotTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
-        this.bottomButtonsPanel = new PanelBottomButtons( this );
+        this.bottomButtonsPanel = new PanelStartStopButtons( this );
         this.panelButtons = new MandelbrotButtons( this.tabCtx);
         this.bottomButtonsPanel.add(this.panelButtons);
         this.add(this.panelSubtitle);
@@ -38,7 +38,7 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
         this.panelButtons.getPanelButtonsGroup().getRadioButtonsGroup().getRadioButtonsZoom().addActionListener(this);
         this.bottomButtonsPanel.getStartButton().addActionListener(this);
         this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
+        this.bottomButtonsPanel.stop();
         this.ctx.getFrame().pack();
         showMe();
     }
@@ -47,7 +47,7 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
     public void start() {
         log.info("start");
         this.showMe();
-        this.bottomButtonsPanel.getStartStopButtonsPanel().start();
+        this.bottomButtonsPanel.start();
         this.tabCtx.getTabModel().start();
         this.tabCtx.startController();
         this.tabCtx.getController().start();
@@ -61,7 +61,7 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
     public void stop() {
         log.info("stop");
         this.tabCtx.getTabModel().stop();
-        this.bottomButtonsPanel.getStartStopButtonsPanel().stop();
+        this.bottomButtonsPanel.stop();
         this.tabCtx.stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
