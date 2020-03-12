@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import javax.swing.*;
 
@@ -27,5 +28,10 @@ public class RadioButtonsGroup extends ButtonGroup implements Mandelbrot {
         this.add(radioButtonsSwitch);
         this.add(radioButtonsZoom);
         this.radioButtonsSwitch.setSelected( true );
+    }
+
+    public void addActionListener(MandelbrotTab tab) {
+        this.getRadioButtonsSwitch().addActionListener(tab);
+        this.getRadioButtonsZoom().addActionListener(tab);
     }
 }

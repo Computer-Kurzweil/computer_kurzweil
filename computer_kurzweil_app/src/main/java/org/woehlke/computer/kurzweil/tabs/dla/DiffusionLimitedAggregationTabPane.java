@@ -24,6 +24,7 @@ public class DiffusionLimitedAggregationTabPane  extends JTabbedPane implements 
         this.tab = tab;
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         this.addTab(this.startStopButtonsPanel.getTitle(), this.startStopButtonsPanel);
+        this.startStopButtonsPanel.stop();
     }
 
     public void addActionListener(CyclicCellularAutomatonTab tab) {

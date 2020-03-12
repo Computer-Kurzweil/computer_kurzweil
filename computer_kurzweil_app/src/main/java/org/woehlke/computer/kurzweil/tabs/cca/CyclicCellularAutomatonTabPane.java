@@ -28,6 +28,7 @@ public class CyclicCellularAutomatonTabPane extends JTabbedPane implements Start
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         this.addTab(this.startStopButtonsPanel.getTitle(), this.startStopButtonsPanel);
         this.addTab(this.neighbourhoodButtonsPanel.getTitle(), this.neighbourhoodButtonsPanel);
+        this.startStopButtonsPanel.stop();
     }
 
     public void addActionListener(CyclicCellularAutomatonTab tab) {

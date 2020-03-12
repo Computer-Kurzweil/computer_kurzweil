@@ -14,12 +14,13 @@ public class RandomWalkTabPane extends JTabbedPane implements Startable {
     @Delegate(excludes={SubTabImpl.class,JPanel.class, Updateable.class})
     private final PanelStartStopButtons startStopButtonsPanel;
 
-    private final RandomWalkTab tab;
+    private final RandomWalkTab randomWalkTab;
 
     public RandomWalkTabPane(RandomWalkTab tab) {
-        this.tab = tab;
+        this.randomWalkTab = tab;
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         this.addTab(this.startStopButtonsPanel.getTitle(), this.startStopButtonsPanel);
+        this.startStopButtonsPanel.stop();
     }
 
     public void addActionListener(MandelbrotTab tab) {

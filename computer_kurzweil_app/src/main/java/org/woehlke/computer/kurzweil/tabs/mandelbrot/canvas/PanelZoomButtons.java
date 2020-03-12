@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -31,5 +32,9 @@ public class PanelZoomButtons extends JPanel implements Mandelbrot {
         //this.add(this.zoomLevelFieldLabel);
         this.add(this.zoomLevelField);
         this.add(this.zoomOutButton);
+    }
+
+    public void addActionListener(MandelbrotTab tab) {
+        this.getZoomOutButton().addActionListener(tab);
     }
 }
