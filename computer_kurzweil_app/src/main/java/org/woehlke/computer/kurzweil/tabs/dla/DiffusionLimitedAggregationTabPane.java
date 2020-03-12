@@ -7,7 +7,6 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 
 import javax.swing.*;
 
@@ -27,7 +26,4 @@ public class DiffusionLimitedAggregationTabPane  extends JTabbedPane implements 
         this.startStopButtonsPanel.stop();
     }
 
-    public void addActionListener(CyclicCellularAutomatonTab tab) {
-        this.startStopButtonsPanel.addActionListener(tab);
-    }
 }

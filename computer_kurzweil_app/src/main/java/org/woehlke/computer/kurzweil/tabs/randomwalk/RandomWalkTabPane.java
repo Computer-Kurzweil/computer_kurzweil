@@ -5,7 +5,6 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import javax.swing.*;
 
@@ -23,7 +22,4 @@ public class RandomWalkTabPane extends JTabbedPane implements Startable {
         this.startStopButtonsPanel.stop();
     }
 
-    public void addActionListener(MandelbrotTab tab) {
-        this.startStopButtonsPanel.addActionListener(tab);
-    }
 }

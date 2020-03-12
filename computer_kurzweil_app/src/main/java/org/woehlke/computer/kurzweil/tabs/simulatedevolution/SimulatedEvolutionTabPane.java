@@ -50,7 +50,6 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Updateable
         }
         this.foodPerDayPanel.addActionListener(tab);
         this.gardenOfEdenPanel.addActionListener(tab);
-        this.startStopButtonsPanel.addActionListener(tab);
     }
 
     public void update() {
