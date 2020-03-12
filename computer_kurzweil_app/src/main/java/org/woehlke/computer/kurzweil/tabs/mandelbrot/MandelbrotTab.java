@@ -8,7 +8,6 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.MandelbrotButtons;
 
 import java.awt.event.ActionEvent;
 
@@ -19,9 +18,7 @@ import java.awt.event.ActionEvent;
 public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
 
     private final MandelbrotContext tabCtx;
-    //private final MandelbrotButtons panelButtons;
     private final MandelbrotCanvas canvas;
-    //private final PanelStartStopButtons bottomButtonsPanel;
     private final MandelbrotTabPane mandelbrotTabPane;
 
     public MandelbrotTab(ComputerKurzweilTabbedPane tabbedPane) {
@@ -29,21 +26,10 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot {
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
         this.mandelbrotTabPane = new MandelbrotTabPane(this);
-        //this.bottomButtonsPanel = new PanelStartStopButtons( this );
-       //this.panelButtons = new MandelbrotButtons( this.tabCtx);
-        //this.bottomButtonsPanel.add(this.panelButtons);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.mandelbrotTabPane);
-        /*
-        this.add(this.bottomButtonsPanel);
-        this.panelButtons.getPanelZoomButtons().getZoomOutButton().addActionListener(this);
-        this.panelButtons.getPanelButtonsGroup().getRadioButtonsGroup().getRadioButtonsSwitch().addActionListener(this);
-        this.panelButtons.getPanelButtonsGroup().getRadioButtonsGroup().getRadioButtonsZoom().addActionListener(this);
-        this.bottomButtonsPanel.getStartButton().addActionListener(this);
-        this.bottomButtonsPanel.getStopButton().addActionListener(this);
-        this.bottomButtonsPanel.stop();
-        */
+        this.mandelbrotTabPane.stop();
         this.ctx.getFrame().pack();
         showMe();
     }

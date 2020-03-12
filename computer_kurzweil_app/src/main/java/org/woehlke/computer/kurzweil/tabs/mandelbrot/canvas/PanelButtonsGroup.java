@@ -1,34 +1,52 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 
 import lombok.Getter;
+import org.woehlke.computer.kurzweil.commons.Updateable;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.Mandelbrot;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotContext;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
-import java.awt.*;
+
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_ZOOM;
 
 @Getter
-public class PanelButtonsGroup extends JPanel implements Mandelbrot {
+public class PanelButtonsGroup extends SubTabImpl implements Mandelbrot, SubTab, Updateable {
 
     private final MandelbrotContext tabCtx;
-    private final RadioButtonsGroup radioButtonsGroup;
-    private final CompoundBorder borderPanelRadioButtons;
+    private final String buttonsSwitch;
+    private final String buttonsZoom;
+    private final JRadioButton radioButtonsSwitch;
+    private final JRadioButton radioButtonsZoom;
+    private final ButtonGroup radioButtonsGroup;
+    private final MandelbrotModel mandelbrotModel;
 
     public PanelButtonsGroup(MandelbrotContext tabCtx) {
+        super(tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsLabel(),tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
-        this.radioButtonsGroup = new RadioButtonsGroup(this.tabCtx);
-        String buttonsLabel = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsLabel();
-        this.borderPanelRadioButtons = this.tabCtx.getCtx().getBorder(buttonsLabel);
-        FlowLayout layout = new FlowLayout();
-        this.setLayout(layout);
-        this.setBorder(borderPanelRadioButtons);
-        this.add(radioButtonsGroup.getRadioButtonsSwitch());
-        this.add(radioButtonsGroup.getRadioButtonsZoom());
+        this.mandelbrotModel = tabCtx.getTabModel();
+        this.buttonsSwitch = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsSwitch();
+        this.buttonsZoom = this.tabCtx.getCtx().getProperties().getMandelbrot().getView().getButtonsZoom();
+        this.radioButtonsSwitch = new JRadioButton(buttonsSwitch);
+        this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
+        this.radioButtonsZoom = new JRadioButton(buttonsZoom);
+        this.radioButtonsZoom.setMnemonic(RADIO_BUTTONS_ZOOM.ordinal());
+        this.radioButtonsSwitch.setSelected( true );
+        this.radioButtonsGroup = new ButtonGroup();
+        this.radioButtonsGroup.add(radioButtonsSwitch);
+        this.radioButtonsGroup.add(radioButtonsZoom);
+        this.add(radioButtonsSwitch);
+        this.add(radioButtonsZoom);
+        this.getRadioButtonsSwitch().addActionListener(this.tabCtx.getTab());
+        this.getRadioButtonsZoom().addActionListener(this.tabCtx.getTab());
     }
 
-    public void addActionListener(MandelbrotTab tab) {
-        this.radioButtonsGroup.addActionListener(tab);
+    @Override
+    public void update() {
+        //TODO:
     }
 }

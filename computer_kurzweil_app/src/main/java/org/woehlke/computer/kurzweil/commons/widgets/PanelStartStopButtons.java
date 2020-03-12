@@ -34,6 +34,8 @@ public class PanelStartStopButtons extends SubTabImpl implements Startable, SubT
         this.add(this.startButton);
         this.add(this.stopButton);
         //this.add(panelWithTitleBorder);
+        this.startButton.addActionListener(tab);
+        this.stopButton.addActionListener(tab);
     }
 
     @Override
@@ -50,10 +52,5 @@ public class PanelStartStopButtons extends SubTabImpl implements Startable, SubT
         this.startButton.setEnabled(true);
         this.stopButton.setEnabled(false);
         log.info("stopped");
-    }
-
-    public void addActionListener(TabPanel tabPanel) {
-        this.startButton.addActionListener(tabPanel);
-        this.stopButton.addActionListener(tabPanel);
     }
 }
