@@ -51,7 +51,7 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl imple
     public PopulationStatisticsElementsPanelLifeCycle(
       SimulatedEvolutionContext tabCtx
     ) {
-        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics());
+        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics(),tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);

@@ -21,7 +21,7 @@ public class PanelStartStopButtons extends SubTabImpl implements Startable, SubT
     private final JButton stopButton;
 
     public PanelStartStopButtons(Tab tab){
-        super(tab.getCtx().getProperties().getAllinone().getView().getStartStopp());
+        super(tab.getCtx().getProperties().getAllinone().getView().getStartStopp(),tab.getCtx().getProperties());
        // PanelWithTitleBorder panelWithTitleBorder = new PanelWithTitleBorder(super.getTitle(),tab.getCtx().getProperties());
         labelStart = tab.getCtx().getProperties().getAllinone().getView().getStart();
         labelStop = tab.getCtx().getProperties().getAllinone().getView().getStop();

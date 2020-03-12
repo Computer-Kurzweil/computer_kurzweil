@@ -18,13 +18,13 @@ public class GardenOfEdenPanel extends JPanel implements SimulatedEvolution {
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final String gardenOfEdenPanelBorderLabel;
-    private final CompoundBorder gardenOfEdenPanelBorder;
+    //private final CompoundBorder gardenOfEdenPanelBorder;
 
     public GardenOfEdenPanel(SimulatedEvolutionContext tabCtx) {
         super(new FlowLayout());
         this.tabCtx=tabCtx;
         this.gardenOfEdenPanelBorderLabel = tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getPanelGardenOfEden();
-        this.gardenOfEdenPanelBorder = this.tabCtx.getCtx().getBorder(gardenOfEdenPanelBorderLabel);
-        this.setBorder(gardenOfEdenPanelBorder);
+        //this.gardenOfEdenPanelBorder = this.tabCtx.getCtx().getBorder(gardenOfEdenPanelBorderLabel);
+        //this.setBorder(gardenOfEdenPanelBorder);
     }
 }

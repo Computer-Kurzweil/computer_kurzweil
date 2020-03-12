@@ -46,7 +46,7 @@ public class PopulationStatisticsElementsPanelCounted extends SubTabImpl impleme
     public PopulationStatisticsElementsPanelCounted(
         SimulatedEvolutionContext tabCtx
     ) {
-        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics());
+        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics(),tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);

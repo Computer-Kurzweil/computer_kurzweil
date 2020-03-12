@@ -23,8 +23,9 @@ public class GardenOfEdenCheckBox extends JCheckBox implements SimulatedEvolutio
             tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabledString(),
             tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled()
         );
-        this.tabCtx = tabCtx;
+
         this.gardenOfEdenEnabledSelected = tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
         this.gardenOfEdenEnabledString = tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabledString();
+        this.tabCtx = tabCtx;
     }
 }

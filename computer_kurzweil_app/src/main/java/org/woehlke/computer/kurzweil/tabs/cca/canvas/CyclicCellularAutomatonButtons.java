@@ -31,7 +31,7 @@ public class CyclicCellularAutomatonButtons extends SubTabImpl implements Cyclic
   public CyclicCellularAutomatonButtons(
       CyclicCellularAutomatonCanvas canvas
   ) {
-    super(canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle());
+    super(canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle(),canvas.getTabCtx().getCtx().getProperties());
     this.canvas = canvas;
     this.buttonLabelVonNeumann = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeVonNeumann();
     this.buttonLabelMoore =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeMoore();

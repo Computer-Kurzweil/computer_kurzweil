@@ -22,22 +22,26 @@ public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvoluti
     private final SimulatedEvolutionModel tabModel;
     private final GardenOfEdenCheckBox gardenOfEdenEnabled;
     private final GardenOfEdenToggleButton buttonToggleGardenOfEden;
-    private final GardenOfEdenPanel gardenOfEdenPanel;
+    //private final GardenOfEdenPanel gardenOfEdenPanel;
 
     public GardenOfEdenPanelRow(SimulatedEvolutionContext tabCtx) {
-        super("Garden of Eden");
+        super("Garden of Eden",tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
         this.tabModel = this.tabCtx.getTabModel();
         this.gardenOfEdenEnabled = new GardenOfEdenCheckBox(this.tabCtx);
         this.buttonToggleGardenOfEden = new GardenOfEdenToggleButton(this.tabCtx);
+        /*
         this.gardenOfEdenPanel = new GardenOfEdenPanel(this.tabCtx);
         this.gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
         this.gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
         this.add( this.gardenOfEdenPanel);
+        */
+        this.add(this.gardenOfEdenEnabled);
+        this.add(this.buttonToggleGardenOfEden);
     }
 
     public void setSelected(boolean selected) {
-        tabModel.getSimulatedEvolutionParameter().setGardenOfEdenEnabled(selected);
+        this.tabModel.getSimulatedEvolutionParameter().setGardenOfEdenEnabled(selected);
         update();
     }
 
