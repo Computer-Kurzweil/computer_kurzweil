@@ -32,9 +32,7 @@ public class PanelZoomButtons extends JPanel implements Mandelbrot {
         //this.add(this.zoomLevelFieldLabel);
         this.add(this.zoomLevelField);
         this.add(this.zoomOutButton);
+        this.zoomOutButton.addActionListener(tabCtx.getTab());
     }
 
-    public void addActionListener(MandelbrotTab tab) {
-        this.getZoomOutButton().addActionListener(tab);
-    }
 }

@@ -31,7 +31,6 @@ public class MandelbrotTabPane  extends JTabbedPane implements Startable {
         this.panelZoomButtons = new PanelZoomButtons(this.tab.getTabCtx());
         this.add(panelButtonsGroup);
         this.add(panelZoomButtons);
-        this.addActionListener(tab);
         this.startStopButtonsPanel.stop();
         this.disableZoomButton();
     }
@@ -46,20 +45,15 @@ public class MandelbrotTabPane  extends JTabbedPane implements Startable {
     }
 
     public JRadioButton getRadioButtonsSwitch() {
-        return this.panelButtonsGroup.getRadioButtonsGroup().getRadioButtonsSwitch();
+        return this.panelButtonsGroup.getRadioButtonsSwitch();
     }
 
     public JRadioButton getRadioButtonsZoom() {
-        return this.panelButtonsGroup.getRadioButtonsGroup().getRadioButtonsZoom();
+        return this.panelButtonsGroup.getRadioButtonsZoom();
     }
 
     public AbstractButton getZoomOutButton() {
         return this.panelZoomButtons.getZoomOutButton();
     }
 
-    public void addActionListener(MandelbrotTab tab) {
-        this.startStopButtonsPanel.addActionListener(tab);
-        this.panelButtonsGroup.addActionListener(tab);
-        this.panelZoomButtons.addActionListener(tab);
-    }
 }

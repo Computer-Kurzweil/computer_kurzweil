@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.has.HasTabTitle;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -59,4 +60,5 @@ public abstract class SubTabImpl extends JPanel implements HasTabTitle {
             BorderFactory.createEmptyBorder(left,right,top,bottom)
         );
     }
+
 }

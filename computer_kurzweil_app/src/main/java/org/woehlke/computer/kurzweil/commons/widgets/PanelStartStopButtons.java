@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import javax.swing.*;
 
@@ -53,4 +54,5 @@ public class PanelStartStopButtons extends SubTabImpl implements Startable, SubT
         this.stopButton.setEnabled(false);
         log.info("stopped");
     }
+
 }
