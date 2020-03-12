@@ -14,12 +14,11 @@ import org.woehlke.computer.kurzweil.commons.widgets.PanelSubtitle;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
-import java.awt.event.WindowListener;
-import java.awt.event.WindowStateListener;
+import java.awt.event.*;
 import java.awt.image.ImageObserver;
 import java.beans.Transient;
 import java.io.Serializable;
@@ -40,7 +39,7 @@ public class ComputerKurzweilFrame extends JFrame implements Serializable,
 
     private final ComputerKurzweilContext ctx;
     private final ComputerKurzweilTabbedPane tabbedPane;
-    private final ComputerKurzweilMenuBar computerKurzweilMenuBar;
+    private final ComputerKurzweilMenuBar jMenuBar;
     private final PanelCopyright panelCopyright;
     private final PanelSubtitle panelSubtitle;
     private final BoxLayoutVertical layout;
@@ -49,20 +48,25 @@ public class ComputerKurzweilFrame extends JFrame implements Serializable,
     public ComputerKurzweilFrame(
         ComputerKurzweilProperties properties
     ) throws HeadlessException {
-        super(properties.getAllinone().getView().getTitle());
+        //super(properties.getAllinone().getView().getTitle());
+        setTitle(properties.getAllinone().getView().getTitle());
         this.ctx = new ComputerKurzweilContext(properties,this);
-        computerKurzweilMenuBar = new ComputerKurzweilMenuBar(this.ctx);
-        setJMenuBar(computerKurzweilMenuBar);
         panelSubtitle =  PanelSubtitle.getPanelSubtitleForApplication(this.ctx);
         tabbedPane = new ComputerKurzweilTabbedPane(this.ctx);
         panelCopyright = new PanelCopyright(this.ctx);
-        layout = new BoxLayoutVertical( rootPane );
         border = this.ctx.getFrameBorder();
-        rootPane.setLayout(layout);
-        rootPane.setBorder(border);
-        rootPane.add(panelSubtitle);
-        rootPane.add(tabbedPane);
-        rootPane.add(panelCopyright);
+        //Border bo = new LineBorder(Color.red,10,true);
+        jMenuBar = new ComputerKurzweilMenuBar(this.ctx);
+        //jMenuBar.setBorder(bo);
+        this.setJMenuBar(jMenuBar);
+        Container contentPane = this.getContentPane();
+        layout = new BoxLayoutVertical( contentPane );
+        contentPane.add(panelSubtitle);
+        contentPane.add(tabbedPane);
+        contentPane.add(panelCopyright);
+        //contentPane.setBorder(border);
+        contentPane.setLayout(layout);
+        this.setVisible(true);
         pack();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(this);
