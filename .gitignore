@@ -26,3 +26,12 @@ gradle-app.setting
 /insourcing_simulated_evolution/build
 
 log.txt
+
+target
+/target
+/computer_kurzweil_app/target
+/insourcing_cyclic_cellular_automaton/target
+/insourcing_cyclic_cellular_automaton/target
+/insourcing_diffusion_limited_aggregation/target
+/insourcing_mandelbrot/target
+/insourcing_simulated_evolution/target
