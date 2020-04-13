@@ -1,5 +1,7 @@
 # Computer Kurzweil
 
+![Java CI with Maven](https://github.com/Computer-Kurzweil/computer_kurzweil/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 ## Computing the Edge of the Mandelbrot Set with a Turing Machine
 ![Computing the Area outside the Mandelbrot Set](docs/tabs/mandelbrot/img/screen03.png)
 
