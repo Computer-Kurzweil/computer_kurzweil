@@ -1,3 +1,18 @@
 #!/usr/bin/env bash
 
-./gradlew clean run
+
+
+function site() {
+  ../../mvnw -e clean install site site:deploy
+}
+
+function run() {
+    ../../mvnw
+}
+
+function main() {
+    site
+    run
+}
+
+main

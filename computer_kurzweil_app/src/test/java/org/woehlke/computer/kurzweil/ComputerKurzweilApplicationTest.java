@@ -1,7 +1,9 @@
 package org.woehlke.computer.kurzweil;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit test for simple AppMainDesktop.
@@ -18,6 +20,6 @@ public class ComputerKurzweilApplicationTest {
       System.out.println(line);
       System.out.println("When I am grown up, I will be a cool Unit Test.");
       System.out.println(line);
-      Assert.assertTrue(true);
+      assertTrue(true);
   }
 }
