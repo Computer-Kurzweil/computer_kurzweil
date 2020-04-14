@@ -10,7 +10,7 @@
         <version>2.1.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mandelbrot/</artifactId>
+    <artifactId>mandelbrot</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
