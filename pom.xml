@@ -9,26 +9,26 @@
     <version>2.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Mandelbrot</name>
-    <description>Computing the Edge of the Mandelbrot Set with a Turing Machine</description>
-    <url>https://woehlke.org/p/mandelbrot</url>
+    <name>computer_kurzweil</name>
+    <description>Computer Science Infotainment</description>
+    <url>https://woehlke.org/p/computer_kurzweil</url>
     <inceptionYear>2013</inceptionYear>
 
     <scm>
-        <url>https://github.com/Computer-Kurzweil/mandelbrot.git</url>
-        <connection>scm:git:git@github.com:Computer-Kurzweil/mandelbrot.git</connection>
-        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/mandelbrot.git</developerConnection>
+        <url>https://github.com/Computer-Kurzweil/computer_kurzweil.git</url>
+        <connection>scm:git:git@github.com:Computer-Kurzweil/computer_kurzweil.git</connection>
+        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/computer_kurzweil.git</developerConnection>
     </scm>
 
     <issueManagement>
-        <url>https://github.com/Computer-Kurzweil/mandelbrot/issues/</url>
+        <url>https://github.com/Computer-Kurzweil/computer_kurzweil/issues/</url>
         <system>GitHub</system>
     </issueManagement>
 
     <distributionManagement>
         <site>
             <id>simulatedevolution.local</id>
-            <url>file://${user.home}/public_html/p/mandelbrot</url>
+            <url>file://${user.home}/public_html/p/computer_kurzweil</url>
         </site>
     </distributionManagement>
 
