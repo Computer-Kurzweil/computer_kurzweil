@@ -1,6 +1,7 @@
 # Computer Kurzweil
 
 ![Java CI with Maven](https://github.com/Computer-Kurzweil/computer_kurzweil/workflows/Java%20CI%20with%20Maven/badge.svg)
+[![Build Status](https://travis-ci.com/Computer-Kurzweil/computer_kurzweil.svg?branch=master)](https://travis-ci.com/Computer-Kurzweil/computer_kurzweil)
 
 ## Computing the Edge of the Mandelbrot Set with a Turing Machine
 ![Computing the Area outside the Mandelbrot Set](etc/tabs/mandelbrot/img/screen03.png)
