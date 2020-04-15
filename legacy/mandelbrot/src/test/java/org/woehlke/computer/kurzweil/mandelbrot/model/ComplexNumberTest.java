@@ -1,10 +1,12 @@
 package org.woehlke.computer.kurzweil.mandelbrot.model;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.woehlke.computer.kurzweil.mandelbrot.model.fractal.ComplexNumber;
 
 import java.util.logging.Logger;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * (C) 2006 - 2015 Thomas Woehlke.
@@ -22,9 +24,9 @@ public class ComplexNumberTest {
         ComplexNumber complexNumber1 = new ComplexNumber();
         int iterations = complexNumber1.computeMandelbrotSet();
         log.info("computeMandelbrotTest1 iterations : "+ iterations);
-        Assert.assertTrue(complexNumber1.isInMandelbrotSet());
-        Assert.assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
-        Assert.assertTrue(0 == iterations);
+        assertTrue(complexNumber1.isInMandelbrotSet());
+        assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
+        assertTrue(0 == iterations);
         log.info("computeMandelbrotTest1 done");
     }
 
@@ -34,10 +36,10 @@ public class ComplexNumberTest {
         ComplexNumber complexNumber2 = new ComplexNumber(1.0d,1.2d);
         int iterations = complexNumber2.computeMandelbrotSet();
         log.info("computeMandelbrotTest2 iterations : "+ iterations);
-        Assert.assertFalse(complexNumber2.isInMandelbrotSet());
-        Assert.assertNotEquals(iterations, ComplexNumber.MAX_ITERATIONS);
-        Assert.assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
-        Assert.assertTrue(2 == iterations);
+        assertFalse(complexNumber2.isInMandelbrotSet());
+        assertNotEquals(iterations, ComplexNumber.MAX_ITERATIONS);
+        assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
+        assertTrue(2 == iterations);
         log.info("computeMandelbrotTest2 done");
     }
 
@@ -49,10 +51,10 @@ public class ComplexNumberTest {
         int iterations = z.computeJuliaSet(c);
         log.info("computeJuliaTest1 iterations : "+ iterations);
         boolean isInJuliaSet = z.isInJuliaSet();
-        Assert.assertTrue(isInJuliaSet);
-        Assert.assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
-        Assert.assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
-        Assert.assertTrue(0 == iterations);
+        assertTrue(isInJuliaSet);
+        assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
+        assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
+        assertTrue(0 == iterations);
         log.info("computeJuliaTest1 done");
     }
 
@@ -64,10 +66,10 @@ public class ComplexNumberTest {
         int iterations = z.computeJuliaSet(c);
         log.info("computeJuliaTest2 iterations :"+ iterations);
         boolean isInJuliaSet = z.isInJuliaSet();
-        Assert.assertFalse(isInJuliaSet);
-        Assert.assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
-        Assert.assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
-        Assert.assertTrue(2 == iterations);
+        assertFalse(isInJuliaSet);
+        assertNotEquals(ComplexNumber.MAX_ITERATIONS, iterations);
+        assertTrue(iterations < ComplexNumber.MAX_ITERATIONS);
+        assertTrue(2 == iterations);
         log.info("computeJuliaTest2 done");
     }
 }

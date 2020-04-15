@@ -11,7 +11,7 @@ function run() {
 
 function main() {
     site
-    run
+    #run
 }
 
 main
