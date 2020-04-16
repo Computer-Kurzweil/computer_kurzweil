@@ -425,7 +425,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>org.woehlke.computer.kurzweil.mandelbrot.MandelbrotSetApplication</mainClass>
+                    <mainClass>org.woehlke.computer.kurzweil.SimulatedEvolutionApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -435,7 +435,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.woehlke.computer.kurzweil.mandelbrot.MandelbrotSetApplication</mainClass>
+                            <mainClass>org.woehlke.computer.kurzweil.SimulatedEvolutionApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
