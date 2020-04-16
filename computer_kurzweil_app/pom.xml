@@ -259,6 +259,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -275,9 +276,6 @@
                             <goal>resolve-plugins</goal>
                             <goal>collect</goal>
                             <goal>copy-dependencies</goal>
-                            <!--
-                            <goal>unpack-dependencies</goal>
-                            -->
                             <goal>build-classpath</goal>
                         </goals>
                         <configuration>
