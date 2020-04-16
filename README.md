@@ -1,6 +1,20 @@
 # Computer Kurzweil
 
 ![Java CI with Maven](https://github.com/Computer-Kurzweil/computer_kurzweil/workflows/Java%20CI%20with%20Maven/badge.svg)
+[![Build Status](https://travis-ci.com/Computer-Kurzweil/computer_kurzweil.svg?branch=master)](https://travis-ci.com/Computer-Kurzweil/computer_kurzweil)
+
+Computer Science Infotainment.
+
+A Tribute to the "Computer Kurzweil" named Article Series in Spektrum der Wissenschaft which is the german release of Scientific American. The Article Series "Computer Kurzweil" were also published as Books.
+
+Content: Cellular Automata, Fractal Geometry, Artficial Life, Simulation, Automata and Turing Machines, Systems Theory.
+
+## Table of Content:
+* Mandelbrot: Computing the Edge of the Mandelbrot Set with a Turing Machine
+* Simulated Evolution
+* Diffusion-limited aggregation (DLA)
+* Cyclic Cellular Automaton (CCA). 
+* More to follow
 
 ## Computing the Edge of the Mandelbrot Set with a Turing Machine
 ![Computing the Area outside the Mandelbrot Set](etc/tabs/mandelbrot/img/screen03.png)
@@ -34,11 +48,13 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 ## Cyclic Cellular Automaton (CCA)
 ![Later Screen](etc/tabs/cca/img/screen2.png)
 
-The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
+The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers. In this system, each cellConf remains unchanged until some neighboring cellConf has a modular value exactly one unit larger than that of the cellConf itself, at which point it copies its neighbor's value.
+One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior. 
 
-In this system, each cellConf remains unchanged until some neighboring cellConf has a modular value exactly one unit larger than that of the cellConf itself, at which point it copies its neighbor's value.
+A random filled 2d lattice of cells with a cyclic rule to change state of a cell depending on the direct neighbour cells. After a while spirals occour in the lattice. Rules are only defined for the behaviour of a the cells, so these Spirals ahow a Meta-Behaviour of the System. This may be a very simplified computational Model for Crystallization Processes in Nature and  
+Concentration in Business and Social inequality in free market situations.
 
-One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior. **[More...](etc/tabs/cca/README.md)**
+**[More...](etc/tabs/cca/README.md)**
 
 ## Koch Snowflake
 **[More...](etc/tabs/kochsnowflake/README.md)**
