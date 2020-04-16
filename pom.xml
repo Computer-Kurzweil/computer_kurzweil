@@ -555,7 +555,6 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <defaultGoal>clean dependency:list install exec:java site site:deploy</defaultGoal>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -904,6 +903,7 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -911,9 +911,6 @@
                     <maxmemory>2048m</maxmemory>
                     <source>${java.version}</source>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <!--
-                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                    -->
                 </configuration>
                 <executions>
                     <execution>
@@ -927,13 +924,11 @@
                             <maxmemory>2048m</maxmemory>
                             <source>${java.version}</source>
                             <encoding>${project.build.sourceEncoding}</encoding>
-                            <!--
-                            <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                            -->
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -942,6 +937,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -968,6 +964,7 @@
                     </archive>
                 </configuration>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
@@ -1015,32 +1012,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>${skipTests}</skipTests>
-                    <systemPropertyVariables>
-                        <spring.profiles.active>default</spring.profiles.active>
-                        <skipIntegrationTests>${skipTests}</skipIntegrationTests>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <configuration>
-                    <skipTests>${skipTests}</skipTests>
-                    <systemPropertyVariables>
-                        <spring.profiles.active>default</spring.profiles.active>
-                        <skipIntegrationTests>${skipTests}</skipIntegrationTests>
-                    </systemPropertyVariables>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -1103,9 +1074,6 @@
                     <maxmemory>2048m</maxmemory>
                     <source>${java.version}</source>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <!--
-                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                    -->
                 </configuration>
             </plugin>
             <plugin>
@@ -1173,10 +1141,7 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
