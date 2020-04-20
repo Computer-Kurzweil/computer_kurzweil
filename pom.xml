@@ -54,10 +54,8 @@
 
     <modules>
         <module>computer_kurzweil_app</module>
-        <module>insourcing_cyclic_cellular_automaton</module>
-        <module>insourcing_diffusion_limited_aggregation</module>
-        <module>insourcing_mandelbrot</module>
-        <module>insourcing_simulated_evolution</module>
+        <module>insourcing</module>
+        <module>insourcing2</module>
         <module>legacy</module>
     </modules>
 
