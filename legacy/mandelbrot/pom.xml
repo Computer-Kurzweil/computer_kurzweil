@@ -205,6 +205,7 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <defaultGoal>clean dependency:list install exec:java</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
