@@ -16,6 +16,10 @@ lorem ipsum
 * fixed #20 Branch
 * fixed #21 pull branch to master
 
+### 2.2.1 Release
+* Fixed #23: run with java 14
+
+
 ## Goto
 
 | Work in Progress | Github                          |
