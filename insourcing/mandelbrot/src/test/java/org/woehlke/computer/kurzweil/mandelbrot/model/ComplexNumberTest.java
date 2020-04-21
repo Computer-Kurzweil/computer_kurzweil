@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.mandelbrot.model;
 
 
 import org.junit.jupiter.api.Test;
-import org.woehlke.computer.kurzweil.mandelbrot.model.fractal.ComplexNumber;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.ComplexNumber;
 
 import java.util.logging.Logger;
 

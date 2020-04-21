@@ -2,11 +2,12 @@ package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
 
 
 import org.junit.jupiter.api.Test;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPhaseState;
 
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.woehlke.computer.kurzweil.mandelbrot.model.turing.TuringPhase.*;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPhase.*;
 
 public class TuringTuringPhaseStateEnumTest {
 

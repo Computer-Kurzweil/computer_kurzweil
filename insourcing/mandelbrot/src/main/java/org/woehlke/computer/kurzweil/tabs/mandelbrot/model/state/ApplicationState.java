@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -7,11 +7,11 @@ package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
  * https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html
  * @author Thomas Woehlke
  *
- * Created by tw on 18.08.15.
+ * Created by tw on 23.08.15.
  */
-public enum TuringDirection {
-    UP,
-    RIGHT,
-    DOWN,
-    LEFT
+public enum ApplicationState {
+    MANDELBROT,
+    JULIA_SET,
+    MANDELBROT_ZOOM,
+    JULIA_SET_ZOOM
 }

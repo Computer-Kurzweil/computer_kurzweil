@@ -1,7 +1,7 @@
-package org.woehlke.computer.kurzweil.mandelbrot.model.state;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
 
-import static org.woehlke.computer.kurzweil.mandelbrot.model.state.ApplicationState.*;
-import static org.woehlke.computer.kurzweil.mandelbrot.model.state.ApplicationState.JULIA_SET_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState.*;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState.JULIA_SET_ZOOM;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

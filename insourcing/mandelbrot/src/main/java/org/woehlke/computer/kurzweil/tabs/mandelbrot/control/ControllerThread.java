@@ -1,7 +1,7 @@
-package org.woehlke.computer.kurzweil.mandelbrot.control;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.control;
 
-import org.woehlke.computer.kurzweil.mandelbrot.model.ApplicationModel;
-import org.woehlke.computer.kurzweil.mandelbrot.view.ApplicationFrame;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.ApplicationModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.view.ApplicationFrame;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 
-import org.woehlke.computer.kurzweil.mandelbrot.model.helper.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

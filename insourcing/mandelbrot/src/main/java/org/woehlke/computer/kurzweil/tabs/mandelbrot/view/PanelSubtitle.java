@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.mandelbrot.view;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.view;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,9 +1,9 @@
-package org.woehlke.computer.kurzweil.mandelbrot.view;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.view;
 
-import org.woehlke.computer.kurzweil.mandelbrot.config.Config;
-import org.woehlke.computer.kurzweil.mandelbrot.control.ControllerThread;
-import org.woehlke.computer.kurzweil.mandelbrot.model.ApplicationModel;
-import org.woehlke.computer.kurzweil.mandelbrot.model.helper.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.config.Config;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.control.ControllerThread;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.ApplicationModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;

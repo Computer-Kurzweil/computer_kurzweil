@@ -1,14 +1,14 @@
-package org.woehlke.computer.kurzweil.mandelbrot.view;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.view;
 
-import org.woehlke.computer.kurzweil.mandelbrot.model.ApplicationModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.ApplicationModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.computer.kurzweil.mandelbrot.view.RradioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.computer.kurzweil.mandelbrot.view.RradioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.view.RradioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.view.RradioButtons.RADIO_BUTTONS_ZOOM;
 
 
 /**

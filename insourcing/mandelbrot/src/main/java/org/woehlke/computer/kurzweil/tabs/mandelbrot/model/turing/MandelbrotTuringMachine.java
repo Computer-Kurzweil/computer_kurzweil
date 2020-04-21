@@ -1,7 +1,7 @@
-package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 
-import org.woehlke.computer.kurzweil.mandelbrot.model.ApplicationModel;
-import org.woehlke.computer.kurzweil.mandelbrot.model.fractal.GaussianNumberPlane;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.ApplicationModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlane;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
