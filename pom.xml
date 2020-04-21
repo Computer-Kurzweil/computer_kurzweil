@@ -986,12 +986,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
-                <!--
                 <configuration>
                     <githubAPIScheme>https</githubAPIScheme>
                     <githubAPIPort>443</githubAPIPort>
                 </configuration>
-                -->
                 <reportSets>
                     <reportSet>
                         <id>id-github-report</id>
