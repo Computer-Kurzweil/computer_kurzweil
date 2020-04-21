@@ -1,13 +1,13 @@
-package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model;
+package org.woehlke.computer.kurzweil.tabs.cca.model;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.tabs.cca.config.ObjectRegistry;
 
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.LatticeNeighbourhood.*;
+import static org.woehlke.computer.kurzweil.tabs.cca.model.LatticeNeighbourhood.*;
 
 /**
  * Cyclic Cellular Automaton.

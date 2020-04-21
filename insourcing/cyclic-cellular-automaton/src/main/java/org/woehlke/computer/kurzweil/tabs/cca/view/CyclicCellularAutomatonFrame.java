@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view;
+package org.woehlke.computer.kurzweil.tabs.cca.view;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.tabs.cca.config.ObjectRegistry;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;

@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control;
+package org.woehlke.computer.kurzweil.tabs.cca.control;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.tabs.cca.config.ObjectRegistry;
 
 import java.io.Serializable;
 

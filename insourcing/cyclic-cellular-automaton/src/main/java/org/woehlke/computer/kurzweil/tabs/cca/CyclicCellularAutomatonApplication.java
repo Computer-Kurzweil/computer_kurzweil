@@ -1,7 +1,7 @@
-package org.woehlke.computer.kurzweil.cyclic.cellular.automaton;
+package org.woehlke.computer.kurzweil.tabs.cca;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
+import org.woehlke.computer.kurzweil.tabs.cca.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.tabs.cca.view.CyclicCellularAutomatonFrame;
 
 /**
  * Cyclic Cellular Automaton.
