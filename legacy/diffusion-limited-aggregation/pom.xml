@@ -14,7 +14,8 @@
     <artifactId>diffusion-limited-aggregation</artifactId>
     <packaging>jar</packaging>
 
-    <name>legacy :: diffusion-limited-aggregation</name>
+    <name>legacy :: Diffusion Limited Aggregation</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>

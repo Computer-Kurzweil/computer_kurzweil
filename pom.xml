@@ -18,8 +18,8 @@
         <url>https://github.com/Computer-Kurzweil/computer_kurzweil.git</url>
         <connection>scm:git:git@github.com:Computer-Kurzweil/computer_kurzweil.git</connection>
         <developerConnection>scm:git:git@github.com:Computer-Kurzweil/computer_kurzweil.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <issueManagement>
         <url>https://github.com/Computer-Kurzweil/computer_kurzweil/issues/</url>
@@ -28,9 +28,15 @@
 
     <distributionManagement>
         <site>
-            <id>computer_kiurzweil.site</id>
+            <id>simulatedevolution.local</id>
+            <url>file://${user.home}/public_html/p/computer_kurzweil</url>
+        </site>
+        <!--
+        <site>
+            <id>computer_kurzweil.site</id>
             <url>https://github.com/Computer-Kurzweil/computer_kurzweil.git</url>
         </site>
+        -->
         <repository>
             <id>localhost_artefactory_staging</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
@@ -937,7 +943,7 @@
                     <releaseProfiles>release</releaseProfiles>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <preparationGoals>clean,dependemcy:list,install,site</preparationGoals>
-                    <goals>site,site:deploy,deploy</goals>
+                    <goals>site,site:run</goals>
                 </configuration>
             </plugin>
             <plugin>

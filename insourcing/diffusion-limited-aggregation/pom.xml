@@ -14,7 +14,8 @@
     <artifactId>insourcing-diffusion-limited-aggregation</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing :: diffusion-limited-aggregation</name>
+    <name>insourcing :: Diffusion Limited Aggregation</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>

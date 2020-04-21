@@ -14,7 +14,8 @@
     <artifactId>insourcing2_mandelbrot</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing2 :: mandelbrot</name>
+    <name>insourcing2 :: Mandelbrot</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>

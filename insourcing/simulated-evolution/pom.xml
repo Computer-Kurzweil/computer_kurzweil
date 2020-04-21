@@ -14,7 +14,8 @@
     <artifactId>insourcing-simulated-evolution</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing :: simulated-evolution</name>
+    <name>insourcing :: Simulated Evolution</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>

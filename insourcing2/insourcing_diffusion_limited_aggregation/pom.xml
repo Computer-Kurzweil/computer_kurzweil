@@ -11,10 +11,11 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>insourcing2_diffusion_limited_aggregation</artifactId>
+    <artifactId>insourcing2-diffusion-limited-aggregation</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing2 :: diffusion_limited_aggregation</name>
+    <name>insourcing2 :: Diffusion Limited Aggregation</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>

@@ -14,7 +14,8 @@
     <artifactId>insourcing-cyclic-cellular-automaton</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing :: cyclic-cellular-automaton</name>
+    <name>insourcing :: Cyclic Cellular Automaton</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>

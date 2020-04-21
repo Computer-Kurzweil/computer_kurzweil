@@ -15,6 +15,7 @@
     <packaging>jar</packaging>
 
     <name>Computer Kurzweil App</name>
+    <description>This App unites all single apps in one app.</description>
 
     <properties>
         <skipTests>true</skipTests>

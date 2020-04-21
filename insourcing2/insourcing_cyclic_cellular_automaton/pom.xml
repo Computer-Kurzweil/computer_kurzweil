@@ -11,10 +11,11 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>insourcing2_cyclic_cellular_automaton</artifactId>
+    <artifactId>insourcing2-cyclic-cellular-automaton</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing2 :: cyclic_cellular_automaton</name>
+    <name>insourcing2 :: Cyclic Cellular Automaton</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>

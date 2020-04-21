@@ -14,7 +14,8 @@
     <artifactId>simulated-evolution</artifactId>
     <packaging>jar</packaging>
 
-    <name>legacy :: simulated-evolution</name>
+    <name>legacy :: Simulated Evolution</name>
+    <description> asdf </description>
 
     <dependencies>
         <dependency>
