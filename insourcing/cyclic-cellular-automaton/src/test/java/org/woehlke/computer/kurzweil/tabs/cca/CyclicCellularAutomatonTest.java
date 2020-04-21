@@ -1,4 +1,4 @@
-package org.woehlke.simulation.cyclic.cellular.automaton;
+package org.woehlke.computer.kurzweil.tabs.cca;
 
 
 import org.junit.jupiter.api.Test;
