@@ -18,9 +18,16 @@ lorem ipsum
 
 ### 2.2.1 Release
 * Fixed #23: run with java 14
+* Fixed #24: Run with Java 13
+* Fixed #25: Run with Java 14
+* Fixed #26: Setup Github CI
+* Fixed #28: Migrate from Gradle to Maven ... Multimodule maven project
 * Fixed #29: insourcing: change src package to those of the comput_kurzweil_app
+* Fixed #30: insourcing: add Lombok
+* Fixed #31: insourcing: add ApplicationProperties.yml and Property-Classes
 
-commit-msg: Fixed #23, Fixed #29
+
+commit-msg: Fixed #23, Fixed #24, Fixed #25, Fixed #26, Fixed #28, Fixed #29, Fixed #30, Fixed #31
 
 ## Goto
 
