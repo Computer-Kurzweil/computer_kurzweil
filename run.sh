@@ -19,7 +19,8 @@ function run() {
 }
 
 function main() {
-    runGithubCi
+    makeRelease
+    #runGithubCi
     #site
     #run
 }
