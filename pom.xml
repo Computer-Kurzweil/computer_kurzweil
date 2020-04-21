@@ -7,7 +7,7 @@
     <version>2.2.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>computer_kurzweil</name>
+    <name>Computer Kurzweil</name>
     <description>Computer Science Infotainment</description>
     <url>https://woehlke.org/p/computer_kurzweil</url>
     <inceptionYear>2013</inceptionYear>
