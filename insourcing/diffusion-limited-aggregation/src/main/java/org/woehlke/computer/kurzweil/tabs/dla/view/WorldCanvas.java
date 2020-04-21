@@ -1,8 +1,8 @@
-package org.woehlke.simulation.dla.view;
+package org.woehlke.computer.kurzweil.tabs.dla.view;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
-import org.woehlke.simulation.dla.model.*;
-import org.woehlke.simulation.dla.model.Point;
+import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.tabs.dla.model.Particles;
+import org.woehlke.computer.kurzweil.tabs.dla.model.Point;
 
 import javax.swing.*;
 import java.awt.*;

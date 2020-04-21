@@ -5,6 +5,6 @@
  * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
  *
- * Starting the Desktop App.
+ * Controller.
  */
-package org.woehlke.simulation.dla;
+package org.woehlke.computer.kurzweil.tabs.dla.control;

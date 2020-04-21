@@ -1,6 +1,6 @@
-package org.woehlke.simulation.dla.model;
+package org.woehlke.computer.kurzweil.tabs.dla.model;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregation;
 
 /**
  * Diffusion Limited Aggregation.

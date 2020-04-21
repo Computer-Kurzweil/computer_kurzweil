@@ -1,10 +1,10 @@
-package org.woehlke.simulation.dla.view.applet;
+package org.woehlke.computer.kurzweil.tabs.dla.view.applet;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
-import org.woehlke.simulation.dla.control.ControllerThread;
-import org.woehlke.simulation.dla.model.Particles;
-import org.woehlke.simulation.dla.model.Point;
-import org.woehlke.simulation.dla.view.WorldCanvas;
+import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.tabs.dla.control.ControllerThread;
+import org.woehlke.computer.kurzweil.tabs.dla.model.Particles;
+import org.woehlke.computer.kurzweil.tabs.dla.model.Point;
+import org.woehlke.computer.kurzweil.tabs.dla.view.WorldCanvas;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
