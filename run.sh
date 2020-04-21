@@ -10,9 +10,9 @@ function runGithubCi(){
 }
 
 function makeRelease() {
-    ./mvnw -B -DskipTests clean dependency:list install site site:deploy --file pom.xml
-    #./mvnw -DskipTests -Dresume=false -DdryRun=true release:prepare
-    #./mvnw -DskipTests -Dresume=false release:prepare release:perform #-Psign-artifacts-with-ogc
+    #./mvnw -B -DskipTests clean dependency:list install site site:deploy --file pom.xml
+    ./mvnw -DskipTests -Dresume=false -DdryRun=true release:prepare
+    ./mvnw -DskipTests -Dresume=false release:prepare release:perform #-Psign-artifacts-with-ogc
 }
 
 function publishSite() {
