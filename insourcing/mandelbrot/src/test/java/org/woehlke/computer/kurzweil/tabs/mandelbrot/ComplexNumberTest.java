@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.mandelbrot.model;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 
 import org.junit.jupiter.api.Test;
