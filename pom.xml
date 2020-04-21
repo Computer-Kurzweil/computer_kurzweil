@@ -185,7 +185,7 @@
 
     <properties>
         <java.version>13</java.version>
-        <version.maven>3.6.3</version.maven>
+        <version.maven>[3.3.9,)</version.maven>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

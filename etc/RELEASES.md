@@ -27,8 +27,13 @@ lorem ipsum
 * Fixed #30: insourcing: add Lombok
 * Fixed #31: insourcing: add ApplicationProperties.yml and Property-Classes
 
-
 commit-msg: Fixed #23, Fixed #24, Fixed #25, Fixed #26, Fixed #27, Fixed #28, Fixed #29, Fixed #30, Fixed #31
+
+### 2.2.2 Release
+* Fixed #33: maven enforce maven.version is broken in both CI
+* Fixed #34: make release with maven scm and release plugin
+
+commit-msg: Fixed #33, Fixed #34
 
 ## Goto
 
