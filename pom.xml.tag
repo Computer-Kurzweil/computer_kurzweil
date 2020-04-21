@@ -938,13 +938,9 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <tagNameFormat>@{project.version}</tagNameFormat>
-		    <!--
                     <releaseProfiles>release</releaseProfiles>
-		    -->
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-		    <!--
-                    <preparationGoals>clean,dependency:list,install,site</preparationGoals>
-		    -->
+                    <preparationGoals>clean,dependemcy:list,install,site</preparationGoals>
                     <goals>site,site:run</goals>
                 </configuration>
             </plugin>
