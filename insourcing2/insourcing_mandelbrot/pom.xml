@@ -6,11 +6,12 @@
 
     <parent>
         <groupId>org.woehlke.computer.kurzweil</groupId>
-        <artifactId>computer_kurzweil</artifactId>
+        <artifactId>insourcing2</artifactId>
         <version>2.1.1-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>insourcing_mandelbrot</artifactId>
+    <artifactId>insourcing2_mandelbrot</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
