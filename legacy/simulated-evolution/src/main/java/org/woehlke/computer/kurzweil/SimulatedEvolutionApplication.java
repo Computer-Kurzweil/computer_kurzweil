@@ -27,7 +27,7 @@ public class SimulatedEvolutionApplication {
      */
     public static void main(String[] args) {
         String configFileName = "application.yml";
-        String jarFilePath = "target/simulatedevolution.jar";
+        String jarFilePath = "target/simulated-evolution.jar";
         SimulatedEvolutionApplication application = new SimulatedEvolutionApplication(configFileName,jarFilePath);
     }
 }
