@@ -25,7 +25,7 @@ import java.io.Serializable;
 public class DiffusionLimitedAggregationApplet extends JApplet implements
     ImageObserver, MenuContainer, Serializable, Accessible, DiffusionLimitedAggregation {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
 
     private Label title = new Label(TITLE);

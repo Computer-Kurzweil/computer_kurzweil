@@ -17,7 +17,7 @@ import org.woehlke.computer.kurzweil.tabs.dla.view.WorldCanvas;
 public class ControllerThread extends Thread
         implements Runnable, DiffusionLimitedAggregation {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
 
     private Particles particles;

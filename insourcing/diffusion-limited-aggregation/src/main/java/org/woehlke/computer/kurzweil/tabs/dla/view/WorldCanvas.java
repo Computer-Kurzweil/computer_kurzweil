@@ -20,7 +20,7 @@ import java.awt.*;
  */
 public class WorldCanvas extends JComponent implements DiffusionLimitedAggregation {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
 
     private Particles particles;

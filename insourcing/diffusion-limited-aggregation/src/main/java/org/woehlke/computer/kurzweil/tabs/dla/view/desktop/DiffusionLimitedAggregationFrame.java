@@ -27,7 +27,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         Accessible,
         WindowListener, DiffusionLimitedAggregation {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID  = 242L;
 
 
     private DiffusionLimitedAggregationApplet exe;

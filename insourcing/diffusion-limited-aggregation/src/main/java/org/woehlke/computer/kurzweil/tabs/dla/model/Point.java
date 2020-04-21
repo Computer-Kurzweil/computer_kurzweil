@@ -14,7 +14,7 @@ import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregation;
  */
 public class Point implements DiffusionLimitedAggregation {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID  = 242L;
 
 
     private int x = 0;

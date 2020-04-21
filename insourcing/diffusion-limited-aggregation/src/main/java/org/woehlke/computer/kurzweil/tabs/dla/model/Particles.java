@@ -19,7 +19,7 @@ import java.util.Random;
  */
 public class Particles implements DiffusionLimitedAggregation {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID  = 242L;
 
 
     private Point worldDimensions;

@@ -11,8 +11,6 @@ import java.io.Serializable;
  */
 public interface DiffusionLimitedAggregation extends Serializable {
 
-    long mySerialVersionUID = 242L;
-
     String TITLE = "diffusion limited aggregation (DLA)";
 
     int THREAD_SLEEP_TIME = 50;
