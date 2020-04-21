@@ -11,8 +11,12 @@ function runGithubCi(){
 
 function makeRelease() {
     ./mvnw -B -DskipTests clean dependency:list install site site:deploy --file pom.xml
-    #./mvnw -B -DskipTests release:prepare
-    #./mvnw -B -DskipTests release:perform
+    #./mvnw -DskipTests -Dresume=false -DdryRun=true release:prepare
+    #./mvnw -DskipTests -Dresume=false release:prepare release:perform #-Psign-artifacts-with-ogc
+}
+
+function publishSite() {
+    ./mvnw clean install site site:stage scm-publish:publish-scm
 }
 
 function run() {
