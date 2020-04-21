@@ -745,9 +745,11 @@
                                     </excludes>
                                     <message>Please consider using the maven-invoker-plugin (http://maven.apache.org/plugins/maven-invoker-plugin/)!</message>
                                 </bannedPlugins>
+                                <!--
                                 <requireMavenVersion>
                                     <version>${version.maven}</version>
                                 </requireMavenVersion>
+                                -->
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
                                 </requireJavaVersion>
