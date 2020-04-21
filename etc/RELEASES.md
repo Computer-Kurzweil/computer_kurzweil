@@ -18,7 +18,9 @@ lorem ipsum
 
 ### 2.2.1 Release
 * Fixed #23: run with java 14
+* Fixed #29: insourcing: change src package to those of the comput_kurzweil_app
 
+commit-msg: Fixed #23, Fixed #29
 
 ## Goto
 
