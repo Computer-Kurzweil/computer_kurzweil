@@ -12,6 +12,7 @@ function runGithubCi(){
 function makeRelease() {
     ./mvnw -B -DskipTests clean dependency:list install site site:deploy --file pom.xml
     ./mvnw -B -DskipTests release:prepare
+    ./mvnw -B -DskipTests release:perform
 }
 
 function run() {
