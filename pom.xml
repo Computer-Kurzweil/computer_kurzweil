@@ -554,6 +554,7 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <defaultGoal>clean dependency:list install site</defaultGoal>
         <pluginManagement>
             <plugins>
                 <plugin>
