@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.woehlke.computer.kurzweil</groupId>
@@ -11,6 +13,11 @@
     <description>Computer Science Infotainment</description>
     <url>https://woehlke.org/p/computer_kurzweil</url>
     <inceptionYear>2013</inceptionYear>
+
+    <modules>
+        <module>computer-kurzweil-app</module>
+        <module>single-apps</module>
+    </modules>
 
     <scm>
         <url>https://github.com/Computer-Kurzweil/computer_kurzweil.git</url>
@@ -60,13 +67,6 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
-
-    <modules>
-        <module>computer-kurzweil-app</module>
-        <module>insourcing</module>
-        <module>insourcing2</module>
-        <module>legacy</module>
-    </modules>
 
     <repositories>
         <repository>
