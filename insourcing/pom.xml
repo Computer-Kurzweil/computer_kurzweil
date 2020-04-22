@@ -13,10 +13,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>cyclic-cellular-automaton</module>
-        <module>diffusion-limited-aggregation</module>
-        <module>mandelbrot</module>
-        <module>simulated-evolution</module>
+        <module>insourcing-cyclic-cellular-automaton</module>
+        <module>insourcing-diffusion-limited-aggregation</module>
+        <module>insourcing-mandelbrot</module>
+        <module>insourcing-simulated-evolution</module>
     </modules>
 
 </project>
