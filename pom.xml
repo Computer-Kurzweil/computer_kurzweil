@@ -62,7 +62,7 @@
     </licenses>
 
     <modules>
-        <module>computer_kurzweil_app</module>
+        <module>computer-kurzweil-app</module>
         <module>insourcing</module>
         <module>insourcing2</module>
         <module>legacy</module>

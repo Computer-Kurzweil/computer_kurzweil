@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>computer_kurzweil_app</artifactId>
+    <artifactId>computer-kurzweil-app</artifactId>
     <packaging>jar</packaging>
 
     <name>Computer Kurzweil :: App</name>
