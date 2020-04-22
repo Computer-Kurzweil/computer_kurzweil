@@ -17,6 +17,10 @@
     <name>insourcing2 :: Diffusion Limited Aggregation</name>
     <description> TODO asdf </description>
 
+    <properties>
+        <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>

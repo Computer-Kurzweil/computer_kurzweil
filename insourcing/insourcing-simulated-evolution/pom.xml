@@ -15,6 +15,10 @@
     <name>insourcing :: Simulated Evolution</name>
     <description>Artificial Life Simulation of Bacteria Motion depending on DNA</description>
 
+    <properties>
+        <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>

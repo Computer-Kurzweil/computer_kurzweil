@@ -15,6 +15,10 @@
     <name>insourcing :: Mandelbrot</name>
     <description> asdf </description>
 
+    <properties>
+        <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>

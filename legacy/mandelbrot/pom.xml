@@ -13,7 +13,11 @@
     <packaging>jar</packaging>
 
     <name>legacy :: Mandelbrot</name>
-    <description> asdf </description>
+    <description> TODO asdf </description>
+
+    <properties>
+        <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>
+    </properties>
 
     <dependencies>
         <dependency>
