@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>insourcing2_simulated_evolution</artifactId>
+    <artifactId>insourcing2-simulated-evolution</artifactId>
     <packaging>jar</packaging>
 
     <name>insourcing2 :: Simulated Evolution</name>
