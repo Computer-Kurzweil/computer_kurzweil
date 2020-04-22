@@ -14,6 +14,9 @@
     <artifactId>insourcing</artifactId>
     <packaging>pom</packaging>
 
+    <name>single-apps :: insourcing</name>
+    <description>TODO dasvdgh</description>
+
     <modules>
         <module>insourcing-cyclic-cellular-automaton</module>
         <module>insourcing-diffusion-limited-aggregation</module>

@@ -12,6 +12,9 @@
     <artifactId>single-apps</artifactId>
     <packaging>pom</packaging>
 
+    <name>single-apps</name>
+    <description>TODO dsadas</description>
+
     <modules>
         <module>legacy</module>
         <module>insourcing</module>

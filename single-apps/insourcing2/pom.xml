@@ -12,6 +12,9 @@
     <artifactId>insourcing2</artifactId>
     <packaging>pom</packaging>
 
+    <name>single-apps :: insourcing2</name>
+    <description>Artificial Life Simulation of Bacteria Motion depending on DNA</description>
+
     <modules>
         <module>insourcing2-cyclic-cellular-automaton</module>
         <module>insourcing2-diffusion-limited-aggregation</module>
