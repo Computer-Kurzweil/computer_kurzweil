@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>iinsourcing2_diffusion_limited_aggregation</artifactId>
+    <artifactId>insourcing2_diffusion_limited_aggregation</artifactId>
     <packaging>jar</packaging>
 
     <name>insourcing2 :: Diffusion Limited Aggregation</name>
