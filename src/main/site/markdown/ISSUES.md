@@ -1,6 +1,6 @@
 # Issues
 
-*[back...](../README.md)* 
+*[back...](../../../../README.md)* 
 
 ## Abstract
 lorem ipsum
@@ -12,7 +12,7 @@ lorem ipsum
 
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
-| *[Tabs](tabs/TABS.md)* | &nbsp; |
+| *[Tabs](../../../../etc/tabs/TABS.md)* | &nbsp; |
 | &nbsp; | &nbsp; |
 | [Projects](PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
 | [Milestones](MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
@@ -20,7 +20,7 @@ lorem ipsum
 | [Releases](RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
 | [Engineering](ENGINEERING.md) | &nbsp; |
 | &nbsp; | &nbsp; |
-| *[back...](../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
+| *[back...](../../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](LICENSE.code.md)

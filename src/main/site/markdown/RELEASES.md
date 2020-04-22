@@ -1,6 +1,6 @@
 # Releases
 
-*[back...](../README.md)* 
+*[back...](../../../../README.md)* 
 
 ## Abstract
 lorem ipsum
@@ -40,7 +40,7 @@ commit-msg: Fixed #33, Fixed #34
 
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
-| *[Tabs](tabs/TABS.md)* | |
+| *[Tabs](../../../../etc/tabs/TABS.md)* | |
 | &nbsp; | &nbsp; |
 | [Projects](PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
 | [Milestones](MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
@@ -48,7 +48,7 @@ commit-msg: Fixed #33, Fixed #34
 | [Releases](RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
 | [Engineering](ENGINEERING.md) | |
 | &nbsp; | &nbsp; |
-| *[back...](../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
+| *[back...](../../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](LICENSE.code.md)
