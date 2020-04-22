@@ -12,7 +12,7 @@
     <artifactId>insourcing-mandelbrot</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing :: Mandelbrot</name>
+    <name>single-apps :: insourcing :: Mandelbrot</name>
     <description> asdf </description>
 
     <properties>

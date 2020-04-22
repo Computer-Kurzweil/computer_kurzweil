@@ -16,6 +16,7 @@
 
     <modules>
         <module>computer-kurzweil-app</module>
+        <module>research-and-education</module>
         <module>single-apps</module>
     </modules>
 

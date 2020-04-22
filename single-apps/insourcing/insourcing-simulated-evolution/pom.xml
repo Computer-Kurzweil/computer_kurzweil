@@ -12,7 +12,7 @@
     <artifactId>insourcing-simulated-evolution</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing :: Simulated Evolution</name>
+    <name>single-apps :: insourcing :: Simulated Evolution</name>
     <description>Artificial Life Simulation of Bacteria Motion depending on DNA</description>
 
     <properties>

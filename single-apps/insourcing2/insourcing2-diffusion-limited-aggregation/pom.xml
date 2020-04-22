@@ -14,7 +14,7 @@
     <artifactId>insourcing2-diffusion-limited-aggregation</artifactId>
     <packaging>jar</packaging>
 
-    <name>insourcing2 :: Diffusion Limited Aggregation</name>
+    <name>single-apps :: insourcing2 :: Diffusion Limited Aggregation</name>
     <description> TODO asdf </description>
 
     <properties>

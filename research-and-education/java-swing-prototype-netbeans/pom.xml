@@ -11,7 +11,9 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId></artifactId>
+    <artifactId>java-swing-prototype-netbeans</artifactId>
     <packaging>pom</packaging>
 
+    <name>Research and Education :: Java Swing Prototype :: Netbeans</name>
+    <description>TODO dsadas</description>
 </project>

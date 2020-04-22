@@ -14,4 +14,7 @@
     <artifactId>java-swing-prototype-intellij</artifactId>
     <packaging>pom</packaging>
 
+    <name>Research and Education :: Java Swing Prototype :: Intellij</name>
+    <description>TODO dsadas</description>
+
 </project>
