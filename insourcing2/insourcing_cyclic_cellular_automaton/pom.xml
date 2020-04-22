@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -13,7 +15,14 @@
     <packaging>jar</packaging>
 
     <name>insourcing2 :: Cyclic Cellular Automaton</name>
-    <description> asdf </description>
+    <description>The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
+        In this system, each cell remains unchanged until some neighboring cell has a modular value exactly one unit larger than that of the cell itself, at which point it copies its neighbor's value.
+        One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior.
+    </description>
+
+    <properties>
+        <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -225,7 +234,8 @@
                                     <excludes>
                                         <exclude>org.apache.maven.plugins:maven-verifier-plugin</exclude>
                                     </excludes>
-                                    <message>Please consider using the maven-invoker-plugin (http://maven.apache.org/plugins/maven-invoker-plugin/)!</message>
+                                    <message>Please consider using the maven-invoker-plugin
+                                        (http://maven.apache.org/plugins/maven-invoker-plugin/)!</message>
                                 </bannedPlugins>
                                 <requireMavenVersion>
                                     <version>${version.maven}</version>
@@ -428,7 +438,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</mainClass>
+                    <mainClass>${applicationMainClass}</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -438,7 +448,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</mainClass>
+                            <mainClass>${applicationMainClass}</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

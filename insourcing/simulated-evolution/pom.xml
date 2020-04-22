@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <name>insourcing :: Simulated Evolution</name>
-    <description> asdf </description>
+    <description>Artificial Life Simulation of Bacteria Motion depending on DNA</description>
 
     <dependencies>
         <dependency>
