@@ -14,3 +14,5 @@ target
 /insourcing_mandelbrot/target
 /insourcing_simulated_evolution/target
 
+release.properties
+pom.xml.releaseBackup
