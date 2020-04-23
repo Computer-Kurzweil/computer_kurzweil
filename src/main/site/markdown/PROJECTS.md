@@ -35,7 +35,7 @@
 
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
-| *[Tabs](../../../../etc/tabs/TABS.md)* | |
+| *[Tabs](../../../../computer-kurzweil-app/src/site/markdown/TABS.md)* | |
 | &nbsp; | &nbsp; |
 | [Projects](PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
 | [Milestones](MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
