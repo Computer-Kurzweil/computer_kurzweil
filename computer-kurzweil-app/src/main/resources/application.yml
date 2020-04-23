@@ -43,7 +43,8 @@ simulatedevolution:
     ageMax: 1000
   population:
     initialPopulation: 20
-    panelPopulationStatistics: 'Statistics'
+    panelPopulationStatistics: 'Population'
+    panelLifeCycleStatistics: 'LifeCycle'
     youngCellsLabel: 'young'
     youngAndFatCellsLabel: 'young and Fat'
     fullAgeCellsLabel: 'full Age'

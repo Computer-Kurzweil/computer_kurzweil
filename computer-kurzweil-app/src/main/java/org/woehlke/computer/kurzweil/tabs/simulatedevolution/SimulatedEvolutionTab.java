@@ -8,6 +8,7 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
 
 import java.awt.event.ActionEvent;
 
@@ -22,6 +23,8 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     private final SimulatedEvolutionContext tabCtx;
     private final SimulatedEvolutionModel tabModel;
     private final SimulatedEvolutionTabPane tabPane;
+
+    private SimulatedEvolutionPopulation population;
 
     public SimulatedEvolutionTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
@@ -65,7 +68,6 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        boolean updateUi = false;
         if (ae.getSource() == this.tabPane.getFoodPerDayPanel().getFoodPerDayIncreaseButton()) {
             log.info("actionPerformed: increaseFoodPerDay");
             this.tabModel.increaseFoodPerDay();
@@ -87,7 +89,14 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         }
     }
 
-    public void update() {
+    public void update(){
+        if(this.population!= null){
+            this.tabPane.update();
+        }
+    }
+
+    public void update(SimulatedEvolutionPopulation population) {
+        this.population = population;
         this.tabPane.update();
     }
 }

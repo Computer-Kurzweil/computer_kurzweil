@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
 
 
 /**
@@ -38,6 +39,9 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
     private final int threadSleepTimeConf;
     private final int initialPopulation;
 
+    private final SimulatedEvolutionTab view;
+    private final SimulatedEvolutionModel model;
+
     @Override
     public UncaughtExceptionHandler getUncaughtExceptionHandler() {
         return super.getUncaughtExceptionHandler();
@@ -51,25 +55,32 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
       this.goOn = Boolean.TRUE;
       this.threadSleepTimeConf = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getControl().getThreadSleepTime();
       this.initialPopulation = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getInitialPopulation();
+      this.view = this.tabCtx.getTab();
+      this.model = this.tabCtx.getTabModel();
     }
 
   public void run() {
     boolean doMyJob;
     int threadSleepTime = this.threadSleepTimeConf;
-    int population = this.initialPopulation;
+      SimulatedEvolutionPopulation population;
     do {
       synchronized (goOn) {
         doMyJob = goOn.booleanValue();
       }
       if( this.tabCtx != null){
-        synchronized (this.tabCtx) {
-            this.tabCtx.getTabModel().exec();
-            this.tabCtx.exec();
-            population = this.tabCtx.getTabModel().getPopulation();
-            if(population > this.initialPopulation) {
-                threadSleepTime = this.threadSleepTimeConf + this.initialPopulation * (population / this.initialPopulation);
-            }
-        }
+          synchronized (this.tabCtx) {
+              this.model.exec();
+              population = this.model.getPopulation();
+              if(population.getPopulation() > this.initialPopulation) {
+                threadSleepTime = this.threadSleepTimeConf + this.initialPopulation * (population.getPopulation() / this.initialPopulation);
+              } else {
+                  threadSleepTime = this.threadSleepTimeConf;
+              }
+          }
+          synchronized (this.tabCtx) {
+              this.view.update(population);
+          }
+          this.view.repaint();
       }
       try {
         sleep( threadSleepTime );

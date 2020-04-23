@@ -58,8 +58,23 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
         SimulatedEvolutionPopulation currentGeneration = statistics.peek();
         if(currentGeneration == null){
             log.info(worldIteration + "statistics.peek() == null ");
-            currentGeneration = new SimulatedEvolutionPopulation();
+            SimulatedEvolutionPopulation onePopulation = new SimulatedEvolutionPopulation();
+            for (Cell cell : this.getCells()) {
+                onePopulation.countStatusOfOneCell(cell.getLifeCycleStatus());
+            }
+            this.push(onePopulation);
+            currentGeneration = onePopulation;
         }
         return currentGeneration;
+    }
+
+    public void addNextPopulation(List<Cell> nextPopulation) {
+        cells.clear();
+        cells.addAll(nextPopulation);
+        SimulatedEvolutionPopulation onePopulation = new SimulatedEvolutionPopulation();
+        for (Cell cell : this.getCells()) {
+            onePopulation.countStatusOfOneCell(cell.getLifeCycleStatus());
+        }
+        this.push(onePopulation);
     }
 }

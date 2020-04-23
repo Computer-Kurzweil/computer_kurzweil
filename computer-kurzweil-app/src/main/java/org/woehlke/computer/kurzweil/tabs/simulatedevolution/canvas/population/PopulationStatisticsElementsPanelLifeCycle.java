@@ -46,12 +46,10 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl imple
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
 
-    private SimulatedEvolutionPopulation population;
-
     public PopulationStatisticsElementsPanelLifeCycle(
       SimulatedEvolutionContext tabCtx
     ) {
-        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics(),tabCtx.getCtx().getProperties());
+        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelLifeCycleStatistics(),tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);
@@ -81,12 +79,18 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl imple
     }
 
     public void update() {
-        population = this.tabCtx.getTabModel().getPopulationContainer().getCurrentGeneration();
-        youngCellsElement.setText(population.getYoungCells());
-        youngAndFatCellsElement.setText(population.getYoungAndFatCells());
-        fullAgeCellsElement.setText(population.getFullAgeCells());
-        hungryCellsElement.setText(population.getHungryCells());
-        oldCellsElement.setText(population.getOldCells());
+        SimulatedEvolutionPopulation population = tabCtx.getTab().getPopulation();
+        if(population == null){
+            log.info("update with currentGeneration=null");
+        }else {
+            log.info("update with currentGeneration="+population.toString());
+            this.youngCellsElement.setText(population.getYoungCells());
+            this.youngAndFatCellsElement.setText(population.getYoungAndFatCells());
+            this.fullAgeCellsElement.setText(population.getFullAgeCells());
+            this.hungryCellsElement.setText(population.getHungryCells());
+            this.oldCellsElement.setText(population.getOldCells());
+            this.repaint();
+        }
     }
 
 }

@@ -24,7 +24,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsElementsPanelCounted extends SubTabImpl implements SimulatedEvolution, SubTab, Updateable {
+public class PopulationStatisticsElementsPanelCounted extends SubTabImpl implements SimulatedEvolution, SubTab {
 
     private final PopulationStatisticsElement populationElement;
     private final PopulationStatisticsElement generationOldestElement;
@@ -40,8 +40,6 @@ public class PopulationStatisticsElementsPanelCounted extends SubTabImpl impleme
     private final CompoundBorder border;
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
-
-    private SimulatedEvolutionPopulation population;
 
     public PopulationStatisticsElementsPanelCounted(
         SimulatedEvolutionContext tabCtx
@@ -71,11 +69,11 @@ public class PopulationStatisticsElementsPanelCounted extends SubTabImpl impleme
         for(PopulationStatisticsElement ps : elements){
             this.add(ps);
         }
-        update();
     }
 
     public void update() {
-        population = this.tabCtx.getTabModel().getPopulationContainer().getCurrentGeneration();
+        SimulatedEvolutionPopulation population = tabCtx.getTab().getPopulation();
+        log.info("update with currentGeneration="+population.toString());
         populationElement.setText(population.getPopulation());
         generationYoungestElement.setText(population.getGenerationYoungest());
         generationOldestElement.setText(population.getGenerationOldest());

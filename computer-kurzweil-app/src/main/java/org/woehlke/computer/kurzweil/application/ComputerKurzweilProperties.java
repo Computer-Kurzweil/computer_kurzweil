@@ -136,6 +136,7 @@ public class ComputerKurzweilProperties {
         public static class Population {
             @NotNull  @Getter @Setter private Integer initialPopulation;
             @NotBlank @Getter @Setter private String panelPopulationStatistics;
+            @NotBlank @Getter @Setter private String panelLifeCycleStatistics;
             @NotBlank @Getter @Setter private String youngCellsLabel;
             @NotBlank @Getter @Setter private String youngAndFatCellsLabel;
             @NotBlank @Getter @Setter private String fullAgeCellsLabel;

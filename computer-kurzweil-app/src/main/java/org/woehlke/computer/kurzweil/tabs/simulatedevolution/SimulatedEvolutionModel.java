@@ -45,6 +45,7 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
     private final SimulatedEvolutionPopulationContainer populationContainer;
     private final SimulatedEvolutionParameter simulatedEvolutionParameter;
     private Boolean running;
+    private SimulatedEvolutionPopulation population;
 
   public SimulatedEvolutionModel(
       SimulatedEvolutionContext appCtx
@@ -55,10 +56,6 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
       this.simulatedEvolutionParameter = new SimulatedEvolutionParameter();
       this.running = Boolean.FALSE;
       createNewState();
-  }
-
-  public int getPopulation(){
-      return this.getPopulationContainer().getCells().size();
   }
 
   public boolean hasFood(int x, int y) {
@@ -156,17 +153,12 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
                     nextPopulation.add(cell);
                 }
             }
-            populationContainer.getCells().clear();
-            populationContainer.getCells().addAll(nextPopulation);
-            SimulatedEvolutionPopulation onePopulation = new SimulatedEvolutionPopulation();
-            for (Cell cell : populationContainer.getCells()) {
-                onePopulation.countStatusOfOneCell(cell.getLifeCycleStatus());
-            }
-            populationContainer.push(onePopulation);
+            populationContainer.addNextPopulation(nextPopulation);
             log.info("stepped");
         } else {
             log.info("not stepped");
         }
+        population = populationContainer.getCurrentGeneration();
         return true;
     }
 }
