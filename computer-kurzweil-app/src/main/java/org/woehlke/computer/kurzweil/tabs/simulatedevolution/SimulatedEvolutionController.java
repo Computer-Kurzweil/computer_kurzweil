@@ -35,19 +35,28 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
 
     private final SimulatedEvolutionContext tabCtx;
     private Boolean goOn;
-    private final int threadSleepTime;
+    private final int threadSleepTimeConf;
+    private final int initialPopulation;
 
-  public SimulatedEvolutionController(
+    @Override
+    public UncaughtExceptionHandler getUncaughtExceptionHandler() {
+        return super.getUncaughtExceptionHandler();
+    }
+
+    public SimulatedEvolutionController(
       SimulatedEvolutionContext tabCtx
   ) {
       super(TAB_TYPE.name()+"-Controller");
       this.tabCtx = tabCtx;
       this.goOn = Boolean.TRUE;
-      this.threadSleepTime = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getControl().getThreadSleepTime();
-  }
+      this.threadSleepTimeConf = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getControl().getThreadSleepTime();
+      this.initialPopulation = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getInitialPopulation();
+    }
 
   public void run() {
     boolean doMyJob;
+    int threadSleepTime = this.threadSleepTimeConf;
+    int population = this.initialPopulation;
     do {
       synchronized (goOn) {
         doMyJob = goOn.booleanValue();
@@ -56,10 +65,14 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
         synchronized (this.tabCtx) {
             this.tabCtx.getTabModel().exec();
             this.tabCtx.exec();
+            population = this.tabCtx.getTabModel().getPopulation();
+            if(population > this.initialPopulation) {
+                threadSleepTime = this.threadSleepTimeConf + this.initialPopulation * (population / this.initialPopulation);
+            }
         }
       }
       try {
-        sleep( this.threadSleepTime );
+        sleep( threadSleepTime );
       } catch (InterruptedException e) {
           log.info(e.getMessage());
       }

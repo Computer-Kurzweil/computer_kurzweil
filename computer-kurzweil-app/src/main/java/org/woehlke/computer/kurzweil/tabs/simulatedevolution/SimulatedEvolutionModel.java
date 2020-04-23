@@ -57,6 +57,10 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
       createNewState();
   }
 
+  public int getPopulation(){
+      return this.getPopulationContainer().getCells().size();
+  }
+
   public boolean hasFood(int x, int y) {
     return worldLattice.hasFood(x, y);
   }

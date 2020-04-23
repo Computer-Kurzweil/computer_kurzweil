@@ -92,7 +92,7 @@ public class CellCore implements SimulatedEvolution {
           double value;
           double dnaValue = 0.0d;
           for (int i = 0; i < CellOrientation.values().length; i++) {
-              value = dna[i].longValue() ^ 2;
+              value = (dna[i].longValue()) ^ 2;
               dnaValue += (value < MIN_VALUE)?(value * -1):value;
           }
           return dnaValue;
@@ -103,7 +103,7 @@ public class CellCore implements SimulatedEvolution {
         double rnaValue = 0.0d;
         double value;
         for (int i = 0; i < CellOrientation.values().length; i++) {
-            value = dna[i].longValue() ^ 2;
+            value = (dna[i].longValue()) ^ 2;
             rnaValue += ((value < MIN_VALUE)?(value * -1):value) / dnaValue;
             rna[i] = rnaValue;
         }
@@ -118,7 +118,7 @@ public class CellCore implements SimulatedEvolution {
   /**
    * @return gives a new Orientation based on the Combinition of Random and DNA.
    */
-  public CellOrientation getRandomOrientation() {
+  public CellOrientation getRandomOrientation2() {
       double dnaValue = getDnaValue();
       Double[] rna = getRna(dnaValue);
       double sumRandom = getSumRandom();
@@ -130,4 +130,47 @@ public class CellCore implements SimulatedEvolution {
       return CellOrientation.FORWARD;
   }
 
+    /**
+     * @return gives a new Orientation based on the Combinition of Random and DNA.
+     */
+    public CellOrientation getRandomOrientation() {
+        CellOrientation orientation = CellOrientation.FORWARD;
+        int dnaLength = CellOrientation.values().length;
+        double sumDna = 0.0;
+        for (int i = 0; i < dnaLength; i++) {
+            double val = (dna[i].longValue()) ^ 2;
+            if (val < MIN_VALUE) {
+                val *= -1;
+            }
+            sumDna += val;
+        }
+        double sum = 0.0;
+        double[] rna = new double[dnaLength];
+        for (int i = 0; i < dnaLength; i++) {
+            double val = (dna[i].longValue()) ^ 2;
+            if (val < MIN_VALUE) {
+                val *= -1;
+            }
+            sum += val / sumDna;
+            rna[i] = sum;
+        }
+        if (sumDna != 0) {
+            double val = Double.valueOf(ctx.getRandom().nextInt(MAX_VALUE) ^ 2);
+            if (val < MIN_VALUE) {
+                val *= -1;
+            }
+            double sumRandom = val / Double.valueOf(MAX_VALUE ^ 2);
+            if (sumRandom < MIN_VALUE) {
+                sumRandom *= -1;
+            }
+            int newInt = 0;
+            for (int i = 0; i < dnaLength; i++) {
+                if (sumRandom > rna[i]) {
+                    newInt = i;
+                }
+            }
+            orientation = CellOrientation.values()[newInt];
+        }
+        return orientation;
+    }
 }
