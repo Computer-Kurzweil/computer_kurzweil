@@ -20,3 +20,4 @@ pom.xml.releaseBackup
 /a.xml
 /a2.xml
 /computer-kurzweil-app/dependency-reduced-pom.xml
+/single-apps/legacy/mandelbrot/dependency-reduced-pom.xml

@@ -16,7 +16,7 @@
     <description>Artificial Life Simulation of Bacteria Motion depending on DNA</description>
 
     <properties>
-        <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>
+        <applicationMainClass>org.woehlke.computer.kurzweil.SimulatedEvolutionApplication</applicationMainClass>
     </properties>
 
     <dependencies>
@@ -306,7 +306,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>org.woehlke.computer.kurzweil.SimulatedEvolutionApplication</mainClass>
+                    <mainClass>${applicationMainClass}</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -316,7 +316,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.woehlke.computer.kurzweil.SimulatedEvolutionApplication</mainClass>
+                            <mainClass>${applicationMainClass}</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

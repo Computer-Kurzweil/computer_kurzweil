@@ -4,6 +4,9 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 
+import java.io.File;
+import java.net.URL;
+
 /**
  * Class with main Method for Starting the Desktop Application.
  *
@@ -16,8 +19,12 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionT
 @Log4j2
 public class SimulatedEvolutionApplication {
 
-    private SimulatedEvolutionApplication(String configFileName, String jarFilePath) {
-        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFileName, jarFilePath);
+    private SimulatedEvolutionApplication(String[] args) {
+
+        String configFileName = "/application.yml";
+        URL fileUrl = getClass().getResource(configFileName);
+        File configFile = new File(fileUrl.getFile());
+        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFile);
         SimulatedEvolutionTab simulatedEvolutionTab = new SimulatedEvolutionTab(properties);
     }
 
@@ -26,8 +33,6 @@ public class SimulatedEvolutionApplication {
      * @param args CLI Parameter
      */
     public static void main(String[] args) {
-        String configFileName = "application.yml";
-        String jarFilePath = "target/insourcing-simulated-evolution.jar";
-        SimulatedEvolutionApplication application = new SimulatedEvolutionApplication(configFileName,jarFilePath);
+        SimulatedEvolutionApplication application = new SimulatedEvolutionApplication(args);
     }
 }

@@ -9,6 +9,8 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -1006,16 +1008,13 @@ public class ComputerKurzweilProperties {
         }
     }
 
-    public static ComputerKurzweilProperties propertiesFactory(String conf, String jar){
+    public static ComputerKurzweilProperties propertiesFactory(File conf){
         log.info("propertiesFactory");
-        log.info("propertiesFactory conf: "+conf);
-        log.info("propertiesFactory jar:  "+jar);
+        log.info("propertiesFactory conf: "+conf.getAbsolutePath());
         ComputerKurzweilProperties properties;
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
-            JarFile jarFile = new JarFile(jar);
-            JarEntry entry = jarFile.getJarEntry(conf);
-            InputStream input = jarFile.getInputStream(entry);
+            InputStream input = new FileInputStream(conf);
             properties = mapper.readValue(input, ComputerKurzweilProperties.class);
             log.info(properties.toString());
         } catch (Exception e) {
