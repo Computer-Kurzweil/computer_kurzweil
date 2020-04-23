@@ -1021,7 +1021,7 @@
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                     -->
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <preparationGoals>clean,dependency:tree,install,site</preparationGoals>
+                    <preparationGoals>clean,dependency:tree,install</preparationGoals>
                 </configuration>
             </plugin>
             <plugin>
