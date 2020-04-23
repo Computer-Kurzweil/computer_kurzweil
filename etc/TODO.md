@@ -36,7 +36,5 @@ lorem ipsum
 [&copy; 2020 Thomas W&ouml;hlke](../src/main/site/markdown/LICENSE.code.md)
 
 
-### 
-#35 
-###
-
+### 2.2.3
+Fixed #9, Fixed #12, Fixed #35, Fixed #37
