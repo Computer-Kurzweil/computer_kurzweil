@@ -23,9 +23,9 @@ function run() {
 }
 
 function main() {
-    site
+    #site
     #makeRelease
-    #runGithubCi
+    runGithubCi
     #run
 }
 
