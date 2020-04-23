@@ -65,7 +65,7 @@ public class ComputerKurzweilApplication implements Startable {
      */
     public static void main(String[] args) {
         String configFileName = "application.yml";
-        String jarFilePath = "target/computer_kurzweil_app.jar";
+        String jarFilePath = "target/computer-kurzweil-app.jar";
         ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName,jarFilePath);
         application.start();
     }
