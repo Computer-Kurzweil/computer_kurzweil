@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <name>single-apps :: legacy :: Mandelbrot</name>
-    <description> TODO asdf </description>
+    <description>Computing the Edge of the Mandelbrot Set with a Turing Machine</description>
 
     <properties>
         <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>

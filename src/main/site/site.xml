@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+<project xmlns="http://maven.apache.org/DECORATION/1.3.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0
-    http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd"
+         name="Computer Kurzweil">
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-default-skin</artifactId>
         <version>1.3</version>
     </skin>
     <bannerLeft>
-        <name>JEE6 Petclinic</name>
+        <name>Computer Kurzweil</name>
         <src>/images/phasenraum_logo.gif</src>
-        <href>http://www.thomas-woehlke.de/p/jee6-petclinic/</href>
+        <href>https://woehlke.org/p/computer_kurzweil/</href>
     </bannerLeft>
     <body>
-        <menu ref="parent"/>
         <menu ref="modules"/>
+        <menu name="Overview">
+            <item name="About" href="About.html" />
+            <item name="ENGINEERING" href="ENGINEERING.html" />
+            <item name="ISSUES" href="ISSUES.html" />
+            <item name="MILESTONES" href="MILESTONES.html" />
+            <item name="PROJECTS" href="PROJECTS.html" />
+            <item name="ENGINEERING" href="ENGINEERING.html" />
+            <item name="RELEASES" href="RELEASES.html" />
+        </menu>
         <menu ref="reports"/>
     </body>
-    <publishDate position="navigation-bottom"/>
+    <publishDate position="navigation-top"/>
+    <version position="navigation-top"/>
     <poweredBy>
-        <logo name="Maven" href="http://maven.apache.org/"
+        <logo name="Maven"
+              href="http://maven.apache.org/"
               img="http://maven.apache.org/images/logos/maven-feather.png"/>
     </poweredBy>
 </project>
