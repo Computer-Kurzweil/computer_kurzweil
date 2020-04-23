@@ -37,15 +37,15 @@ public class ComputerKurzweilApplication implements Startable {
 
     private final ComputerKurzweilFrame frame;
 
-    public ComputerKurzweilApplication(String configFileName) {
+    public ComputerKurzweilApplication(String[] args) {
+        for(String arg:args){
+            log.info(arg);
+            System.out.println(arg);
+        }
+        String configFileName = "/application.yml";
         URL fileUrl = getClass().getResource(configFileName);
         File configFile = new File(fileUrl.getFile());
         ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFile);
-        this.frame = new ComputerKurzweilFrame(properties);
-    }
-
-    public ComputerKurzweilApplication(String configFileName, String jarFilePath) {
-        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFileName, jarFilePath);
         this.frame = new ComputerKurzweilFrame(properties);
     }
 
@@ -76,12 +76,9 @@ public class ComputerKurzweilApplication implements Startable {
     public static void main(String[] args) {
         String configFileName = "application.yml";
         String jarFilePath = "target/computer-kurzweil-app.jar";
-        for(String arg:args){
-            log.info(arg);
-            System.out.println(arg);
-        }
         //ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName,jarFilePath);
-        ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName);
+        //ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName);
+        ComputerKurzweilApplication application = new ComputerKurzweilApplication(args);
         application.start();
     }
 

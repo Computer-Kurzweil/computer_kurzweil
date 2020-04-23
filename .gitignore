@@ -17,3 +17,5 @@ target
 release.properties
 pom.xml.releaseBackup
 /console.log
+/a.xml
+/a2.xml

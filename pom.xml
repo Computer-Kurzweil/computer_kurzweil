@@ -203,43 +203,38 @@
 
         <!-- SCM and Releasing with Maven -->
         <maven.scm.version>1.11.2</maven.scm.version>
-        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
 
         <!-- Maven plugins -->
 
-        <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
-        <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
+        <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
+        <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-depedency-plugin.version>3.1.2</maven-depedency-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <maven-invoker-plugin.version>3.2.1</maven-invoker-plugin.version>
-
         <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-        <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
         <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
         <xml-maven-plugin.version>1.0.2</xml-maven-plugin.version>
-        <dependency-management-plugin.version>1.0.9.RELEASE</dependency-management-plugin.version>
         <git-commit-id-plugin.version>3.0.1</git-commit-id-plugin.version>
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
+        <maven-scm-publish-plugin.version>3.0.0</maven-scm-publish-plugin.version>
 
         <!-- Maven Reports and Site -->
         <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <maven-pmd-plugin.version>3.11.0</maven-pmd-plugin.version>
         <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
         <doxia-module-markdown.version>1.3</doxia-module-markdown.version>
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
@@ -247,7 +242,6 @@
         <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
         <doxia-module.version>1.9.1</doxia-module.version>
         <maven-default-skin.version>1.3</maven-default-skin.version>
-        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
         <!-- Unit and Integration Testing -->
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
         <xmlunit2.version>2.6.4</xmlunit2.version>
@@ -269,21 +263,10 @@
         <log4j2.version>2.13.0</log4j2.version>
         <lombok.version>1.18.12</lombok.version>
         <lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
-
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-provider-svnexe</artifactId>
-                <version>${maven.scm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-provider-svn-commons</artifactId>
-                <version>${maven.scm.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.apache.maven.scm</groupId>
                 <artifactId>maven-scm-provider-gitexe</artifactId>
@@ -442,8 +425,20 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
+                <type>maven-plugin</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
                 <version>${maven.scm.version}</version>
+                <type>maven-plugin</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <version>${maven-scm-publish-plugin.version}</version>
                 <type>maven-plugin</type>
             </dependency>
 
@@ -599,6 +594,11 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>${maven-shade-plugin.version}</version>
                 </plugin>
@@ -735,11 +735,9 @@
                     </dependencies>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-scm-publish-plugin</artifactId>
-                    <version>1.1</version>
-                    <configuration>
-                        <scmBranch>gh-pages</scmBranch>
-                    </configuration>
+                    <version>${maven-scm-publish-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -936,9 +934,16 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <configuration>
+                    <scmBranch>master</scmBranch>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
-                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
                     <releaseProfiles>release</releaseProfiles>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <preparationGoals>clean,dependency:list,install,site</preparationGoals>
@@ -970,6 +975,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
