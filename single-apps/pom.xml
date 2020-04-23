@@ -18,7 +18,6 @@
     <modules>
         <module>legacy</module>
         <module>insourcing</module>
-        <module>insourcing2</module>
     </modules>
 
 </project>

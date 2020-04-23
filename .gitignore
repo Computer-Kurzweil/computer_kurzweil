@@ -21,3 +21,5 @@ pom.xml.releaseBackup
 /a2.xml
 /computer-kurzweil-app/dependency-reduced-pom.xml
 /single-apps/legacy/mandelbrot/dependency-reduced-pom.xml
+/single-apps/insourcing/insourcing-cyclic-cellular-automaton/dependency-reduced-pom.xml
+/single-apps/insourcing2/insourcing2-cyclic-cellular-automaton/dependency-reduced-pom.xml
