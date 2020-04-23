@@ -32,12 +32,6 @@
         <Logger name="org.woehlke.computer.kurzweil.commons" level="info" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.commons.model" level="info" includeLocation="true">
-            <AppenderRef ref="Console"/>
-        </Logger>
-        <Logger name="org.woehlke.computer.kurzweil.commons.widgets" level="info" includeLocation="true">
-            <AppenderRef ref="Console"/>
-        </Logger>
         <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>

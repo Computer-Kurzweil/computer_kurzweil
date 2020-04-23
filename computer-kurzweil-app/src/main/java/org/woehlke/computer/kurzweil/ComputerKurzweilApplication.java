@@ -6,6 +6,10 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
 
+import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
+
 
 /**
  * Class with main Method for Starting the Desktop Application.
@@ -33,10 +37,16 @@ public class ComputerKurzweilApplication implements Startable {
 
     private final ComputerKurzweilFrame frame;
 
+    public ComputerKurzweilApplication(String configFileName) {
+        URL fileUrl = getClass().getResource(configFileName);
+        File configFile = new File(fileUrl.getFile());
+        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFile);
+        this.frame = new ComputerKurzweilFrame(properties);
+    }
+
     public ComputerKurzweilApplication(String configFileName, String jarFilePath) {
         ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFileName, jarFilePath);
         this.frame = new ComputerKurzweilFrame(properties);
-        //start();
     }
 
     public void start(){
@@ -66,7 +76,12 @@ public class ComputerKurzweilApplication implements Startable {
     public static void main(String[] args) {
         String configFileName = "application.yml";
         String jarFilePath = "target/computer-kurzweil-app.jar";
-        ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName,jarFilePath);
+        for(String arg:args){
+            log.info(arg);
+            System.out.println(arg);
+        }
+        //ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName,jarFilePath);
+        ComputerKurzweilApplication application = new ComputerKurzweilApplication(configFileName);
         application.start();
     }
 

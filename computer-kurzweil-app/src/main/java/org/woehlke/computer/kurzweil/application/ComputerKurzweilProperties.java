@@ -9,6 +9,9 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -471,6 +474,23 @@ public class ComputerKurzweilProperties {
             @NotNull  @Getter @Setter private Integer threadSleepTime;
             @NotNull  @Getter @Setter private Integer numberOfParticles;
         }
+    }
+
+    public static ComputerKurzweilProperties propertiesFactory(File conf){
+        log.info("propertiesFactory");
+        log.info("propertiesFactory conf: "+conf.getAbsolutePath());
+        ComputerKurzweilProperties properties;
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        try {
+            InputStream input = new FileInputStream(conf);
+            properties = mapper.readValue(input, ComputerKurzweilProperties.class);
+            log.info(properties.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            properties = new ComputerKurzweilProperties();
+        }
+        log.info("propertiesFactory done");
+        return properties;
     }
 
     public static ComputerKurzweilProperties propertiesFactory(String conf, String jar){
