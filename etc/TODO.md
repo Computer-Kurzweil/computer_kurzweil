@@ -29,7 +29,10 @@ lorem ipsum
 ## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](../src/main/site/markdown/LICENSE.code.md)
 
-
+# Github Integration into DevOps
+* [configuring-apache-maven-for-use-with-github-packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages)
+* [Old: Github maven-plugins](https://github.com/github/maven-plugins)
+* [configuring-apache-maven-for-use-with-github-packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages)
 
 # Threadpool Model
 * https://www.baeldung.com/java-fork-join

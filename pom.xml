@@ -199,6 +199,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+
+        <!-- github -->
+        <github.global.server>github</github.global.server>
+
         <!-- SCM and Releasing with Maven -->
         <maven.scm.version>1.11.2</maven.scm.version>
         <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
@@ -1016,11 +1020,20 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <!--
-                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <tag>v${releaseVersion}</tag>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+                    <preparationGoals>clean,dependency:tree,install</preparationGoals>
                     -->
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <preparationGoals>clean,dependency:tree,install</preparationGoals>
+                    <releaseProfiles>default</releaseProfiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-scm-plugin</artifactId>
+                        <version>${maven.scm.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.projectlombok</groupId>
@@ -1055,6 +1068,9 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -1074,7 +1090,10 @@
             </build>
         </profile>
         <profile>
-            <id>setup</id>
+            <id>verbose</id>
+            <properties>
+                <skipTests>false</skipTests>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
