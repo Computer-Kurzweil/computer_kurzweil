@@ -19,10 +19,10 @@
     </modules>
 
     <scm>
-        <url>https://github.com/Computer-Kurzweil/computer_kurzweil.git</url>
-        <connection>scm:git:git@github.com:Computer-Kurzweil/computer_kurzweil.git</connection>
-        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/computer_kurzweil.git</developerConnection>
-        <tag>HEAD</tag>
+        <connection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</connection>
+        <developerConnection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</developerConnection>
+        <url>https://github.com/Computer-Kurzweil/computer_kurzweil/tree/${project.scm.tag}</url>
+        <tag>master</tag>
     </scm>
 
     <issueManagement>
@@ -41,10 +41,12 @@
             <url>https://github.com/Computer-Kurzweil/computer_kurzweil.git</url>
         </site>
         -->
+        <!--
         <repository>
             <id>localhost_artefactory_staging</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
+        -->
     </distributionManagement>
 
     <organization>
