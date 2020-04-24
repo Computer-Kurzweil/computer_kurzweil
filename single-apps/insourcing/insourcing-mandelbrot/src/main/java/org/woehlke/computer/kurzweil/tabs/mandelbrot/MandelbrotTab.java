@@ -1,6 +1,9 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import org.woehlke.computer.kurzweil.application.Config;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelButtons;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelCopyright;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelSubtitle;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
 
 import javax.accessibility.Accessible;
@@ -17,7 +20,7 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
-public class ApplicationFrame extends JFrame implements ImageObserver,
+public class MandelbrotTab extends JFrame implements ImageObserver,
         MenuContainer,
         Serializable,
         Accessible,
@@ -26,17 +29,17 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
 
     private volatile MandelbrotController mandelbrotController;
     private volatile MandelbrotCanvas canvas;
-    private volatile ApplicationModel applicationModel;
+    private volatile MandelbrotModel mandelbrotModel;
     private volatile Rectangle rectangleBounds;
     private volatile Dimension dimensionSize;
 
-    public ApplicationFrame(Config config) {
+    public MandelbrotTab(Config config) {
         super(config.getTitle());
-        this.applicationModel = new ApplicationModel(config,this);
+        this.mandelbrotModel = new MandelbrotModel(config,this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
-        this.canvas = new MandelbrotCanvas(applicationModel);
-        this.mandelbrotController = new MandelbrotController(applicationModel, this);
-        PanelButtons panelButtons = new PanelButtons(this.applicationModel);
+        this.canvas = new MandelbrotCanvas(mandelbrotModel);
+        this.mandelbrotController = new MandelbrotController(mandelbrotModel, this);
+        PanelButtons panelButtons = new PanelButtons(this.mandelbrotModel);
         PanelSubtitle panelSubtitle = new PanelSubtitle(config.getSubtitle());
         PanelCopyright panelCopyright = new PanelCopyright(config.getCopyright());
         JSeparator separator = new JSeparator();
@@ -81,7 +84,7 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
     @Override
     public void mouseClicked(MouseEvent e) {
         Point c = new Point(e.getX(), e.getY());
-        this.applicationModel.click(c);
+        this.mandelbrotModel.click(c);
         showMe();
     }
 

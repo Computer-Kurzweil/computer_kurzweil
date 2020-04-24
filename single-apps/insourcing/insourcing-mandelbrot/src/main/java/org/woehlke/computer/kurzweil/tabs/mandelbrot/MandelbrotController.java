@@ -12,16 +12,16 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
  */
 public class MandelbrotController extends Thread implements Runnable {
 
-    private volatile ApplicationModel applicationModel;
-    private volatile ApplicationFrame frame;
+    private volatile MandelbrotModel mandelbrotModel;
+    private volatile MandelbrotTab frame;
 
     private final int THREAD_SLEEP_TIME = 1;
 
     private volatile Boolean goOn;
 
-    public MandelbrotController(ApplicationModel model, ApplicationFrame frame) {
+    public MandelbrotController(MandelbrotModel model, MandelbrotTab frame) {
         this.frame = frame;
-        this.applicationModel = model;
+        this.mandelbrotModel = model;
         goOn = Boolean.TRUE;
     }
 
@@ -31,7 +31,7 @@ public class MandelbrotController extends Thread implements Runnable {
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            if(this.applicationModel.step()){
+            if(this.mandelbrotModel.step()){
                 frame.getCanvas().repaint();
             }
             try { sleep(THREAD_SLEEP_TIME); }

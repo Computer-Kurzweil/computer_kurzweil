@@ -1,12 +1,14 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
+
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot.RradioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot.RradioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.RradioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.RradioButtons.RADIO_BUTTONS_ZOOM;
 
 
 /**
@@ -24,9 +26,9 @@ public class PanelButtons extends JPanel implements ActionListener {
     private volatile JRadioButton radioButtonsZoom;
     private volatile JButton zoomOut;
     private volatile ButtonGroup radioButtonsGroup;
-    private volatile ApplicationModel model;
+    private volatile MandelbrotModel model;
 
-    public PanelButtons(ApplicationModel model) {
+    public PanelButtons(MandelbrotModel model) {
         this.model = model;
         JLabel buttonsLabel = new JLabel(model.getConfig().getButtonsLabel());
         this.radioButtonsSwitch = new JRadioButton(model.getConfig().getButtonsSwitch());

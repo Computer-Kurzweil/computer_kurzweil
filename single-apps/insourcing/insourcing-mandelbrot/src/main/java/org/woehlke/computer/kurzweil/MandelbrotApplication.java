@@ -1,6 +1,7 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot;
+package org.woehlke.computer.kurzweil;
 
 import org.woehlke.computer.kurzweil.application.Config;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,11 +10,11 @@ import org.woehlke.computer.kurzweil.application.Config;
  * https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html
  * @author Thomas Woehlke
  */
-public class MandelbrotSetApplication {
+public class MandelbrotApplication {
 
-    private MandelbrotSetApplication() {
+    private MandelbrotApplication() {
         Config config = new Config();
-        ApplicationFrame frame = new ApplicationFrame(config);
+        MandelbrotTab frame = new MandelbrotTab(config);
     }
 
     /**
@@ -21,6 +22,6 @@ public class MandelbrotSetApplication {
      * @param args CLI Parameter
      */
     public static void main(String[] args) {
-        MandelbrotSetApplication application = new MandelbrotSetApplication();
+        MandelbrotApplication application = new MandelbrotApplication();
     }
 }

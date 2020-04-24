@@ -5,7 +5,6 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumbe
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationStateMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.MandelbrotTuringMachine;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.ApplicationFrame;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -16,16 +15,16 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.ApplicationFrame;
  *
  * Created by tw on 16.12.2019.
  */
-public class ApplicationModel {
+public class MandelbrotModel {
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
     private volatile MandelbrotTuringMachine mandelbrotTuringMachine;
     private volatile ApplicationStateMachine applicationStateMachine;
 
     private volatile Config config;
-    private volatile ApplicationFrame frame;
+    private volatile MandelbrotTab frame;
 
-    public ApplicationModel(Config config, ApplicationFrame frame) {
+    public MandelbrotModel(Config config, MandelbrotTab frame) {
         this.config = config;
         this.frame = frame;
         this.gaussianNumberPlane = new GaussianNumberPlane(this);
@@ -93,7 +92,7 @@ public class ApplicationModel {
         return gaussianNumberPlane;
     }
 
-    public ApplicationFrame getFrame() {
+    public MandelbrotTab getFrame() {
         return frame;
     }
 

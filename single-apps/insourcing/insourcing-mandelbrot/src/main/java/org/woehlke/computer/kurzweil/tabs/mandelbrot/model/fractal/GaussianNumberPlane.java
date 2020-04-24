@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.ApplicationModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
 
 import java.util.ArrayDeque;
@@ -46,7 +46,7 @@ public class GaussianNumberPlane {
 
     //public static Logger log = Logger.getLogger(GaussianNumberPlane.class.getName());
 
-    public GaussianNumberPlane(ApplicationModel model) {
+    public GaussianNumberPlane(MandelbrotModel model) {
         this.worldDimensions = model.getWorldDimensions();
         this.lattice = new int[worldDimensions.getWidth()][worldDimensions.getHeight()];
         this.complexWorldDimensions = new ComplexNumber(

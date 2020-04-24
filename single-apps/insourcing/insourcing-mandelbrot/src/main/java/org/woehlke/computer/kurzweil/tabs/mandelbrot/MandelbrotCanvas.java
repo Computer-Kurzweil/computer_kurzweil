@@ -16,10 +16,10 @@ import java.awt.*;
  */
 public class MandelbrotCanvas extends JComponent {
 
-    private volatile ApplicationModel app;
+    private volatile MandelbrotModel app;
     private volatile Dimension preferredSize;
 
-    public MandelbrotCanvas(ApplicationModel app) {
+    public MandelbrotCanvas(MandelbrotModel app) {
         this.app = app;
         int width = this.app.getWorldDimensions().getWidth();
         int height = this.app.getWorldDimensions().getHeight();

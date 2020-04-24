@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 
 import javax.swing.*;
 import java.awt.*;
