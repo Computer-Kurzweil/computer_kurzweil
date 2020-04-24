@@ -30,18 +30,18 @@ public class PanelButtons extends JPanel implements ActionListener {
 
     public PanelButtons(MandelbrotModel model) {
         this.model = model;
-        JLabel buttonsLabel = new JLabel(model.getConfig().getButtonsLabel());
-        this.radioButtonsSwitch = new JRadioButton(model.getConfig().getButtonsSwitch());
+        JLabel buttonsLabel = new JLabel(model.getProperties().getMandelbrot().getView().getButtonsLabel());
+        this.radioButtonsSwitch = new JRadioButton(model.getProperties().getMandelbrot().getView().getButtonsSwitch());
         this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
         this.radioButtonsSwitch.setSelected(true);
         this.radioButtonsSwitch.addActionListener(this);
-        this.radioButtonsZoom = new JRadioButton(model.getConfig().getButtonsZoom());
+        this.radioButtonsZoom = new JRadioButton(model.getProperties().getMandelbrot().getView().getButtonsSwitch());
         this.radioButtonsZoom.setMnemonic(RADIO_BUTTONS_ZOOM.ordinal());
         this.radioButtonsZoom.addActionListener(this);
         this.radioButtonsGroup = new ButtonGroup();
         this.radioButtonsGroup.add(radioButtonsSwitch);
         this.radioButtonsGroup.add(radioButtonsZoom);
-        this.zoomOut = new JButton(model.getConfig().getButtonsZoomOut());
+        this.zoomOut = new JButton(model.getProperties().getMandelbrot().getView().getButtonsZoomOut());
         this.zoomOut.addActionListener(this);
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);

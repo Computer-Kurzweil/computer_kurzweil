@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelButtons;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelCopyright;
@@ -33,15 +34,15 @@ public class MandelbrotTab extends JFrame implements ImageObserver,
     private volatile Rectangle rectangleBounds;
     private volatile Dimension dimensionSize;
 
-    public MandelbrotTab(Config config) {
-        super(config.getTitle());
-        this.mandelbrotModel = new MandelbrotModel(config,this);
+    public MandelbrotTab(ComputerKurzweilProperties properties) {
+        super(properties.getMandelbrot().getView().getTitle());
+        this.mandelbrotModel = new MandelbrotModel(properties,this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         this.canvas = new MandelbrotCanvas(mandelbrotModel);
         this.mandelbrotController = new MandelbrotController(mandelbrotModel, this);
         PanelButtons panelButtons = new PanelButtons(this.mandelbrotModel);
-        PanelSubtitle panelSubtitle = new PanelSubtitle(config.getSubtitle());
-        PanelCopyright panelCopyright = new PanelCopyright(config.getCopyright());
+        PanelSubtitle panelSubtitle = new PanelSubtitle(properties.getMandelbrot().getView().getSubtitle());
+        PanelCopyright panelCopyright = new PanelCopyright(properties.getAllinone().getView().getCopyright());
         JSeparator separator = new JSeparator();
         rootPane.setLayout(layout);
         rootPane.add(panelSubtitle);

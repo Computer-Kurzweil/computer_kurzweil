@@ -1,7 +1,11 @@
 package org.woehlke.computer.kurzweil;
 
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
+
+import java.io.File;
+import java.net.URL;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -13,8 +17,11 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 public class MandelbrotApplication {
 
     private MandelbrotApplication() {
-        Config config = new Config();
-        MandelbrotTab frame = new MandelbrotTab(config);
+        String configFileName = "/application.yml";
+        URL fileUrl = getClass().getResource(configFileName);
+        File configFile = new File(fileUrl.getFile());
+        ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFile);
+        MandelbrotTab frame = new MandelbrotTab(properties);
     }
 
     /**

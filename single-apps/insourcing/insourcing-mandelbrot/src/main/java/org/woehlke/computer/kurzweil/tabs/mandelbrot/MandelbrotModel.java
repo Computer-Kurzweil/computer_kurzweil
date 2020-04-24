@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
+import lombok.Getter;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlane;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
@@ -15,17 +17,18 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.MandelbrotTuri
  *
  * Created by tw on 16.12.2019.
  */
+@Getter
 public class MandelbrotModel {
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
     private volatile MandelbrotTuringMachine mandelbrotTuringMachine;
     private volatile ApplicationStateMachine applicationStateMachine;
 
-    private volatile Config config;
+    private volatile ComputerKurzweilProperties properties;
     private volatile MandelbrotTab frame;
 
-    public MandelbrotModel(Config config, MandelbrotTab frame) {
-        this.config = config;
+    public MandelbrotModel(ComputerKurzweilProperties properties, MandelbrotTab frame) {
+        this.properties = properties;
         this.frame = frame;
         this.gaussianNumberPlane = new GaussianNumberPlane(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
@@ -72,8 +75,8 @@ public class MandelbrotModel {
     }
 
     public Point getWorldDimensions() {
-        int width = config.getWidth();
-        int height = config.getHeight();
+        int width = properties.getAllinone().getLattice().getWidth();
+        int height = properties.getAllinone().getLattice().getHeight();
         return new Point(width, height);
     }
 
@@ -94,10 +97,6 @@ public class MandelbrotModel {
 
     public MandelbrotTab getFrame() {
         return frame;
-    }
-
-    public Config getConfig() {
-        return config;
     }
 
     public void zoomOut() {
