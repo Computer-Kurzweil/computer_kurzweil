@@ -9,7 +9,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
  *
  * Created by tw on 23.08.15.
  */
-public enum ApplicationState {
+public enum MandelbrotTabState {
     MANDELBROT,
     JULIA_SET,
     MANDELBROT_ZOOM,

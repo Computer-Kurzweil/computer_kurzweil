@@ -5,7 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlane;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationStateMachine;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.MandelbrotTabStateMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.MandelbrotTuringMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.Point;
 
@@ -26,7 +26,7 @@ public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
 
     private final GaussianNumberPlane gaussianNumberPlane;
     private final MandelbrotTuringMachine mandelbrotTuringMachine;
-    private final ApplicationStateMachine applicationStateMachine;
+    private final MandelbrotTabStateMachine mandelbrotTabStateMachine;
 
     private final ComputerKurzweilProperties properties;
     private final MandelbrotTab tab;
@@ -36,13 +36,13 @@ public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
         this.tab = tab;
         this.gaussianNumberPlane = new GaussianNumberPlane(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
-        this.applicationStateMachine = new ApplicationStateMachine();
+        this.mandelbrotTabStateMachine = new MandelbrotTabStateMachine();
     }
 
     public synchronized boolean click(Point c) {
-        applicationStateMachine.click();
+        mandelbrotTabStateMachine.click();
         boolean repaint = true;
-        switch (applicationStateMachine.getApplicationState()) {
+        switch (mandelbrotTabStateMachine.getMandelbrotTabState()) {
             case MANDELBROT:
                 mandelbrotTuringMachine.start();
                 repaint = false;
@@ -62,7 +62,7 @@ public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
 
     public synchronized boolean step() {
         boolean repaint = false;
-        switch (applicationStateMachine.getApplicationState()) {
+        switch (mandelbrotTabStateMachine.getMandelbrotTabState()) {
             case MANDELBROT:
                 repaint = mandelbrotTuringMachine.step();
                 break;
@@ -85,13 +85,13 @@ public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
     }
 
     public void setModeSwitch() {
-        this.applicationStateMachine.setModeSwitch();
+        this.mandelbrotTabStateMachine.setModeSwitch();
         this.tab.setModeSwitch();
     }
 
     public void setModeZoom() {
         this.gaussianNumberPlane.setModeZoom();
-        this.applicationStateMachine.setModeZoom();
+        this.mandelbrotTabStateMachine.setModeZoom();
         this.tab.setModeZoom();
     }
 
@@ -104,7 +104,7 @@ public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
     }
 
     public void zoomOut() {
-        switch (applicationStateMachine.getApplicationState()) {
+        switch (mandelbrotTabStateMachine.getMandelbrotTabState()) {
             case MANDELBROT:
             case JULIA_SET:
                 break;
