@@ -1,11 +1,10 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelButtons;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelCopyright;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelSubtitle;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.Point;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;

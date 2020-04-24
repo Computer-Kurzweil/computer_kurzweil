@@ -2,9 +2,8 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlane;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.Point;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationStateMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.MandelbrotTuringMachine;
 

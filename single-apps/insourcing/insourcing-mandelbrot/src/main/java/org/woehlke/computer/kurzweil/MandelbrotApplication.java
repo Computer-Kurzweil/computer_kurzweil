@@ -1,7 +1,6 @@
 package org.woehlke.computer.kurzweil;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
 
 import java.io.File;
