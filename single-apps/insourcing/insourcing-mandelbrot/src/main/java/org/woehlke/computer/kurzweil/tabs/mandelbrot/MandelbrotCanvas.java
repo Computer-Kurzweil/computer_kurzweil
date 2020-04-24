@@ -1,6 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.view;
-
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.ApplicationModel;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,12 +14,12 @@ import java.awt.*;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-public class ApplicationCanvas extends JComponent {
+public class MandelbrotCanvas extends JComponent {
 
     private volatile ApplicationModel app;
     private volatile Dimension preferredSize;
 
-    public ApplicationCanvas(ApplicationModel app) {
+    public MandelbrotCanvas(ApplicationModel app) {
         this.app = app;
         int width = this.app.getWorldDimensions().getWidth();
         int height = this.app.getWorldDimensions().getHeight();

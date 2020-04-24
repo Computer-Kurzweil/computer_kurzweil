@@ -1,8 +1,6 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.view;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.config.Config;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.control.ControllerThread;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.ApplicationModel;
+import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
 
 import javax.accessibility.Accessible;
@@ -26,8 +24,8 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
-    private volatile ControllerThread controllerThread;
-    private volatile ApplicationCanvas canvas;
+    private volatile MandelbrotController mandelbrotController;
+    private volatile MandelbrotCanvas canvas;
     private volatile ApplicationModel applicationModel;
     private volatile Rectangle rectangleBounds;
     private volatile Dimension dimensionSize;
@@ -36,8 +34,8 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         super(config.getTitle());
         this.applicationModel = new ApplicationModel(config,this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
-        this.canvas = new ApplicationCanvas(applicationModel);
-        this.controllerThread = new ControllerThread(applicationModel, this);
+        this.canvas = new MandelbrotCanvas(applicationModel);
+        this.mandelbrotController = new MandelbrotController(applicationModel, this);
         PanelButtons panelButtons = new PanelButtons(this.applicationModel);
         PanelSubtitle panelSubtitle = new PanelSubtitle(config.getSubtitle());
         PanelCopyright panelCopyright = new PanelCopyright(config.getCopyright());
@@ -52,7 +50,7 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         this.canvas.addMouseListener(   this);
         showMeInit();
         setModeSwitch();
-        this.controllerThread.start();
+        this.mandelbrotController.start();
     }
 
     public void windowOpened(WindowEvent e) {
@@ -60,11 +58,11 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
     }
 
     public void windowClosing(WindowEvent e) {
-        this.controllerThread.exit();
+        this.mandelbrotController.exit();
     }
 
     public void windowClosed(WindowEvent e) {
-        this.controllerThread.exit();
+        this.mandelbrotController.exit();
     }
 
     public void windowIconified(WindowEvent e) {}
@@ -140,7 +138,7 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
-    public ApplicationCanvas getCanvas() {
+    public MandelbrotCanvas getCanvas() {
         return canvas;
     }
 }

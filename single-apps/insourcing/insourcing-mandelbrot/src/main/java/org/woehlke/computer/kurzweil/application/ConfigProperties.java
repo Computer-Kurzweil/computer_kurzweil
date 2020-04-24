@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.config;
+package org.woehlke.computer.kurzweil.application;
 
 import static java.io.File.separator;
 

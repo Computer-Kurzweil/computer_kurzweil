@@ -1,11 +1,11 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.model;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.config.Config;
+import org.woehlke.computer.kurzweil.application.Config;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlane;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.helper.Point;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationStateMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.MandelbrotTuringMachine;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.view.ApplicationFrame;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.ApplicationFrame;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

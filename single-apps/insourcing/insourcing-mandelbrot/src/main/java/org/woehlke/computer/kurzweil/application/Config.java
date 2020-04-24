@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.config;
+package org.woehlke.computer.kurzweil.application;
 
 import java.io.FileInputStream;
 import java.io.IOException;

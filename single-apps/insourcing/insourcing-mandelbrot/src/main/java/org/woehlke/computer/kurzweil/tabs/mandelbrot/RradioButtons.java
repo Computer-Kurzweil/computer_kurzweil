@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.view;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.

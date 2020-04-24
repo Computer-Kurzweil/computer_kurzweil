@@ -1,7 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.control;
-
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.ApplicationModel;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.view.ApplicationFrame;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -13,7 +10,7 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.view.ApplicationFrame;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class ControllerThread extends Thread implements Runnable {
+public class MandelbrotController extends Thread implements Runnable {
 
     private volatile ApplicationModel applicationModel;
     private volatile ApplicationFrame frame;
@@ -22,7 +19,7 @@ public class ControllerThread extends Thread implements Runnable {
 
     private volatile Boolean goOn;
 
-    public ControllerThread(ApplicationModel model, ApplicationFrame frame) {
+    public MandelbrotController(ApplicationModel model, ApplicationFrame frame) {
         this.frame = frame;
         this.applicationModel = model;
         goOn = Boolean.TRUE;
