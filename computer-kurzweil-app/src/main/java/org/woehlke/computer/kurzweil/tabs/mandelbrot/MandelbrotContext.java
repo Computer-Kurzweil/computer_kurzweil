@@ -20,27 +20,27 @@ public class MandelbrotContext extends ForkJoinTask<Void> implements TabContext,
     private final MandelbrotModel tabModel;
     private final MandelbrotCanvas canvas;
 
-    private MandelbrotController controller;
+    private volatile MandelbrotController controller;
 
     public MandelbrotContext(MandelbrotTab tab, ComputerKurzweilContext ctx) {
         this.tab = tab;
         this.ctx = ctx;
+        this.tabModel = new MandelbrotModel(this.ctx.getProperties(), this.tab );
         this.canvas = new MandelbrotCanvas(this);
-        this.tabModel = this.canvas.getTabModel();
-        this.controller = new MandelbrotController(this);
+        this.controller = new MandelbrotController(this.tabModel,  this.tab );
     }
 
     @Override
     public void stopController() {
         this.controller.exit();
         this.controller = null;
-        this.controller = new MandelbrotController(this);
+        this.controller = new MandelbrotController(this.tabModel,  this.tab );
     }
 
     @Override
     public void startController() {
         if (this.controller == null) {
-            this.controller = new MandelbrotController(this);
+            this.controller = new MandelbrotController(this.tabModel,  this.tab );
         } else {
             if (this.controller.getState() != NEW) {
                 this.stopController();

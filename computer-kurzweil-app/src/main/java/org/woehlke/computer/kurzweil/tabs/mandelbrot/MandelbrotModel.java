@@ -1,20 +1,15 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPhaseStateMachine;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.TuringPositionsStateMachine;
+import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlane;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationStateMachine;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.MandelbrotTuringMachine;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.Point;
 
 import java.util.concurrent.ForkJoinTask;
-
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.ApplicationState.*;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -27,149 +22,104 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.Applicat
  */
 @Log4j2
 @Getter
-@ToString
-@EqualsAndHashCode(callSuper=false)
-public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel, Mandelbrot {
+public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
 
-    @Setter
-    private volatile ApplicationState state;
-    private volatile ApplicationState nextApplicationState;
+    private final GaussianNumberPlane gaussianNumberPlane;
+    private final MandelbrotTuringMachine mandelbrotTuringMachine;
+    private final ApplicationStateMachine applicationStateMachine;
 
-    @ToString.Exclude
-    private final MandelbrotContext tabCtx;
+    private final ComputerKurzweilProperties properties;
+    private final MandelbrotTab tab;
 
-    @ToString.Exclude
-    private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-    @ToString.Exclude
-    private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
-    private final TuringPositionsStateMachine turingPositionsStateMachine;
-    private final TuringPhaseStateMachine turingPhaseStateMachine;
-
-    public MandelbrotModel(
-        MandelbrotContext tabCtx
-    ) {
-        this.tabCtx = tabCtx;
-        this.state = ApplicationState.start();
-        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia(this.tabCtx);
-        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot(this.tabCtx);
-        this.turingPositionsStateMachine = new TuringPositionsStateMachine(this.tabCtx);
-        this.turingPhaseStateMachine = new TuringPhaseStateMachine();
+    public MandelbrotModel(ComputerKurzweilProperties properties, MandelbrotTab tab) {
+        this.properties = properties;
+        this.tab = tab;
+        this.gaussianNumberPlane = new GaussianNumberPlane(this);
+        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
+        this.applicationStateMachine = new ApplicationStateMachine();
     }
 
-    @Override
-    public void start() {
-        this.state = ApplicationState.start();
-        this.getTuringPhaseStateMachine().start();
-        this.getGaussianNumberPlaneMandelbrot().start();
-        this.getTuringPositionsStateMachine().start();
-    }
-
-    @Override
-    public void stop() {
-    }
-
-    public void click(){
-        switch (this.state){
-            case MANDELBROT_SWITCH:
-                nextApplicationState = JULIA_SET_SWITCH;
+    public synchronized boolean click(Point c) {
+        applicationStateMachine.click();
+        boolean repaint = true;
+        switch (applicationStateMachine.getApplicationState()) {
+            case MANDELBROT:
+                mandelbrotTuringMachine.start();
+                repaint = false;
                 break;
-            case JULIA_SET_SWITCH:
-                nextApplicationState = MANDELBROT_SWITCH;
+            case JULIA_SET:
+                gaussianNumberPlane.computeTheJuliaSetFor(c);
                 break;
             case MANDELBROT_ZOOM:
-                nextApplicationState = MANDELBROT_ZOOM;
+                gaussianNumberPlane.zoomIntoTheMandelbrotSet(c);
                 break;
             case JULIA_SET_ZOOM:
-                nextApplicationState = JULIA_SET_ZOOM;
+                gaussianNumberPlane.zoomIntoTheJuliaSetFor(c);
                 break;
         }
-        String msg = "click: "+ this.state + " -> "+ nextApplicationState.name();
-        log.info(msg);
-        this.setState(nextApplicationState);
+        return repaint;
+    }
+
+    public synchronized boolean step() {
+        boolean repaint = false;
+        switch (applicationStateMachine.getApplicationState()) {
+            case MANDELBROT:
+                repaint = mandelbrotTuringMachine.step();
+                break;
+            case JULIA_SET:
+            case MANDELBROT_ZOOM:
+            case JULIA_SET_ZOOM:
+                break;
+        }
+        return repaint;
+    }
+
+    public synchronized int getCellStatusFor(int x, int y) {
+        return gaussianNumberPlane.getCellStatusFor(x, y);
+    }
+
+    public Point getWorldDimensions() {
+        int width = properties.getAllinone().getLattice().getWidth();
+        int height = properties.getAllinone().getLattice().getHeight();
+        return new Point(width, height);
     }
 
     public void setModeSwitch() {
-        switch (this.state){
-            case MANDELBROT_SWITCH:
-            case MANDELBROT_ZOOM:
-                nextApplicationState = MANDELBROT_SWITCH;
-                break;
-            case JULIA_SET_SWITCH:
-            case JULIA_SET_ZOOM:
-                nextApplicationState = JULIA_SET_SWITCH;
-                break;
-        }
-        String msg = "setModeSwitch: "+ this.state + " -> "+ nextApplicationState.name();
-        log.info(msg);
-        this.setState(nextApplicationState);
+        this.applicationStateMachine.setModeSwitch();
+        this.tab.setModeSwitch();
     }
 
     public void setModeZoom() {
-        switch (this.getState()){
-            case MANDELBROT_SWITCH:
-            case MANDELBROT_ZOOM:
-                nextApplicationState = MANDELBROT_ZOOM;
-                break;
-            case JULIA_SET_SWITCH:
-            case JULIA_SET_ZOOM:
-                nextApplicationState = JULIA_SET_ZOOM;
-                break;
-        }
-        String msg = "setModeZoom: "+ this.state + " -> "+ nextApplicationState.name();
-        log.info(msg);
-        this.setState(nextApplicationState);
+        this.gaussianNumberPlane.setModeZoom();
+        this.applicationStateMachine.setModeZoom();
+        this.tab.setModeZoom();
     }
 
-    public boolean isFinished() {
-        return  this.getTuringPhaseStateMachine().isFinished();
+    public GaussianNumberPlane getGaussianNumberPlane() {
+        return gaussianNumberPlane;
+    }
+
+    public MandelbrotTab getTab() {
+        return tab;
+    }
+
+    public void zoomOut() {
+        switch (applicationStateMachine.getApplicationState()) {
+            case MANDELBROT:
+            case JULIA_SET:
+                break;
+            case MANDELBROT_ZOOM:
+                gaussianNumberPlane.zoomOutOfTheMandelbrotSet();
+                break;
+            case JULIA_SET_ZOOM:
+                gaussianNumberPlane.zoomOutOfTheJuliaSet();
+                break;
+        }
     }
 
     @Override
-    protected boolean exec() {
-        switch( this.getTuringPhaseStateMachine().getTuringTuringPhase()){
-            case SEARCH_THE_SET:
-                stepGoToSet();
-                break;
-            case WALK_AROUND_THE_SET:
-                stepWalkAround();
-                break;
-            case FILL_THE_OUTSIDE_WITH_COLOR:
-                stepFillTheOutsideWithColors();
-                break;
-            case FINISHED:
-                break;
-        }
-        return true;
-    }
-
-    private void stepGoToSet(){
-        if(this.getGaussianNumberPlaneMandelbrot().isInSet(
-            this.getTuringPositionsStateMachine().getTuringPosition()
-        )){
-            this.getTuringPositionsStateMachine().markFirstSetPosition();
-            this.getTuringPhaseStateMachine().finishSearchTheSet();
-        } else {
-            this.getTuringPositionsStateMachine().goForward();
-        }
-    }
-
-    private void stepWalkAround(){
-        if(this.getGaussianNumberPlaneMandelbrot().isInSet(
-            this.getTuringPositionsStateMachine().getTuringPosition()
-        )){
-            this.getTuringPositionsStateMachine().turnRight();
-        } else {
-            this.getTuringPositionsStateMachine().turnLeft();
-        }
-        this.getTuringPositionsStateMachine().goForward();
-        if(this.getTuringPositionsStateMachine().isFinishedWalkAround()){
-            this.getTuringPhaseStateMachine().finishWalkAround();
-        }
-    }
-
-    private void stepFillTheOutsideWithColors(){
-        this.getGaussianNumberPlaneMandelbrot().fillTheOutsideWithColors();
-        this.getTuringPhaseStateMachine().finishFillTheOutsideWithColors();
+    public Void getRawResult() {
+        return null;
     }
 
     @Override
@@ -178,7 +128,17 @@ public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel, Man
     }
 
     @Override
-    public Void getRawResult() {
-        return null;
+    protected boolean exec() {
+        return false;
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void stop() {
+
     }
 }

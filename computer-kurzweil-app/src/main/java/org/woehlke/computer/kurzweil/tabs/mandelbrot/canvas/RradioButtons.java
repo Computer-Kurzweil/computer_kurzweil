@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,12 +9,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
  *
  * Created by tw on 16.12.2019.
  */
-public enum RadioButtons {
-
+public enum RradioButtons {
     RADIO_BUTTONS_SWITCH,
-    RADIO_BUTTONS_ZOOM;
-
-    public static RadioButtons start(){
-        return RADIO_BUTTONS_SWITCH;
-    }
+    RADIO_BUTTONS_ZOOM
 }

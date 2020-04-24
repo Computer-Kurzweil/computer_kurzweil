@@ -10,8 +10,8 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotModel;
 
 import javax.swing.*;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state.RadioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.RradioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.RradioButtons.RADIO_BUTTONS_ZOOM;
 
 @Getter
 public class PanelChooseMouseClickMode extends SubTabImpl implements Mandelbrot, SubTab, Updateable {

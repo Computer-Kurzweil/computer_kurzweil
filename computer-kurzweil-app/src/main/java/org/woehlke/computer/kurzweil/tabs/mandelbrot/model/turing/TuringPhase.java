@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,14 +9,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
  *
  * Created by tw on 18.08.15.
  */
-public enum TuringDirection {
-
-    UP,
-    RIGHT,
-    DOWN,
-    LEFT;
-
-    public static TuringDirection start(){
-        return LEFT;
-    }
+public enum TuringPhase {
+    SEARCH_THE_SET,
+    WALK_AROUND_THE_SET,
+    FILL_THE_OUTSIDE_WITH_COLOR,
+    FINISHED
 }
