@@ -33,7 +33,7 @@
     <distributionManagement>
         <site>
             <id>simulatedevolution.local</id>
-            <url>file://${user.home}/public_html/p/computer_kurzweil</url>
+            <url>file://${user.home}/public_html/java/computer_kurzweil</url>
         </site>
         <!--
         <site>
