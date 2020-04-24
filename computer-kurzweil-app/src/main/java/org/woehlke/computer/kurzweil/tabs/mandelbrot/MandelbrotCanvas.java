@@ -4,18 +4,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
-import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneBaseJulia;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.fractal.GaussianNumberPlaneMandelbrot;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.numbers.CellStatus;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
+import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.io.Serializable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 
 /**
@@ -30,161 +29,80 @@ import java.awt.event.MouseListener;
  */
 @Log4j2
 @Getter
-@ToString(callSuper = true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})
-@EqualsAndHashCode(callSuper=true,exclude={"tabCtx","border","preferredSize","layout","gaussianNumberPlaneBaseJulia","gaussianNumberPlaneMandelbrot"})
-public class MandelbrotCanvas extends JComponent implements TabCanvas, MouseListener, Mandelbrot {
+@ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","model"})
+@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","model"})
+public class MandelbrotCanvas extends JComponent implements
+    Serializable, TabCanvas, Mandelbrot, Future<Void> {
 
     private final MandelbrotContext tabCtx;
     private final Border border;
-    private final Dimension preferredSize;
     private final LayoutCanvas layout;
-    private final GaussianNumberPlaneBaseJulia gaussianNumberPlaneBaseJulia;
-    private final GaussianNumberPlaneMandelbrot gaussianNumberPlaneMandelbrot;
-    private final MandelbrotModel tabModel;
 
-    private final static int startX = 0;
-    private final static int startY = 0;
-    private final int worldX;
-    private final int worldY;
+    private final MandelbrotModel model;
+    private final Dimension preferredSize;
 
-    public MandelbrotCanvas(
-        MandelbrotContext tabCtx
-    ) {
+    public MandelbrotCanvas(MandelbrotContext tabCtx) {
         this.tabCtx = tabCtx;
+        this.model = tabCtx.getTabModel();
         this.border = this.tabCtx.getCtx().getCanvasBorder();
-        this.worldX = this.tabCtx.getCtx().getWorldDimensions().getWidth();
-        this.worldY = this.tabCtx.getCtx().getWorldDimensions().getHeight();
         this.layout = new LayoutCanvas(this);
-        this.gaussianNumberPlaneBaseJulia = new GaussianNumberPlaneBaseJulia( this.tabCtx);
-        this.gaussianNumberPlaneMandelbrot = new GaussianNumberPlaneMandelbrot( this.tabCtx);
-        this.tabModel = new MandelbrotModel(this.tabCtx);
-        this.preferredSize = new Dimension(worldX, worldY);
-        this.setBorder(border);
-        this.setLayout(layout);
+        int width = this.model.getWorldDimensions().getWidth();
+        int height = this.model.getWorldDimensions().getHeight();
+        this.preferredSize = new Dimension(width, height);
         this.setSize(this.preferredSize);
-        this.setPreferredSize(this.preferredSize);
-        this.setMinimumSize(preferredSize);
-        this.setMaximumSize(preferredSize);
+        this.setPreferredSize(preferredSize);
     }
 
-    public CellStatus getCellStatusFor(int x, int y) {
-        switch (tabModel.getState().getFractalSetType()) {
-            case JULIA_SET:
-                return gaussianNumberPlaneBaseJulia.getCellStatusFor(x, y);
-            case MANDELBROT_SET:
-            default:
-                return gaussianNumberPlaneMandelbrot.getCellStatusFor(x, y);
-        }
-    }
-
-    public LatticePoint getWorldDimensions() {
-        return this.tabCtx.getCtx().getWorldDimensions();
-    }
-
-    public void start() {
-        this.gaussianNumberPlaneBaseJulia.start();
-        this.gaussianNumberPlaneMandelbrot.start();
-        this.tabModel.start();
-        this.setModeSwitch();
-        this.computeTheMandelbrotSet();
-    }
-
-    public void setModeSwitch() {
-        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.gaussianNumberPlaneBaseJulia.setModeSwitch();
-        this.gaussianNumberPlaneMandelbrot.setModeSwitch();
-        this.tabModel.setModeSwitch();
-    }
-
-    public void setModeZoom() {
-        this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        this.gaussianNumberPlaneBaseJulia.setModeZoom();
-        this.gaussianNumberPlaneMandelbrot.setModeZoom();
-        this.tabModel.setModeZoom();
-    }
-
-    @Override public void paint(Graphics g) {
+    @Override
+    public void paint(Graphics g) {
         this.setSize(this.preferredSize);
-        this.setPreferredSize(this.preferredSize);
+        this.setPreferredSize(preferredSize);
         super.paintComponent(g);
-        int y;
-        int x;
-        for(y = 0; y < worldY; y++){
-            for(x = 0; x < worldX; x++){
-                g.setColor( this.getCellStatusFor(x,y).canvasColor() );
+        int red = 0;
+        int green = 0;
+        int blue = 0;
+        for(int y = 0; y < model.getWorldDimensions().getY(); y++){
+            for(int x = 0; x < model.getWorldDimensions().getX(); x++){
+                blue = (((model.getCellStatusFor(x,y))*4)%256);
+                Color stateColor = new Color(red, green, blue);
+                g.setColor(stateColor);
                 g.drawLine(x,y,x,y);
             }
         }
     }
 
-    @Override public void update(Graphics g) {
+    @Override
+    public void update(Graphics g) {
         paint(g);
     }
 
-    public void zoomOut() {
-        switch (tabModel.getState().getFractalSetType()) {
-            case JULIA_SET:
-                gaussianNumberPlaneBaseJulia.zoomOut();
-                break;
-            case MANDELBROT_SET:
-            default:
-                gaussianNumberPlaneMandelbrot.zoomOut();
-                break;
-        }
-    }
-
-    public String getZoomLevel() {
-        switch (tabModel.getState().getFractalSetType()) {
-            case MANDELBROT_SET:
-                return gaussianNumberPlaneMandelbrot.getZoomLevel();
-            case JULIA_SET:
-                return gaussianNumberPlaneBaseJulia.getZoomLevel();
-            default:
-                return "1";
-        }
-    }
-
-    private void computeTheMandelbrotSet() {
-        tabCtx.getController().start();
+    @Override
+    public boolean cancel(boolean mayInterruptIfRunning) {
+        return false;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        LatticePoint latticePoint = new LatticePoint(e.getX(), e.getY());
-        tabModel.click();
-        switch (tabModel.getState()) {
-            case MANDELBROT_SWITCH:
-                computeTheMandelbrotSet();
-                break;
-            case JULIA_SET_SWITCH:
-                this.gaussianNumberPlaneBaseJulia.computeTheSet(latticePoint);
-                break;
-            case MANDELBROT_ZOOM:
-                this.gaussianNumberPlaneMandelbrot.zoomInto(latticePoint);
-                break;
-            case JULIA_SET_ZOOM:
-                this.gaussianNumberPlaneBaseJulia.zoomInto(latticePoint);
-                break;
-        }
-        e.consume();
-        this.showMe();
+    public boolean isCancelled() {
+        return false;
+    }
+
+    @Override
+    public boolean isDone() {
+        return false;
+    }
+
+    @Override
+    public Void get() throws InterruptedException, ExecutionException {
+        return null;
+    }
+
+    @Override
+    public Void get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+        return null;
     }
 
     @Override
     public void showMe() {
-        log.info("showMe");
-        //log.info("this: "+this.toString());
+        log.info("showMe "+this.toString());
     }
-
-    @Override
-    public void mousePressed(MouseEvent e) {}
-
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-
-    @Override
-    public void mouseExited(MouseEvent e) {}
 }
