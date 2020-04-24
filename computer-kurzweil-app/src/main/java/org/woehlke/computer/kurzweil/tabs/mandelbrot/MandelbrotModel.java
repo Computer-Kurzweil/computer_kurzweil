@@ -86,13 +86,13 @@ public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
 
     public void setModeSwitch() {
         this.mandelbrotTabStateMachine.setModeSwitch();
-        this.tab.setModeSwitch();
+        //this.tab.setModeSwitch();
     }
 
     public void setModeZoom() {
         this.gaussianNumberPlane.setModeZoom();
         this.mandelbrotTabStateMachine.setModeZoom();
-        this.tab.setModeZoom();
+        //this.tab.setModeZoom();
     }
 
     public GaussianNumberPlane getGaussianNumberPlane() {
