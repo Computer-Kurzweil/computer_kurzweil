@@ -1,6 +1,6 @@
 # Releases
 
-*[back...](../../../../README.md)* 
+*[back...](../../../README.md)* 
 
 ## Abstract
 lorem ipsum
@@ -36,19 +36,19 @@ commit-msg: Fixed #23, Fixed #24, Fixed #25, Fixed #26, Fixed #27, Fixed #28, Fi
 commit-msg: Fixed #33, Fixed #34
 
 
-## Goto
 
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
-| *[Tabs](../../../../computer-kurzweil-app/src/site/markdown/TABS.md)* | |
+| *[Tabs](Tabs.md)* | &nbsp; |
 | &nbsp; | &nbsp; |
-| [Projects](PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
-| [Milestones](MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
-| [Issues](ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
-| [Releases](RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
-| [Engineering](ENGINEERING.md) | |
+| [Projects](Projects.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](Milestones.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](Issues.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](Releases.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](Enineering.md) | &nbsp; |
 | &nbsp; | &nbsp; |
-| *[back...](../../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
+| *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](LICENSE.code.md)

@@ -13,21 +13,20 @@ lorem ipsum
 * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/19
 
 ## Goto
-
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
-| *[Tabs](../computer-kurzweil-app/src/site/markdown/TABS.md)* | &nbsp; |
+| *[Tabs](../src/site/markdown/Tabs.md)* | &nbsp; |
 | &nbsp; | &nbsp; |
-| [Projects](../src/main/site/markdown/PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
-| [Milestones](../src/main/site/markdown/MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
-| [Issues](../src/main/site/markdown/ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
-| [Releases](../src/main/site/markdown/RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
-| [Engineering](../src/main/site/markdown/ENGINEERING.md) | &nbsp; |
+| [Projects](../src/site/markdown/Projects.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](../src/site/markdown/Milestones.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](../src/site/markdown/Issues.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](../src/site/markdown/Releases.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](../src/site/markdown/Enineering.md) | &nbsp; |
 | &nbsp; | &nbsp; |
 | *[back...](../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ## Copyright
-[&copy; 2020 Thomas W&ouml;hlke](../src/main/site/markdown/LICENSE.code.md)
+[&copy; 2020 Thomas W&ouml;hlke](../src/site/markdown/LICENSE.code.md)
 
 # Github Integration into DevOps
 * [configuring-apache-maven-for-use-with-github-packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages)

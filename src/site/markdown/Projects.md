@@ -1,6 +1,6 @@
 # Projects
 
-*[back...](../../../../README.md)* 
+*[back...](../../../README.md)* 
 
 ## Projects for whole Application
 * [Application Framework](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/4)
@@ -12,7 +12,7 @@
 | [CyclicCellularAutomaton](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/2)| OK |
 | [Random Walk](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| OK  |
 | [DiffusionLimitedAggregation](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/1) | BLOCKED |
-| [SimulatedEvolution](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/3)| BLOCKED |
+| [SimulatedEvolution](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/3)| BUG |
 | [Mandelbrot Set](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/6)| BLOCKED |
 | [Koch Snowflake](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
 | [Sierpinski Triangle](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
@@ -31,19 +31,19 @@
 | INACTIVE  | Tab is not in TabPlane         |
 | PLANNING  | Research and Preparation       |
 
-## Goto
 
+## Goto
 | Work in Progress | Github                          |
 |------------------|---------------------------------|
-| *[Tabs](../../../../computer-kurzweil-app/src/site/markdown/TABS.md)* | |
+| *[Tabs](Tabs.md)* | &nbsp; |
 | &nbsp; | &nbsp; |
-| [Projects](PROJECTS.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
-| [Milestones](MILESTONES.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
-| [Issues](ISSUES.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
-| [Releases](RELEASES.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
-| [Engineering](ENGINEERING.md) | |
+| [Projects](Projects.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| [Milestones](Milestones.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](Issues.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
+| [Releases](Releases.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
+| [Engineering](Enineering.md) | &nbsp; |
 | &nbsp; | &nbsp; |
-| *[back...](../../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
+| *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](LICENSE.code.md)
