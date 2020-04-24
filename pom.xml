@@ -209,6 +209,7 @@
         <maven.scm.version>1.11.2</maven.scm.version>
         <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+        <maven-pdf-plugin.version>1.4</maven-pdf-plugin.version>
 
         <!-- Maven plugins -->
 
@@ -443,7 +444,11 @@
                 <version>${maven-scm-publish-plugin.version}</version>
                 <type>maven-plugin</type>
             </dependency>
-
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pdf-plugin</artifactId>
+                <version>${maven-pdf-plugin.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
