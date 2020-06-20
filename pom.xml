@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.computer.kurzweil</groupId>
     <artifactId>computer_kurzweil</artifactId>
-    <version>2.2.6</version>
+    <version>2.2.6-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Computer Kurzweil</name>
@@ -22,7 +22,7 @@
         <connection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</connection>
         <developerConnection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</developerConnection>
         <url>https://github.com/Computer-Kurzweil/computer_kurzweil/tree/${project.scm.tag}</url>
-        <tag>computer_kurzweil-2.2.6</tag>
+        <tag>computer_kurzweil-2.2.5</tag>
     </scm>
 
     <issueManagement>
