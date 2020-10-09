@@ -38,6 +38,8 @@ public class ComputerKurzweilApplication implements Startable {
     private final ComputerKurzweilFrame frame;
 
     public ComputerKurzweilApplication(String[] args) {
+        log.info("start");
+        System.out.println("start");
         for(String arg:args){
             log.info(arg);
             System.out.println(arg);
@@ -45,15 +47,23 @@ public class ComputerKurzweilApplication implements Startable {
         String configFileName = "/application.yml";
         URL fileUrl = getClass().getResource(configFileName);
         File configFile = new File(fileUrl.getFile());
+        log.info("get properties");
+        System.out.println("get properties");
         ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFile);
+        log.info("get Frame");
+        System.out.println("get Frame");
         this.frame = new ComputerKurzweilFrame(properties);
+        log.info("started");
+        System.out.println("started");
     }
 
     public void start(){
         try {
             this.frame.start();
             log.info("Started the Desktop Application");
+            System.out.println("Started the Desktop Application");
         } catch (IllegalThreadStateException e){
+            System.out.println(e.getLocalizedMessage());
             log.info(e.getLocalizedMessage());
         }
     }
@@ -63,7 +73,9 @@ public class ComputerKurzweilApplication implements Startable {
         try {
             this.frame.stop();
             log.info("Stopped the Desktop Application");
+            System.out.println("Stopped the Desktop Application");
         } catch (IllegalThreadStateException e){
+            System.out.println(e.getLocalizedMessage());
             log.info(e.getLocalizedMessage());
         }
     }
