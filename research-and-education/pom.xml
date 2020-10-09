@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.woehlke.computer.kurzweil</groupId>
         <artifactId>computer_kurzweil</artifactId>
-        <version>2.2.6-SNAPSHOT</version>
+        <version>2.2.6</version>
         <relativePath>..</relativePath>
     </parent>
 
