@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.woehlke.computer.kurzweil</groupId>
@@ -7,47 +9,28 @@
     <version>2.2.6-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Computer Kurzweil</name>
-    <description>Computer Science Infotainment</description>
-    <url>https://woehlke.org/p/computer_kurzweil</url>
-    <inceptionYear>2013</inceptionYear>
-
     <modules>
         <module>computer-kurzweil-app</module>
         <module>research-and-education</module>
         <module>single-apps</module>
     </modules>
 
+    <name>Computer Kurzweil</name>
+    <description>Computer Science InfotainmentComputer Science Infotainment.
+        A Tribute to the "Computer Kurzweil" named Article Series in Spektrum der Wissenschaft
+        which is the german release of Scientific American.
+        The Article Series "Computer Kurzweil" were also published as Books.
+        Content: Cellular Automata, Fractal Geometry, Artficial Life, Simulation,
+        Automata and Turing Machines, Systems Theory.</description>
+    <url>https://homepage.ruhr-uni-bochum.de/Thomas.Woehlke/java/computer_kurzweil</url>
+    <inceptionYear>2013</inceptionYear>
+
     <scm>
         <connection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</connection>
         <developerConnection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</developerConnection>
         <url>https://github.com/Computer-Kurzweil/computer_kurzweil/tree/${project.scm.tag}</url>
-        <tag>computer_kurzweil-2.2.5</tag>
+        <tag>head</tag>
     </scm>
-
-    <issueManagement>
-        <url>https://github.com/Computer-Kurzweil/computer_kurzweil/issues/</url>
-        <system>GitHub</system>
-    </issueManagement>
-
-    <distributionManagement>
-        <site>
-            <id>simulatedevolution.local</id>
-            <url>file://${user.home}/public_html/java/computer_kurzweil</url>
-        </site>
-        <!--
-        <site>
-            <id>computer_kurzweil.site</id>
-            <url>https://github.com/Computer-Kurzweil/computer_kurzweil.git</url>
-        </site>
-        -->
-        <!--
-        <repository>
-            <id>localhost_artefactory_staging</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        -->
-    </distributionManagement>
 
     <organization>
         <name>Computer Kurzweil</name>
@@ -61,6 +44,28 @@
             <url>https://github.com/thomaswoehlke</url>
         </developer>
     </developers>
+
+    <issueManagement>
+        <url>https://github.com/Computer-Kurzweil/computer_kurzweil/issues/</url>
+        <system>GitHub</system>
+    </issueManagement>
+
+    <distributionManagement>
+        <site>
+            <id>simulatedevolution.public_html</id>
+            <url>file://${user.home}/public_html/java/computer_kurzweil</url>
+        </site>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>tw-thinkpad-snapshots</name>
+            <url>file://${user.home}/public_html/java/libs-snapshot-local</url>
+        </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <name>tw-thinkpad-releases</name>
+            <url>file://${user.home}/public_html/java/libs-release-local</url>
+        </repository>
+    </distributionManagement>
 
     <licenses>
         <license>
@@ -195,8 +200,8 @@
     </pluginRepositories>
 
     <properties>
-        <java.version>13</java.version>
-        <version.maven>[3.3.9,)</version.maven>
+        <java.version>15</java.version>
+        <version.maven>3.6.2</version.maven>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -236,36 +241,35 @@
         <maven-scm-publish-plugin.version>3.0.0</maven-scm-publish-plugin.version>
 
         <!-- Maven Reports and Site -->
-        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+        <maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
-        <doxia-module-markdown.version>1.3</doxia-module-markdown.version>
-        <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
-        <maven-surefire-report-plugin.version>3.0.0-M4</maven-surefire-report-plugin.version>
-        <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
+        <spotbugs-maven-plugin.version>4.1.3</spotbugs-maven-plugin.version>
         <doxia-module.version>1.9.1</doxia-module.version>
+        <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
+        <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
+        <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
         <maven-default-skin.version>1.3</maven-default-skin.version>
         <!-- Unit and Integration Testing -->
-        <junit-jupiter.version>5.5.2</junit-jupiter.version>
+        <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <xmlunit2.version>2.6.4</xmlunit2.version>
         <htmlunit.version>2.36.0</htmlunit.version>
         <hamcrest.version>2.1</hamcrest.version>
-        <lombok.version>1.18.12</lombok.version>
-        <jsoup.version>1.8.3</jsoup.version>
 
+        <!-- Testing -->
+        <junit4.version>4.13</junit4.version>
+        <junit5.version>5.6.0</junit5.version>
         <skipTests>true</skipTests>
 
         <!-- Application Libs -->
-        <org.apache.commons-lang3.version>3.9</org.apache.commons-lang3.version>
+        <org.apache.commons-lang3.version>3.11</org.apache.commons-lang3.version>
         <jackson.databind.version>2.10.3</jackson.databind.version>
         <org.yaml.snakeyaml.version>1.17</org.yaml.snakeyaml.version>
         <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
         <com.google.guava.version>28.0-jre</com.google.guava.version>
-        <junit4.version>4.13</junit4.version>
-        <junit5.version>5.6.0</junit5.version>
+        <jsoup.version>1.13.1</jsoup.version>
         <log4j2.version>2.13.3</log4j2.version>
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.14</lombok.version>
         <lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
     </properties>
 
@@ -973,6 +977,10 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>${java.version}</source>
@@ -1026,9 +1034,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
+                    <tag>v${project.version}</tag>
                     <!--
-                    <tag>v${releaseVersion}</tag>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
                     <preparationGoals>clean,dependency:tree,install</preparationGoals>
                     -->
                     <autoVersionSubmodules>true</autoVersionSubmodules>
@@ -1301,25 +1309,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <inherited>true</inherited>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <configuration>
-                    <!--
-                    <githubAPIScheme>https</githubAPIScheme>
-                    <githubAPIPort>443</githubAPIPort>
-                    -->
-                    <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <id>id-github-report</id>
-                        <reports>
-                            <report>github-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
