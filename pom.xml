@@ -991,6 +991,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <inherited>true</inherited>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -1018,7 +1019,32 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <configuration>
-                    <!-- put your configurations here -->
+                    <minimizeJar>true</minimizeJar>
+                    <artifactSet>
+                        <includes>
+                            <include>org.apache.logging.log4j:*</include>
+                            <include>com.fasterxml.jackson.dataformat:*</include>
+                            <include>com.fasterxml.jackson.module:*</include>
+                            <include>com.fasterxml.jackson.module:*</include>
+                            <include>com.fasterxml.jackson.dataformat:*</include>
+                        </includes>
+                        <excludes>
+                            <exclude>org.apache.maven:*</exclude>
+                            <exclude>org.apache.maven.plugins:*</exclude>
+                            <exclude>net.sourceforge.pmd:*</exclude>
+                            <exclude>org.codehaus.groovy:*</exclude>
+                            <exclude>org.apache.maven.reporting:*</exclude>
+                            <exclude>org.eclipse.jetty:*</exclude>
+                            <exclude>org.apache.maven.doxia:*</exclude>
+                            <exclude>org.apache.maven.shared:*</exclude>
+                            <exclude>org.sonatype.aether:*</exclude>
+                            <exclude>org.apache.maven.scm:*</exclude>
+                            <exclude>org.apache.commons:*</exclude>
+                            <excludes>org.apache.struts:*</excludes>
+                            <excludes>org.junit.jupiter:*</excludes>
+                            <excludes>org.projectlombok:*</excludes>
+                        </excludes>
+                    </artifactSet>
                 </configuration>
                 <executions>
                     <execution>
@@ -1047,9 +1073,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
-                    <tag>v${project.version}</tag>
                     <!--
+                    <tag>v${project.version}</tag>
+                    -->
                     <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <!--
                     <preparationGoals>clean,dependency:tree,install</preparationGoals>
                     -->
                     <autoVersionSubmodules>true</autoVersionSubmodules>
@@ -1108,11 +1136,160 @@
                         <artifactId>maven-dependency-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>check-dependencies-tree</id>
+                                <id>get-dependencies-for-shaded-jar</id>
                                 <phase>package</phase>
+                                <goals>
+                                    <goal>resolve</goal>
+                                    <goal>collect</goal>
+                                    <goal>copy-dependencies</goal>
+                                    <goal>unpack-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <excludeTypes>pom</excludeTypes>
+                                    <excludeClassifiers>source</excludeClassifiers>
+                                    <excludeGroupIds>org.apache.maven.plugins,org.apache.maven.doxia</excludeGroupIds>
+                                    <includeGroupIds>org.apache.logging.log4j</includeGroupIds>
+                                    <overWriteReleases>true</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                    <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                                    <outputDirectory>${project.build.directory}/dependency-test-01/</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>unpack-dependency-classes-install</id>
+                                <phase>pre-site</phase>
+                                <goals>
+                                    <goal>resolve</goal>
+                                    <goal>collect</goal>
+                                    <goal>copy-dependencies</goal>
+                                    <goal>unpack-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                                    <overWriteReleases>true</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                    <outputFile>${project.build.outputDirectory}/classes/</outputFile>
+                                    <excludeTypes>pom,maven-plugin</excludeTypes>
+                                    <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                                    <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>unpack-dependency-classes-deploy</id>
+                                <phase>pre-site</phase>
+                                <goals>
+                                    <goal>resolve</goal>
+                                    <goal>collect</goal>
+                                    <goal>copy-dependencies</goal>
+                                    <goal>unpack-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                                    <overWriteReleases>true</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                    <outputFile>${project.build.outputDirectory}/classes/</outputFile>
+                                    <excludeTypes>pom,maven-plugin</excludeTypes>
+                                    <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                                    <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api</excludeArtifactIds>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>unpack-dependencies-classpath</id>
+                                <phase>site</phase>
+                                <goals>
+                                    <goal>analyze-only</goal>
+                                    <goal>analyze-dep-mgt</goal>
+                                    <goal>analyze-report</goal>
+                                    <goal>sources</goal>
+                                    <goal>resolve</goal>
+                                    <goal>resolve-plugins</goal>
+                                    <goal>collect</goal>
+                                    <goal>copy-dependencies</goal>
+                                    <goal>unpack-dependencies</goal>
+                                    <goal>build-classpath</goal>
+                                </goals>
+                                <configuration>
+                                    <overWriteReleases>true</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                    <outputFile>${project.build.outputDirectory}/classpath.txt</outputFile>
+                                    <failOnWarning>false</failOnWarning>
+                                    <ignoreNonCompile>true</ignoreNonCompile>
+                                    <excludeTypes>pom</excludeTypes>
+                                    <excludeGroupIds>org.webjars,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                                    <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api</excludeArtifactIds>
+                                    <ignoredDependencies>
+                                        <ignoredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredDependency>
+                                    </ignoredDependencies>
+                                    <ignoredUsedUndeclaredDependencies>
+                                        <ignoredUsedUndeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUsedUndeclaredDependency>
+                                    </ignoredUsedUndeclaredDependencies>
+                                    <ignoredUnusedDeclaredDependencies>
+                                        <ignoredUnusedDeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUnusedDeclaredDependency>
+                                    </ignoredUnusedDeclaredDependencies>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>check-dependencies-1</id>
+                                <phase>site</phase>
+                                <goals>
+                                    <goal>list</goal>
+                                    <goal>list-repositories</goal>
+                                    <goal>properties</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>check-dependencies-2</id>
+                                <phase>site</phase>
+                                <goals>
+                                    <goal>analyze</goal>
+                                    <goal>analyze-dep-mgt</goal>
+                                    <goal>analyze-duplicate</goal>
+                                    <goal>analyze-report</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>check-dependencies-3</id>
+                                <phase>site</phase>
                                 <goals>
                                     <goal>tree</goal>
                                 </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <phase>site</phase>
+                                <configuration>
+                                    <excludeGroupIds>org.webjars</excludeGroupIds>
+                                    <excludeGroupIds>org.webjars,org.jclouds,org.jboss.as,xml-resolver,commons-configuration,org.codehaus.plexus,commons-digester,junit,log4j,io.openliberty.features,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                                    <excludeArtifactIds>weld-probe-core,commons-configuration,jdk.tools,maven-antrun-plugin,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api</excludeArtifactIds>
+                                    <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                                    <reportSets>
+                                        <reportSet>
+                                            <reports>
+                                                <report>analyze-report</report>
+                                            </reports>
+                                        </reportSet>
+                                    </reportSets>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>get-dependency-sources</id>
+                                <phase>site</phase>
+                                <goals>
+                                    <goal>sources</goal>
+                                    <goal>resolve</goal>
+                                    <goal>resolve-plugins</goal>
+                                    <goal>collect</goal>
+                                    <goal>copy-dependencies</goal>
+                                    <goal>unpack-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>sources</classifier>
+                                    <excludeTypes>pom,maven-plugin</excludeTypes>
+                                    <excludeGroupIds>org.webjars,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                                    <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api</excludeArtifactIds>
+                                    <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                                    <outputDirectory>${project.build.directory}/dependency-sources/</outputDirectory>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -1304,6 +1481,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
+                <inherited>true</inherited>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
