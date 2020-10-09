@@ -24,10 +24,10 @@
     <inceptionYear>2013</inceptionYear>
 
     <scm>
-        <connection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</connection>
-        <developerConnection>scm:git:https://github.com/Computer-Kurzweil/computer_kurzweil.git</developerConnection>
+        <connection>scm:git@github.com:Computer-Kurzweil/computer_kurzweil.git</connection>
+        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/computer_kurzweil.git</developerConnection>
         <url>https://github.com/Computer-Kurzweil/computer_kurzweil/tree/${project.scm.tag}</url>
-        <tag>v2.2.6-SNAPSHOT</tag>
+        <tag>head</tag>
     </scm>
 
     <organization>
