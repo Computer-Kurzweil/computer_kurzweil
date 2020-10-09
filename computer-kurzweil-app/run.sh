@@ -4,13 +4,18 @@ function site() {
     ../mvnw -e clean install site site:deploy
 }
 
-function run() {
+function runFromJar() {
     ../mvnw
+}
+
+function runFromBuild() {
+    ../mvnw
+     ../mvnw exec:java
 }
 
 function main() {
     #site
-    run
+    runFromBuild
 }
 
 main
