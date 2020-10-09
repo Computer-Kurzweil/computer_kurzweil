@@ -19,7 +19,9 @@ function publishSite() {
 }
 
 function run() {
-    ./mvnw
+    ./mvnw dependency:purge-local-repository clean dependency:resolve dependency:resolve-plugins dependency:tree
+    ./mvnw install
+    ./mvnw site # site:deploy
 }
 
 function main() {
