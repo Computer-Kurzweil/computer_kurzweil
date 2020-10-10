@@ -2,7 +2,7 @@
 
 
 function site() {
-  ./mvnw -e clean install site site:deploy
+  ./mvnw -e site site:deploy
 }
 
 function runGithubCi(){
