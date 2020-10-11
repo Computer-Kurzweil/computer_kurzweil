@@ -11,7 +11,5 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot.model.state;
  */
 public enum ApplicationState {
     MANDELBROT,
-    JULIA_SET,
-    MANDELBROT_ZOOM,
-    JULIA_SET_ZOOM
+    JULIA_SET
 }

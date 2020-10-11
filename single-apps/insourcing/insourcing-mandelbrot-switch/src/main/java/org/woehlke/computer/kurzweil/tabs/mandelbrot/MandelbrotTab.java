@@ -1,7 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelButtons;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelCopyright;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.canvas.PanelSubtitle;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot.model.turing.Point;
@@ -39,7 +38,6 @@ public class MandelbrotTab extends JFrame implements ImageObserver,
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         this.canvas = new MandelbrotCanvas(mandelbrotModel);
         this.mandelbrotController = new MandelbrotController(mandelbrotModel, this);
-        PanelButtons panelButtons = new PanelButtons(this.mandelbrotModel);
         PanelSubtitle panelSubtitle = new PanelSubtitle(properties.getMandelbrot().getView().getSubtitle());
         PanelCopyright panelCopyright = new PanelCopyright(properties.getAllinone().getView().getCopyright());
         JSeparator separator = new JSeparator();
@@ -47,8 +45,6 @@ public class MandelbrotTab extends JFrame implements ImageObserver,
         rootPane.add(panelSubtitle);
         rootPane.add(canvas);
         rootPane.add(panelCopyright);
-        rootPane.add(separator);
-        rootPane.add(panelButtons);
         addWindowListener(this);
         this.canvas.addMouseListener(   this);
         showMeInit();
@@ -104,7 +100,7 @@ public class MandelbrotTab extends JFrame implements ImageObserver,
         pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = this.rootPane.getWidth();
-        double height  = this.canvas.getHeight() + 180;
+        double height  = this.canvas.getHeight() + 90;
         double startX = (screenSize.getWidth() - width) / 2d;
         double startY = (screenSize.getHeight() - height) / 2d;
         int myheight = Double.valueOf(height).intValue();
@@ -137,10 +133,11 @@ public class MandelbrotTab extends JFrame implements ImageObserver,
         canvas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
     }
 
+    /*
     public void setModeZoom() {
         canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
-
+*/
     public MandelbrotCanvas getCanvas() {
         return canvas;
     }
