@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
+package org.woehlke.computer.kurzweil.commons.model.turing;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,7 +9,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
  *
  * Created by tw on 18.08.15.
  */
-public enum TuringPhase {
+public enum MandelbrotTuringPhase {
     SEARCH_THE_SET,
     WALK_AROUND_THE_SET,
     FILL_THE_OUTSIDE_WITH_COLOR,

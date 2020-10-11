@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.fractal;
+package org.woehlke.computer.kurzweil.commons.model.fractal;
 
 import java.util.Objects;
 

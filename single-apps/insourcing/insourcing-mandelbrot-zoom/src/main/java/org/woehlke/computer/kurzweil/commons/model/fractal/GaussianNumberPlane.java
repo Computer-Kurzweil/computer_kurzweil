@@ -1,7 +1,7 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.fractal;
+package org.woehlke.computer.kurzweil.commons.model.fractal;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.MandelbrotModel;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotZoomModel;
+import org.woehlke.computer.kurzweil.commons.model.turing.Point;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -43,9 +43,10 @@ public class GaussianNumberPlane {
 
     private volatile ComplexNumber zoomCenter;
 
+
     //public static Logger log = Logger.getLogger(GaussianNumberPlane.class.getName());
 
-    public GaussianNumberPlane(MandelbrotModel model) {
+    public GaussianNumberPlane(MandelbrotZoomModel model) {
         this.worldDimensions = model.getWorldDimensions();
         this.lattice = new int[worldDimensions.getWidth()][worldDimensions.getHeight()];
         this.complexWorldDimensions = new ComplexNumber(
@@ -63,12 +64,10 @@ public class GaussianNumberPlane {
         start();
     }
 
-    /*
     public void setModeZoom() {
         this.setZoomLevel(1);
         this.setZoomCenter(complexCenterForMandelbrot);
     }
-*/
 
     public synchronized void start(){
         zoomLevel = 1;
@@ -121,13 +120,11 @@ public class GaussianNumberPlane {
         return new ComplexNumber(realX,imgY);
     }
 
-    /*
     public synchronized boolean isInZooomedMandelbrotSet(Point turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForZoomedMandelbrot(turingPosition);
         lattice[turingPosition.getX()][turingPosition.getY()] = position.computeMandelbrotSet();
         return position.isInMandelbrotSet();
     }
-*/
 
     public synchronized boolean isInMandelbrotSet(Point turingPosition) {
         ComplexNumber position = this.getComplexNumberFromLatticeCoordsForMandelbrot(turingPosition);
@@ -161,7 +158,6 @@ public class GaussianNumberPlane {
         computeTheJuliaSetForC(c);
     }
 
-    /*
     public void zoomIntoTheMandelbrotSet(Point zoomPoint) {
         //log.info("zoomIntoTheMandelbrotSet: "+ zoomPoint +" - old:  "+this.getZoomCenter());
         this.inceaseZoomLevel();
@@ -205,12 +201,11 @@ public class GaussianNumberPlane {
 
     public void zoomOutOfTheJuliaSet() {
     }
-*/
+
     public synchronized int getZoomLevel() {
         return zoomLevel;
     }
 
-    /*
     public synchronized int inceaseZoomLevel() {
         return zoomLevel *= 2;
     }
@@ -218,7 +213,7 @@ public class GaussianNumberPlane {
     public synchronized int deceaseZoomLevel() {
         return zoomLevel /= 2;
     }
-*/
+
     public synchronized void setZoomLevel(int zoomLevel) {
         this.zoomLevel = zoomLevel;
     }

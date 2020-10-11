@@ -2,10 +2,10 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.fractal.GaussianNumberPlane;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.ApplicationStateMachine;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.MandelbrotTuringMachine;
+import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
+import org.woehlke.computer.kurzweil.commons.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.TabStateMachine;
+import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringMachine;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -17,21 +17,21 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Mandelbrot
  * Created by tw on 16.12.2019.
  */
 @Getter
-public class MandelbrotModel {
+public class MandelbrotZoomModel {
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
     private volatile MandelbrotTuringMachine mandelbrotTuringMachine;
-    private volatile ApplicationStateMachine applicationStateMachine;
+    private volatile TabStateMachine applicationStateMachine;
 
     private volatile ComputerKurzweilProperties properties;
-    private volatile MandelbrotTab frame;
+    private volatile MandelbrotZoomTab frame;
 
-    public MandelbrotModel(ComputerKurzweilProperties properties, MandelbrotTab frame) {
+    public MandelbrotZoomModel(ComputerKurzweilProperties properties, MandelbrotZoomTab frame) {
         this.properties = properties;
         this.frame = frame;
         this.gaussianNumberPlane = new GaussianNumberPlane(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
-        this.applicationStateMachine = new ApplicationStateMachine();
+        this.applicationStateMachine = new TabStateMachine();
     }
 
     public synchronized boolean click(Point c) {
@@ -94,7 +94,7 @@ public class MandelbrotModel {
         return gaussianNumberPlane;
     }
 
-    public MandelbrotTab getFrame() {
+    public MandelbrotZoomTab getFrame() {
         return frame;
     }
 

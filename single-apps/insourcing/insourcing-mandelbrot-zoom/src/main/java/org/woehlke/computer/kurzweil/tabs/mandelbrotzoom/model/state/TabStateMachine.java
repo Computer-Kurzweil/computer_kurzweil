@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.ApplicationState.*;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.ApplicationState.JULIA_SET_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.TabState.*;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.TabState.JULIA_SET_ZOOM;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -12,16 +12,16 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.Appl
  *
  * Created by tw on 16.12.2019.
  */
-public class ApplicationStateMachine {
+public class TabStateMachine {
 
-    private volatile ApplicationState applicationState;
+    private volatile TabState applicationState;
 
-    public ApplicationStateMachine() {
-        this.applicationState = ApplicationState.MANDELBROT;
+    public TabStateMachine() {
+        this.applicationState = TabState.MANDELBROT;
     }
 
     public void click(){
-        ApplicationState nextApplicationState = null;
+        TabState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
                 nextApplicationState = JULIA_SET;
@@ -40,7 +40,7 @@ public class ApplicationStateMachine {
     }
 
     public void setModeSwitch() {
-        ApplicationState nextApplicationState = this.applicationState;
+        TabState nextApplicationState = this.applicationState;
         switch (applicationState){
             case MANDELBROT:
             case JULIA_SET:
@@ -56,7 +56,7 @@ public class ApplicationStateMachine {
     }
 
     public void setModeZoom() {
-        ApplicationState nextApplicationState = this.applicationState;
+        TabState nextApplicationState = this.applicationState;
         switch (applicationState){
             case MANDELBROT:
                 nextApplicationState = MANDELBROT_ZOOM;
@@ -71,11 +71,11 @@ public class ApplicationStateMachine {
         this.setApplicationState(nextApplicationState);
     }
 
-    public ApplicationState getApplicationState() {
+    public TabState getApplicationState() {
         return applicationState;
     }
 
-    public void setApplicationState(ApplicationState applicationState) {
+    public void setApplicationState(TabState applicationState) {
         this.applicationState = applicationState;
     }
 

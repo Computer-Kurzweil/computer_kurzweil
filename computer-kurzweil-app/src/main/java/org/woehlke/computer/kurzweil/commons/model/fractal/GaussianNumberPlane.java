@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.fractal;
+package org.woehlke.computer.kurzweil.commons.model.fractal;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.MandelbrotModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
 
 import java.util.ArrayDeque;

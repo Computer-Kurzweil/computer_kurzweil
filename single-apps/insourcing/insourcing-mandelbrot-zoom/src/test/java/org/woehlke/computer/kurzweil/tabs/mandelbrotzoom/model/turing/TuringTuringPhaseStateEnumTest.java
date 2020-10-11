@@ -2,22 +2,23 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
 
 
 import org.junit.jupiter.api.Test;
+import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringPhaseState;
 
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.TuringPhase.*;
+import static org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringPhase.*;
 
 public class TuringTuringPhaseStateEnumTest {
 
-    private TuringPhaseState turingPhaseState = new TuringPhaseState();
+    private MandelbrotTuringPhaseState turingPhaseState = new MandelbrotTuringPhaseState();
 
     public static Logger log = Logger.getLogger(TuringPositionsTest.class.getName());
 
     @Test
     public void startTest(){
         log.info("startTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new MandelbrotTuringPhaseState();
         assertEquals(turingPhaseState.getTuringTuringPhase(),SEARCH_THE_SET);
         turingPhaseState.start();
         assertEquals(turingPhaseState.getTuringTuringPhase(),SEARCH_THE_SET);
@@ -27,7 +28,7 @@ public class TuringTuringPhaseStateEnumTest {
     @Test
     public void finishGoToSetTest(){
         log.info("finishGoToSetTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new MandelbrotTuringPhaseState();
         turingPhaseState.start();
         assertEquals(turingPhaseState.getTuringTuringPhase(),SEARCH_THE_SET);
         turingPhaseState.finishSearchTheSet();
@@ -38,7 +39,7 @@ public class TuringTuringPhaseStateEnumTest {
     @Test
     public void finishWalkAroundTest() {
         log.info("finishWalkAroundTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new MandelbrotTuringPhaseState();
         turingPhaseState.start();
         turingPhaseState.finishSearchTheSet();
         assertEquals(turingPhaseState.getTuringTuringPhase(),WALK_AROUND_THE_SET);
@@ -50,7 +51,7 @@ public class TuringTuringPhaseStateEnumTest {
     @Test
     public void finishFillTheOutsideWithColorsTest() {
         log.info("finishFillTheOutsideWithColorsTest start");
-        turingPhaseState = new TuringPhaseState();
+        turingPhaseState = new MandelbrotTuringPhaseState();
         turingPhaseState.start();
         turingPhaseState.finishSearchTheSet();
         turingPhaseState.finishWalkAround();

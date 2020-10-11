@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotZoomModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,9 +26,9 @@ public class PanelButtons extends JPanel implements ActionListener {
     private volatile JRadioButton radioButtonsZoom;
     private volatile JButton zoomOut;
     private volatile ButtonGroup radioButtonsGroup;
-    private volatile MandelbrotModel model;
+    private volatile MandelbrotZoomModel model;
 
-    public PanelButtons(MandelbrotModel model) {
+    public PanelButtons(MandelbrotZoomModel model) {
         this.model = model;
         JLabel buttonsLabel = new JLabel(model.getProperties().getMandelbrot().getView().getButtonsLabel());
         this.radioButtonsSwitch = new JRadioButton(model.getProperties().getMandelbrot().getView().getButtonsSwitch());

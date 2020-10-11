@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.fractal.GaussianNumberPlane;
+import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.MandelbrotTabStateMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.MandelbrotTuringMachine;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;

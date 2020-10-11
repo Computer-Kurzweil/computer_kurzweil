@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotTab;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotZoomTab;
 
 import java.io.File;
 import java.net.URL;
@@ -20,7 +20,7 @@ public class MandelbrotZoomApplication {
         URL fileUrl = getClass().getResource(configFileName);
         File configFile = new File(fileUrl.getFile());
         ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFile);
-        MandelbrotTab frame = new MandelbrotTab(properties);
+        MandelbrotZoomTab frame = new MandelbrotZoomTab(properties);
     }
 
     /**
