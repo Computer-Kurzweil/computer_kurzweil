@@ -1,9 +1,11 @@
 # Computer Kurzweil
 
-![Java CI with Maven](https://github.com/Computer-Kurzweil/computer_kurzweil/workflows/Java%20CI%20with%20Maven/badge.svg) 
+[![Java CI with Maven](https://github.com/Computer-Kurzweil/computer_kurzweil/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/Computer-Kurzweil/computer_kurzweil/actions) 
 [![Build Status](https://travis-ci.com/Computer-Kurzweil/computer_kurzweil.svg?branch=master)](https://travis-ci.com/Computer-Kurzweil/computer_kurzweil)
 
-Computer Science Infotainment.
+[Maven Project Reports](https://homepages.ruhr-uni-bochum.de/Thomas.Woehlke/java/computer_kurzweil/)
+
+## Computer Science Infotainment.
 
 A Tribute to the "Computer Kurzweil" named Article Series in Spektrum der Wissenschaft which is the german release of Scientific American. The Article Series "Computer Kurzweil" were also published as Books.
 
