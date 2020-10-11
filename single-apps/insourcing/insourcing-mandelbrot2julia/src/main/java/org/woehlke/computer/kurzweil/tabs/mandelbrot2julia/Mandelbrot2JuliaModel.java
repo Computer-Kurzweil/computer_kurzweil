@@ -3,9 +3,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Point;
+import org.woehlke.computer.kurzweil.commons.model.turing.Point;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.Mandelbrot2JuliaStateMachine;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Mandelbrot2JuliaTuringMachine;
+import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringMachine;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -20,7 +20,7 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Mandelbr
 public class Mandelbrot2JuliaModel {
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
-    private volatile Mandelbrot2JuliaTuringMachine mandelbrotTuringMachine;
+    private volatile MandelbrotTuringMachine mandelbrotTuringMachine;
     private volatile Mandelbrot2JuliaStateMachine applicationStateMachine;
 
     private volatile ComputerKurzweilProperties properties;
@@ -30,7 +30,7 @@ public class Mandelbrot2JuliaModel {
         this.properties = properties;
         this.frame = frame;
         this.gaussianNumberPlane = new GaussianNumberPlane(this);
-        this.mandelbrotTuringMachine = new Mandelbrot2JuliaTuringMachine(this);
+        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
         this.applicationStateMachine = new Mandelbrot2JuliaStateMachine();
     }
 

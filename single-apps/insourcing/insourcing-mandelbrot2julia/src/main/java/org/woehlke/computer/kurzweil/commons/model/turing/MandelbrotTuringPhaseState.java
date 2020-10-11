@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing;
+package org.woehlke.computer.kurzweil.commons.model.turing;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.MandelbrotTuringPhase;
+import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringPhase;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
