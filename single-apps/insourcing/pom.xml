@@ -18,7 +18,6 @@
     <modules>
         <module>insourcing-cyclic-cellular-automaton</module>
         <module>insourcing-diffusion-limited-aggregation</module>
-        <module>insourcing-mandelbrot-common</module>
         <module>insourcing-mandelbrot-julia</module>
         <module>insourcing-mandelbrot-zoom</module>
         <module>insourcing-simulated-evolution</module>
