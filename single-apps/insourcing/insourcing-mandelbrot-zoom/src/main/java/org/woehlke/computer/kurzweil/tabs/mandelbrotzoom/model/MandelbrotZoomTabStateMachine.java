@@ -1,6 +1,5 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState;
 
 import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState.*;
 
@@ -54,19 +53,17 @@ public class MandelbrotZoomTabStateMachine {
 
     public void setModeZoom() {
         MandelbrotZoomTabState nextApplicationState = this.applicationState;
-        /*
         switch (applicationState){
             case MANDELBROT:
                 nextApplicationState = MANDELBROT_ZOOM;
                 break;
-            case JULIA_SET:
-                nextApplicationState = JULIA_SET_ZOOM;
-                break;
+            //case JULIA_SET:
+              //  nextApplicationState = JULIA_SET_ZOOM;
+                //break;
             case MANDELBROT_ZOOM:
-            case JULIA_SET_ZOOM:
+            //case JULIA_SET_ZOOM:
                 break;
         }
-        */
         this.setApplicationState(nextApplicationState);
     }
 
