@@ -2,8 +2,8 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.PanelButtons;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.PanelCopyright;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.PanelSubtitle;
+import org.woehlke.computer.kurzweil.commons.ui.PanelCopyright;
+import org.woehlke.computer.kurzweil.commons.ui.PanelSubtitle;
 import org.woehlke.computer.kurzweil.commons.model.turing.Point;
 
 import javax.accessibility.Accessible;

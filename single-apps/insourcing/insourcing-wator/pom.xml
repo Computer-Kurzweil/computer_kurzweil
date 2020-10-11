@@ -12,8 +12,8 @@
     <artifactId>insourcing-wator</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: insourcing :: Wator</name>
-    <description>Wator</description>
+    <name>single-apps :: insourcing :: WaTor</name>
+    <description>Water Torus - Population Dynamics</description>
 
     <properties>
         <applicationMainClass>org.woehlke.computer.kurzweil.WatorApplication</applicationMainClass>

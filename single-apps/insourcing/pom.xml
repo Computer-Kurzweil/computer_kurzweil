@@ -21,6 +21,9 @@
         <module>insourcing-simulated-evolution</module>
         <module>insourcing-mandelbrot-julia</module>
         <module>insourcing-mandelbrot-zoom</module>
+        <module>insourcing-kochsnowflake</module>
+        <module>insourcing-sierpinskitriangle</module>
+        <module>insourcing-turmite</module>
         <module>insourcing-wator</module>
     </modules>
 
