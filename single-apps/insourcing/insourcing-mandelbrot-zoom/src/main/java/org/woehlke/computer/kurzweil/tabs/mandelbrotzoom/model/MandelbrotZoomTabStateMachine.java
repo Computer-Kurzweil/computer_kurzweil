@@ -3,7 +3,6 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState;
 
 import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState.*;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState.JULIA_SET_ZOOM;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -26,16 +25,10 @@ public class MandelbrotZoomTabStateMachine {
         MandelbrotZoomTabState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
-                nextApplicationState = JULIA_SET;
-                break;
-            case JULIA_SET:
-                nextApplicationState = MANDELBROT;
-                break;
-            case MANDELBROT_ZOOM:
                 nextApplicationState = MANDELBROT_ZOOM;
                 break;
-            case JULIA_SET_ZOOM:
-                nextApplicationState = JULIA_SET_ZOOM;
+            case MANDELBROT_ZOOM:
+                nextApplicationState = MANDELBROT;
                 break;
         }
         this.setApplicationState(nextApplicationState);
@@ -43,6 +36,7 @@ public class MandelbrotZoomTabStateMachine {
 
     public void setModeSwitch() {
         MandelbrotZoomTabState nextApplicationState = this.applicationState;
+        /*
         switch (applicationState){
             case MANDELBROT:
             case JULIA_SET:
@@ -54,11 +48,13 @@ public class MandelbrotZoomTabStateMachine {
                 nextApplicationState = JULIA_SET;
                 break;
         }
+        */
         this.setApplicationState(nextApplicationState);
     }
 
     public void setModeZoom() {
         MandelbrotZoomTabState nextApplicationState = this.applicationState;
+        /*
         switch (applicationState){
             case MANDELBROT:
                 nextApplicationState = MANDELBROT_ZOOM;
@@ -70,6 +66,7 @@ public class MandelbrotZoomTabStateMachine {
             case JULIA_SET_ZOOM:
                 break;
         }
+        */
         this.setApplicationState(nextApplicationState);
     }
 

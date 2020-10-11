@@ -11,7 +11,5 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model;
  */
 public enum MandelbrotZoomTabState {
     MANDELBROT,
-    JULIA_SET,
-    MANDELBROT_ZOOM,
-    JULIA_SET_ZOOM
+    MANDELBROT_ZOOM
 }

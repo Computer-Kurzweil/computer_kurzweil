@@ -22,15 +22,16 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.RradioButtons
  */
 public class PanelButtons extends JPanel implements ActionListener {
 
-    private volatile JRadioButton radioButtonsSwitch;
-    private volatile JRadioButton radioButtonsZoom;
+    //private volatile JRadioButton radioButtonsSwitch;
+    //private volatile JRadioButton radioButtonsZoom;
     private volatile JButton zoomOut;
-    private volatile ButtonGroup radioButtonsGroup;
+    //private volatile ButtonGroup radioButtonsGroup;
     private volatile MandelbrotZoomModel model;
 
     public PanelButtons(MandelbrotZoomModel model) {
         this.model = model;
         JLabel buttonsLabel = new JLabel(model.getProperties().getMandelbrot().getView().getButtonsLabel());
+        /*
         this.radioButtonsSwitch = new JRadioButton(model.getProperties().getMandelbrot().getView().getButtonsSwitch());
         this.radioButtonsSwitch.setMnemonic(RADIO_BUTTONS_SWITCH.ordinal());
         this.radioButtonsSwitch.setSelected(true);
@@ -41,13 +42,14 @@ public class PanelButtons extends JPanel implements ActionListener {
         this.radioButtonsGroup = new ButtonGroup();
         this.radioButtonsGroup.add(radioButtonsSwitch);
         this.radioButtonsGroup.add(radioButtonsZoom);
+         */
         this.zoomOut = new JButton(model.getProperties().getMandelbrot().getView().getButtonsZoomOut());
         this.zoomOut.addActionListener(this);
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         this.add(buttonsLabel);
-        this.add(radioButtonsSwitch);
-        this.add(radioButtonsZoom);
+        //this.add(radioButtonsSwitch);
+        //this.add(radioButtonsZoom);
         this.add(zoomOut);
     }
 
@@ -56,11 +58,13 @@ public class PanelButtons extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.radioButtonsSwitch) {
-            this.model.setModeSwitch();
-        } else if(ae.getSource() == this.radioButtonsZoom) {
-            this.model.setModeZoom();
-        } else if(ae.getSource() == this.zoomOut){
+        //if (ae.getSource() == this.radioButtonsSwitch) {
+        //    this.model.setModeSwitch();
+        //} else
+            //if(ae.getSource() == this.radioButtonsZoom) {
+           // this.model.setModeZoom();
+        //} else
+        if(ae.getSource() == this.zoomOut){
             this.model.zoomOut();
             this.model.getFrame().getCanvas().repaint();
         }
