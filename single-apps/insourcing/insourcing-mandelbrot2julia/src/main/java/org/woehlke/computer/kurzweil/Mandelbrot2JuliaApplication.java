@@ -13,9 +13,9 @@ import java.net.URL;
  * https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html
  * @author Thomas Woehlke
  */
-public class MandelbrotZoomApplication {
+public class Mandelbrot2JuliaApplication {
 
-    private MandelbrotZoomApplication() {
+    private Mandelbrot2JuliaApplication() {
         String configFileName = "/application.yml";
         URL fileUrl = getClass().getResource(configFileName);
         File configFile = new File(fileUrl.getFile());
@@ -28,6 +28,6 @@ public class MandelbrotZoomApplication {
      * @param args CLI Parameter
      */
     public static void main(String[] args) {
-        MandelbrotZoomApplication application = new MandelbrotZoomApplication();
+        Mandelbrot2JuliaApplication application = new Mandelbrot2JuliaApplication();
     }
 }

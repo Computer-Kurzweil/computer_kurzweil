@@ -8,7 +8,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot.MandelbrotTab;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.MandelbrotTab;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.RandomWalkTab;
 
