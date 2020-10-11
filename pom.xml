@@ -11,6 +11,7 @@
         <module>computer-kurzweil-app</module>
         <module>research-and-education</module>
         <module>single-apps</module>
+        <module>insourcing-mandelbrot-common</module>
     </modules>
 
     <name>Computer Kurzweil</name>

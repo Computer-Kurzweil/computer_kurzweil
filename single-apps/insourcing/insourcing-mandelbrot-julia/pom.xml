@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>insourcing-mandelbrot2julia</artifactId>
+    <artifactId>insourcing-mandelbrot-julia</artifactId>
     <packaging>jar</packaging>
 
     <name>single-apps :: insourcing :: Mandelbrot :: Julia</name>
@@ -20,7 +20,11 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.woehlke.computer.kurzweil</groupId>
+            <artifactId>insourcing-mandelbrot-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
