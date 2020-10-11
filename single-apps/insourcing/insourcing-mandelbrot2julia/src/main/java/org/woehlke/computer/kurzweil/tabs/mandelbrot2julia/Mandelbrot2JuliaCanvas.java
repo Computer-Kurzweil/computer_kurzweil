@@ -14,12 +14,12 @@ import java.awt.*;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-public class MandelbrotCanvas extends JComponent {
+public class Mandelbrot2JuliaCanvas extends JComponent {
 
-    private volatile MandelbrotModel app;
+    private volatile Mandelbrot2JuliaModel app;
     private volatile Dimension preferredSize;
 
-    public MandelbrotCanvas(MandelbrotModel app) {
+    public Mandelbrot2JuliaCanvas(Mandelbrot2JuliaModel app) {
         this.app = app;
         int width = this.app.getWorldDimensions().getWidth();
         int height = this.app.getWorldDimensions().getHeight();

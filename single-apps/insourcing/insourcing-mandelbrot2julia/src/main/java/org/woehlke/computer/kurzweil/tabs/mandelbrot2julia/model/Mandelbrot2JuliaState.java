@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -7,9 +7,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas;
  * https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html
  * @author Thomas Woehlke
  *
- * Created by tw on 16.12.2019.
+ * Created by tw on 23.08.15.
  */
-public enum RradioButtons {
-    RADIO_BUTTONS_SWITCH,
-    RADIO_BUTTONS_ZOOM
+public enum Mandelbrot2JuliaState {
+    MANDELBROT,
+    JULIA_SET
 }

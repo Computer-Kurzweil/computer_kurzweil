@@ -3,9 +3,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.ApplicationStateMachine;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.MandelbrotTuringMachine;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.Mandelbrot2JuliaStateMachine;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Mandelbrot2JuliaTuringMachine;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -17,21 +17,21 @@ import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Mandelbrot
  * Created by tw on 16.12.2019.
  */
 @Getter
-public class MandelbrotModel {
+public class Mandelbrot2JuliaModel {
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
-    private volatile MandelbrotTuringMachine mandelbrotTuringMachine;
-    private volatile ApplicationStateMachine applicationStateMachine;
+    private volatile Mandelbrot2JuliaTuringMachine mandelbrotTuringMachine;
+    private volatile Mandelbrot2JuliaStateMachine applicationStateMachine;
 
     private volatile ComputerKurzweilProperties properties;
-    private volatile MandelbrotTab frame;
+    private volatile Mandelbrot2JuliaTab frame;
 
-    public MandelbrotModel(ComputerKurzweilProperties properties, MandelbrotTab frame) {
+    public Mandelbrot2JuliaModel(ComputerKurzweilProperties properties, Mandelbrot2JuliaTab frame) {
         this.properties = properties;
         this.frame = frame;
         this.gaussianNumberPlane = new GaussianNumberPlane(this);
-        this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
-        this.applicationStateMachine = new ApplicationStateMachine();
+        this.mandelbrotTuringMachine = new Mandelbrot2JuliaTuringMachine(this);
+        this.applicationStateMachine = new Mandelbrot2JuliaStateMachine();
     }
 
     public synchronized boolean click(Point c) {
@@ -80,7 +80,7 @@ public class MandelbrotModel {
         return gaussianNumberPlane;
     }
 
-    public MandelbrotTab getFrame() {
+    public Mandelbrot2JuliaTab getFrame() {
         return frame;
     }
 

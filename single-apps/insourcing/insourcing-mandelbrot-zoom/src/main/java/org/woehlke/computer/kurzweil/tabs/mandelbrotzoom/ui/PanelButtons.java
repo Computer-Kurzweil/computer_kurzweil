@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas;
+package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui;
 
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotZoomModel;
 
@@ -7,8 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.RradioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.RradioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.RradioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.RradioButtons.RADIO_BUTTONS_ZOOM;
 
 
 /**

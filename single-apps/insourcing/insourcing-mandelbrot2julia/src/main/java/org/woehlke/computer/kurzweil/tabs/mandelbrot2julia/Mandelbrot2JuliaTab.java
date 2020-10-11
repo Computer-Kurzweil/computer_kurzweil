@@ -1,9 +1,9 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.PanelCopyright;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.PanelSubtitle;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.PanelCopyright;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.PanelSubtitle;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Point;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -19,25 +19,25 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
-public class MandelbrotTab extends JFrame implements ImageObserver,
+public class Mandelbrot2JuliaTab extends JFrame implements ImageObserver,
         MenuContainer,
         Serializable,
         Accessible,
         WindowListener,
         MouseListener {
 
-    private volatile MandelbrotController mandelbrotController;
-    private volatile MandelbrotCanvas canvas;
-    private volatile MandelbrotModel mandelbrotModel;
+    private volatile Mandelbrot2JuliaController mandelbrotController;
+    private volatile Mandelbrot2JuliaCanvas canvas;
+    private volatile Mandelbrot2JuliaModel mandelbrotModel;
     private volatile Rectangle rectangleBounds;
     private volatile Dimension dimensionSize;
 
-    public MandelbrotTab(ComputerKurzweilProperties properties) {
+    public Mandelbrot2JuliaTab(ComputerKurzweilProperties properties) {
         super(properties.getMandelbrot().getView().getTitle());
-        this.mandelbrotModel = new MandelbrotModel(properties,this);
+        this.mandelbrotModel = new Mandelbrot2JuliaModel(properties,this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
-        this.canvas = new MandelbrotCanvas(mandelbrotModel);
-        this.mandelbrotController = new MandelbrotController(mandelbrotModel, this);
+        this.canvas = new Mandelbrot2JuliaCanvas(mandelbrotModel);
+        this.mandelbrotController = new Mandelbrot2JuliaController(mandelbrotModel, this);
         PanelSubtitle panelSubtitle = new PanelSubtitle(properties.getMandelbrot().getView().getSubtitle());
         PanelCopyright panelCopyright = new PanelCopyright(properties.getAllinone().getView().getCopyright());
         JSeparator separator = new JSeparator();
@@ -138,7 +138,7 @@ public class MandelbrotTab extends JFrame implements ImageObserver,
         canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 */
-    public MandelbrotCanvas getCanvas() {
+    public Mandelbrot2JuliaCanvas getCanvas() {
         return canvas;
     }
 }

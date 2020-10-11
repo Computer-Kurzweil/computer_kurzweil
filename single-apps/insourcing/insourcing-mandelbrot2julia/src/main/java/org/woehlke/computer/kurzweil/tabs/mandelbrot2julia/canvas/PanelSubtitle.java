@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,11 +12,11 @@ import java.awt.*;
  *
  * Created by tw on 16.12.2019.
  */
-public class PanelCopyright extends JPanel {
+public class PanelSubtitle extends JPanel {
 
-  public PanelCopyright(String subtitle) {
-    this.setLayout(new FlowLayout());
-    this.add(new JLabel(subtitle));
+  public PanelSubtitle(String subtitle) {
+      this.setLayout(new FlowLayout());
+      this.add(new JLabel(subtitle));
   }
 
 }

@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.ApplicationState.*;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.Mandelbrot2JuliaState.*;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -11,16 +11,16 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.Appl
  *
  * Created by tw on 16.12.2019.
  */
-public class ApplicationStateMachine {
+public class Mandelbrot2JuliaStateMachine {
 
-    private volatile ApplicationState applicationState;
+    private volatile Mandelbrot2JuliaState applicationState;
 
-    public ApplicationStateMachine() {
-        this.applicationState = ApplicationState.MANDELBROT;
+    public Mandelbrot2JuliaStateMachine() {
+        this.applicationState = Mandelbrot2JuliaState.MANDELBROT;
     }
 
     public void click(){
-        ApplicationState nextApplicationState = null;
+        Mandelbrot2JuliaState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
                 nextApplicationState = JULIA_SET;
@@ -44,11 +44,11 @@ public class ApplicationStateMachine {
     }
      */
 
-    public ApplicationState getApplicationState() {
+    public Mandelbrot2JuliaState getApplicationState() {
         return applicationState;
     }
 
-    public void setApplicationState(ApplicationState applicationState) {
+    public void setApplicationState(Mandelbrot2JuliaState applicationState) {
         this.applicationState = applicationState;
     }
 

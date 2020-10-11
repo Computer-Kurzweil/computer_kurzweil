@@ -1,6 +1,6 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.MandelbrotModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.Mandelbrot2JuliaModel;
 import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
 
 /**
@@ -13,16 +13,16 @@ import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
  * Date: 28.08.13
  * Time: 12:39
  */
-public class MandelbrotTuringMachine {
+public class Mandelbrot2JuliaTuringMachine {
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
-    private volatile TuringPositions turingPositions;
-    private volatile TuringPhaseState turingPhaseState;
+    private volatile MandelbrotTuringPositions turingPositions;
+    private volatile MandelbrotTuringPhaseState turingPhaseState;
 
-    public MandelbrotTuringMachine(MandelbrotModel model) {
+    public Mandelbrot2JuliaTuringMachine(Mandelbrot2JuliaModel model) {
         this.gaussianNumberPlane = model.getGaussianNumberPlane();
-        this.turingPhaseState = new TuringPhaseState();
-        this.turingPositions = new TuringPositions(model.getWorldDimensions());
+        this.turingPhaseState = new MandelbrotTuringPhaseState();
+        this.turingPositions = new MandelbrotTuringPositions(model.getWorldDimensions());
         start();
     }
 

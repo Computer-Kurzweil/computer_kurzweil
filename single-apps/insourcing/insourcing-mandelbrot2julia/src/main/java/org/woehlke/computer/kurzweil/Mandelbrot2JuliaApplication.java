@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.MandelbrotTab;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.Mandelbrot2JuliaTab;
 
 import java.io.File;
 import java.net.URL;
@@ -20,7 +20,7 @@ public class Mandelbrot2JuliaApplication {
         URL fileUrl = getClass().getResource(configFileName);
         File configFile = new File(fileUrl.getFile());
         ComputerKurzweilProperties properties = ComputerKurzweilProperties.propertiesFactory(configFile);
-        MandelbrotTab frame = new MandelbrotTab(properties);
+        Mandelbrot2JuliaTab frame = new Mandelbrot2JuliaTab(properties);
     }
 
     /**

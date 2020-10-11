@@ -1,7 +1,9 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state;
+package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.TabState.*;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.TabState.JULIA_SET_ZOOM;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState;
+
+import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState.*;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState.JULIA_SET_ZOOM;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -12,16 +14,16 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.TabS
  *
  * Created by tw on 16.12.2019.
  */
-public class TabStateMachine {
+public class MandelbrotZoomTabStateMachine {
 
-    private volatile TabState applicationState;
+    private volatile MandelbrotZoomTabState applicationState;
 
-    public TabStateMachine() {
-        this.applicationState = TabState.MANDELBROT;
+    public MandelbrotZoomTabStateMachine() {
+        this.applicationState = MandelbrotZoomTabState.MANDELBROT;
     }
 
     public void click(){
-        TabState nextApplicationState = null;
+        MandelbrotZoomTabState nextApplicationState = null;
         switch (applicationState){
             case MANDELBROT:
                 nextApplicationState = JULIA_SET;
@@ -40,7 +42,7 @@ public class TabStateMachine {
     }
 
     public void setModeSwitch() {
-        TabState nextApplicationState = this.applicationState;
+        MandelbrotZoomTabState nextApplicationState = this.applicationState;
         switch (applicationState){
             case MANDELBROT:
             case JULIA_SET:
@@ -56,7 +58,7 @@ public class TabStateMachine {
     }
 
     public void setModeZoom() {
-        TabState nextApplicationState = this.applicationState;
+        MandelbrotZoomTabState nextApplicationState = this.applicationState;
         switch (applicationState){
             case MANDELBROT:
                 nextApplicationState = MANDELBROT_ZOOM;
@@ -71,11 +73,11 @@ public class TabStateMachine {
         this.setApplicationState(nextApplicationState);
     }
 
-    public TabState getApplicationState() {
+    public MandelbrotZoomTabState getApplicationState() {
         return applicationState;
     }
 
-    public void setApplicationState(TabState applicationState) {
+    public void setApplicationState(MandelbrotZoomTabState applicationState) {
         this.applicationState = applicationState;
     }
 

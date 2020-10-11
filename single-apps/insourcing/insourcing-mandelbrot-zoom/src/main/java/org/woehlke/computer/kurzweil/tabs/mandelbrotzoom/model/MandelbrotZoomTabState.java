@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state;
+package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,7 +9,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state;
  *
  * Created by tw on 23.08.15.
  */
-public enum ApplicationState {
+public enum MandelbrotZoomTabState {
     MANDELBROT,
-    JULIA_SET
+    JULIA_SET,
+    MANDELBROT_ZOOM,
+    JULIA_SET_ZOOM
 }

@@ -10,16 +10,16 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class MandelbrotController extends Thread implements Runnable {
+public class Mandelbrot2JuliaController extends Thread implements Runnable {
 
-    private volatile MandelbrotModel mandelbrotModel;
-    private volatile MandelbrotTab frame;
+    private volatile Mandelbrot2JuliaModel mandelbrotModel;
+    private volatile Mandelbrot2JuliaTab frame;
 
     private final int THREAD_SLEEP_TIME = 1;
 
     private volatile Boolean goOn;
 
-    public MandelbrotController(MandelbrotModel model, MandelbrotTab frame) {
+    public Mandelbrot2JuliaController(Mandelbrot2JuliaModel model, Mandelbrot2JuliaTab frame) {
         this.frame = frame;
         this.mandelbrotModel = model;
         goOn = Boolean.TRUE;

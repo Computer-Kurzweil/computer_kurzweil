@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,7 +9,7 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
  *
  * Created by tw on 18.08.15.
  */
-public enum TuringDirection {
+public enum MandelbrotTuringDirection {
     UP,
     RIGHT,
     DOWN,

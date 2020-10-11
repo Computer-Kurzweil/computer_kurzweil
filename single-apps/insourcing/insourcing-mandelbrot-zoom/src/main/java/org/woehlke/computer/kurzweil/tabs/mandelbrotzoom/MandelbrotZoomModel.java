@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
 import org.woehlke.computer.kurzweil.commons.model.turing.Point;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.state.TabStateMachine;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabStateMachine;
 import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringMachine;
 
 /**
@@ -21,7 +21,7 @@ public class MandelbrotZoomModel {
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
     private volatile MandelbrotTuringMachine mandelbrotTuringMachine;
-    private volatile TabStateMachine applicationStateMachine;
+    private volatile MandelbrotZoomTabStateMachine applicationStateMachine;
 
     private volatile ComputerKurzweilProperties properties;
     private volatile MandelbrotZoomTab frame;
@@ -31,7 +31,7 @@ public class MandelbrotZoomModel {
         this.frame = frame;
         this.gaussianNumberPlane = new GaussianNumberPlane(this);
         this.mandelbrotTuringMachine = new MandelbrotTuringMachine(this);
-        this.applicationStateMachine = new TabStateMachine();
+        this.applicationStateMachine = new MandelbrotZoomTabStateMachine();
     }
 
     public synchronized boolean click(Point c) {

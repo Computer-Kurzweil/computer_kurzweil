@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing;
 
 import java.util.Objects;
 
