@@ -55,10 +55,10 @@ lorem ipsum
 * fixed #46 try out java15
 
 ## 2.2.8
-* Issue #48 Split Mandelbrot-Tab into Mandelbrot-Julia and Mandelbrot-Zoom
+* fixed #48 Split Mandelbrot-Tab into Mandelbrot-Julia and Mandelbrot-Zoom in insource apps
+* Issue #43 BUG: Fix paths to Markdown- and Image-Files for Github Pages and Maven Site
 
 ## 2.2.9
-* Issue #43 BUG: Fix paths to Markdown- and Image-Files for Github Pages and Maven Site
 * Issue #41 Logging is broken
 
 ## 2.2.10
