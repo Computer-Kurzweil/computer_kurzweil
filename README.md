@@ -76,46 +76,62 @@ Concentration in Business and Social inequality in free market situations.
 
 
 ## Tabs
-|  Java Package / Subdirectory  | Title                     | Java Class Prefix |
-|-------------------------------|---------------------------|-------------------|
-| [cca](src/site/markdown/Tab_CyclicCellularAutomaton.md)           | Cyclic Cellular Automaton CCA | [CyclicCellularAutomaton](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/cca/CyclicCellularAutomaton.java) | 
+|  Java Package / Subdirectory                                      | Title                             | Java Class Prefix                                                                                    |
+|-------------------------------------------------------------------|-----------------------------------|------------------------------------------------------------------------------------------------------|
+| [cca](src/site/markdown/Tab_CyclicCellularAutomaton.md)           | Cyclic Cellular Automaton CCA     | [CyclicCellularAutomaton](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/cca/CyclicCellularAutomaton.java) | 
 | [dla](src/site/markdown/Tab_DiffusionLimitedAggregation.md)       | Diffusion-limited aggregation DLA | [DiffusionLimitedAggregation](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/dla/DiffusionLimitedAggregation.java) | 
-| [gameoflive](src/site/markdown/Tab_GameOfLife.md)              | Conways Game of Life | [ConwaysGameOfLife](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/gameoflive/ConwaysGameOfLife.java)  |
-| [kochsnowflake](src/site/markdown/Tab_KochSnowflake.md)           | Koch Snowflake | [KochSnowflake](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/kochsnowflake/KochSnowflake.java)  | 
-| [mandelbrot](src/site/markdown/Tab_Mandelbrot.md)                 | Mandelbrot | [Mandelbrot](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/mandelbrot/Mandelbrot.java)  |  
-| [randomwalk](src/site/markdown/Tab_RandomWalk)                    | Random Walk | [RandomWalk](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/randomwalk/RandomWalk.java)   | 
-| [samegame](src/site/markdown/Tab_SameGame.md)                     | Same Game | [SameGame](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/samegame/SameGame.java)  | 
-| [sierpinskitriangle](src/site/markdown/Tab_SierpinskiTriangle.md) | Sierpinski Triangle | [SierpinskiTriangle](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/sierpinskitriangle/SierpinskiTriangle.java)  |
-| [simulatedevolution](src/site/markdown/Tab_SimulatedEvolution.md) | Simulated Evolution | [SimulatedEvolution](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/simulatedevolution/SimulatedEvolution.java)  | 
-| [tetris](src/site/markdown/Tab_Tetris.md)                         | Tetris | [Tetris](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/tetris/Tetris.java)  | 
-| [turmite](src/site/markdown/Tab_Turmite.md)                       | Turmite | [Turmite](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/turmite/Turmite.java)  |
-| [wator](src/site/markdown/Tab_WaTor.md)                           | Wa-Tor | [WaTor](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/wator/WaTor.java)  |
+| [gameoflive](src/site/markdown/Tab_GameOfLife.md)                 | Conways Game of Life              | [ConwaysGameOfLife](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/gameoflive/ConwaysGameOfLife.java)  |
+| [kochsnowflake](src/site/markdown/Tab_KochSnowflake.md)           | Koch Snowflake                    | [KochSnowflake](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/kochsnowflake/KochSnowflake.java)  | 
+| [mandelbrot](src/site/markdown/Tab_Mandelbrot.md)                 | Mandelbrot                        | [Mandelbrot](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/mandelbrot/Mandelbrot.java)  |  
+| [randomwalk](src/site/markdown/Tab_RandomWalk)                    | Random Walk                       | [RandomWalk](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/randomwalk/RandomWalk.java)   | 
+| [samegame](src/site/markdown/Tab_SameGame.md)                     | Same Game                         | [SameGame](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/samegame/SameGame.java)  | 
+| [sierpinskitriangle](src/site/markdown/Tab_SierpinskiTriangle.md) | Sierpinski Triangle               | [SierpinskiTriangle](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/sierpinskitriangle/SierpinskiTriangle.java)  |
+| [simulatedevolution](src/site/markdown/Tab_SimulatedEvolution.md) | Simulated Evolution               | [SimulatedEvolution](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/simulatedevolution/SimulatedEvolution.java)  | 
+| [tetris](src/site/markdown/Tab_Tetris.md)                         | Tetris                            | [Tetris](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/tetris/Tetris.java)  | 
+| [turmite](src/site/markdown/Tab_Turmite.md)                       | Turmite                           | [Turmite](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/turmite/Turmite.java)  |
+| [wator](src/site/markdown/Tab_WaTor.md)                           | Wa-Tor                            | [WaTor](https://github.com/Computer-Kurzweil/computer_kurzweil/blob/master/src/main/java/org/woehlke/computer/kurzweil/tabs/wator/WaTor.java)  |
 
 ## Projects for whole Application
-| Project  | Status   |
-|----------|----------|
-| [Development](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/9)| OK |
-| [DevOps](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/10)| BUG |
-| [Gui Layout](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/5)| OK |
-| [Better Thread Model - with Threadpool, Fork, Join](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/8)| BUG |
+|  Status   | Project                                                                                            |
+|-----------|----------------------------------------------------------------------------------------------------|
+| OK        | [Development](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/9)                   | 
+| BUG       | [DevOps](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/10)                       |
+| OK        | [Gui Layout](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/5)                    |
+| BUG       | [Better Thread Model - with Threadpool, Fork, Join](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/8) |
 
 ## Projects for Tabs
-| Tab  | Status   |
-|------|----------|
-| [CyclicCellularAutomaton](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/2)| OK |
-| [Random Walk](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| OK  |
-| [DiffusionLimitedAggregation](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/1) | BLOCKED |
-| [SimulatedEvolution](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/3)| BUG |
-| [Mandelbrot Set](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/6)| BLOCKED |
-| [Koch Snowflake](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
-| [Sierpinski Triangle](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
-| [Same Game](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
-| [Tetris](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
-| [Turmite](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
-| [Wator](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
-| [Conways Game of Life](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)| PLANNING |
+| Status   | Tab                                                                                                   |
+|----------|-------------------------------------------------------------------------------------------------------|
+| OK       | [CyclicCellularAutomaton](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/2)          | 
+| OK       | [Random Walk](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                      |
+| BLOCKED  | [DiffusionLimitedAggregation](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/1)      | 
+| BUG      | [SimulatedEvolution](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/3)               | 
+| BLOCKED  | [Mandelbrot Set](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/6)                   | 
+| PLANNING | [Koch Snowflake](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                   | 
+| PLANNING | [Sierpinski Triangle](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)              | 
+| PLANNING | [Same Game](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                        | 
+| PLANNING | [Tetris](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                           | 
+| PLANNING | [Turmite](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                          |
+| PLANNING | [Wator](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                            | 
+| PLANNING | [Conways Game of Life](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)             | 
 
-| Status    | Description |
+## Projects for Single Apps
+| Status   | Tab                                                                                                   |
+|----------|-------------------------------------------------------------------------------------------------------|
+| OK       | [CyclicCellularAutomaton](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/2)          | 
+| OK       | [Random Walk](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                      |
+| BLOCKED  | [DiffusionLimitedAggregation](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/1)      | 
+| BUG      | [SimulatedEvolution](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/3)               | 
+| BLOCKED  | [Mandelbrot Set](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/6)                   | 
+| PLANNING | [Koch Snowflake](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                   | 
+| PLANNING | [Sierpinski Triangle](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)              | 
+| PLANNING | [Same Game](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                        | 
+| PLANNING | [Tetris](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                           | 
+| PLANNING | [Turmite](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                          |
+| PLANNING | [Wator](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)                            | 
+| PLANNING | [Conways Game of Life](https://github.com/Computer-Kurzweil/computer_kurzweil/projects/7)             | 
+
+| Status    | Description                    |
 |-----------|--------------------------------|
 | OK        | Tab is running without Errors  |
 | BUG       | Tab is running with Errors     |
@@ -126,17 +142,17 @@ Concentration in Business and Social inequality in free market situations.
 
 ## Goto
 
-| Work in Progress | Github                          |
-|------------------|---------------------------------|
-| *[Tabs](src/site/markdown/Tabs.md)* | &nbsp; |
-| &nbsp; | &nbsp; |
-| [Projects](src/site/markdown/Projects.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
+| Work in Progress                                | Github                          |
+|-------------------------------------------------|---------------------------------|
+| *[Tabs](src/site/markdown/Tabs.md)*             | &nbsp;                          |
+| &nbsp;                                          | &nbsp;                          |
+| [Projects](src/site/markdown/Projects.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects)     |
 | [Milestones](src/site/markdown/Milestones.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
-| [Issues](src/site/markdown/Issues.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
-| [Releases](src/site/markdown/Releases.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
-| [Engineering](src/site/markdown/Enineering.md) | &nbsp; |
-| &nbsp; | &nbsp; |
-| *[back...](README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
+| [Issues](src/site/markdown/Issues.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues)         |
+| [Releases](src/site/markdown/Releases.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases)     |
+| [Engineering](src/site/markdown/Enineering.md)  | &nbsp; |
+| &nbsp;                                          | &nbsp; |
+| *[back...](README.md)*                          | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
 
 ## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](src/site/markdown/LICENSE.code.md)
