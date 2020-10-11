@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.wator;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.tabs.wator.ui.PanelButtons;
+import org.woehlke.computer.kurzweil.commons.ui.PanelButtons;
 import org.woehlke.computer.kurzweil.tabs.wator.ui.PanelCopyright;
 import org.woehlke.computer.kurzweil.tabs.wator.ui.PanelSubtitle;
 import org.woehlke.computer.kurzweil.commons.model.turing.Point;

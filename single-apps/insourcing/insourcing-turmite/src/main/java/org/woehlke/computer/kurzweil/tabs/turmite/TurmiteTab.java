@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.turmite;
 
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.commons.ui.PanelButtons;
+import org.woehlke.computer.kurzweil.tabs.turmite.ui.PanelButtons;
 import org.woehlke.computer.kurzweil.commons.ui.PanelCopyright;
 import org.woehlke.computer.kurzweil.commons.ui.PanelSubtitle;
 import org.woehlke.computer.kurzweil.commons.model.turing.Point;

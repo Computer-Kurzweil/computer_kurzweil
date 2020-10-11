@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.commons.ui;
+package org.woehlke.computer.kurzweil.tabs.turmite.ui;
 
 import org.woehlke.computer.kurzweil.tabs.turmite.TurmiteModel;
 

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.wator.ui;
+package org.woehlke.computer.kurzweil.tabs.turmite.ui;
 
 /**
  * Mandelbrot Set drawn by a Turing Machine.
@@ -9,7 +9,7 @@ package org.woehlke.computer.kurzweil.tabs.wator.ui;
  *
  * Created by tw on 16.12.2019.
  */
-public enum RradioButtons {
+public enum RadioButtons {
     RADIO_BUTTONS_SWITCH,
     RADIO_BUTTONS_ZOOM
 }

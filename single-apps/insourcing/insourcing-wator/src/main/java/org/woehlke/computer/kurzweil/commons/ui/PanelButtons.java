@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.wator.ui;
+package org.woehlke.computer.kurzweil.commons.ui;
 
 import org.woehlke.computer.kurzweil.tabs.wator.WatorModel;
 
