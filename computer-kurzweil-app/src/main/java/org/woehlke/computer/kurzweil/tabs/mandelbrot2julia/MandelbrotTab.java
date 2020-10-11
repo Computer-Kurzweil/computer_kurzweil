@@ -7,7 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
 
 import java.awt.*;
 import java.awt.event.*;

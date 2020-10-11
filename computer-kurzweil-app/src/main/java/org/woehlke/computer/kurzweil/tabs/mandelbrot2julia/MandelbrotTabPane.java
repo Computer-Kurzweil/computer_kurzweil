@@ -7,8 +7,8 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.PanelChooseMouseClickMode;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.PanelZoom;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.PanelChooseMouseClickMode;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.PanelZoom;
 
 import javax.swing.*;
 
