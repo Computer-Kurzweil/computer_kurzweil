@@ -96,6 +96,32 @@ public class ComputerKurzweilProperties {
 
     ////@Validated
     @ToString
+    public static class MandelbrotZoom {
+
+        @Valid @Getter @Setter public View view = new View();
+        @Valid @Getter @Setter public Control control = new Control();
+
+        ////@Validated
+        @ToString
+        public static class View {
+            @NotBlank @Getter @Setter private String title;
+            @NotBlank @Getter @Setter private String subtitle;
+            @NotBlank @Getter @Setter private String buttonsZoom;
+            @NotBlank @Getter @Setter private String buttonsZoomOut;
+            @NotBlank @Getter @Setter private String buttonsSwitch;
+            @NotBlank @Getter @Setter private String buttonsZoomLabel;
+            @NotBlank @Getter @Setter private String buttonsLabel;
+        }
+
+        ////@Validated
+        @ToString
+        public static class Control {
+            @NotNull  @Getter @Setter private Integer threadSleepTime;
+        }
+    }
+
+    ////@Validated
+    @ToString
     public static class SimulatedEvolution {
 
         @Valid @Getter @Setter public View view = new View();
