@@ -265,7 +265,7 @@
         <jackson.databind.version>2.10.3</jackson.databind.version>
         <org.yaml.snakeyaml.version>1.17</org.yaml.snakeyaml.version>
         <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
-        <com.google.guava.version>28.0-jre</com.google.guava.version>
+        <com.google.guava.version>29.0-jre</com.google.guava.version>
         <jsoup.version>1.13.1</jsoup.version>
         <log4j2.version>2.13.3</log4j2.version>
         <lombok.version>1.18.14</lombok.version>
