@@ -16,6 +16,8 @@ import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodTy
 @Getter
 public class CyclicCellularAutomatonModel extends ForkJoinTask<Void> implements TabModel {
 
+
+
     private final CyclicCellularAutomatonContext tabCtx;
 
     private volatile int[][][] lattice;
