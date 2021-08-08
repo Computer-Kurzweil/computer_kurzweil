@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.commons.model.fractal;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -11,7 +12,9 @@ import java.util.Objects;
  *
  * Created by tw on 18.08.15.
  */
-public class ComplexNumber {
+public class ComplexNumber implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile double real;
     private volatile double img;

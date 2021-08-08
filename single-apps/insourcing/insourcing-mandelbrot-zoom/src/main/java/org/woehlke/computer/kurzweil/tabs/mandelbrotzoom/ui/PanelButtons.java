@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.RradioButtons.RADIO_BUTTONS_SWITCH;
 import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.RradioButtons.RADIO_BUTTONS_ZOOM;
@@ -20,7 +21,9 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.ui.RradioButtons
  *
  * Created by tw on 16.12.2019.
  */
-public class PanelButtons extends JPanel implements ActionListener {
+public class PanelButtons extends JPanel implements ActionListener, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     //private volatile JRadioButton radioButtonsSwitch;
     //private volatile JRadioButton radioButtonsZoom;

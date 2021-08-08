@@ -1,6 +1,8 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model;
 
 
+import java.io.Serializable;
+
 import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotZoomTabState.*;
 
 /**
@@ -12,7 +14,9 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.Mandelbrot
  *
  * Created by tw on 16.12.2019.
  */
-public class MandelbrotZoomTabStateMachine {
+public class MandelbrotZoomTabStateMachine implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile MandelbrotZoomTabState applicationState;
 

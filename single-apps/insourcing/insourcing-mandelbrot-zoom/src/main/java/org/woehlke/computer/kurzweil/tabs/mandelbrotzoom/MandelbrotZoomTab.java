@@ -27,6 +27,8 @@ public class MandelbrotZoomTab extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile MandelbrotZoomController mandelbrotController;
     private volatile MandelbrotZoomCanvas canvas;
     private volatile MandelbrotZoomModel mandelbrotModel;

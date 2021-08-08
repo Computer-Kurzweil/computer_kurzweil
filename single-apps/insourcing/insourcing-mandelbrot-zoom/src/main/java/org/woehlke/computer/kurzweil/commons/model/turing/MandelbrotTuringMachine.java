@@ -3,6 +3,8 @@ package org.woehlke.computer.kurzweil.commons.model.turing;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.MandelbrotZoomModel;
 import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -13,7 +15,9 @@ import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
  * Date: 28.08.13
  * Time: 12:39
  */
-public class MandelbrotTuringMachine {
+public class MandelbrotTuringMachine implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
     private volatile MandelbrotTuringPositions turingPositions;

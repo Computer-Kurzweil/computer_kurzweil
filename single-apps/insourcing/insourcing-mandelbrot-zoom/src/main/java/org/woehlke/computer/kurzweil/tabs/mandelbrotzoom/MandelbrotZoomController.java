@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -10,7 +12,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class MandelbrotZoomController extends Thread implements Runnable {
+public class MandelbrotZoomController extends Thread implements Runnable, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile MandelbrotZoomModel mandelbrotModel;
     private volatile MandelbrotZoomTab frame;
