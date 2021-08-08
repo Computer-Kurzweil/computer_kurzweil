@@ -1332,6 +1332,17 @@
                 <skipIntegrationTests>false</skipIntegrationTests>
             </properties>
             <build>
+                <defaultGoal>dependency:purge-local-repository clean install</defaultGoal>
+            </build>
+        </profile>
+
+        <!-- profile: site -->
+        <profile>
+            <id>site</id>
+            <properties>
+                <skipIntegrationTests>false</skipIntegrationTests>
+            </properties>
+            <build>
                 <defaultGoal>dependency:purge-local-repository clean install site</defaultGoal>
             </build>
         </profile>
