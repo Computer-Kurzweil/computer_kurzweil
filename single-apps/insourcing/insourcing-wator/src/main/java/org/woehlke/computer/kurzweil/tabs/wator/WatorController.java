@@ -15,6 +15,8 @@ import org.woehlke.computer.kurzweil.tabs.wator.WatorTab;
  */
 public class WatorController extends Thread implements Runnable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final int THREAD_SLEEP_TIME = 1;
     private volatile WatorModel mandelbrotModel;
     private volatile WatorTab frame;

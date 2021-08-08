@@ -27,6 +27,8 @@ public class WatorTab extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile WatorController mandelbrotController;
     private volatile WatorCanvas canvas;
     private volatile WatorModel mandelbrotModel;

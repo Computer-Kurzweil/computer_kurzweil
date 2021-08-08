@@ -7,6 +7,8 @@ import org.woehlke.computer.kurzweil.commons.model.turing.Point;
 import org.woehlke.computer.kurzweil.tabs.wator.model.WatorTabStateMachine;
 import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringMachine;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -17,7 +19,9 @@ import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringMachin
  * Created by tw on 16.12.2019.
  */
 @Getter
-public class WatorModel {
+public class WatorModel implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile GaussianNumberPlane gaussianNumberPlane;
     private volatile MandelbrotTuringMachine mandelbrotTuringMachine;

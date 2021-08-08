@@ -3,6 +3,8 @@ package org.woehlke.computer.kurzweil.tabs.wator.model;
 
 import org.woehlke.computer.kurzweil.tabs.wator.model.WatorTabState;
 
+import java.io.Serializable;
+
 import static org.woehlke.computer.kurzweil.tabs.wator.model.WatorTabState.*;
 
 /**
@@ -14,7 +16,9 @@ import static org.woehlke.computer.kurzweil.tabs.wator.model.WatorTabState.*;
  *
  * Created by tw on 16.12.2019.
  */
-public class WatorTabStateMachine {
+public class WatorTabStateMachine implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile WatorTabState applicationState;
 

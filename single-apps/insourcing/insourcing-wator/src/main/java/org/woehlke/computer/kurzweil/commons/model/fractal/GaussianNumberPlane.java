@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.commons.model.fractal;
 import org.woehlke.computer.kurzweil.tabs.wator.WatorModel;
 import org.woehlke.computer.kurzweil.commons.model.turing.Point;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.Deque;
 //import java.util.logging.Logger;
@@ -16,7 +17,9 @@ import java.util.Deque;
  *
  * Created by tw on 16.12.2019.
  */
-public class GaussianNumberPlane {
+public class GaussianNumberPlane implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     public final static int YET_UNCOMPUTED = -1;
     private final static double complexWorldDimensionRealX = 3.2d;

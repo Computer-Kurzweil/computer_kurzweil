@@ -18,6 +18,8 @@ import java.awt.*;
  */
 public class WatorCanvas extends JComponent {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile WatorModel app;
     private volatile Dimension preferredSize;
 
