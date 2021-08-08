@@ -288,6 +288,9 @@
         <version.maven-scm-publish-plugin>3.1.0</version.maven-scm-publish-plugin>
         <version.exec-maven-plugin>3.0.0</version.exec-maven-plugin>
         <version.maven-default-skin>1.3</version.maven-default-skin>
+        <version.artifactory-maven-plugin>3.2.3</version.artifactory-maven-plugin>
+        <version.maven-wrapper-plugin>3.0.2</version.maven-wrapper-plugin>
+
 
         <!-- reporting: maven-site -->
         <version.maven-site-plugin>3.9.1</version.maven-site-plugin>
@@ -326,6 +329,9 @@
 
         <pmdVersion>6.29.0</pmdVersion>
         <version.maven-pdf-plugin>1.4</version.maven-pdf-plugin>
+
+        <maven.repository.local>${maven.multiModuleProjectDirectory}/mvn-repository</maven.repository.local>
+        <directory.etc>${maven.multiModuleProjectDirectory}/src/site/resources/checkstyle</directory.etc>
     </properties>
 
     <dependencyManagement>
@@ -603,10 +609,19 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
         <defaultGoal>dependency:purge-local-repository clean install</defaultGoal>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-wrapper-plugin</artifactId>
+                    <version>${version.maven-wrapper-plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-invoker-plugin</artifactId>
+                    <version>${version.maven-invoker-plugin}</version>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
@@ -663,11 +678,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
                     <version>${version.maven-surefire-report-plugin}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-invoker-plugin</artifactId>
-                    <version>${version.maven-invoker-plugin}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -822,6 +832,11 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-wrapper-plugin</artifactId>
+                <version>${version.maven-wrapper-plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-invoker-plugin</artifactId>
                 <executions>
                     <execution>
@@ -831,9 +846,9 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <settingsFile>src/it/settings.xml</settingsFile>
-                            <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-                            <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
+                            <settingsFile>${directory.etc}/settings.xml</settingsFile>
+                            <cloneProjectsTo>${maven.multiModuleProjectDirectory}/it</cloneProjectsTo>
+                            <localRepositoryPath>${maven.multiModuleProjectDirectory}/mvn-repository</localRepositoryPath>
                             <postBuildHookScript>verify</postBuildHookScript>
                         </configuration>
                     </execution>
@@ -1259,7 +1274,7 @@
                 <configuration>
                     <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
                     <settingsFile>src/it/settings.xml</settingsFile>
-                    <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
+                    <localRepositoryPath>${maven.repository.local}</localRepositoryPath>
                     <postBuildHookScript>verify</postBuildHookScript> <!-- no extension required -->
                 </configuration>
             </plugin>
@@ -1300,11 +1315,20 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <configuration>
+
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
                     <enableRulesSummary>true</enableRulesSummary>
                     <enableSeveritySummary>true</enableSeveritySummary>
                     <enableFilesSummary>true</enableFilesSummary>
                     <failOnViolation>false</failOnViolation>
                     <failsOnError>false</failsOnError>
+                    <consoleOutput>true</consoleOutput>
+                    <configLocation>${directory.etc}/checkstyle.xml</configLocation>
                 </configuration>
             </plugin>
             <plugin>
