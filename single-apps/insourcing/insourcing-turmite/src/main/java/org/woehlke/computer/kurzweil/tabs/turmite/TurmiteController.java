@@ -1,5 +1,8 @@
 package org.woehlke.computer.kurzweil.tabs.turmite;
 
+import javax.sql.rowset.serial.SerialArray;
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -10,7 +13,9 @@ package org.woehlke.computer.kurzweil.tabs.turmite;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class TurmiteController extends Thread implements Runnable {
+public class TurmiteController extends Thread implements Runnable, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final int THREAD_SLEEP_TIME = 1;
     private volatile TurmiteModel mandelbrotModel;

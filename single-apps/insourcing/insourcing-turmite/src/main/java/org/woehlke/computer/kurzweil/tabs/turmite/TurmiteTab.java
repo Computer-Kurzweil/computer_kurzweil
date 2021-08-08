@@ -27,6 +27,8 @@ public class TurmiteTab extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile TurmiteController mandelbrotController;
     private volatile TurmiteCanvas canvas;
     private volatile TurmiteModel mandelbrotModel;
