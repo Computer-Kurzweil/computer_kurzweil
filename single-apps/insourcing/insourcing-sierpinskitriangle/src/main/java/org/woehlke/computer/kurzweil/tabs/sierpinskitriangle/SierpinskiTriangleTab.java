@@ -27,6 +27,8 @@ public class SierpinskiTriangleTab extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile SierpinskiTriangleController mandelbrotController;
     private volatile SierpinskiTriangleCanvas canvas;
     private volatile SierpinskiTriangleModel mandelbrotModel;

@@ -3,6 +3,8 @@ package org.woehlke.computer.kurzweil.tabs.sierpinskitriangle.model;
 
 import org.woehlke.computer.kurzweil.tabs.sierpinskitriangle.model.SierpinskiTriangleTabState;
 
+import java.io.Serializable;
+
 import static org.woehlke.computer.kurzweil.tabs.sierpinskitriangle.model.SierpinskiTriangleTabState.*;
 
 /**
@@ -14,7 +16,9 @@ import static org.woehlke.computer.kurzweil.tabs.sierpinskitriangle.model.Sierpi
  *
  * Created by tw on 16.12.2019.
  */
-public class SierpinskiTriangleTabStateMachine {
+public class SierpinskiTriangleTabStateMachine implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile SierpinskiTriangleTabState applicationState;
 
