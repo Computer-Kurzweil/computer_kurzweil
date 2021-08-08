@@ -12,6 +12,8 @@ package org.woehlke.computer.kurzweil.tabs.kochsnowflake;
  */
 public class KochSnowflakeController extends Thread implements Runnable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final int THREAD_SLEEP_TIME = 1;
     private volatile KochSnowflakeModel mandelbrotModel;
     private volatile KochSnowflakeTab frame;

@@ -16,6 +16,8 @@ import java.awt.*;
  */
 public class KochSnowflakeCanvas extends JComponent {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile KochSnowflakeModel app;
     private volatile Dimension preferredSize;
 

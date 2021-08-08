@@ -27,6 +27,8 @@ public class KochSnowflakeTab extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile KochSnowflakeController mandelbrotController;
     private volatile KochSnowflakeCanvas canvas;
     private volatile KochSnowflakeModel mandelbrotModel;

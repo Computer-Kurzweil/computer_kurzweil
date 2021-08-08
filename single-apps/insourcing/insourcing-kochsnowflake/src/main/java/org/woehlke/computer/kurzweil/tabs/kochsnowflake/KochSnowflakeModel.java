@@ -19,6 +19,8 @@ import org.woehlke.computer.kurzweil.commons.model.turing.MandelbrotTuringMachin
 @Getter
 public class KochSnowflakeModel {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile GaussianNumberPlane gaussianNumberPlane;
     private volatile MandelbrotTuringMachine mandelbrotTuringMachine;
     private volatile KochSnowflakeTabStateMachine applicationStateMachine;
