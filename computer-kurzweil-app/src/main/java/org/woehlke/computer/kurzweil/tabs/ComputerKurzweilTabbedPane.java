@@ -32,6 +32,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper=true)
 public class ComputerKurzweilTabbedPane extends JTabbedPane implements Startable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final CyclicCellularAutomatonTab cyclicCellularAutomatonTab;
     private final RandomWalkTab randomWalkTab;
     private final DiffusionLimitedAggregationTab diffusionLimitedAggregationTab;

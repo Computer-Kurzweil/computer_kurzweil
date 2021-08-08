@@ -26,6 +26,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 @AllArgsConstructor
 public class CellCore implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     /**
     * The DNA Values of the Genome.
     */

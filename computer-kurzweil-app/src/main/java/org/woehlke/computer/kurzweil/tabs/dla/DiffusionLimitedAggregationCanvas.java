@@ -31,6 +31,8 @@ import java.io.Serializable;
 public class DiffusionLimitedAggregationCanvas extends JComponent implements
     Serializable, TabCanvas, DiffusionLimitedAggregation {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationModel tabModel;
     private final Border border;

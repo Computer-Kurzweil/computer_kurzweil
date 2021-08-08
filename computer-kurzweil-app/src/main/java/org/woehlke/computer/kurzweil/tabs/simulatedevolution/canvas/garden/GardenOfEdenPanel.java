@@ -15,6 +15,8 @@ import java.awt.*;
 @ToString(callSuper = true)
 public class GardenOfEdenPanel extends JPanel implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final String gardenOfEdenPanelBorderLabel;
@@ -23,7 +25,8 @@ public class GardenOfEdenPanel extends JPanel implements SimulatedEvolution {
     public GardenOfEdenPanel(SimulatedEvolutionContext tabCtx) {
         super(new FlowLayout());
         this.tabCtx=tabCtx;
-        this.gardenOfEdenPanelBorderLabel = tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getPanelGardenOfEden();
+        this.gardenOfEdenPanelBorderLabel =
+            tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getPanelGardenOfEden();
         //this.gardenOfEdenPanelBorder = this.tabCtx.getCtx().getBorder(gardenOfEdenPanelBorderLabel);
         //this.setBorder(gardenOfEdenPanelBorder);
     }

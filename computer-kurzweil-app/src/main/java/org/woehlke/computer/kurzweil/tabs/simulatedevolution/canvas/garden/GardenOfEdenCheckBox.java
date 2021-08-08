@@ -13,6 +13,8 @@ import javax.swing.*;
 @ToString(callSuper = true)
 public class GardenOfEdenCheckBox extends JCheckBox implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final String gardenOfEdenEnabledString;
@@ -24,8 +26,10 @@ public class GardenOfEdenCheckBox extends JCheckBox implements SimulatedEvolutio
             tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled()
         );
 
-        this.gardenOfEdenEnabledSelected = tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
-        this.gardenOfEdenEnabledString = tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabledString();
+        this.gardenOfEdenEnabledSelected =
+            tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
+        this.gardenOfEdenEnabledString =
+            tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabledString();
         this.tabCtx = tabCtx;
     }
 }

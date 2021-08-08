@@ -40,6 +40,8 @@ import java.util.concurrent.ForkJoinTask;
 @EqualsAndHashCode(exclude={"appCtx"},callSuper = false)
 public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabModel, SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final SimulatedEvolutionContext appCtx;
     private final SimulatedEvolutionWorldLattice worldLattice;
     private final SimulatedEvolutionPopulationContainer populationContainer;

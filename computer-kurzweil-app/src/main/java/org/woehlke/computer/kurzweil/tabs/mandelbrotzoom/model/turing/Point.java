@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,9 @@ import java.util.Objects;
  * Date: 04.02.2006
  * Time: 23:47:05
  */
-public class Point {
+public class Point implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile int x = 0;
     private volatile int y = 0;

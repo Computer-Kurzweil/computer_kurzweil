@@ -20,6 +20,8 @@ import static org.woehlke.computer.kurzweil.tabs.TabType.RANDOM_WALK_WIENER_PROC
 @EqualsAndHashCode(callSuper=true)
 public class RandomWalkButtons extends JPanel implements GuiComponent, RandomWalk {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
   private final RandomWalkCanvas canvas;
   private final CompoundBorder border;
   private final FlowLayout layout;

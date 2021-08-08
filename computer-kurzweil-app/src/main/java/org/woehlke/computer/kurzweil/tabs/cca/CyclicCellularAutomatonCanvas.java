@@ -36,7 +36,7 @@ import java.util.concurrent.TimeoutException;
 public class CyclicCellularAutomatonCanvas extends JComponent implements
     Serializable, TabCanvas, CyclicCellularAutomaton, Future<Void> {
 
-    private static final long serialVersionUID = -3057254130516052936L;
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final CyclicCellularAutomatonContext tabCtx;
     private final Border border;

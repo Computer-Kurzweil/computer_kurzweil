@@ -22,6 +22,8 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.RradioBut
  */
 public class PanelButtons extends JPanel implements ActionListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile JRadioButton radioButtonsSwitch;
     private volatile JRadioButton radioButtonsZoom;
     private volatile JButton zoomOut;

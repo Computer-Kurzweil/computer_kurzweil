@@ -17,6 +17,8 @@ import static java.lang.Thread.State.NEW;
 @EqualsAndHashCode(exclude = {"tab"},callSuper = false)
 public class RandomWalkContext extends ForkJoinTask<Void> implements TabContext, RandomWalk {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final ComputerKurzweilContext ctx;
     private final RandomWalkCanvas canvas;
     private final RandomWalkModel tabModel;

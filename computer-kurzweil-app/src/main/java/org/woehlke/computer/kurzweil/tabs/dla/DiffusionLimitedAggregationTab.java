@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","canvas"})
 public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, DiffusionLimitedAggregation {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final DiffusionLimitedAggregationContext tabCtx;
     private final DiffusionLimitedAggregationCanvas canvas;
     private final DiffusionLimitedAggregationModel tabModel;

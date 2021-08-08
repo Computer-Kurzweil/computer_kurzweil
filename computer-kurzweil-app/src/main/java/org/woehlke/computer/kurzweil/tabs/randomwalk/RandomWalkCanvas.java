@@ -32,7 +32,7 @@ import java.io.Serializable;
 public class RandomWalkCanvas extends JComponent implements
     Serializable, TabCanvas, RandomWalk {
 
-    private static final long serialVersionUID = -3057254130516052936L;
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final RandomWalkContext tabCtx;
     private final RandomWalkModel tabModel;

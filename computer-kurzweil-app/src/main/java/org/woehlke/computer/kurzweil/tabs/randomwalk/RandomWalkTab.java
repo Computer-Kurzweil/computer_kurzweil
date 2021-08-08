@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final RandomWalkContext tabCtx;
 
     private final RandomWalkCanvas canvas;

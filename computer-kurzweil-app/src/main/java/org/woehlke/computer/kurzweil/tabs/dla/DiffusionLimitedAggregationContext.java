@@ -18,6 +18,8 @@ import static java.lang.Thread.State.NEW;
 @EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"},callSuper = false)
 public class DiffusionLimitedAggregationContext extends ForkJoinTask<Void> implements TabContext, DiffusionLimitedAggregation {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private DiffusionLimitedAggregationController controller;
 
     private final DiffusionLimitedAggregationCanvas canvas;

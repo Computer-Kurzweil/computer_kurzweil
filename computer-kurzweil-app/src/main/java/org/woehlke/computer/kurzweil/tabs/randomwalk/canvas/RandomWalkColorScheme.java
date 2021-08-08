@@ -8,6 +8,8 @@ import java.util.List;
 
 public class RandomWalkColorScheme implements RandomWalk {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private Color[] stateColor;
 
     public RandomWalkColorScheme(){

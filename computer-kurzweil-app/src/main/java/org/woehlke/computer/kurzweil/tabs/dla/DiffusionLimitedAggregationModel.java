@@ -14,6 +14,8 @@ import java.util.concurrent.ForkJoinTask;
 @Getter
 public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> implements TabModel {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final DiffusionLimitedAggregationContext tabCtx;
     private final int initialNumberOfParticles;
     private final int worldX;

@@ -17,7 +17,9 @@ import javax.swing.*;
 
 @Log4j2
 @Getter
-public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,Updateable {
+public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable, Updateable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final PopulationStatisticsElementsPanelLifeCycle statisticsPanelPanelLifeCycle;
     private final PopulationStatisticsElementsPanelCounted statisticsPanelCounted;
@@ -25,8 +27,6 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PanelStartStopButtons startStopButtonsPanel;
-
-
 
     public SimulatedEvolutionTabPane(SimulatedEvolutionTab tab) {
         this.statisticsPanelPanelLifeCycle = new PopulationStatisticsElementsPanelLifeCycle( tab.getTabCtx() );

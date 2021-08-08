@@ -13,6 +13,8 @@ import javax.swing.*;
 @ToString(callSuper = true)
 public class PopulationStatisticsElement extends JPanel implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final JLabel label;
     private final JTextField statistics;
     private final CellLifeCycleStatus lifeCycleStatus;

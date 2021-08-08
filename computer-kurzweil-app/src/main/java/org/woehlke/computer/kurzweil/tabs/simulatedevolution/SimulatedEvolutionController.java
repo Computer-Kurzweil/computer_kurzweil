@@ -7,6 +7,8 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
 
+import java.io.Serializable;
+
 
 /**
  * The ControllerThreadApplet controls the Interactions between Model and View (MVC-Pattern).
@@ -32,7 +34,9 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.Si
  * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/19
  * http://openbook.rheinwerk-verlag.de/javainsel9/javainsel_14_004.htm
  */
-public class SimulatedEvolutionController extends Thread implements TabController, SimulatedEvolution {
+public class SimulatedEvolutionController extends Thread implements TabController, SimulatedEvolution, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final SimulatedEvolutionContext tabCtx;
     private Boolean goOn;

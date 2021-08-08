@@ -11,6 +11,8 @@ import java.awt.*;
 @Getter
 public class PanelZoom extends SubTabImpl implements Mandelbrot {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final MandelbrotContext tabCtx;
 
     private final JLabel zoomLevelFieldLabel;

@@ -8,12 +8,15 @@ import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
+import java.io.Serializable;
 
 
 @Log4j2
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class PanelCopyright extends JPanel implements GuiComponent {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     public PanelCopyright(ComputerKurzweilContext ctx) {
         this.setLayout(new FlowLayoutCenter());

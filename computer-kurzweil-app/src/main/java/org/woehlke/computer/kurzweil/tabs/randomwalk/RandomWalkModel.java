@@ -16,6 +16,8 @@ import java.util.concurrent.ForkJoinTask;
 @EqualsAndHashCode(callSuper=false,exclude = {"tabCtx"})
 public class RandomWalkModel extends ForkJoinTask<Void> implements TabModel, RandomWalk {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final RandomWalkContext tabCtx;
     private final Dimension preferredSize;
     private final RandomWalkColorScheme colorScheme;

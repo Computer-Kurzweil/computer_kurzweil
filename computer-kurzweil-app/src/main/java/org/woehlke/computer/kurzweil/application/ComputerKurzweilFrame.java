@@ -35,6 +35,8 @@ public class ComputerKurzweilFrame extends JFrame implements Serializable,
     Startable,
     GuiComponent, HasPanelSubtitle {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final ComputerKurzweilContext ctx;
     private final ComputerKurzweilTabbedPane tabbedPane;
     private final ComputerKurzweilMenuBar jMenuBar;

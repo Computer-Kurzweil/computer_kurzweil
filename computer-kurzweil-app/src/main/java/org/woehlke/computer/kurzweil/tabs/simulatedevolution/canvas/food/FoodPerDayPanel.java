@@ -19,6 +19,8 @@ import javax.swing.border.CompoundBorder;
 @ToString(callSuper = true)
 public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, Updateable, SubTab {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final String foodPerDayBorderLabel;
@@ -29,14 +31,18 @@ public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, U
     private final SimulatedEvolutionModel tabModel;
 
     public FoodPerDayPanel(SimulatedEvolutionContext tabCtx) {
-        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDayLabel(),tabCtx.getCtx().getProperties());
+        super(
+            tabCtx.getCtx().getProperties().getSimulatedevolution().getFood()
+                .getFoodPerDayLabel(),tabCtx.getCtx().getProperties()
+        );
         this.tabCtx = tabCtx;
         this.tabModel = this.tabCtx.getTabModel();
         this.foodPerDayLabel = new FoodPerDayLabel(this.tabCtx);
         this.foodPerDayTextField = new FoodPerDayTextField(this.tabCtx);
         this.foodPerDayIncreaseButton = new FoodPerDayIncreaseButton(this.tabCtx);
         this.foodPerDayDecreaseButton = new FoodPerDayDecreaseButton(this.tabCtx);
-        this.foodPerDayBorderLabel = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDayLabel();
+        this.foodPerDayBorderLabel = this.tabCtx.getCtx().getProperties()
+            .getSimulatedevolution().getFood().getFoodPerDayLabel();
         //this.foodPerDayBorder = this.tabCtx.getCtx().getBorder(this.foodPerDayBorderLabel);
         //this.setBorder(this.foodPerDayBorder);
         this.add(this.foodPerDayLabel);

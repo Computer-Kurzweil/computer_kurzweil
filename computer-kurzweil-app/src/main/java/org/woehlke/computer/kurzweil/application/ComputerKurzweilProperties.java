@@ -9,10 +9,7 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -23,7 +20,9 @@ import java.util.jar.JarFile;
 @AllArgsConstructor
 @Valid
 ////@Validated
-public class ComputerKurzweilProperties {
+public class ComputerKurzweilProperties implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     @Valid @Getter @Setter public Allinone allinone = new Allinone();
     @Valid @Getter @Setter public Mandelbrot mandelbrot = new Mandelbrot();

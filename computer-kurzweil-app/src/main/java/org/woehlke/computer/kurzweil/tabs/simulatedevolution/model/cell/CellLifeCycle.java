@@ -26,6 +26,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 @EqualsAndHashCode(exclude = {"cellConf"})
 public class CellLifeCycle implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @Getter private int fat;
     @Getter private int age;
     @Getter private int hunger;

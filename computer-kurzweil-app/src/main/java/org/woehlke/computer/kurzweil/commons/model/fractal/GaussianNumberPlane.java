@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.commons.model.fractal;
 import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.MandelbrotModel;
 import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.Deque;
 //import java.util.logging.Logger;
@@ -16,7 +17,9 @@ import java.util.Deque;
  *
  * Created by tw on 16.12.2019.
  */
-public class GaussianNumberPlane {
+public class GaussianNumberPlane implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile int[][] lattice;
 

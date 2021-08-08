@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicCellularAutomaton {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final TabType tabType = TabType.CYCLIC_CELLULAR_AUTOMATON;
     private final CyclicCellularAutomatonContext tabCtx;
     private final CyclicCellularAutomatonCanvas canvas;

@@ -15,6 +15,8 @@ import javax.swing.*;
 @Getter
 public class CyclicCellularAutomatonTabPane extends JTabbedPane implements Startable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PanelNeighbourhoodButtons panelNeighbourhoodButtons;
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})

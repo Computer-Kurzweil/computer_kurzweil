@@ -24,7 +24,10 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl implements SimulatedEvolution, SubTab, Updateable {
+public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl
+    implements SimulatedEvolution, SubTab, Updateable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final PopulationStatisticsElement youngCellsElement;
     private final PopulationStatisticsElement youngAndFatCellsElement;
@@ -49,16 +52,21 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl imple
     public PopulationStatisticsElementsPanelLifeCycle(
       SimulatedEvolutionContext tabCtx
     ) {
-        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelLifeCycleStatistics(),tabCtx.getCtx().getProperties());
+        super(
+            tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelLifeCycleStatistics(),
+            tabCtx.getCtx().getProperties()
+        );
         this.tabCtx = tabCtx;
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);
-        borderLabel = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics();
+        borderLabel =
+            this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics();
         layout = new FlowLayoutCenter();
         border = tabCtx.getCtx().getBottomButtonsPanelBorder(borderLabel);
         this.setLayout(layout);
         this.setBorder(border);
-        ComputerKurzweilProperties.SimulatedEvolution.Population cfg = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation();
+        ComputerKurzweilProperties.SimulatedEvolution.Population cfg =
+            this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation();
         initialPopulation = cfg.getInitialPopulation();
         youngCellsLabel = cfg.getYoungCellsLabel();
         youngAndFatCellsLabel = cfg.getYoungAndFatCellsLabel();

@@ -38,8 +38,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.Simul
 @EqualsAndHashCode(callSuper=true, exclude={"tabCtx","border","preferredSize","layout","tab"})
 public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, SimulatedEvolution {
 
-    //TODO: new serialVersionUID
-    private static final long serialVersionUID = -27002509360079509L;
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final SimulatedEvolutionContext tabCtx;
     private final Border border;

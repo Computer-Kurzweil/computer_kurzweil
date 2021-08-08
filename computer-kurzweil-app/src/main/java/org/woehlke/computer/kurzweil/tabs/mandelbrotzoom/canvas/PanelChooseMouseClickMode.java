@@ -16,6 +16,8 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas.RradioBut
 @Getter
 public class PanelChooseMouseClickMode extends SubTabImpl implements Mandelbrot, SubTab, Updateable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final MandelbrotContext tabCtx;
     private final String buttonsSwitch;
     private final String buttonsZoom;

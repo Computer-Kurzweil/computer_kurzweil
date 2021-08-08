@@ -11,13 +11,16 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLife
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
 @Log4j2
 @Getter
 @ToString(exclude={"random","frame"},callSuper=true)
-public class ComputerKurzweilContext implements Startable {
+public class ComputerKurzweilContext implements Startable, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final Random random;
     private final ComputerKurzweilProperties properties;

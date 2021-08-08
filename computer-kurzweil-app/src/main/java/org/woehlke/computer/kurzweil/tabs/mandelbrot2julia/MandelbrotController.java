@@ -14,6 +14,8 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  */
 public class MandelbrotController extends Thread implements TabController, Mandelbrot {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile MandelbrotModel mandelbrotModel;
     private volatile MandelbrotTab tab;
 

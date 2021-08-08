@@ -13,6 +13,8 @@ import javax.swing.*;
 @ToString(callSuper = true)
 public class FoodPerDayTextField extends JTextField implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final String foodPerDayTextFieldString;
@@ -24,8 +26,10 @@ public class FoodPerDayTextField extends JTextField implements SimulatedEvolutio
             tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDayFieldColumns()
         );
         this.tabCtx = tabCtx;
-        this.foodPerDayTextFieldString = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDay()+"";
-        this.foodPerDayTextFieldCols = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDayFieldColumns();
+        this.foodPerDayTextFieldString = this.tabCtx.getCtx().getProperties()
+            .getSimulatedevolution().getFood().getFoodPerDay()+"";
+        this.foodPerDayTextFieldCols = this.tabCtx.getCtx().getProperties()
+            .getSimulatedevolution().getFood().getFoodPerDayFieldColumns();
     }
 
     public void setFoodPerDay(int foodPerDay){

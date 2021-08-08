@@ -14,6 +14,8 @@ import java.awt.*;
  */
 public class PanelCopyright extends JPanel {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
   public PanelCopyright(String subtitle) {
     this.setLayout(new FlowLayout());
     this.add(new JLabel(subtitle));

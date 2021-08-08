@@ -15,6 +15,8 @@ import static java.lang.Thread.State.NEW;
 @Getter
 public class MandelbrotContext extends ForkJoinTask<Void> implements TabContext, Mandelbrot {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final ComputerKurzweilContext ctx;
     private final MandelbrotTab tab;
     private final MandelbrotModel tabModel;

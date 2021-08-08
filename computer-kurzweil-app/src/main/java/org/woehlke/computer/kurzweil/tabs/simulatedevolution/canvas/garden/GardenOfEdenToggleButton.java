@@ -13,13 +13,20 @@ import javax.swing.*;
 @ToString(callSuper = true)
 public class GardenOfEdenToggleButton extends JToggleButton implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final String buttonToggleGardenOfEdenString;
 
     public GardenOfEdenToggleButton(SimulatedEvolutionContext tabCtx) {
-        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabledToggleButton());
+        super(
+            tabCtx.getCtx().getProperties().getSimulatedevolution()
+                .getGardenOfEden().getGardenOfEdenEnabledToggleButton()
+        );
         this.tabCtx = tabCtx;
-        this.buttonToggleGardenOfEdenString = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabledToggleButton();
+        this.buttonToggleGardenOfEdenString =
+            this.tabCtx.getCtx().getProperties().getSimulatedevolution()
+                .getGardenOfEden().getGardenOfEdenEnabledToggleButton();
     }
 }

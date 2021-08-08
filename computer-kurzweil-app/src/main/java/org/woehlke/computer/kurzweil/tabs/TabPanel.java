@@ -17,6 +17,8 @@ import javax.swing.border.Border;
 @EqualsAndHashCode(callSuper=true, exclude = {"ctx","tabbedPane","border","layout","panelSubtitle"})
 public abstract class TabPanel extends JPanel implements Tab {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     protected final ComputerKurzweilTabbedPane tabbedPane;
     protected final ComputerKurzweilContext ctx;
     protected final Border border;

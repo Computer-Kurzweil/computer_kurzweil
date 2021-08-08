@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvolution, Updateable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final SimulatedEvolutionCanvas canvas;
     private final SimulatedEvolutionContext tabCtx;
     private final SimulatedEvolutionModel tabModel;

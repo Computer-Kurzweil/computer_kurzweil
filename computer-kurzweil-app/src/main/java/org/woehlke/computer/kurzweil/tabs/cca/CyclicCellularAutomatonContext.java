@@ -17,6 +17,8 @@ import static java.lang.Thread.State.NEW;
 @EqualsAndHashCode(exclude = {"tab"},callSuper = false)
 public class CyclicCellularAutomatonContext extends ForkJoinTask<Void> implements TabContext, CyclicCellularAutomaton {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final ComputerKurzweilContext ctx;
     private final CyclicCellularAutomatonCanvas canvas;
     private final CyclicCellularAutomatonTab tab;

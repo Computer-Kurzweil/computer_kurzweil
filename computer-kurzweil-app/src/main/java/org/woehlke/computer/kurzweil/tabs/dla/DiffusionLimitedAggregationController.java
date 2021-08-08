@@ -30,6 +30,8 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 public class DiffusionLimitedAggregationController extends Thread
         implements TabController, DiffusionLimitedAggregation {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final DiffusionLimitedAggregationContext tabCtx;
     private final int threadSleepTime;
     private Boolean goOn;

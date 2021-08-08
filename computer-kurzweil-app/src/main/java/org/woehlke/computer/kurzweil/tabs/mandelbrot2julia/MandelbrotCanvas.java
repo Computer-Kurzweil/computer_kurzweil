@@ -34,6 +34,8 @@ import java.util.concurrent.TimeoutException;
 public class MandelbrotCanvas extends JComponent implements
     Serializable, TabCanvas, Mandelbrot, Future<Void> {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final MandelbrotContext tabCtx;
     private final Border border;
     private final LayoutCanvas layout;

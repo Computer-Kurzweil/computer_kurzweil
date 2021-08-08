@@ -7,6 +7,8 @@ import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 
+import java.io.Serializable;
+
 /**
  * The Cell of one Bacterium.
  * It's state is position, orientation and LifeCycle.
@@ -28,7 +30,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionC
 @ToString(exclude = {"appCtx"})
 @EqualsAndHashCode(exclude = {"appCtx"})
 @AllArgsConstructor
-public class Cell implements SimulatedEvolution {
+public class Cell implements SimulatedEvolution, Serializable {
 
   private static final long serialVersionUID = -7194182402841173981L;
 

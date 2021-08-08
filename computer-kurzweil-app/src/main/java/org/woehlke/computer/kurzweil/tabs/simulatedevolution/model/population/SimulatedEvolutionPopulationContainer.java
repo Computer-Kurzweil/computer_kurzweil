@@ -8,6 +8,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -16,7 +17,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx","statistics","cells"})
 @EqualsAndHashCode(exclude={"tabCtx","statistics","cells"})
-public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution {
+public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final SimulatedEvolutionContext tabCtx;
     private final int initialPopulation;

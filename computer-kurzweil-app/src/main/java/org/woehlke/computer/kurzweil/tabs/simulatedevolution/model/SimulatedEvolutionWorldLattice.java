@@ -11,6 +11,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycle;
 
+import java.io.Serializable;
+
 
 /**
  * Map of World where every Place can have food needed by the Bacteria Cells for eating.
@@ -29,7 +31,9 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLife
 @Getter
 @ToString(exclude={"appCtx","worldMapFoodLattice"})
 @EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"},callSuper = false)
-public class SimulatedEvolutionWorldLattice implements Startable, SimulatedEvolution {
+public class SimulatedEvolutionWorldLattice implements Startable, SimulatedEvolution, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
       /**
        * Grid of World where every Place can have food.

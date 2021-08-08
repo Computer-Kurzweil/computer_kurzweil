@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -9,7 +11,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
  *
  * Created by tw on 16.12.2019.
  */
-public class TuringPositions {
+public class TuringPositions implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile Point turingPosition;
     private volatile Point worldDimensions;

@@ -18,6 +18,8 @@ import java.awt.*;
 @EqualsAndHashCode(callSuper=true, exclude = {"buttonVonNeumann","buttonMoore","buttonWoehlke","canvas"})
 public class PanelNeighbourhoodButtons extends SubTabImpl implements CyclicCellularAutomaton {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;
   private final JButton buttonWoehlke;

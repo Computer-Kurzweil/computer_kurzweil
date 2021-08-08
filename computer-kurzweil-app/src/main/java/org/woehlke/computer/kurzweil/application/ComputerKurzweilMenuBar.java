@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 @Getter
 public class ComputerKurzweilMenuBar extends JMenuBar {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final ComputerKurzweilContext ctx;
 
     public ComputerKurzweilMenuBar(ComputerKurzweilContext ctx) {

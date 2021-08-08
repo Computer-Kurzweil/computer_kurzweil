@@ -25,6 +25,8 @@ import java.awt.event.*;
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
 public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot, MouseListener  {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final MandelbrotContext tabCtx;
     private final MandelbrotCanvas canvas;
     private final MandelbrotTabPane mandelbrotTabPane;

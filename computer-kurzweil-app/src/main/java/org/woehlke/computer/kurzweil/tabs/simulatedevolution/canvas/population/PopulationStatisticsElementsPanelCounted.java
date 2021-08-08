@@ -26,6 +26,8 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 public class PopulationStatisticsElementsPanelCounted extends SubTabImpl implements SimulatedEvolution, SubTab {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final PopulationStatisticsElement populationElement;
     private final PopulationStatisticsElement generationOldestElement;
     private final PopulationStatisticsElement generationYoungestElement;
