@@ -7,7 +7,11 @@ import org.woehlke.computer.kurzweil.tabs.cca.view.CyclicCellularAutomatonCanvas
 import org.woehlke.computer.kurzweil.tabs.cca.view.PanelButtons;
 import org.woehlke.computer.kurzweil.tabs.cca.view.PanelSubtitle;
 
-public class ObjectRegistry {
+import java.io.Serializable;
+
+public class ObjectRegistry implements Serializable {
+
+    private static final long serialVersionUID = 4357793241219932594L;
 
     private volatile CyclicCellularAutomatonController controller;
     private volatile CyclicCellularAutomatonCanvas canvas;

@@ -1,10 +1,13 @@
 package org.woehlke.computer.kurzweil.tabs.cca.config;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ColorScheme {
+public class ColorScheme implements Serializable {
+
+    private static final long serialVersionUID = 4357793241219932594L;
 
     private Color[] stateColor;
 

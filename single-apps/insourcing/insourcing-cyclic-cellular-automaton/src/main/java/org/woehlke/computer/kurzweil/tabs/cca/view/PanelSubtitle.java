@@ -10,13 +10,15 @@ import java.awt.*;
  */
 public class PanelSubtitle extends JPanel {
 
-  private final JLabel subtitleLabel;
+    private static final long serialVersionUID = 4357793241219932594L;
 
-  public PanelSubtitle(ObjectRegistry ctx) {
-    this.subtitleLabel = new JLabel(ctx.getConfig().getSubtitle());
-    FlowLayout layout = new FlowLayout();
-    this.setLayout(layout);
-    this.add(subtitleLabel);
-  }
+    private final JLabel subtitleLabel;
+
+    public PanelSubtitle(ObjectRegistry ctx) {
+        this.subtitleLabel = new JLabel(ctx.getConfig().getSubtitle());
+        FlowLayout layout = new FlowLayout();
+        this.setLayout(layout);
+        this.add(subtitleLabel);
+    }
 
 }

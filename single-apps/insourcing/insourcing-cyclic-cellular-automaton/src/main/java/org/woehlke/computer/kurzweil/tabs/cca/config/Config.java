@@ -4,9 +4,12 @@ import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Properties;
 
-public class Config implements ConfigProperties {
+public class Config implements ConfigProperties, Serializable {
+
+    private static final long serialVersionUID = 4357793241219932594L;
 
     private String title;
     private String subtitle;
