@@ -344,6 +344,13 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>2.14.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
                 <version>${junit5.version}</version>
@@ -363,27 +370,62 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-provider-gitexe</artifactId>
-                <version>${maven.scm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-provider-git-commons</artifactId>
-                <version>${maven.scm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-provider-svnexe</artifactId>
-                <version>${maven.scm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-manager-plexus</artifactId>
-                <version>${maven.scm.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.maven.scm</groupId>
                 <artifactId>maven-scm-client</artifactId>
+                <version>${maven.scm.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-bazaar</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-clearcase</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-cvsexe</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-cvsjava</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-hg</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-jazz</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-perforce</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-starteam</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-svnexe</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-synergy</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-vss</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-tfs</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.scm</groupId>
+                <artifactId>maven-scm-provider-gitexe</artifactId>
                 <version>${maven.scm.version}</version>
             </dependency>
             <dependency>
@@ -392,26 +434,6 @@
                 <version>${lombok.version}</version>
                 <optional>false</optional>
                 <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j-impl</artifactId>
-                <version>${log4j2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>${log4j2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-jcl</artifactId>
-                <version>${log4j2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j2.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -518,31 +540,30 @@
                 <artifactId>classworlds</artifactId>
                 <version>1.1</version>
             </dependency>
+            <dependency>
+                <groupId>io.takari</groupId>
+                <artifactId>maven-wrapper</artifactId>
+                <version>0.5.6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-provider-svnexe</artifactId>
+            <artifactId>maven-scm-client</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.scm</groupId>
             <artifactId>maven-scm-provider-gitexe</artifactId>
+            <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-provider-git-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-manager-plexus</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-client</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -569,42 +590,57 @@
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-markdown</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-itext</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-latex</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-rtf</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-xdoc</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-skin-model</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-site-renderer</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-test-docs</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.skins</groupId>
             <artifactId>maven-default-skin</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>classworlds</groupId>
             <artifactId>classworlds</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.takari</groupId>
+            <artifactId>maven-wrapper</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -612,11 +648,6 @@
         <defaultGoal>dependency:purge-local-repository clean install</defaultGoal>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-wrapper-plugin</artifactId>
-                    <version>${version.maven-wrapper-plugin}</version>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-invoker-plugin</artifactId>
@@ -830,11 +861,6 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-wrapper-plugin</artifactId>
-                <version>${version.maven-wrapper-plugin}</version>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-invoker-plugin</artifactId>
@@ -1148,11 +1174,9 @@
                     <minimizeJar>true</minimizeJar>
                     <artifactSet>
                         <includes>
-                            <include>org.apache.logging.log4j:*</include>
-                            <include>com.fasterxml.jackson.dataformat:*</include>
+                            <include>org.apache.logging.log4j:log4j-core:*</include>
+                            <include>com.fasterxml.jackson.dataformat:jackson-dataformat-xml*</include>
                             <include>com.fasterxml.jackson.module:*</include>
-                            <include>com.fasterxml.jackson.module:*</include>
-                            <include>com.fasterxml.jackson.dataformat:*</include>
                         </includes>
                         <excludes>
                             <exclude>org.apache.maven:*</exclude>
@@ -1214,6 +1238,7 @@
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
+                <!--
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -1222,6 +1247,7 @@
                         </goals>
                     </execution>
                 </executions>
+                -->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
