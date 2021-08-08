@@ -1325,6 +1325,17 @@
 
     <profiles>
 
+        <!-- profile: default -->
+        <profile>
+            <id>default</id>
+            <properties>
+                <skipIntegrationTests>false</skipIntegrationTests>
+            </properties>
+            <build>
+                <defaultGoal>dependency:purge-local-repository clean install site</defaultGoal>
+            </build>
+        </profile>
+
         <!-- profile: tests-skip -->
         <profile>
             <id>tests-skip</id>
