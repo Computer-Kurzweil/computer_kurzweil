@@ -26,6 +26,8 @@ public class ApplicationFrame extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile ControllerThread controllerThread;
     private volatile ApplicationCanvas canvas;
     private volatile ApplicationModel applicationModel;

@@ -3,6 +3,7 @@ package org.woehlke.computer.kurzweil.mandelbrot.config;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -15,7 +16,9 @@ import java.util.Properties;
  *
  * Created by tw on 16.12.2019.
  */
-public class Config implements ConfigProperties {
+public class Config implements ConfigProperties, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private String title;
     private String subtitle;

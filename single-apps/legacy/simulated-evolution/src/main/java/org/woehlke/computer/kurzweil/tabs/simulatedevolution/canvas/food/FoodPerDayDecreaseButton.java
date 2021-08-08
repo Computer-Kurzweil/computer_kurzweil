@@ -13,6 +13,8 @@ import javax.swing.*;
 @ToString(callSuper = true)
 public class FoodPerDayDecreaseButton extends JButton implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
     private final String labelFoodPerDayDecrease;

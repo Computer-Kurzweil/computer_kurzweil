@@ -37,7 +37,7 @@ import java.util.Random;
 @EqualsAndHashCode(exclude = {"random"})
 public class SimulatedEvolutionModel implements Serializable, TabModel {
 
-    static final long serialVersionUID = 242L;
+    private static final long serialVersionUID = 7526471155622776147L;
 
     /**
      * List of the Simulated Bacteria Cells.

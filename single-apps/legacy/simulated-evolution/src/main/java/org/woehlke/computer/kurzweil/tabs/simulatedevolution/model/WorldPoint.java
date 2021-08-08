@@ -20,7 +20,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class WorldPoint implements Serializable {
 
-    static final long serialVersionUID = 242L;
+    private static final long serialVersionUID = 7526471155622776147L;
 
     /**
      * Horizontal X-Coordinate. Also used as Width;

@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.mandelbrot.model.state;
 
+import java.io.Serializable;
+
 import static org.woehlke.computer.kurzweil.mandelbrot.model.state.ApplicationState.*;
 import static org.woehlke.computer.kurzweil.mandelbrot.model.state.ApplicationState.JULIA_SET_ZOOM;
 
@@ -12,7 +14,9 @@ import static org.woehlke.computer.kurzweil.mandelbrot.model.state.ApplicationSt
  *
  * Created by tw on 16.12.2019.
  */
-public class ApplicationStateMachine {
+public class ApplicationStateMachine implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile ApplicationState applicationState;
 

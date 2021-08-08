@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -24,7 +25,10 @@ import java.util.Random;
 @Log4j2
 @ToString(exclude = {"random"})
 @EqualsAndHashCode(exclude = {"random"})
-public class Cell {
+public class Cell implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
+
 
     /**
      * Contains the DNA for Random based Moving

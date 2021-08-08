@@ -19,6 +19,8 @@ import java.util.Random;
 @ToString(exclude={"random","frame"},callSuper=true)
 public class ComputerKurzweilContext implements Startable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final Random random;
     private final ComputerKurzweilProperties properties;
 

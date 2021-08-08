@@ -3,6 +3,8 @@ package org.woehlke.computer.kurzweil.mandelbrot.control;
 import org.woehlke.computer.kurzweil.mandelbrot.model.ApplicationModel;
 import org.woehlke.computer.kurzweil.mandelbrot.view.ApplicationFrame;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -13,7 +15,9 @@ import org.woehlke.computer.kurzweil.mandelbrot.view.ApplicationFrame;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class ControllerThread extends Thread implements Runnable {
+public class ControllerThread extends Thread implements Runnable, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile ApplicationModel applicationModel;
     private volatile ApplicationFrame frame;

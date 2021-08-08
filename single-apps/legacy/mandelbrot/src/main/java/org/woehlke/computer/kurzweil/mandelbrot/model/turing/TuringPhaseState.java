@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -9,7 +11,9 @@ package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
  *
  * Created by tw on 16.12.2019.
  */
-public class TuringPhaseState {
+public class TuringPhaseState implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile TuringPhase turingTuringPhase;
 

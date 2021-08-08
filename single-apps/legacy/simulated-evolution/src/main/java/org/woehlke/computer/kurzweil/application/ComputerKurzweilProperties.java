@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -20,7 +21,9 @@ import java.util.jar.JarFile;
 @AllArgsConstructor
 @Valid
 ////@Validated
-public class ComputerKurzweilProperties {
+public class ComputerKurzweilProperties implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     @Valid
     @Getter

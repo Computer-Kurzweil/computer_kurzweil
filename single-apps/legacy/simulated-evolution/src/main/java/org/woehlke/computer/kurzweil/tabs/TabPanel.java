@@ -12,4 +12,5 @@ import javax.swing.*;
 @ToString
 @EqualsAndHashCode
 public abstract class TabPanel extends JPanel implements Tab {
+    private static final long serialVersionUID = 7526471155622776147L;
 }

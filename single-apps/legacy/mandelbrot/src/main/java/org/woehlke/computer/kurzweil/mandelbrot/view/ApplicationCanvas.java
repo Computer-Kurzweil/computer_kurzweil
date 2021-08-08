@@ -18,6 +18,8 @@ import java.awt.*;
  */
 public class ApplicationCanvas extends JComponent {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile ApplicationModel app;
     private volatile Dimension preferredSize;
 
