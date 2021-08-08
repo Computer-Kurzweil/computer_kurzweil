@@ -16,6 +16,8 @@ import java.awt.*;
  */
 public class Mandelbrot2JuliaCanvas extends JComponent {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile Mandelbrot2JuliaModel app;
     private volatile Dimension preferredSize;
 

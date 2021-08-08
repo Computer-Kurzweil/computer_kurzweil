@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
 
+import java.io.Serializable;
+
 /**
  * Mandelbrot Set drawn by a Turing Machine.
  *
@@ -10,7 +12,9 @@ package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class Mandelbrot2JuliaController extends Thread implements Runnable {
+public class Mandelbrot2JuliaController extends Thread implements Runnable, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile Mandelbrot2JuliaModel mandelbrotModel;
     private volatile Mandelbrot2JuliaTab frame;

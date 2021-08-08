@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model;
 
+import java.io.Serializable;
+
 import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.Mandelbrot2JuliaState.*;
 
 /**
@@ -11,7 +13,9 @@ import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.Mandelbr
  *
  * Created by tw on 16.12.2019.
  */
-public class Mandelbrot2JuliaStateMachine {
+public class Mandelbrot2JuliaStateMachine implements Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private volatile Mandelbrot2JuliaState applicationState;
 

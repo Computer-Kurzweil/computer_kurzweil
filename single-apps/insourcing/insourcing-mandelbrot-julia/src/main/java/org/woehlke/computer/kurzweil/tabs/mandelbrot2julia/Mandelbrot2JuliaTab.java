@@ -26,6 +26,8 @@ public class Mandelbrot2JuliaTab extends JFrame implements ImageObserver,
         WindowListener,
         MouseListener {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private volatile Mandelbrot2JuliaController mandelbrotController;
     private volatile Mandelbrot2JuliaCanvas canvas;
     private volatile Mandelbrot2JuliaModel mandelbrotModel;
