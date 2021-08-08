@@ -5,6 +5,8 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.LifeCycleStatus;
 
+import java.io.Serializable;
+
 @Log4j2
 @ToString
 @Getter
@@ -12,7 +14,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.LifeCycleStat
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class SimulatedEvolutionPopulation implements SimulatedEvolution {
+public class SimulatedEvolutionPopulation implements SimulatedEvolution, Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;
 

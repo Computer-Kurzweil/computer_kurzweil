@@ -11,7 +11,8 @@ import javax.swing.*;
 @Log4j2
 @Getter
 @ToString(callSuper = true)
-public class PopulationStatisticsElement extends JPanel implements SimulatedEvolution {
+public class PopulationStatisticsElement extends JPanel
+    implements SimulatedEvolution {
 
     private static final long serialVersionUID = 7526471155622776147L;
 

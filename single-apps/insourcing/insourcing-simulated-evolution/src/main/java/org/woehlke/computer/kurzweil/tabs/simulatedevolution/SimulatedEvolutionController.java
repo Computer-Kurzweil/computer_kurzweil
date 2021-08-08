@@ -16,7 +16,8 @@ import java.io.Serializable;
  * Time: 00:36:20
  */
 @Log4j2
-public class SimulatedEvolutionController extends Thread implements Runnable, TabController, SimulatedEvolution, Serializable {
+public class SimulatedEvolutionController extends Thread
+    implements Runnable, TabController, SimulatedEvolution, Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;
 
