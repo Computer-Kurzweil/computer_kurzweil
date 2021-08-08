@@ -330,8 +330,8 @@
         <pmdVersion>6.29.0</pmdVersion>
         <version.maven-pdf-plugin>1.4</version.maven-pdf-plugin>
 
-        <maven.repository.local>${maven.multiModuleProjectDirectory}/mvn-repository</maven.repository.local>
-        <directory.etc>${maven.multiModuleProjectDirectory}/src/site/resources/checkstyle</directory.etc>
+        <maven.repository.local>${maven.multiModuleProjectDirectory}/mvn-repository/</maven.repository.local>
+        <directory.etc>${maven.multiModuleProjectDirectory}/src/site/resources/checkstyle/</directory.etc>
     </properties>
 
     <dependencyManagement>
@@ -707,13 +707,6 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>${version.maven-project-info-reports-plugin}</version>
                 </plugin>
-                <!--
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jxr-plugin</artifactId>
-                    <version>${maven-jxr-plugin.version}</version>
-                </plugin>
-                -->
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
@@ -746,13 +739,6 @@
                         </dependency>
                     </dependencies>
                 </plugin>
-                <!--
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${maven-surefire-report-plugin.version}</version>
-                </plugin>
-                -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
@@ -1241,6 +1227,7 @@
     <reporting>
         <excludeDefaults>false</excludeDefaults>
         <plugins>
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-invoker-plugin</artifactId>
@@ -1248,9 +1235,10 @@
                     <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
                     <settingsFile>src/it/settings.xml</settingsFile>
                     <localRepositoryPath>${maven.repository.local}</localRepositoryPath>
-                    <postBuildHookScript>verify</postBuildHookScript> <!-- no extension required -->
+                    <postBuildHookScript>verify</postBuildHookScript>
                 </configuration>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -1336,6 +1324,7 @@
     </reporting>
 
     <profiles>
+
         <!-- profile: tests-skip -->
         <profile>
             <id>tests-skip</id>
@@ -1346,6 +1335,7 @@
                 <skipIntegrationTests>true</skipIntegrationTests>
             </properties>
         </profile>
+
         <!-- profile: tests-run -->
         <profile>
             <id>tests-run</id>
@@ -1353,6 +1343,7 @@
                 <skipIntegrationTests>false</skipIntegrationTests>
             </properties>
         </profile>
+
         <!-- profile: code-serialver-prepare -->
         <profile>
             <id>code-serialver-prepare</id>
@@ -1384,7 +1375,7 @@
                                 </goals>
                                 <configuration>
                                     <excludeTypes>pom,zip</excludeTypes>
-                                    <outputDirectory>${project.build.directory}/prepareserialver</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/prepareserialver/</outputDirectory>
                                 </configuration>
                             </execution>
                             <execution>
@@ -1401,7 +1392,7 @@
                                     <goal>tree</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/dependencies/</outputDirectory>
                                 </configuration>
                             </execution>
                             <execution>
@@ -1437,7 +1428,7 @@
                                 </goals>
                                 <configuration>
                                     <useIncrementalCompilation>false</useIncrementalCompilation>
-                                    <outputDirectory>${project.build.directory}/prepareserialver</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/prepareserialver/</outputDirectory>
                                     <showWarnings>true</showWarnings>
                                     <failOnWarning>false</failOnWarning>
                                     <compilerArgs>
@@ -1453,7 +1444,7 @@
                                 </goals>
                                 <configuration>
                                     <useIncrementalCompilation>false</useIncrementalCompilation>
-                                    <outputDirectory>${project.build.directory}/prepareserialver</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/prepareserialver/</outputDirectory>
                                     <showWarnings>true</showWarnings>
                                     <failOnWarning>false</failOnWarning>
                                     <compilerArgs>
