@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelSubtitle;
 import org.woehlke.computer.kurzweil.commons.layouts.BoxLayoutVertical;
@@ -11,7 +11,7 @@ import org.woehlke.computer.kurzweil.commons.layouts.BoxLayoutVertical;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true, exclude = {"ctx","tabbedPane","border","layout","panelSubtitle"})
 @EqualsAndHashCode(callSuper=true, exclude = {"ctx","tabbedPane","border","layout","panelSubtitle"})

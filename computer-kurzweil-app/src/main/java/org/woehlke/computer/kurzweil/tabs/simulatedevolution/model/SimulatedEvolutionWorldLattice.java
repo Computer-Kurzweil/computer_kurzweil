@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.Startable;
@@ -27,7 +27,7 @@ import java.io.Serializable;
  * Date: 24.08.13
  * Time: 12:37
  */
-@Log4j2
+@Log
 @Getter
 @ToString(exclude={"appCtx","worldMapFoodLattice"})
 @EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"},callSuper = false)

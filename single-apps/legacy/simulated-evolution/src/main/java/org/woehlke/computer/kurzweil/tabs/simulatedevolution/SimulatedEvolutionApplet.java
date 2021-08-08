@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.WorldPoint;
 
 import javax.accessibility.Accessible;
@@ -23,7 +23,7 @@ import java.io.Serializable;
  * Time: 18:33:14
  */
 @SuppressWarnings("deprecated")
-@Log4j2
+@Log
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)

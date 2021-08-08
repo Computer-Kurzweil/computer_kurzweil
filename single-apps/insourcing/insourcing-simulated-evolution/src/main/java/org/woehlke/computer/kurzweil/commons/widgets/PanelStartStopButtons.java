@@ -2,13 +2,13 @@ package org.woehlke.computer.kurzweil.commons.widgets;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 
 import javax.swing.*;
 
-@Log4j2
+@Log
 @ToString(exclude={"startButton","stopButton"})
 public class PanelStartStopButtons extends SubTabImpl implements Startable, SubTab {
 

@@ -1,14 +1,14 @@
 package org.woehlke.computer.kurzweil.commons.widgets;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 
-@Log4j2
+@Log
 @Getter
 public class PanelWithTitleBorder extends JPanel {
 

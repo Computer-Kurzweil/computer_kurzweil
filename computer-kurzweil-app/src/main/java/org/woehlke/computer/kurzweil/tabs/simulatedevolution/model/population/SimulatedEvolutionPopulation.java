@@ -1,13 +1,13 @@
 package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population;
 
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycleStatus;
 
 import java.io.Serializable;
 
-@Log4j2
+@Log
 @ToString
 @Getter
 @Setter

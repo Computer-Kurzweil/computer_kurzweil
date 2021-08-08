@@ -3,11 +3,11 @@ package org.woehlke.computer.kurzweil.commons.model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 
 import java.io.Serializable;
 
-@Log4j2
+@Log
 @Getter
 @ToString
 @EqualsAndHashCode

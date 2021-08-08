@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx","statistics","cells"})
 @EqualsAndHashCode(exclude={"tabCtx","statistics","cells"})

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.cca;
 
 import lombok.Getter;
 import lombok.experimental.Delegate;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
@@ -11,7 +11,7 @@ import org.woehlke.computer.kurzweil.tabs.cca.canvas.PanelNeighbourhoodButtons;
 
 import javax.swing.*;
 
-@Log4j2
+@Log
 @Getter
 public class CyclicCellularAutomatonTabPane extends JTabbedPane implements Startable {
 

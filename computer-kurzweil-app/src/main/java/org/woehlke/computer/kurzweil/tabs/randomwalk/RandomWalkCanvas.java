@@ -4,7 +4,7 @@ package org.woehlke.computer.kurzweil.tabs.randomwalk;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
@@ -25,7 +25,7 @@ import java.io.Serializable;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","tabModel"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","border","preferredSize","layout","colorScheme","tabModel"})

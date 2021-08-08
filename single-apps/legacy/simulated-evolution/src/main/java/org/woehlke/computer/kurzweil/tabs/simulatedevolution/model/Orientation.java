@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 
 /**
  * Orientation defines the new position after next move.
@@ -11,7 +11,7 @@ import lombok.extern.log4j.Log4j2;
  * Date: 04.02.2006
  * Time: 19:50:51
  */
-@Log4j2
+@Log
 public enum Orientation {
 
     FORWARD(0, 2),

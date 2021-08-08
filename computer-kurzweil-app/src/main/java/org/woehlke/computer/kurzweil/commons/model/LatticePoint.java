@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.commons.model;
 
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 
 import java.io.Serializable;
 
@@ -18,7 +18,7 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 23:47:05
  */
-@Log4j2
+@Log
 @Getter
 @Setter
 @ToString

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.application;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.has.HasPanelSubtitle;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
@@ -22,7 +22,7 @@ import java.beans.Transient;
 import java.io.Serializable;
 import java.util.List;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper=true)
 public class ComputerKurzweilFrame extends JFrame implements Serializable,

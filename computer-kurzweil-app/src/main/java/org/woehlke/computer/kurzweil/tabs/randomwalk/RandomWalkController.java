@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
 /**
@@ -14,7 +14,7 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-@Log4j2
+@Log
 @Getter
 /**
  * https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html

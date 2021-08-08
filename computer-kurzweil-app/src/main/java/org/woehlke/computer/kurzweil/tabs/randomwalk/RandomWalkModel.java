@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.randomwalk;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.ParticleOrientation;
@@ -11,7 +11,7 @@ import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.RandomWalkColorSchem
 import java.awt.*;
 import java.util.concurrent.ForkJoinTask;
 
-@Log4j2
+@Log
 @Getter
 @EqualsAndHashCode(callSuper=false,exclude = {"tabCtx"})
 public class RandomWalkModel extends ForkJoinTask<Void> implements TabModel, RandomWalk {

@@ -3,14 +3,14 @@ package org.woehlke.computer.kurzweil.tabs.dla;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 
 import java.awt.event.ActionEvent;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx","canvas"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx","canvas"})

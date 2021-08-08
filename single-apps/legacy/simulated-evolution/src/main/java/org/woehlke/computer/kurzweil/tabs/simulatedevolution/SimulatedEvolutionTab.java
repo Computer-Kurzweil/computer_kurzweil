@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.Tab;
@@ -27,7 +27,7 @@ import java.awt.event.WindowListener;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
-@Log4j2
+@Log
 @Getter
 public class SimulatedEvolutionTab extends JFrame implements
         MenuContainer,

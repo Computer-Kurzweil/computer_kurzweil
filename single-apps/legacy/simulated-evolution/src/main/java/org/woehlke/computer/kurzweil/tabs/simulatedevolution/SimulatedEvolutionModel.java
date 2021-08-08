@@ -4,7 +4,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.Cell;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionParameter;
@@ -32,7 +32,7 @@ import java.util.Random;
  * Date: 04.02.2006
  * Time: 19:06:20
  */
-@Log4j2
+@Log
 @ToString(exclude = {"random"})
 @EqualsAndHashCode(exclude = {"random"})
 public class SimulatedEvolutionModel implements Serializable, TabModel {

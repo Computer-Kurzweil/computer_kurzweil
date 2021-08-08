@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.Delegate;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
@@ -14,7 +14,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionM
 
 import javax.swing.border.CompoundBorder;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true)
 public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, Updateable, SubTab {

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.application;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.CellCore;
@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-@Log4j2
+@Log
 @Getter
 @ToString(exclude={"random","frame"},callSuper=true)
 public class ComputerKurzweilContext implements Startable, Serializable {

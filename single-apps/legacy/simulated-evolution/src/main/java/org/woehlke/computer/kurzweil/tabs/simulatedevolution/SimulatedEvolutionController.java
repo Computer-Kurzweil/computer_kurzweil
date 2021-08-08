@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
 import java.io.Serializable;
@@ -15,7 +15,7 @@ import java.io.Serializable;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-@Log4j2
+@Log
 public class SimulatedEvolutionController extends Thread implements Runnable, TabController, SimulatedEvolution, Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;

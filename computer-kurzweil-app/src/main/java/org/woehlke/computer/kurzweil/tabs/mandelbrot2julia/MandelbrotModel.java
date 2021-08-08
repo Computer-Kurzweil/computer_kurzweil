@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.fractal.GaussianNumberPlane;
@@ -20,7 +20,7 @@ import java.util.concurrent.ForkJoinTask;
  *
  * Created by tw on 16.12.2019.
  */
-@Log4j2
+@Log
 @Getter
 public class MandelbrotModel extends ForkJoinTask<Void> implements TabModel {
 

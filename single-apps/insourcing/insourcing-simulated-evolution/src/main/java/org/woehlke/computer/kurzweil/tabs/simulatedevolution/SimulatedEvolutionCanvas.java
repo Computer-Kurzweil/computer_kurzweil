@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.Cell;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.WorldPoint;
@@ -21,7 +21,7 @@ import java.util.List;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-@Log4j2
+@Log
 @Getter
 public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, SimulatedEvolution {
 

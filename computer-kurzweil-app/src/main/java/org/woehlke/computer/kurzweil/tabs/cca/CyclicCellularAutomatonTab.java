@@ -4,7 +4,7 @@ package org.woehlke.computer.kurzweil.tabs.cca;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
@@ -12,7 +12,7 @@ import org.woehlke.computer.kurzweil.tabs.TabType;
 
 import java.awt.event.ActionEvent;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})

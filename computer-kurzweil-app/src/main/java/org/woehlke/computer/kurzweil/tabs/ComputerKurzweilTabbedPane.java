@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
@@ -26,7 +26,7 @@ import java.util.List;
  * TODO: https://github.com/Computer-Kurzweil/computer_kurzweil/issues/19
  * http://openbook.rheinwerk-verlag.de/javainsel9/javainsel_14_004.htm
  */
-@Log4j2
+@Log
 @Getter
 @ToString(exclude={"ctx","apps","border"},callSuper=true)
 @EqualsAndHashCode(callSuper=true)

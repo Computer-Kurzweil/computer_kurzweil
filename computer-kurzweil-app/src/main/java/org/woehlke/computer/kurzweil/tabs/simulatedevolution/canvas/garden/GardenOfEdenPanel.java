@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 
@@ -10,7 +10,7 @@ import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true)
 public class GardenOfEdenPanel extends JPanel implements SimulatedEvolution {

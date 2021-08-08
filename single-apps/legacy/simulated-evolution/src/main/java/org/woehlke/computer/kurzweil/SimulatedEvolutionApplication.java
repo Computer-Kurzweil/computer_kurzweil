@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 
@@ -13,7 +13,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionT
  * http://thomas-woehlke.de/p/simulated-evolution/
  * @author Thomas Woehlke
  */
-@Log4j2
+@Log
 public class SimulatedEvolutionApplication {
 
     private SimulatedEvolutionApplication(String configFileName, String jarFilePath) {

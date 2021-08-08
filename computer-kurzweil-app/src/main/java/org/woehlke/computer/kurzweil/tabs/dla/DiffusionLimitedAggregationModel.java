@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.dla;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinTask;
 
-@Log4j2
+@Log
 @Getter
 public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> implements TabModel {
 

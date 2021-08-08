@@ -1,12 +1,12 @@
 package org.woehlke.computer.kurzweil.application;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
-@Log4j2
+@Log
 @Getter
 public class ComputerKurzweilMenuBar extends JMenuBar {
 

@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
@@ -11,7 +11,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionModel;
 
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true)
 public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvolution, Updateable, SubTab {

@@ -3,7 +3,8 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
@@ -32,7 +33,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.Simul
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-@Log4j2
+@Log
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx","border","preferredSize","layout","tab"})
 @EqualsAndHashCode(callSuper=true, exclude={"tabCtx","border","preferredSize","layout","tab"})

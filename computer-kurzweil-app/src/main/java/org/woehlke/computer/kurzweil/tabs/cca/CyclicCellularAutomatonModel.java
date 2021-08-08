@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.cca;
 
 import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
@@ -12,7 +12,7 @@ import java.util.concurrent.ForkJoinTask;
 
 import static org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType.*;
 
-@Log4j2
+@Log
 @Getter
 public class CyclicCellularAutomatonModel extends ForkJoinTask<Void> implements TabModel {
 

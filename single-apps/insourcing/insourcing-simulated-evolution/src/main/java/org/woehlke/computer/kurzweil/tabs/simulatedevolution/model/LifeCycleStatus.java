@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 
 import java.awt.*;
 
@@ -20,7 +20,7 @@ import static java.awt.Color.*;
  * Date: 25.08.13
  * Time: 12:40
  */
-@Log4j2
+@Log
 @Getter
 @ToString
 public enum LifeCycleStatus {

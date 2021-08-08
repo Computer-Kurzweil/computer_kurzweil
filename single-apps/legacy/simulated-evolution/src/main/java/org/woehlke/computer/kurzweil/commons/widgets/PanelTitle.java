@@ -3,14 +3,14 @@ package org.woehlke.computer.kurzweil.commons.widgets;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.gui.GuiComponent;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
 
-@Log4j2
+@Log
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class PanelTitle extends JPanel implements GuiComponent {

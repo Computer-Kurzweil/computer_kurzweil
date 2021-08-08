@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 
 import java.io.Serializable;
 import java.util.Random;
@@ -22,7 +22,7 @@ import java.util.Random;
  * Date: 04.02.2006
  * Time: 19:06:43
  */
-@Log4j2
+@Log
 @ToString(exclude = {"random"})
 @EqualsAndHashCode(exclude = {"random"})
 public class Cell implements Serializable {

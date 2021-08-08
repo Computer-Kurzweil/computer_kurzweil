@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.dla;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 
@@ -12,7 +12,7 @@ import java.util.concurrent.ForkJoinTask;
 import static java.lang.Thread.State.NEW;
 
 
-@Log4j2
+@Log
 @Getter
 @ToString(exclude={"canvas","controller","tab","ctx"})
 @EqualsAndHashCode(exclude={"canvas","controller","tab","ctx"},callSuper = false)

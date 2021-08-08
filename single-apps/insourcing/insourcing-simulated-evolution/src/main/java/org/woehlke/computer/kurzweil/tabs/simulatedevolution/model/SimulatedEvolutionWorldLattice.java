@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.java.Log;
 
 import java.io.Serializable;
 import java.util.Random;
@@ -16,7 +16,7 @@ import java.util.Random;
  * Date: 24.08.13
  * Time: 12:37
  */
-@Log4j2
+@Log
 @ToString(exclude = {"random"})
 @EqualsAndHashCode(exclude = {"random"})
 public class SimulatedEvolutionWorldLattice implements Serializable {
