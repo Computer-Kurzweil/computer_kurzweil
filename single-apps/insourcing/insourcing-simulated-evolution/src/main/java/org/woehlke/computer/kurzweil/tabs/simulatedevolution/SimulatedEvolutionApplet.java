@@ -22,11 +22,11 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:33:14
  */
-@SuppressWarnings({"deprecation"})
 @Log4j2
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
+@SuppressWarnings("deprecated")
 public class SimulatedEvolutionApplet extends JApplet implements ImageObserver, MenuContainer, Serializable, Accessible, SimulatedEvolution {
 
     static final long serialVersionUID = 242L;

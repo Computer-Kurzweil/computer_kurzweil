@@ -22,6 +22,7 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:33:14
  */
+@SuppressWarnings("deprecated")
 public class DiffusionLimitedAggregationApplet extends JApplet implements
     ImageObserver, MenuContainer, Serializable, Accessible, DiffusionLimitedAggregation {
 

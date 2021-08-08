@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="build" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="dependency" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -10,23 +10,24 @@
           </option>
           <option name="goals">
             <list>
-              <option value="dependency:purge-local-repository" />
-              <option value="clean" />
               <option value="dependency:resolve" />
               <option value="dependency:resolve-plugins" />
               <option value="dependency:tree" />
-              <option value="install" />
+              <option value="dependency:sources" />
+              <option value="dependency:analyze" />
+              <option value="dependency:analyze-dep-mgt" />
+              <option value="dependency:analyze-duplicate" />
+              <option value="dependency:list-repositories" />
             </list>
           </option>
           <option name="pomFileName" />
           <option name="profilesMap">
             <map>
-              <entry key="tests-skip" value="true" />
               <entry key="artifactory" value="true" />
-              <entry key="code-serialver-prepare" value="true" />
+              <entry key="tests-skip" value="true" />
             </map>
           </option>
-          <option name="resolveToWorkspace" value="true" />
+          <option name="resolveToWorkspace" value="false" />
           <option name="workingDirPath" value="$PROJECT_DIR$" />
         </MavenRunnerParameters>
       </option>

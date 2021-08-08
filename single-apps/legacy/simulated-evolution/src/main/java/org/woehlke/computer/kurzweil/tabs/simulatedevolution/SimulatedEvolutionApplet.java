@@ -22,7 +22,7 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:33:14
  */
-@SuppressWarnings({"deprecation"})
+@SuppressWarnings("deprecated")
 @Log4j2
 @Getter
 @ToString
