@@ -10,6 +10,8 @@ import java.awt.*;
  */
 public class PanelSubtitle extends JPanel {
 
+    private static final long serialVersionUID = -3057254130516052936L;
+
   private final JLabel subtitleLabel;
 
   public PanelSubtitle(ObjectRegistry ctx) {

@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
  */
 public class PanelButtons extends JPanel implements ActionListener {
 
+    private static final long serialVersionUID = -3057254130516052936L;
+
   private final JButton buttonVonNeumann;
   private final JButton buttonMoore;
   private final JButton buttonWoehlke;
