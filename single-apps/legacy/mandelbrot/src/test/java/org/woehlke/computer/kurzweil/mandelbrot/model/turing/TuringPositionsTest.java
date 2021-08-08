@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.mandelbrot.model.turing;
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.logging.Logger;
 
