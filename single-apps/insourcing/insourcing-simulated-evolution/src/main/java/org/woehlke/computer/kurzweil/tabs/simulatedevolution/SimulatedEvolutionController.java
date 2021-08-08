@@ -4,6 +4,8 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
 
+import java.io.Serializable;
+
 /**
  * The ControllerThread controls the Interactions between Model and View (MVC-Pattern).
  *
@@ -14,7 +16,9 @@ import org.woehlke.computer.kurzweil.commons.tabs.TabController;
  * Time: 00:36:20
  */
 @Log4j2
-public class SimulatedEvolutionController extends Thread implements Runnable, TabController, SimulatedEvolution {
+public class SimulatedEvolutionController extends Thread implements Runnable, TabController, SimulatedEvolution, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     /**
      * Data Model for the Simulation

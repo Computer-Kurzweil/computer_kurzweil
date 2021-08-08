@@ -21,6 +21,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @EqualsAndHashCode(exclude={"tabCtx","statistics","cells"})
 public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final SimulatedEvolutionContext tabCtx;
     private final int initialPopulation;
     private final ConcurrentLinkedQueue<SimulatedEvolutionPopulation> statistics = new ConcurrentLinkedQueue<>();

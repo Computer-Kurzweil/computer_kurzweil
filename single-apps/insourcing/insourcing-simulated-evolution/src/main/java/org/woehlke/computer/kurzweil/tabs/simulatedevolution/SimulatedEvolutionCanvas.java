@@ -25,7 +25,7 @@ import java.util.List;
 @Getter
 public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, SimulatedEvolution {
 
-    static final long serialVersionUID = 242L;
+    private static final long serialVersionUID = 7526471155622776147L;
 
     /**
      * Reference to the Data Model.

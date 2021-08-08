@@ -14,6 +14,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.LifeCycleStat
 @NoArgsConstructor
 public class SimulatedEvolutionPopulation implements SimulatedEvolution {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
    private int youngCells;
    private int youngAndFatCells;
    private int fullAgeCells;

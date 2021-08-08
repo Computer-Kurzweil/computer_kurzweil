@@ -2,8 +2,11 @@ package org.woehlke.computer.kurzweil.commons.layouts;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
 public class LayoutCanvas extends FlowLayoutCenter {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     /**
      * Creates a layout manager that will lay out components along the

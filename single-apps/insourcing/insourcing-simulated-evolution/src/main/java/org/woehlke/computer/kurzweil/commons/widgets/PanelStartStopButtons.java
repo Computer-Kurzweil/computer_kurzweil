@@ -12,6 +12,8 @@ import javax.swing.*;
 @ToString(exclude={"startButton","stopButton"})
 public class PanelStartStopButtons extends SubTabImpl implements Startable, SubTab {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final String labelStart;
     private final String labelStop;
     @Getter

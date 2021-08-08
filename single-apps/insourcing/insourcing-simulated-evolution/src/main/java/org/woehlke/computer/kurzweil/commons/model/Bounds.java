@@ -17,6 +17,8 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class Bounds implements Serializable {
 
+    private static final long serialVersionUID = 7526471155622776147L;
+
     private final int myStartX;
     private final int myStartY;
     private final int myWidth;

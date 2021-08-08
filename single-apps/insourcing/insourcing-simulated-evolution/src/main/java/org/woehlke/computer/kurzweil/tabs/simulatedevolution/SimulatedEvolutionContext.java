@@ -9,6 +9,7 @@ import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.WorldPoint;
 
+import java.io.Serializable;
 import java.util.concurrent.ForkJoinTask;
 
 import static java.lang.Thread.State.NEW;
@@ -17,7 +18,9 @@ import static java.lang.Thread.State.NEW;
 @Getter
 @ToString(callSuper = false, exclude={"ctx","controller","tab"})
 @EqualsAndHashCode(callSuper = false, exclude={"ctx","controller","tab"})
-public class SimulatedEvolutionContext extends ForkJoinTask<Void> implements TabContext, SimulatedEvolution {
+public class SimulatedEvolutionContext extends ForkJoinTask<Void> implements TabContext, SimulatedEvolution, Serializable {
+
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final ComputerKurzweilContext ctx;
     private final SimulatedEvolutionTab tab;

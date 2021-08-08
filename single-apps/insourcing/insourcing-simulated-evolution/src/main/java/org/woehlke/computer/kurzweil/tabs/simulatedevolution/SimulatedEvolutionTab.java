@@ -35,7 +35,7 @@ public class SimulatedEvolutionTab extends JFrame implements
         SimulatedEvolution,
         Tab {
 
-    static final long serialVersionUID = 242L;
+    private static final long serialVersionUID = 7526471155622776147L;
 
     private final static String TITLE = "Simulated Evolution";
 
