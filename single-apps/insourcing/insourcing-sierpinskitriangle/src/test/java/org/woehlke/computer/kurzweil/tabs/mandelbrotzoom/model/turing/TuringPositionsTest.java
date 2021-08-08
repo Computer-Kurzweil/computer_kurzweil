@@ -1,7 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing;
 
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.logging.Logger;
 

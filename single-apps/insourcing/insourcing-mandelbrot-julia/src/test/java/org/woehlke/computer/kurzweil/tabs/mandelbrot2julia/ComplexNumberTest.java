@@ -1,12 +1,13 @@
 package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia;
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.woehlke.computer.kurzweil.commons.model.fractal.ComplexNumber;
 
 import java.util.logging.Logger;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
 
 /**
  * (C) 2006 - 2015 Thomas Woehlke.

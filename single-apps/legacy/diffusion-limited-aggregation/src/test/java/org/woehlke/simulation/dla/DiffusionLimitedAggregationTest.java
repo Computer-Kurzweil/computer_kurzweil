@@ -1,10 +1,9 @@
 package org.woehlke.simulation.dla;
 
 
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple DiffusionLimitedAggregationDesktop.

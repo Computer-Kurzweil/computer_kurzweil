@@ -1,8 +1,9 @@
 package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple AppMainDesktop.
