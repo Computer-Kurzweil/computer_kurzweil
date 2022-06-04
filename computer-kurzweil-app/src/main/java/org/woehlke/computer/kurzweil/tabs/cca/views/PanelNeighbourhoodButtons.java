@@ -11,6 +11,7 @@ import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonCanv
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 @Log
 @Getter
@@ -20,34 +21,46 @@ public class PanelNeighbourhoodButtons extends SubTabImpl implements CyclicCellu
 
     private static final long serialVersionUID = 7526471155622776147L;
 
-  private final JButton buttonVonNeumann;
-  private final JButton buttonMoore;
-  private final JButton buttonWoehlke;
-  private final String buttonLabelVonNeumann;
-  private final String buttonLabelMoore;
-  private final String buttonLabelWoehlke;
+    private final JLabel neighborhoodLabel;
+    private final JRadioButton buttonVonNeumann;
+    private final JRadioButton buttonMoore;
+    private final JRadioButton buttonWoehlke;
+    private final JButton buttonRestart = new JButton("Restart");
+    private final ButtonGroup bgroup = new ButtonGroup();
+
   private final CyclicCellularAutomatonCanvas canvas;
-  private final CompoundBorder cyclicCellularAutomatonButtonsBorder;
-  private final FlowLayout cyclicCellularAutomatonButtonsLayout;
 
   public PanelNeighbourhoodButtons(
       CyclicCellularAutomatonCanvas canvas
   ) {
-    super(canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle(),canvas.getTabCtx().getCtx().getProperties());
+    super(
+        canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTitle(),
+        canvas.getTabCtx().getCtx().getProperties()
+    );
     this.canvas = canvas;
-    this.buttonLabelVonNeumann = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeVonNeumann();
-    this.buttonLabelMoore =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeMoore();
-    this.buttonLabelWoehlke =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeWoehlke();
-    this.buttonVonNeumann = new JButton(this.buttonLabelVonNeumann);
-    this.buttonMoore = new JButton(this.buttonLabelMoore );
-    this.buttonWoehlke = new JButton(this.buttonLabelWoehlke);
-    this.cyclicCellularAutomatonButtonsBorder = this.canvas.getTabCtx().getCtx().getBottomButtonsPanelBorder(super.getTitle());
-    this.cyclicCellularAutomatonButtonsLayout = new FlowLayout();
+
+    String buttonLabelVonNeumann = this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeVonNeumann();
+    String buttonLabelMoore =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeMoore();
+    String buttonLabelWoehlke =this.canvas.getTabCtx().getCtx().getProperties().getCca().getView().getNeighborhood().getTypeWoehlke();
+
+    this.neighborhoodLabel = new JLabel("Neighbourhood:");
+    this.buttonVonNeumann = new JRadioButton(buttonLabelVonNeumann, true);
+    this.buttonMoore = new JRadioButton(buttonLabelMoore);
+    this.buttonWoehlke = new JRadioButton(buttonLabelWoehlke);
+
+    bgroup.add(buttonVonNeumann);
+    bgroup.add(buttonMoore);
+    bgroup.add(buttonWoehlke);
+
+    CompoundBorder cyclicCellularAutomatonButtonsBorder = this.canvas.getTabCtx().getCtx().getBottomButtonsPanelBorder(super.getTitle());
+    FlowLayout cyclicCellularAutomatonButtonsLayout = new FlowLayout();
     this.setBorder(cyclicCellularAutomatonButtonsBorder);
     this.setLayout(cyclicCellularAutomatonButtonsLayout);
-    this.add(this.buttonVonNeumann);
-    this.add(this.buttonMoore);
-    this.add(this.buttonWoehlke);
-  }
 
+    this.add(neighborhoodLabel);
+    this.add(buttonVonNeumann);
+    this.add(buttonMoore);
+    this.add(buttonWoehlke);
+    this.add(buttonRestart);
+  }
 }
