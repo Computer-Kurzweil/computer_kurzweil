@@ -6,7 +6,6 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
 import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonCanvas;
 import org.woehlke.computer.kurzweil.tabs.cca.control.CyclicCellularAutomatonController;

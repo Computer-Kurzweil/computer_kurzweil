@@ -1,18 +1,19 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.experimental.Delegate;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionModel;
-
-import javax.swing.border.CompoundBorder;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food.FoodPerDayDecreaseButton;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food.FoodPerDayIncreaseButton;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food.FoodPerDayLabel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food.FoodPerDayTextField;
 
 @Log
 @Getter
@@ -57,7 +58,7 @@ public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, U
     }
 
     public void update() {
-        int foodPerDay = tabModel.getSimulatedEvolutionParameter().getFoodPerDay();
+        int foodPerDay = tabModel.getWorldParameter().getFoodPerDay();
         this.foodPerDayTextField.setFoodPerDay(foodPerDay);
     }
 }

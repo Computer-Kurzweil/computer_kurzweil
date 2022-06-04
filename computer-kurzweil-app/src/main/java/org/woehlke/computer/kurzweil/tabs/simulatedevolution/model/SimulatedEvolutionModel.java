@@ -1,18 +1,19 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionParameter;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulationContainer;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.WorldParameter;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationContainer;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionWorldLattice;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.WorldLattice;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ import java.util.concurrent.ForkJoinTask;
  * Date: 04.02.2006
  * Time: 19:06:20
  * @see Cell
- * @see SimulatedEvolutionWorldLattice
+ * @see WorldLattice
  * <p>
  * Simulated Evolution.
  * Artificial Life Simulation of Bacteria Motion depending on DNA.
@@ -44,19 +45,19 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
     private static final long serialVersionUID = 7526471155622776147L;
 
     private final SimulatedEvolutionContext appCtx;
-    private final SimulatedEvolutionWorldLattice worldLattice;
-    private final SimulatedEvolutionPopulationContainer populationContainer;
-    private final SimulatedEvolutionParameter simulatedEvolutionParameter;
+    private final WorldLattice worldLattice;
+    private final CellPopulationContainer populationContainer;
+    private final WorldParameter worldParameter;
     private Boolean running;
-    private SimulatedEvolutionPopulation population;
+    private CellPopulationRecord population;
 
   public SimulatedEvolutionModel(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;
-      this.worldLattice = new SimulatedEvolutionWorldLattice(  this.appCtx);
-      this.populationContainer = new SimulatedEvolutionPopulationContainer( this.appCtx);
-      this.simulatedEvolutionParameter = new SimulatedEvolutionParameter();
+      this.worldLattice = new WorldLattice(  this.appCtx);
+      this.populationContainer = new CellPopulationContainer( this.appCtx);
+      this.worldParameter = new WorldParameter();
       this.running = Boolean.FALSE;
       createNewState();
   }
@@ -68,7 +69,7 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
     public void toggleGardenOfEden() {
         log.info("toggleGardenOfEden");
         this.worldLattice.toggleGardenOfEden();
-        this.simulatedEvolutionParameter.toggleGardenOfEden();
+        this.worldParameter.toggleGardenOfEden();
     }
 
     public void start() {
@@ -95,17 +96,17 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
         int foodPerDay = this.appCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDay();
         int foodPerDayGardenOfEden = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getFoodPerDay();
         boolean gardenOfEdenEnabled = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
-        this.simulatedEvolutionParameter.setFoodPerDay(foodPerDay);
-        this.simulatedEvolutionParameter.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
-        this.simulatedEvolutionParameter.setGardenOfEdenEnabled(gardenOfEdenEnabled);
+        this.worldParameter.setFoodPerDay(foodPerDay);
+        this.worldParameter.setFoodPerDayGardenOfEden(foodPerDayGardenOfEden);
+        this.worldParameter.setGardenOfEdenEnabled(gardenOfEdenEnabled);
     }
 
     public void increaseFoodPerDay() {
-        simulatedEvolutionParameter.increaseFoodPerDay();
+        worldParameter.increaseFoodPerDay();
     }
 
     public void decreaseFoodPerDay(){
-        simulatedEvolutionParameter.decreaseFoodPerDay();
+        worldParameter.decreaseFoodPerDay();
     }
 
     @Override
@@ -128,7 +129,7 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
      * Every Cell moves, eats, dies of hunger, and it has sex. splitting into two children with changed DNA.
      */
     @Override
-    protected boolean exec() {
+    public boolean exec() {
         log.info("step");
         boolean step;
         synchronized (running) {

@@ -1,7 +1,7 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world;
 
 import lombok.*;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class SimulatedEvolutionParameter implements SimulatedEvolution, Serializable {
+public class WorldParameter implements SimulatedEvolution, Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;
 

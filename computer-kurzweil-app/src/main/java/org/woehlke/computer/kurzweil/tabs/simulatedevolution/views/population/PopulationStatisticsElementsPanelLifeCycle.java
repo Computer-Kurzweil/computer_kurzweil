@@ -1,19 +1,17 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.experimental.Delegate;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulationContainer;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
 
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
@@ -87,7 +85,7 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl
     }
 
     public void update() {
-        SimulatedEvolutionPopulation population = tabCtx.getTab().getPopulation();
+        CellPopulationRecord population = tabCtx.getTab().getPopulation();
         if(population == null){
             log.info("update with currentGeneration=null");
         }else {

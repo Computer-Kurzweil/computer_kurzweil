@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
 
 import lombok.Getter;
 import lombok.experimental.Delegate;
@@ -7,11 +7,11 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food.FoodPerDayPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden.GardenOfEdenPanelRow;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population.PopulationStatisticsElementsPanelCounted;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population.PopulationStatisticsElementsPanelLifeCycle;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.FoodPerDayPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.garden.GardenOfEdenPanelRow;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.PopulationStatisticsPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.PopulationStatisticsElementsPanelLifeCycle;
 
 import javax.swing.*;
 
@@ -22,7 +22,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
     private static final long serialVersionUID = 7526471155622776147L;
 
     private final PopulationStatisticsElementsPanelLifeCycle statisticsPanelPanelLifeCycle;
-    private final PopulationStatisticsElementsPanelCounted statisticsPanelCounted;
+    private final PopulationStatisticsPanel statisticsPanelCounted;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
@@ -30,7 +30,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
 
     public SimulatedEvolutionTabPane(SimulatedEvolutionTab tab) {
         this.statisticsPanelPanelLifeCycle = new PopulationStatisticsElementsPanelLifeCycle( tab.getTabCtx() );
-        this.statisticsPanelCounted = new PopulationStatisticsElementsPanelCounted( tab.getTabCtx() );
+        this.statisticsPanelCounted = new PopulationStatisticsPanel( tab.getTabCtx() );
         this.foodPerDayPanel = new FoodPerDayPanel( tab.getTabCtx() );
         this.gardenOfEdenPanel = new GardenOfEdenPanelRow( tab.getTabCtx() );
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );

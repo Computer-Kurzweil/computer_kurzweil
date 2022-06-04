@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomaton;
 import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomatonContext;
 
 /**

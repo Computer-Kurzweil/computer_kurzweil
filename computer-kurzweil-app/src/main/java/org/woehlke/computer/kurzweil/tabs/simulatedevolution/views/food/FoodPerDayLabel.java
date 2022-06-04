@@ -1,10 +1,10 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.food;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food;
 
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 
 import javax.swing.*;
 

@@ -4,9 +4,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycleStatus;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,18 +18,18 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Getter
 @ToString(callSuper = true, exclude={"tabCtx","statistics","cells"})
 @EqualsAndHashCode(exclude={"tabCtx","statistics","cells"})
-public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution, Serializable {
+public class CellPopulationContainer implements SimulatedEvolution, Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;
 
     private final SimulatedEvolutionContext tabCtx;
     private final int initialPopulation;
-    private final ConcurrentLinkedQueue<SimulatedEvolutionPopulation> statistics = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<CellPopulationRecord> statistics = new ConcurrentLinkedQueue<>();
     private final List<Cell> cells;
     private long worldIteration;
     private final int queueMaxLength;
 
-    public SimulatedEvolutionPopulationContainer(
+    public CellPopulationContainer(
         SimulatedEvolutionContext tabCtx
     ) {
         this.tabCtx = tabCtx;
@@ -47,7 +48,7 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
         }
     }
 
-    public void push(SimulatedEvolutionPopulation populationCensus) {
+    public void push(CellPopulationRecord populationCensus) {
         worldIteration++;
         populationCensus.setWorldIteration(worldIteration);
         statistics.add(populationCensus);
@@ -57,13 +58,36 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
         log.info(worldIteration + " : " + populationCensus);
     }
 
-    public SimulatedEvolutionPopulation getCurrentGeneration() {
-        SimulatedEvolutionPopulation currentGeneration = statistics.peek();
+    private void countStatusOfOneCell(CellLifeCycleStatus status, CellPopulationRecord onePopulation) {
+        switch (status) {
+            case YOUNG:
+                onePopulation.countYoungCell();
+                break;
+            case YOUNG_AND_FAT:
+                onePopulation.countYoungAndFatCell();
+                break;
+            case FULL_AGE:
+                onePopulation.countFullAgeCell();
+                break;
+            case HUNGRY:
+                onePopulation.countHungryCell();
+                break;
+            case OLD:
+                onePopulation.countOldCell();
+                break;
+            case DEAD:
+                onePopulation.countDeadCell();
+                break;
+        }
+    }
+
+    public CellPopulationRecord getCurrentGeneration() {
+        CellPopulationRecord currentGeneration = statistics.peek();
         if(currentGeneration == null){
             log.info(worldIteration + "statistics.peek() == null ");
-            SimulatedEvolutionPopulation onePopulation = new SimulatedEvolutionPopulation();
+            CellPopulationRecord onePopulation = new CellPopulationRecord();
             for (Cell cell : this.getCells()) {
-                onePopulation.countStatusOfOneCell(cell.getLifeCycleStatus());
+               countStatusOfOneCell(cell.getLifeCycleStatus(), onePopulation);
             }
             this.push(onePopulation);
             currentGeneration = onePopulation;
@@ -74,9 +98,9 @@ public class SimulatedEvolutionPopulationContainer implements SimulatedEvolution
     public void addNextPopulation(List<Cell> nextPopulation) {
         cells.clear();
         cells.addAll(nextPopulation);
-        SimulatedEvolutionPopulation onePopulation = new SimulatedEvolutionPopulation();
+        CellPopulationRecord onePopulation = new CellPopulationRecord();
         for (Cell cell : this.getCells()) {
-            onePopulation.countStatusOfOneCell(cell.getLifeCycleStatus());
+            countStatusOfOneCell(cell.getLifeCycleStatus(),onePopulation);
         }
         this.push(onePopulation);
     }

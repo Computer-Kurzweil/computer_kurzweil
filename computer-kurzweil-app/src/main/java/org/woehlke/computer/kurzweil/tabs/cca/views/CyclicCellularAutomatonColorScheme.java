@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.tabs.cca.views;
 
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomaton;
 
 import java.awt.*;
 import java.util.ArrayList;

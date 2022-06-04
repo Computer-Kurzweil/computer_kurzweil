@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.config;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -6,6 +6,11 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.SimulatedEvolutionCanvas;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.control.SimulatedEvolutionController;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
 
 import java.util.concurrent.ForkJoinTask;
 

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.config;
 
 import org.woehlke.computer.kurzweil.tabs.TabType;
 

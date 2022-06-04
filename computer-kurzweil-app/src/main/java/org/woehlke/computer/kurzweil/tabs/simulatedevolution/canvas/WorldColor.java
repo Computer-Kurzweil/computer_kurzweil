@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas;
 
 import java.awt.*;
 
-public enum SimulatedEvolutionWorldColor {
+public enum WorldColor {
 
     COLOR_WATER(java.awt.Color.BLACK),
     COLOR_FOOD(java.awt.Color.GREEN);
@@ -12,7 +12,7 @@ public enum SimulatedEvolutionWorldColor {
         return color;
     }
 
-    SimulatedEvolutionWorldColor(java.awt.Color color){
+    WorldColor(java.awt.Color color){
         this.color=color;
     }
 }

@@ -8,7 +8,12 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.SimulatedEvolutionCanvas;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.SimulatedEvolutionTabPane;
 
 import java.awt.event.ActionEvent;
 
@@ -26,7 +31,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     private final SimulatedEvolutionModel tabModel;
     private final SimulatedEvolutionTabPane tabPane;
 
-    private SimulatedEvolutionPopulation population;
+    private CellPopulationRecord population;
 
     public SimulatedEvolutionTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
@@ -97,7 +102,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         }
     }
 
-    public void update(SimulatedEvolutionPopulation population) {
+    public void update(CellPopulationRecord population) {
         this.population = population;
         this.tabPane.update();
     }

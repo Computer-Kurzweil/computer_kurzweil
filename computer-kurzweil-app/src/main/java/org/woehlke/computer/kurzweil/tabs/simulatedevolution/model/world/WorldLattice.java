@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,8 +7,8 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.Startable;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycle;
 
 import java.io.Serializable;
@@ -31,7 +31,7 @@ import java.io.Serializable;
 @Getter
 @ToString(exclude={"appCtx","worldMapFoodLattice"})
 @EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"},callSuper = false)
-public class SimulatedEvolutionWorldLattice implements Startable, SimulatedEvolution, Serializable {
+public class WorldLattice implements Startable, SimulatedEvolution, Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;
 
@@ -50,7 +50,7 @@ public class SimulatedEvolutionWorldLattice implements Startable, SimulatedEvolu
     private final int worldY;
     private final int foodPerDay;
 
-  public SimulatedEvolutionWorldLattice(
+  public WorldLattice(
       SimulatedEvolutionContext appCtx
   ) {
       this.appCtx = appCtx;

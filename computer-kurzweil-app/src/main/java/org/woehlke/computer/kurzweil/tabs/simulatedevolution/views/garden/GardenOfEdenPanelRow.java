@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.garden;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.garden;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -7,9 +7,9 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
 
 @Log
 @Getter
@@ -43,12 +43,12 @@ public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvoluti
     }
 
     public void setSelected(boolean selected) {
-        this.tabModel.getSimulatedEvolutionParameter().setGardenOfEdenEnabled(selected);
+        this.tabModel.getWorldParameter().setGardenOfEdenEnabled(selected);
         update();
     }
 
     public void toggleGardenOfEden() {
-        this.tabModel.getSimulatedEvolutionParameter().toggleGardenOfEden();
+        this.tabModel.getWorldParameter().toggleGardenOfEden();
         update();
     }
 
@@ -57,7 +57,7 @@ public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvoluti
     }
 
     public void update() {
-        boolean enabled = tabModel.getSimulatedEvolutionParameter().isGardenOfEdenEnabled();
+        boolean enabled = tabModel.getWorldParameter().isGardenOfEdenEnabled();
         this.buttonToggleGardenOfEden.setSelected(enabled);
         this.gardenOfEdenEnabled.setSelected(enabled);
     }

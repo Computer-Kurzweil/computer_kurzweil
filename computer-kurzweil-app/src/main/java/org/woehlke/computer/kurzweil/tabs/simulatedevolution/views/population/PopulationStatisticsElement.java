@@ -1,9 +1,9 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population;
 
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycleStatus;
 
 import javax.swing.*;

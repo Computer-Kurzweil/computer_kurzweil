@@ -7,7 +7,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomaton;
 import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomatonContext;
 import org.woehlke.computer.kurzweil.tabs.cca.model.CyclicCellularAutomatonModel;
 import org.woehlke.computer.kurzweil.tabs.cca.views.CyclicCellularAutomatonColorScheme;
