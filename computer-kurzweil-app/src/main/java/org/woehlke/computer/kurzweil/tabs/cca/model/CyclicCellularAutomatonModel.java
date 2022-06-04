@@ -1,11 +1,12 @@
-package org.woehlke.computer.kurzweil.tabs.cca;
+package org.woehlke.computer.kurzweil.tabs.cca.model;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhoodType;
 import org.woehlke.computer.kurzweil.commons.model.LatticePointNeighbourhoodPosition;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
-import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonColorScheme;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomatonContext;
+import org.woehlke.computer.kurzweil.tabs.cca.views.CyclicCellularAutomatonColorScheme;
 
 import java.util.Random;
 import java.util.concurrent.ForkJoinTask;
@@ -45,7 +46,7 @@ public class CyclicCellularAutomatonModel extends ForkJoinTask<Void> implements 
     }
 
     @Override
-    protected boolean exec() {
+    public boolean exec() {
         boolean doIt = false;
         synchronized (running) {
             doIt = running.booleanValue();

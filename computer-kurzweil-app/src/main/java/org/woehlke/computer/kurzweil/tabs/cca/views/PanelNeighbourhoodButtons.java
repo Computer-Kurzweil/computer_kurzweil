@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.cca.canvas;
+package org.woehlke.computer.kurzweil.tabs.cca.views;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
-import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonCanvas;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;

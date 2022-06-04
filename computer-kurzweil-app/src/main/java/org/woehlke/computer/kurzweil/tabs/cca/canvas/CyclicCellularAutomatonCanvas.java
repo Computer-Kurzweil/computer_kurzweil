@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.cca;
+package org.woehlke.computer.kurzweil.tabs.cca.canvas;
 
 
 import lombok.EqualsAndHashCode;
@@ -7,7 +7,10 @@ import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.commons.layouts.LayoutCanvas;
-import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonColorScheme;
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomatonContext;
+import org.woehlke.computer.kurzweil.tabs.cca.model.CyclicCellularAutomatonModel;
+import org.woehlke.computer.kurzweil.tabs.cca.views.CyclicCellularAutomatonColorScheme;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -71,14 +74,14 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements
         //log.info("paint START (Graphics g)");
         int x;
         int y;
-        int state;
-        Color stateColor;
+        int cellValue;
+        Color cellValueColor;
         if (this.cyclicCellularAutomatonModel.getLattice() != null) {
             for (y = 0; y < worldY; y++) {
                 for (x = 0; x < worldX; x++) {
-                    state = this.cyclicCellularAutomatonModel.getState(x,y);
-                    stateColor = this.colorScheme.getColorForState(state);
-                    g.setColor(stateColor);
+                    cellValue = this.cyclicCellularAutomatonModel.getState(x,y);
+                    cellValueColor = this.colorScheme.getColorForState(cellValue);
+                    g.setColor(cellValueColor);
                     g.drawLine(x, y, x, y);
                 }
             }

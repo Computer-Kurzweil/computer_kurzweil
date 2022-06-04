@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.cca.canvas;
+package org.woehlke.computer.kurzweil.tabs.cca.views;
 
 import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomaton;
 

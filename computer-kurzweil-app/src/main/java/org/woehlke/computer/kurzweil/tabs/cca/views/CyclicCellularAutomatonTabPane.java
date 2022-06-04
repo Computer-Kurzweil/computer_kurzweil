@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.cca;
+package org.woehlke.computer.kurzweil.tabs.cca.views;
 
 import lombok.Getter;
 import lombok.experimental.Delegate;
@@ -7,7 +7,8 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.cca.canvas.PanelNeighbourhoodButtons;
+import org.woehlke.computer.kurzweil.tabs.cca.CyclicCellularAutomatonTab;
+import org.woehlke.computer.kurzweil.tabs.cca.views.PanelNeighbourhoodButtons;
 
 import javax.swing.*;
 

@@ -9,6 +9,10 @@ import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
+import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomatonContext;
+import org.woehlke.computer.kurzweil.tabs.cca.model.CyclicCellularAutomatonModel;
+import org.woehlke.computer.kurzweil.tabs.cca.views.CyclicCellularAutomatonTabPane;
 
 import java.awt.event.ActionEvent;
 
