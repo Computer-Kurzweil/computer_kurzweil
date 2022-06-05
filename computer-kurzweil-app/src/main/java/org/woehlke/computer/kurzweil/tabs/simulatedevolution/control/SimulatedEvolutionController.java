@@ -78,15 +78,17 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
       if( this.tabCtx != null){
           synchronized (this.tabCtx) {
               this.model.exec();
+              /*
               population = this.model.getPopulation();
               if(population.getPopulation() > this.initialPopulation) {
-                threadSleepTime = this.threadSleepTimeConf + this.initialPopulation * (population.getPopulation() / this.initialPopulation);
+                  threadSleepTime = this.threadSleepTimeConf + this.initialPopulation * (population.getPopulation() / this.initialPopulation);
               } else {
                   threadSleepTime = this.threadSleepTimeConf;
               }
+               */
           }
           synchronized (this.tabCtx) {
-              this.view.update(population);
+              this.view.update();
           }
           this.view.repaint();
       }

@@ -85,7 +85,12 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
             this.update();
         } else if (ae.getSource() == this.tabPane.getGardenOfEdenPanel().getButtonRestart()) {
             log.info("actionPerformed: toggleGardenOfEden");
-            this.tabModel.toggleGardenOfEden();
+            if( this.tabPane.getGardenOfEdenPanel().getGardenOfEdenEnabled().isSelected()){
+                this.tabModel.setGardenOfEdenEnabled();
+            } else {
+                this.tabModel.setGardenOfEdenDisabled();
+            }
+            this.tabPane.getGardenOfEdenPanel().update();
             this.update();
         }
         if(ae.getSource() == this.tabPane.getStartStopButtonsPanel().getStartButton()){
@@ -97,13 +102,10 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     }
 
     public void update(){
-        if(this.population!= null){
-            this.tabPane.update();
+        if(this.population == null){
+            this.population = this.tabModel.getPopulation();
         }
-    }
-
-    public void update(CellPopulationRecord population) {
-        this.population = population;
         this.tabPane.update();
     }
+
 }

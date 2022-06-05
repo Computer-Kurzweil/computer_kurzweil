@@ -20,7 +20,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
     private final GetPopulationStatisticsElementsLifeCyclePanel statisticsPanelPanelLifeCycle;
     private final GetPopulationStatisticsPanel statisticsPanelCounted;
     private final SetFoodPerDayPanel setFoodPerDayPanel;
-    private final SetGardenOfEdenPanelRow gardenOfEdenPanel;
+    private final SetGardenOfEdenPanel gardenOfEdenPanel;
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PanelStartStopButtons startStopButtonsPanel;
 
@@ -28,7 +28,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
         this.statisticsPanelPanelLifeCycle = new GetPopulationStatisticsElementsLifeCyclePanel( tab.getTabCtx() );
         this.statisticsPanelCounted = new GetPopulationStatisticsPanel( tab.getTabCtx() );
         this.setFoodPerDayPanel = new SetFoodPerDayPanel( tab.getTabCtx() );
-        this.gardenOfEdenPanel = new SetGardenOfEdenPanelRow( tab.getTabCtx() );
+        this.gardenOfEdenPanel = new SetGardenOfEdenPanel( tab.getTabCtx() );
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         SubTabImpl[] allSubTabPanels = {
             this.startStopButtonsPanel,
@@ -49,11 +49,8 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
         log.info("update");
         this.statisticsPanelPanelLifeCycle.update();
         this.statisticsPanelCounted.update();
-        /*
-        for(Updateable t:tabPanelsUpdateable){
-           t.update();
-        }
-        */
+        //this.setFoodPerDayPanel.update();
+        //this.gardenOfEdenPanel.update();
     }
 
 }

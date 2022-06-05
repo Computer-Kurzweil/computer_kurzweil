@@ -66,12 +66,6 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
     return worldLattice.hasFood(x, y);
   }
 
-    public void toggleGardenOfEden() {
-        log.info("toggleGardenOfEden");
-        this.worldLattice.toggleGardenOfEden();
-        this.worldParameter.toggleGardenOfEden();
-    }
-
     public void start() {
         log.info("start");
         synchronized (running) {
@@ -164,5 +158,13 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
         }
         population = populationContainer.getCurrentGeneration();
         return true;
+    }
+
+    public void setGardenOfEdenEnabled() {
+        this.worldParameter.setGardenOfEdenEnabled();
+    }
+
+    public void setGardenOfEdenDisabled() {
+        this.worldParameter.setGardenOfEdenDisabled();
     }
 }

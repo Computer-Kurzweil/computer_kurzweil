@@ -27,8 +27,11 @@ public class WorldParameter implements SimulatedEvolution, Serializable {
         this.foodPerDay--;
     }
 
-    public void toggleGardenOfEden() {
-      this.gardenOfEdenEnabled = ! this.gardenOfEdenEnabled;
+    public void setGardenOfEdenEnabled() {
+        this.gardenOfEdenEnabled = true;
     }
 
+    public void setGardenOfEdenDisabled() {
+        this.gardenOfEdenEnabled = false;
+    }
 }
