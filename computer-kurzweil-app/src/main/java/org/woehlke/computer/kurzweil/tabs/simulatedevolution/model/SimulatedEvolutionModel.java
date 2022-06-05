@@ -133,7 +133,7 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
      */
     @Override
     public boolean exec() {
-        log.info("step");
+        //log.info("step");
         boolean step;
         synchronized (running) {
             step = running;
@@ -161,12 +161,47 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
                 }
             }
             populationContainer.addNextPopulation(nextPopulation);
-            log.info("stepped");
-        } else {
-            log.info("not stepped");
-        }
+            //log.info("stepped");
+        } //else {
+            //log.info("not stepped");
+        //}
         return true;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void setGardenOfEdenEnabled() {
         this.worldParameter.setGardenOfEdenEnabled();

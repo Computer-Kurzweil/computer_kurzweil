@@ -46,14 +46,14 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
     }
 
     public void update() {
-        log.info("update");
+        //log.info("update");
         this.statisticsPanelPanelLifeCycle.update();
         this.statisticsPanelCounted.update();
         this.setFoodPerDayPanel.update();
         this.gardenOfEdenPanel.update();
     }
     public void updateStep() {
-        log.info("updateStep");
+        //log.info("updateStep");
         this.statisticsPanelPanelLifeCycle.update();
         this.statisticsPanelCounted.update();
     }
