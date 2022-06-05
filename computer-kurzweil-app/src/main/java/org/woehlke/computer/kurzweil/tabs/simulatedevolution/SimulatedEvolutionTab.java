@@ -75,11 +75,11 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.tabPane.getFoodPerDayPanel().getFoodPerDayIncreaseButton()) {
+        if (ae.getSource() == this.tabPane.getSetFoodPerDayPanel().getFoodPerDayIncreaseButton()) {
             log.info("actionPerformed: increaseFoodPerDay");
             this.tabModel.increaseFoodPerDay();
             this.update();
-        } else if (ae.getSource() == this.tabPane.getFoodPerDayPanel().getFoodPerDayDecreaseButton()) {
+        } else if (ae.getSource() == this.tabPane.getSetFoodPerDayPanel().getFoodPerDayDecreaseButton()) {
             log.info("actionPerformed: decreaseFoodPerDay");
             this.tabModel.decreaseFoodPerDay();
             this.update();

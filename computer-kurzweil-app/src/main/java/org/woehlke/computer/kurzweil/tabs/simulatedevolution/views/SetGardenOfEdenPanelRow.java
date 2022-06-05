@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.garden;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -6,18 +6,16 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
 
 import javax.swing.*;
 
 @Log
 @Getter
 @ToString(callSuper = true)
-public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvolution, Updateable, SubTab {
+public class SetGardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvolution, Updateable, SubTab {
 
     private static final long serialVersionUID = 7526471155622776147L;
 
@@ -29,7 +27,7 @@ public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvoluti
     private final ButtonGroup bgroup = new ButtonGroup();
     private final JButton buttonRestart = new JButton("Set");
 
-    public GardenOfEdenPanelRow(SimulatedEvolutionContext tabCtx) {
+    public SetGardenOfEdenPanelRow(SimulatedEvolutionContext tabCtx) {
         super("Garden of Eden",tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
         this.gardenOfEdenEnabled = new JRadioButton("on");

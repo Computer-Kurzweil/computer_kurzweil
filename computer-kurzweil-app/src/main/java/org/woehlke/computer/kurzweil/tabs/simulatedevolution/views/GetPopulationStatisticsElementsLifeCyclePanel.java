@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.lifecycle;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,6 +12,7 @@ import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.PopulationStatisticsElement;
 
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
@@ -22,7 +23,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsElementsLifeCyclePanel extends SubTabImpl
+public class GetPopulationStatisticsElementsLifeCyclePanel extends SubTabImpl
     implements SimulatedEvolution, SubTab, Updateable {
 
     private static final long serialVersionUID = 7526471155622776147L;
@@ -47,7 +48,7 @@ public class PopulationStatisticsElementsLifeCyclePanel extends SubTabImpl
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
 
-    public PopulationStatisticsElementsLifeCyclePanel(
+    public GetPopulationStatisticsElementsLifeCyclePanel(
       SimulatedEvolutionContext tabCtx
     ) {
         super(

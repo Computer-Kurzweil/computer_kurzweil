@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.generation;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
 
 
 import lombok.EqualsAndHashCode;
@@ -11,8 +11,8 @@ import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.lifecycle.PopulationStatisticsElement;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.PopulationStatisticsElement;
 
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
@@ -23,9 +23,11 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsPanel extends SubTabImpl implements SimulatedEvolution, SubTab {
+public class GetPopulationStatisticsPanel extends SubTabImpl implements SimulatedEvolution, SubTab {
 
     private static final long serialVersionUID = 7526471155622776147L;
+
+    private final SimulatedEvolutionContext tabCtx;
 
     private final PopulationStatisticsElement populationElement;
     private final PopulationStatisticsElement generationOldestElement;
@@ -37,12 +39,11 @@ public class PopulationStatisticsPanel extends SubTabImpl implements SimulatedEv
     private final String generationOldestLabel;
     private final String generationYoungestLabel;
 
-    private final SimulatedEvolutionContext tabCtx;
     private final CompoundBorder border;
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
 
-    public PopulationStatisticsPanel(
+    public GetPopulationStatisticsPanel(
         SimulatedEvolutionContext tabCtx
     ) {
         super(

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.garden;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -12,7 +12,7 @@ import java.awt.*;
 @Log
 @Getter
 @ToString(callSuper = true)
-public class GardenOfEdenPanel extends JPanel implements SimulatedEvolution {
+public class SetGardenOfEdenPanel extends JPanel implements SimulatedEvolution {
 
     private static final long serialVersionUID = 7526471155622776147L;
 
@@ -20,7 +20,7 @@ public class GardenOfEdenPanel extends JPanel implements SimulatedEvolution {
     private final SimulatedEvolutionContext ctx;
     private final String gardenOfEdenPanelBorderLabel;
 
-    public GardenOfEdenPanel(SimulatedEvolutionContext ctx) {
+    public SetGardenOfEdenPanel(SimulatedEvolutionContext ctx) {
         super(new FlowLayout());
         this.ctx=ctx;
         this.gardenOfEdenPanelBorderLabel =

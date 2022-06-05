@@ -8,10 +8,6 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food.FoodPerDayPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.garden.GardenOfEdenPanelRow;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.generation.PopulationStatisticsPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.lifecycle.PopulationStatisticsElementsLifeCyclePanel;
 
 import javax.swing.*;
 
@@ -21,30 +17,30 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
 
     private static final long serialVersionUID = 7526471155622776147L;
 
-    private final PopulationStatisticsElementsLifeCyclePanel statisticsPanelPanelLifeCycle;
-    private final PopulationStatisticsPanel statisticsPanelCounted;
-    private final FoodPerDayPanel foodPerDayPanel;
-    private final GardenOfEdenPanelRow gardenOfEdenPanel;
+    private final GetPopulationStatisticsElementsLifeCyclePanel statisticsPanelPanelLifeCycle;
+    private final GetPopulationStatisticsPanel statisticsPanelCounted;
+    private final SetFoodPerDayPanel setFoodPerDayPanel;
+    private final SetGardenOfEdenPanelRow gardenOfEdenPanel;
     @Delegate(excludes={SubTabImpl.class,JPanel.class,Updateable.class})
     private final PanelStartStopButtons startStopButtonsPanel;
 
     public SimulatedEvolutionTabPane(SimulatedEvolutionTab tab) {
-        this.statisticsPanelPanelLifeCycle = new PopulationStatisticsElementsLifeCyclePanel( tab.getTabCtx() );
-        this.statisticsPanelCounted = new PopulationStatisticsPanel( tab.getTabCtx() );
-        this.foodPerDayPanel = new FoodPerDayPanel( tab.getTabCtx() );
-        this.gardenOfEdenPanel = new GardenOfEdenPanelRow( tab.getTabCtx() );
+        this.statisticsPanelPanelLifeCycle = new GetPopulationStatisticsElementsLifeCyclePanel( tab.getTabCtx() );
+        this.statisticsPanelCounted = new GetPopulationStatisticsPanel( tab.getTabCtx() );
+        this.setFoodPerDayPanel = new SetFoodPerDayPanel( tab.getTabCtx() );
+        this.gardenOfEdenPanel = new SetGardenOfEdenPanelRow( tab.getTabCtx() );
         this.startStopButtonsPanel = new PanelStartStopButtons( tab );
         SubTabImpl[] allSubTabPanels = {
             this.startStopButtonsPanel,
             this.statisticsPanelPanelLifeCycle,
             this.statisticsPanelCounted,
-            this.foodPerDayPanel,
+            this.setFoodPerDayPanel,
             this.gardenOfEdenPanel
         };
         for(SubTabImpl t:allSubTabPanels){
             this.addTab( t.getTitle(),t);
         }
-        this.foodPerDayPanel.addActionListener(tab);
+        this.setFoodPerDayPanel.addActionListener(tab);
         this.gardenOfEdenPanel.addActionListener(tab);
         this.getStartStopButtonsPanel().stop();
     }
