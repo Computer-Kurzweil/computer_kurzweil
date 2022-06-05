@@ -8,6 +8,7 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.garden.GardenOfEdenPanelRow;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.generation.PopulationStatisticsPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.lifecycle.PopulationStatisticsElementsLifeCyclePanel;

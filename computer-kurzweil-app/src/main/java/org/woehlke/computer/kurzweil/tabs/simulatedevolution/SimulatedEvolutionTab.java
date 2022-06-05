@@ -83,7 +83,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
             log.info("actionPerformed: decreaseFoodPerDay");
             this.tabModel.decreaseFoodPerDay();
             this.update();
-        } else if (ae.getSource() == this.tabPane.getGardenOfEdenPanel().getButtonToggleGardenOfEden()) {
+        } else if (ae.getSource() == this.tabPane.getGardenOfEdenPanel().getButtonRestart()) {
             log.info("actionPerformed: toggleGardenOfEden");
             this.tabModel.toggleGardenOfEden();
             this.update();

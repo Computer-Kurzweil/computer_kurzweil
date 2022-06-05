@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.food;
 
 import lombok.Getter;
 import lombok.ToString;
