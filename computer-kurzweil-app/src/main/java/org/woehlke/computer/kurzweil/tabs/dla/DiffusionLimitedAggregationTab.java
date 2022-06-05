@@ -70,9 +70,11 @@ public class DiffusionLimitedAggregationTab extends TabPanel implements Tab, Dif
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == this.diffusionLimitedAggregationTabPane.getStartButton()){
             super.ctx.getFrame().start();
+            this.start();
         }
         if(ae.getSource() == this.diffusionLimitedAggregationTabPane.getStopButton()){
             super.ctx.getFrame().stop();
+            this.stop();
         }
     }
 }

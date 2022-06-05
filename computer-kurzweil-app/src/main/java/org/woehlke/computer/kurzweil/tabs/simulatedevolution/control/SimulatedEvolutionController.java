@@ -85,7 +85,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
               threadSleepTime = this.threadSleepTimeConf;
           }
       }
-      this.view.repaint();
+      this.view.getCanvas().update();
       try {
         sleep( threadSleepTime );
       } catch (InterruptedException e) {

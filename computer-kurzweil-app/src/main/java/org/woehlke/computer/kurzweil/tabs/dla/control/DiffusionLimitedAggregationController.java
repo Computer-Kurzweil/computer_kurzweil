@@ -61,6 +61,7 @@ public class DiffusionLimitedAggregationController extends Thread
             }
             try { sleep( this.threadSleepTime ); }
             catch (InterruptedException e) { e.printStackTrace(); }
+            this.tabCtx.getCanvas().update();
         }
         while (doIt);
         log.info("run() finished");

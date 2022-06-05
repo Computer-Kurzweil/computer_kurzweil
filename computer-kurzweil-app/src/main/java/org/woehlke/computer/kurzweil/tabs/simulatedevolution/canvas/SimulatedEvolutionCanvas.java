@@ -121,6 +121,11 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
       //log.info("updated (Graphics graphics)");
   }
 
+    public void update() {
+        Graphics graphics = this.getGraphics();
+        this.update(graphics);
+    }
+
     @Override
     public void showMe() {
         //log.info("showMe");

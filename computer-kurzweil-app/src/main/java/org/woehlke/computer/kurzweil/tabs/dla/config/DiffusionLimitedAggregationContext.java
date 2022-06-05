@@ -56,6 +56,7 @@ public class DiffusionLimitedAggregationContext extends ForkJoinTask<Void> imple
                 this.stopController();
             }
         }
+        this.controller.start();
     }
 
     @Override

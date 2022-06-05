@@ -112,6 +112,12 @@ public class DiffusionLimitedAggregationCanvas extends JComponent implements
         paint(g);
     }
 
+    public void update() {
+        //log.info("update(Graphics g)");
+        Graphics g = this.getGraphics();
+        paint(g);
+    }
+
     @Override
     public void showMe() {
 
