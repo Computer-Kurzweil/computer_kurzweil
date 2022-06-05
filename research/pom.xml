@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>research-and-education</artifactId>
+    <artifactId>research</artifactId>
     <packaging>pom</packaging>
 
     <name>Research</name>
