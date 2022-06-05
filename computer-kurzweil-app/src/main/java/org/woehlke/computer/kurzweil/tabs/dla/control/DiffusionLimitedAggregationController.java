@@ -1,10 +1,12 @@
-package org.woehlke.computer.kurzweil.tabs.dla;
+package org.woehlke.computer.kurzweil.tabs.dla.control;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.tabs.TabController;
+import org.woehlke.computer.kurzweil.tabs.dla.config.DiffusionLimitedAggregationContext;
+import org.woehlke.computer.kurzweil.tabs.dla.config.DiffusionLimitedAggregation;
 
 /**
  * Diffusion Limited Aggregation.

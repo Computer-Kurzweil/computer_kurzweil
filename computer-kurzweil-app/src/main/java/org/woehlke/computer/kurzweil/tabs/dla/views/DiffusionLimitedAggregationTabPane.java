@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.dla;
+package org.woehlke.computer.kurzweil.tabs.dla.views;
 
 import lombok.Getter;
 import lombok.experimental.Delegate;
@@ -7,6 +7,7 @@ import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
+import org.woehlke.computer.kurzweil.tabs.dla.DiffusionLimitedAggregationTab;
 
 import javax.swing.*;
 

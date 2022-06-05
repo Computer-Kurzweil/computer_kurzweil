@@ -7,6 +7,11 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
+import org.woehlke.computer.kurzweil.tabs.dla.canvas.DiffusionLimitedAggregationCanvas;
+import org.woehlke.computer.kurzweil.tabs.dla.config.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.tabs.dla.config.DiffusionLimitedAggregationContext;
+import org.woehlke.computer.kurzweil.tabs.dla.model.DiffusionLimitedAggregationModel;
+import org.woehlke.computer.kurzweil.tabs.dla.views.DiffusionLimitedAggregationTabPane;
 
 import java.awt.event.ActionEvent;
 

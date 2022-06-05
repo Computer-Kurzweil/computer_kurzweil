@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.dla;
+package org.woehlke.computer.kurzweil.tabs.dla.config;
 
 import org.woehlke.computer.kurzweil.tabs.TabType;
 

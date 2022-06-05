@@ -1,10 +1,11 @@
-package org.woehlke.computer.kurzweil.tabs.dla;
+package org.woehlke.computer.kurzweil.tabs.dla.model;
 
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.commons.model.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
+import org.woehlke.computer.kurzweil.tabs.dla.config.DiffusionLimitedAggregationContext;
 
 import java.util.ArrayList;
 import java.util.List;
