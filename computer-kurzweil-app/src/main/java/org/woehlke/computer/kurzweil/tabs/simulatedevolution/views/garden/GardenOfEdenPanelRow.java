@@ -7,9 +7,12 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
+
+import javax.swing.*;
 
 @Log
 @Getter
@@ -20,45 +23,31 @@ public class GardenOfEdenPanelRow extends SubTabImpl implements SimulatedEvoluti
 
     @ToString.Exclude
     private final SimulatedEvolutionContext tabCtx;
-    @ToString.Exclude
-    private final SimulatedEvolutionModel tabModel;
-    private final GardenOfEdenCheckBox gardenOfEdenEnabled;
-    private final GardenOfEdenToggleButton buttonToggleGardenOfEden;
-    //private final GardenOfEdenPanel gardenOfEdenPanel;
+
+    private final JRadioButton gardenOfEdenEnabled;
+    private final JRadioButton gardenOfEdenDisabled;
+    private final ButtonGroup bgroup = new ButtonGroup();
+    private final JButton buttonRestart = new JButton("Set");
 
     public GardenOfEdenPanelRow(SimulatedEvolutionContext tabCtx) {
         super("Garden of Eden",tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
-        this.tabModel = this.tabCtx.getTabModel();
-        this.gardenOfEdenEnabled = new GardenOfEdenCheckBox(this.tabCtx);
-        this.buttonToggleGardenOfEden = new GardenOfEdenToggleButton(this.tabCtx);
-        /*
-        this.gardenOfEdenPanel = new GardenOfEdenPanel(this.tabCtx);
-        this.gardenOfEdenPanel.add(this.gardenOfEdenEnabled);
-        this.gardenOfEdenPanel.add(this.buttonToggleGardenOfEden);
-        this.add( this.gardenOfEdenPanel);
-        */
+        this.gardenOfEdenEnabled = new JRadioButton("on");
+        this.gardenOfEdenDisabled = new JRadioButton("off");
+        bgroup.add(this.gardenOfEdenEnabled);
+        bgroup.add(this.gardenOfEdenDisabled);
         this.add(this.gardenOfEdenEnabled);
-        this.add(this.buttonToggleGardenOfEden);
+        this.add(this.gardenOfEdenDisabled);
+        this.add(this.buttonRestart);
     }
 
-    public void setSelected(boolean selected) {
-        this.tabModel.getWorldParameter().setGardenOfEdenEnabled(selected);
-        update();
-    }
-
-    public void toggleGardenOfEden() {
-        this.tabModel.getWorldParameter().toggleGardenOfEden();
-        update();
-    }
-
-    public void addActionListener(TabPanel myTabPanel) {
-        this.buttonToggleGardenOfEden.addActionListener(myTabPanel);
+    public void addActionListener(SimulatedEvolutionTab tab) {
+        this.buttonRestart.addActionListener(tab);
     }
 
     public void update() {
-        boolean enabled = tabModel.getWorldParameter().isGardenOfEdenEnabled();
-        this.buttonToggleGardenOfEden.setSelected(enabled);
+        boolean enabled = tabCtx.getTabModel().getWorldParameter().isGardenOfEdenEnabled();
         this.gardenOfEdenEnabled.setSelected(enabled);
+        this.gardenOfEdenDisabled.setSelected(!enabled);
     }
 }

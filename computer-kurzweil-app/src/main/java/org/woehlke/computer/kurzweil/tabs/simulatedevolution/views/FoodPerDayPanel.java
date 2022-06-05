@@ -7,6 +7,7 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
@@ -29,7 +30,6 @@ public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, U
     private final FoodPerDayTextField foodPerDayTextField;
     private final FoodPerDayIncreaseButton foodPerDayIncreaseButton;
     private final FoodPerDayDecreaseButton foodPerDayDecreaseButton;
-    private final SimulatedEvolutionModel tabModel;
 
     public FoodPerDayPanel(SimulatedEvolutionContext tabCtx) {
         super(
@@ -37,7 +37,6 @@ public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, U
                 .getFoodPerDayLabel(),tabCtx.getCtx().getProperties()
         );
         this.tabCtx = tabCtx;
-        this.tabModel = this.tabCtx.getTabModel();
         this.foodPerDayLabel = new FoodPerDayLabel(this.tabCtx);
         this.foodPerDayTextField = new FoodPerDayTextField(this.tabCtx);
         this.foodPerDayIncreaseButton = new FoodPerDayIncreaseButton(this.tabCtx);
@@ -52,13 +51,13 @@ public class FoodPerDayPanel extends SubTabImpl implements SimulatedEvolution, U
         this.add(this.foodPerDayDecreaseButton);
     }
 
-    public void addActionListener(TabPanel myTabPanel) {
-        this.foodPerDayIncreaseButton.addActionListener(myTabPanel);
-        this.foodPerDayDecreaseButton.addActionListener(myTabPanel);
+    public void addActionListener(SimulatedEvolutionTab tab) {
+        this.foodPerDayIncreaseButton.addActionListener(tab);
+        this.foodPerDayDecreaseButton.addActionListener(tab);
     }
 
     public void update() {
-        int foodPerDay = tabModel.getWorldParameter().getFoodPerDay();
+        int foodPerDay = tabCtx.getTabModel().getWorldParameter().getFoodPerDay();
         this.foodPerDayTextField.setFoodPerDay(foodPerDay);
     }
 }

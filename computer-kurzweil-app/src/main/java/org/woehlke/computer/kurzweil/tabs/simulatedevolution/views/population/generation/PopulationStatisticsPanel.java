@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.generation;
 
 
 import lombok.EqualsAndHashCode;
@@ -11,7 +11,7 @@ import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.PopulationStatisticsElement;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.lifecycle.PopulationStatisticsElement;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
 
 import javax.swing.border.CompoundBorder;
@@ -45,7 +45,10 @@ public class PopulationStatisticsPanel extends SubTabImpl implements SimulatedEv
     public PopulationStatisticsPanel(
         SimulatedEvolutionContext tabCtx
     ) {
-        super(tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics(),tabCtx.getCtx().getProperties());
+        super(
+            tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics(),
+            tabCtx.getCtx().getProperties()
+        );
         this.tabCtx = tabCtx;
         layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);

@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population;
+package org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.lifecycle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,7 +22,7 @@ import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.C
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
-public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl
+public class PopulationStatisticsElementsLifeCyclePanel extends SubTabImpl
     implements SimulatedEvolution, SubTab, Updateable {
 
     private static final long serialVersionUID = 7526471155622776147L;
@@ -47,7 +47,7 @@ public class PopulationStatisticsElementsPanelLifeCycle extends SubTabImpl
     private final FlowLayoutCenter layout;
     private final FlowLayout layoutSubPanel;
 
-    public PopulationStatisticsElementsPanelLifeCycle(
+    public PopulationStatisticsElementsLifeCyclePanel(
       SimulatedEvolutionContext tabCtx
     ) {
         super(

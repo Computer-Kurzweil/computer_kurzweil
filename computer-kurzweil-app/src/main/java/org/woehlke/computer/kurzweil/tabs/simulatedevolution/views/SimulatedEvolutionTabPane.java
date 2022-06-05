@@ -8,10 +8,9 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.PanelStartStopButtons;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.FoodPerDayPanel;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.garden.GardenOfEdenPanelRow;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.PopulationStatisticsPanel;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.PopulationStatisticsElementsPanelLifeCycle;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.generation.PopulationStatisticsPanel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.lifecycle.PopulationStatisticsElementsLifeCyclePanel;
 
 import javax.swing.*;
 
@@ -21,7 +20,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
 
     private static final long serialVersionUID = 7526471155622776147L;
 
-    private final PopulationStatisticsElementsPanelLifeCycle statisticsPanelPanelLifeCycle;
+    private final PopulationStatisticsElementsLifeCyclePanel statisticsPanelPanelLifeCycle;
     private final PopulationStatisticsPanel statisticsPanelCounted;
     private final FoodPerDayPanel foodPerDayPanel;
     private final GardenOfEdenPanelRow gardenOfEdenPanel;
@@ -29,7 +28,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
     private final PanelStartStopButtons startStopButtonsPanel;
 
     public SimulatedEvolutionTabPane(SimulatedEvolutionTab tab) {
-        this.statisticsPanelPanelLifeCycle = new PopulationStatisticsElementsPanelLifeCycle( tab.getTabCtx() );
+        this.statisticsPanelPanelLifeCycle = new PopulationStatisticsElementsLifeCyclePanel( tab.getTabCtx() );
         this.statisticsPanelCounted = new PopulationStatisticsPanel( tab.getTabCtx() );
         this.foodPerDayPanel = new FoodPerDayPanel( tab.getTabCtx() );
         this.gardenOfEdenPanel = new GardenOfEdenPanelRow( tab.getTabCtx() );
