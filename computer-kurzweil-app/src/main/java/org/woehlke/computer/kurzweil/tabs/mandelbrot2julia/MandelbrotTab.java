@@ -44,33 +44,12 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot, MouseLis
         this.tabCtx = new MandelbrotContext(this, ctx);
         this.canvas = this.tabCtx.getCanvas();
         this.mandelbrotModel = this.tabCtx.getTabModel();
-        //this.mandelbrotController = this.tabCtx.getController();
         this.mandelbrotTabPane = new MandelbrotTabPane(this);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.mandelbrotTabPane);
         this.mandelbrotTabPane.stop();
         this.canvas.addMouseListener(      this);
-        /*
-        super(properties.getMandelbrot().getView().getTitle());
-
-        BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
-        this.canvas = new MandelbrotCanvas(mandelbrotModel);
-        this.mandelbrotController = new MandelbrotController(mandelbrotModel, this);
-
-        JSeparator separator = new JSeparator();
-        rootPane.setLayout(layout);
-        rootPane.add(panelSubtitle);
-        rootPane.add(canvas);
-        rootPane.add(panelCopyright);
-        rootPane.add(separator);
-        rootPane.add(panelButtons);
-        addWindowListener(this);
-        this.canvas.addMouseListener(   this);
-        showMeInit();
-        setModeSwitch();
-        this.mandelbrotController.start();
-         */
     }
 
     @Override
@@ -99,15 +78,6 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot, MouseLis
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.mandelbrotTabPane.getPanelChooseMouseClickMode().getRadioButtonsSwitch()){
-            setModeSwitch();
-        }
-        if(ae.getSource() == this.mandelbrotTabPane.getPanelChooseMouseClickMode().getRadioButtonsZoom()){
-            setModeZoom();
-        }
-        if(ae.getSource() == this.mandelbrotTabPane.getPanelZoom().getZoomOutButton()){
-            this.mandelbrotModel.zoomOut();
-        }
         if(ae.getSource() ==  this.mandelbrotTabPane.getStartButton()){
             super.ctx.getFrame().start();
         }
@@ -130,6 +100,7 @@ public class MandelbrotTab extends TabPanel implements Tab, Mandelbrot, MouseLis
     public void mouseClicked(MouseEvent e) {
         Point p = new Point( e.getPoint().getX(), e.getPoint().getY());
         mandelbrotModel.click(  p  );
+        canvas.update();
     }
 
     @Override

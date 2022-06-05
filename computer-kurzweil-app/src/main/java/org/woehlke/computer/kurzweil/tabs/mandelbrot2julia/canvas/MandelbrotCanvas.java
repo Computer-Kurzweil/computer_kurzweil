@@ -81,6 +81,11 @@ public class MandelbrotCanvas extends JComponent implements
         paint(g);
     }
 
+    public void update() {
+        Graphics g = this.getGraphics();
+        paint(g);
+    }
+
     @Override
     public boolean cancel(boolean mayInterruptIfRunning) {
         return false;
