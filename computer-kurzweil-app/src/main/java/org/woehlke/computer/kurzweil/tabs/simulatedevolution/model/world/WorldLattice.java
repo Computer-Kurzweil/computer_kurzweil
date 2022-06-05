@@ -40,7 +40,7 @@ public class WorldLattice implements Startable, SimulatedEvolution, Serializable
      */
     private int[][] worldMapFoodLattice;
     private boolean gardenOfEdenEnabled;
-    private final int foodPerDay;
+    private  int foodPerDay;
 
     private final SimulatedEvolutionContext appCtx;
     private final int gardenOfEdenParts = 3;
@@ -136,13 +136,6 @@ public class WorldLattice implements Startable, SimulatedEvolution, Serializable
         return food;
     }
 
-    public void toggleGardenOfEden() {
-        log.info("toggleGardenOfEden");
-        this.gardenOfEdenEnabled = !gardenOfEdenEnabled;
-        this.letFoodGrowGardenOfEden();
-        log.info("toggleGardenOfEden done");
-    }
-
     @Override
     public void start() {
         log.info("start");
@@ -155,4 +148,19 @@ public class WorldLattice implements Startable, SimulatedEvolution, Serializable
         log.info("stop");
     }
 
+    public void setGardenOfEdenEnabled() {
+        this.gardenOfEdenEnabled = true;
+    }
+
+    public void setGardenOfEdenDisabled() {
+        this.gardenOfEdenEnabled = false;
+    }
+
+    public void increaseFoodPerDay() {
+        this.foodPerDay++;
+    }
+
+    public void decreaseFoodPerDay() {
+        this.foodPerDay--;
+    }
 }

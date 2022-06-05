@@ -106,10 +106,12 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
 
     public void increaseFoodPerDay() {
         worldParameter.increaseFoodPerDay();
+        worldLattice.increaseFoodPerDay();
     }
 
     public void decreaseFoodPerDay(){
-        worldParameter.decreaseFoodPerDay();
+      worldParameter.decreaseFoodPerDay();
+      worldLattice.decreaseFoodPerDay();
     }
 
     @Override
@@ -168,46 +170,13 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
         return true;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void setGardenOfEdenEnabled() {
         this.worldParameter.setGardenOfEdenEnabled();
+        this.worldLattice.setGardenOfEdenEnabled();
     }
 
     public void setGardenOfEdenDisabled() {
         this.worldParameter.setGardenOfEdenDisabled();
+        this.worldLattice.setGardenOfEdenDisabled();
     }
 }
