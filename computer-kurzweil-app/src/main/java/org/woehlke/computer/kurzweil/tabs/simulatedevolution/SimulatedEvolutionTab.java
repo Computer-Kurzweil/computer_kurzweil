@@ -102,10 +102,13 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     }
 
     public void update(){
-        if(this.population == null){
-            this.population = this.tabModel.getPopulation();
-        }
+        this.population = this.tabModel.getPopulation();
         this.tabPane.update();
+    }
+
+    public void updateStep() {
+        this.population = this.tabModel.getPopulation();
+        this.tabPane.updateStep();
     }
 
 }

@@ -30,14 +30,16 @@ public class SetGardenOfEdenPanel extends SubTabImpl implements SimulatedEvoluti
     public SetGardenOfEdenPanel(SimulatedEvolutionContext tabCtx) {
         super("Garden of Eden",tabCtx.getCtx().getProperties());
         this.tabCtx = tabCtx;
+        JLabel label = new JLabel("Garden of Eden");
         this.gardenOfEdenEnabled = new JRadioButton("on");
         this.gardenOfEdenDisabled = new JRadioButton("off");
         bgroup.add(this.gardenOfEdenEnabled);
         bgroup.add(this.gardenOfEdenDisabled);
-        update();
+        this.add(label);
         this.add(this.gardenOfEdenEnabled);
         this.add(this.gardenOfEdenDisabled);
         this.add(this.buttonRestart);
+        update();
     }
 
     public void addActionListener(SimulatedEvolutionTab tab) {

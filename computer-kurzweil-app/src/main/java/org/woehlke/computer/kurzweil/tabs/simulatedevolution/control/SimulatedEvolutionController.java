@@ -88,7 +88,7 @@ public class SimulatedEvolutionController extends Thread implements TabControlle
                */
           }
           synchronized (this.tabCtx) {
-              this.view.update();
+              this.view.updateStep();
           }
           this.view.repaint();
       }

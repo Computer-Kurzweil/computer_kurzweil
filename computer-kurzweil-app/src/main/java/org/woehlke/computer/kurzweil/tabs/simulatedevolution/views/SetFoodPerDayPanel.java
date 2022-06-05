@@ -38,13 +38,13 @@ public class SetFoodPerDayPanel extends SubTabImpl implements SimulatedEvolution
         int foodPerDayTextFieldCols = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDayFieldColumns();
         this.foodPerDayLabel = new JLabel(foodPerDayLabelString);
         this.foodPerDayInput = new JTextField("", foodPerDayTextFieldCols);
-        update();
         this.foodPerDayIncreaseButton = new JButton(labelFoodPerDayIncrease);
         this.foodPerDayDecreaseButton = new JButton(labelFoodPerDayDecrease);
         this.add(this.foodPerDayLabel);
         this.add(this.foodPerDayInput);
-        this.add(this.foodPerDayIncreaseButton);
         this.add(this.foodPerDayDecreaseButton);
+        this.add(this.foodPerDayIncreaseButton);
+        update();
     }
 
     public void addActionListener(SimulatedEvolutionTab tab) {
