@@ -1,17 +1,17 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas;
+package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTab;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.config.Mandelbrot;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.config.MandelbrotContext;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.MandelbrotModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.config.Mandelbrot;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.config.MandelbrotContext;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.MandelbrotModel;
 
 import javax.swing.*;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.RradioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.RradioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.views.RradioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.views.RradioButtons.RADIO_BUTTONS_ZOOM;
 
 @Getter
 public class PanelChooseMouseClickMode extends SubTabImpl implements Mandelbrot, SubTab, Updateable {

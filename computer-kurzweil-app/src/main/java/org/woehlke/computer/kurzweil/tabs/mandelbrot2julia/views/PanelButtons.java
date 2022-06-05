@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas;
+package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.views;
 
 import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.MandelbrotModel;
 
@@ -7,8 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.RradioButtons.RADIO_BUTTONS_SWITCH;
-import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.RradioButtons.RADIO_BUTTONS_ZOOM;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.views.RradioButtons.RADIO_BUTTONS_SWITCH;
+import static org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.views.RradioButtons.RADIO_BUTTONS_ZOOM;
 
 
 /**

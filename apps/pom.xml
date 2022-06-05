@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>single-apps</artifactId>
+    <artifactId>apps</artifactId>
     <packaging>pom</packaging>
 
     <name>apps</name>

@@ -1,9 +1,9 @@
-package org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas;
+package org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.canvas;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.config.Mandelbrot;
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.config.MandelbrotContext;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.config.Mandelbrot;
+import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.config.MandelbrotContext;
 
 import javax.swing.*;
 import java.awt.*;
