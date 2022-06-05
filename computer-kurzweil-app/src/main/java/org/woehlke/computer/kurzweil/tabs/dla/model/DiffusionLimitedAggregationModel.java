@@ -89,7 +89,7 @@ public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> impleme
         }
         if(doIt) {
             steps++;
-            log.info("step "+steps);
+            //log.info("step "+steps);
             List<LatticePoint> newParticles = new ArrayList<LatticePoint>();
             int x;
             int y;
@@ -122,12 +122,12 @@ public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> impleme
             }
             particles = newParticles;
         }
-        log.info("stepped");
+        //log.info("stepped");
         return doIt;
     }
 
     public boolean hasDendriteNeighbour( int myX , int myY){
-        log.info("hasDendriteNeighbour. age="+age);
+        //log.info("hasDendriteNeighbour. age="+age);
         if(worldMap[myX][myY]==0){
             LatticePoint[] neighbours = LatticeNeighbourhood.get(worldX,worldY, myX, myY);
             for(LatticePoint neighbour:neighbours){

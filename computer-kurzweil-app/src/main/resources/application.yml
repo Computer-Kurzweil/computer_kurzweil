@@ -91,7 +91,7 @@ dla:
     title: 'Diffusion Limited Aggregation'
     subtitle: 'Fractal Random Walk due to Brownian Motion Cluster'
   control:
-    threadSleepTime: 100
+    threadSleepTime: 50
     numberOfParticles: 30000
 kochsnowflake:
   view:
