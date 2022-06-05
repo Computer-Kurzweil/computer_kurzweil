@@ -51,7 +51,7 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
 
     @Override
     public void start() {
-        log.info("start");
+        //log.info("start");
         this.tabPane.start();
         this.tabModel.start();
         this.getTabCtx().startController();
@@ -59,34 +59,34 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
         this.ctx.getFrame().pack();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
-        log.info("start with canvas x="+x+" y="+y);
-        log.info("started");
+        //log.info("start with canvas x="+x+" y="+y);
+        //log.info("started");
     }
 
     @Override
     public void stop() {
-        log.info("stop");
+        //log.info("stop");
         this.tabModel.stop();
         this.tabPane.stop();
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
-        log.info("stop with canvas x="+x+" y="+y);
-        log.info("stopped");
+        //log.info("stop with canvas x="+x+" y="+y);
+        //log.info("stopped");
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == this.tabPane.getSetFoodPerDayPanel().getFoodPerDayIncreaseButton()) {
-            log.info("actionPerformed: increaseFoodPerDay");
+            //log.info("actionPerformed: increaseFoodPerDay");
             this.tabModel.increaseFoodPerDay();
             this.update();
         } else if (ae.getSource() == this.tabPane.getSetFoodPerDayPanel().getFoodPerDayDecreaseButton()) {
-            log.info("actionPerformed: decreaseFoodPerDay");
+            //log.info("actionPerformed: decreaseFoodPerDay");
             this.tabModel.decreaseFoodPerDay();
             this.update();
         } else if (ae.getSource() == this.tabPane.getGardenOfEdenPanel().getButtonRestart()) {
-            log.info("actionPerformed: toggleGardenOfEden");
+            //log.info("actionPerformed: toggleGardenOfEden");
             if( this.tabPane.getGardenOfEdenPanel().getGardenOfEdenEnabled().isSelected()){
                 this.tabModel.setGardenOfEdenEnabled();
             } else {

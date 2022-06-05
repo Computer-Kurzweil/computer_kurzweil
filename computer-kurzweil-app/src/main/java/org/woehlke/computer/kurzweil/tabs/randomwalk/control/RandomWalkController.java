@@ -46,7 +46,7 @@ public class RandomWalkController extends Thread implements TabController, Rando
     }
 
     public void run() {
-        log.info("run() - begin");
+        //log.info("run() - begin");
         boolean doIt;
         do {
             synchronized (this.goOn) {
@@ -64,22 +64,22 @@ public class RandomWalkController extends Thread implements TabController, Rando
             }
         }
         while (doIt);
-        log.info("run() - finished");
+        //log.info("run() - finished");
     }
 
     public void exit() {
-        log.info("exit");
+        //log.info("exit");
         try {
             synchronized (goOn) {
                 goOn = Boolean.FALSE;
             }
-            log.info("join");
+            //log.info("join");
             join();
-            log.info("joined");
+            //log.info("joined");
         } catch (InterruptedException e) {
             log.info(e.getMessage());
         }
-        log.info("exited");
+        //log.info("exited");
     }
 
 }
