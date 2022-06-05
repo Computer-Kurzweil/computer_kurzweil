@@ -29,7 +29,7 @@ simulatedevolution:
     title: 'Simulated Evolution'
     subtitle: 'Artificial Life Simulation of Bacteria Motion depending on DNA'
   control:
-    threadSleepTime: 100
+    threadSleepTime: 50
     exitStatus: 0
     queueMaxLength: 1000
   cellConf:
@@ -79,7 +79,7 @@ cca:
       typeMoore: 'Moore'
       typeWoehlke: 'Woehlke'
   control:
-    threadSleepTime: 100
+    threadSleepTime: 50
 randomwalk:
   view:
     title: 'Random Walk'
@@ -89,9 +89,9 @@ randomwalk:
 dla:
   view:
     title: 'Diffusion Limited Aggregation'
-    subtitle: 'Fractal Random Walk due to Brownian Motion Cluster'
+    subtitle: 'Diffusion Limited Aggregation'
   control:
-    threadSleepTime: 50
+    threadSleepTime: 20
     numberOfParticles: 30000
 kochsnowflake:
   view:
