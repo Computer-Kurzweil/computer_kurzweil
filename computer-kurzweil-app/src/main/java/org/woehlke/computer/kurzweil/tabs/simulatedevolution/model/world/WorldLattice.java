@@ -72,7 +72,7 @@ public class WorldLattice implements Startable, SimulatedEvolution, Serializable
   }
 
     private void letFoodGrowGardenOfEden() {
-        log.info("letFoodGrowGardenOfEden");
+        //log.info("letFoodGrowGardenOfEden");
         if (gardenOfEdenEnabled) {
             int food = 0;
 
