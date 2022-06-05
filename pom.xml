@@ -9,8 +9,8 @@
 
     <modules>
         <module>computer-kurzweil-app</module>
-        <module>research-and-education</module>
-        <module>single-apps</module>
+        <module>research</module>
+        <module>apps</module>
     </modules>
 
     <name>Computer Kurzweil</name>
