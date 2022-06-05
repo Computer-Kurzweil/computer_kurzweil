@@ -12,7 +12,7 @@
     <artifactId>research-and-education</artifactId>
     <packaging>pom</packaging>
 
-    <name>Research and Education</name>
+    <name>Research</name>
     <description>TODO dsadas</description>
 
     <modules>

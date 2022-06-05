@@ -12,7 +12,7 @@
     <artifactId>insourcing-mandelbrot-julia</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: insourcing :: Mandelbrot :: Julia</name>
+    <name>apps :: insourcing :: Mandelbrot :: Julia</name>
     <description>Computing the Edge of the Mandelbrot Set with a Turing Machine</description>
 
     <properties>

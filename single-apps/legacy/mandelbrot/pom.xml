@@ -12,7 +12,7 @@
     <artifactId>mandelbrot</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: legacy :: Mandelbrot</name>
+    <name>apps :: legacy :: Mandelbrot</name>
     <description>Computing the Edge of the Mandelbrot Set with a Turing Machine</description>
 
     <properties>

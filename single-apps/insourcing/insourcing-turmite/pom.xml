@@ -12,7 +12,7 @@
     <artifactId>insourcing-turmite</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: insourcing :: Turmite</name>
+    <name>apps :: insourcing :: Turmite</name>
     <description>Turmites - Turing Ants</description>
 
     <properties>

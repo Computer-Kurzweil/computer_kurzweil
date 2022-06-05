@@ -12,7 +12,7 @@
     <artifactId>simulated-evolution</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: legacy :: Simulated Evolution</name>
+    <name>apps :: legacy :: Simulated Evolution</name>
     <description>Artificial Life Simulation of Bacteria Motion depending on DNA</description>
 
     <properties>

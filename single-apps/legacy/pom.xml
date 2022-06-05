@@ -12,8 +12,8 @@
     <artifactId>legacy</artifactId>
     <packaging>pom</packaging>
 
-    <name>single-apps :: legacy</name>
-    <description>Artificial Life Simulation of Bacteria Motion depending on DNA</description>
+    <name>apps :: legacy</name>
+    <description>TBD</description>
 
     <modules>
         <module>cyclic-cellular-automaton</module>

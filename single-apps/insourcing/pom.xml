@@ -12,7 +12,7 @@
     <artifactId>insourcing</artifactId>
     <packaging>pom</packaging>
 
-    <name>single-apps :: insourcing</name>
+    <name>apps :: insourcing</name>
     <description>TODO dasvdgh</description>
 
     <modules>

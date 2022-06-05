@@ -12,7 +12,7 @@
     <artifactId>single-apps</artifactId>
     <packaging>pom</packaging>
 
-    <name>single-apps</name>
+    <name>apps</name>
     <description>TODO dsadas</description>
 
     <modules>

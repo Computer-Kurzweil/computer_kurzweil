@@ -12,7 +12,7 @@
     <artifactId>insourcing-sierpinskitriangle</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: insourcing :: Sierpinski Triangle</name>
+    <name>apps :: insourcing :: Sierpinski Triangle</name>
     <description>sierpinskitriangle</description>
 
     <properties>

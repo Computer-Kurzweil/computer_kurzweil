@@ -12,7 +12,7 @@
     <artifactId>insourcing-kochsnowflake</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: insourcing :: Koch Snowflake</name>
+    <name>apps :: insourcing :: Koch Snowflake</name>
     <description>kochsnowflake</description>
 
     <properties>

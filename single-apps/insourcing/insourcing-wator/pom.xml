@@ -12,7 +12,7 @@
     <artifactId>insourcing-wator</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: insourcing :: WaTor</name>
+    <name>apps :: insourcing :: WaTor</name>
     <description>Water Torus - Population Dynamics</description>
 
     <properties>

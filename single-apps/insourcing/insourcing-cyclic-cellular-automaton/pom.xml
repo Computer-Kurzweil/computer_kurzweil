@@ -12,7 +12,7 @@
     <artifactId>insourcing-cyclic-cellular-automaton</artifactId>
     <packaging>jar</packaging>
 
-    <name>single-apps :: insourcing :: Cyclic Cellular Automaton</name>
+    <name>apps :: insourcing :: Cyclic Cellular Automaton</name>
     <description>The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath
         and studied by several other cellular automaton researchers.
         In this system, each cell remains unchanged until some neighboring cell has a modular value exactly
