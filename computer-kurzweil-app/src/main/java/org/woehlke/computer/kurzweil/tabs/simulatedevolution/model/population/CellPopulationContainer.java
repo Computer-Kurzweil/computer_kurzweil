@@ -93,8 +93,13 @@ public class CellPopulationContainer implements SimulatedEvolution, Serializable
     }
 
     public CellPopulationRecord getCurrentGeneration() {
-        CellPopulationRecord currentGeneration = statistics.peek();
-        if(currentGeneration == null){
+        CellPopulationRecord currentGeneration;
+        try {
+            currentGeneration = statistics.poll();
+            if (currentGeneration == null) {
+                currentGeneration = this.countPopulation();
+            }
+        } catch (Exception e){
             currentGeneration = this.countPopulation();
         }
         return currentGeneration;
