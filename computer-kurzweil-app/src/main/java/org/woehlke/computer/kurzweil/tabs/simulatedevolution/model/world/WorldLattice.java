@@ -29,17 +29,18 @@ import java.io.Serializable;
  */
 @Log
 @Getter
-@ToString(exclude={"appCtx","worldMapFoodLattice"})
-@EqualsAndHashCode(exclude={"appCtx","worldMapFoodLattice"},callSuper = false)
+@ToString(exclude = {"appCtx", "worldMapFoodLattice"})
+@EqualsAndHashCode(exclude = {"appCtx", "worldMapFoodLattice"}, callSuper = false)
 public class WorldLattice implements Startable, SimulatedEvolution, Serializable {
 
     private static final long serialVersionUID = 7526471155622776147L;
 
-      /**
-       * Grid of World where every Place can have food.
-       */
+    /**
+     * Grid of World where every Place can have food.
+     */
     private int[][] worldMapFoodLattice;
     private boolean gardenOfEdenEnabled;
+    private final int foodPerDay;
 
     private final SimulatedEvolutionContext appCtx;
     private final int gardenOfEdenParts = 3;
@@ -48,36 +49,35 @@ public class WorldLattice implements Startable, SimulatedEvolution, Serializable
     private final static int startY = 0;
     private final int worldX;
     private final int worldY;
-    private final int foodPerDay;
 
-  public WorldLattice(
-      SimulatedEvolutionContext appCtx
-  ) {
-      this.appCtx = appCtx;
-      worldX =  this.appCtx.getCtx().getWorldDimensions().getX();
-      worldY =  this.appCtx.getCtx().getWorldDimensions().getY();
-      worldMapFoodLattice = new int[worldX][worldY];
-      gardenOfEdenEnabled = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
-      foodPerDay = this.appCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDay();
-  }
+    public WorldLattice(
+        SimulatedEvolutionContext appCtx
+    ) {
+        this.appCtx = appCtx;
+        worldX = this.appCtx.getCtx().getWorldDimensions().getX();
+        worldY = this.appCtx.getCtx().getWorldDimensions().getY();
+        worldMapFoodLattice = new int[worldX][worldY];
+        gardenOfEdenEnabled = this.appCtx.getCtx().getProperties().getSimulatedevolution().getGardenOfEden().getGardenOfEdenEnabled();
+        foodPerDay = this.appCtx.getCtx().getProperties().getSimulatedevolution().getFood().getFoodPerDay();
+    }
 
-  private void resetLattice(){
-      int x;
-      int y;
-      for(y = 0; y < worldY; y++){
-        for(x = 0; x < worldX; x++){
-            worldMapFoodLattice[x][y]=0;
+    private void resetLattice() {
+        int x;
+        int y;
+        for (y = 0; y < worldY; y++) {
+            for (x = 0; x < worldX; x++) {
+                worldMapFoodLattice[x][y] = 0;
+            }
         }
     }
-  }
 
     private void letFoodGrowGardenOfEden() {
         //log.info("letFoodGrowGardenOfEden");
         if (gardenOfEdenEnabled) {
             int food = 0;
 
-            int startX = ( worldX / gardenOfEdenParts );
-            int startY = ( worldY / gardenOfEdenParts );
+            int startX = (worldX / gardenOfEdenParts);
+            int startY = (worldY / gardenOfEdenParts);
             while (food < foodPerDay) {
                 food++;
                 int posX = this.appCtx.getCtx().getRandom().nextInt(startX);
@@ -102,46 +102,46 @@ public class WorldLattice implements Startable, SimulatedEvolution, Serializable
         }
     }
 
-  /**
-   * Delivers new food to random positions.
-   */
-  public void letFoodGrow() {
-      letFoodGrowWorld();
-      letFoodGrowGardenOfEden();
-  }
-
-  /**
-   * TODO write doc.
-   */
-  public boolean hasFood(int x, int y) {
-    return worldMapFoodLattice[x][y] > 0;
-  }
-
-  /**
-   * Reduces Food in the Grid by eating and delivers the food energy to the eating Cell.
-   *
-   * @param position where is the food and the eating cell
-   * @return the engergy of the food, will be added to cell's fat.
-   * @see CellLifeCycle
-   */
-  public int eat(LatticePoint position) {
-    LatticePoint[] neighbourhood = LatticeNeighbourhood.get(
-        worldX,worldY,position.getX(),position.getY()
-    );
-    int food = 0;
-    for (LatticePoint neighbourhoodPosition : neighbourhood) {
-      food += worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
-      worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()] = noFood;
+    /**
+     * Delivers new food to random positions.
+     */
+    public void letFoodGrow() {
+        letFoodGrowWorld();
+        letFoodGrowGardenOfEden();
     }
-    return food;
-  }
 
-  public void toggleGardenOfEden() {
-      log.info("toggleGardenOfEden");
-      this.gardenOfEdenEnabled = ! gardenOfEdenEnabled;
-      this.letFoodGrowGardenOfEden();
-      log.info("toggleGardenOfEden done");
-  }
+    /**
+     * TODO write doc.
+     */
+    public boolean hasFood(int x, int y) {
+        return worldMapFoodLattice[x][y] > 0;
+    }
+
+    /**
+     * Reduces Food in the Grid by eating and delivers the food energy to the eating Cell.
+     *
+     * @param position where is the food and the eating cell
+     * @return the engergy of the food, will be added to cell's fat.
+     * @see CellLifeCycle
+     */
+    public int eat(LatticePoint position) {
+        LatticePoint[] neighbourhood = LatticeNeighbourhood.get(
+            worldX, worldY, position.getX(), position.getY()
+        );
+        int food = 0;
+        for (LatticePoint neighbourhoodPosition : neighbourhood) {
+            food += worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()];
+            worldMapFoodLattice[neighbourhoodPosition.getX()][neighbourhoodPosition.getY()] = noFood;
+        }
+        return food;
+    }
+
+    public void toggleGardenOfEden() {
+        log.info("toggleGardenOfEden");
+        this.gardenOfEdenEnabled = !gardenOfEdenEnabled;
+        this.letFoodGrowGardenOfEden();
+        log.info("toggleGardenOfEden done");
+    }
 
     @Override
     public void start() {
