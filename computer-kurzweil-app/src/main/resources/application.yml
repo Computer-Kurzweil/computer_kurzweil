@@ -29,7 +29,7 @@ simulatedevolution:
     title: 'Simulated Evolution'
     subtitle: 'Artificial Life Simulation of Bacteria Motion depending on DNA'
   control:
-    threadSleepTime: 50
+    threadSleepTime: 75
     exitStatus: 0
     queueMaxLength: 1000
   cellConf:
