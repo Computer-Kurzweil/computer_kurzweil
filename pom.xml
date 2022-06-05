@@ -208,7 +208,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <!-- SCM and Releasing with Maven -->
-        <maven.scm.version>1.11.2</maven.scm.version>
+        <maven.scm.version>1.13.0</maven.scm.version>
 
         <!-- maven Plugin Versions -->
         <version.maven-enforcer-plugin>3.0.0</version.maven-enforcer-plugin>

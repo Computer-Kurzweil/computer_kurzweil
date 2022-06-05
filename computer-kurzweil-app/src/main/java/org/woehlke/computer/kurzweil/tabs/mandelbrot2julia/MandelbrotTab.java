@@ -7,7 +7,12 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.canvas.MandelbrotCanvas;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.config.Mandelbrot;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.config.MandelbrotContext;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.MandelbrotModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.views.MandelbrotTabPane;
 
 import java.awt.*;
 import java.awt.event.*;

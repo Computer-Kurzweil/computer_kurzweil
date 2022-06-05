@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.commons.model.fractal;
 
-import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.MandelbrotModel;
-import org.woehlke.computer.kurzweil.tabs.mandelbrotzoom.model.turing.Point;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.MandelbrotModel;
+import org.woehlke.computer.kurzweil.tabs.mandelbrot2julia.model.turing.Point;
 
 import java.io.Serializable;
 import java.util.ArrayDeque;

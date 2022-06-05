@@ -7,13 +7,18 @@ import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
+import org.woehlke.computer.kurzweil.tabs.randomwalk.canvas.RandomWalkCanvas;
+import org.woehlke.computer.kurzweil.tabs.randomwalk.config.RandomWalk;
+import org.woehlke.computer.kurzweil.tabs.randomwalk.config.RandomWalkContext;
+import org.woehlke.computer.kurzweil.tabs.randomwalk.model.RandomWalkModel;
+import org.woehlke.computer.kurzweil.tabs.randomwalk.views.RandomWalkTabPane;
 
 import java.awt.event.ActionEvent;
 
 @Log
 @Getter
 @ToString(callSuper = true, exclude = {"tabCtx"})
-@EqualsAndHashCode(callSuper=true, exclude = {"tabCtx"})
+@EqualsAndHashCode(callSuper = true, exclude = {"tabCtx"})
 public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
 
     private static final long serialVersionUID = 7526471155622776147L;
@@ -29,7 +34,7 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
         this.tabCtx = new RandomWalkContext(this);
         this.canvas = this.tabCtx.getCanvas();
         this.tabModel = this.canvas.getTabModel();
-        this.randomWalkTabPane = new RandomWalkTabPane( this );
+        this.randomWalkTabPane = new RandomWalkTabPane(this);
         this.add(this.panelSubtitle);
         this.add(this.canvas);
         this.add(this.randomWalkTabPane);
@@ -50,7 +55,7 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
         this.ctx.getFrame().pack();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
-        log.info("started with canvas x="+x+" y="+y);
+        log.info("started with canvas x=" + x + " y=" + y);
     }
 
     @Override
@@ -61,15 +66,15 @@ public class RandomWalkTab extends TabPanel implements Tab, RandomWalk {
         this.getTabCtx().stopController();
         int x = this.canvas.getWidth();
         int y = this.canvas.getHeight();
-        log.info("stopped with canvas x="+x+" y="+y);
+        log.info("stopped with canvas x=" + x + " y=" + y);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == this.randomWalkTabPane.getStartButton()){
+        if (ae.getSource() == this.randomWalkTabPane.getStartButton()) {
             super.ctx.getFrame().start();
         }
-        if(ae.getSource() == this.randomWalkTabPane.getStopButton()){
+        if (ae.getSource() == this.randomWalkTabPane.getStopButton()) {
             super.ctx.getFrame().stop();
         }
     }
