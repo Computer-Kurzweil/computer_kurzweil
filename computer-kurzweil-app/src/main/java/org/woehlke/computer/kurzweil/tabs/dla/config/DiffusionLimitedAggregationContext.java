@@ -69,7 +69,7 @@ public class DiffusionLimitedAggregationContext extends ForkJoinTask<Void> imple
     }
 
     @Override
-    protected boolean exec() {
+    public boolean exec() {
         this.tab.repaint();
         return true;
     }

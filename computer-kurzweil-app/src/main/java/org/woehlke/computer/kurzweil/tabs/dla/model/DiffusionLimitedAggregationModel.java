@@ -82,7 +82,7 @@ public class DiffusionLimitedAggregationModel extends ForkJoinTask<Void> impleme
     }
 
     @Override
-    protected boolean exec() {
+    public boolean exec() {
         boolean doIt = false;
         synchronized (running) {
             doIt = running.booleanValue();
