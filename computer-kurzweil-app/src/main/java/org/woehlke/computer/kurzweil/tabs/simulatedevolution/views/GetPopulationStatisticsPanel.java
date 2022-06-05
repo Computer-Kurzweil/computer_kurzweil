@@ -12,17 +12,14 @@ import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.PopulationStatisticsElement;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
-import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.CellLifeCycleStatus.POPULATION;
-
 @Log
 @Getter
-@ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
+@ToString(callSuper = true,exclude = {"tabCtx"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 public class GetPopulationStatisticsPanel extends SubTabImpl implements SimulatedEvolution, SubTab {
 
@@ -30,9 +27,8 @@ public class GetPopulationStatisticsPanel extends SubTabImpl implements Simulate
 
     private final SimulatedEvolutionContext tabCtx;
 
-    private final JTextField populationElement;
-    private final JTextField generationOldestElement;
-    private final JTextField generationYoungestElement;
+    private final JTextField populationnField;
+    private final JTextField worldIterationField;
     private final String borderLabel;
 
     public GetPopulationStatisticsPanel(
@@ -52,25 +48,20 @@ public class GetPopulationStatisticsPanel extends SubTabImpl implements Simulate
         this.setBorder(border);
         ComputerKurzweilProperties.SimulatedEvolution.Population cfg = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation();
         JLabel populationLabel = new JLabel(cfg.getPopulationLabel());
-        JLabel generationOldestLabel =  new JLabel(cfg.getGenerationOldestLabel());
-        JLabel generationYoungestLabel =  new JLabel(cfg.getGenerationYoungestLabel());
-        populationElement = new JTextField("0",3);
-        generationYoungestElement = new JTextField("0",3);
-        generationOldestElement = new JTextField("0",3);
+        JLabel worldIterationLabel =  new JLabel("world iterations");
+        populationnField = new JTextField("0",3);
+        worldIterationField = new JTextField("0",6);
         this.add(populationLabel);
-        this.add(populationElement);
-        this.add(generationOldestLabel);
-        this.add(generationYoungestElement);
-        this.add(generationYoungestLabel);
-        this.add(generationOldestElement);
+        this.add(populationnField);
+        this.add(worldIterationLabel);
+        this.add(worldIterationField);
         update();
     }
 
     public void update() {
         CellPopulationRecord population = tabCtx.getTab().getPopulation();
         //log.info("update with currentGeneration="+population.toString());
-        populationElement.setText(population.getPopulation()+"");
-        generationYoungestElement.setText(population.getGenerationYoungest()+"");
-        generationOldestElement.setText(population.getGenerationOldest()+"");
+        populationnField.setText(population.getPopulation()+"");
+        worldIterationField.setText(population.getWorldIteration()+"");
     }
 }
