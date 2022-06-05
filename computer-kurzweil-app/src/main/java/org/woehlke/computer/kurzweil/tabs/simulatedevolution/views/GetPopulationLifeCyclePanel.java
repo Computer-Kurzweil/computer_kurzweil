@@ -85,7 +85,7 @@ public class GetPopulationLifeCyclePanel extends SubTabImpl
 
     public void update() {
         CellPopulationRecord population = tabCtx.getTab().getPopulation();
-        log.info("update with currentGeneration="+population.toString());
+        //log.info("update with currentGeneration="+population.toString());
         this.youngCellsElement.setText(population.getYoungCells()+"");
         this.youngAndFatCellsElement.setText(population.getYoungAndFatCells()+"");
         this.fullAgeCellsElement.setText(population.getFullAgeCells()+"");

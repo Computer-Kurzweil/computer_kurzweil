@@ -90,7 +90,7 @@ public class WorldLattice implements Startable, SimulatedEvolution, Serializable
     }
 
     private void letFoodGrowWorld() {
-        log.info("letFoodGrowWorld");
+        //log.info("letFoodGrowWorld");
         int food = 0;
         while (food < foodPerDay) {
             food++;

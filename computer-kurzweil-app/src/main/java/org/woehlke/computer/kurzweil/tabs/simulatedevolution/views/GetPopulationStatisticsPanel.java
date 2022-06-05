@@ -78,7 +78,7 @@ public class GetPopulationStatisticsPanel extends SubTabImpl implements Simulate
 
     public void update() {
         CellPopulationRecord population = tabCtx.getTab().getPopulation();
-        log.info("update with currentGeneration="+population.toString());
+        //log.info("update with currentGeneration="+population.toString());
         populationElement.setText(population.getPopulation());
         generationYoungestElement.setText(population.getGenerationYoungest());
         generationOldestElement.setText(population.getGenerationOldest());

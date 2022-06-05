@@ -55,7 +55,7 @@ public class CellPopulationContainer implements SimulatedEvolution, Serializable
         if (statistics.size() > queueMaxLength) {
             statistics.poll();
         }
-        log.info(worldIteration + " : " + populationCensus);
+        //log.info(worldIteration + " : " + populationCensus);
     }
 
     private CellPopulationRecord countPopulation() {
