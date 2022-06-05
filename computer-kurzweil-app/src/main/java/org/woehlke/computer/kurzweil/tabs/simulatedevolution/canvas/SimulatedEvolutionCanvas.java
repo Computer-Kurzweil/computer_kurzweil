@@ -82,13 +82,13 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
    */
   public void paint(Graphics graphics) {
     super.paintComponent(graphics);
-      log.info("paint START (Graphics graphics)");
-      log.info("paint Background (Graphics graphics)");
+      //log.info("paint START (Graphics graphics)");
+      //log.info("paint Background (Graphics graphics)");
       // paint Background
       graphics.setColor(COLOR_WATER.getColor());
       graphics.fillRect(startX, startY, worldX, worldY);
       // paint Food
-      log.info("paint Food (Graphics graphics)");
+      //log.info("paint Food (Graphics graphics)");
       graphics.setColor(COLOR_FOOD.getColor());
       int posX;
       int posY;
@@ -100,7 +100,7 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
           }
       }
       // paint Population
-      log.info("paint Population (Graphics graphics)");
+      //log.info("paint Population (Graphics graphics)");
       List<Cell> population = tabModel.getAllCells();
       for (Cell cell : population) {
           posX = cell.getPosition().getX();
@@ -111,19 +111,19 @@ public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, S
               graphics.drawLine(pixel.getX(), pixel.getY(), pixel.getX(), pixel.getY());
           }
       }
-      log.info("paint DONE (Graphics graphics)");
+      //log.info("paint DONE (Graphics graphics)");
   }
 
   public void update(Graphics graphics) {
-      log.info("update (Graphics graphics)");
+      //log.info("update (Graphics graphics)");
       this.setSize(preferredSize);
       paint(graphics);
-      log.info("updated (Graphics graphics)");
+      //log.info("updated (Graphics graphics)");
   }
 
     @Override
     public void showMe() {
-        log.info("showMe");
+        //log.info("showMe");
         //log.info("this: "+this.toString());
     }
 

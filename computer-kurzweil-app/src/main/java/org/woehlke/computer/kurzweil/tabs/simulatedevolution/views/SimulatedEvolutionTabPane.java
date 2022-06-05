@@ -17,7 +17,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
 
     private static final long serialVersionUID = 7526471155622776147L;
 
-    private final GetPopulationStatisticsElementsLifeCyclePanel statisticsPanelPanelLifeCycle;
+    private final GetPopulationLifeCyclePanel statisticsPanelPanelLifeCycle;
     private final GetPopulationStatisticsPanel statisticsPanelCounted;
     private final SetFoodPerDayPanel setFoodPerDayPanel;
     private final SetGardenOfEdenPanel gardenOfEdenPanel;
@@ -25,7 +25,7 @@ public class SimulatedEvolutionTabPane extends JTabbedPane implements Startable,
     private final PanelStartStopButtons startStopButtonsPanel;
 
     public SimulatedEvolutionTabPane(SimulatedEvolutionTab tab) {
-        this.statisticsPanelPanelLifeCycle = new GetPopulationStatisticsElementsLifeCyclePanel( tab.getTabCtx() );
+        this.statisticsPanelPanelLifeCycle = new GetPopulationLifeCyclePanel( tab.getTabCtx() );
         this.statisticsPanelCounted = new GetPopulationStatisticsPanel( tab.getTabCtx() );
         this.setFoodPerDayPanel = new SetFoodPerDayPanel( tab.getTabCtx() );
         this.gardenOfEdenPanel = new SetGardenOfEdenPanel( tab.getTabCtx() );

@@ -4,9 +4,12 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.experimental.Delegate;
 import lombok.extern.java.Log;
+import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.tabs.TabModel;
 import org.woehlke.computer.kurzweil.commons.model.LatticePoint;
+import org.woehlke.computer.kurzweil.commons.widgets.SubTabImpl;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.WorldParameter;
@@ -15,6 +18,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.cell.Cell;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.world.WorldLattice;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinTask;
@@ -46,10 +50,11 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
 
     private final SimulatedEvolutionContext appCtx;
     private final WorldLattice worldLattice;
+
+    @Delegate(excludes={SubTabImpl.class, JPanel.class, Updateable.class})
     private final CellPopulationContainer populationContainer;
     private final WorldParameter worldParameter;
     private Boolean running;
-    private CellPopulationRecord population;
 
   public SimulatedEvolutionModel(
       SimulatedEvolutionContext appCtx
@@ -60,6 +65,10 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
       this.worldParameter = new WorldParameter();
       this.running = Boolean.FALSE;
       createNewState();
+  }
+
+  public CellPopulationRecord getPopulation(){
+      return populationContainer.getCurrentGeneration();
   }
 
   public boolean hasFood(int x, int y) {
@@ -156,7 +165,6 @@ public class SimulatedEvolutionModel extends ForkJoinTask<Void> implements TabMo
         } else {
             log.info("not stepped");
         }
-        population = populationContainer.getCurrentGeneration();
         return true;
     }
 

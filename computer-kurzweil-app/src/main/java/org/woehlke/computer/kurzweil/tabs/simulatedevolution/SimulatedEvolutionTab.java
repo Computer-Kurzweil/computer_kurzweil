@@ -31,7 +31,9 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     private final SimulatedEvolutionModel tabModel;
     private final SimulatedEvolutionTabPane tabPane;
 
-    private CellPopulationRecord population;
+    public CellPopulationRecord getPopulation(){
+        return this.tabModel.getCurrentGeneration();
+    }
 
     public SimulatedEvolutionTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
@@ -102,12 +104,12 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     }
 
     public void update(){
-        this.population = this.tabModel.getPopulation();
+        this.tabModel.getPopulation();
         this.tabPane.update();
     }
 
     public void updateStep() {
-        this.population = this.tabModel.getPopulation();
+        this.tabModel.getPopulation();
         this.tabPane.updateStep();
     }
 

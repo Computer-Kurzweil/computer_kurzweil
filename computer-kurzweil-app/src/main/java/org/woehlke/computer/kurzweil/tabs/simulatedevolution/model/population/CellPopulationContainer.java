@@ -58,50 +58,45 @@ public class CellPopulationContainer implements SimulatedEvolution, Serializable
         log.info(worldIteration + " : " + populationCensus);
     }
 
-    private void countStatusOfOneCell(CellLifeCycleStatus status, CellPopulationRecord onePopulation) {
-        switch (status) {
-            case YOUNG:
-                onePopulation.countYoungCell();
-                break;
-            case YOUNG_AND_FAT:
-                onePopulation.countYoungAndFatCell();
-                break;
-            case FULL_AGE:
-                onePopulation.countFullAgeCell();
-                break;
-            case HUNGRY:
-                onePopulation.countHungryCell();
-                break;
-            case OLD:
-                onePopulation.countOldCell();
-                break;
-            case DEAD:
-                onePopulation.countDeadCell();
-                break;
+    private CellPopulationRecord countPopulation() {
+        CellPopulationRecord onePopulation = new CellPopulationRecord();
+        for (Cell cell : this.getCells()) {
+            switch (cell.getLifeCycleStatus()) {
+                case YOUNG:
+                    onePopulation.countYoungCell();
+                    break;
+                case YOUNG_AND_FAT:
+                    onePopulation.countYoungAndFatCell();
+                    break;
+                case FULL_AGE:
+                    onePopulation.countFullAgeCell();
+                    break;
+                case HUNGRY:
+                    onePopulation.countHungryCell();
+                    break;
+                case OLD:
+                    onePopulation.countOldCell();
+                    break;
+                case DEAD:
+                    onePopulation.countDeadCell();
+                    break;
+            }
         }
+        this.push(onePopulation);
+        return onePopulation;
+    }
+
+    public CellPopulationRecord addNextPopulation(List<Cell> nextPopulation) {
+        this.cells.clear();
+        this.cells.addAll(nextPopulation);
+        return this.countPopulation();
     }
 
     public CellPopulationRecord getCurrentGeneration() {
         CellPopulationRecord currentGeneration = statistics.peek();
         if(currentGeneration == null){
-            log.info(worldIteration + "statistics.peek() == null ");
-            CellPopulationRecord onePopulation = new CellPopulationRecord();
-            for (Cell cell : this.getCells()) {
-               countStatusOfOneCell(cell.getLifeCycleStatus(), onePopulation);
-            }
-            this.push(onePopulation);
-            currentGeneration = onePopulation;
+            currentGeneration = this.countPopulation();
         }
         return currentGeneration;
-    }
-
-    public void addNextPopulation(List<Cell> nextPopulation) {
-        cells.clear();
-        cells.addAll(nextPopulation);
-        CellPopulationRecord onePopulation = new CellPopulationRecord();
-        for (Cell cell : this.getCells()) {
-            countStatusOfOneCell(cell.getLifeCycleStatus(),onePopulation);
-        }
-        this.push(onePopulation);
     }
 }
