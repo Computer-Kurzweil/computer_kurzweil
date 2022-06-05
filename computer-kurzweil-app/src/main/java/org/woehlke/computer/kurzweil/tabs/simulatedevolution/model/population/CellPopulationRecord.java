@@ -15,18 +15,18 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CellPopulationRecord implements SimulatedEvolution, Serializable {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+   private static final long serialVersionUID = 7526471155622776147L;
 
-   private int youngCells;
-   private int youngAndFatCells;
-   private int fullAgeCells;
-   private int hungryCells;
-   private int oldCells;
-   private int deadCells;
-   private int population;
-   private long generationYoungest;
-   private long generationOldest;
-   private long worldIteration;
+   private int youngCells = 0;
+   private int youngAndFatCells = 0;
+   private int fullAgeCells = 0;
+   private int hungryCells = 0;
+   private int oldCells = 0;
+   private int deadCells = 0;
+   private int population=0;
+   private long generationYoungest=0;
+   private long generationOldest=0;
+   private long worldIteration=0;
 
    public void countYoungCell(){
        this.population++;
@@ -50,12 +50,12 @@ public class CellPopulationRecord implements SimulatedEvolution, Serializable {
 
     public void countOldCell(){
         this.population++;
-        oldCells++;
+        this.oldCells++;
     }
 
     public void countDeadCell(){
         this.population++;
-        deadCells++;
+        this.deadCells++;
     }
 
 }
