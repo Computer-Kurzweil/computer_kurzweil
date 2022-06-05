@@ -14,6 +14,7 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvo
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.population.PopulationStatisticsElement;
 
+import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
@@ -29,19 +30,10 @@ public class GetPopulationStatisticsPanel extends SubTabImpl implements Simulate
 
     private final SimulatedEvolutionContext tabCtx;
 
-    private final PopulationStatisticsElement populationElement;
-    private final PopulationStatisticsElement generationOldestElement;
-    private final PopulationStatisticsElement generationYoungestElement;
+    private final JTextField populationElement;
+    private final JTextField generationOldestElement;
+    private final JTextField generationYoungestElement;
     private final String borderLabel;
-
-    private final int initialPopulation;
-    private final String populationLabel;
-    private final String generationOldestLabel;
-    private final String generationYoungestLabel;
-
-    private final CompoundBorder border;
-    private final FlowLayoutCenter layout;
-    private final FlowLayout layoutSubPanel;
 
     public GetPopulationStatisticsPanel(
         SimulatedEvolutionContext tabCtx
@@ -51,36 +43,34 @@ public class GetPopulationStatisticsPanel extends SubTabImpl implements Simulate
             tabCtx.getCtx().getProperties()
         );
         this.tabCtx = tabCtx;
-        layoutSubPanel = new FlowLayout();
+        FlowLayout layoutSubPanel = new FlowLayout();
         this.setLayout(layoutSubPanel);
         borderLabel = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation().getPanelPopulationStatistics();
-        layout = new FlowLayoutCenter();
-        border = tabCtx.getCtx().getBottomButtonsPanelBorder(borderLabel);
+        FlowLayoutCenter layout = new FlowLayoutCenter();
+        CompoundBorder border = tabCtx.getCtx().getBottomButtonsPanelBorder(borderLabel);
         this.setLayout(layout);
         this.setBorder(border);
         ComputerKurzweilProperties.SimulatedEvolution.Population cfg = this.tabCtx.getCtx().getProperties().getSimulatedevolution().getPopulation();
-        initialPopulation = cfg.getInitialPopulation();
-        populationLabel = cfg.getPopulationLabel();
-        generationOldestLabel = cfg.getGenerationOldestLabel();
-        generationYoungestLabel = cfg.getGenerationYoungestLabel();
-        populationElement = new PopulationStatisticsElement(populationLabel,POPULATION);
-        generationYoungestElement = new PopulationStatisticsElement(generationYoungestLabel,POPULATION);
-        generationOldestElement = new PopulationStatisticsElement(generationOldestLabel,POPULATION);
-        PopulationStatisticsElement[] elements = {
-            populationElement,
-            generationYoungestElement,
-            generationOldestElement
-        };
-        for(PopulationStatisticsElement ps : elements){
-            this.add(ps);
-        }
+        JLabel populationLabel = new JLabel(cfg.getPopulationLabel());
+        JLabel generationOldestLabel =  new JLabel(cfg.getGenerationOldestLabel());
+        JLabel generationYoungestLabel =  new JLabel(cfg.getGenerationYoungestLabel());
+        populationElement = new JTextField("0",3);
+        generationYoungestElement = new JTextField("0",3);
+        generationOldestElement = new JTextField("0",3);
+        this.add(populationLabel);
+        this.add(populationElement);
+        this.add(generationOldestLabel);
+        this.add(generationYoungestElement);
+        this.add(generationYoungestLabel);
+        this.add(generationOldestElement);
+        update();
     }
 
     public void update() {
         CellPopulationRecord population = tabCtx.getTab().getPopulation();
         //log.info("update with currentGeneration="+population.toString());
-        populationElement.setText(population.getPopulation());
-        generationYoungestElement.setText(population.getGenerationYoungest());
-        generationOldestElement.setText(population.getGenerationOldest());
+        populationElement.setText(population.getPopulation()+"");
+        generationYoungestElement.setText(population.getGenerationYoungest()+"");
+        generationOldestElement.setText(population.getGenerationOldest()+"");
     }
 }
