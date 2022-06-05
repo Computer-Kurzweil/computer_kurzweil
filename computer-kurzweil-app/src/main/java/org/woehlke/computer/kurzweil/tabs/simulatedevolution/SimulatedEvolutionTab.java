@@ -8,7 +8,12 @@ import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
-import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.SimulatedEvolutionPopulation;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.SimulatedEvolutionCanvas;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolution;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.config.SimulatedEvolutionContext;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.SimulatedEvolutionModel;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population.CellPopulationRecord;
+import org.woehlke.computer.kurzweil.tabs.simulatedevolution.views.SimulatedEvolutionTabPane;
 
 import java.awt.event.ActionEvent;
 
@@ -26,7 +31,9 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     private final SimulatedEvolutionModel tabModel;
     private final SimulatedEvolutionTabPane tabPane;
 
-    private SimulatedEvolutionPopulation population;
+    public CellPopulationRecord getPopulation(){
+        return this.tabModel.getCurrentGeneration();
+    }
 
     public SimulatedEvolutionTab(ComputerKurzweilTabbedPane tabbedPane) {
         super(tabbedPane, TAB_TYPE);
@@ -70,17 +77,22 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == this.tabPane.getFoodPerDayPanel().getFoodPerDayIncreaseButton()) {
+        if (ae.getSource() == this.tabPane.getSetFoodPerDayPanel().getFoodPerDayIncreaseButton()) {
             log.info("actionPerformed: increaseFoodPerDay");
             this.tabModel.increaseFoodPerDay();
             this.update();
-        } else if (ae.getSource() == this.tabPane.getFoodPerDayPanel().getFoodPerDayDecreaseButton()) {
+        } else if (ae.getSource() == this.tabPane.getSetFoodPerDayPanel().getFoodPerDayDecreaseButton()) {
             log.info("actionPerformed: decreaseFoodPerDay");
             this.tabModel.decreaseFoodPerDay();
             this.update();
-        } else if (ae.getSource() == this.tabPane.getGardenOfEdenPanel().getButtonToggleGardenOfEden()) {
+        } else if (ae.getSource() == this.tabPane.getGardenOfEdenPanel().getButtonRestart()) {
             log.info("actionPerformed: toggleGardenOfEden");
-            this.tabModel.toggleGardenOfEden();
+            if( this.tabPane.getGardenOfEdenPanel().getGardenOfEdenEnabled().isSelected()){
+                this.tabModel.setGardenOfEdenEnabled();
+            } else {
+                this.tabModel.setGardenOfEdenDisabled();
+            }
+            this.tabPane.getGardenOfEdenPanel().update();
             this.update();
         }
         if(ae.getSource() == this.tabPane.getStartStopButtonsPanel().getStartButton()){
@@ -92,13 +104,13 @@ public class SimulatedEvolutionTab extends TabPanel implements Tab, SimulatedEvo
     }
 
     public void update(){
-        if(this.population!= null){
-            this.tabPane.update();
-        }
-    }
-
-    public void update(SimulatedEvolutionPopulation population) {
-        this.population = population;
+        this.tabModel.getPopulation();
         this.tabPane.update();
     }
+
+    public void updateStep() {
+        this.tabModel.getPopulation();
+        this.tabPane.updateStep();
+    }
+
 }

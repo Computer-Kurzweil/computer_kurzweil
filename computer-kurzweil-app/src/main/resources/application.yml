@@ -5,7 +5,7 @@ allinone:
   view:
     title: 'Computer Kurzweil'
     subtitle: 'Scientific Imfotainment'
-    copyright: '(c) 2020 Thomas Woehlke'
+    copyright: '(c) 2022 Thomas Woehlke'
     borderPaddingX: 5
     borderPaddingY: 5
     titleHeight: 60

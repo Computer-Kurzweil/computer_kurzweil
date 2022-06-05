@@ -9,6 +9,11 @@ import org.woehlke.computer.kurzweil.tabs.ComputerKurzweilTabbedPane;
 import org.woehlke.computer.kurzweil.tabs.TabPanel;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 import org.woehlke.computer.kurzweil.tabs.TabType;
+import org.woehlke.computer.kurzweil.tabs.cca.canvas.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomaton;
+import org.woehlke.computer.kurzweil.tabs.cca.config.CyclicCellularAutomatonContext;
+import org.woehlke.computer.kurzweil.tabs.cca.model.CyclicCellularAutomatonModel;
+import org.woehlke.computer.kurzweil.tabs.cca.views.CyclicCellularAutomatonTabPane;
 
 import java.awt.event.ActionEvent;
 
@@ -39,6 +44,7 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
         this.ctx.getFrame().pack();
         this.tabModel.stop();
         this.cyclicCellularAutomatonTabPane.stop();
+        this.cyclicCellularAutomatonTabPane.getButtonRestart().addActionListener(this);
     }
 
     @Override
@@ -67,15 +73,17 @@ public class CyclicCellularAutomatonTab extends TabPanel implements Tab, CyclicC
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonVonNeumann()) {
-            this.tabModel.startWithNeighbourhoodVonNeumann();
-            this.start();
-        } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonMoore()) {
-            this.tabModel.startWithNeighbourhoodMoore();
-            this.start();
-        } else if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonWoehlke()) {
-            this.tabModel.startWithNeighbourhoodWoehlke();
-            this.start();
+        if (ae.getSource() ==  this.cyclicCellularAutomatonTabPane.getButtonRestart()) {
+            if (this.cyclicCellularAutomatonTabPane.getButtonVonNeumann().isSelected()) {
+                this.tabModel.startWithNeighbourhoodVonNeumann();
+                this.start();
+            } else if (this.cyclicCellularAutomatonTabPane.getButtonMoore().isSelected()) {
+                this.tabModel.startWithNeighbourhoodMoore();
+                this.start();
+            } else if (this.cyclicCellularAutomatonTabPane.getButtonWoehlke().isSelected()) {
+                this.tabModel.startWithNeighbourhoodWoehlke();
+                this.start();
+            }
         }
         if(ae.getSource() == this.cyclicCellularAutomatonTabPane.getStartButton()){
             super.ctx.getFrame().start();
