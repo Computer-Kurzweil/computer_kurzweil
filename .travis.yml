@@ -2,6 +2,8 @@ os: linux
 dist: bionic
 language: java
 jdk: openjdk11
+env:
+  - COMPOSE_FILE=docker-compose.yml:docker-compose.override.travis.yml
 script:
   - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - ./mvnw test -B
