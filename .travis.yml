@@ -3,12 +3,8 @@ dist: bionic
 language: java
 jdk: openjdk11
 script:
-  - ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
-  - ./mvnw -e -DskipTests=true -B -V clean
-  - ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources
-  - ./mvnw -e -DskipTests=true -B -V dependency:tree
-  - ./mvnw -e -DskipTests=true -B -V clean install
-  - ./mvnw -e -DskipTests=true -B -V site
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - ./mvnw test -B
 notifications:
   email:
     - thomas.woehlke@gmail.com
