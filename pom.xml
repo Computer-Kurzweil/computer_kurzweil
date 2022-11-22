@@ -284,8 +284,8 @@
         <pmdVersion>6.29.0</pmdVersion>
         <version.maven-pdf-plugin>1.4</version.maven-pdf-plugin>
 
-        <maven.repository.local>${project.basedir}/mvn-repository/</maven.repository.local>
-        <directory.etc>${project.basedir}/src/site/resources/checkstyle/</directory.etc>
+        <maven.repository.local>${maven.multiModuleProjectDirectory}/mvn-repository/</maven.repository.local>
+        <directory.etc>${maven.multiModuleProjectDirectory}/src/site/resources/checkstyle/</directory.etc>
     </properties>
 
     <dependencyManagement>
