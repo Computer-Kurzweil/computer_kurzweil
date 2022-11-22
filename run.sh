@@ -28,5 +28,7 @@ function main() {
     #makeRelease
     run
 }
+#main
 
-main
+cd ./computer-kurzweil-app
+./run.sh
