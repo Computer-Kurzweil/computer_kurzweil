@@ -10,8 +10,8 @@
     </skin>
     <bannerLeft>
         <name>Computer Kurzweil</name>
-        <src>/images/phasenraum_logo.gif</src>
-        <href>https://woehlke.org/p/computer_kurzweil/</href>
+        <src>img/phasenraum_logo.gif</src>
+        <href>https://java.woehlke.org/computer_kurzweil/</href>
     </bannerLeft>
     <body>
         <menu ref="modules"/>

@@ -20,7 +20,7 @@
         The Article Series "Computer Kurzweil" were also published as Books.
         Content: Cellular Automata, Fractal Geometry, Artficial Life, Simulation,
         Automata and Turing Machines, Systems Theory.</description>
-    <url>https://homepage.ruhr-uni-bochum.de/Thomas.Woehlke/java/computer_kurzweil</url>
+    <url>https://java.woehlke.org/computer_kurzweil</url>
     <inceptionYear>2013</inceptionYear>
 
     <scm>
@@ -284,8 +284,8 @@
         <pmdVersion>6.29.0</pmdVersion>
         <version.maven-pdf-plugin>1.4</version.maven-pdf-plugin>
 
-        <maven.repository.local>${maven.multiModuleProjectDirectory}/mvn-repository/</maven.repository.local>
-        <directory.etc>${maven.multiModuleProjectDirectory}/src/site/resources/checkstyle/</directory.etc>
+        <maven.repository.local>${project.basedir}/mvn-repository/</maven.repository.local>
+        <directory.etc>${project.basedir}/src/site/resources/checkstyle/</directory.etc>
     </properties>
 
     <dependencyManagement>

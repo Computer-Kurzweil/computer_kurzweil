@@ -16,7 +16,7 @@ Content: Cellular Automata, Fractal Geometry, Artficial Life, Simulation, Automa
 * Cyclic Cellular Automaton (CCA). 
 * More to follow
 ## Computing the Edge of the Mandelbrot Set with a Turing Machine
-![Computing the Area outside the Mandelbrot Set](../resources/img/mandelbrot/screen03.png)
+![Computing the Area outside the Mandelbrot Set](img/mandelbrot/screen03.png)
 
 The Mandelbrot set is the set of values of c in the complex plane for which the orbit of 0 
 under iteration of the complex quadratic polynomial z_(n+1)=z_n^2+c remains bounded.
@@ -26,7 +26,7 @@ and applying the iteration repeatedly, the absolute value of zn remains bounded
 however large n gets. **[More...](Tab_Mandelbrot.md)**
 
 ## Simulated Evolution
-![Early Screen](../resources/img/simulatedevolution/screen1.png)
+![Early Screen](img/simulatedevolution/screen1.png)
 
 Green food appears in a world with red moving cells. These cells eat the food if it is on their position.
 Movement of the cells depends on random and their DNA. A fit cellConf moves around and eats enough to reproduce.
@@ -34,7 +34,7 @@ Reproduction is done by splitting the cellConf and randomly changing the DNA of 
 If a cellConf doesn't eat enough, it will first stand still and after a while it dies. **[More...](Tab_SimulatedEvolution.md)**
 
 ## Diffusion-limited aggregation (DLA) 
-![The Dendrite after a while](../resources/img/dla/screen2.png)
+![The Dendrite after a while](img/dla/screen2.png)
 
 Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to Brownian motion cluster together to form aggregates of such particles.
 
@@ -45,7 +45,7 @@ Hele-Shaw flow, mineral deposits, and dielectric breakdown.
 The clusters formed in DLA processes are referred to as Brownian trees. These clusters are an example of a fractal. **[More...](Tab_DiffusionLimitedAggregation.md)**
 
 ## Cyclic Cellular Automaton (CCA)
-![Later Screen](../resources/img/cca/screen2.png)
+![Later Screen](img/cca/screen2.png)
 
 The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers. In this system, each cellConf remains unchanged until some neighboring cellConf has a modular value exactly one unit larger than that of the cellConf itself, at which point it copies its neighbor's value.
 One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior. 
