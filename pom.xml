@@ -270,98 +270,11 @@
         <version.log4j2>2.19.0</version.log4j2>
         <version.lombok>1.18.24</version.lombok>
         <version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
-
         <!--
-
-        <java.version>11</java.version>
-        <version.maven>3.6.3</version.maven>
-
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-
-        SCM and Releasing with Maven
-        <maven.scm.version>1.13.0</maven.scm.version>
-
-        maven Plugin Versions
-        <version.maven-enforcer-plugin>3.0.0</version.maven-enforcer-plugin>
-        <version.maven-dependency-plugin>3.2.0</version.maven-dependency-plugin>
-        <version.maven-clean-plugin>3.1.0</version.maven-clean-plugin>
-        <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
-        <version.maven-resources-plugin>3.2.0</version.maven-resources-plugin>
-        <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
-        <version.maven-install-plugin>3.0.0-M1</version.maven-install-plugin>
-        <version.maven-war-plugin>3.3.1</version.maven-war-plugin>
-        <version.maven-surefire-plugin.junit4>3.0.0-M5</version.maven-surefire-plugin.junit4>
-        <version.maven-surefire-plugin>3.0.0-M5</version.maven-surefire-plugin>
-        <version.maven-failsafe-plugin>3.0.0-M5</version.maven-failsafe-plugin>
-        <version.maven-invoker-plugin>3.2.2</version.maven-invoker-plugin>
-        <version.maven-javadoc-plugin>3.3.0</version.maven-javadoc-plugin>
-        <version.maven-shade-plugin>3.2.4</version.maven-shade-plugin>
-        <version.maven-jar-plugin>3.2.0</version.maven-jar-plugin>
-        <version.maven-assembly-plugin>3.3.0</version.maven-assembly-plugin>
-        <version.maven-deploy-plugin>3.0.0-M1</version.maven-deploy-plugin>
-        <version.maven-help-plugins>3.2.0</version.maven-help-plugins>
-        <version.maven-toolchains-plugin>3.0.0</version.maven-toolchains-plugin>
-        <version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
-        <version.org.projectlombok.lombok>1.18.20</version.org.projectlombok.lombok>
-        <version.jaxb2-maven-plugin>2.5.0</version.jaxb2-maven-plugin>
-        <version.resources-optimizer-maven-plugin>2.3.4</version.resources-optimizer-maven-plugin>
-        <version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
-        <version.spotbugs-maven-plugin>4.3.0</version.spotbugs-maven-plugin>
-        <version.com.github.spotbugs.spotbugs>4.3.0</version.com.github.spotbugs.spotbugs>
-        <version.maven-release-plugin>3.0.0-M4</version.maven-release-plugin>
-        <version.artifactory-maven-plugin>3.2.3</version.artifactory-maven-plugin>
-        <version.maven-help-plugin>3.2.0</version.maven-help-plugin>
-        <version.maven-scm-publish-plugin>3.1.0</version.maven-scm-publish-plugin>
-        <version.exec-maven-plugin>3.0.0</version.exec-maven-plugin>
-        <version.maven-default-skin>1.3</version.maven-default-skin>
-        <version.artifactory-maven-plugin>3.2.3</version.artifactory-maven-plugin>
-        <version.maven-wrapper-plugin>3.0.2</version.maven-wrapper-plugin>
-
-        - reporting: maven-site -
-        <version.maven-site-plugin>3.9.1</version.maven-site-plugin>
-        <version.maven-project-info-reports-plugin>3.1.2</version.maven-project-info-reports-plugin>
-        <version.maven-checkstyle-plugin>3.1.2</version.maven-checkstyle-plugin>
-        <version.maven-checkstyle-plugin.checkstyle>8.31</version.maven-checkstyle-plugin.checkstyle>
-        <version.maven-jxr-plugin>3.1.1</version.maven-jxr-plugin>
-        <version.maven-pmd-plugin>3.14.0</version.maven-pmd-plugin>
-        <version.maven-pmd-plugin.version.pmd>6.36.0</version.maven-pmd-plugin.version.pmd>
-        <version.maven-surefire-report-plugin>3.0.0-M5</version.maven-surefire-report-plugin>
-        <version.org.apache.maven.skins.maven-default-skin>1.3</version.org.apache.maven.skins.maven-default-skin>
-
-        <version.doxia-module>1.9.1</version.doxia-module>
-
-        - Unit and Integration Testing -
-        <junit-jupiter.version>5.7.2</junit-jupiter.version>
-        <xmlunit2.version>2.6.4</xmlunit2.version>
-        <htmlunit.version>2.36.0</htmlunit.version>
-        <hamcrest.version>2.1</hamcrest.version>
-        <lombok.version>1.18.12</lombok.version>
-        <jsoup.version>1.14.1</jsoup.version>
-
-        <skipIntegrationTests>true</skipIntegrationTests>
-
-         Application Libs
-        <org.apache.commons-lang3.version>3.12.0</org.apache.commons-lang3.version>
-        <jackson.databind.version>2.12.4</jackson.databind.version>
-        <org.yaml.snakeyaml.version>1.31</org.yaml.snakeyaml.version>
-        <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
-        <com.google.guava.version>30.1.1-jre</com.google.guava.version>
-        <junit4.version>4.13</junit4.version>
-        <junit5.version>5.7.2</junit5.version>
-        <log4j2.version>2.14.1</log4j2.version>
-        <lombok.version>1.18.12</lombok.version>
-        <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
-
-        <pmdVersion>6.29.0</pmdVersion>
         <version.maven-pdf-plugin>1.4</version.maven-pdf-plugin>
-
         <maven.repository.local>${maven.multiModuleProjectDirectory}/mvn-repository/</maven.repository.local>
         <directory.etc>${maven.multiModuleProjectDirectory}/src/site/resources/checkstyle/</directory.etc>
         -->
-
     </properties>
 
     <dependencyManagement>
