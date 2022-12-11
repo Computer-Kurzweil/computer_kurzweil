@@ -5,9 +5,9 @@ Fractals and random walk due to Brownian motion cluster
 *[back...](TABS.md)* 
 ## Screenshots
 
-![The Dendrite](../../../../etc/tabs/img/dla/screen1.png)
+![The Dendrite](img/dla/screen1.png)
 
-![The Dendrite after a while](../../../../etc/tabs/img/dla/screen2.png)
+![The Dendrite after a while](img/dla/screen2.png)
 
 ## Abstract
 
@@ -25,17 +25,17 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 
 
 ## Goto
-| Work in Progress | Github                          |
-|------------------|---------------------------------|
-| *[Tabs](Tabs.md)* | &nbsp; |
-| &nbsp; | &nbsp; |
-| [Projects](Projects.md)       | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects) |
-| [Milestones](Milestones.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
-| [Issues](Issues.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues) |
-| [Releases](Releases.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases) |
-| [Engineering](Enineering.md) | &nbsp; |
-| &nbsp; | &nbsp; |
-| *[back...](../../../README.md)* | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)* |
+| Work in Progress             | Github                                                                                 |
+|------------------------------|----------------------------------------------------------------------------------------|
+| *[Tabs](Tabs.md)*            | &nbsp;                                                                                 |
+| &nbsp;                       | &nbsp;                                                                                 |
+| [Projects](Projects.md)      | [Github-Projects](https://github.com/Computer-Kurzweil/computer_kurzweil/projects)     |
+| [Milestones](Milestones.md)  | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
+| [Issues](Issues.md)          | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues)         |
+| [Releases](Releases.md)      | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases)     |
+| [Engineering](Enineering.md) | &nbsp;                                                                                 |
+| &nbsp;                       | &nbsp;                                                                                 |
+| *[back...](README.md)*       | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)*          |
 
 ## Copyright
 [&copy; 2020 Thomas W&ouml;hlke](LICENSE.code.md)
