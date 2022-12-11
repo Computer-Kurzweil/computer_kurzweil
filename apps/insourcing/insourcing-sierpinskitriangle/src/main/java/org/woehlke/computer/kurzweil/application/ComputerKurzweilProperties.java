@@ -6,9 +6,9 @@ import lombok.*;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;

@@ -6,9 +6,10 @@ import lombok.*;
 import lombok.extern.java.Log;
 import org.woehlke.computer.kurzweil.tabs.TabType;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.io.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -48,14 +49,16 @@ public class ComputerKurzweilProperties implements Serializable {
         ////@Validated
         @ToString
         public static class Lattice {
-            @NotNull  @Getter @Setter private Integer width;
+            @NotNull
+            @Getter @Setter private Integer width;
             @NotNull  @Getter @Setter private Integer height;
         }
 
         ////@Validated
         @ToString
         public static class View {
-            @NotBlank @Getter @Setter private String title;
+            @NotBlank
+            @Getter @Setter private String title;
             @NotBlank @Getter @Setter private String subtitle;
             @NotBlank @Getter @Setter private String copyright;
             @NotNull  @Getter @Setter private Integer borderPaddingX;
