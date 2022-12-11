@@ -1,7 +1,7 @@
 os: linux
 dist: bionic
 language: java
-jdk: openjdk11
+jdk: openjdk17
 env:
   - COMPOSE_FILE=docker-compose.yml:docker-compose.override.travis.yml
 script:
