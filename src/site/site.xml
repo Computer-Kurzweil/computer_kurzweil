@@ -11,7 +11,7 @@
     <bannerLeft>
         <name>Computer Kurzweil</name>
         <src>/img/phasenraum_logo.gif</src>
-        <href>https://java.woehlke.org/computer_kurzweil/</href>
+        <href>https://java.woehlke.org/</href>
     </bannerLeft>
     <publishDate position="navigation-bottom"/>
     <poweredBy>
@@ -29,12 +29,12 @@
         <menu ref="modules"/>
         <menu name="Overview" inherit="top">
             <item name="Home" href="index.html" />
-            <item name="License" href="LICENSE.html" />
-            <item name="Copyright" href="LICENSE.code.html" />
             <item name="Fork on GitHub" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
             <item name="Blog" href="https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html" />
             <item name="Issues" href="https://github.com/Computer-Kurzweil/computer_kurzweil/issues/" />
             <item name="Donate" href="https://www.paypal.me/ThomasWoehlke" />
+            <item name="License" href="LICENSE.html" />
+            <item name="Copyright" href="LICENSE.code.html" />
         </menu>
         <menu name="Contribute" inherit="bottom">
             <item name="Home" href="index.html" />
