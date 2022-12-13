@@ -12,6 +12,6 @@
     <packaging>pom</packaging>
 
     <name>Research :: Java Swing Prototype :: Intellij</name>
-    <description>TODO dsadas</description>
+    <description>Experimenting with Intellij Gui Builder</description>
 
 </project>

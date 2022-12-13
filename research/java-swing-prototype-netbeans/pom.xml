@@ -12,5 +12,5 @@
     <packaging>pom</packaging>
 
     <name>Research :: Java Swing Prototype :: Netbeans</name>
-    <description>TODO dsadas</description>
+    <description>Experimenting with Netbeans Gui Builder</description>
 </project>

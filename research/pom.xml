@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
 
     <name>Research</name>
-    <description>TODO dsadas</description>
+    <description>Projects for Experiments</description>
 
     <modules>
         <module>java-swing-prototype-intellij</module>
