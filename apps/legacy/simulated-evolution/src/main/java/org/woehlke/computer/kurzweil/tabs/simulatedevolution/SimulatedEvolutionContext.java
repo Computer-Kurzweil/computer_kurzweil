@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.commons.tabs.TabContext;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.WorldPoint;
@@ -12,14 +12,18 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.WorldPoint;
 import java.util.concurrent.ForkJoinTask;
 
 import static java.lang.Thread.State.NEW;
-
-@Log
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
+@Log4j2
 @Getter
 @ToString(callSuper = false, exclude={"ctx","controller","tab"})
 @EqualsAndHashCode(callSuper = false, exclude={"ctx","controller","tab"})
 public class SimulatedEvolutionContext extends ForkJoinTask<Void> implements TabContext, SimulatedEvolution {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private final ComputerKurzweilContext ctx;
     private final SimulatedEvolutionTab tab;

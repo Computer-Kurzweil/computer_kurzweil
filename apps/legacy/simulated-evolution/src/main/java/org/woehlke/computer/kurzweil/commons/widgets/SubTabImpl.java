@@ -10,11 +10,16 @@ import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.event.KeyEvent;
 
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
 @Getter
 @ToString
 public abstract class SubTabImpl extends JPanel implements HasTabTitle {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private final String title;
     private final String subTitle;

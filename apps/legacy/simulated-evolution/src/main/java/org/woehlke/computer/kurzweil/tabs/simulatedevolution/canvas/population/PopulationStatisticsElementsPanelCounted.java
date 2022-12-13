@@ -4,7 +4,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.canvas.population;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.Updateable;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
@@ -20,13 +20,18 @@ import java.awt.*;
 import static org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.LifeCycleStatus.POPULATION;
 
 
-@Log
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
+@Log4j2
 @Getter
 @ToString(callSuper = true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 @EqualsAndHashCode(callSuper=true,exclude = {"tabCtx","border","layout","layoutSubPanel"})
 public class PopulationStatisticsElementsPanelCounted extends SubTabImpl implements SimulatedEvolution, SubTab, Updateable {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private final PopulationStatisticsElement populationElement;
     private final PopulationStatisticsElement generationOldestElement;

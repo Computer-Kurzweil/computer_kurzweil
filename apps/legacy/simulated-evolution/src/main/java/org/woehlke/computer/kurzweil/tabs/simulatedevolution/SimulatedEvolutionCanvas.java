@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.tabs.TabCanvas;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.Cell;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.WorldPoint;
@@ -16,16 +16,16 @@ import java.util.List;
  * View for the World Data Model for Displaying Food and Bacteria Cells.
  *
  * &copy; 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://java.woehlke.org/simulated-evolution/
  * @author Thomas Woehlke
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-@Log
+@Log4j2
 @Getter
 public class SimulatedEvolutionCanvas extends JComponent implements TabCanvas, SimulatedEvolution {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    static final long serialVersionUID = 242L;
 
     /**
      * Reference to the Data Model.

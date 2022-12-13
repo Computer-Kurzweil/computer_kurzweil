@@ -4,20 +4,25 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
 
-@Log
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
+@Log4j2
 @Getter
 @ToString
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Bounds implements Serializable {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private final int myStartX;
     private final int myStartY;

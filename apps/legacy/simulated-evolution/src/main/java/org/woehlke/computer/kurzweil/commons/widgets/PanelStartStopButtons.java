@@ -2,17 +2,22 @@ package org.woehlke.computer.kurzweil.commons.widgets;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.commons.Startable;
 import org.woehlke.computer.kurzweil.tabs.Tab;
 
 import javax.swing.*;
 
-@Log
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
+@Log4j2
 @ToString(exclude={"startButton","stopButton"})
 public class PanelStartStopButtons extends SubTabImpl implements Startable, SubTab {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private final String labelStart;
     private final String labelStop;

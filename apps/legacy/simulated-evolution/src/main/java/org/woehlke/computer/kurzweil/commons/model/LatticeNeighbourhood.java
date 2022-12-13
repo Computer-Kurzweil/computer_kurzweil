@@ -3,17 +3,22 @@ package org.woehlke.computer.kurzweil.commons.model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
 
-@Log
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
+@Log4j2
 @Getter
 @ToString
 @EqualsAndHashCode
 public class LatticeNeighbourhood implements Serializable {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private final LatticeNeighbourhoodType neighbourhoodType;
     private final int maxX;

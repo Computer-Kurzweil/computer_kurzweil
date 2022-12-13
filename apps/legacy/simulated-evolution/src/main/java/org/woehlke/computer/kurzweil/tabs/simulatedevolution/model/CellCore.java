@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,17 +13,17 @@ import java.util.ArrayList;
  * The CellCore contains the DNA which has influence on orientation at moving.
  *
  * &copy; 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://java.woehlke.org/simulated-evolution/
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 19:55:23
  */
-@Log
+@Log4j2
 @ToString(exclude = {"random"})
 @EqualsAndHashCode(exclude = {"random"})
 public class CellCore implements Serializable {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     /**
      * The DNA Values of the Genome.

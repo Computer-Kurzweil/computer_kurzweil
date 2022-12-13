@@ -11,7 +11,11 @@ import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.Latt
 
 /**
  * Cyclic Cellular Automaton.
- *
+ * <p>
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * @see <a href="https://java.woehlke.org/cyclic-cellular-automaton">Maven Project Page</a>
+ * @author Thomas Woehlke
+ * <p>
  * Created with IntelliJ IDEA.
  * Date: 28.08.13
  * Time: 12:39
@@ -36,7 +40,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
         startVonNeumann();
     }
 
-    private void initCreateLattice(){
+    private void initCreateLattice() {
         lattice = new int[2]
             [(int) this.ctx.getConfig().getLatticeDimensions().getX()]
             [(int) this.ctx.getConfig().getLatticeDimensions().getY()];
@@ -44,26 +48,26 @@ public class CyclicCellularAutomatonLattice implements Serializable {
         target = 1;
     }
 
-    private void initFillLatticeByRandom(){
-        for(int y = 0; y<this.ctx.getConfig().getLatticeDimensions().getY(); y++){
-            for(int x = 0; x<this.ctx.getConfig().getLatticeDimensions().getX(); x++){
+    private void initFillLatticeByRandom() {
+        for (int y = 0; y < this.ctx.getConfig().getLatticeDimensions().getY(); y++) {
+            for (int x = 0; x < this.ctx.getConfig().getLatticeDimensions().getX(); x++) {
                 lattice[source][x][y] = random.nextInt(ctx.getColorScheme().getMaxState());
             }
         }
     }
 
-    public synchronized void step(){
+    public synchronized void step() {
         //System.out.print(".");
         Point worldDimensions = this.ctx.getConfig().getLatticeDimensions();
-        for(int y = 0; y < worldDimensions.getY(); y++){
-            for(int x = 0; x < worldDimensions.getX(); x++){
+        for (int y = 0; y < worldDimensions.getY(); y++) {
+            for (int x = 0; x < worldDimensions.getX(); x++) {
                 lattice[target][x][y] = lattice[source][x][y];
                 int nextState = (lattice[source][x][y] + 1) % ctx.getColorScheme().getMaxState();
-                int west = (int) ((x-1+worldDimensions.getX())%worldDimensions.getX());
-                int north = (int) ((y-1+worldDimensions.getY())%worldDimensions.getY());
-                int east = (int) ((x+1+worldDimensions.getX())%worldDimensions.getX());
-                int south = (int) ((y+1+worldDimensions.getY())%worldDimensions.getY());
-                if(neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == WOEHLKE_NEIGHBORHOOD) {
+                int west = (int) ((x - 1 + worldDimensions.getX()) % worldDimensions.getX());
+                int north = (int) ((y - 1 + worldDimensions.getY()) % worldDimensions.getY());
+                int east = (int) ((x + 1 + worldDimensions.getX()) % worldDimensions.getX());
+                int south = (int) ((y + 1 + worldDimensions.getY()) % worldDimensions.getY());
+                if (neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == WOEHLKE_NEIGHBORHOOD) {
                     //North-West
                     if (nextState == lattice[source][west][north]) {
                         lattice[target][x][y] = nextState;
@@ -74,7 +78,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
                         lattice[target][x][y] = nextState;
                         continue;
                     }
-                    if(neighbourhood == MOORE_NEIGHBORHOOD) {
+                    if (neighbourhood == MOORE_NEIGHBORHOOD) {
                         //South-East
                         if (nextState == lattice[source][east][south]) {
                             lattice[target][x][y] = nextState;
@@ -94,11 +98,11 @@ public class CyclicCellularAutomatonLattice implements Serializable {
                     continue;
                 }
                 //East
-                if(nextState == lattice[source][east][y]){
+                if (nextState == lattice[source][east][y]) {
                     lattice[target][x][y] = nextState;
                     continue;
                 }
-                if(neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == VON_NEUMANN_NEIGHBORHOOD) {
+                if (neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == VON_NEUMANN_NEIGHBORHOOD) {
                     //South
                     if (nextState == lattice[source][x][south]) {
                         lattice[target][x][y] = nextState;
@@ -106,34 +110,34 @@ public class CyclicCellularAutomatonLattice implements Serializable {
                     }
                 }
                 //West
-                if(nextState == lattice[source][west][y]){
+                if (nextState == lattice[source][west][y]) {
                     lattice[target][x][y] = nextState;
                 }
             }
         }
-        this.source = (this.source + 1 ) % 2;
-        this.target =  (this.target + 1 ) % 2;
+        this.source = (this.source + 1) % 2;
+        this.target = (this.target + 1) % 2;
     }
 
-    public int getCellStatusFor(int x,int y){
+    public int getCellStatusFor(int x, int y) {
         return this.lattice[source][x][y];
     }
 
     public synchronized void startVonNeumann() {
         initCreateLattice();
         initFillLatticeByRandom();
-        this.neighbourhood=VON_NEUMANN_NEIGHBORHOOD;
+        this.neighbourhood = VON_NEUMANN_NEIGHBORHOOD;
     }
 
     public synchronized void startMoore() {
         initCreateLattice();
         initFillLatticeByRandom();
-        this.neighbourhood=MOORE_NEIGHBORHOOD;
+        this.neighbourhood = MOORE_NEIGHBORHOOD;
     }
 
     public synchronized void startWoehlke() {
         initCreateLattice();
         initFillLatticeByRandom();
-        this.neighbourhood=WOEHLKE_NEIGHBORHOOD;
+        this.neighbourhood = WOEHLKE_NEIGHBORHOOD;
     }
 }

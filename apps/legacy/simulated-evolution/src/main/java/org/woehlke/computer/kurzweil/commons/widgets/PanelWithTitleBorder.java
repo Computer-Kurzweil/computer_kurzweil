@@ -1,18 +1,23 @@
 package org.woehlke.computer.kurzweil.commons.widgets;
 
 import lombok.Getter;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.commons.layouts.FlowLayoutCenter;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 
-@Log
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
+@Log4j2
 @Getter
 public class PanelWithTitleBorder extends JPanel {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private final FlowLayoutCenter panelStartStopButtonsLayout;
     private final CompoundBorder panelStartStopButtonsBorder;

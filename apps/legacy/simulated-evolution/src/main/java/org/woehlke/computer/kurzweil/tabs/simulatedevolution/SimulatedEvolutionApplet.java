@@ -3,7 +3,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.WorldPoint;
 
 import javax.accessibility.Accessible;
@@ -12,24 +12,25 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
+
 /**
  * The Container for running the Simulation.
  * It containes a World Data Model, a Controller Thread and a WorldCanvas View.
  *
  * (C) 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://java.woehlke.org/simulated-evolution/
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 18:33:14
  */
-@SuppressWarnings("deprecated")
-@Log
+@SuppressWarnings({"deprecation"})
+@Log4j2
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class SimulatedEvolutionApplet extends JApplet implements ImageObserver, MenuContainer, Serializable, Accessible, SimulatedEvolution {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private Label title = new Label("      Artificial Life Simulation of Bacteria Motion depending on DNA - (C) 2013 Thomas Woehlke");
 

@@ -6,6 +6,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
+/**
+ * Cyclic Cellular Automaton.
+ * <p>
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * @see <a href="https://java.woehlke.org/cyclic-cellular-automaton">Maven Project Page</a>
+ *
+ * @author Thomas Woehlke
+ */
 public class Config implements ConfigProperties {
 
     private String title;
@@ -25,41 +34,41 @@ public class Config implements ConfigProperties {
         try (
             InputStream input = new FileInputStream(appPropertiesFile)) {
             prop.load(input);
-            for( Object key : prop.keySet()){
+            for (Object key : prop.keySet()) {
                 //System.out.println(prop.get(key).toString());
             }
-            title = prop.getProperty(KEY_TITLE,TITLE);
-            subtitle = prop.getProperty(KEY_SUBTITLE,SUBTITLE);
-            String widthString = prop.getProperty(KEY_WIDTH,WIDTH);
-            String heightString = prop.getProperty(KEY_HEIGHT,HEIGHT);
+            title = prop.getProperty(KEY_TITLE, TITLE);
+            subtitle = prop.getProperty(KEY_SUBTITLE, SUBTITLE);
+            String widthString = prop.getProperty(KEY_WIDTH, WIDTH);
+            String heightString = prop.getProperty(KEY_HEIGHT, HEIGHT);
             width = Integer.parseInt(widthString);
             height = Integer.parseInt(heightString);
-            neighborhood=prop.getProperty(KEY_NEIGHBORHOOD,NEIGHBORHOOD);
-            buttonVonNeumann=prop.getProperty(KEY_BUTTON_VON_NEUMANN,BUTTON_VON_NEUMANN);
-            buttonMoore=prop.getProperty(KEY_BUTTON_MOORE,BUTTON_MOORE);
-            buttonWoehlke=prop.getProperty(KEY_BUTTON_WOEHLKE,BUTTON_WOEHLKE);
+            neighborhood = prop.getProperty(KEY_NEIGHBORHOOD, NEIGHBORHOOD);
+            buttonVonNeumann = prop.getProperty(KEY_BUTTON_VON_NEUMANN, BUTTON_VON_NEUMANN);
+            buttonMoore = prop.getProperty(KEY_BUTTON_MOORE, BUTTON_MOORE);
+            buttonWoehlke = prop.getProperty(KEY_BUTTON_WOEHLKE, BUTTON_WOEHLKE);
         } catch (IOException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
     }
 
-    public Rectangle getFrameBounds(){
+    public Rectangle getFrameBounds() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double startX = (screenSize.getWidth() - height) / 2d;
         double startY = (screenSize.getHeight() - width) / 2d;
-        int myheight = Double.valueOf(height).intValue()+TITLE_HEIGHT;
+        int myheight = Double.valueOf(height).intValue() + TITLE_HEIGHT;
         int mywidth = Double.valueOf(width).intValue();
         int mystartX = Double.valueOf(startX).intValue();
         int mystartY = Double.valueOf(startY).intValue();
         return new Rectangle(mystartX, mystartY, mywidth, myheight);
     }
 
-    public Rectangle getCanvasBounds(){
-        return new Rectangle(0, 0, width , height);
+    public Rectangle getCanvasBounds() {
+        return new Rectangle(0, 0, width, height);
     }
 
-    public Point getLatticeDimensions(){
-        return new Point(width,height);
+    public Point getLatticeDimensions() {
+        return new Point(width, height);
     }
 
     public int getWidth() {

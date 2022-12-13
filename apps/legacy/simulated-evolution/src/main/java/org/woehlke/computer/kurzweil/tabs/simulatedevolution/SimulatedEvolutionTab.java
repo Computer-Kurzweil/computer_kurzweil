@@ -1,7 +1,7 @@
 package org.woehlke.computer.kurzweil.tabs.simulatedevolution;
 
 import lombok.Getter;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilContext;
 import org.woehlke.computer.kurzweil.application.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.tabs.Tab;
@@ -22,12 +22,12 @@ import java.awt.event.WindowListener;
  * @see java.awt.event.WindowListener
  *
  * &copy; 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://java.woehlke.org/simulated-evolution/
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 18:47:46
  */
-@Log
+@Log4j2
 @Getter
 public class SimulatedEvolutionTab extends JFrame implements
         MenuContainer,
@@ -35,7 +35,7 @@ public class SimulatedEvolutionTab extends JFrame implements
         SimulatedEvolution,
         Tab {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    static final long serialVersionUID = 242L;
 
     private final static String TITLE = "Simulated Evolution";
 

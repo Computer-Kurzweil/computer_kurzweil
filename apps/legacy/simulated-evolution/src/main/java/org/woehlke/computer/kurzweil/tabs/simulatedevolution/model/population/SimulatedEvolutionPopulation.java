@@ -1,11 +1,16 @@
 package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.population;
 
 import lombok.*;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.LifeCycleStatus;
 
-@Log
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
+@Log4j2
 @ToString
 @Getter
 @Setter
@@ -13,6 +18,8 @@ import org.woehlke.computer.kurzweil.tabs.simulatedevolution.model.LifeCycleStat
 @AllArgsConstructor
 @NoArgsConstructor
 public class SimulatedEvolutionPopulation implements SimulatedEvolution {
+
+   private static final long serialVersionUID = 242L;
 
    private int youngCells;
    private int youngAndFatCells;

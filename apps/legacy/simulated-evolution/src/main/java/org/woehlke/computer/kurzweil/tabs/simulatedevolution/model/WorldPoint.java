@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.Serializable;
 
@@ -10,17 +10,17 @@ import java.io.Serializable;
  * A Point is used to define the Position of Cell or as a Vector for defining Dimensions.
  *
  * &copy; 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://java.woehlke.org/simulated-evolution/
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 23:47:05
  */
-@Log
+@Log4j2
 @ToString
 @EqualsAndHashCode
 public class WorldPoint implements Serializable {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    static final long serialVersionUID = 242L;
 
     /**
      * Horizontal X-Coordinate. Also used as Width;

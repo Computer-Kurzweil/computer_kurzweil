@@ -2,7 +2,7 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 import java.awt.*;
 
@@ -15,12 +15,12 @@ import static java.awt.Color.*;
  * @see LifeCycle
  *
  * &copy; 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://java.woehlke.org/simulated-evolution/
  * @author Thomas Woehlke
  * Date: 25.08.13
  * Time: 12:40
  */
-@Log
+@Log4j2
 @Getter
 @ToString
 public enum LifeCycleStatus {

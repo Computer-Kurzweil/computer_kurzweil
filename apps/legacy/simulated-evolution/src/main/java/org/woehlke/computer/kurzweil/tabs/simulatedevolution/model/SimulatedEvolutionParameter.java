@@ -3,17 +3,20 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 import lombok.*;
 import org.woehlke.computer.kurzweil.tabs.simulatedevolution.SimulatedEvolution;
 
-import java.io.Serializable;
-
+/**
+ * &copy; 2006 - 2008 Thomas Woehlke.
+ * http://java.woehlke.org/simulated-evolution/
+ * @author Thomas Woehlke
+ */
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class SimulatedEvolutionParameter implements SimulatedEvolution, Serializable {
+public class SimulatedEvolutionParameter implements SimulatedEvolution {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     private int foodPerDay;
     private int foodPerDayGardenOfEden;

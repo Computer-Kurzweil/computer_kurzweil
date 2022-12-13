@@ -3,51 +3,61 @@ package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 /**
- * TODO write doc.
+ * Cyclic Cellular Automaton.
+ * <p>
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * @see <a href="https://java.woehlke.org/cyclic-cellular-automaton">Maven Project Page</a>
+ *
+ * @author Thomas Woehlke
  */
 public class PanelButtons extends JPanel implements ActionListener {
 
-    private static final long serialVersionUID = -3057254130516052936L;
+    private static final long serialVersionUID = 242L;
 
-  private final JButton buttonVonNeumann;
-  private final JButton buttonMoore;
-  private final JButton buttonWoehlke;
-  private ObjectRegistry ctx;
+    private ObjectRegistry ctx;
+    private final JLabel neighborhoodLabel = new JLabel("Neighbourhood:");
+    private final JRadioButton buttonVonNeumann = new JRadioButton("Von Neumann", true);
+    private final JRadioButton buttonMoore = new JRadioButton("Moore");
+    private final JRadioButton buttonWoehlke = new JRadioButton("Woehlke");
+    private final JButton buttonRestart = new JButton("Restart");
+    private final ButtonGroup bgroup = new ButtonGroup();
 
-  public PanelButtons(ObjectRegistry ctx) {
-    this.ctx = ctx;
-    JLabel neighborhood = new JLabel("Neighborhood");
-    this.buttonVonNeumann = new JButton("Von Neumann");
-    this.buttonMoore = new JButton("Moore");
-    this.buttonWoehlke = new JButton("Woehlke");
-    FlowLayout layout = new FlowLayout();
-    this.setLayout(layout);
-    this.add(neighborhood);
-    this.add(this.buttonVonNeumann);
-    this.add(this.buttonMoore);
-    this.add(this.buttonWoehlke);
-    this.buttonVonNeumann.addActionListener(this);
-    this.buttonMoore.addActionListener(this);
-    this.buttonWoehlke.addActionListener(this);
-  }
+    public PanelButtons(ObjectRegistry ctx) {
+        this.ctx = ctx;
 
-  /**
-   * TODO write doc.
-   */
-  @Override
-  public void actionPerformed(ActionEvent ae) {
-    if (ae.getSource() == this.buttonVonNeumann) {
-        this.ctx.getController().pushButtonVonNeumann();
-    } else if (ae.getSource() == this.buttonMoore) {
-        this.ctx.getController().pushButtonMoore();
-    } else if (ae.getSource() == this.buttonWoehlke) {
-        this.ctx.getController().pushButtonWoehlke();
+        bgroup.add(buttonVonNeumann);
+        bgroup.add(buttonMoore);
+        bgroup.add(buttonWoehlke);
+
+        this.add(neighborhoodLabel);
+        this.add(buttonVonNeumann);
+        this.add(buttonMoore);
+        this.add(buttonWoehlke);
+        this.add(buttonRestart);
+
+        this.buttonRestart.addActionListener(this);
     }
-  }
+
+    /**
+     * TODO write doc.
+     */
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == this.buttonRestart) {
+            if (buttonVonNeumann.isSelected()) {
+                this.ctx.getController().pushButtonVonNeumann();
+            }
+            if (buttonMoore.isSelected()) {
+                this.ctx.getController().pushButtonMoore();
+            }
+            if (buttonWoehlke.isSelected()) {
+                this.ctx.getController().pushButtonWoehlke();
+            }
+        }
+    }
 }

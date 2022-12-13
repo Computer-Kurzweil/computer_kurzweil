@@ -2,11 +2,16 @@ package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config;
 
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonCanvas;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.PanelButtons;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.PanelSubtitle;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.*;
 
+/**
+ * Cyclic Cellular Automaton.
+ * <p>
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * @see <a href="https://java.woehlke.org/cyclic-cellular-automaton">Maven Project Page</a>
+ *
+ * @author Thomas Woehlke
+ */
 public class ObjectRegistry {
 
     private volatile CyclicCellularAutomatonController controller;

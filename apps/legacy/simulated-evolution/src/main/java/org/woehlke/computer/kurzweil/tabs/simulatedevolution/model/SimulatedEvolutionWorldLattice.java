@@ -2,26 +2,25 @@ package org.woehlke.computer.kurzweil.tabs.simulatedevolution.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
-import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Map of World where every Place can have food needed by the Bacteria Cells for eating.
  *
  * &copy; 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://java.woehlke.org/simulated-evolution/
  * @author Thomas Woehlke
  * Date: 24.08.13
  * Time: 12:37
  */
-@Log
+@Log4j2
 @ToString(exclude = {"random"})
 @EqualsAndHashCode(exclude = {"random"})
-public class SimulatedEvolutionWorldLattice implements Serializable {
+public class SimulatedEvolutionWorldLattice {
 
-    private static final long serialVersionUID = 7526471155622776147L;
+    private static final long serialVersionUID = 242L;
 
     /**
      * Grid of World where every Place can have food.

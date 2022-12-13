@@ -8,11 +8,12 @@ import java.io.Serializable;
 
 /**
  * Cyclic Cellular Automaton.
+ * <p>
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * @see <a href="https://java.woehlke.org/cyclic-cellular-automaton">Maven Project Page</a>
  *
- * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/cyclic-cellular-automaton/
  * @author Thomas Woehlke
- *
+ * <p>
  * Date: 05.02.2006
  * Time: 00:51:51
  */
@@ -33,12 +34,12 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
 
     public void paint(Graphics g) {
         super.paintComponent(g);
-        for(int y = 0; y < ctx.getConfig().getLatticeDimensions().getY(); y++){
-            for(int x = 0; x < ctx.getConfig().getLatticeDimensions().getX(); x++){
-                int state = this.ctx.getLattice().getCellStatusFor(x,y);
+        for (int y = 0; y < ctx.getConfig().getLatticeDimensions().getY(); y++) {
+            for (int x = 0; x < ctx.getConfig().getLatticeDimensions().getX(); x++) {
+                int state = this.ctx.getLattice().getCellStatusFor(x, y);
                 Color stateColor = this.ctx.getColorScheme().getColorForState(state);
                 g.setColor(stateColor);
-                g.drawLine(x,y,x,y);
+                g.drawLine(x, y, x, y);
             }
         }
     }

@@ -5,17 +5,20 @@ import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellul
 
 /**
  * Cyclic Cellular Automaton.
+ * <p>
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * @see <a href="https://java.woehlke.org/cyclic-cellular-automaton">Maven Project Page</a>
  *
- * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/cyclic-cellular-automaton/
  * @author Thomas Woehlke
  */
 public class CyclicCellularAutomatonApplication {
 
-    private CyclicCellularAutomatonApplication() { }
+    private CyclicCellularAutomatonApplication() {
+    }
 
     /**
      * Starting the App.
+     *
      * @param args CLI Parameter
      */
     public static void main(String[] args) {
