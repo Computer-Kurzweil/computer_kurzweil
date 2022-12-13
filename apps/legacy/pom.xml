@@ -17,8 +17,10 @@
     <modules>
         <module>cyclic-cellular-automaton</module>
         <module>diffusion-limited-aggregation</module>
-        <module>mandelbrot</module>
         <module>simulated-evolution</module>
+        <module>mandelbrot</module>
+        <module>mandelbrot-julia</module>
+        <module>mandelbrot-zoom</module>
     </modules>
 
 </project>

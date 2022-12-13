@@ -8,10 +8,11 @@
         <version>3.0.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mandelbrot</artifactId>
+    <groupId>org.woehlke.computer.kurzweil</groupId>
+    <artifactId>mandelbrot-zoom</artifactId>
     <packaging>jar</packaging>
 
-    <name>apps :: legacy :: Mandelbrot</name>
+    <name>Mandelbrot Zoom</name>
     <description>Computing the Edge of the Mandelbrot Set with a Turing Machine</description>
 
     <dependencies>
@@ -53,5 +54,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

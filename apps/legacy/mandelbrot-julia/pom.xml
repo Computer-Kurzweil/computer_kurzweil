@@ -8,10 +8,11 @@
         <version>3.0.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mandelbrot</artifactId>
+    <groupId>org.woehlke.computer.kurzweil</groupId>
+    <artifactId>mandelbrot-julia</artifactId>
     <packaging>jar</packaging>
 
-    <name>apps :: legacy :: Mandelbrot</name>
+    <name>apps :: legacy :: Mandelbrot to Julia</name>
     <description>Computing the Edge of the Mandelbrot Set with a Turing Machine</description>
 
     <dependencies>
