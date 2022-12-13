@@ -23,7 +23,7 @@
             <item name="GitHub project" href="https://github.com/Computer-Kurzweil/simulated-evolution/" />
         </links>
         <breadcrumbs>
-            <item name="Simulated Evolution" href="/" />
+            <item name="Simulated Evolution" href="index.htmml" />
         </breadcrumbs>
         <menu name="Main" inherit="top">
             <item name="Home" href="/" />
