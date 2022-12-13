@@ -1,13 +1,6 @@
-package org.woehlke.computer.kurzweil.simulation.evolution;
-
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+package org.woehlke.computer.kurzweil.simulated.evolution.model.lattice;
 
 /**
- * Unit test for simple AppMainDesktop.
- *
  * &copy; 2006 - 2008 Thomas Woehlke.
  * @author Thomas Woehlke
  *
@@ -15,14 +8,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @see <a href="https://github.com/Computer-Kurzweil/simulated-evolution">Github Repository</a>
  * @see <a href="https://java.woehlke.org/simulated-evolution/">Maven Project Repository</a>
  */
-public class AppTest {
+public enum LatticeNeighbourhoodType {
 
     /**
-     * Rigourous Test :-)
+     * https://en.wikipedia.org/wiki/Von_Neumann_neighborhood
      */
-    @Test
-    public void testApp()
-    {
-        assertTrue(true);
-    }
+    VON_NEUMANN_NEIGHBORHOOD,
+
+    /**
+     * https://en.wikipedia.org/wiki/Moore_neighborhood
+     */
+    MOORE_NEIGHBORHOOD,
+
+    WOEHLKE_NEIGHBORHOOD;
 }

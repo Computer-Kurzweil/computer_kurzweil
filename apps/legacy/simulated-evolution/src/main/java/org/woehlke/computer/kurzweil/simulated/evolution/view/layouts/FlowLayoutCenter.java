@@ -1,13 +1,9 @@
-package org.woehlke.computer.kurzweil.simulation.evolution;
+package org.woehlke.computer.kurzweil.simulated.evolution.view.layouts;
 
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.awt.*;
+import java.io.Serializable;
 
 /**
- * Unit test for simple AppMainDesktop.
- *
  * &copy; 2006 - 2008 Thomas Woehlke.
  * @author Thomas Woehlke
  *
@@ -15,14 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @see <a href="https://github.com/Computer-Kurzweil/simulated-evolution">Github Repository</a>
  * @see <a href="https://java.woehlke.org/simulated-evolution/">Maven Project Repository</a>
  */
-public class AppTest {
+public class FlowLayoutCenter extends FlowLayout implements Serializable {
 
-    /**
-     * Rigourous Test :-)
-     */
-    @Test
-    public void testApp()
-    {
-        assertTrue(true);
+    private static final long serialVersionUID = 242L;
+
+    public FlowLayoutCenter() {
+        setAlignment(FlowLayout.CENTER);
     }
 }
