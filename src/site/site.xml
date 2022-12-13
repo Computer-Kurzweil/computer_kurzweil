@@ -10,13 +10,34 @@
     </skin>
     <bannerLeft>
         <name>Computer Kurzweil</name>
-        <src>img/phasenraum_logo.gif</src>
+        <src>/img/phasenraum_logo.gif</src>
         <href>https://java.woehlke.org/computer_kurzweil/</href>
     </bannerLeft>
+    <publishDate position="navigation-bottom"/>
+    <poweredBy>
+        <logo name="Maven" href="http://maven.apache.org/"
+              img="http://maven.apache.org/images/logos/maven-feather.png"/>
+    </poweredBy>
+    <version position="navigation-top"/>
     <body>
+        <links>
+            <item name="GitHub project" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
+        </links>
+        <breadcrumbs>
+            <item name="Mandelbrot" href="index.html" />
+        </breadcrumbs>
         <menu ref="modules"/>
-        <menu name="Overview">
-            <item name="About" href="About.html" />
+        <menu name="Overview" inherit="top">
+            <item name="Home" href="index.html" />
+            <item name="License" href="LICENSE.html" />
+            <item name="Copyright" href="LICENSE.code.html" />
+            <item name="Fork on GitHub" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
+            <item name="Blog" href="https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html" />
+            <item name="Issues" href="https://github.com/Computer-Kurzweil/computer_kurzweil/issues/" />
+            <item name="Donate" href="https://www.paypal.me/ThomasWoehlke" />
+        </menu>
+        <menu name="Contribute" inherit="bottom">
+            <item name="Home" href="index.html" />
             <item name="ENGINEERING" href="ENGINEERING.html" />
             <item name="ISSUES" href="ISSUES.html" />
             <item name="MILESTONES" href="MILESTONES.html" />
@@ -24,13 +45,6 @@
             <item name="ENGINEERING" href="ENGINEERING.html" />
             <item name="RELEASES" href="RELEASES.html" />
         </menu>
-        <menu ref="reports"/>
+        <menu name="Maven Reports" ref="reports" inherit="bottom"/>
     </body>
-    <publishDate position="navigation-top"/>
-    <version position="navigation-top"/>
-    <poweredBy>
-        <logo name="Maven"
-              href="http://maven.apache.org/"
-              img="http://maven.apache.org/images/logos/maven-feather.png"/>
-    </poweredBy>
 </project>
