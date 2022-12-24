@@ -1,7 +1,20 @@
-*.iml
-.idea
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# usage-without-binary-jar: https://maven.apache.org/wrapper/
+.mvn/wrapper/maven-wrapper.jar
 
-/.idea
+.idea
+*iml
+*.xcf
+*.gif
+
 
 log.txt
 
@@ -9,13 +22,10 @@ target
 /target
 /computer_kurzweil_app/target
 /insourcing_cyclic_cellular_automaton/target
-/insourcing_cyclic_cellular_automaton/target
 /insourcing_diffusion_limited_aggregation/target
 /insourcing_mandelbrot/target
 /insourcing_simulated_evolution/target
 
-release.properties
-pom.xml.releaseBackup
 /console.log
 /a.xml
 /a2.xml
