@@ -10,7 +10,7 @@
     </skin>
     <bannerLeft>
         <name>Computer Kurzweil</name>
-        <src>/img/phasenraum_logo.gif</src>
+        <src>/img/thomas_woehlke__geburt_einer_vision__logo.png</src>
         <href>https://java.woehlke.org/</href>
     </bannerLeft>
     <publishDate position="navigation-bottom"/>
@@ -42,9 +42,13 @@
             <item name="Copyright" href="LICENSE.code.html" />
         </menu>
         <menu name="Progress" inherit="bottom">
-            <item name="Issues" href="https://github.com/Computer-Kurzweil/computer_kurzweil/issues/" />
-            <item name="Milestones" href="https://github.com/Computer-Kurzweil/computer_kurzweil/milestones" />
-            <item name="Releases" href="https://github.com/Computer-Kurzweil/computer_kurzweil/releases/" />
+            <item name="Issues" href="Issues.html" />
+            <item name="Projects" href="Projects.html" />
+            <item name="Milestones" href="Milestones.html" />
+            <item name="Releases" href="Releases.html" />
+            <item name="Github: Issues" href="https://github.com/Computer-Kurzweil/computer_kurzweil/issues/" />
+            <item name="Github: Milestones" href="https://github.com/Computer-Kurzweil/computer_kurzweil/milestones" />
+            <item name="Github: Releases" href="https://github.com/Computer-Kurzweil/computer_kurzweil/releases/" />
         </menu>
         <menu name="Tabs" inherit="bottom">
             <item name="Tabs" href="Tabs.html" />
@@ -55,7 +59,6 @@
             <item name="Tab_RandomWalk" href="Tab_RandomWalk.html" />
             <item name="Tab_SierpinskiTriangle" href="Tab_SierpinskiTriangle.html" />
             <item name="Tabs" href="Tabs.html" />
-            <item name="UML" href="UML.html" />
         </menu>
         <menu name="Tabs (Planning)" inherit="bottom">
             <item name="Tab_GameOfLife" href="Tab_GameOfLife.html" />
@@ -65,6 +68,12 @@
             <item name="Tab_Turmite" href="Tab_Turmite.html" />
         </menu>
         <menu name="Development" inherit="bottom">
+            <item name="Application" href="Application.html" />
+            <item name="Commons" href="Commons.html" />
+            <item name="DevOps" href="DevOps.html" />
+            <item name="Documentation" href="Documentation.html" />
+            <item name="Engineering" href="Engineerings.html" />
+            <item name="UML" href="UML.html" />
         </menu>
         <menu name="Maven Reports" ref="reports" inherit="bottom"/>
     </body>
