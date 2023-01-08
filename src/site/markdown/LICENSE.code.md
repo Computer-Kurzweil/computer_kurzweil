@@ -3,7 +3,7 @@
 | [here](LICENSE.md) | [extern](http://www.apache.org/licenses/LICENSE-2.0) |
 
 ```
-   Copyright 2020 Thomas Woehlke
+   Copyright 2023 Thomas Woehlke
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

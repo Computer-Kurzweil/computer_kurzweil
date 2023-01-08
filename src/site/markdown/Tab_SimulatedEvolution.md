@@ -51,7 +51,7 @@ If a cell doesn't eat enough, it will first stand still and after a while it die
 | [Milestones](Milestones.md)  | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
 | [Issues](Issues.md)          | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues)         |
 | [Releases](Releases.md)      | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases)     |
-| [Engineering](Enineering.md) | &nbsp;                                                                                 |
+| [Engineering](Engineering.md) | &nbsp;                                                                                 |
 | &nbsp;                       | &nbsp;                                                                                 |
 | *[back...](README.md)*       | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)*          |
 

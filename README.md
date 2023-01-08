@@ -157,10 +157,10 @@ Concentration in Business and Social inequality in free market situations.
 | [Milestones](src/site/markdown/Milestones.md)   | [Github-Milestones](https://github.com/Computer-Kurzweil/computer_kurzweil/milestones) |
 | [Issues](src/site/markdown/Issues.md)           | [Github-Issues](https://github.com/Computer-Kurzweil/computer_kurzweil/issues)         |
 | [Releases](src/site/markdown/Releases.md)       | [Github-Releases](https://github.com/Computer-Kurzweil/computer_kurzweil/releases)     |
-| [Engineering](src/site/markdown/Enineering.md)  | &nbsp;                                                                                 |
+| [Engineering](src/site/markdown/Engineering.md)  | &nbsp;                                                                                 |
 | &nbsp;                                          | &nbsp;                                                                                 |
 | *[back...](README.md)*                          | *[computer_kurzweil](https://github.com/Computer-Kurzweil/computer_kurzweil)*          |
 
 ## Copyright
-[&copy; 2020 Thomas W&ouml;hlke](src/site/markdown/LICENSE.code.md)
+[&copy; 2023 Thomas W&ouml;hlke](src/site/markdown/LICENSE.code.md)
 

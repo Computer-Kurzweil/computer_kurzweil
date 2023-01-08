@@ -24,26 +24,33 @@
             <item name="GitHub project" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
         </links>
         <breadcrumbs>
-            <item name="Mandelbrot" href="index.html" />
+            <item name="Computer Kurzweil" href="index.html" />
         </breadcrumbs>
         <menu ref="modules"/>
         <menu name="Overview" inherit="top">
             <item name="Home" href="index.html" />
             <item name="Fork on GitHub" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
-            <item name="Blog" href="https://thomas-woehlke.blogspot.com/2016/01/mandelbrot-set-drawn-by-turing-machine.html" />
             <item name="Issues" href="https://github.com/Computer-Kurzweil/computer_kurzweil/issues/" />
             <item name="Donate" href="https://www.paypal.me/ThomasWoehlke" />
             <item name="License" href="LICENSE.html" />
             <item name="Copyright" href="LICENSE.code.html" />
         </menu>
-        <menu name="Contribute" inherit="bottom">
-            <item name="Home" href="index.html" />
-            <item name="ENGINEERING" href="ENGINEERING.html" />
-            <item name="ISSUES" href="ISSUES.html" />
-            <item name="MILESTONES" href="MILESTONES.html" />
-            <item name="PROJECTS" href="PROJECTS.html" />
-            <item name="ENGINEERING" href="ENGINEERING.html" />
-            <item name="RELEASES" href="RELEASES.html" />
+        <menu name="Tabs" inherit="bottom">
+            <item name="Tab_CyclicCellularAutomaton" href="Tab_CyclicCellularAutomaton.html" />
+            <item name="Tab_DiffusionLimitedAggregation" href="Tab_DiffusionLimitedAggregation.html" />
+            <item name="Tab_GameOfLife" href="Tab_GameOfLife.html" />
+            <item name="Tab_KochSnowflake" href="Tab_KochSnowflake.html" />
+            <item name="Tab_Mandelbrot" href="Tab_Mandelbrot.html" />
+            <item name="Tab_RandomWalk" href="Tab_RandomWalk.html" />
+            <item name="Tab_SameGame" href="Tab_SameGame.html" />
+            <item name="Tab_SierpinskiTriangle" href="Tab_SierpinskiTriangle.html" />
+            <item name="Tab_Tetris" href="Tab_Tetris.html" />
+            <item name="Tab_Turmite" href="Tab_Turmite.html" />
+            <item name="Tab_WaTor" href="Tab_WaTor.html" />
+            <item name="Tabs" href="Tabs.html" />
+            <item name="UML" href="UML.html" />
+        </menu>
+        <menu name="Development" inherit="bottom">
         </menu>
         <menu name="Maven Reports" ref="reports" inherit="bottom"/>
     </body>
