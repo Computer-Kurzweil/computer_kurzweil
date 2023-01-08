@@ -24,31 +24,45 @@
             <item name="GitHub project" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
         </links>
         <breadcrumbs>
+            <item name="Thomas Woehlke on GitHub" href="https://github.com/thomaswoehlke" />
+            <item name="Computer-Kurzweil Group on GitHub" href="https://github.com/Computer-Kurzweil/" />
+            <item name="Fork this on GitHub" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
             <item name="Computer Kurzweil" href="index.html" />
         </breadcrumbs>
         <menu ref="modules"/>
         <menu name="Overview" inherit="top">
             <item name="Home" href="index.html" />
-            <item name="Fork on GitHub" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
-            <item name="Issues" href="https://github.com/Computer-Kurzweil/computer_kurzweil/issues/" />
+            <item name="Fork this on GitHub" href="https://github.com/Computer-Kurzweil/computer_kurzweil/" />
+            <item name="Computer-Kurzweil Group on GitHub" href="https://github.com/Computer-Kurzweil/" />
+            <item name="Thomas Woehlke on GitHub" href="https://github.com/thomaswoehlke" />
             <item name="Donate" href="https://www.paypal.me/ThomasWoehlke" />
+        </menu>
+        <menu name="License" inherit="top">
             <item name="License" href="LICENSE.html" />
             <item name="Copyright" href="LICENSE.code.html" />
         </menu>
+        <menu name="Progress" inherit="bottom">
+            <item name="Issues" href="https://github.com/Computer-Kurzweil/computer_kurzweil/issues/" />
+            <item name="Milestones" href="https://github.com/Computer-Kurzweil/computer_kurzweil/milestones" />
+            <item name="Releases" href="https://github.com/Computer-Kurzweil/computer_kurzweil/releases/" />
+        </menu>
         <menu name="Tabs" inherit="bottom">
+            <item name="Tabs" href="Tabs.html" />
             <item name="Tab_CyclicCellularAutomaton" href="Tab_CyclicCellularAutomaton.html" />
             <item name="Tab_DiffusionLimitedAggregation" href="Tab_DiffusionLimitedAggregation.html" />
-            <item name="Tab_GameOfLife" href="Tab_GameOfLife.html" />
             <item name="Tab_KochSnowflake" href="Tab_KochSnowflake.html" />
             <item name="Tab_Mandelbrot" href="Tab_Mandelbrot.html" />
             <item name="Tab_RandomWalk" href="Tab_RandomWalk.html" />
-            <item name="Tab_SameGame" href="Tab_SameGame.html" />
             <item name="Tab_SierpinskiTriangle" href="Tab_SierpinskiTriangle.html" />
-            <item name="Tab_Tetris" href="Tab_Tetris.html" />
-            <item name="Tab_Turmite" href="Tab_Turmite.html" />
-            <item name="Tab_WaTor" href="Tab_WaTor.html" />
             <item name="Tabs" href="Tabs.html" />
             <item name="UML" href="UML.html" />
+        </menu>
+        <menu name="Tabs (Planning)" inherit="bottom">
+            <item name="Tab_GameOfLife" href="Tab_GameOfLife.html" />
+            <item name="Tab_RandomWalk" href="Tab_RandomWalk.html" />
+            <item name="Tab_SameGame" href="Tab_SameGame.html" />
+            <item name="Tab_SierpinskiTriangle" href="Tab_SierpinskiTriangle.html" />
+            <item name="Tab_Turmite" href="Tab_Turmite.html" />
         </menu>
         <menu name="Development" inherit="bottom">
         </menu>
